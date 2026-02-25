@@ -1,0 +1,12 @@
+{
+  "name": "chewber",
+  "private": true,
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "bun --hot -C apps/api src/index.ts",
+    "worker": "bun --hot -C apps/api src/jobs/worker.ts"
+  }
+}
