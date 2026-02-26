@@ -1087,6 +1087,38 @@ function FoodDetailView({ food }: { food: FoodDetail }) {
   );
 }
 
+// ── Additive risk-level styling ──────────────────────────
+const ADDITIVE_RISK_STYLES: Record<string, { bg: string; fg: string; border: string; penalty?: number }> = {
+  risk_free: { bg: "rgba(61,139,95,0.15)", fg: "var(--kale)", border: "rgba(61,139,95,0.3)" },
+  limited:   { bg: "rgba(212,162,76,0.15)", fg: "var(--amber)", border: "rgba(212,162,76,0.3)", penalty: 3 },
+  moderate:  { bg: "rgba(200,113,74,0.15)", fg: "var(--tangerine)", border: "rgba(200,113,74,0.3)", penalty: 10 },
+  high:      { bg: "rgba(196,77,62,0.2)",   fg: "var(--coral)", border: "rgba(196,77,62,0.4)", penalty: 30 },
+};
+
+function normalizeCode(raw: string): string {
+  let c = raw.trim();
+  if (c.startsWith("en:")) c = c.slice(3).split("-")[0];
+  return c.toUpperCase().replace(/[^A-Z0-9]/g, "");
+}
+
+function getAdditiveRisk(additive: any, breakdown: any): string {
+  if (!breakdown?.additives?.deductions) return "risk_free";
+  const code = additive.code ? normalizeCode(additive.code) : null;
+  const name = (additive.name ?? "").toLowerCase();
+  for (const d of breakdown.additives.deductions) {
+    const dCode = d.code ? normalizeCode(d.code) : null;
+    if (code && dCode && code === dCode) return d.risk_level;
+    // Also match by base code (E150D matches E150A etc.)
+    if (code && dCode) {
+      const baseA = code.replace(/[A-Z]+$/, "");
+      const baseB = dCode.replace(/[A-Z]+$/, "");
+      if (baseA === baseB && baseA.length > 1) return d.risk_level;
+    }
+    if (name && d.name && d.name.toLowerCase() === name) return d.risk_level;
+  }
+  return "risk_free";
+}
+
 function SummaryDetails({ food }: { food: FoodDetail }) {
   const abs = food.abstraction;
   if (!abs) return null;
@@ -1111,13 +1143,28 @@ function SummaryDetails({ food }: { food: FoodDetail }) {
         </div>
       )}
 
-      {/* Additives count */}
+      {/* Additives with risk-level coloring */}
       {abs.additives && abs.additives.length > 0 && (
         <div style={{ marginBottom: 12 }}>
           <div style={{ fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--fog)", marginBottom: 6 }}>Additives ({abs.additives.length})</div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-            {abs.additives.map((a: any, i: number) => (
-              <span key={i} className="badge" style={{ fontSize: 11, padding: "2px 8px" }}>{a.name ?? a.code ?? "unknown"}</span>
+            {abs.additives.map((a: any, i: number) => {
+              const risk = getAdditiveRisk(a, food.score_breakdown);
+              const style = ADDITIVE_RISK_STYLES[risk];
+              return (
+                <span key={i} className="badge" title={`${risk.replace("_", " ")}${style.penalty ? ` (−${style.penalty} pts)` : ""}`} style={{
+                  fontSize: 11, padding: "2px 8px",
+                  background: style.bg, color: style.fg, border: `1px solid ${style.border}`
+                }}>{a.name ?? a.code ?? "unknown"}</span>
+              );
+            })}
+          </div>
+          <div style={{ marginTop: 6, display: "flex", flexWrap: "wrap", gap: 8, fontSize: 10, color: "var(--fog)" }}>
+            {["risk_free", "limited", "moderate", "high"].map(level => (
+              <span key={level} style={{ display: "inline-flex", alignItems: "center", gap: 3 }}>
+                <span style={{ display: "inline-block", width: 8, height: 8, borderRadius: 2, background: ADDITIVE_RISK_STYLES[level as keyof typeof ADDITIVE_RISK_STYLES].bg, border: `1px solid ${ADDITIVE_RISK_STYLES[level as keyof typeof ADDITIVE_RISK_STYLES].border}` }} />
+                {level.replace("_", " ")}
+              </span>
             ))}
           </div>
         </div>
