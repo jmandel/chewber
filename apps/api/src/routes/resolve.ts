@@ -114,6 +114,16 @@ resolveRoutes.post("/resolve", async (c) => {
              ORDER BY version DESC LIMIT 1`
           ).get(cand.id) as any;
           if (abs) {
+            // Check organic status matches — organic and conventional are different products
+            const queryOrganic = (q.isOrganic ?? "unknown").toLowerCase();
+            if (queryOrganic !== "unknown" && abs.abstraction_json) {
+              try {
+                const candOrganic = JSON.parse(abs.abstraction_json)?.organic?.is_certified_organic ?? "unknown";
+                if (candOrganic !== "unknown" && candOrganic !== queryOrganic) {
+                  continue; // Skip — organic status mismatch
+                }
+              } catch {}
+            }
             const food = loadFoodDetail(db, cand.id);
             if (food) return c.json({ kind: "found", food });
           }

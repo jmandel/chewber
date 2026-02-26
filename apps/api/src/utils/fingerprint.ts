@@ -13,7 +13,8 @@ export async function fingerprintStructuredQuery(q: any): Promise<string> {
     brand: (q.brand ?? "").toString().trim().toLowerCase() || null,
     kind: (q.kind ?? "unknown").toString(),
     variant: (q.variant ?? "").toString().trim().toLowerCase() || null,
-    expectedCategory: (q.expectedCategory ?? "unknown").toString()
+    expectedCategory: (q.expectedCategory ?? "unknown").toString(),
+    isOrganic: (q.isOrganic ?? "unknown").toString()
   };
   const payload = JSON.stringify(normalized);
   const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(payload));
