@@ -146,5 +146,11 @@ export const api = {
 
   getJob: (id: string) => http<JobStatus>("/api/jobs/" + encodeURIComponent(id)),
   getJobByFood: (foodId: string) => http<{ job: any; events: JobEvent[] }>("/api/jobs/by-food/" + encodeURIComponent(foodId)),
-  getRelatedFoods: (idOrSlug: string, limit = 8) => http<{ related: RelatedFood[] }>(`/api/foods/${encodeURIComponent(idOrSlug)}/related?limit=${limit}`)
+  getRelatedFoods: (idOrSlug: string, limit = 8) => http<{ related: RelatedFood[] }>(`/api/foods/${encodeURIComponent(idOrSlug)}/related?limit=${limit}`),
+
+  deleteFood: (idOrSlug: string, adminKey: string) =>
+    fetch(`${BASE}/api/foods/${encodeURIComponent(idOrSlug)}`, {
+      method: "DELETE",
+      headers: { "X-Admin-Key": adminKey },
+    }).then(r => { if (!r.ok) throw new Error(`${r.status}`); return r.json(); })
 };

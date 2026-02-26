@@ -57,7 +57,8 @@ const EnvSchema = z.object({
   USDA_API_KEY: z.string().optional(),
   BRAVE_SEARCH_API_KEY: z.string().optional(),
 
-  CHEWBER_WEB_ORIGIN: z.string().default("http://localhost:5173")
+  CHEWBER_WEB_ORIGIN: z.string().default("http://localhost:5173"),
+  CHEWBER_ADMIN_KEY: z.string().optional()
 });
 
 export type Env = z.infer<typeof EnvSchema>;
@@ -82,7 +83,8 @@ export function getEnv(): Env {
     USDA_API_KEY: process.env.USDA_API_KEY,
     BRAVE_SEARCH_API_KEY: process.env.BRAVE_SEARCH_API_KEY,
 
-    CHEWBER_WEB_ORIGIN: process.env.CHEWBER_WEB_ORIGIN
+    CHEWBER_WEB_ORIGIN: process.env.CHEWBER_WEB_ORIGIN,
+    CHEWBER_ADMIN_KEY: process.env.CHEWBER_ADMIN_KEY
   };
   return EnvSchema.parse(raw);
 }

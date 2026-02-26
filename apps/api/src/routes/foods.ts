@@ -239,6 +239,29 @@ foodsRoutes.get("/foods/by-barcode/:barcode", (c) => {
   });
 });
 
+foodsRoutes.delete("/foods/:idOrSlug", (c) => {
+  const env = c.get("env");
+  const adminKey = env.CHEWBER_ADMIN_KEY;
+  const headerKey = c.req.header("X-Admin-Key");
+  if (!adminKey || headerKey !== adminKey) {
+    return c.json({ error: "Forbidden" }, 403);
+  }
+
+  const db = c.get("db");
+  const param = c.req.param("idOrSlug");
+
+  let row = db.query(`SELECT id FROM foods WHERE id = ? LIMIT 1`).get(param) as any;
+  if (!row) row = db.query(`SELECT id FROM foods WHERE slug = ? LIMIT 1`).get(param) as any;
+  if (!row) return c.json({ error: "Not found" }, 404);
+
+  const foodId = row.id;
+  db.query(`DELETE FROM food_abstractions WHERE food_id = ?`).run(foodId);
+  db.query(`DELETE FROM jobs WHERE result_food_id = ?`).run(foodId);
+  db.query(`DELETE FROM foods WHERE id = ?`).run(foodId);
+
+  return c.json({ ok: true });
+});
+
 foodsRoutes.get("/foods/:idOrSlug", (c) => {
   const db = c.get("db");
   const param = c.req.param("idOrSlug");

@@ -208,8 +208,50 @@ function FlowOverlayConnected({ fs }: { fs: ReturnType<typeof useFlowState> }) {
   return <FlowOverlay flow={fs.flow} setFlow={fs.setFlow} onJobCompleted={fs.onJobCompleted} />;
 }
 
+// ── Admin mode ──────────────────────────────────────────────
+const ADMIN_LS_KEY = "chewber_admin";
+function getAdminKey(): string | null { return localStorage.getItem(ADMIN_LS_KEY); }
+function setAdminKey(key: string) { localStorage.setItem(ADMIN_LS_KEY, key); }
+function clearAdminKey() { localStorage.removeItem(ADMIN_LS_KEY); }
+function isAdmin(): boolean { return !!getAdminKey(); }
+
 // ── About overlay ───────────────────────────────────────────
 function AboutOverlay({ onClose }: { onClose: () => void }) {
+  const [taps, setTaps] = useState(0);
+  const [showKeyInput, setShowKeyInput] = useState(false);
+  const [keyVal, setKeyVal] = useState("");
+  const [adminActive, setAdminActive] = useState(isAdmin());
+  const tapTimer = useRef<any>(null);
+
+  function handleTap() {
+    setTaps(prev => {
+      const next = prev + 1;
+      clearTimeout(tapTimer.current);
+      tapTimer.current = setTimeout(() => setTaps(0), 1500);
+      if (next >= 5) {
+        setTaps(0);
+        if (adminActive) {
+          clearAdminKey();
+          setAdminActive(false);
+          setShowKeyInput(false);
+        } else {
+          setShowKeyInput(true);
+        }
+      }
+      return next;
+    });
+  }
+
+  function handleKeySubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (keyVal.trim()) {
+      setAdminKey(keyVal.trim());
+      setAdminActive(true);
+      setShowKeyInput(false);
+      setKeyVal("");
+    }
+  }
+
   return (
     <div
       onClick={onClose}
@@ -270,6 +312,26 @@ function AboutOverlay({ onClose }: { onClose: () => void }) {
             border: "1px solid var(--slate)", background: "transparent", color: "var(--cream)",
             fontWeight: 600, fontSize: 14, cursor: "pointer"
           }}>Close</button>
+          {/* Hidden admin activation: tap version text 5x */}
+          <div onClick={handleTap} style={{
+            marginTop: 16, textAlign: "center", fontSize: 11, color: "var(--fog)",
+            opacity: 0.4, cursor: "default", userSelect: "none",
+          }}>
+            v1.0 {adminActive ? "✓" : ""}
+          </div>
+          {showKeyInput && (
+            <form onSubmit={handleKeySubmit} style={{ marginTop: 8, display: "flex", gap: 6 }}>
+              <input
+                type="password" value={keyVal} onChange={e => setKeyVal(e.target.value)}
+                placeholder="Key" autoFocus
+                style={{ flex: 1, fontSize: 12, padding: "6px 8px", background: "var(--slate)", border: "1px solid var(--fog)", borderRadius: 4, color: "var(--cream)" }}
+              />
+              <button type="submit" style={{
+                fontSize: 12, padding: "6px 12px", background: "var(--kale)", border: "none",
+                borderRadius: 4, color: "#fff", cursor: "pointer", fontWeight: 600
+              }}>Set</button>
+            </form>
+          )}
         </div>
       </div>
     </div>
@@ -849,6 +911,65 @@ function isIncompleteReport(food: FoodDetail): boolean {
   );
 }
 
+function AdminDeleteButton({ food }: { food: FoodDetail }) {
+  const nav = useNavigate();
+  const [confirming, setConfirming] = useState(false);
+  if (!isAdmin()) return null;
+
+  async function handleDelete() {
+    const key = getAdminKey();
+    if (!key) return;
+    try {
+      await api.deleteFood(food.id, key);
+      nav("/", { replace: true });
+    } catch (e: any) {
+      alert(`Delete failed: ${e.message}`);
+      setConfirming(false);
+    }
+  }
+
+  if (confirming) {
+    return (
+      <div style={{
+        position: "absolute", top: 12, left: 12, display: "flex", alignItems: "center", gap: 4,
+        background: "var(--charcoal)", border: "1px solid var(--coral)", borderRadius: 8,
+        padding: "4px 8px", zIndex: 2,
+      }}>
+        <span style={{ fontSize: 11, color: "var(--coral)", fontWeight: 600 }}>Delete?</span>
+        <button onClick={handleDelete} style={{
+          fontSize: 11, padding: "2px 8px", background: "var(--coral)", color: "#fff",
+          border: "none", borderRadius: 4, cursor: "pointer", fontWeight: 600
+        }}>Yes</button>
+        <button onClick={() => setConfirming(false)} style={{
+          fontSize: 11, padding: "2px 8px", background: "transparent", color: "var(--fog)",
+          border: "1px solid var(--fog)", borderRadius: 4, cursor: "pointer"
+        }}>No</button>
+      </div>
+    );
+  }
+
+  return (
+    <button
+      onClick={() => setConfirming(true)}
+      aria-label="Delete"
+      style={{
+        position: "absolute", top: 12, left: 12,
+        display: "flex", alignItems: "center", justifyContent: "center",
+        width: 36, height: 36, padding: 0,
+        background: "transparent", border: "none", borderRadius: "50%",
+        color: "var(--fog)", cursor: "pointer", opacity: 0.5,
+        transition: "opacity 0.2s",
+      }}
+      onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
+      onMouseLeave={e => (e.currentTarget.style.opacity = "0.5")}
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+      </svg>
+    </button>
+  );
+}
+
 function ScoreHero({ food }: { food: FoodDetail }) {
   const score = food.score;
   const stub = isStubData(food);
@@ -858,6 +979,7 @@ function ScoreHero({ food }: { food: FoodDetail }) {
   return (
     <div className="card" style={{ textAlign: "center", padding: "28px 16px", position: "relative" }}>
       <ShareButton food={food} />
+      <AdminDeleteButton food={food} />
       {stub && (
         <div style={{
           background: "color-mix(in srgb, var(--tangerine) 15%, var(--midnight))", border: "1px solid var(--tangerine)", borderRadius: 8,
