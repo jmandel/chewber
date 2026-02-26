@@ -819,7 +819,7 @@ function FoodPage() {
       <RelatedFoods foodId={food.id} />
       <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
         <button onClick={() => nav("/")} className="btn-full" style={{ flex: 1 }}>← New search</button>
-        <button onClick={() => nav(`/compare?ids=${encodeURIComponent(food.id)}`)} className="btn-full" style={{ flex: 1 }}>⚖️ Compare</button>
+        <button onClick={() => nav(`/compare?ids=${encodeURIComponent(food.slug ?? food.id)}`)} className="btn-full" style={{ flex: 1 }}>⚖️ Compare</button>
       </div>
     </>
   );
@@ -1167,10 +1167,10 @@ function ComparePage() {
     }
   }, []);
 
-  // Keep URL in sync with selected foods
+  // Keep URL in sync with selected foods (use slugs for clean URLs)
   useEffect(() => {
-    const ids = foods.map(f => f.id).join(",");
-    const url = ids ? `/compare?ids=${encodeURIComponent(ids)}` : "/compare";
+    const slugs = foods.map(f => f.slug ?? f.id).join(",");
+    const url = slugs ? `/compare?ids=${encodeURIComponent(slugs)}` : "/compare";
     window.history.replaceState(null, "", url);
   }, [foods]);
 
