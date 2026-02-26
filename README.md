@@ -96,8 +96,12 @@ This repo is a *scaffold* and contains structured TODOs where production details
 bun -C apps/api src/scripts/seedAdditiveRisks.ts
 ```
 
-### Import Open Food Facts JSONL dump (optional)
+### Build Open Food Facts parquet (offline product database)
+
+Requires `duckdb` CLI (v1.4+). Downloads ~4.4 GB from HuggingFace, produces a ~450 MB slim parquet:
 
 ```bash
-bun -C apps/api src/scripts/importOpenFoodFactsJsonl.ts /path/to/openfoodfacts-products.jsonl
+./scripts/build-off-parquet.sh
 ```
+
+The output `data/off-food.parquet` contains ~4.3M products with barcodes, names, brands, categories, ingredients, additives, allergens, nutriscore, and nutriments. Queried at runtime via DuckDB.

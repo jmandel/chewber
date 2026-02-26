@@ -50,6 +50,13 @@ if ! command -v curl &>/dev/null; then
 fi
 info "curl available"
 
+if ! command -v duckdb &>/dev/null; then
+  warn "duckdb CLI not found — OFF parquet build will fail"
+  warn "Install from https://duckdb.org/docs/installation/"
+else
+  info "duckdb $(duckdb -version 2>/dev/null | head -1)"
+fi
+
 if ! command -v gunzip &>/dev/null && ! command -v gzip &>/dev/null; then
   warn "gzip/gunzip not found — CSV import may fail for .gz files"
 fi
@@ -89,43 +96,22 @@ cd "$API_DIR"
 bun src/scripts/seedAdditiveRisks.ts
 info "Additive risks seeded (~230 entries)"
 
-# ── Open Food Facts download & import ────────────────────────
-OFF_CSV="$DATA_DIR/en.openfoodfacts.org.products.csv.gz"
-OFF_URL="https://static.openfoodfacts.org/data/en.openfoodfacts.org.products.csv.gz"
+# ── Open Food Facts (Parquet via DuckDB) ─────────────────────
+OFF_PARQUET="$DATA_DIR/off-food.parquet"
 
 if [ "$QUICK" = true ]; then
   warn "Skipping Open Food Facts download (--quick mode)"
-  warn "Run without --quick to download the ~7 GB product database"
+  warn "Run without --quick to download the ~4.4 GB source and build the slim parquet"
 else
   step "Open Food Facts product database"
 
-  # Check if already imported
-  OFF_COUNT=$(cd "$API_DIR" && bun -e "
-    const { getDb } = require('./src/db');
-    const db = getDb();
-    const r = db.query('SELECT COUNT(*) as c FROM dataset_off_products').get();
-    console.log(r.c);
-  " 2>/dev/null || echo "0")
-
-  if [ "$OFF_COUNT" -gt 1000000 ]; then
-    info "Already imported ($OFF_COUNT products) — skipping download"
+  if [ -f "$OFF_PARQUET" ]; then
+    OFF_SIZE=$(du -h "$OFF_PARQUET" | cut -f1)
+    info "OFF parquet already exists ($OFF_SIZE) — skipping build"
+    info "To rebuild: rm $OFF_PARQUET && ./scripts/build-off-parquet.sh"
   else
-    if [ -f "$OFF_CSV" ]; then
-      info "CSV already downloaded: $OFF_CSV"
-    else
-      echo "  Downloading Open Food Facts CSV dump (~7 GB compressed)..."
-      echo "  Source: $OFF_URL"
-      echo "  This will take a while on the first run."
-      echo ""
-      curl -L --progress-bar -o "$OFF_CSV" "$OFF_URL"
-      info "Download complete"
-    fi
-
-    step "Importing Open Food Facts into SQLite"
-    echo "  This imports ~3-4 million products and takes 5-15 minutes."
-    cd "$API_DIR"
-    bun src/scripts/importOffCsv.ts "$OFF_CSV"
-    info "Open Food Facts import complete"
+    "$ROOT_DIR/scripts/build-off-parquet.sh"
+    info "Open Food Facts parquet ready"
   fi
 fi
 
@@ -138,14 +124,17 @@ cd "$API_DIR"
 bun -e "
   const { getDb } = require('./src/db');
   const db = getDb();
-  const off = db.query('SELECT COUNT(*) as c FROM dataset_off_products').get();
   const adds = db.query('SELECT COUNT(*) as c FROM additive_risks').get();
   const foods = db.query('SELECT COUNT(*) as c FROM foods').get();
   console.log('  Database stats:');
-  console.log('    OFF products:   ' + off.c.toLocaleString());
   console.log('    Additive risks: ' + adds.c);
   console.log('    Scored foods:   ' + foods.c);
 " 2>/dev/null || true
+
+if [ -f "$DATA_DIR/off-food.parquet" ] && command -v duckdb &>/dev/null; then
+  OFF_COUNT=$(duckdb -noheader -csv -c "SELECT COUNT(*) FROM '$DATA_DIR/off-food.parquet';" 2>/dev/null || echo "?")
+  echo "    OFF products:   $OFF_COUNT (parquet)"
+fi
 
 echo ""
 
