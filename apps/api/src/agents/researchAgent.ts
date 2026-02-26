@@ -284,6 +284,25 @@ function makeErrorReport(reason: string, count: number): string {
 `;
 }
 
+/**
+ * Extract FVPN estimates from OFF nutriments and return as a structured object.
+ * OFF computes these algorithmically from ingredient lists — they're consistent
+ * and should be used as the baseline for FVPN% estimation.
+ */
+function extractOffFvpn(nutriments: Record<string, number> | null): {
+  fruits_vegetables_nuts_percent: number | null;
+  fruits_vegetables_legumes_percent: number | null;
+} | null {
+  if (!nutriments) return null;
+  const fvn = nutriments["fruits-vegetables-nuts-estimate-from-ingredients_100g"];
+  const fvl = nutriments["fruits-vegetables-legumes-estimate-from-ingredients_100g"];
+  if (fvn == null && fvl == null) return null;
+  return {
+    fruits_vegetables_nuts_percent: fvn != null ? Math.round(fvn * 10) / 10 : null,
+    fruits_vegetables_legumes_percent: fvl != null ? Math.round(fvl * 10) / 10 : null,
+  };
+}
+
 async function runTool(tool: string, args: any): Promise<any> {
   switch (tool) {
     // ── Local Open Food Facts ──────────────────────────────────
@@ -300,12 +319,14 @@ async function runTool(tool: string, args: any): Promise<any> {
       }
       const hasNutrition = result.nutriments && Object.keys(result.nutriments).length > 0;
       const nutriCount = hasNutrition ? Object.keys(result.nutriments!).length : 0;
+      const fvpn = extractOffFvpn(result.nutriments);
       return {
         found: true,
         source: "Open Food Facts (local)",
         has_nutrition: hasNutrition,
         nutrition_fields: nutriCount,
         has_ingredients: !!result.ingredients_text,
+        fvpn_estimate: fvpn,
         product: result,
         hint: !hasNutrition
           ? "Product found but MISSING nutrition data. Use local.usda_barcode or local.usda_search to find per-100g nutrition for this product."
@@ -321,11 +342,16 @@ async function runTool(tool: string, args: any): Promise<any> {
       const query = String(args.query ?? "");
       const results = await localOffSearchText(query, args.limit ?? 10);
       const withNutrition = results.filter(r => r.nutriments && Object.keys(r.nutriments).length > 0);
+      // Attach FVPN estimates to each result for visibility
+      const resultsWithFvpn = results.map(r => ({
+        ...r,
+        fvpn_estimate: extractOffFvpn(r.nutriments),
+      }));
       return {
         count: results.length,
         with_nutrition: withNutrition.length,
         source: "Open Food Facts (local FTS)",
-        results,
+        results: resultsWithFvpn,
         hint: results.length === 0
           ? "No matches in OFF. Try local.usda_search (USDA database) or broaden your search terms."
           : withNutrition.length === 0

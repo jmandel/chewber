@@ -188,14 +188,40 @@ Record this as the scoring_track in your report.
   - value:
   - evidence/derivation:
   - IMPORTANT FVPN% RULES:
-    - FVPN% counts ONLY: fruits, vegetables, legumes/pulses (beans, lentils, peas, chickpeas), tree nuts (almonds, walnuts, cashews, pecans, pistachios, hazelnuts, macadamia, brazil nuts), rapeseed/walnut/olive oil
-    - FVPN% does NOT count: cereals/grains, oilseeds (sunflower seeds, flax seeds, pumpkin seeds, sesame seeds, chia seeds, hemp seeds), coconut, peanuts (despite being legumes, they are excluded in some schemes — use 0 unless clearly specified), cocoa, sugar, dairy, meat, fish, eggs, spices, salt, water, starches
-    - For single-ingredient natural produce (apple, carrot, etc.): FVPN% = 100
-    - For nut butters made from tree nuts (almond butter): FVPN% = nut content (typically 95-100)
-    - For seed butters (sunflower butter, tahini): FVPN% = 0 (seeds are not counted)
-    - For mixed products: estimate from ingredient list percentages
-    - If uncertain, use a conservative estimate (lower) and explain
-    - Do NOT set FVPN% = 100 just because a product is "100% X" — X must be in the allowed FVPN categories above
+
+    **What counts (and what doesn't):**
+    - COUNTS: fruits, vegetables, legumes/pulses (beans, lentils, peas, chickpeas), tree nuts (almonds, walnuts, cashews, pecans, pistachios, hazelnuts, macadamia, brazil nuts), rapeseed/walnut/olive oil
+    - DOES NOT COUNT: cereals/grains, oilseeds (sunflower/flax/pumpkin/sesame/chia/hemp seeds), coconut, peanuts, cocoa, sugar, dairy, meat, fish, eggs, spices, salt, **water**, starches
+
+    **How to estimate FVPN% — follow this priority order:**
+
+    1. **Use the OFF database estimate when available.** Open Food Facts tool results include `fvpn_estimate` with `fruits_vegetables_nuts_percent` (FVN) and `fruits_vegetables_legumes_percent` (FVL). These are computed algorithmically from parsed ingredient lists. Use the FVN value as your starting point for FVPN%. You may round it (e.g. 84.9 → 85).
+
+    2. **When multiple OFF entries exist** (text search returns several results for the same product), their FVPN estimates may vary widely (e.g. 61% to 98% for the same sauce). This happens because OFF's ingredient parser produces different results depending on how each barcode's ingredients were entered. In this case: **prefer the lower/median values** over outlier highs — high values often mean the parser failed to discount water in reconstituted ingredients.
+
+    3. **Cross-check with the water-discount method below.** If an OFF estimate seems implausibly high for a product whose #1 ingredient is reconstituted (e.g. "Tomato Puree (Water, Tomato Paste)" getting 97% FVPN), apply the water-discount method and use the lower result. Conversely, if an OFF estimate seems too low (e.g. 21% for a sauce that's mostly whole tomatoes), apply the method and use the higher result.
+
+    4. **If no OFF estimate exists**, estimate from the ingredient list using the water-discount method below.
+
+    5. **Only invent a number without any method** as a last resort. Never claim high confidence for a freehand guess.
+
+    **Water-discount method (for manual estimation):**
+    Reconstituted ingredients like "Tomato Puree (Water, Tomato Paste)" contain significant water. Water does NOT count toward FVPN%. You must discount it:
+    - Tomato puree (from paste + water): ~25-35% tomato solids by weight (the rest is water)
+    - Tomato paste: ~65-75% tomato solids (concentrated)
+    - Diced/crushed tomatoes: ~90-95% tomato solids
+    - Whole peeled tomatoes (in juice/puree): ~70-80% tomato solids
+    - Fruit juice from concentrate: ~30-50% fruit solids
+    - Vegetable broth/stock: ~5-10% vegetable solids
+    When an ingredient sub-lists water (e.g. "Tomato Puree (Water, Tomato Paste)"), the water fraction is NOT fruit/vegetable content.
+
+    **Quick-reference cases:**
+    - Single-ingredient natural produce (apple, carrot): FVPN% = 100
+    - Tree nut butters (almond butter): FVPN% = nut content (typically 95-100)
+    - Seed butters (sunflower butter, tahini): FVPN% = 0
+    - Do NOT set FVPN% = 100 just because a product is "100% X" — X must be in the allowed categories above
+
+    **Consistency principle:** Two similar products (e.g. two brands of marinara sauce with similar ingredient lists) should get similar FVPN% values. If you're estimating, sanity-check against the OFF estimates of comparable products in the same tool results.
 
 ## 3) Nutrition facts (per 100 g or per 100 mL)
 Provide numeric values with units; use null if unknown.
