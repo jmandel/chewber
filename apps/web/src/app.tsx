@@ -1265,15 +1265,27 @@ function ComparePage() {
             ))}
           </div>
         )}
+        {hits.length === 0 && !searchQ && suggestions.length > 0 && (
+          <div style={{ borderTop: "1px solid var(--slate)", marginTop: 8, paddingTop: 6 }}>
+            <div className="muted" style={{ fontSize: 11, marginBottom: 4 }}>or pick one…</div>
+            {suggestions.map(f => (
+              <div key={f.id} onClick={() => addFood(f.id)} style={{
+                display: "flex", justifyContent: "space-between", alignItems: "center",
+                padding: "7px 0", borderBottom: "1px solid var(--slate)", cursor: "pointer", fontSize: 13,
+              }}>
+                <span>{f.canonical_name}{f.brand ? ` — ${f.brand}` : ""}</span>
+                <ScorePill score={f.score ?? null} size={16} />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {foods.length === 0 && (
         <div className="card muted" style={{ textAlign: "center", padding: 32 }}>Search above to add foods to compare.</div>
       )}
 
-      {foods.length > 0 && (() => {
-        const showSugg = foods.length === 1 && suggestions.length > 0;
-        return (
+      {foods.length > 0 && (
         <div style={{ overflowX: "auto" }}>
           <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
             <thead>
@@ -1285,11 +1297,6 @@ function ComparePage() {
                     <div style={{ fontWeight: 700, fontSize: 14, lineHeight: 1.2 }}>{f.canonical_name}</div>
                   </th>
                 ))}
-                {showSugg && (
-                  <th style={{ padding: "6px 8px 0", textAlign: "center", verticalAlign: "bottom", minWidth: 120 }}>
-                    <div className="muted" style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.04em" }}>Compare with…</div>
-                  </th>
-                )}
               </tr>
               {/* Brand row */}
               <tr>
@@ -1299,7 +1306,6 @@ function ComparePage() {
                     {f.brand ? <div className="muted" style={{ fontSize: 11 }}>{f.brand}</div> : <div style={{ fontSize: 11 }}> </div>}
                   </th>
                 ))}
-                {showSugg && <th />}
               </tr>
               {/* Score + remove row */}
               <tr style={{ borderBottom: "2px solid var(--slate)" }}>
@@ -1315,35 +1321,9 @@ function ComparePage() {
                     </div>
                   </th>
                 ))}
-                {showSugg && <th />}
               </tr>
             </thead>
             <tbody>
-              {/* Suggestion picks as first body row when single food */}
-              {showSugg && (
-                <tr>
-                  <td />
-                  <td />
-                  <td style={{ padding: "10px 8px", verticalAlign: "top" }}>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                      {suggestions.map(f => (
-                        <button key={f.id} onClick={() => addFood(f.id)} style={{
-                          display: "flex", alignItems: "center", gap: 6,
-                          padding: "6px 8px", fontSize: 12, fontWeight: 500,
-                          background: "var(--slate)", border: "none", borderRadius: "var(--radius-sm)",
-                          color: "var(--cream)", cursor: "pointer", textAlign: "left",
-                          minWidth: 0,
-                        }}>
-                          <ScorePill score={f.score ?? null} size={16} />
-                          <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", minWidth: 0 }}>
-                            {f.canonical_name}
-                          </span>
-                        </button>
-                      ))}
-                    </div>
-                  </td>
-                </tr>
-              )}
               {nutrKeys.map(({ key, label, unit }) => {
                 const { bestId, worstId } = bestWorst(key);
                 return (
@@ -1362,7 +1342,6 @@ function ComparePage() {
                         </td>
                       );
                     })}
-                    {showSugg && <td />}
                   </tr>
                 );
               })}
@@ -1373,7 +1352,6 @@ function ComparePage() {
                     {f.abstraction?.additives?.length ?? "—"}
                   </td>
                 ))}
-                {showSugg && <td />}
               </tr>
               <tr>
                 <td style={{ padding: "8px", fontWeight: 600, color: "var(--fog)" }}>Categories</td>
@@ -1388,13 +1366,11 @@ function ComparePage() {
                     </div>
                   </td>
                 ))}
-                {showSugg && <td />}
               </tr>
             </tbody>
           </table>
         </div>
-        );
-      })()}
+      )}
     </div>
   );
 }
