@@ -636,26 +636,28 @@ function ClarifyStep(props: {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const submittedRef = useRef(false);
 
-  const hasMultiselect = assist.questions.some(q => q.type === "multiselect");
+  function tryAutoSubmit(next: Record<string, string>) {
+    const allAnswered = assist.questions.every(q => next[q.id]);
+    if (allAnswered && !submittedRef.current) {
+      submittedRef.current = true;
+      doSubmit(next);
+    }
+  }
 
   function setAnswer(id: string, v: string) {
     const next = { ...answers, [id]: v };
     setAnswers(next);
-    // Auto-submit when all questions answered (skip for multiselect — user may tap more)
-    if (!hasMultiselect) {
-      const allAnswered = assist.questions.every(q => next[q.id]);
-      if (allAnswered && !submittedRef.current) {
-        submittedRef.current = true;
-        doSubmit(next);
-      }
-    }
+    tryAutoSubmit(next);
   }
 
-  const toggleMulti = (id: string, v: string) => {
+  function toggleMulti(id: string, v: string) {
     const cur = (answers[id] ?? "").split(",").filter(Boolean);
-    const next = cur.includes(v) ? cur.filter(x => x !== v) : [...cur, v];
-    setAnswers(p => ({ ...p, [id]: next.join(",") }));
-  };
+    const vals = cur.includes(v) ? cur.filter(x => x !== v) : [...cur, v];
+    const next = { ...answers, [id]: vals.join(",") };
+    setAnswers(next);
+    // Don't auto-submit on deselect (empty) since that un-answers the question
+    if (vals.length > 0) tryAutoSubmit(next);
+  }
 
   const roundNumber = props.priorAnswers.length > 0 ? 2 : 1;
   const allAnswered = assist.questions.every(q => answers[q.id]);
