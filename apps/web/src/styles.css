@@ -264,3 +264,6 @@ pre { margin: 0; max-width: 100%; overflow-x: auto; }
 @supports (padding-top: env(safe-area-inset-top)) {
   body { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
 }
+
+/* Hide scrollbar on horizontal-scroll tag rows */
+.food-cats::-webkit-scrollbar { display: none; }

@@ -1331,15 +1331,48 @@ function KV({ label, value }: { label: string; value: string }) {
 const TRAIT_PATTERNS = /^(high|low|good|no|many|contains|calorie)-/;
 function isCategory(tag: string) { return !TRAIT_PATTERNS.test(tag); }
 
+// Cache category counts so we don't re-fetch on every render
+let _catCountCache: Record<string, number> | null = null;
+let _catCountPromise: Promise<Record<string, number>> | null = null;
+function getCatCounts(): Promise<Record<string, number>> {
+  if (_catCountCache) return Promise.resolve(_catCountCache);
+  if (!_catCountPromise) {
+    _catCountPromise = api.getCategories().then(r => {
+      const m: Record<string, number> = {};
+      for (const c of r.categories) m[c.slug] = c.food_count;
+      _catCountCache = m;
+      return m;
+    }).catch(() => ({}));
+  }
+  return _catCountPromise;
+}
+
 function FoodCategories({ tags }: { tags?: string[] }) {
   const nav = useNavigate();
-  const cats = (tags ?? []).filter(isCategory);
-  if (cats.length === 0) return null;
+  const [counts, setCounts] = useState<Record<string, number> | null>(_catCountCache);
+  const allCats = (tags ?? []).filter(isCategory);
+
+  useEffect(() => {
+    if (!counts) getCatCounts().then(setCounts);
+  }, []);
+
+  if (allCats.length === 0) return null;
+
+  const sorted = counts
+    ? [...allCats].sort((a, b) => (counts[b] ?? 0) - (counts[a] ?? 0))
+    : allCats;
+
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginTop: 8 }}>
-      {cats.map(t => (
+    <div className="food-cats" style={{
+      display: "flex", gap: 5, marginTop: 8, marginBottom: 8,
+      overflowX: "auto", WebkitOverflowScrolling: "touch",
+      scrollbarWidth: "none",
+    }}>
+      {sorted.map(t => (
         <span key={t} className="badge" onClick={() => nav(`/category/${encodeURIComponent(t)}`)}
-          style={{ cursor: "pointer", fontSize: 11, padding: "3px 8px" }}>{t.split("-").map(w => w[0].toUpperCase() + w.slice(1)).join(" ")}</span>
+          style={{ cursor: "pointer", fontSize: 11, padding: "3px 8px", whiteSpace: "nowrap", flexShrink: 0 }}>
+          {t.split("-").map(w => w[0].toUpperCase() + w.slice(1)).join(" ")}
+        </span>
       ))}
     </div>
   );
