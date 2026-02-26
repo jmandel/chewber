@@ -109,6 +109,7 @@ Step 2: usda.search (online) or web.search + web.open
 - **USDA per-100g data is authoritative** — prefer it over web-scraped or converted-from-serving data.
 - **Verify brand matches** — when USDA search returns results, check that the brand_owner or brand_name matches the product you're researching. Results for a different brand are WRONG DATA — do not use them.
 - US labels legally round: fiber <1g → 0g, fat <0.5g → 0g. When you see 0g for fiber/fat from a US label, USDA will have the real value.
+- **When multiple USDA entries exist for the same product** (same brand, same product name), prefer the entry with the MORE PRECISE (non-zero) value. A 0g fiber entry is likely rounded; a 0.8g entry from a newer USDA submission is the real measured value. Always report the non-zero value as the primary number.
 - If sources disagree, prefer USDA and note the discrepancy in section 7.
 - If ALL tool results are empty or lack nutrition, say so explicitly. Do NOT fill in numbers from memory.
 
@@ -200,6 +201,8 @@ Record this as the scoring_track in your report.
 Provide numeric values with units; use null if unknown.
 For EACH value, note the source in parentheses, e.g. `sugars_g: 4.5 (local.barcode_lookup)` or `fiber_g: null (not found in any source)`.
 If you converted from per-serving, show: `[value] per [serving_size] → [converted] per 100g`.
+
+**Best-value rule**: When tool results contain MULTIPLE values for the same nutrient (e.g. from different database entries for the same product), report the MOST PRECISE non-zero value as the primary number. A 0g value for fiber, fat, or protein from one entry when another entry shows a small non-zero value (e.g. 0.8g) means the zero was a US label rounding artifact — use the non-zero value. Note the discrepancy in the ⚠️ section below.
 - energy_kj:
 - energy_kcal (optional):
 - sugars_g:

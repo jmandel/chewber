@@ -31,6 +31,120 @@ function rowToProduct(row: any): LocalUsdaProduct {
 }
 
 // ---------------------------------------------------------------------------
+// Deduplication: merge multiple USDA entries for the same product
+// ---------------------------------------------------------------------------
+
+// US nutrition labels legally round: fiber <1g → 0g, fat <0.5g → 0g, etc.
+// USDA often has multiple submissions for the same product where older entries
+// have rounded-to-zero values and newer entries have precise values.
+// We group by (description, brand_owner), keep the newest entry as base,
+// and for rounding-susceptible nutrients, prefer non-zero values from the group.
+const ROUNDING_SUSCEPTIBLE = ["fiber_g", "saturated_fat_g", "total_fat_g", "protein_g"];
+
+/**
+ * Merge a group of USDA entries that represent the same product.
+ * Takes the newest entry (highest fdc_id) as base, then fills in
+ * rounding-susceptible nutrients and missing fields from older entries.
+ */
+function mergeGroup(group: LocalUsdaProduct[]): LocalUsdaProduct {
+  if (group.length === 1) return group[0];
+
+  // Sort by fdc_id descending (newest first)
+  group.sort((a, b) => b.fdc_id - a.fdc_id);
+  const best = { ...group[0] };
+
+  // Merge nutriments: for rounding-susceptible fields, prefer non-zero
+  if (best.nutriments) {
+    best.nutriments = { ...best.nutriments };
+    for (const key of ROUNDING_SUSCEPTIBLE) {
+      if (best.nutriments[key] === 0 || best.nutriments[key] === undefined) {
+        for (const other of group.slice(1)) {
+          const val = other.nutriments?.[key];
+          if (val != null && val > 0) {
+            best.nutriments[key] = val;
+            break;
+          }
+        }
+      }
+    }
+  } else {
+    // Base has no nutriments — find one that does
+    for (const other of group.slice(1)) {
+      if (other.nutriments) {
+        best.nutriments = { ...other.nutriments };
+        break;
+      }
+    }
+  }
+
+  // Prefer non-null ingredients
+  if (!best.ingredients) {
+    for (const other of group.slice(1)) {
+      if (other.ingredients) {
+        best.ingredients = other.ingredients;
+        break;
+      }
+    }
+  }
+
+  return best;
+}
+
+/**
+ * For barcode lookups: all results are the same physical product (same UPC),
+ * just submitted at different times. Group by normalized barcode and merge.
+ */
+function deduplicateProductsByBarcode(products: LocalUsdaProduct[]): LocalUsdaProduct[] {
+  if (products.length <= 1) return products;
+
+  const groups = new Map<string, LocalUsdaProduct[]>();
+  for (const p of products) {
+    const key = (p.gtin_upc || "").replace(/^0+/, "") || p.gtin_upc || "unknown";
+    let group = groups.get(key);
+    if (!group) {
+      group = [];
+      groups.set(key, group);
+    }
+    group.push(p);
+  }
+
+  const results: LocalUsdaProduct[] = [];
+  for (const group of groups.values()) {
+    results.push(mergeGroup(group));
+  }
+  return results;
+}
+
+/**
+ * For text search: results may be different products, so group by
+ * (description, brand_name) to merge duplicate submissions of the same item.
+ */
+function deduplicateProducts(products: LocalUsdaProduct[]): LocalUsdaProduct[] {
+  if (products.length <= 1) return products;
+
+  // Group by normalized (description, brand_key).
+  // Brand ownership changes over time (e.g. "RAO'S HOMEMADE" → "Sovos Brands"),
+  // so prefer brand_name for grouping (the consumer-facing name stays stable).
+  const groups = new Map<string, LocalUsdaProduct[]>();
+  for (const p of products) {
+    const brandKey = (p.brand_name || p.brand_owner || "").toUpperCase();
+    const key = `${(p.description || "").toUpperCase()}||${brandKey}`;
+    let group = groups.get(key);
+    if (!group) {
+      group = [];
+      groups.set(key, group);
+    }
+    group.push(p);
+  }
+
+  const results: LocalUsdaProduct[] = [];
+  for (const group of groups.values()) {
+    results.push(mergeGroup(group));
+  }
+  return results;
+}
+
+// ---------------------------------------------------------------------------
 // Barcode normalization (shared logic)
 // ---------------------------------------------------------------------------
 
@@ -62,6 +176,8 @@ export function localUsdaBarcodeLookup(barcode: string): LocalUsdaProduct[] {
   if (variants.length === 0) return [];
 
   const placeholders = variants.map(() => "?").join(", ");
+  // Fetch all rows for this barcode — they’re all the same physical product
+  // submitted at different times with potentially varying label data.
   const rows = db
     .query(
       `SELECT fdc_id, data_type, description, brand_owner, brand_name, gtin_upc,
@@ -69,10 +185,14 @@ export function localUsdaBarcodeLookup(barcode: string): LocalUsdaProduct[] {
        FROM dataset_usda_products
        WHERE gtin_upc IN (${placeholders})
        ORDER BY fdc_id DESC
-       LIMIT 10`
+       LIMIT 50`
     )
     .all(...variants) as any[];
-  return rows.map(rowToProduct);
+
+  // For barcode lookups, group by barcode (all results share the same product)
+  // rather than description, since USDA descriptions change over time.
+  const products = rows.map(rowToProduct);
+  return deduplicateProductsByBarcode(products).slice(0, 10);
 }
 
 // ---------------------------------------------------------------------------
@@ -112,6 +232,10 @@ export function localUsdaSearchText(
   const tokens = ftsTokenize(query);
   if (tokens.length === 0) return [];
 
+  // Fetch extra rows so deduplication has enough to merge rounding variants.
+  // We ask for 5x the limit, deduplicate, then trim.
+  const fetchLimit = limit * 5;
+
   // Prefer results with nutrition data (ORDER BY nutriments_json not null)
   const baseSql = `
     SELECT p.fdc_id, p.data_type, p.description, p.brand_owner, p.brand_name,
@@ -124,7 +248,8 @@ export function localUsdaSearchText(
 
   const run = (matchExpr: string): LocalUsdaProduct[] => {
     try {
-      return (db.query(baseSql).all(matchExpr, limit) as any[]).map(rowToProduct);
+      const rows = (db.query(baseSql).all(matchExpr, fetchLimit) as any[]).map(rowToProduct);
+      return deduplicateProducts(rows);
     } catch {
       return [];
     }
@@ -134,16 +259,16 @@ export function localUsdaSearchText(
 
   // Strategy 1: AND (all tokens)
   let results = run(andExpr(tokens));
-  if (results.length > 0) return results;
+  if (results.length > 0) return results.slice(0, limit);
 
   // Strategy 2: Brand-boosted AND
   if (tokens.length >= 2) {
     const boosted = `{brand_owner brand_name}: "${tokens[0]}"* ${tokens.slice(1).map((t) => `"${t}"*`).join(" ")}`;
     results = run(boosted);
-    if (results.length > 0) return results;
+    if (results.length > 0) return results.slice(0, limit);
     const boosted2 = `{brand_owner brand_name}: "${tokens[tokens.length - 1]}"* ${tokens.slice(0, -1).map((t) => `"${t}"*`).join(" ")}`;
     results = run(boosted2);
-    if (results.length > 0) return results;
+    if (results.length > 0) return results.slice(0, limit);
   }
 
   // Strategy 3: Progressive relaxation — drop one token at a time (least
@@ -153,7 +278,7 @@ export function localUsdaSearchText(
     for (let drop = 1; drop < tokens.length - 1; drop++) {
       const subset = tokens.slice(0, tokens.length - drop);
       results = run(andExpr(subset));
-      if (results.length > 0) return results;
+      if (results.length > 0) return results.slice(0, limit);
     }
   }
 
@@ -176,5 +301,5 @@ export function localUsdaSearchText(
 
   // Strategy 5: OR as last resort
   results = run(tokens.map((t) => `"${t}"*`).join(" OR "));
-  return results;
+  return results.slice(0, limit);
 }
