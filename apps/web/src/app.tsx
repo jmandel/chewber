@@ -1088,11 +1088,14 @@ function FoodDetailView({ food }: { food: FoodDetail }) {
 }
 
 // ── Additive risk-level styling ──────────────────────────
-const ADDITIVE_RISK_STYLES: Record<string, { bg: string; fg: string; border: string; penalty?: number }> = {
-  risk_free: { bg: "rgba(61,139,95,0.15)", fg: "var(--kale)", border: "rgba(61,139,95,0.3)" },
-  limited:   { bg: "rgba(212,162,76,0.15)", fg: "var(--amber)", border: "rgba(212,162,76,0.3)", penalty: 3 },
-  moderate:  { bg: "rgba(200,113,74,0.15)", fg: "var(--tangerine)", border: "rgba(200,113,74,0.3)", penalty: 10 },
-  high:      { bg: "rgba(196,77,62,0.2)",   fg: "var(--coral)", border: "rgba(196,77,62,0.4)", penalty: 30 },
+// Palette: sequential luminance (blue→amber→orange→red) safe for
+// deuteranopia, protanopia, and tritanopia.  Each level also carries
+// a distinct shape marker so information is never color-only.
+const ADDITIVE_RISK_STYLES: Record<string, { bg: string; fg: string; border: string; marker: string; penalty?: number; order: number }> = {
+  risk_free: { bg: "rgba(96,165,250,0.12)", fg: "#60a5fa", border: "rgba(96,165,250,0.35)", marker: "✓", order: 3 },
+  limited:   { bg: "rgba(212,162,76,0.15)",  fg: "#d4a24c", border: "rgba(212,162,76,0.35)",  marker: "●", order: 2, penalty: 3 },
+  moderate:  { bg: "rgba(234,138,60,0.15)",  fg: "#ea8a3c", border: "rgba(234,138,60,0.35)",  marker: "▲", order: 1, penalty: 10 },
+  high:      { bg: "rgba(220,60,60,0.18)",   fg: "#dc3c3c", border: "rgba(220,60,60,0.40)",   marker: "✕", order: 0, penalty: 30 },
 };
 
 function normalizeCode(raw: string): string {
@@ -1148,14 +1151,18 @@ function SummaryDetails({ food }: { food: FoodDetail }) {
         <div style={{ marginBottom: 12 }}>
           <div style={{ fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--fog)", marginBottom: 6 }}>Additives ({abs.additives.length})</div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-            {abs.additives.map((a: any, i: number) => {
+            {[...abs.additives].sort((a: any, b: any) => {
+              const ra = getAdditiveRisk(a, food.score_breakdown);
+              const rb = getAdditiveRisk(b, food.score_breakdown);
+              return (ADDITIVE_RISK_STYLES[ra]?.order ?? 9) - (ADDITIVE_RISK_STYLES[rb]?.order ?? 9);
+            }).map((a: any, i: number) => {
               const risk = getAdditiveRisk(a, food.score_breakdown);
               const style = ADDITIVE_RISK_STYLES[risk];
               return (
                 <span key={i} className="badge" title={`${risk.replace("_", " ")}${style.penalty ? ` (−${style.penalty} pts)` : ""}`} style={{
                   fontSize: 11, padding: "2px 8px",
                   background: style.bg, color: style.fg, border: `1px solid ${style.border}`
-                }}>{a.name ?? a.code ?? "unknown"}</span>
+                }}>{style.marker} {a.name ?? a.code ?? "unknown"}</span>
               );
             })}
           </div>
@@ -1163,7 +1170,7 @@ function SummaryDetails({ food }: { food: FoodDetail }) {
             {["risk_free", "limited", "moderate", "high"].map(level => (
               <span key={level} style={{ display: "inline-flex", alignItems: "center", gap: 3 }}>
                 <span style={{ display: "inline-block", width: 8, height: 8, borderRadius: 2, background: ADDITIVE_RISK_STYLES[level as keyof typeof ADDITIVE_RISK_STYLES].bg, border: `1px solid ${ADDITIVE_RISK_STYLES[level as keyof typeof ADDITIVE_RISK_STYLES].border}` }} />
-                {level.replace("_", " ")}
+                {ADDITIVE_RISK_STYLES[level as keyof typeof ADDITIVE_RISK_STYLES].marker} {level.replace("_", " ")}
               </span>
             ))}
           </div>
