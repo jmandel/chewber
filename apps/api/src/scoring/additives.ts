@@ -30,13 +30,45 @@ export const RISK_PENALTY: Record<RiskLevel, number> = {
   high: 30
 };
 
-export function lookupAdditiveRisk(code: string): { risk_level: RiskLevel; name?: string | null } {
+/**
+ * Normalize additive codes from various formats to DB format (e.g. "E322").
+ * Handles: "en:e322-lecithins" → "E322", "e322i" → "E322I" → fallback "E322"
+ */
+export function normalizeAdditiveCode(raw: string): string {
+  let code = raw.trim();
+  // Strip OFF tag prefix: "en:e322-lecithins" → "e322"
+  if (code.startsWith("en:")) code = code.slice(3).split("-")[0];
+  // Uppercase: "e322" → "E322"
+  code = code.toUpperCase();
+  // Remove any remaining non-alphanumeric (except leading E)
+  code = code.replace(/[^A-Z0-9]/g, "");
+  // Ensure starts with E
+  if (!code.startsWith("E")) return code;
+  return code;
+}
+
+export function lookupAdditiveRisk(rawCode: string): { risk_level: RiskLevel; name?: string | null; matched_code?: string } {
   const db = getReferenceDb();
+  const code = normalizeAdditiveCode(rawCode);
+  
+  // Try exact match first
   const row = db
     .query(`SELECT risk_level, name FROM additive_risks WHERE code = ? LIMIT 1`)
     .get(code) as any;
-  if (!row) return { risk_level: "risk_free", name: null };
-  return { risk_level: row.risk_level as RiskLevel, name: row.name ?? null };
+  if (row) return { risk_level: row.risk_level as RiskLevel, name: row.name ?? null, matched_code: code };
+  
+  // Try base code (strip trailing letter for variants like E322I → E322, E150D → E150)
+  const baseMatch = code.match(/^(E\d+)[A-Z]$/);
+  if (baseMatch) {
+    const baseCode = baseMatch[1];
+    const baseRow = db
+      .query(`SELECT risk_level, name FROM additive_risks WHERE code = ? LIMIT 1`)
+      .get(baseCode) as any;
+    if (baseRow) return { risk_level: baseRow.risk_level as RiskLevel, name: baseRow.name ?? null, matched_code: baseCode };
+  }
+  
+  // Not found — return risk_free (unknown additive, don't penalize)
+  return { risk_level: "risk_free", name: null };
 }
 
 const HYDRO_MARKETS = new Set(["US", "CA", "AU", "USA", "CAN", "AUS", "UNITED STATES", "CANADA", "AUSTRALIA"]);
@@ -55,8 +87,9 @@ export function scoreAdditives(opts: {
   const seen = new Set<string>();
   for (const a of opts.additives) {
     if (!a.code) continue;
-    if (seen.has(a.code)) continue;
-    seen.add(a.code);
+    const normalized = normalizeAdditiveCode(a.code);
+    if (seen.has(normalized)) continue;
+    seen.add(normalized);
     const risk = lookupAdditiveRisk(a.code);
     const penalty = RISK_PENALTY[risk.risk_level];
     if (penalty > 0) {

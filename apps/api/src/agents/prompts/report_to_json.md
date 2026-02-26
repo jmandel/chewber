@@ -36,9 +36,12 @@ Rules:
   - Use per_100ml for beverages, per_100g otherwise (unless report says otherwise)
 
 - Additives:
-  - Include one object per additive detected.
-  - If code is unknown, set code=null but include name if known.
-  - detection should be label/database/inferred/unknown
+  - Include one object per additive detected in the research report.
+  - Additive codes MUST be in bare E-number format: "E322", "E330", "E150d"
+    - NOT "en:e322", NOT "e322-lecithins", NOT "E322I" (use "E322" for variants)
+    - If the report has a US name but no E-number, look it up from the reference table in the report
+  - If no E-number can be determined (e.g. "Natural Flavors"), set code=null but include name
+  - detection should be: label (from ingredient list), database (from OFF detected_additives), inferred (agent reasoning), unknown
 
 - Sources:
   - Include all URLs found in the Sources section.

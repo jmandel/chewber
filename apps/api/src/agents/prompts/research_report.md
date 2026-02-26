@@ -240,7 +240,10 @@ If drinkable → check these exceptions:
     For EACH ingredient in the list, write a line with:
       [ingredient name] | [est. % of product weight] | [solids fraction from table below] | [FVPN contribution = weight% × solids fraction]
     Then sum all FVPN contributions. This is your **calculated estimate**.
-    CRITICAL: if an ingredient sub-lists water (e.g. "[X] Puree (Water, [X] Paste)"), you MUST apply the solids fraction — do NOT count it at 100%. A puree that is "(Water, Paste)" is only ~25-35% solids.
+    CRITICAL rules for the table:
+    - If an ingredient sub-lists water or puree (e.g. "Tomatoes (Tomatoes, Tomato Puree)", "[X] Puree (Water, [X] Paste)"), you MUST break it into sub-components and apply the correct solids fraction to EACH. Do NOT lump the parent ingredient at 100%.
+    - "Whole [X] in puree/juice" means the product has BOTH whole pieces (high solids, ~75%) AND a packing liquid (low solids, ~30%). Estimate the split (typically 50-60% whole pieces, 40-50% packing liquid) and apply separate solids fractions.
+    - The solids fraction for a puree from concentrate is 25-35% — NOT 100%. This is non-negotiable. If your calculation gives >80% FVPN for any product whose primary ingredient is a reconstituted puree, you have made an error.
 
     **Step B: Check against the OFF database estimate.**
     Open Food Facts tool results include `fvpn_estimate` with `fruits_vegetables_nuts_percent` (FVN). This is your **OFF estimate**. When multiple OFF entries exist, take the median FVN (ignoring entries with no estimate).
@@ -321,9 +324,53 @@ If you converted from per-serving, show: `[value] per [serving_size] → [conver
 ## 4) Ingredients & additives
 - Ingredients (verbatim if available):
 - Additives (list):
-  - code:
-  - name:
-  - how detected (label / database / other):
+
+  **Primary source:** Use the `detected_additives` field from OFF tool results. These are algorithmically parsed from the ingredient list and are reliable. Transcribe each one with its E-number code.
+
+  **Supplement from ingredient list:** Also scan the full ingredient list for additives that OFF may have missed (especially common in US products where OFF coverage is lower). Use the reference table below to assign E-numbers.
+
+  **Every additive MUST have an E-number code.** If you cannot determine the E-number, set code to null — but first check the table below. Common US ingredient names are listed.
+
+  **US Common Name → E-number reference:**
+  | US Name | E-number | | US Name | E-number |
+  |---|---|---|---|---|
+  | Citric Acid | E330 | | Ascorbic Acid (Vitamin C) | E300 |
+  | Soy Lecithin / Lecithin | E322 | | Mono- and Diglycerides | E471 |
+  | Xanthan Gum | E415 | | Guar Gum | E412 |
+  | Carrageenan | E407 | | Cellulose / Cellulose Gum | E466 |
+  | Calcium Phosphate / Dicalcium Phosphate | E341 | | Sodium Phosphate / Trisodium Phosphate | E339 |
+  | Potassium Sorbate | E202 | | Sodium Benzoate | E211 |
+  | BHA (Butylated Hydroxyanisole) | E320 | | BHT (Butylated Hydroxytoluene) | E321 |
+  | TBHQ | E319 | | Caramel Color | E150d |
+  | Annatto | E160b | | Beta-Carotene | E160a |
+  | Mixed Tocopherols / Vitamin E | E306 | | Alpha-Tocopherol | E307 |
+  | Sodium Nitrite | E250 | | Sodium Nitrate | E251 |
+  | Polysorbate 80 | E433 | | Maltodextrin | E1400 |
+  | Modified Corn Starch / Modified Food Starch | E1404 | | Rosemary Extract | E392 |
+  | Sucralose | E955 | | Acesulfame K / Ace-K | E950 |
+  | Aspartame | E951 | | Stevia / Reb A | E960 |
+  | Titanium Dioxide | E171 | | Calcium Carbonate | E170 |
+  | Sodium Alginate | E401 | | Pectin | E440 |
+  | Locust Bean Gum | E410 | | Gellan Gum | E418 |
+  | Calcium Chloride | E509 | | Sodium Citrate | E331 |
+  | Potassium Chloride | E508 | | Malic Acid | E296 |
+  | Tartaric Acid | E334 | | Lactic Acid | E270 |
+  | Phosphoric Acid | E338 | | Fumaric Acid | E297 |
+  | Sorbic Acid | E200 | | Propionic Acid | E280 |
+  | Sodium Erythorbate | E316 | | Calcium Disodium EDTA | E385 |
+  | Sodium Stearoyl Lactylate (SSL) | E481 | | Calcium Stearoyl Lactylate (CSL) | E482 |
+  | DATEM | E472e | | Sodium Acid Pyrophosphate (SAPP) | E450 |
+  | Monocalcium Phosphate | E341i | | Sodium Aluminum Phosphate | E541 |
+
+  **Natural flavors policy:** Report "Natural Flavors" with code=null, detection="label". Do NOT assign an E-number. They are tracked but not penalized.
+  **Artificial flavors policy:** Report "Artificial Flavors" with code=null, detection="label".
+  **Vitamins added for fortification** (e.g. Ascorbic Acid added as a vitamin, not a preservative): still report with the E-number, detection="label".
+
+  For each additive, report:
+  - code: E-number (e.g. "E330") — bare format, NOT "en:e330"
+  - name: common name
+  - how detected: label / database / inferred
+
 - Contains partially hydrogenated oils? yes/no/unknown
 - Contains fully hydrogenated oils? yes/no/unknown
 

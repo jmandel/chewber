@@ -303,6 +303,21 @@ function extractOffFvpn(nutriments: Record<string, number> | null): {
   };
 }
 
+/**
+ * Extract and normalize OFF additive tags for the LLM.
+ * Input: ["en:e330", "en:e322i-soy-lecithin"]
+ * Output: [{ code: "E330", tag: "en:e330" }, { code: "E322I", tag: "en:e322i-soy-lecithin" }]
+ */
+function extractOffAdditives(tags: string[] | null): { code: string; tag: string }[] | null {
+  if (!tags || tags.length === 0) return null;
+  return tags.map(tag => {
+    let code = tag.trim();
+    if (code.startsWith("en:")) code = code.slice(3).split("-")[0];
+    code = code.toUpperCase();
+    return { code, tag };
+  });
+}
+
 async function runTool(tool: string, args: any): Promise<any> {
   switch (tool) {
     // ── Local Open Food Facts ──────────────────────────────────
@@ -320,6 +335,7 @@ async function runTool(tool: string, args: any): Promise<any> {
       const hasNutrition = result.nutriments && Object.keys(result.nutriments).length > 0;
       const nutriCount = hasNutrition ? Object.keys(result.nutriments!).length : 0;
       const fvpn = extractOffFvpn(result.nutriments);
+      const detectedAdditives = extractOffAdditives(result.additives);
       return {
         found: true,
         source: "Open Food Facts (local)",
@@ -327,6 +343,7 @@ async function runTool(tool: string, args: any): Promise<any> {
         nutrition_fields: nutriCount,
         has_ingredients: !!result.ingredients_text,
         fvpn_estimate: fvpn,
+        detected_additives: detectedAdditives,
         product: result,
         hint: !hasNutrition
           ? "Product found but MISSING nutrition data. Use local.usda_barcode or local.usda_search to find per-100g nutrition for this product."
@@ -346,6 +363,7 @@ async function runTool(tool: string, args: any): Promise<any> {
       const resultsWithFvpn = results.map(r => ({
         ...r,
         fvpn_estimate: extractOffFvpn(r.nutriments),
+        detected_additives: extractOffAdditives(r.additives),
       }));
       return {
         count: results.length,
