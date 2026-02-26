@@ -16,9 +16,7 @@
     "organic",
     "sources",
     "notes",
-    "eligibility",
-    "salt_details",
-    "chocolate_details"
+    "eligibility"
   ],
   "properties": {
     "schema_version": {
@@ -368,30 +366,12 @@
       "properties": {
         "scoring_track": {
           "type": "string",
-          "enum": ["standard", "salt", "chocolate", "not_rated"]
+          "enum": ["standard", "not_rated"]
         },
         "not_rated_reason": {
           "type": ["string", "null"]
         }
       }
-    },
-    "salt_details": {
-      "type": ["object", "null"],
-      "properties": {
-        "is_unrefined": { "type": "boolean" },
-        "is_sea_salt": { "type": "boolean" }
-      },
-      "required": ["is_unrefined", "is_sea_salt"],
-      "additionalProperties": false
-    },
-    "chocolate_details": {
-      "type": ["object", "null"],
-      "properties": {
-        "cocoa_percent": { "type": ["number", "null"] },
-        "is_pure_cocoa_butter": { "type": "boolean" }
-      },
-      "required": ["cocoa_percent", "is_pure_cocoa_butter"],
-      "additionalProperties": false
     }
   }
 }
