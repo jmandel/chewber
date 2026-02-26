@@ -95,7 +95,7 @@ function upsertFood(abs: FoodAbstraction, structured_query: any): string {
     const row = db.query(`SELECT id FROM foods WHERE barcode = ? LIMIT 1`).get(barcode) as any;
     if (row?.id) {
       // update basic fields
-      const slug = makeSlug(abs.identification.canonical_name, abs.identification.brand, row.id);
+      const slug = makeSlug(abs.identification.canonical_name, abs.identification.brand, row.id, abs.organic.is_certified_organic);
       db.query(
         `UPDATE foods SET canonical_name=?, brand=?, kind=?, slug=?, updated_at=? WHERE id=?`
       ).run(
@@ -113,7 +113,7 @@ function upsertFood(abs: FoodAbstraction, structured_query: any): string {
   const id = newId("food");
   const ts = nowIso();
 
-  const slug = makeSlug(abs.identification.canonical_name, abs.identification.brand, id);
+  const slug = makeSlug(abs.identification.canonical_name, abs.identification.brand, id, abs.organic.is_certified_organic);
   db.query(
     `INSERT INTO foods (id, slug, barcode, canonical_name, brand, kind, category_path, tags_json, source_hint, created_at, updated_at)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`

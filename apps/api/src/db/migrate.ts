@@ -29,13 +29,18 @@ try {
 }
 
 const foodsWithoutSlug = db.query(
-  `SELECT id, canonical_name, brand FROM foods WHERE slug IS NULL`
-).all() as { id: string; canonical_name: string; brand: string | null }[];
+  `SELECT f.id, f.canonical_name, f.brand, a.abstraction_json
+   FROM foods f
+   LEFT JOIN food_abstractions a ON a.food_id = f.id AND a.status = 'active'
+   WHERE f.slug IS NULL`
+).all() as { id: string; canonical_name: string; brand: string | null; abstraction_json: string | null }[];
 
 if (foodsWithoutSlug.length > 0) {
   const updateSlug = db.prepare(`UPDATE foods SET slug = ? WHERE id = ?`);
   for (const f of foodsWithoutSlug) {
-    const slug = makeSlug(f.canonical_name, f.brand, f.id);
+    let organic: string | null = null;
+    try { organic = JSON.parse(f.abstraction_json ?? "{}")?.organic?.is_certified_organic ?? null; } catch {}
+    const slug = makeSlug(f.canonical_name, f.brand, f.id, organic);
     updateSlug.run(slug, f.id);
   }
   console.log(`[migrate] backfilled slugs for ${foodsWithoutSlug.length} food(s)`);

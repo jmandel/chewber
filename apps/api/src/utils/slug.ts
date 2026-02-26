@@ -16,7 +16,7 @@ const GENERIC_PATTERNS = /^(generic|various|unbranded|store brand|n\/a|none)\b/i
 
 const MAX_SLUG_BODY = 110;
 
-export function makeSlug(name: string, brand: string | null, foodId: string): string {
+export function makeSlug(name: string, brand: string | null, foodId: string, isOrganic?: string | null): string {
   // Extract 8-char hex segment from food ID (first UUID segment after prefix)
   const idSuffix = foodId.replace(/^food_/, "").replace(/-/g, "").slice(0, 8);
 
@@ -28,10 +28,13 @@ export function makeSlug(name: string, brand: string | null, foodId: string): st
   // For brand, only take the primary name (before parenthetical)
   const brandShort = includeBrand ? brandClean.replace(/\s*\(.*\)\s*$/, "").trim() : "";
 
-  // Build slug body from name (+ brand)
+  // Build slug body: name + brand + organic suffix
   let body = name;
   if (brandShort) {
-    body = `${name} ${brandShort}`;
+    body = `${body} ${brandShort}`;
+  }
+  if (isOrganic === "yes") {
+    body = `${body} organic`;
   }
 
   // Kebab-case transform

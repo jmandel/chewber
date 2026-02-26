@@ -12,6 +12,9 @@ Rules:
   - salt_g = (sodium_mg / 1000) * 2.5
   - If one is unknown, leave it null.
 
+- identification.canonical_name:
+  - Strip the word "Organic" from the name — organic status is tracked separately in the organic field.
+
 - zagat_line (REQUIRED, never null):
   - Extract from the "Zagat line" section of the report.
   - If the report omits it, you MUST compose one yourself based on the report's findings.

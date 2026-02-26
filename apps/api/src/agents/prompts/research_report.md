@@ -90,7 +90,7 @@ Record this as the scoring_track in your report.
 - not_rated_reason: (null if rated, otherwise brief explanation e.g. "alcohol", "infant formula", etc.)
 
 ## 1) Identification
-- Canonical name:
+- Canonical name: (Do NOT include "Organic" in the name — organic status is tracked separately in section 5)
 - Brand:
 - Barcode (EAN/UPC):
 - Kind: prepared | natural
