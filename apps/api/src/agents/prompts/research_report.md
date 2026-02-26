@@ -60,11 +60,7 @@ Every tool result includes a `hint` field with suggested next steps. **Read and 
 
 ### Online tools (slower, use when local fails):
 
-5) **usda.search** — USDA FoodData Central online API (broader than local, may have newer data)
-   args: { "query": string, "limit": number (default 5) }
-   Returns { count, results: [{ fdcId, description, brand, nutrients: { energy_kcal, sugars_g, ... } }] }
-
-6) **web.search** — Web search (Brave Search or DuckDuckGo)
+5) **web.search** — Web search (Brave Search or DuckDuckGo)
    args: { "query": string }
    Returns array of { title, url, snippet }. Use as **last resort** for nutrition data.
 
@@ -87,7 +83,7 @@ Step 2: local.usda_search with product name + brand
 ├─ Found with nutrition → done
 └─ Not found → Step 3
 │
-Step 3: usda.search (online API) or web.search + web.open as last resort
+Step 3: web.search + web.open as last resort
 ```
 
 **For text queries (no barcode):**
@@ -99,7 +95,7 @@ Step 1 (parallel): local.search + local.usda_search
 ├─ If matches found but no nutrition → Step 2
 └─ No matches → Step 2
 │
-Step 2: usda.search (online) or web.search + web.open
+Step 2: web.search + web.open as last resort
 ```
 
 ### Key rules:

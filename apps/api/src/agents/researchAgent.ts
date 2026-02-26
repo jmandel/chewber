@@ -5,7 +5,7 @@ import { getLlm } from "./llm/client";
 import { localOffBarcodeLookup, localOffSearchText } from "../sources/localOff";
 import { localUsdaBarcodeLookup, localUsdaSearchText } from "../sources/localUsda";
 import { webSearch, webOpen } from "../sources/web";
-import { usdaSearch } from "../sources/usda";
+
 
 import { toGeminiSchema } from "./llm/schemaTransform";
 
@@ -41,6 +41,8 @@ export type ToolObservations = {
   offAdditiveTags: string[];
   /** All ingredient texts encountered (from OFF, USDA, web — whatever the agent found) */
   ingredientTexts: string[];
+  /** Organic-related label tags from OFF (e.g. ["en:organic", "en:usda-organic"]) */
+  organicLabels: string[];
 };
 
 export type ResearchResult = {
@@ -100,7 +102,6 @@ function formatToolQuery(tool: string, args: Record<string, any>): string {
     case "web.search":
     case "local.search":
     case "local.usda_search":
-    case "usda.search":
       return args.query ? `: "${args.query}"` : "";
     case "web.open":
       return args.url ? `: ${args.url}` : "";
@@ -120,7 +121,6 @@ function formatToolResult(tool: string, result: any): string {
       if (Array.isArray(result?.results)) return `${result.results.length} results`;
       if (typeof result?.count === "number") return `${result.count} results`;
       return "ok";
-    case "usda.search":
     case "local.search":
     case "local.usda_search":
       if (typeof result?.count === "number") return `${result.count} match${result.count === 1 ? "" : "es"}`;
@@ -143,7 +143,7 @@ function formatToolResult(tool: string, result: any): string {
 
 export async function runResearchAgent(input: ResearchInput, emit: EmitFn): Promise<ResearchResult> {
   const llm = getLlm("research");
-  const observations: ToolObservations = { offAdditiveTags: [], ingredientTexts: [] };
+  const observations: ToolObservations = { offAdditiveTags: [], ingredientTexts: [], organicLabels: [] };
 
   const messages: { role: "system" | "user" | "assistant"; content: string }[] = [
     { role: "system", content: prompt },
@@ -323,6 +323,19 @@ function extractOffFvpn(nutriments: Record<string, number> | null): {
 }
 
 /**
+ * Extract organic-related labels from OFF labels_tags.
+ * Input: ["en:organic", "en:usda-organic", "en:no-preservatives"]
+ * Output: ["en:organic", "en:usda-organic"]  (only organic-related ones)
+ */
+function extractOrganicLabels(labels: string[] | null): string[] | null {
+  if (!labels || labels.length === 0) return null;
+  const organicTags = labels.filter(l =>
+    l.includes("organic") || l.includes("bio") || l.includes("usda-organic") || l.includes("eu-organic")
+  );
+  return organicTags.length > 0 ? organicTags : null;
+}
+
+/**
  * Extract and normalize OFF additive tags for the LLM.
  * Input: ["en:e330", "en:e322i-soy-lecithin"]
  * Output: [{ code: "E330", tag: "en:e330" }, { code: "E322I", tag: "en:e322i-soy-lecithin" }]
@@ -387,6 +400,26 @@ function collectObservations(obs: ToolObservations, tool: string, result: any) {
       }
     }
   }
+
+  // Organic labels from OFF
+  if (result.product?.labels && Array.isArray(result.product.labels)) {
+    for (const label of result.product.labels) {
+      if (typeof label === "string" && (label.includes("organic") || label.includes("bio"))) {
+        if (!obs.organicLabels.includes(label)) obs.organicLabels.push(label);
+      }
+    }
+  }
+  if (Array.isArray(result.results)) {
+    for (const r of result.results) {
+      if (r?.labels && Array.isArray(r.labels)) {
+        for (const label of r.labels) {
+          if (typeof label === "string" && (label.includes("organic") || label.includes("bio"))) {
+            if (!obs.organicLabels.includes(label)) obs.organicLabels.push(label);
+          }
+        }
+      }
+    }
+  }
 }
 
 async function runTool(tool: string, args: any): Promise<any> {
@@ -407,6 +440,7 @@ async function runTool(tool: string, args: any): Promise<any> {
       const nutriCount = hasNutrition ? Object.keys(result.nutriments!).length : 0;
       const fvpn = extractOffFvpn(result.nutriments);
       const detectedAdditives = extractOffAdditives(result.additives);
+      const organicLabels = extractOrganicLabels(result.labels);
       return {
         found: true,
         source: "Open Food Facts (local)",
@@ -415,6 +449,7 @@ async function runTool(tool: string, args: any): Promise<any> {
         has_ingredients: !!result.ingredients_text,
         fvpn_estimate: fvpn,
         detected_additives: detectedAdditives,
+        organic_labels: organicLabels,
         product: result,
         hint: !hasNutrition
           ? "Product found but MISSING nutrition data. Use local.usda_barcode or local.usda_search to find per-100g nutrition for this product."
@@ -435,6 +470,7 @@ async function runTool(tool: string, args: any): Promise<any> {
         ...r,
         fvpn_estimate: extractOffFvpn(r.nutriments),
         detected_additives: extractOffAdditives(r.additives),
+        organic_labels: extractOrganicLabels(r.labels),
       }));
       return {
         count: results.length,
@@ -464,7 +500,7 @@ async function runTool(tool: string, args: any): Promise<any> {
           count: 0,
           source: "USDA FoodData Central (local, ~2M branded + 8K SR Legacy)",
           barcode_queried: barcode,
-          hint: "Barcode not found in local USDA. Try usda.search (online API) with the product name, or web.search as last resort."
+          hint: "Barcode not found in local USDA. Try local.usda_search with the product name, or web.search as last resort."
         };
       }
       const best = results.find(r => r.nutriments) ?? results[0];
@@ -477,7 +513,7 @@ async function runTool(tool: string, args: any): Promise<any> {
         all_matches: results.length > 1 ? results : undefined,
         hint: best.nutriments
           ? "Authoritative USDA nutrition data found. This is high-quality per-100g data."
-          : "Product found in USDA but nutrition data missing. Try usda.search (online API) for this specific fdc_id."
+          : "Product found in USDA but nutrition data missing. Try web.search as last resort."
       };
     }
 
@@ -502,21 +538,9 @@ async function runTool(tool: string, args: any): Promise<any> {
                 if (!brandMatch && withNutrition.length > 0)
                   return `Found ${results.length} results but NONE match the queried brand. These are different products — do NOT use their nutrition. If OFF already has the correct product with nutrition, use that instead.`;
                 return withNutrition.length === 0
-                  ? `Found ${results.length} matches but none with nutrition. Try usda.search (online API) for better coverage.`
+                  ? `Found ${results.length} matches but none with nutrition. Try web.search as last resort.`
                   : `Found ${withNutrition.length}/${results.length} with nutrition. USDA data is authoritative per-100g.`;
               })()
-      };
-    }
-
-    // ── USDA online API ────────────────────────────────────────
-    case "usda.search": {
-      const results = await usdaSearch(String(args.query ?? ""), args.limit ?? 5);
-      return {
-        ...results,
-        source: "USDA FoodData Central (online API)",
-        hint: results.count === 0
-          ? "No results from USDA API. Try different search terms (simpler/shorter), or web.search as fallback."
-          : `Found ${results.results.length} results with structured per-100g nutrition.`
       };
     }
 
@@ -537,6 +561,6 @@ async function runTool(tool: string, args: any): Promise<any> {
       return webOpen(String(args.url ?? ""));
 
     default:
-      throw new Error(`Unknown tool: ${tool}. Available: local.barcode_lookup, local.search, local.usda_barcode, local.usda_search, usda.search, web.search, web.open`);
+      throw new Error(`Unknown tool: ${tool}. Available: local.barcode_lookup, local.search, local.usda_barcode, local.usda_search, web.search, web.open`);
   }
 }
