@@ -91,8 +91,8 @@ Record this as the scoring_track in your report.
 
 ## 1) Identification
 - Canonical name: (Do NOT include "Organic" in the name — organic status is tracked separately in section 5)
-- Brand:
-- Barcode (EAN/UPC):
+- Brand: (use the brand from the input query if provided; if the query has no brand/null brand, set to null — do NOT invent or guess a brand)
+- Barcode (EAN/UPC): (use the barcode from the input query if provided; if no barcode, set to null — do NOT use a barcode from a different product found during research)
 - Kind: prepared | natural
 - Market/country:
 - Language:
