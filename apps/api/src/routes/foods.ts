@@ -20,7 +20,7 @@ foodsRoutes.get("/foods/recent", (c) => {
   const db = c.get("db");
   const limit = Math.min(Number(c.req.query("limit") ?? 10), 50);
   const rows = db.query(
-    `SELECT f.id, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at,
+    `SELECT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at,
             a.score
      FROM foods f
      LEFT JOIN food_abstractions a ON a.food_id = f.id AND a.status = 'active'
@@ -31,6 +31,7 @@ foodsRoutes.get("/foods/recent", (c) => {
   return c.json({
     foods: rows.map((r: any) => ({
       id: r.id,
+      slug: r.slug ?? r.id,
       barcode: r.barcode,
       canonical_name: r.canonical_name,
       brand: r.brand,
@@ -53,7 +54,7 @@ foodsRoutes.get("/foods/search", (c) => {
   if (tag) {
     rows = db
       .query(
-        `SELECT id, barcode, canonical_name, brand, category_path, tags_json, updated_at
+        `SELECT id, slug, barcode, canonical_name, brand, category_path, tags_json, updated_at
          FROM foods
          WHERE EXISTS (SELECT 1 FROM json_each(foods.tags_json) WHERE value = ?)
          ORDER BY updated_at DESC
@@ -63,7 +64,7 @@ foodsRoutes.get("/foods/search", (c) => {
   } else if (category) {
     rows = db
       .query(
-        `SELECT id, barcode, canonical_name, brand, category_path, tags_json, updated_at
+        `SELECT id, slug, barcode, canonical_name, brand, category_path, tags_json, updated_at
          FROM foods
          WHERE category_path = ?
          ORDER BY updated_at DESC
@@ -73,7 +74,7 @@ foodsRoutes.get("/foods/search", (c) => {
   } else if (!q) {
     rows = db
       .query(
-        `SELECT id, barcode, canonical_name, brand, category_path, tags_json, updated_at
+        `SELECT id, slug, barcode, canonical_name, brand, category_path, tags_json, updated_at
          FROM foods
          ORDER BY updated_at DESC
          LIMIT 50`
@@ -91,7 +92,7 @@ foodsRoutes.get("/foods/search", (c) => {
 
     rows = db
       .query(
-        `SELECT f.id, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at
+        `SELECT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at
          FROM foods_fts
          JOIN foods f ON foods_fts.rowid = f.rowid
          WHERE foods_fts MATCH ?
@@ -110,6 +111,7 @@ foodsRoutes.get("/foods/search", (c) => {
     const scoreRow = stmtScore.get(r.id) as any;
     return {
       id: r.id,
+      slug: r.slug ?? r.id,
       barcode: r.barcode,
       canonical_name: r.canonical_name,
       brand: r.brand,
@@ -127,7 +129,7 @@ foodsRoutes.get("/foods/by-barcode/:barcode", (c) => {
   const barcode = c.req.param("barcode");
   const row = db
     .query(
-      `SELECT id, barcode, canonical_name, brand, category_path, tags_json, updated_at
+      `SELECT id, slug, barcode, canonical_name, brand, category_path, tags_json, updated_at
        FROM foods WHERE barcode = ? LIMIT 1`
     )
     .get(barcode) as any;
@@ -144,6 +146,7 @@ foodsRoutes.get("/foods/by-barcode/:barcode", (c) => {
 
   return c.json({
     id: row.id,
+    slug: row.slug ?? row.id,
     barcode: row.barcode,
     canonical_name: row.canonical_name,
     brand: row.brand,
@@ -157,15 +160,26 @@ foodsRoutes.get("/foods/by-barcode/:barcode", (c) => {
   });
 });
 
-foodsRoutes.get("/foods/:id", (c) => {
+foodsRoutes.get("/foods/:idOrSlug", (c) => {
   const db = c.get("db");
-  const id = c.req.param("id");
-  const row = db
+  const param = c.req.param("idOrSlug");
+
+  // Try by ID first, then by slug
+  let row = db
     .query(
-      `SELECT id, barcode, canonical_name, brand, category_path, tags_json, updated_at
+      `SELECT id, slug, barcode, canonical_name, brand, category_path, tags_json, updated_at
        FROM foods WHERE id = ? LIMIT 1`
     )
-    .get(id) as any;
+    .get(param) as any;
+
+  if (!row) {
+    row = db
+      .query(
+        `SELECT id, slug, barcode, canonical_name, brand, category_path, tags_json, updated_at
+         FROM foods WHERE slug = ? LIMIT 1`
+      )
+      .get(param) as any;
+  }
 
   if (!row) return c.json({ error: "Not found" }, 404);
 
@@ -175,10 +189,11 @@ foodsRoutes.get("/foods/:id", (c) => {
        FROM food_abstractions WHERE food_id = ? AND status='active'
        ORDER BY version DESC LIMIT 1`
     )
-    .get(id) as any;
+    .get(row.id) as any;
 
   return c.json({
     id: row.id,
+    slug: row.slug ?? row.id,
     barcode: row.barcode,
     canonical_name: row.canonical_name,
     brand: row.brand,

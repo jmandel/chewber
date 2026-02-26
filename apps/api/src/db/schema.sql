@@ -6,6 +6,7 @@ PRAGMA foreign_keys = ON;
 -- Foods: canonical entry. barcode can be NULL for natural foods.
 CREATE TABLE IF NOT EXISTS foods (
   id TEXT PRIMARY KEY,
+  slug TEXT UNIQUE,
   barcode TEXT UNIQUE,
   canonical_name TEXT NOT NULL,
   brand TEXT,

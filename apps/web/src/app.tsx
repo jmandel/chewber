@@ -90,7 +90,7 @@ function useFlowState() {
   const onJobCompleted = useCallback(async (foodId: string) => {
     try {
       const f = await api.getFood(foodId);
-      nav(`/food/${encodeURIComponent(f.id)}`, { replace: true });
+      nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`, { replace: true });
     } catch (e: any) {
       setFlow({ kind: "error", message: String(e?.message ?? e) });
     }
@@ -179,7 +179,7 @@ export function App() {
           <Route path="/text" element={<TextStep fs={fs} />} />
           <Route path="/barcode" element={<BarcodeStep fs={fs} />} />
           <Route path="/photo" element={<PhotoStep fs={fs} />} />
-          <Route path="/food/:id" element={<FoodPage />} />
+          <Route path="/food/:slug" element={<FoodPage />} />
         </Routes>
       )}
     </div>
@@ -344,7 +344,7 @@ function PickScreen() {
         <div className="card" style={{ marginTop: 20 }}>
           <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 10 }}>Recent</div>
           {recent.map(f => (
-            <div key={f.id} onClick={() => nav(`/food/${encodeURIComponent(f.id)}`)} style={{
+            <div key={f.id} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} style={{
               display: "flex", justifyContent: "space-between", alignItems: "center",
               padding: "10px 0", borderBottom: "1px solid var(--slate)", cursor: "pointer", gap: 12
             }}>
@@ -434,7 +434,7 @@ function TextStep({ fs }: { fs: ReturnType<typeof useFlowState> }) {
           <div style={{ borderTop: "1px solid var(--slate)", marginTop: 8, paddingTop: 8 }}>
             <div className="muted" style={{ fontSize: 11, marginBottom: 6 }}>Already analyzed</div>
             {hits.map(f => (
-              <div key={f.id} onClick={() => nav(`/food/${encodeURIComponent(f.id)}`)} style={{
+              <div key={f.id} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} style={{
                 display: "flex", justifyContent: "space-between", alignItems: "center",
                 padding: "8px 4px", borderBottom: "1px solid var(--slate)", cursor: "pointer", gap: 10
               }}>
@@ -721,17 +721,17 @@ function ClarifyStep(props: {
 
 // ── Food detail page ────────────────────────────────────────
 function FoodPage() {
-  const { id } = useParams<{ id: string }>();
+  const { slug } = useParams<{ slug: string }>();
   const nav = useNavigate();
   const [food, setFood] = useState<FoodDetail | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!id) return;
-    api.getFood(decodeURIComponent(id))
+    if (!slug) return;
+    api.getFood(decodeURIComponent(slug))
       .then(f => setFood(f))
       .catch(e => setError(String(e?.message ?? e)));
-  }, [id]);
+  }, [slug]);
 
   if (error) return (
     <div className="card" style={{ borderColor: "var(--coral)" }}>

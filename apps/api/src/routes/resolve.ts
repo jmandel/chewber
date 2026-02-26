@@ -6,6 +6,30 @@ import { enqueueJob } from "../jobs/queue";
 
 export const resolveRoutes = new Hono();
 
+function loadFoodDetail(db: any, foodId: string) {
+  const food = db.query(
+    `SELECT id, slug, barcode, canonical_name, brand, category_path, tags_json, updated_at FROM foods WHERE id=?`
+  ).get(foodId) as any;
+  if (!food) return null;
+  const abs = db.query(
+    `SELECT score, abstraction_json, report_md, score_breakdown_json FROM food_abstractions WHERE food_id=? AND status='active' ORDER BY version DESC LIMIT 1`
+  ).get(foodId) as any;
+  return {
+    id: food.id,
+    slug: food.slug ?? food.id,
+    barcode: food.barcode,
+    canonical_name: food.canonical_name,
+    brand: food.brand,
+    category_path: food.category_path,
+    tags: JSON.parse(food.tags_json ?? "[]"),
+    score: abs?.score ?? null,
+    abstraction: abs?.abstraction_json ? JSON.parse(abs.abstraction_json) : null,
+    report_md: abs?.report_md ?? null,
+    score_breakdown: abs?.score_breakdown_json ? JSON.parse(abs.score_breakdown_json) : null,
+    updated_at: food.updated_at
+  };
+}
+
 const StructuredQuerySchema = z.object({
   barcode: z.string().nullable().optional(),
   name: z.string(),
@@ -37,27 +61,8 @@ resolveRoutes.post("/resolve", async (c) => {
   if (barcode) {
     const row = db.query(`SELECT id FROM foods WHERE barcode = ? LIMIT 1`).get(barcode) as any;
     if (row?.id) {
-      const food = db.query(`SELECT id, barcode, canonical_name, brand, category_path, tags_json, updated_at FROM foods WHERE id=?`).get(row.id) as any;
-      const abs = db.query(
-        `SELECT score, abstraction_json, report_md, score_breakdown_json FROM food_abstractions WHERE food_id=? AND status='active' ORDER BY version DESC LIMIT 1`
-      ).get(row.id) as any;
-
-      return c.json({
-        kind: "found",
-        food: {
-          id: food.id,
-          barcode: food.barcode,
-          canonical_name: food.canonical_name,
-          brand: food.brand,
-          category_path: food.category_path,
-          tags: JSON.parse(food.tags_json ?? "[]"),
-          score: abs?.score ?? null,
-          abstraction: abs?.abstraction_json ? JSON.parse(abs.abstraction_json) : null,
-          report_md: abs?.report_md ?? null,
-          score_breakdown: abs?.score_breakdown_json ? JSON.parse(abs.score_breakdown_json) : null,
-          updated_at: food.updated_at
-        }
-      });
+      const food = loadFoodDetail(db, row.id);
+      if (food) return c.json({ kind: "found", food });
     }
   }
 
@@ -68,30 +73,9 @@ resolveRoutes.post("/resolve", async (c) => {
     .get(fingerprint) as any;
 
   if (existingQuery?.food_id) {
-    const food = db.query(`SELECT id, barcode, canonical_name, brand, category_path, tags_json, updated_at FROM foods WHERE id=?`).get(existingQuery.food_id) as any;
-    const abs = db.query(
-      `SELECT score, abstraction_json, report_md, score_breakdown_json FROM food_abstractions WHERE food_id=? AND status='active' ORDER BY version DESC LIMIT 1`
-    ).get(existingQuery.food_id) as any;
-
-    // Mark as matched (optional)
     db.query(`UPDATE queries SET status='matched', updated_at=? WHERE id=?`).run(nowIso(), existingQuery.id);
-
-    return c.json({
-      kind: "found",
-      food: {
-        id: food.id,
-        barcode: food.barcode,
-        canonical_name: food.canonical_name,
-        brand: food.brand,
-        category_path: food.category_path,
-        tags: JSON.parse(food.tags_json ?? "[]"),
-        score: abs?.score ?? null,
-        abstraction: abs?.abstraction_json ? JSON.parse(abs.abstraction_json) : null,
-        report_md: abs?.report_md ?? null,
-        score_breakdown: abs?.score_breakdown_json ? JSON.parse(abs.score_breakdown_json) : null,
-        updated_at: food.updated_at
-      }
-    });
+    const food = loadFoodDetail(db, existingQuery.food_id);
+    if (food) return c.json({ kind: "found", food });
   }
 
   // 3) Fuzzy match against existing foods by name
@@ -130,25 +114,8 @@ resolveRoutes.post("/resolve", async (c) => {
              ORDER BY version DESC LIMIT 1`
           ).get(cand.id) as any;
           if (abs) {
-            const food = db.query(
-              `SELECT id, barcode, canonical_name, brand, category_path, tags_json, updated_at FROM foods WHERE id=?`
-            ).get(cand.id) as any;
-            return c.json({
-              kind: "found",
-              food: {
-                id: food.id,
-                barcode: food.barcode,
-                canonical_name: food.canonical_name,
-                brand: food.brand,
-                category_path: food.category_path,
-                tags: JSON.parse(food.tags_json ?? "[]"),
-                score: abs.score ?? null,
-                abstraction: abs.abstraction_json ? JSON.parse(abs.abstraction_json) : null,
-                report_md: abs.report_md ?? null,
-                score_breakdown: abs.score_breakdown_json ? JSON.parse(abs.score_breakdown_json) : null,
-                updated_at: food.updated_at
-              }
-            });
+            const food = loadFoodDetail(db, cand.id);
+            if (food) return c.json({ kind: "found", food });
           }
         }
       }

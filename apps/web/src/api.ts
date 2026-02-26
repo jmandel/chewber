@@ -47,6 +47,7 @@ export type ResolveResponse =
 
 export type FoodSummary = {
   id: string;
+  slug: string;
   barcode?: string | null;
   canonical_name: string;
   brand?: string | null;
@@ -120,7 +121,7 @@ export const api = {
   searchFoods: (q: string) => http<{ foods: FoodSummary[] }>("/api/foods/search?q=" + encodeURIComponent(q)),
   searchFoodsByTag: (tag: string) => http<{ foods: FoodSummary[] }>("/api/foods/search?tag=" + encodeURIComponent(tag)),
   searchFoodsByCategory: (category: string) => http<{ foods: FoodSummary[] }>("/api/foods/search?category=" + encodeURIComponent(category)),
-  getFood: (id: string) => http<FoodDetail>("/api/foods/" + encodeURIComponent(id)),
+  getFood: (idOrSlug: string) => http<FoodDetail>("/api/foods/" + encodeURIComponent(idOrSlug)),
   getRecentFoods: (limit = 10) => http<{ foods: FoodSummary[] }>("/api/foods/recent?limit=" + limit),
   getCategories: () => http<{ categories: string[] }>("/api/categories"),
   getTags: () => http<{ tags: string[] }>("/api/tags"),

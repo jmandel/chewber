@@ -3,6 +3,7 @@ import { getDb } from "../../db";
 import { appendJobEvent } from "../events";
 import { updateJob } from "../queue";
 import { nowIso, newId } from "../../utils/id";
+import { makeSlug } from "../../utils/slug";
 import { runResearchAgent } from "../../agents/researchAgent";
 import { reportToJson } from "../../agents/jsonStage";
 import { FoodAbstractionSchema, type FoodAbstraction, toScoreInputs } from "../../scoring/abstraction";
@@ -88,12 +89,14 @@ function upsertFood(abs: FoodAbstraction, structured_query: any): string {
     const row = db.query(`SELECT id FROM foods WHERE barcode = ? LIMIT 1`).get(barcode) as any;
     if (row?.id) {
       // update basic fields
+      const slug = makeSlug(abs.identification.canonical_name, abs.identification.brand, row.id);
       db.query(
-        `UPDATE foods SET canonical_name=?, brand=?, kind=?, updated_at=? WHERE id=?`
+        `UPDATE foods SET canonical_name=?, brand=?, kind=?, slug=?, updated_at=? WHERE id=?`
       ).run(
         abs.identification.canonical_name,
         abs.identification.brand,
         abs.identification.kind === "unknown" ? (structured_query?.kind ?? "unknown") : abs.identification.kind,
+        slug,
         nowIso(),
         row.id
       );
@@ -104,11 +107,13 @@ function upsertFood(abs: FoodAbstraction, structured_query: any): string {
   const id = newId("food");
   const ts = nowIso();
 
+  const slug = makeSlug(abs.identification.canonical_name, abs.identification.brand, id);
   db.query(
-    `INSERT INTO foods (id, barcode, canonical_name, brand, kind, category_path, tags_json, source_hint, created_at, updated_at)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    `INSERT INTO foods (id, slug, barcode, canonical_name, brand, kind, category_path, tags_json, source_hint, created_at, updated_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
   ).run(
     id,
+    slug,
     barcode,
     abs.identification.canonical_name,
     abs.identification.brand,
