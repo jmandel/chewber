@@ -184,6 +184,7 @@ export function App() {
           <Route path="/photo" element={<PhotoStep fs={fs} />} />
           <Route path="/food/:slug" element={<FoodPage />} />
           <Route path="/category/:slug" element={<CategoryPage />} />
+          <Route path="/compare" element={<ComparePage />} />
         </Routes>
       )}
     </div>
@@ -817,18 +818,14 @@ function FoodPage() {
   return (
     <>
       <ScoreHero food={food} />
-      {food.tags && food.tags.length > 0 && (
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginTop: 8 }}>
-          {food.tags.map(t => (
-            <span key={t} className="badge" onClick={() => nav(`/category/${encodeURIComponent(t)}`)}
-              style={{ cursor: "pointer", fontSize: 11, padding: "3px 8px" }}>{t}</span>
-          ))}
-        </div>
-      )}
+      <FoodCategories tags={food.tags} />
       <ShareButton food={food} />
       <FoodDetailView food={food} />
       <RelatedFoods foodId={food.id} />
-      <button onClick={() => nav("/")} className="btn-full" style={{ marginTop: 12 }}>← New search</button>
+      <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
+        <button onClick={() => nav("/")} className="btn-full" style={{ flex: 1 }}>← New search</button>
+        <button onClick={() => nav(`/compare?ids=${encodeURIComponent(food.id)}`)} className="btn-full" style={{ flex: 1 }}>⚖️ Compare</button>
+      </div>
     </>
   );
 }
@@ -1142,12 +1139,177 @@ function RelatedFoods({ foodId }: { foodId: string }) {
         <div key={f.id}>
           <FoodListItem food={f} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} />
           <div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginTop: -4, marginBottom: 6, paddingLeft: 2 }}>
-            {f.shared_tags.map(t => (
-              <span key={t} className="badge" style={{ fontSize: 9, padding: "1px 6px", opacity: 0.7 }}>{t}</span>
+            {f.shared_tags.filter(isCategory).map(t => (
+              <span key={t} className="badge" style={{ fontSize: 9, padding: "1px 6px", opacity: 0.7 }}>
+                {t.split("-").map(w => w[0].toUpperCase() + w.slice(1)).join(" ")}
+              </span>
             ))}
           </div>
         </div>
       ))}
+    </div>
+  );
+}
+
+// ── Compare page ──────────────────────────────────────
+function ComparePage() {
+  const nav = useNavigate();
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const initialIds = (params.get("ids") ?? "").split(",").filter(Boolean);
+
+  const [foods, setFoods] = useState<FoodDetail[]>([]);
+  const [searchQ, setSearchQ] = useState("");
+  const [hits, setHits] = useState<FoodSummary[]>([]);
+  const timerRef = useRef<any>(null);
+
+  // Load initial foods
+  useEffect(() => {
+    for (const id of initialIds) {
+      api.getFood(id).then(f => setFoods(prev => prev.some(p => p.id === f.id) ? prev : [...prev, f])).catch(() => {});
+    }
+  }, []);
+
+  function onSearch(val: string) {
+    setSearchQ(val);
+    clearTimeout(timerRef.current);
+    if (val.trim().length < 2) { setHits([]); return; }
+    timerRef.current = setTimeout(() => {
+      api.searchFoods(val.trim()).then(r => setHits(r.foods.filter(f => !foods.some(e => e.id === f.id)).slice(0, 5))).catch(() => {});
+    }, 200);
+  }
+
+  function addFood(id: string) {
+    api.getFood(id).then(f => {
+      setFoods(prev => prev.some(p => p.id === f.id) ? prev : [...prev, f]);
+      setSearchQ(""); setHits([]);
+    }).catch(() => {});
+  }
+
+  function removeFood(id: string) {
+    setFoods(prev => prev.filter(f => f.id !== id));
+  }
+
+  const nutrKeys: { key: string; label: string; unit: string }[] = [
+    { key: "energy_kcal", label: "Calories", unit: "kcal" },
+    { key: "protein_g", label: "Protein", unit: "g" },
+    { key: "fiber_g", label: "Fiber", unit: "g" },
+    { key: "sugars_g", label: "Sugars", unit: "g" },
+    { key: "saturated_fat_g", label: "Sat. Fat", unit: "g" },
+    { key: "total_fat_g", label: "Total Fat", unit: "g" },
+    { key: "sodium_mg", label: "Sodium", unit: "mg" },
+  ];
+
+  // For coloring: lower is better for sugar/fat/sodium, higher is better for protein/fiber
+  const higherBetter = new Set(["energy_kcal", "protein_g", "fiber_g"]);
+
+  function getNutr(food: FoodDetail, key: string): number | null {
+    return food.abstraction?.nutrition_per_100?.[key] ?? null;
+  }
+
+  function bestWorst(key: string): { bestId: string | null; worstId: string | null } {
+    const vals = foods.map(f => ({ id: f.id, v: getNutr(f, key) })).filter(x => x.v != null);
+    if (vals.length < 2) return { bestId: null, worstId: null };
+    vals.sort((a, b) => a.v! - b.v!);
+    const hb = higherBetter.has(key);
+    return { bestId: hb ? vals[vals.length - 1].id : vals[0].id, worstId: hb ? vals[0].id : vals[vals.length - 1].id };
+  }
+
+  return (
+    <div style={{ maxWidth: 800, margin: "0 auto" }}>
+      <BackLink />
+      <div className="card" style={{ marginBottom: 8 }}>
+        <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 8 }}>Compare Foods</div>
+        <div style={{ display: "flex", gap: 8 }}>
+          <input value={searchQ} onChange={e => onSearch(e.target.value)} placeholder="Add a food to compare…"
+            style={{ flex: 1, fontSize: 14, padding: "10px 12px" }} />
+        </div>
+        {hits.length > 0 && (
+          <div style={{ borderTop: "1px solid var(--slate)", marginTop: 8, paddingTop: 4 }}>
+            {hits.map(f => (
+              <div key={f.id} onClick={() => addFood(f.id)} style={{
+                display: "flex", justifyContent: "space-between", alignItems: "center",
+                padding: "8px 0", borderBottom: "1px solid var(--slate)", cursor: "pointer", fontSize: 13
+              }}>
+                <span>{f.canonical_name}{f.brand ? ` — ${f.brand}` : ""}</span>
+                <ScorePill score={f.score ?? null} size={16} />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {foods.length === 0 && (
+        <div className="card muted" style={{ textAlign: "center", padding: 32 }}>Search above to add foods to compare.</div>
+      )}
+
+      {foods.length > 0 && (
+        <div style={{ overflowX: "auto" }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
+            <thead>
+              <tr style={{ borderBottom: "2px solid var(--slate)" }}>
+                <th style={{ textAlign: "left", padding: "10px 8px", fontSize: 12, color: "var(--fog)", minWidth: 100 }}>per 100g</th>
+                {foods.map(f => (
+                  <th key={f.id} style={{ padding: "8px", textAlign: "center", minWidth: 100 }}>
+                    <div style={{ fontWeight: 700, fontSize: 14 }}>{f.canonical_name}</div>
+                    {f.brand && <div className="muted" style={{ fontSize: 11 }}>{f.brand}</div>}
+                    <div style={{ margin: "4px auto" }}><ScorePill score={f.score ?? null} size={24} /></div>
+                    <button onClick={() => removeFood(f.id)} style={{
+                      background: "none", border: "none", color: "var(--fog)", cursor: "pointer",
+                      fontSize: 11, padding: "2px 6px"
+                    }}>✕ remove</button>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {nutrKeys.map(({ key, label, unit }) => {
+                const { bestId, worstId } = bestWorst(key);
+                return (
+                  <tr key={key} style={{ borderBottom: "1px solid var(--slate)" }}>
+                    <td style={{ padding: "8px", fontWeight: 600, color: "var(--fog)" }}>{label}</td>
+                    {foods.map(f => {
+                      const v = getNutr(f, key);
+                      const isBest = f.id === bestId;
+                      const isWorst = f.id === worstId;
+                      return (
+                        <td key={f.id} style={{
+                          padding: "8px", textAlign: "center", fontWeight: isBest ? 700 : 400,
+                          color: isBest ? "var(--kale)" : isWorst ? "var(--coral)" : "var(--cream)"
+                        }}>
+                          {v != null ? `${v} ${unit}` : "—"}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
+              <tr style={{ borderBottom: "1px solid var(--slate)" }}>
+                <td style={{ padding: "8px", fontWeight: 600, color: "var(--fog)" }}>Additives</td>
+                {foods.map(f => (
+                  <td key={f.id} style={{ padding: "8px", textAlign: "center" }}>
+                    {f.abstraction?.additives?.length ?? "—"}
+                  </td>
+                ))}
+              </tr>
+              <tr>
+                <td style={{ padding: "8px", fontWeight: 600, color: "var(--fog)" }}>Categories</td>
+                {foods.map(f => (
+                  <td key={f.id} style={{ padding: "8px", textAlign: "center" }}>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 3, justifyContent: "center" }}>
+                      {(f.tags ?? []).filter(isCategory).map(t => (
+                        <span key={t} className="badge" style={{ fontSize: 9, padding: "1px 5px" }}>
+                          {t.split("-").map(w => w[0].toUpperCase() + w.slice(1)).join(" ")}
+                        </span>
+                      ))}
+                    </div>
+                  </td>
+                ))}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 }
@@ -1170,6 +1332,23 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 function KV({ label, value }: { label: string; value: string }) {
   return <div style={{ display: "flex", justifyContent: "space-between", padding: "6px 0", borderBottom: "1px solid var(--slate)", fontSize: 13 }}><span className="muted">{label}</span><span>{value}</span></div>;
 }
+const TRAIT_PATTERNS = /^(high|low|good|no|many|contains|calorie)-/;
+function isCategory(tag: string) { return !TRAIT_PATTERNS.test(tag); }
+
+function FoodCategories({ tags }: { tags?: string[] }) {
+  const nav = useNavigate();
+  const cats = (tags ?? []).filter(isCategory);
+  if (cats.length === 0) return null;
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginTop: 8 }}>
+      {cats.map(t => (
+        <span key={t} className="badge" onClick={() => nav(`/category/${encodeURIComponent(t)}`)}
+          style={{ cursor: "pointer", fontSize: 11, padding: "3px 8px" }}>{t.split("-").map(w => w[0].toUpperCase() + w.slice(1)).join(" ")}</span>
+      ))}
+    </div>
+  );
+}
+
 function CategoryChip({ category, onClick }: { category: Category; onClick: () => void }) {
   return (
     <span onClick={onClick} className="badge" style={{

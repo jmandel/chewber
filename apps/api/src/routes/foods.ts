@@ -3,6 +3,15 @@ import { z } from "zod";
 
 export const foodsRoutes = new Hono();
 
+/** Resolve tags to only those in the categories registry, with display names. */
+function resolveCategories(db: any, tags: string[]): { slug: string; display_name: string }[] {
+  if (tags.length === 0) return [];
+  const placeholders = tags.map(() => "?").join(",");
+  return db.query(
+    `SELECT slug, display_name FROM categories WHERE slug IN (${placeholders}) ORDER BY display_name`
+  ).all(...tags) as { slug: string; display_name: string }[];
+}
+
 function extractOrganic(abstractionJson: string): string | null {
   try {
     const abs = JSON.parse(abstractionJson);
@@ -90,18 +99,22 @@ foodsRoutes.get("/foods/recent", (c) => {
   ).all(limit) as any[];
 
   return c.json({
-    foods: rows.map((r: any) => ({
-      id: r.id,
-      slug: r.slug ?? r.id,
-      barcode: r.barcode,
-      canonical_name: r.canonical_name,
-      brand: r.brand,
-      category_path: r.category_path,
-      tags: parseTags(r.tags_json),
-      score: r.score ?? null,
-      organic: r.abstraction_json ? extractOrganic(r.abstraction_json) : null,
-      updated_at: r.updated_at
-    }))
+    foods: rows.map((r: any) => {
+      const tags = parseTags(r.tags_json);
+      return {
+        id: r.id,
+        slug: r.slug ?? r.id,
+        barcode: r.barcode,
+        canonical_name: r.canonical_name,
+        brand: r.brand,
+        category_path: r.category_path,
+        tags,
+        categories: resolveCategories(db, tags),
+        score: r.score ?? null,
+        organic: r.abstraction_json ? extractOrganic(r.abstraction_json) : null,
+        updated_at: r.updated_at
+      };
+    })
   });
 });
 
@@ -172,6 +185,7 @@ foodsRoutes.get("/foods/search", (c) => {
   const foods = rows.map((r) => {
     const absRow = stmtAbs.get(r.id) as any;
     const organic = absRow?.abstraction_json ? extractOrganic(absRow.abstraction_json) : null;
+    const tags = parseTags(r.tags_json);
     return {
       id: r.id,
       slug: r.slug ?? r.id,
@@ -179,7 +193,8 @@ foodsRoutes.get("/foods/search", (c) => {
       canonical_name: r.canonical_name,
       brand: r.brand,
       category_path: r.category_path,
-      tags: parseTags(r.tags_json),
+      tags,
+      categories: resolveCategories(db, tags),
       score: absRow?.score ?? null,
       organic
     };
