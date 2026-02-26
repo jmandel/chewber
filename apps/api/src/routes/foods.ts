@@ -3,6 +3,13 @@ import { z } from "zod";
 
 export const foodsRoutes = new Hono();
 
+function extractOrganic(abstractionJson: string): string | null {
+  try {
+    const abs = JSON.parse(abstractionJson);
+    return abs?.organic?.is_certified_organic ?? null;
+  } catch { return null; }
+}
+
 function parseTags(tagsJson: string | null): string[] {
   if (!tagsJson) return [];
   try {
@@ -21,7 +28,7 @@ foodsRoutes.get("/foods/recent", (c) => {
   const limit = Math.min(Number(c.req.query("limit") ?? 10), 50);
   const rows = db.query(
     `SELECT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at,
-            a.score
+            a.score, a.abstraction_json
      FROM foods f
      LEFT JOIN food_abstractions a ON a.food_id = f.id AND a.status = 'active'
      ORDER BY f.updated_at DESC
@@ -38,6 +45,7 @@ foodsRoutes.get("/foods/recent", (c) => {
       category_path: r.category_path,
       tags: parseTags(r.tags_json),
       score: r.score ?? null,
+      organic: r.abstraction_json ? extractOrganic(r.abstraction_json) : null,
       updated_at: r.updated_at
     }))
   });
@@ -103,12 +111,13 @@ foodsRoutes.get("/foods/search", (c) => {
   }
 
   // Attach score if available
-  const stmtScore = db.query(
-    `SELECT score FROM food_abstractions WHERE food_id = ? AND status='active' ORDER BY version DESC LIMIT 1`
+  const stmtAbs = db.query(
+    `SELECT score, abstraction_json FROM food_abstractions WHERE food_id = ? AND status='active' ORDER BY version DESC LIMIT 1`
   );
 
   const foods = rows.map((r) => {
-    const scoreRow = stmtScore.get(r.id) as any;
+    const absRow = stmtAbs.get(r.id) as any;
+    const organic = absRow?.abstraction_json ? extractOrganic(absRow.abstraction_json) : null;
     return {
       id: r.id,
       slug: r.slug ?? r.id,
@@ -117,7 +126,8 @@ foodsRoutes.get("/foods/search", (c) => {
       brand: r.brand,
       category_path: r.category_path,
       tags: parseTags(r.tags_json),
-      score: scoreRow?.score ?? null
+      score: absRow?.score ?? null,
+      organic
     };
   });
 

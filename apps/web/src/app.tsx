@@ -345,16 +345,7 @@ function PickScreen() {
         <div className="card" style={{ marginTop: 20 }}>
           <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 10 }}>Recent</div>
           {recent.map(f => (
-            <div key={f.id} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} style={{
-              display: "flex", justifyContent: "space-between", alignItems: "center",
-              padding: "10px 0", borderBottom: "1px solid var(--slate)", cursor: "pointer", gap: 12
-            }}>
-              <div style={{ minWidth: 0, flex: 1 }}>
-                <div style={{ fontWeight: 600, fontSize: 14, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{f.canonical_name}</div>
-                <div className="muted" style={{ fontSize: 12 }}>{f.brand ?? ""}</div>
-              </div>
-              <ScorePill score={f.score ?? null} />
-            </div>
+            <FoodListItem key={f.id} food={f} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} />
           ))}
         </div>
       )}
@@ -392,14 +383,42 @@ function PickScreen() {
 }
 
 // ── Score pill ──────────────────────────────────────────────
-function ScorePill({ score }: { score: number | null }) {
+function ScorePill({ score, size = 20 }: { score: number | null; size?: number }) {
   const color =
     score == null ? "var(--fog)"
     : score >= 75 ? "var(--kale)" : score >= 50 ? "var(--amber)"
     : score >= 25 ? "var(--tangerine)" : "var(--coral)";
   return (
-    <div style={{ fontSize: 20, fontWeight: 900, color, flexShrink: 0, minWidth: 36, textAlign: "right" }}>
+    <div style={{ fontSize: size, fontWeight: 900, color, flexShrink: 0, minWidth: 36, textAlign: "right" }}>
       {score ?? "—"}
+    </div>
+  );
+}
+
+// ── Shared food list item ───────────────────────────────────
+function FoodListItem({ food, onClick }: { food: FoodSummary; onClick: () => void }) {
+  const organic = food.organic;
+  return (
+    <div onClick={onClick} style={{
+      display: "flex", justifyContent: "space-between", alignItems: "center",
+      padding: "10px 0", borderBottom: "1px solid var(--slate)", cursor: "pointer", gap: 12
+    }}>
+      <div style={{ minWidth: 0, flex: 1 }}>
+        <div style={{ fontWeight: 600, fontSize: 14, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{food.canonical_name}</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 5, marginTop: 1 }}>
+          {food.brand && <span className="muted" style={{ fontSize: 12 }}>{food.brand}</span>}
+          {organic && organic !== "unknown" && (
+            <span style={{
+              fontSize: 9, fontWeight: 700, padding: "1px 5px", borderRadius: 3, lineHeight: 1.3,
+              background: organic === "yes" ? "color-mix(in srgb, var(--kale) 18%, transparent)" : "color-mix(in srgb, var(--fog) 10%, transparent)",
+              color: organic === "yes" ? "var(--kale)" : "var(--fog)",
+              border: `1px solid ${organic === "yes" ? "var(--kale)" : "var(--fog)"}`,
+              opacity: organic === "yes" ? 1 : 0.5
+            }}>{organic === "yes" ? "🌿" : "non-org"}</span>
+          )}
+        </div>
+      </div>
+      <ScorePill score={food.score ?? null} />
     </div>
   );
 }
@@ -435,16 +454,7 @@ function TextStep({ fs }: { fs: ReturnType<typeof useFlowState> }) {
           <div style={{ borderTop: "1px solid var(--slate)", marginTop: 8, paddingTop: 8 }}>
             <div className="muted" style={{ fontSize: 11, marginBottom: 6 }}>Already analyzed</div>
             {hits.map(f => (
-              <div key={f.id} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} style={{
-                display: "flex", justifyContent: "space-between", alignItems: "center",
-                padding: "8px 4px", borderBottom: "1px solid var(--slate)", cursor: "pointer", gap: 10
-              }}>
-                <div style={{ minWidth: 0, flex: 1 }}>
-                  <div style={{ fontWeight: 600, fontSize: 14, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{f.canonical_name}</div>
-                  {f.brand && <div className="muted" style={{ fontSize: 12 }}>{f.brand}</div>}
-                </div>
-                <ScorePill score={f.score ?? null} />
-              </div>
+              <FoodListItem key={f.id} food={f} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} />
             ))}
           </div>
         )}
@@ -811,8 +821,26 @@ function ScoreHero({ food }: { food: FoodDetail }) {
       <div style={{ fontSize: 64, fontWeight: 900, color, lineHeight: 1, opacity: stub ? 0.4 : 1 }}>{score ?? "?"}</div>
       <div style={{ fontSize: 13, color: stub ? "var(--amber)" : color, fontWeight: 600, marginTop: 4 }}>{label}</div>
       <div style={{ fontSize: 20, fontWeight: 700, marginTop: 10 }}>{food.canonical_name}</div>
-      {food.brand && <div className="muted" style={{ fontSize: 14 }}>{food.brand}</div>}
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, marginTop: 4 }}>
+        {food.brand && <span className="muted" style={{ fontSize: 14 }}>{food.brand}</span>}
+        <OrganicPill organic={food.abstraction?.organic?.is_certified_organic} />
+      </div>
     </div>
+  );
+}
+
+function OrganicPill({ organic }: { organic?: string }) {
+  if (!organic || organic === "unknown") return null;
+  const yes = organic === "yes";
+  return (
+    <span style={{
+      display: "inline-block", fontSize: 10, fontWeight: 700, letterSpacing: "0.03em",
+      padding: "2px 6px", borderRadius: 4, lineHeight: 1.3, whiteSpace: "nowrap",
+      background: yes ? "color-mix(in srgb, var(--kale) 18%, transparent)" : "color-mix(in srgb, var(--fog) 12%, transparent)",
+      color: yes ? "var(--kale)" : "var(--fog)",
+      border: `1px solid ${yes ? "var(--kale)" : "var(--fog)"}`,
+      opacity: yes ? 1 : 0.6
+    }}>{yes ? "🌿 Organic" : "Non-organic"}</span>
   );
 }
 
@@ -918,7 +946,7 @@ function SummaryDetails({ food }: { food: FoodDetail }) {
       {/* Quick facts */}
       <div>
         {cls?.nutri_score_category && cls.nutri_score_category !== "unknown" && <KV label="Category" value={cls.nutri_score_category.replace("_", " ")} />}
-        {org?.is_certified_organic && org.is_certified_organic !== "unknown" && <KV label="Organic" value={org.is_certified_organic === "yes" ? "✅ Certified" : "❌ No"} />}
+
         {cls?.fvp_percent != null && <KV label="Fruit/veg/nut %" value={`${cls.fvp_percent}%`} />}
       </div>
     </div>

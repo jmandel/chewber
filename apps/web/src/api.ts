@@ -54,6 +54,7 @@ export type FoodSummary = {
   category_path?: string | null;
   tags: string[];
   score?: number | null;
+  organic?: string | null;
 };
 
 export type FoodDetail = FoodSummary & {

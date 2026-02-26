@@ -76,6 +76,44 @@ function truncate(val: any, maxChars = 12000): any {
   return { truncated: true, preview: s.slice(0, maxChars) + "…", size: s.length };
 }
 
+/** Format the key argument of a tool call for inline display */
+function formatToolQuery(tool: string, args: Record<string, any>): string {
+  switch (tool) {
+    case "web.search":
+    case "local.search":
+      return args.query ? `: "${args.query}"` : "";
+    case "web.open":
+      return args.url ? `: ${args.url}` : "";
+    case "local.barcode_lookup":
+      return args.barcode ? `: ${args.barcode}` : "";
+    default:
+      return "";
+  }
+}
+
+/** Format a short result summary for inline display */
+function formatToolResult(tool: string, result: any): string {
+  if (!result) return "ok";
+  switch (tool) {
+    case "web.search":
+      if (Array.isArray(result?.results)) return `${result.results.length} results`;
+      if (typeof result?.count === "number") return `${result.count} results`;
+      return "ok";
+    case "local.search":
+      if (typeof result?.count === "number") return `${result.count} match${result.count === 1 ? "" : "es"}`;
+      return "ok";
+    case "local.barcode_lookup":
+      if (result?.found === false) return "not found";
+      return result?.product_name ? `found: ${result.product_name}` : "found";
+    case "web.open":
+      if (typeof result === "string") return `${result.length} chars`;
+      if (result?.text) return `${result.text.length} chars`;
+      return "ok";
+    default:
+      return "ok";
+  }
+}
+
 export async function runResearchAgent(input: ResearchInput, emit: EmitFn): Promise<string> {
   const llm = getLlm("research");
 
@@ -197,14 +235,16 @@ export async function runResearchAgent(input: ResearchInput, emit: EmitFn): Prom
     // Execute tool calls
     const toolResults: any[] = [];
     for (const tc of obj.tool_calls) {
-      emit({ level: "tool", message: `${tc.tool}`, data: { args: tc.args } });
+      const queryHint = formatToolQuery(tc.tool, tc.args);
+      emit({ level: "tool", message: `${tc.tool}${queryHint}`, data: { args: tc.args } });
       totalToolCalls++;
 
       try {
         const r = await runTool(tc.tool, tc.args);
         const truncated = truncate(r);
         toolResults.push({ tool: tc.tool, ok: true, result: truncated });
-        emit({ level: "tool", message: `${tc.tool} → ok`, data: { result: truncated } });
+        const resultHint = formatToolResult(tc.tool, truncated);
+        emit({ level: "tool", message: `${tc.tool} → ${resultHint}`, data: { result: truncated } });
       } catch (e: any) {
         const err = String(e?.message ?? e);
         toolResults.push({ tool: tc.tool, ok: false, error: err });
