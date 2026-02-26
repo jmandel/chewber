@@ -1080,15 +1080,16 @@ function CategoryPage() {
   const [catName, setCatName] = useState(
     slug ? slug.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") : ""
   );
+  const [catDesc, setCatDesc] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!slug) return;
     setLoading(true);
-    // Fetch category display name
+    // Fetch category display name + description
     api.getCategories().then(r => {
       const cat = r.categories.find(c => c.slug === slug);
-      if (cat) setCatName(cat.display_name);
+      if (cat) { setCatName(cat.display_name); setCatDesc(cat.description ?? null); }
     }).catch(() => {});
     // Fetch foods with this tag
     api.searchFoodsByTag(slug).then(r => {
@@ -1102,6 +1103,7 @@ function CategoryPage() {
       <BackLink />
       <div className="card">
         <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 4 }}>{catName}</div>
+        {catDesc && <div className="muted" style={{ fontSize: 13, marginBottom: 4 }}>{catDesc}</div>}
         <div className="muted" style={{ fontSize: 13, marginBottom: 12 }}>{foods.length} food{foods.length !== 1 ? "s" : ""}</div>
         {loading && <div className="muted" style={{ textAlign: "center", padding: 20 }}>Loading…</div>}
         {!loading && foods.length === 0 && <div className="muted" style={{ textAlign: "center", padding: 20 }}>No foods in this category yet.</div>}
