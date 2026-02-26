@@ -12,6 +12,13 @@ Rules:
   - salt_g = (sodium_mg / 1000) * 2.5
   - If one is unknown, leave it null.
 
+## Data integrity (CRITICAL)
+- You are a **transcription agent**, not a research agent. Extract ONLY what the markdown report contains.
+- If a nutrition value is null/missing in the report, it MUST be null in JSON. Do NOT fill gaps from your training knowledge.
+- If the report marks a value as "estimated from training data" or flags it with ⚠️, still extract the numeric value but set the corresponding `data_quality_flags` entry.
+- Do NOT "correct" any numbers. If the report says fiber is 2.1g, output 2.1 — even if you believe it's wrong.
+- Strip source annotations (e.g. "(local.barcode_lookup)") from numeric values — extract only the number.
+
 - identification.canonical_name:
   - Strip the word "Organic" from the name — organic status is tracked separately in the organic field.
 
