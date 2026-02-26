@@ -628,13 +628,16 @@ function PhotoStep({ fs }: { fs: ReturnType<typeof useFlowState> }) {
           <>
             <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 4 }}>Snap or upload a food photo</div>
             <div className="muted" style={{ fontSize: 13, marginBottom: 14 }}>Label, ingredients list, or nutrition facts</div>
-            <input
-              type="file"
-              accept="image/*"
-              multiple
-              onChange={e => handleFiles(e.target.files)}
-              style={{ width: "100%", fontSize: 15, padding: "10px 0" }}
-            />
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              <label className="btn-primary btn-full" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, padding: "14px 16px", cursor: "pointer", fontSize: 16, fontWeight: 700 }}>
+                📷 Take photo
+                <input type="file" accept="image/*" capture="environment" onChange={e => handleFiles(e.target.files)} style={{ display: "none" }} />
+              </label>
+              <label className="btn-full" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, padding: "12px 16px", cursor: "pointer", fontSize: 14, border: "1px solid var(--slate)", borderRadius: "var(--radius-sm)", background: "transparent", color: "var(--cream)" }}>
+                🖼️ Choose from gallery
+                <input type="file" accept="image/*" multiple onChange={e => handleFiles(e.target.files)} style={{ display: "none" }} />
+              </label>
+            </div>
           </>
         )}
       </div>
