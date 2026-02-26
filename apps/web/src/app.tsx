@@ -761,26 +761,22 @@ function ShareButton({ food }: { food: FoodDetail }) {
   return (
     <button
       onClick={handleShare}
-      className="btn-full"
+      aria-label="Share"
       style={{
-        marginTop: 8, marginBottom: 0, display: "flex", alignItems: "center",
-        justifyContent: "center", gap: 8, fontSize: 14, fontWeight: 600,
-        padding: "10px 16px", background: "transparent",
-        border: "1px solid var(--slate)", borderRadius: "var(--radius-sm)",
+        position: "absolute", top: 12, right: 12,
+        display: "flex", alignItems: "center", justifyContent: "center",
+        width: 36, height: 36, padding: 0,
+        background: "transparent", border: "none", borderRadius: "50%",
         color: copied ? "var(--kale)" : "var(--fog)", cursor: "pointer",
-        transition: "color 0.2s",
+        transition: "color 0.2s, background 0.2s",
       }}
+      onMouseEnter={e => (e.currentTarget.style.background = "color-mix(in srgb, var(--fog) 10%, transparent)")}
+      onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
     >
       {copied ? (
-        <>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--kale)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Copied!
-        </>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--kale)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
       ) : (
-        <>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-          Share
-        </>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
       )}
     </button>
   );
@@ -819,7 +815,6 @@ function FoodPage() {
     <>
       <ScoreHero food={food} />
       <FoodCategories tags={food.tags} />
-      <ShareButton food={food} />
       <FoodDetailView food={food} />
       <RelatedFoods foodId={food.id} />
       <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
@@ -861,7 +856,8 @@ function ScoreHero({ food }: { food: FoodDetail }) {
   const color = score == null ? "var(--fog)" : score >= 75 ? "var(--kale)" : score >= 50 ? "var(--amber)" : score >= 25 ? "var(--tangerine)" : "var(--coral)";
   const label = stub ? "Demo data — not real" : incomplete ? "Incomplete analysis" : score == null ? "Score unavailable" : score >= 75 ? "Excellent" : score >= 50 ? "Good" : score >= 25 ? "Mediocre" : "Poor";
   return (
-    <div className="card" style={{ textAlign: "center", padding: "28px 16px" }}>
+    <div className="card" style={{ textAlign: "center", padding: "28px 16px", position: "relative" }}>
+      <ShareButton food={food} />
       {stub && (
         <div style={{
           background: "color-mix(in srgb, var(--tangerine) 15%, var(--midnight))", border: "1px solid var(--tangerine)", borderRadius: 8,
