@@ -596,12 +596,6 @@ function BarcodeStep({ fs }: { fs: ReturnType<typeof useFlowState> }) {
 function PhotoStep({ fs }: { fs: ReturnType<typeof useFlowState> }) {
   const [uploading, setUploading] = useState(false);
   const submitted = useRef(false);
-  const inputRef = useRef<HTMLInputElement | null>(null);
-
-  useEffect(() => {
-    const t = setTimeout(() => inputRef.current?.click(), 100);
-    return () => clearTimeout(t);
-  }, []);
 
   async function handleFiles(files: FileList | null) {
     if (!files?.length) return;
@@ -624,13 +618,19 @@ function PhotoStep({ fs }: { fs: ReturnType<typeof useFlowState> }) {
   return (
     <div style={{ maxWidth: 480, margin: "0 auto" }}>
       <BackLink />
-      <div className="card">
-        <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 12 }}>Snap or upload a food photo</div>
-        <label className="btn-primary btn-full" style={{ display: "block", textAlign: "center", padding: 14, cursor: "pointer", marginBottom: 12 }}>
-          {uploading ? "Uploading & analyzing…" : "📷 Take photo or choose from gallery"}
-          <input ref={inputRef} type="file" accept="image/*" onChange={e => handleFiles(e.target.files)} style={{ display: "none" }} />
-        </label>
-        <div className="muted" style={{ fontSize: 13, textAlign: "center" }}>Photo will be analyzed automatically</div>
+      <div className="card" style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        {uploading ? (
+          <div style={{ textAlign: "center", padding: "24px 0" }}>
+            <div className="spinner" />
+            <div style={{ fontWeight: 700, marginTop: 12 }}>Uploading & analyzing…</div>
+          </div>
+        ) : (
+          <label className="pick-btn" style={{ cursor: "pointer", margin: 0 }}>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--fog)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            <span><strong>Take photo or choose from gallery</strong><br/><span className="muted">Snap a label, ingredients list, or nutrition facts</span></span>
+            <input type="file" accept="image/*" multiple onChange={e => handleFiles(e.target.files)} style={{ display: "none" }} />
+          </label>
+        )}
       </div>
     </div>
   );
