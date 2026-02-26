@@ -3,6 +3,7 @@ import { resolve } from "node:path";
 import { z } from "zod";
 import { getLlm } from "./llm/client";
 import { localOffBarcodeLookup, localOffSearchText } from "../sources/localOff";
+import { localUsdaBarcodeLookup, localUsdaSearchText } from "../sources/localUsda";
 import { webSearch, webOpen } from "../sources/web";
 import { usdaSearch } from "../sources/usda";
 
@@ -82,11 +83,13 @@ function formatToolQuery(tool: string, args: Record<string, any>): string {
   switch (tool) {
     case "web.search":
     case "local.search":
+    case "local.usda_search":
     case "usda.search":
       return args.query ? `: "${args.query}"` : "";
     case "web.open":
       return args.url ? `: ${args.url}` : "";
     case "local.barcode_lookup":
+    case "local.usda_barcode":
       return args.barcode ? `: ${args.barcode}` : "";
     default:
       return "";
@@ -98,14 +101,18 @@ function formatToolResult(tool: string, result: any): string {
   if (!result) return "ok";
   switch (tool) {
     case "web.search":
-      if (Array.isArray(result)) return `${result.length} results`;
       if (Array.isArray(result?.results)) return `${result.results.length} results`;
       if (typeof result?.count === "number") return `${result.count} results`;
       return "ok";
     case "usda.search":
     case "local.search":
+    case "local.usda_search":
       if (typeof result?.count === "number") return `${result.count} match${result.count === 1 ? "" : "es"}`;
       return "ok";
+    case "local.usda_barcode":
+      if (result?.found === false) return "not found";
+      if (typeof result?.count === "number") return `${result.count} match${result.count === 1 ? "" : "es"}`;
+      return result?.description ? `found: ${result.description}` : "found";
     case "local.barcode_lookup":
       if (result?.found === false) return "not found";
       return result?.product_name ? `found: ${result.product_name}` : "found";
@@ -279,23 +286,123 @@ function makeErrorReport(reason: string, count: number): string {
 
 async function runTool(tool: string, args: any): Promise<any> {
   switch (tool) {
+    // ── Local Open Food Facts ──────────────────────────────────
     case "local.barcode_lookup": {
-      const result = localOffBarcodeLookup(String(args.barcode));
-      return result ?? { found: false };
+      const barcode = String(args.barcode);
+      const result = localOffBarcodeLookup(barcode);
+      if (!result) {
+        return {
+          found: false,
+          source: "Open Food Facts (local, 4M products)",
+          barcode_queried: barcode,
+          hint: "Barcode not found in OFF. Try local.usda_barcode for USDA lookup (has ~2M branded products with UPC codes and authoritative nutrition data). If that also fails, try web.search."
+        };
+      }
+      const hasNutrition = result.nutriments && Object.keys(result.nutriments).length > 0;
+      return {
+        found: true,
+        source: "Open Food Facts (local)",
+        has_nutrition: hasNutrition,
+        has_ingredients: !!result.ingredients_text,
+        product: result,
+        hint: !hasNutrition
+          ? "Product found but MISSING nutrition data. Use local.usda_barcode or local.usda_search to find per-100g nutrition for this product."
+          : result.ingredients_text
+            ? "Product found with nutrition + ingredients. Cross-reference nutrition with local.usda_search or usda.search for accuracy."
+            : "Product found with nutrition but no ingredients. Try local.usda_barcode or web.search for ingredient list."
+      };
     }
+
     case "local.search": {
-      const results = localOffSearchText(String(args.query ?? ""), args.limit ?? 10);
-      return { count: results.length, results };
+      const query = String(args.query ?? "");
+      const results = localOffSearchText(query, args.limit ?? 10);
+      const withNutrition = results.filter(r => r.nutriments && Object.keys(r.nutriments).length > 0);
+      return {
+        count: results.length,
+        with_nutrition: withNutrition.length,
+        source: "Open Food Facts (local FTS)",
+        results,
+        hint: results.length === 0
+          ? "No matches in OFF. Try local.usda_search (USDA database, better nutrition coverage) or broaden your search terms."
+          : withNutrition.length === 0
+            ? `Found ${results.length} matches but NONE have nutrition data. Use local.usda_search to find nutrition for these products.`
+            : `Found ${withNutrition.length}/${results.length} with nutrition. Cross-reference with local.usda_search for accuracy.`
+      };
     }
-    case "web.search":
-      return webSearch(String(args.query ?? ""));
-    case "web.open":
-      return webOpen(String(args.url ?? ""));
+
+    // ── Local USDA FoodData Central ────────────────────────────
+    case "local.usda_barcode": {
+      const barcode = String(args.barcode);
+      const results = localUsdaBarcodeLookup(barcode);
+      if (results.length === 0) {
+        return {
+          found: false,
+          count: 0,
+          source: "USDA FoodData Central (local, ~2M branded + 8K SR Legacy)",
+          barcode_queried: barcode,
+          hint: "Barcode not found in local USDA. Try usda.search (online API) with the product name, or web.search as last resort."
+        };
+      }
+      const best = results.find(r => r.nutriments) ?? results[0];
+      return {
+        found: true,
+        count: results.length,
+        source: "USDA FoodData Central (local)",
+        has_nutrition: !!best.nutriments,
+        best_match: best,
+        all_matches: results.length > 1 ? results : undefined,
+        hint: best.nutriments
+          ? "Authoritative USDA nutrition data found. This is high-quality per-100g data."
+          : "Product found in USDA but nutrition data missing. Try usda.search (online API) for this specific fdc_id."
+      };
+    }
+
+    case "local.usda_search": {
+      const query = String(args.query ?? "");
+      const results = localUsdaSearchText(query, args.limit ?? 10);
+      const withNutrition = results.filter(r => r.nutriments);
+      return {
+        count: results.length,
+        with_nutrition: withNutrition.length,
+        source: "USDA FoodData Central (local FTS)",
+        results: results.slice(0, args.limit ?? 10),
+        hint: results.length === 0
+          ? "No matches in local USDA. Try usda.search (online API, broader index) or web.search with different terms. Try shorter or more general terms."
+          : withNutrition.length === 0
+            ? `Found ${results.length} matches but none with nutrition. Try usda.search (online API) for better coverage.`
+            : `Found ${withNutrition.length}/${results.length} with nutrition. USDA data is authoritative per-100g.`
+      };
+    }
+
+    // ── USDA online API ────────────────────────────────────────
     case "usda.search": {
       const results = await usdaSearch(String(args.query ?? ""), args.limit ?? 5);
-      return results;
+      return {
+        ...results,
+        source: "USDA FoodData Central (online API)",
+        hint: results.count === 0
+          ? "No results from USDA API. Try different search terms (simpler/shorter), or web.search as fallback."
+          : `Found ${results.results.length} results with structured per-100g nutrition.`
+      };
     }
+
+    // ── Web search + page fetch ────────────────────────────────
+    case "web.search": {
+      const results = await webSearch(String(args.query ?? ""));
+      return {
+        count: results.length,
+        source: "Web search",
+        results,
+        hint: results.length === 0
+          ? "Web search returned no results. Try different search terms, or check if Brave Search API key is configured."
+          : `Found ${results.length} web results. Use web.open to fetch detailed nutrition/ingredient data from the best URL.`
+      };
+    }
+
+    case "web.open":
+      return webOpen(String(args.url ?? ""));
+
     default:
-      throw new Error(`Unknown tool: ${tool}`);
+      throw new Error(`Unknown tool: ${tool}. Available: local.barcode_lookup, local.search, local.usda_barcode, local.usda_search, usda.search, web.search, web.open`);
   }
 }
