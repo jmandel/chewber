@@ -155,7 +155,14 @@ Record this as the scoring_track in your report.
 - not_rated_reason: (null if rated, otherwise brief explanation e.g. "alcohol", "infant formula", etc.)
 
 ## 1) Identification
-- Canonical name: (Do NOT include "Organic" in the name — organic status is tracked separately in section 5)
+- Canonical name — follow these rules:
+  - Strip "Organic" — tracked separately in section 5
+  - Strip generic food-category suffixes that duplicate the category (e.g. "Breakfast Cereal", "Snack Chips", "Frozen Pizza") — UNLESS removing them makes the name ambiguous or unrecognizable. "Cheerios Original" is fine; "Cheerios Original Gluten Free Breakfast Cereal" is too long.
+  - Keep the brand's product-line or variant name: "Simply Naked Pita Chips" ✓, "Honey Nut Cheerios" ✓
+  - Keep varietal/cultivar for natural foods: "Hass Avocado" ✓, "Fuji Apple" ✓, but plain "Avocado" is also fine when variety is unknown
+  - Title Case, no ALL CAPS
+  - Target 1–5 words; over 5 words is a code smell — look for redundancy
+  - Never include package size, UPC, or store name
 - Brand: (use the brand from the input query if provided; if the query has no brand/null brand, set to null — do NOT invent or guess a brand)
 - Barcode (EAN/UPC): (use the barcode from the input query if provided; if no barcode, set to null — do NOT use a barcode from a different product found during research)
 - Kind: prepared | natural

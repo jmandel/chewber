@@ -20,7 +20,10 @@ Rules:
 - Strip source annotations (e.g. "(local.barcode_lookup)") from numeric values — extract only the number.
 
 - identification.canonical_name:
-  - Strip the word "Organic" from the name — organic status is tracked separately in the organic field.
+  - Strip "Organic" — tracked separately in the organic field.
+  - Strip generic food-category suffixes that duplicate the category (e.g. "Breakfast Cereal", "Snack Chips") UNLESS removing them makes the name unrecognizable.
+  - Keep brand product-line or variant names ("Simply Naked Pita Chips" ✓, "Honey Nut Cheerios" ✓).
+  - Title Case, 1–5 words preferred, no ALL CAPS, no package sizes.
 
 - zagat_line (REQUIRED, never null):
   - Extract from the "Zagat line" section of the report.
