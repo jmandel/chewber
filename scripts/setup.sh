@@ -113,6 +113,15 @@ else
     "$ROOT_DIR/scripts/build-off-parquet.sh"
     info "Open Food Facts parquet ready"
   fi
+
+  # Build SQLite search index over parquet
+  OFF_INDEX="$DATA_DIR/off-index.sqlite"
+  if [ -f "$OFF_INDEX" ]; then
+    info "OFF search index already exists — skipping"
+    info "To rebuild: rm $OFF_INDEX && ./scripts/build-off-index.sh"
+  else
+    "$ROOT_DIR/scripts/build-off-index.sh"
+  fi
 fi
 
 # ── Summary ──────────────────────────────────────────────────

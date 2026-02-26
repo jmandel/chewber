@@ -1,4 +1,5 @@
 import { DuckDBInstance, DuckDBConnection } from "@duckdb/node-api";
+import { Database } from "bun:sqlite";
 import path from "node:path";
 
 // ---------------------------------------------------------------------------
@@ -16,12 +17,33 @@ export interface LocalOffProduct {
 }
 
 // ---------------------------------------------------------------------------
-// DuckDB connection (singleton, lazy-init)
+// Paths
 // ---------------------------------------------------------------------------
 
+const DATA_DIR = path.resolve(import.meta.dir, "../../../../data");
+
 const PARQUET_PATH =
-  process.env.OFF_PARQUET_PATH ??
-  path.resolve(import.meta.dir, "../../../../data/off-food.parquet");
+  process.env.OFF_PARQUET_PATH ?? path.join(DATA_DIR, "off-food.parquet");
+
+const INDEX_PATH =
+  process.env.OFF_INDEX_PATH ?? path.join(DATA_DIR, "off-index.sqlite");
+
+// ---------------------------------------------------------------------------
+// SQLite index (singleton)
+// ---------------------------------------------------------------------------
+
+let _indexDb: Database | null = null;
+
+function getIndex(): Database {
+  if (_indexDb) return _indexDb;
+  _indexDb = new Database(INDEX_PATH, { readonly: true });
+  _indexDb.exec("PRAGMA mmap_size = 268435456;"); // 256 MB mmap
+  return _indexDb;
+}
+
+// ---------------------------------------------------------------------------
+// DuckDB connection for full-record fetches (singleton, lazy-init)
+// ---------------------------------------------------------------------------
 
 let _instance: DuckDBInstance | null = null;
 let _conn: DuckDBConnection | null = null;
@@ -45,23 +67,7 @@ async function getConn(): Promise<DuckDBConnection> {
 }
 
 // ---------------------------------------------------------------------------
-// Row conversion
-// ---------------------------------------------------------------------------
-
-function rowToProduct(row: any): LocalOffProduct {
-  return {
-    barcode: row.barcode ?? "",
-    product_name: row.product_name ?? null,
-    brands: row.brands ?? null,
-    categories: row.categories ?? null,
-    nutriments: row.nutriments_json ? JSON.parse(row.nutriments_json) : null,
-    ingredients_text: row.ingredients_text ?? null,
-    additives: row.additives ? row.additives.split(",").filter(Boolean) : null,
-  };
-}
-
-// ---------------------------------------------------------------------------
-// Shared SQL fragments
+// DuckDB full-record fetch
 // ---------------------------------------------------------------------------
 
 const SELECT_PRODUCT = `
@@ -79,6 +85,44 @@ const SELECT_PRODUCT = `
     ELSE NULL
   END AS nutriments_json
 `;
+
+function rowToProduct(row: any): LocalOffProduct {
+  return {
+    barcode: row.barcode ?? "",
+    product_name: row.product_name ?? null,
+    brands: row.brands ?? null,
+    categories: row.categories ?? null,
+    nutriments: row.nutriments_json ? JSON.parse(row.nutriments_json) : null,
+    ingredients_text: row.ingredients_text ?? null,
+    additives: row.additives ? row.additives.split(",").filter(Boolean) : null,
+  };
+}
+
+/** Fetch full product record from parquet by barcode. */
+async function fetchFullRecord(code: string): Promise<LocalOffProduct | null> {
+  const conn = await getConn();
+  const result = await conn.runAndReadAll(`
+    SELECT ${SELECT_PRODUCT}
+    FROM '${PARQUET_PATH}'
+    WHERE code = '${code.replace(/'/g, "''")}'
+    LIMIT 1
+  `);
+  const rows = result.getRowObjects();
+  return rows.length > 0 ? rowToProduct(rows[0]) : null;
+}
+
+/** Fetch full product records from parquet for multiple barcodes. */
+async function fetchFullRecords(codes: string[]): Promise<LocalOffProduct[]> {
+  if (codes.length === 0) return [];
+  const conn = await getConn();
+  const inList = codes.map((c) => `'${c.replace(/'/g, "''")}'`).join(",");
+  const result = await conn.runAndReadAll(`
+    SELECT ${SELECT_PRODUCT}
+    FROM '${PARQUET_PATH}'
+    WHERE code IN (${inList})
+  `);
+  return result.getRowObjects().map(rowToProduct);
+}
 
 // ---------------------------------------------------------------------------
 // Barcode normalization
@@ -98,88 +142,90 @@ function barcodeVariants(raw: string): string[] {
 }
 
 // ---------------------------------------------------------------------------
-// Barcode lookup
+// FTS tokenization (matches FTS5 unicode61 behavior)
+// ---------------------------------------------------------------------------
+
+function ftsTokenize(query: string): string[] {
+  const raw = query.split(/[^\w]+/).filter((t) => t.length > 1);
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const t of raw) {
+    const low = t.toLowerCase();
+    if (!seen.has(low)) {
+      seen.add(low);
+      out.push(t);
+    }
+  }
+  return out;
+}
+
+// ---------------------------------------------------------------------------
+// Barcode lookup  (SQLite index → DuckDB full record)
 // ---------------------------------------------------------------------------
 
 export async function localOffBarcodeLookup(
   barcode: string
 ): Promise<LocalOffProduct | null> {
-  const conn = await getConn();
   const variants = barcodeVariants(barcode);
   if (variants.length === 0) return null;
 
-  const inList = variants.map((v) => `'${v}'`).join(",");
-  const result = await conn.runAndReadAll(`
-    SELECT ${SELECT_PRODUCT}
-    FROM '${PARQUET_PATH}'
-    WHERE code IN (${inList})
-    LIMIT 1
-  `);
+  const db = getIndex();
+  const placeholders = variants.map(() => "?").join(",");
+  const hit = db
+    .query(`SELECT code FROM off_products WHERE code IN (${placeholders}) LIMIT 1`)
+    .get(...variants) as { code: string } | null;
 
-  const rows = result.getRowObjects();
-  if (rows.length === 0) return null;
-  return rowToProduct(rows[0]);
+  if (!hit) return null;
+  return fetchFullRecord(hit.code);
 }
 
 // ---------------------------------------------------------------------------
-// Text search
+// Text search  (SQLite FTS5 → DuckDB full records)
 // ---------------------------------------------------------------------------
 
-/**
- * Text search across OFF products using DuckDB's contains().
- * The parquet is sorted by code, so column scans are efficient.
- * Strategy: try progressively looser matching.
- */
 export async function localOffSearchText(
   query: string,
   limit: number = 20
 ): Promise<LocalOffProduct[]> {
-  const conn = await getConn();
-  const tokens = query
-    .split(/[^\w]+/)
-    .filter((t) => t.length > 1)
-    .map((t) => t.toLowerCase());
+  const tokens = ftsTokenize(query);
   if (tokens.length === 0) return [];
 
-  const run = async (whereClause: string): Promise<LocalOffProduct[]> => {
-    try {
-      const r = await conn.runAndReadAll(`
-        SELECT ${SELECT_PRODUCT}
-        FROM '${PARQUET_PATH}'
-        WHERE ${whereClause}
-        LIMIT ${limit}
-      `);
-      return r.getRowObjects().map(rowToProduct);
-    } catch {
-      return [];
-    }
-  };
-
-  // Build a contains() expression for a set of tokens against combined fields
-  const allContains = (toks: string[]) =>
-    toks
-      .map(
-        (t) =>
-          `(contains(lower(coalesce(product_name[1]."text",'')), '${t}') OR contains(lower(coalesce(brands,'')), '${t}'))`
-      )
-      .join(" AND ");
+  const db = getIndex();
 
   // Strategy 1: AND all tokens
-  let results = await run(allContains(tokens));
-  if (results.length > 0) return results;
+  const andExpr = tokens.join(" ");
+  let codes = searchFts(db, andExpr, limit);
 
   // Strategy 2: Progressive relaxation — drop tokens from end
-  if (tokens.length > 2) {
+  if (codes.length === 0 && tokens.length > 2) {
     for (let drop = 1; drop < tokens.length - 1; drop++) {
-      results = await run(allContains(tokens.slice(0, tokens.length - drop)));
-      if (results.length > 0) return results;
+      codes = searchFts(db, tokens.slice(0, tokens.length - drop).join(" "), limit);
+      if (codes.length > 0) break;
     }
   }
 
-  // Strategy 3: OR any token (in product_name only to avoid noise)
-  const orContains = tokens
-    .map((t) => `contains(lower(coalesce(product_name[1]."text",'')), '${t}')`)
-    .join(" OR ");
-  results = await run(orContains);
-  return results;
+  // Strategy 3: OR any token
+  if (codes.length === 0) {
+    const orExpr = tokens.join(" OR ");
+    codes = searchFts(db, orExpr, limit);
+  }
+
+  return fetchFullRecords(codes);
+}
+
+function searchFts(db: Database, matchExpr: string, limit: number): string[] {
+  try {
+    const rows = db
+      .query(
+        `SELECT p.code FROM off_fts f
+         JOIN off_products p ON p.id = f.rowid
+         WHERE off_fts MATCH ?
+         ORDER BY rank
+         LIMIT ?`
+      )
+      .all(matchExpr, limit) as { code: string }[];
+    return rows.map((r) => r.code);
+  } catch {
+    return [];
+  }
 }
