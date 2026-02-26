@@ -149,43 +149,5 @@ CREATE TABLE IF NOT EXISTS source_cache (
 );
 
 
--- Optional local dataset: Open Food Facts product cache for fast offline search.
--- Populated via scripts/import-openfoodfacts.ts (TODO_CHEWBER_SOURCES)
-CREATE TABLE IF NOT EXISTS dataset_off_products (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  barcode TEXT UNIQUE,
-  product_name TEXT,
-  brands TEXT,
-  categories TEXT,
-  nutriments_json TEXT,
-  ingredients_text TEXT,
-  additives_json TEXT,
-  raw_json TEXT,
-  updated_at TEXT
-);
-
-CREATE VIRTUAL TABLE IF NOT EXISTS dataset_off_products_fts USING fts5(
-  product_name,
-  brands,
-  categories,
-  ingredients_text,
-  content='dataset_off_products',
-  content_rowid='id'
-);
-
-CREATE TRIGGER IF NOT EXISTS dataset_off_ai AFTER INSERT ON dataset_off_products BEGIN
-  INSERT INTO dataset_off_products_fts(rowid, product_name, brands, categories, ingredients_text)
-  VALUES (new.id, coalesce(new.product_name,''), coalesce(new.brands,''), coalesce(new.categories,''), coalesce(new.ingredients_text,''));
-END;
-
-CREATE TRIGGER IF NOT EXISTS dataset_off_ad AFTER DELETE ON dataset_off_products BEGIN
-  INSERT INTO dataset_off_products_fts(dataset_off_products_fts, rowid, product_name, brands, categories, ingredients_text)
-  VALUES ('delete', old.id, coalesce(old.product_name,''), coalesce(old.brands,''), coalesce(old.categories,''), coalesce(old.ingredients_text,''));
-END;
-
-CREATE TRIGGER IF NOT EXISTS dataset_off_au AFTER UPDATE ON dataset_off_products BEGIN
-  INSERT INTO dataset_off_products_fts(dataset_off_products_fts, rowid, product_name, brands, categories, ingredients_text)
-  VALUES ('delete', old.id, coalesce(old.product_name,''), coalesce(old.brands,''), coalesce(old.categories,''), coalesce(old.ingredients_text,''));
-  INSERT INTO dataset_off_products_fts(rowid, product_name, brands, categories, ingredients_text)
-  VALUES (new.id, coalesce(new.product_name,''), coalesce(new.brands,''), coalesce(new.categories,''), coalesce(new.ingredients_text,''));
-END;
+-- Open Food Facts data is served from DuckDB + Parquet (see sources/localOff.ts).
+-- No OFF tables in SQLite.
