@@ -70,8 +70,8 @@ async function getBundle(): Promise<string> {
     entrypoints: [ENTRY_PATH],
     target: "browser",
     format: "esm",
-    sourcemap: "inline",
-    minify: false
+    sourcemap: "none",
+    minify: true
   });
   if (!result.success) {
     const msg = result.logs.map((l) => l.message).join("\n");
