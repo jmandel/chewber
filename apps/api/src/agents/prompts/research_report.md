@@ -43,6 +43,12 @@ You may request any of these tools:
 4. You can try alternative searches if the first attempt doesn't find what you need.
 5. You may request **multiple tool calls in a single step** — they run in parallel.
 
+**CRITICAL — Cross-reference nutrition data from multiple sources:**
+- NEVER rely on a single source for nutrition facts. Always cross-reference at least **2 independent sources** (e.g. manufacturer label + USDA FDC, or Open Food Facts + nutritionvalue.org).
+- US nutrition labels legally round values: fiber <1g rounds to 0g, fat <0.5g rounds to 0g, etc. This causes serious scoring errors. When a US label shows 0g for fiber or fat, actively search for USDA FoodData Central or per-100g databases that report unrounded values.
+- Prefer per-100g data from databases (USDA FDC, Open Food Facts, nutritionvalue.org) over converting from US per-serving labels, since per-serving data loses precision to rounding.
+- If sources disagree, use the more granular/precise value and note the discrepancy in section 7.
+
 You have up to **10 rounds** of tool calls. Use as many as needed to get complete data, but produce the final report as soon as you have enough information. Do not waste rounds.
 
 After each round, the system responds with tool_results for each call. Evaluate what you still need and decide your next action.
