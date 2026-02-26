@@ -299,17 +299,21 @@ async function runTool(tool: string, args: any): Promise<any> {
         };
       }
       const hasNutrition = result.nutriments && Object.keys(result.nutriments).length > 0;
+      const nutriCount = hasNutrition ? Object.keys(result.nutriments!).length : 0;
       return {
         found: true,
         source: "Open Food Facts (local)",
         has_nutrition: hasNutrition,
+        nutrition_fields: nutriCount,
         has_ingredients: !!result.ingredients_text,
         product: result,
         hint: !hasNutrition
           ? "Product found but MISSING nutrition data. Use local.usda_barcode or local.usda_search to find per-100g nutrition for this product."
-          : result.ingredients_text
-            ? "Product found with nutrition + ingredients. Cross-reference nutrition with local.usda_search or usda.search for accuracy."
-            : "Product found with nutrition but no ingredients. Try local.usda_barcode or web.search for ingredient list."
+          : !result.ingredients_text
+            ? "Product found with nutrition but no ingredients. Try local.usda_barcode or web.search for ingredient list."
+            : nutriCount >= 8
+              ? "Product found with comprehensive nutrition + ingredients. This data is sufficient — only cross-reference if values look suspicious."
+              : "Product found with partial nutrition + ingredients. Consider local.usda_search to fill gaps."
       };
     }
 
@@ -323,10 +327,15 @@ async function runTool(tool: string, args: any): Promise<any> {
         source: "Open Food Facts (local FTS)",
         results,
         hint: results.length === 0
-          ? "No matches in OFF. Try local.usda_search (USDA database, better nutrition coverage) or broaden your search terms."
+          ? "No matches in OFF. Try local.usda_search (USDA database) or broaden your search terms."
           : withNutrition.length === 0
             ? `Found ${results.length} matches but NONE have nutrition data. Use local.usda_search to find nutrition for these products.`
-            : `Found ${withNutrition.length}/${results.length} with nutrition. Cross-reference with local.usda_search for accuracy.`
+            : (() => {
+                const best = results.find(r => r.nutriments && Object.keys(r.nutriments).length >= 8 && r.ingredients_text);
+                return best
+                  ? `Found ${withNutrition.length}/${results.length} with nutrition. Best match has comprehensive data — sufficient for the report unless values look suspicious. Only go to web if brand match is uncertain.`
+                  : `Found ${withNutrition.length}/${results.length} with nutrition. Consider local.usda_search to fill gaps or verify.`;
+              })()
       };
     }
 
@@ -367,10 +376,20 @@ async function runTool(tool: string, args: any): Promise<any> {
         source: "USDA FoodData Central (local FTS)",
         results: results.slice(0, args.limit ?? 10),
         hint: results.length === 0
-          ? "No matches in local USDA. Try usda.search (online API, broader index) or web.search with different terms. Try shorter or more general terms."
-          : withNutrition.length === 0
-            ? `Found ${results.length} matches but none with nutrition. Try usda.search (online API) for better coverage.`
-            : `Found ${withNutrition.length}/${results.length} with nutrition. USDA data is authoritative per-100g.`
+          ? "No matches in local USDA. The brand may not be in USDA’s database. If OFF already has good data, that’s sufficient. Otherwise try web.search."
+          : (() => {
+                // Check if any result actually matches the queried brand
+                const queryLower = query.toLowerCase();
+                const brandMatch = results.some(r =>
+                  (r.brand_owner && queryLower.includes(r.brand_owner.toLowerCase().split(/[,]/).map(s => s.trim())[0])) ||
+                  (r.brand_name && queryLower.includes(r.brand_name.toLowerCase()))
+                );
+                if (!brandMatch && withNutrition.length > 0)
+                  return `Found ${results.length} results but NONE match the queried brand. These are different products — do NOT use their nutrition. If OFF already has the correct product with nutrition, use that instead.`;
+                return withNutrition.length === 0
+                  ? `Found ${results.length} matches but none with nutrition. Try usda.search (online API) for better coverage.`
+                  : `Found ${withNutrition.length}/${results.length} with nutrition. USDA data is authoritative per-100g.`;
+              })()
       };
     }
 
