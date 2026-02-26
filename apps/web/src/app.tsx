@@ -1148,6 +1148,11 @@ function RelatedFoods({ foodId }: { foodId: string }) {
 }
 
 // ── Compare page ──────────────────────────────────────
+function truncName(name: string, maxWords = 8): string {
+  const words = name.split(/\s+/);
+  return words.length > maxWords ? words.slice(0, maxWords).join(" ") + "…" : name;
+}
+
 function ComparePage() {
   const nav = useNavigate();
   const location = useLocation();
@@ -1300,8 +1305,8 @@ function ComparePage() {
               <tr>
                 <th style={{ padding: "6px 8px", minWidth: 80 }} />
                 {foods.map(f => (
-                  <th key={f.id} style={{ padding: "6px 8px 0", textAlign: "center", minWidth: 100, verticalAlign: "bottom" }}>
-                    <div style={{ fontWeight: 700, fontSize: 14, lineHeight: 1.2 }}>{f.canonical_name}</div>
+                  <th key={f.id} style={{ padding: "6px 8px 0", textAlign: "center", minWidth: 100, verticalAlign: "top" }}>
+                    <div style={{ fontWeight: 700, fontSize: 14, lineHeight: 1.2 }}>{truncName(f.canonical_name)}</div>
                   </th>
                 ))}
               </tr>
