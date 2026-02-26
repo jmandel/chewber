@@ -109,7 +109,7 @@ app.get("/*", async (c, next) => {
 
 app.get("/assets/styles.css", (c) => {
   return new Response(Bun.file(CSS_PATH), {
-    headers: { "Content-Type": "text/css; charset=utf-8" }
+    headers: { "Content-Type": "text/css; charset=utf-8", "Cache-Control": "no-cache" }
   });
 });
 
@@ -117,7 +117,7 @@ app.get("/assets/app.js", async (c) => {
   try {
     const code = await getBundle();
     return new Response(code, {
-      headers: { "Content-Type": "application/javascript; charset=utf-8" }
+      headers: { "Content-Type": "application/javascript; charset=utf-8", "Cache-Control": "no-cache" }
     });
   } catch (err: any) {
     return new Response(String(err?.stack ?? err), { status: 500 });
