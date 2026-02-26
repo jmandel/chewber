@@ -12,7 +12,7 @@
         "properties": {
           "tool": {
             "type": "string",
-            "enum": ["local.barcode_lookup", "local.search", "web.search", "web.open"]
+            "enum": ["local.barcode_lookup", "local.search", "web.search", "web.open", "usda.search"]
           },
           "args": {
             "type": "object"

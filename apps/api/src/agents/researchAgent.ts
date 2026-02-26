@@ -4,6 +4,7 @@ import { z } from "zod";
 import { getLlm } from "./llm/client";
 import { localOffBarcodeLookup, localOffSearchText } from "../sources/localOff";
 import { webSearch, webOpen } from "../sources/web";
+import { usdaSearch } from "../sources/usda";
 
 import { toGeminiSchema } from "./llm/schemaTransform";
 
@@ -81,6 +82,7 @@ function formatToolQuery(tool: string, args: Record<string, any>): string {
   switch (tool) {
     case "web.search":
     case "local.search":
+    case "usda.search":
       return args.query ? `: "${args.query}"` : "";
     case "web.open":
       return args.url ? `: ${args.url}` : "";
@@ -96,9 +98,11 @@ function formatToolResult(tool: string, result: any): string {
   if (!result) return "ok";
   switch (tool) {
     case "web.search":
+      if (Array.isArray(result)) return `${result.length} results`;
       if (Array.isArray(result?.results)) return `${result.results.length} results`;
       if (typeof result?.count === "number") return `${result.count} results`;
       return "ok";
+    case "usda.search":
     case "local.search":
       if (typeof result?.count === "number") return `${result.count} match${result.count === 1 ? "" : "es"}`;
       return "ok";
@@ -287,6 +291,10 @@ async function runTool(tool: string, args: any): Promise<any> {
       return webSearch(String(args.query ?? ""));
     case "web.open":
       return webOpen(String(args.url ?? ""));
+    case "usda.search": {
+      const results = await usdaSearch(String(args.query ?? ""), args.limit ?? 5);
+      return results;
+    }
     default:
       throw new Error(`Unknown tool: ${tool}`);
   }

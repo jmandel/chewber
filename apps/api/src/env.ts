@@ -55,6 +55,7 @@ const EnvSchema = z.object({
   OPENROUTER_MODEL: z.string().default("google/gemini-3-flash-preview"),
 
   USDA_API_KEY: z.string().optional(),
+  BRAVE_SEARCH_API_KEY: z.string().optional(),
 
   CHEWBER_WEB_ORIGIN: z.string().default("http://localhost:5173")
 });
@@ -79,6 +80,7 @@ export function getEnv(): Env {
     OPENROUTER_MODEL: process.env.OPENROUTER_MODEL,
 
     USDA_API_KEY: process.env.USDA_API_KEY,
+    BRAVE_SEARCH_API_KEY: process.env.BRAVE_SEARCH_API_KEY,
 
     CHEWBER_WEB_ORIGIN: process.env.CHEWBER_WEB_ORIGIN
   };
