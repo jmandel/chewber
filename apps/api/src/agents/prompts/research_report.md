@@ -234,15 +234,23 @@ If drinkable → check these exceptions:
     - COUNTS: fruits, vegetables, legumes/pulses (beans, lentils, peas, chickpeas), tree nuts (almonds, walnuts, cashews, pecans, pistachios, hazelnuts, macadamia, brazil nuts), rapeseed/walnut/olive oil
     - DOES NOT COUNT: cereals/grains, oilseeds (sunflower/flax/pumpkin/sesame/chia/hemp seeds), coconut, peanuts, cocoa, sugar, dairy, meat, fish, eggs, spices, salt, **water**, starches
 
-    **How to estimate FVPN% — follow this priority order:**
+    **How to estimate FVPN% — two-step method (BOTH steps required):**
 
-    1. **Use the OFF database estimate when available.** Open Food Facts tool results include `fvpn_estimate` with `fruits_vegetables_nuts_percent` (FVN) and `fruits_vegetables_legumes_percent` (FVL). These are computed algorithmically from parsed ingredient lists. **Use the FVN value as your FVPN%.** You may round it (e.g. 84.9 → 85). This is your answer — proceed to the next section.
+    **Step A: Calculate using the water-discount method.**
+    Using the ingredient list, estimate the FVPN% arithmetically (see method below). Write out the calculation. This is your **calculated estimate**.
 
-    2. **When multiple OFF entries exist** (text search returns several results for the same product), their FVPN estimates may vary. **Use the median FVN value.** Ignore outlier highs (>90% for products with reconstituted ingredients) — those usually mean the parser failed to discount water.
+    **Step B: Check against the OFF database estimate.**
+    Open Food Facts tool results include `fvpn_estimate` with `fruits_vegetables_nuts_percent` (FVN). This is your **OFF estimate**. When multiple OFF entries exist, take the median FVN (ignoring entries with no estimate).
 
-    3. **If no OFF estimate exists**, estimate from the ingredient list using the water-discount method below.
-
-    4. **If you believe an OFF estimate is wrong**, you MUST show your work using the water-discount method below. Write out the calculation step by step: identify each FVPN-eligible ingredient, estimate its percentage of the total product weight, apply the water-discount factor, and sum. The result of this calculation is your FVPN% — not a round number you feel is right. "Premium standards" or "high quality" are NOT evidence. Only a concrete arithmetic disagreement with the OFF parser justifies an override.
+    **Reconcile:**
+    - If your calculated estimate and the OFF estimate are within ~15 points: use the OFF estimate (it has more data than you).
+    - If they diverge by >15 points: something is wrong. Re-examine your calculation AND the OFF ingredient parse. Common causes:
+      - OFF parsed the ingredients incorrectly (garbled text, missing sub-ingredients) → trust your calculation
+      - You forgot to discount water in a reconstituted ingredient → trust OFF
+      - OFF counted water-heavy puree at full weight → trust your calculation
+      Explain which source you trust and why, citing the specific error in the other.
+    - If no OFF estimate exists: use your calculated estimate.
+    - If no ingredient list exists: use the OFF estimate if available, otherwise report null.
 
     **Water-discount method (for manual estimation):**
     Reconstituted ingredients contain significant water. Water does NOT count toward FVPN%. You must discount it.
@@ -288,7 +296,7 @@ If drinkable → check these exceptions:
     - Seed butters (sunflower butter, tahini): FVPN% = 0
     - Do NOT set FVPN% = 100 just because a product is "100% X" — X must be in the allowed categories above
 
-    **Consistency principle:** Two similar products (e.g. two brands of marinara sauce with similar ingredient lists) MUST get similar FVPN% values. A 20+ point gap between similar products means something is wrong. If your estimate is >15 points away from the OFF estimate, you almost certainly made an error — re-check your math.
+    **Consistency principle:** Two similar products (e.g. two brands of pasta sauce with similar ingredient lists) MUST get similar FVPN% values. A 20+ point gap between similar products means something is wrong — re-check your calculations.
 
 ## 3) Nutrition facts (per 100 g or per 100 mL)
 Provide numeric values with units; use null if unknown.
