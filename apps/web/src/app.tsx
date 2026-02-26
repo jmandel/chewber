@@ -414,7 +414,7 @@ function FoodListItem({ food, onClick }: { food: FoodSummary; onClick: () => voi
               color: organic === "yes" ? "var(--kale)" : "var(--fog)",
               border: `1px solid ${organic === "yes" ? "var(--kale)" : "var(--fog)"}`,
               opacity: organic === "yes" ? 1 : 0.5
-            }}>{organic === "yes" ? "🌿" : "non-org"}</span>
+            }}>{organic === "yes" ? "Organic" : "Conventional"}</span>
           )}
         </div>
       </div>
@@ -840,7 +840,7 @@ function OrganicPill({ organic }: { organic?: string }) {
       color: yes ? "var(--kale)" : "var(--fog)",
       border: `1px solid ${yes ? "var(--kale)" : "var(--fog)"}`,
       opacity: yes ? 1 : 0.6
-    }}>{yes ? "🌿 Organic" : "Non-organic"}</span>
+    }}>{yes ? "Organic" : "Conventional"}</span>
   );
 }
 
