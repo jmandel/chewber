@@ -9,6 +9,8 @@ import { runResearchAgent } from "../../agents/researchAgent";
 import { reportToJson } from "../../agents/jsonStage";
 import { FoodAbstractionSchema, type FoodAbstraction, toScoreInputs } from "../../scoring/abstraction";
 import { scoreFood } from "../../scoring/score";
+import { mergeAdditives } from "../../scoring/additiveEnrich";
+import { localOffBarcodeLookup, localOffSearchText } from "../../sources/localOff";
 
 const PayloadSchema = z.object({
   query_id: z.string(),
@@ -58,6 +60,44 @@ export async function processResearchFoodJob(job: { id: string; payload_json: st
       emit({ level: "error", message: "Abstraction JSON failed schema validation", data: { error: String(e?.message ?? e) } });
       throw new Error("Abstraction JSON failed validation");
     }
+
+    updateJob(job.id, { progress: 72 });
+    emit({ level: "info", message: "Enriching additive detection…" });
+
+    // Stage B.5: deterministic additive enrichment
+    // Merge LLM-detected additives with OFF tags and ingredient text scan
+    const barcode = abs.identification.barcode;
+    let offTags: string[] | null = null;
+    if (barcode) {
+      try {
+        const offProduct = await localOffBarcodeLookup(barcode);
+        offTags = offProduct?.additives ?? null;
+      } catch { /* non-fatal */ }
+    }
+    // If barcode miss on OFF, try text search for additive tags
+    if (!offTags && abs.identification.canonical_name) {
+      try {
+        const searchTerms = [abs.identification.canonical_name, abs.identification.brand].filter(Boolean).join(" ");
+        const offResults = await localOffSearchText(searchTerms, 3);
+        // Use additives from best match that has them
+        for (const r of offResults) {
+          if (r.additives && r.additives.length > 0) {
+            offTags = r.additives;
+            break;
+          }
+        }
+      } catch { /* non-fatal */ }
+    }
+    const ingredientText = abs.ingredients.ingredients_text;
+    const enriched = mergeAdditives(abs.additives, offTags, ingredientText);
+    const addedCount = enriched.length - abs.additives.length;
+    if (addedCount > 0) {
+      emit({ level: "info", message: `Additive enrichment added ${addedCount} item(s)`, data: {
+        before: abs.additives.map(a => a.code ?? a.name),
+        after: enriched.map(a => a.code ?? a.name)
+      }});
+    }
+    abs = { ...abs, additives: enriched };
 
     updateJob(job.id, { progress: 75 });
     emit({ level: "info", message: "Computing score…" });
