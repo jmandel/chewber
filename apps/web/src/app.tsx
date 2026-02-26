@@ -1148,6 +1148,55 @@ function RelatedFoods({ foodId }: { foodId: string }) {
 }
 
 // ── Compare page ──────────────────────────────────────
+function CompareSuggestions({ foods, onAdd }: { foods: FoodDetail[]; onAdd: (id: string) => void }) {
+  const [suggestions, setSuggestions] = useState<{ label: string; foods: FoodSummary[] }[]>([]);
+  const loadedIds = new Set(foods.map(f => f.id));
+
+  useEffect(() => {
+    const cats = (foods[0]?.tags ?? []).filter(isCategory);
+    if (cats.length === 0) return;
+
+    // Fetch foods for up to 3 categories of the first food
+    const catSlugs = cats.slice(0, 3);
+    Promise.all(
+      catSlugs.map(slug =>
+        api.searchFoodsByCategory(slug)
+          .then(r => ({
+            label: slug.split("-").map(w => w[0].toUpperCase() + w.slice(1)).join(" "),
+            foods: r.foods.filter(f => !loadedIds.has(f.id))
+          }))
+          .catch(() => ({ label: slug, foods: [] as FoodSummary[] }))
+      )
+    ).then(groups => setSuggestions(groups.filter(g => g.foods.length > 0)));
+  }, [foods.map(f => f.id).join(",")]);
+
+  if (suggestions.length === 0) return null;
+
+  return (
+    <div style={{ marginBottom: 8 }}>
+      <div className="muted" style={{ fontSize: 12, fontWeight: 600, marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>Compare with…</div>
+      {suggestions.map(g => (
+        <div key={g.label} style={{ marginBottom: 6 }}>
+          <div className="muted" style={{ fontSize: 11, fontWeight: 600, marginBottom: 3 }}>{g.label}</div>
+          <div className="food-cats" style={{ display: "flex", gap: 6, overflowX: "auto", scrollbarWidth: "none", paddingBottom: 2 }}>
+            {g.foods.map(f => (
+              <button key={f.id} onClick={() => onAdd(f.id)} style={{
+                display: "flex", alignItems: "center", gap: 6, flexShrink: 0,
+                padding: "6px 10px", fontSize: 12, fontWeight: 500,
+                background: "var(--slate)", border: "none", borderRadius: "var(--radius-sm)",
+                color: "var(--cream)", cursor: "pointer", whiteSpace: "nowrap",
+              }}>
+                <ScorePill score={f.score ?? null} size={16} />
+                <span>{f.canonical_name}{f.brand ? ` · ${f.brand}` : ""}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function ComparePage() {
   const nav = useNavigate();
   const location = useLocation();
@@ -1239,17 +1288,29 @@ function ComparePage() {
         <div className="card muted" style={{ textAlign: "center", padding: 32 }}>Search above to add foods to compare.</div>
       )}
 
+      {foods.length > 0 && hits.length === 0 && !searchQ && (
+        <CompareSuggestions foods={foods} onAdd={addFood} />
+      )}
+
       {foods.length > 0 && (
         <div style={{ overflowX: "auto" }}>
           <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
             <thead>
               {/* Name row */}
               <tr>
-                <th style={{ textAlign: "left", padding: "6px 8px", minWidth: 80 }} />
+                <th style={{ padding: "6px 8px", minWidth: 80 }} />
                 {foods.map(f => (
-                  <th key={f.id} style={{ padding: "6px 8px", textAlign: "center", minWidth: 100, verticalAlign: "bottom" }}>
+                  <th key={f.id} style={{ padding: "6px 8px 0", textAlign: "center", minWidth: 100, verticalAlign: "bottom" }}>
                     <div style={{ fontWeight: 700, fontSize: 14, lineHeight: 1.2 }}>{f.canonical_name}</div>
-                    {f.brand && <div className="muted" style={{ fontSize: 11, marginTop: 1 }}>{f.brand}</div>}
+                  </th>
+                ))}
+              </tr>
+              {/* Brand row */}
+              <tr>
+                <th style={{ padding: 0 }} />
+                {foods.map(f => (
+                  <th key={f.id} style={{ padding: "1px 8px 0", textAlign: "center", verticalAlign: "top", fontWeight: 400 }}>
+                    {f.brand ? <div className="muted" style={{ fontSize: 11 }}>{f.brand}</div> : <div style={{ fontSize: 11 }}> </div>}
                   </th>
                 ))}
               </tr>
