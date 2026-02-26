@@ -296,10 +296,10 @@ function AboutOverlay({ onClose }: { onClose: () => void }) {
           </ul>
           <h4 style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--fog)", marginBottom: 6 }}>Reading the score</h4>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12, fontSize: 13 }}>
-            <span style={{ padding: "2px 10px", borderRadius: 6, background: "#3D8B5F", color: "#fff", fontWeight: 700 }}>75–100 Excellent</span>
-            <span style={{ padding: "2px 10px", borderRadius: 6, background: "#D4A24C", color: "#fff", fontWeight: 700 }}>50–74 Good</span>
-            <span style={{ padding: "2px 10px", borderRadius: 6, background: "#C8714A", color: "#fff", fontWeight: 700 }}>25–49 Mediocre</span>
-            <span style={{ padding: "2px 10px", borderRadius: 6, background: "#C44D3E", color: "#fff", fontWeight: 700 }}>0–24 Poor</span>
+            <span style={{ padding: "2px 10px", borderRadius: 6, background: "#3D8B5F", color: "#fff", fontWeight: 700 }}>85–100 Excellent</span>
+            <span style={{ padding: "2px 10px", borderRadius: 6, background: "#D4A24C", color: "#fff", fontWeight: 700 }}>65–84 Good</span>
+            <span style={{ padding: "2px 10px", borderRadius: 6, background: "#C8714A", color: "#fff", fontWeight: 700 }}>40–64 Mediocre</span>
+            <span style={{ padding: "2px 10px", borderRadius: 6, background: "#C44D3E", color: "#fff", fontWeight: 700 }}>0–39 Poor</span>
           </div>
           <h4 style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--fog)", marginBottom: 6 }}>Data sources</h4>
           <p style={{ marginBottom: 16, fontSize: 13 }}>
@@ -442,12 +442,12 @@ function ScorePill({ score, size = 20 }: { score: number | null; size?: number }
 }
 
 // ── Shared food list item ───────────────────────────────────
-function FoodListItem({ food, onClick }: { food: FoodSummary; onClick: () => void }) {
+function FoodListItem({ food, onClick, noBorder }: { food: FoodSummary; onClick: () => void; noBorder?: boolean }) {
   const organic = food.organic;
   return (
     <div onClick={onClick} style={{
       display: "flex", justifyContent: "space-between", alignItems: "center",
-      padding: "10px 0", borderBottom: "1px solid var(--slate)", cursor: "pointer", gap: 12
+      padding: "10px 0", borderBottom: noBorder ? "none" : "1px solid var(--slate)", cursor: "pointer", gap: 12
     }}>
       <div style={{ minWidth: 0, flex: 1 }}>
         <div style={{ fontWeight: 600, fontSize: 14, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{food.canonical_name}</div>
@@ -975,7 +975,7 @@ function ScoreHero({ food }: { food: FoodDetail }) {
   const stub = isStubData(food);
   const incomplete = isIncompleteReport(food);
   const color = score == null ? "var(--fog)" : score >= 75 ? "var(--kale)" : score >= 50 ? "var(--amber)" : score >= 25 ? "var(--tangerine)" : "var(--coral)";
-  const label = stub ? "Demo data — not real" : incomplete ? "Incomplete analysis" : score == null ? "Score unavailable" : score >= 75 ? "Excellent" : score >= 50 ? "Good" : score >= 25 ? "Mediocre" : "Poor";
+  const label = stub ? "Demo data — not real" : incomplete ? "Incomplete analysis" : score == null ? "Score unavailable" : score >= 85 ? "Excellent" : score >= 65 ? "Good" : score >= 40 ? "Mediocre" : "Poor";
   return (
     <div className="card" style={{ textAlign: "center", padding: "28px 16px", position: "relative" }}>
       <ShareButton food={food} />
@@ -1255,16 +1255,17 @@ function RelatedFoods({ foodId }: { foodId: string }) {
   return (
     <div className="card" style={{ marginTop: 8 }}>
       <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 10 }}>Related Foods</div>
-      {related.map(f => (
+      {related.map((f, i) => (
         <div key={f.id}>
-          <FoodListItem food={f} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} />
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginTop: -4, marginBottom: 6, paddingLeft: 2 }}>
+          <FoodListItem food={f} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} noBorder />
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 4, paddingLeft: 2, paddingBottom: 8 }}>
             {f.shared_tags.filter(isCategory).map(t => (
               <span key={t} className="badge" style={{ fontSize: 9, padding: "1px 6px", opacity: 0.7 }}>
                 {t.split("-").map(w => w[0].toUpperCase() + w.slice(1)).join(" ")}
               </span>
             ))}
           </div>
+          {i < related.length - 1 && <div style={{ borderBottom: "1px solid var(--slate)" }} />}
         </div>
       ))}
     </div>
