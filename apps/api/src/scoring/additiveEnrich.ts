@@ -158,9 +158,18 @@ export function mergeAdditives(
 ): AdditiveItem[] {
   const result: AdditiveItem[] = [];
   const seenCodes = new Set<string>();
+  // Track base codes (E150 from E150A) to prevent variant collisions
+  const seenBaseCodes = new Set<string>();
+
+  function trackCode(norm: string) {
+    seenCodes.add(norm);
+    const baseMatch = norm.match(/^(E\d+)[A-Z]+$/i);
+    if (baseMatch) seenBaseCodes.add(baseMatch[1]);
+    else seenBaseCodes.add(norm); // E322 is its own base
+  }
 
   // Helper to add if not duplicate
-  function addIfNew(item: AdditiveItem) {
+  function addIfNew(item: AdditiveItem, isLowPriority = false) {
     if (!item.code) {
       // null-code items (e.g. Natural Flavors) — dedup by name
       const nameKey = (item.name ?? "").toLowerCase().trim();
@@ -170,7 +179,14 @@ export function mergeAdditives(
     }
     const norm = normalizeAdditiveCode(item.code);
     if (seenCodes.has(norm)) return;
-    seenCodes.add(norm);
+    // For low-priority sources (ingredient scan), also skip if a variant of the
+    // same base code exists (e.g. LLM said E150A, scanner says E150D — trust LLM)
+    if (isLowPriority) {
+      const baseMatch = norm.match(/^(E\d+)[A-Z]+$/i);
+      const base = baseMatch ? baseMatch[1] : norm;
+      if (seenBaseCodes.has(base)) return;
+    }
+    trackCode(norm);
     result.push(item);
   }
 
@@ -182,9 +198,9 @@ export function mergeAdditives(
     for (const a of parseOffAdditiveTags(offTags)) addIfNew(a);
   }
 
-  // 3. Ingredient text scan (lowest priority)
+  // 3. Ingredient text scan (lowest priority — skip if LLM already has a variant)
   if (ingredientText) {
-    for (const a of scanIngredientsForAdditives(ingredientText)) addIfNew(a);
+    for (const a of scanIngredientsForAdditives(ingredientText)) addIfNew(a, true);
   }
 
   return result;
