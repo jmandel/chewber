@@ -449,18 +449,18 @@ function TextStep({ fs }: { fs: ReturnType<typeof useFlowState> }) {
           placeholder="e.g. Cheerios, red onion, Kerrygold butter"
           style={{ width: "100%", fontSize: 16, padding: "12px 14px", marginBottom: 0 }} />
 
+        <button disabled={!q.trim()} onClick={() => fs.search(q.trim())} className="btn-primary btn-full" style={{ marginTop: 12 }}>
+          {hits.length > 0 ? "🔍 New analysis →" : "Search"}
+        </button>
+
         {hits.length > 0 && (
-          <div style={{ borderTop: "1px solid var(--slate)", marginTop: 8, paddingTop: 8 }}>
+          <div style={{ borderTop: "1px solid var(--slate)", marginTop: 12, paddingTop: 8 }}>
             <div className="muted" style={{ fontSize: 11, marginBottom: 6 }}>Already analyzed</div>
             {hits.map(f => (
               <FoodListItem key={f.id} food={f} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} />
             ))}
           </div>
         )}
-
-        <button disabled={!q.trim()} onClick={() => fs.search(q.trim())} className="btn-primary btn-full" style={{ marginTop: 12 }}>
-          {hits.length > 0 ? "🔍 New analysis →" : "Search"}
-        </button>
       </div>
     </div>
   );
