@@ -17,6 +17,26 @@
   --radius: 14px;
   --radius-sm: 10px;
   --overlay-bg: rgba(0,0,0,0.6);
+
+  /* Event log level backgrounds */
+  --log-info-bg: #1e293b;
+  --log-info-fg: #94a3b8;
+  --log-tool-bg: #0f2a1e;
+  --log-tool-fg: #4ade80;
+  --log-warn-bg: #2a2206;
+  --log-warn-fg: #facc15;
+  --log-error-bg: #2a1010;
+  --log-error-fg: #f87171;
+  --log-debug-bg: #1a1a1e;
+  --log-debug-fg: #666;
+  --log-message-fg: #d4d4d8;
+  --log-expand-fg: #666;
+  --log-pre-bg: #0e0e12;
+  --log-pre-fg: #a1a1aa;
+  --log-progress-track: #27272a;
+  --log-error-banner-bg: #2a1010;
+  --log-error-banner-border: #ff4444;
+  --log-error-banner-fg: #ff8888;
 }
 
 @media (prefers-color-scheme: light) {
@@ -32,6 +52,26 @@
     --tangerine: #C8714A;
     --coral: #C44D3E;
     --overlay-bg: rgba(0,0,0,0.3);
+
+    /* Event log level backgrounds — light */
+    --log-info-bg: #e2e8f0;
+    --log-info-fg: #475569;
+    --log-tool-bg: #dcfce7;
+    --log-tool-fg: #16a34a;
+    --log-warn-bg: #fef9c3;
+    --log-warn-fg: #a16207;
+    --log-error-bg: #fee2e2;
+    --log-error-fg: #dc2626;
+    --log-debug-bg: #f1f5f9;
+    --log-debug-fg: #94a3b8;
+    --log-message-fg: #334155;
+    --log-expand-fg: #94a3b8;
+    --log-pre-bg: #f1f5f9;
+    --log-pre-fg: #475569;
+    --log-progress-track: #e2e8f0;
+    --log-error-banner-bg: #fee2e2;
+    --log-error-banner-border: #dc2626;
+    --log-error-banner-fg: #991b1b;
   }
 }
 

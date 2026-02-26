@@ -59,12 +59,12 @@ export function JobStatusView(props: {
   return (
     <div className="card" style={{ borderTopLeftRadius: 0, borderTopRightRadius: 0 }}>
       {/* Progress bar */}
-      <div style={{ height: 4, background: "#27272a", borderRadius: 2, marginBottom: 12, overflow: "hidden" }}>
+      <div style={{ height: 4, background: "var(--log-progress-track)", borderRadius: 2, marginBottom: 12, overflow: "hidden" }}>
         <div style={{ height: "100%", width: `${pct}%`, background: "#3b82f6", transition: "width 0.3s", borderRadius: 2 }} />
       </div>
 
       {status?.error && (
-        <div style={{ background: "#2a1010", border: "1px solid #ff4444", borderRadius: 8, padding: "8px 12px", marginBottom: 12, fontSize: 13, color: "#ff8888" }}>
+        <div style={{ background: "var(--log-error-banner-bg)", border: "1px solid var(--log-error-banner-border)", borderRadius: 8, padding: "8px 12px", marginBottom: 12, fontSize: 13, color: "var(--log-error-banner-fg)" }}>
           {status.error}
         </div>
       )}
@@ -82,11 +82,11 @@ export function JobStatusView(props: {
 }
 
 const LEVEL_STYLES: Record<string, { bg: string; fg: string; label: string }> = {
-  info:  { bg: "#1e293b", fg: "#94a3b8", label: "info" },
-  tool:  { bg: "#0f2a1e", fg: "#4ade80", label: "tool" },
-  warn:  { bg: "#2a2206", fg: "#facc15", label: "warn" },
-  error: { bg: "#2a1010", fg: "#f87171", label: "error" },
-  debug: { bg: "#1a1a1e", fg: "#666",    label: "debug" },
+  info:  { bg: "var(--log-info-bg)",  fg: "var(--log-info-fg)",  label: "info" },
+  tool:  { bg: "var(--log-tool-bg)",  fg: "var(--log-tool-fg)",  label: "tool" },
+  warn:  { bg: "var(--log-warn-bg)",  fg: "var(--log-warn-fg)",  label: "warn" },
+  error: { bg: "var(--log-error-bg)", fg: "var(--log-error-fg)", label: "error" },
+  debug: { bg: "var(--log-debug-bg)", fg: "var(--log-debug-fg)", label: "debug" },
 };
 
 function EventRow({ ev }: { ev: JobEvent }) {
@@ -104,18 +104,18 @@ function EventRow({ ev }: { ev: JobEvent }) {
           fontSize: 10, fontWeight: 700, textTransform: "uppercase",
           color: style.fg, minWidth: 32
         }}>{style.label}</span>
-        <span style={{ flex: 1, color: "#d4d4d8" }}>{ev.message}</span>
+        <span style={{ flex: 1, color: "var(--log-message-fg)" }}>{ev.message}</span>
         <span className="muted" style={{ fontSize: 11, flexShrink: 0 }}>
           {new Date(ev.ts).toLocaleTimeString()}
         </span>
         {hasData && (
-          <span style={{ fontSize: 11, color: "#666", marginLeft: 4 }}>{expanded ? "▴" : "▾"}</span>
+          <span style={{ fontSize: 11, color: "var(--log-expand-fg)", marginLeft: 4 }}>{expanded ? "▴" : "▾"}</span>
         )}
       </div>
       {expanded && hasData && (
         <pre style={{
-          marginTop: 6, padding: "8px 10px", background: "#0e0e12",
-          borderRadius: 4, fontSize: 11, color: "#a1a1aa",
+          marginTop: 6, padding: "8px 10px", background: "var(--log-pre-bg)",
+          borderRadius: 4, fontSize: 11, color: "var(--log-pre-fg)",
           overflow: "auto", maxHeight: 200, whiteSpace: "pre-wrap",
           wordBreak: "break-word"
         }}>{JSON.stringify(ev.data, null, 2)}</pre>
