@@ -4,7 +4,7 @@ import type { AdditiveItem } from "./additives";
 
 export const FoodAbstractionSchema = z.object({
   schema_version: z.literal(1),
-  zagat_line: z.string().nullable().optional(),
+  zagat_line: z.string().min(1),
   identification: z.object({
     canonical_name: z.string(),
     brand: z.string().nullable(),

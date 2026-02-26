@@ -12,10 +12,12 @@ Rules:
   - salt_g = (sodium_mg / 1000) * 2.5
   - If one is unknown, leave it null.
 
-- zagat_line:
-  - Extract the Zagat-style summary sentence from the "Zagat line" section of the report.
-  - Must be a single sentence, under 140 characters, vivid and opinionated.
-  - If the report doesn't have one, compose one based on the report content.
+- zagat_line (REQUIRED, never null):
+  - Extract from the "Zagat line" section of the report.
+  - If the report omits it, you MUST compose one yourself based on the report's findings.
+  - Must be a single vivid, opinionated sentence, 20-140 characters.
+  - Describes taste, quality, and health profile in punchy Zagat voice.
+  - Examples: "Creamy and satisfying with clean ingredients, this Greek yogurt is a protein powerhouse." / "Addictive crunch meets a sodium wallop and a chemistry set of additives."
 
 - unit_basis:
   - Use per_100ml for beverages, per_100g otherwise (unless report says otherwise)

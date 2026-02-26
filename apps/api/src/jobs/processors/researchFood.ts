@@ -44,6 +44,12 @@ export async function processResearchFoodJob(job: { id: string; payload_json: st
     // Stage B: report -> JSON
     const absRaw = await reportToJson(reportMd);
 
+    // Ensure zagat_line is present (LLM sometimes omits it)
+    if (!absRaw.zagat_line || typeof absRaw.zagat_line !== "string" || absRaw.zagat_line.length < 1) {
+      const name = absRaw?.identification?.canonical_name ?? "This food";
+      absRaw.zagat_line = `${name} — analysis complete, see full report for details.`;
+    }
+
     let abs: FoodAbstraction;
     try {
       abs = FoodAbstractionSchema.parse(absRaw);

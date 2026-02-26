@@ -25,7 +25,9 @@
     },
     "zagat_line": {
       "type": "string",
-      "description": "A single Zagat-style summary sentence: vivid, opinionated, concise (under 140 chars). Describes taste, quality, and health profile in the style of a Zagat restaurant blurb. Example: 'This crispy, salty classic delivers bold crunch but sky-high sodium and a laundry list of additives dock it hard.'"
+      "minLength": 20,
+      "maxLength": 140,
+      "description": "REQUIRED. A single Zagat-style summary sentence (20-140 chars). Vivid, opinionated, concise — describes taste, quality, and health profile. Always generate one even if the report omits it. Example: 'This crispy, salty classic delivers bold crunch but sky-high sodium and a laundry list of additives dock it hard.'"
     },
     "identification": {
       "type": "object",

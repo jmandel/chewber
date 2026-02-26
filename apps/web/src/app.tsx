@@ -90,6 +90,7 @@ function useFlowState() {
   const onJobCompleted = useCallback(async (foodId: string) => {
     try {
       const f = await api.getFood(foodId);
+      setFlow({ kind: "idle" });
       nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`, { replace: true });
     } catch (e: any) {
       setFlow({ kind: "error", message: String(e?.message ?? e) });
