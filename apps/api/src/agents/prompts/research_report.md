@@ -237,7 +237,10 @@ If drinkable → check these exceptions:
     **How to estimate FVPN% — two-step method (BOTH steps required):**
 
     **Step A: Calculate using the water-discount method.**
-    Using the ingredient list, estimate the FVPN% arithmetically (see method below). Write out the calculation. This is your **calculated estimate**.
+    For EACH ingredient in the list, write a line with:
+      [ingredient name] | [est. % of product weight] | [solids fraction from table below] | [FVPN contribution = weight% × solids fraction]
+    Then sum all FVPN contributions. This is your **calculated estimate**.
+    CRITICAL: if an ingredient sub-lists water (e.g. "[X] Puree (Water, [X] Paste)"), you MUST apply the solids fraction — do NOT count it at 100%. A puree that is "(Water, Paste)" is only ~25-35% solids.
 
     **Step B: Check against the OFF database estimate.**
     Open Food Facts tool results include `fvpn_estimate` with `fruits_vegetables_nuts_percent` (FVN). This is your **OFF estimate**. When multiple OFF entries exist, take the median FVN (ignoring entries with no estimate).
