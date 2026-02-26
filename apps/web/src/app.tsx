@@ -1148,55 +1148,6 @@ function RelatedFoods({ foodId }: { foodId: string }) {
 }
 
 // ── Compare page ──────────────────────────────────────
-function CompareSuggestions({ foods, onAdd }: { foods: FoodDetail[]; onAdd: (id: string) => void }) {
-  const [suggestions, setSuggestions] = useState<{ label: string; foods: FoodSummary[] }[]>([]);
-  const loadedIds = new Set(foods.map(f => f.id));
-
-  useEffect(() => {
-    const cats = (foods[0]?.tags ?? []).filter(isCategory);
-    if (cats.length === 0) return;
-
-    // Fetch foods for up to 3 categories of the first food
-    const catSlugs = cats.slice(0, 3);
-    Promise.all(
-      catSlugs.map(slug =>
-        api.searchFoodsByCategory(slug)
-          .then(r => ({
-            label: slug.split("-").map(w => w[0].toUpperCase() + w.slice(1)).join(" "),
-            foods: r.foods.filter(f => !loadedIds.has(f.id))
-          }))
-          .catch(() => ({ label: slug, foods: [] as FoodSummary[] }))
-      )
-    ).then(groups => setSuggestions(groups.filter(g => g.foods.length > 0)));
-  }, [foods.map(f => f.id).join(",")]);
-
-  if (suggestions.length === 0) return null;
-
-  return (
-    <div style={{ marginBottom: 8 }}>
-      <div className="muted" style={{ fontSize: 12, fontWeight: 600, marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>Compare with…</div>
-      {suggestions.map(g => (
-        <div key={g.label} style={{ marginBottom: 6 }}>
-          <div className="muted" style={{ fontSize: 11, fontWeight: 600, marginBottom: 3 }}>{g.label}</div>
-          <div className="food-cats" style={{ display: "flex", gap: 6, overflowX: "auto", scrollbarWidth: "none", paddingBottom: 2 }}>
-            {g.foods.map(f => (
-              <button key={f.id} onClick={() => onAdd(f.id)} style={{
-                display: "flex", alignItems: "center", gap: 6, flexShrink: 0,
-                padding: "6px 10px", fontSize: 12, fontWeight: 500,
-                background: "var(--slate)", border: "none", borderRadius: "var(--radius-sm)",
-                color: "var(--cream)", cursor: "pointer", whiteSpace: "nowrap",
-              }}>
-                <ScorePill score={f.score ?? null} size={16} />
-                <span>{f.canonical_name}{f.brand ? ` · ${f.brand}` : ""}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 function ComparePage() {
   const nav = useNavigate();
   const location = useLocation();
@@ -1206,6 +1157,7 @@ function ComparePage() {
   const [foods, setFoods] = useState<FoodDetail[]>([]);
   const [searchQ, setSearchQ] = useState("");
   const [hits, setHits] = useState<FoodSummary[]>([]);
+  const [suggestions, setSuggestions] = useState<FoodSummary[]>([]);
   const timerRef = useRef<any>(null);
 
   // Load initial foods
@@ -1214,6 +1166,37 @@ function ComparePage() {
       api.getFood(id).then(f => setFoods(prev => prev.some(p => p.id === f.id) ? prev : [...prev, f])).catch(() => {});
     }
   }, []);
+
+  // Fetch suggestions based on the first food's categories, fallback to recent
+  useEffect(() => {
+    if (foods.length === 0) { setSuggestions([]); return; }
+    const loadedIds = new Set(foods.map(f => f.id));
+    const cats = (foods[0]?.tags ?? []).filter(isCategory);
+
+    const tagFetches = cats.slice(0, 4).map(slug =>
+      api.searchFoodsByTag(slug).then(r => r.foods).catch(() => [] as FoodSummary[])
+    );
+
+    Promise.all(tagFetches).then(async groups => {
+      const seen = new Set<string>();
+      const all: FoodSummary[] = [];
+      for (const g of groups) {
+        for (const f of g) {
+          if (!loadedIds.has(f.id) && !seen.has(f.id)) { seen.add(f.id); all.push(f); }
+        }
+      }
+      // Fallback: if no category matches, show recent foods
+      if (all.length === 0) {
+        try {
+          const recent = await api.getRecentFoods(10);
+          for (const f of recent.foods) {
+            if (!loadedIds.has(f.id) && !seen.has(f.id)) { seen.add(f.id); all.push(f); }
+          }
+        } catch {}
+      }
+      setSuggestions(all);
+    });
+  }, [foods.map(f => f.id).join(",")]);
 
   function onSearch(val: string) {
     setSearchQ(val);
@@ -1288,11 +1271,9 @@ function ComparePage() {
         <div className="card muted" style={{ textAlign: "center", padding: 32 }}>Search above to add foods to compare.</div>
       )}
 
-      {foods.length > 0 && hits.length === 0 && !searchQ && (
-        <CompareSuggestions foods={foods} onAdd={addFood} />
-      )}
-
-      {foods.length > 0 && (
+      {foods.length > 0 && (() => {
+        const showSugg = foods.length === 1 && suggestions.length > 0;
+        return (
         <div style={{ overflowX: "auto" }}>
           <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
             <thead>
@@ -1304,6 +1285,11 @@ function ComparePage() {
                     <div style={{ fontWeight: 700, fontSize: 14, lineHeight: 1.2 }}>{f.canonical_name}</div>
                   </th>
                 ))}
+                {showSugg && (
+                  <th style={{ padding: "6px 8px 0", textAlign: "center", verticalAlign: "bottom", minWidth: 120 }}>
+                    <div className="muted" style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.04em" }}>Compare with…</div>
+                  </th>
+                )}
               </tr>
               {/* Brand row */}
               <tr>
@@ -1313,6 +1299,7 @@ function ComparePage() {
                     {f.brand ? <div className="muted" style={{ fontSize: 11 }}>{f.brand}</div> : <div style={{ fontSize: 11 }}> </div>}
                   </th>
                 ))}
+                {showSugg && <th />}
               </tr>
               {/* Score + remove row */}
               <tr style={{ borderBottom: "2px solid var(--slate)" }}>
@@ -1328,9 +1315,35 @@ function ComparePage() {
                     </div>
                   </th>
                 ))}
+                {showSugg && <th />}
               </tr>
             </thead>
             <tbody>
+              {/* Suggestion picks as first body row when single food */}
+              {showSugg && (
+                <tr>
+                  <td />
+                  <td />
+                  <td style={{ padding: "10px 8px", verticalAlign: "top" }}>
+                    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                      {suggestions.map(f => (
+                        <button key={f.id} onClick={() => addFood(f.id)} style={{
+                          display: "flex", alignItems: "center", gap: 6,
+                          padding: "6px 8px", fontSize: 12, fontWeight: 500,
+                          background: "var(--slate)", border: "none", borderRadius: "var(--radius-sm)",
+                          color: "var(--cream)", cursor: "pointer", textAlign: "left",
+                          minWidth: 0,
+                        }}>
+                          <ScorePill score={f.score ?? null} size={16} />
+                          <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", minWidth: 0 }}>
+                            {f.canonical_name}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  </td>
+                </tr>
+              )}
               {nutrKeys.map(({ key, label, unit }) => {
                 const { bestId, worstId } = bestWorst(key);
                 return (
@@ -1349,6 +1362,7 @@ function ComparePage() {
                         </td>
                       );
                     })}
+                    {showSugg && <td />}
                   </tr>
                 );
               })}
@@ -1359,6 +1373,7 @@ function ComparePage() {
                     {f.abstraction?.additives?.length ?? "—"}
                   </td>
                 ))}
+                {showSugg && <td />}
               </tr>
               <tr>
                 <td style={{ padding: "8px", fontWeight: 600, color: "var(--fog)" }}>Categories</td>
@@ -1373,11 +1388,13 @@ function ComparePage() {
                     </div>
                   </td>
                 ))}
+                {showSugg && <td />}
               </tr>
             </tbody>
           </table>
         </div>
-      )}
+        );
+      })()}
     </div>
   );
 }
