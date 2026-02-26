@@ -149,7 +149,7 @@ export const api = {
   getRelatedFoods: (idOrSlug: string, limit = 8) => http<{ related: RelatedFood[] }>(`/api/foods/${encodeURIComponent(idOrSlug)}/related?limit=${limit}`),
 
   deleteFood: (idOrSlug: string, adminKey: string) =>
-    fetch(`${BASE}/api/foods/${encodeURIComponent(idOrSlug)}`, {
+    fetch(`${API_BASE}/api/foods/${encodeURIComponent(idOrSlug)}`, {
       method: "DELETE",
       headers: { "X-Admin-Key": adminKey },
     }).then(r => { if (!r.ok) throw new Error(`${r.status}`); return r.json(); })
