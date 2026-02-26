@@ -51,20 +51,20 @@ export function lookupAdditiveRisk(rawCode: string): { risk_level: RiskLevel; na
   const db = getReferenceDb();
   const code = normalizeAdditiveCode(rawCode);
   
-  // Try exact match first
+  // Try exact match first (case-insensitive because DB has mixed case: E150a vs E322I)
   const row = db
-    .query(`SELECT risk_level, name FROM additive_risks WHERE code = ? LIMIT 1`)
+    .query(`SELECT code, risk_level, name FROM additive_risks WHERE code = ? COLLATE NOCASE LIMIT 1`)
     .get(code) as any;
-  if (row) return { risk_level: row.risk_level as RiskLevel, name: row.name ?? null, matched_code: code };
+  if (row) return { risk_level: row.risk_level as RiskLevel, name: row.name ?? null, matched_code: row.code };
   
   // Try base code (strip trailing letter for variants like E322I → E322, E150D → E150)
   const baseMatch = code.match(/^(E\d+)[A-Z]$/);
   if (baseMatch) {
     const baseCode = baseMatch[1];
     const baseRow = db
-      .query(`SELECT risk_level, name FROM additive_risks WHERE code = ? LIMIT 1`)
+      .query(`SELECT code, risk_level, name FROM additive_risks WHERE code = ? COLLATE NOCASE LIMIT 1`)
       .get(baseCode) as any;
-    if (baseRow) return { risk_level: baseRow.risk_level as RiskLevel, name: baseRow.name ?? null, matched_code: baseCode };
+    if (baseRow) return { risk_level: baseRow.risk_level as RiskLevel, name: baseRow.name ?? null, matched_code: baseRow.code };
   }
   
   // Not found — return risk_free (unknown additive, don't penalize)
