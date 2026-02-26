@@ -637,8 +637,7 @@ function ClarifyStep(props: {
       const allAnswered = assist.questions.every(q => next[q.id]);
       if (allAnswered && !submittedRef.current) {
         submittedRef.current = true;
-        // Brief delay so the user sees their selection highlight
-        setTimeout(() => doSubmit(next), 250);
+        doSubmit(next);
       }
     }
   }
@@ -650,6 +649,7 @@ function ClarifyStep(props: {
   };
 
   const roundNumber = props.priorAnswers.length > 0 ? 2 : 1;
+  const allAnswered = assist.questions.every(q => answers[q.id]);
 
   function doSubmit(ans: Record<string, string> = answers) {
     const newAnswers: PriorAnswer[] = assist.questions
@@ -704,7 +704,7 @@ function ClarifyStep(props: {
             )}
           </div>
         ))}
-        <button onClick={() => doSubmit()} className="btn-primary btn-full" style={{ marginBottom: 8 }}>
+        <button disabled={!allAnswered} onClick={() => doSubmit()} className="btn-primary btn-full" style={{ marginBottom: 8 }}>
           {assist.has_more_rounds ? "Next →" : "Continue →"}
         </button>
         <button onClick={props.onSkip} className="btn-full muted">Skip — search anyway</button>
