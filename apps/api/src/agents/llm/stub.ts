@@ -54,6 +54,7 @@ export class StubLLM implements LlmClient {
         imageIds: null
       },
       needs_followup: false,
+      has_more_rounds: false,
       questions: [],
       confidence: 0,
       why_questions: "\u26a0\ufe0f DEMO MODE \u2014 no LLM configured."

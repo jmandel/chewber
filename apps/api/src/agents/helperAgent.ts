@@ -41,17 +41,22 @@ const StructuredQuerySchema = z.object({
 const AssistSchema = z.object({
   structured_query: StructuredQuerySchema,
   needs_followup: z.boolean(),
+  has_more_rounds: z.boolean().optional().default(false),
   questions: z.array(QuestionSchema),
   confidence: z.number().min(0).max(1),
   why_questions: z.string().optional()
 });
 
 export type AssistResult = z.infer<typeof AssistSchema>;
+
+export type PriorAnswer = { question_id: string; answer: string };
+
 export type AssistInput = {
   rawText: string;
   barcode?: string | null;
   imageIds?: string[];
   imageNotes?: string | null;
+  priorAnswers?: PriorAnswer[];
 };
 
 export async function assistQuery(input: AssistInput): Promise<AssistResult> {
@@ -63,10 +68,15 @@ export async function assistQuery(input: AssistInput): Promise<AssistResult> {
     imageNotes = await analyseImages(input.imageIds);
   }
 
+  const priorAnswersStr = input.priorAnswers?.length
+    ? JSON.stringify(input.priorAnswers)
+    : "[]";
+
   const user = [
     `rawText: ${input.rawText ?? ""}`,
     `barcode: ${input.barcode ?? ""}`,
-    `imageNotes: ${imageNotes}`
+    `imageNotes: ${imageNotes}`,
+    `prior_answers: ${priorAnswersStr}`
   ].join("\n");
 
   const { text } = await llm.chat({
@@ -80,7 +90,6 @@ export async function assistQuery(input: AssistInput): Promise<AssistResult> {
 
   let parsed: any;
   try {
-    // Strip markdown code fences if present
     let cleaned = text.trim();
     if (cleaned.startsWith("```")) {
       cleaned = cleaned.replace(/^```(?:json)?\s*/, "").replace(/\s*```$/, "");

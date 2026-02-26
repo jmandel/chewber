@@ -4,10 +4,16 @@ import { assistQuery } from "../agents/helperAgent";
 
 export const queryRoutes = new Hono();
 
+const PriorAnswerSchema = z.object({
+  question_id: z.string(),
+  answer: z.string()
+});
+
 const BodySchema = z.object({
   rawText: z.string().optional().default(""),
   barcode: z.string().optional(),
-  imageIds: z.array(z.string()).optional()
+  imageIds: z.array(z.string()).optional(),
+  priorAnswers: z.array(PriorAnswerSchema).optional()
 });
 
 queryRoutes.post("/query/assist", async (c) => {
@@ -17,7 +23,8 @@ queryRoutes.post("/query/assist", async (c) => {
     const result = await assistQuery({
       rawText: body.rawText ?? "",
       barcode: body.barcode ?? null,
-      imageIds: body.imageIds ?? []
+      imageIds: body.imageIds ?? [],
+      priorAnswers: body.priorAnswers ?? []
     });
 
     // Ensure imageIds are carried through

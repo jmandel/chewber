@@ -30,9 +30,12 @@ export type StructuredFoodQuery = {
   imageIds?: string[];
 };
 
+export type PriorAnswer = { question_id: string; answer: string };
+
 export type AssistResponse = {
   structured_query: StructuredFoodQuery;
   needs_followup: boolean;
+  has_more_rounds: boolean;
   questions: HelperQuestion[];
   confidence: number;
   why_questions?: string;
@@ -102,10 +105,10 @@ async function http<T>(path: string, init?: RequestInit): Promise<T> {
 }
 
 export const api = {
-  assist: (rawText: string, imageIds: string[] = [], barcode?: string) =>
+  assist: (rawText: string, imageIds: string[] = [], barcode?: string, priorAnswers?: PriorAnswer[]) =>
     http<AssistResponse>("/api/query/assist", {
       method: "POST",
-      body: JSON.stringify({ rawText, imageIds, barcode })
+      body: JSON.stringify({ rawText, imageIds, barcode, priorAnswers })
     }),
 
   resolve: (payload: { rawText?: string; structured_query: StructuredFoodQuery; imageIds?: string[] }) =>

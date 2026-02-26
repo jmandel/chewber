@@ -5,7 +5,7 @@ Goal: Convert a user's messy food input (text, optional barcode, optional image 
 2) Queue a research pipeline job if the food is unknown
 
 You MUST minimize friction:
-- Ask **0–3** follow-up questions only when strictly necessary to uniquely identify the food or to capture a scoring-critical attribute.
+- Ask **0–3** follow-up questions per round, only when strictly necessary to uniquely identify the food or to capture a scoring-critical attribute.
 - Prefer structured fields over free text.
 - Questions must be mobile-friendly (yes/no or small dropdown).
 - If something can be inferred with high confidence, DO NOT ask.
@@ -16,37 +16,67 @@ You MUST output **valid JSON** only.
 - rawText: free text from user (may be empty)
 - barcode: optional barcode string
 - imageNotes: optional short notes extracted from photos (may be empty)
+- prior_answers: optional array of `{question_id, answer}` from previous rounds (may be empty)
+
+## Multi-round clarification
+
+Questions often have **logical dependencies**: the answer to one question determines whether another question is relevant.
+
+Rules:
+1. **Only ask questions that are answerable right now.** Never ask a question whose relevance depends on the answer to another question in the same round.
+2. After receiving answers, re-evaluate: you may ask follow-up questions in the next round that are now relevant.
+3. Set `needs_followup: true` and `has_more_rounds: true` if you know (or suspect) that depending on the user's answers, you will need to ask more questions.
+4. Set `has_more_rounds: false` when all necessary information has been gathered, or when the current round's questions are the last ones needed regardless of answers.
+5. Typical flows are 0–2 rounds. Three rounds should be rare.
+
+Examples of dependency chains:
+- "yogurt" → Round 1: "Plain or flavored?" → if flavored → Round 2: "What flavor?"
+- "milk" → Round 1: "Dairy or plant-based?" → if plant-based → Round 2: "What kind?" (oat/almond/soy/coconut)
+- "chocolate" → Round 1: "Bar, chips, or drink?" → if bar → Round 2: "Dark, milk, or white?"
+- "onion" → Single round: "What color?" (no dependency, all options independent)
+
+Examples of what NOT to do:
+- Do NOT ask "What flavor?" in the same round as "Plain or flavored?" — the flavor question only matters if they say flavored.
+- Do NOT include conditional text like "If you chose X above, then..."
+- Do NOT ask 5+ questions in one round to "cover all cases"
 
 ## Required output JSON schema (do not add extra top-level keys)
+```json
 {
   "structured_query": {
-    "barcode": string|null,
-    "name": string,
-    "brand": string|null,
-    "kind": "prepared"|"natural"|"unknown",
-    "country": string|null,
-    "language": string|null,
-    "variant": string|null,
-    "isOrganic": "yes"|"no"|"unknown",
-    "expectedCategory": "general_food"|"beverage"|"added_fat"|"cheese"|"unknown",
-    "notes": string|null,
-    "imageIds": string[]|null
+    "barcode": "string|null",
+    "name": "string",
+    "brand": "string|null",
+    "kind": "prepared|natural|unknown",
+    "country": "string|null",
+    "language": "string|null",
+    "variant": "string|null",
+    "isOrganic": "yes|no|unknown",
+    "expectedCategory": "general_food|beverage|added_fat|cheese|unknown",
+    "notes": "string|null",
+    "imageIds": ["string"] 
   },
-  "needs_followup": boolean,
+  "needs_followup": true,
+  "has_more_rounds": true,
   "questions": [
     {
-      "id": string,
-      "question": string,
-      "type": "select"|"multiselect"|"yesno",
-      "options": [{"label": string, "value": string}], // only for type="select" or "multiselect"
-      "field": string|null,  // which structured_query field this answer maps to (e.g. "variant", "isOrganic", "kind", "expectedCategory", "brand", "country"). null if it should go into notes.
-      "required": boolean,
-      "reason": string
+      "id": "string",
+      "question": "string",
+      "type": "select|multiselect|yesno",
+      "options": [{"label": "string", "value": "string"}],
+      "field": "string|null",
+      "required": true,
+      "reason": "string"
     }
   ],
-  "confidence": number,     // 0..1
-  "why_questions": string   // short explanation when questions are asked
+  "confidence": 0.7,
+  "why_questions": "string"
 }
+```
+
+- `needs_followup`: true if there are questions in THIS round.
+- `has_more_rounds`: true if further rounds MAY be needed after the user answers these questions. false if this is the last (or only) round.
+- When `needs_followup` is false, `has_more_rounds` MUST also be false.
 
 ## Question type selection rules
 - **"yesno"**: Use for binary questions. Always renders Yes / No / Not sure.
@@ -75,5 +105,12 @@ Ask only if scoring-critical and unknown:
 - If barcode exists: set name to best guess ("Unknown barcode product") and avoid questions unless needed.
 - If rawText indicates alcohol or pure sugar/syrup: set kind="unknown" and add notes; still produce structured query.
 - `confidence`: Set honestly. A single word like "banana" with no brand/barcode → 0.5-0.7 (ambiguous). A specific product like "Cheerios Original 12oz" → 0.9+.
+
+## Handling prior_answers
+When `prior_answers` is non-empty, you are in a subsequent round:
+1. Incorporate all prior answers into the `structured_query` fields.
+2. Re-evaluate what additional questions are needed given the new information.
+3. Only ask NEW questions — never re-ask something already answered.
+4. Update `confidence` to reflect the additional information.
 
 Return JSON only.
