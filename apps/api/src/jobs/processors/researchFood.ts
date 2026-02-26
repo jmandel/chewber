@@ -10,7 +10,6 @@ import { reportToJson } from "../../agents/jsonStage";
 import { FoodAbstractionSchema, type FoodAbstraction, toScoreInputs } from "../../scoring/abstraction";
 import { scoreFood } from "../../scoring/score";
 import { mergeAdditives } from "../../scoring/additiveEnrich";
-import { localOffBarcodeLookup, localOffSearchText } from "../../sources/localOff";
 
 const PayloadSchema = z.object({
   query_id: z.string(),
@@ -32,7 +31,7 @@ export async function processResearchFoodJob(job: { id: string; payload_json: st
     updateJob(job.id, { progress: 5 });
 
     // Stage A: research report
-    const reportMd = await runResearchAgent(
+    const { markdown: reportMd, observations } = await runResearchAgent(
       {
         structured_query: payload.structured_query,
         rawText: payload.rawText ?? null,
@@ -40,6 +39,7 @@ export async function processResearchFoodJob(job: { id: string; payload_json: st
       },
       emit
     );
+    emit({ level: "debug", message: `Observations: ${observations.offAdditiveTags.length} OFF tags, ${observations.ingredientTexts.length} ingredient texts` });
 
     updateJob(job.id, { progress: 55 });
     emit({ level: "info", message: "Converting report to structured JSON…" });
@@ -65,31 +65,11 @@ export async function processResearchFoodJob(job: { id: string; payload_json: st
     emit({ level: "info", message: "Enriching additive detection…" });
 
     // Stage B.5: deterministic additive enrichment
-    // Merge LLM-detected additives with OFF tags and ingredient text scan
-    const barcode = abs.identification.barcode;
-    let offTags: string[] | null = null;
-    if (barcode) {
-      try {
-        const offProduct = await localOffBarcodeLookup(barcode);
-        offTags = offProduct?.additives ?? null;
-      } catch { /* non-fatal */ }
-    }
-    // If barcode miss on OFF, try text search for additive tags
-    if (!offTags && abs.identification.canonical_name) {
-      try {
-        const searchTerms = [abs.identification.canonical_name, abs.identification.brand].filter(Boolean).join(" ");
-        const offResults = await localOffSearchText(searchTerms, 3);
-        // Use additives from best match that has them
-        for (const r of offResults) {
-          if (r.additives && r.additives.length > 0) {
-            offTags = r.additives;
-            break;
-          }
-        }
-      } catch { /* non-fatal */ }
-    }
-    const ingredientText = abs.ingredients.ingredients_text;
-    const enriched = mergeAdditives(abs.additives, offTags, ingredientText);
+    // Merge LLM-detected additives with observations captured during research
+    const offTags = observations.offAdditiveTags.length > 0 ? observations.offAdditiveTags : null;
+    // Use all ingredient texts seen by the agent (OFF, USDA, web) for scanning
+    const allIngredientText = observations.ingredientTexts.join(" \n ");
+    const enriched = mergeAdditives(abs.additives, offTags, allIngredientText || abs.ingredients.ingredients_text);
     const addedCount = enriched.length - abs.additives.length;
     if (addedCount > 0) {
       emit({ level: "info", message: `Additive enrichment added ${addedCount} item(s)`, data: {

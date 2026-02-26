@@ -32,6 +32,22 @@ export type ResearchInput = {
 
 export type EmitFn = (evt: { level: "debug" | "info" | "tool" | "warn" | "error"; message: string; data?: any }) => void;
 
+/**
+ * Structured observations accumulated from tool calls during research.
+ * Passed to post-LLM enrichment so we don't need to re-fetch anything.
+ */
+export type ToolObservations = {
+  /** Raw OFF additive tags seen across all tool calls (e.g. ["en:e330", "en:e322i"]) */
+  offAdditiveTags: string[];
+  /** All ingredient texts encountered (from OFF, USDA, web — whatever the agent found) */
+  ingredientTexts: string[];
+};
+
+export type ResearchResult = {
+  markdown: string;
+  observations: ToolObservations;
+};
+
 // ── Circuit-breaker constants ──────────────────────────────────────
 const MAX_STEPS = 10;
 const MAX_CONSECUTIVE_ERRORS = 3;
@@ -125,8 +141,9 @@ function formatToolResult(tool: string, result: any): string {
   }
 }
 
-export async function runResearchAgent(input: ResearchInput, emit: EmitFn): Promise<string> {
+export async function runResearchAgent(input: ResearchInput, emit: EmitFn): Promise<ResearchResult> {
   const llm = getLlm("research");
+  const observations: ToolObservations = { offAdditiveTags: [], ingredientTexts: [] };
 
   const messages: { role: "system" | "user" | "assistant"; content: string }[] = [
     { role: "system", content: prompt },
@@ -164,7 +181,7 @@ export async function runResearchAgent(input: ResearchInput, emit: EmitFn): Prom
       emit({ level: "error", message: `LLM call failed (${consecutiveErrors}/${MAX_CONSECUTIVE_ERRORS})`, data: { error: String(llmErr?.message ?? llmErr) } });
       if (consecutiveErrors >= MAX_CONSECUTIVE_ERRORS) {
         emit({ level: "error", message: "Max consecutive LLM errors reached, aborting." });
-        return makeErrorReport("LLM call failures", consecutiveErrors);
+        return { markdown: makeErrorReport("LLM call failures", consecutiveErrors), observations };
       }
       // Add a hint to the conversation so the LLM knows to try again
       messages.push({ role: "user", content: JSON.stringify({ error: "LLM call failed, please try again with a simpler response." }) });
@@ -189,7 +206,7 @@ export async function runResearchAgent(input: ResearchInput, emit: EmitFn): Prom
 
       if (consecutiveErrors >= MAX_CONSECUTIVE_ERRORS) {
         emit({ level: "error", message: "Max consecutive parse errors reached, aborting." });
-        return makeErrorReport("JSON parse failures", consecutiveErrors);
+        return { markdown: makeErrorReport("JSON parse failures", consecutiveErrors), observations };
       }
 
       // Push the bad response + error hint so the model can self-correct
@@ -214,14 +231,14 @@ export async function runResearchAgent(input: ResearchInput, emit: EmitFn): Prom
       }) });
       consecutiveErrors++;
       if (consecutiveErrors >= MAX_CONSECUTIVE_ERRORS) {
-        return makeErrorReport("schema validation failures", consecutiveErrors);
+        return { markdown: makeErrorReport("schema validation failures", consecutiveErrors), observations };
       }
       continue;
     }
 
     if (obj.final_markdown) {
       emit({ level: "info", message: "Research agent produced final report." });
-      return obj.final_markdown;
+      return { markdown: obj.final_markdown, observations };
     }
 
     if (!obj.tool_calls.length) {
@@ -252,6 +269,8 @@ export async function runResearchAgent(input: ResearchInput, emit: EmitFn): Prom
 
       try {
         const r = await runTool(tc.tool, tc.args);
+        // Accumulate structured observations from raw (un-truncated) result
+        collectObservations(observations, tc.tool, r);
         const truncated = truncate(r);
         toolResults.push({ tool: tc.tool, ok: true, result: truncated });
         const resultHint = formatToolResult(tc.tool, truncated);
@@ -268,7 +287,7 @@ export async function runResearchAgent(input: ResearchInput, emit: EmitFn): Prom
   }
 
   emit({ level: "warn", message: "Max steps reached; returning partial report." });
-  return makeErrorReport("max steps reached", MAX_STEPS);
+  return { markdown: makeErrorReport("max steps reached", MAX_STEPS), observations };
 }
 
 function makeErrorReport(reason: string, count: number): string {
@@ -316,6 +335,58 @@ function extractOffAdditives(tags: string[] | null): { code: string; tag: string
     code = code.toUpperCase();
     return { code, tag };
   });
+}
+
+/**
+ * Extract structured observations from a tool result into the accumulator.
+ * Runs on the raw (un-truncated) result so no data is lost.
+ */
+function collectObservations(obs: ToolObservations, tool: string, result: any) {
+  if (!result || typeof result !== "object") return;
+
+  // OFF additive tags (from barcode lookup or search results)
+  if (result.product?.additives && Array.isArray(result.product.additives)) {
+    for (const tag of result.product.additives) {
+      if (typeof tag === "string" && !obs.offAdditiveTags.includes(tag)) obs.offAdditiveTags.push(tag);
+    }
+  }
+  if (Array.isArray(result.results)) {
+    for (const r of result.results) {
+      if (r?.additives && Array.isArray(r.additives)) {
+        for (const tag of r.additives) {
+          if (typeof tag === "string" && !obs.offAdditiveTags.includes(tag)) obs.offAdditiveTags.push(tag);
+        }
+      }
+      // Ingredient texts from search results
+      if (typeof r?.ingredients_text === "string" && r.ingredients_text) {
+        if (!obs.ingredientTexts.includes(r.ingredients_text)) obs.ingredientTexts.push(r.ingredients_text);
+      }
+    }
+  }
+
+  // Ingredient text from single product results
+  if (typeof result.product?.ingredients_text === "string" && result.product.ingredients_text) {
+    if (!obs.ingredientTexts.includes(result.product.ingredients_text)) obs.ingredientTexts.push(result.product.ingredients_text);
+  }
+  // USDA ingredient text
+  if (typeof result.best_match?.ingredients === "string" && result.best_match.ingredients) {
+    if (!obs.ingredientTexts.includes(result.best_match.ingredients)) obs.ingredientTexts.push(result.best_match.ingredients);
+  }
+  if (Array.isArray(result.all_matches)) {
+    for (const m of result.all_matches) {
+      if (typeof m?.ingredients === "string" && m.ingredients) {
+        if (!obs.ingredientTexts.includes(m.ingredients)) obs.ingredientTexts.push(m.ingredients);
+      }
+    }
+  }
+  // USDA search results
+  if (Array.isArray(result.results)) {
+    for (const r of result.results) {
+      if (typeof r?.ingredients === "string" && r.ingredients) {
+        if (!obs.ingredientTexts.includes(r.ingredients)) obs.ingredientTexts.push(r.ingredients);
+      }
+    }
+  }
 }
 
 async function runTool(tool: string, args: any): Promise<any> {
