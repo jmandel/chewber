@@ -24,20 +24,51 @@ The app supports streaming progress updates (SSE) while the research runs.
 
 - `apps/api` — Bun + Hono API, SQLite, scoring engine, job queue, worker, prompts
 - `apps/web` — Bun + React frontend served by a tiny Bun dev server (bundles on demand)
-- `scripts` — dataset import / maintenance scripts (Open Food Facts / USDA etc.)
+- `scripts` — reproducible build scripts for offline datasets
+- `data/` — (gitignored) offline databases, built by scripts
+
+### Data architecture
+
+Chewber separates **operational data** (user-created) from **reference data** (imported datasets):
+
+| File | Purpose | Size | Writable | Built by |
+|---|---|---|---|---|
+| `apps/api/chewber.sqlite` | App data: scored foods, abstractions, jobs, queries | ~400 KB | Read-write | Auto-created on startup |
+| `data/usda.sqlite` | USDA FoodData Central (~2M products) + additive risks (228) | ~1.6 GB | Read-only | `scripts/build-usda-db.sh` |
+| `data/off-food.parquet` | Open Food Facts (~4.3M products, full records) | ~450 MB | Read-only | `scripts/build-off-parquet.sh` |
+| `data/off-index.sqlite` | OFF search index (barcode + FTS5 on name/brand) | ~490 MB | Read-only | `scripts/build-off-index.sh` |
+
+Reference databases are reproducible from public sources and can be rebuilt independently.
+The app DB is the only file that needs backup.
 
 ---
 
 ## Quick start (dev)
 
 ### 1) Install deps
-From repo root:
 
 ```bash
 bun install
 ```
 
-### 2) Start the server
+### 2) Build reference databases
+
+Requires `duckdb` CLI (v1.4+), `sqlite3`, `curl`, `unzip`.
+
+```bash
+./scripts/build-off-parquet.sh   # OFF: ~4.4 GB download → 450 MB parquet
+./scripts/build-off-index.sh     # OFF: FTS5 search index from parquet
+./scripts/build-usda-db.sh       # USDA: ~300 MB download → 1.6 GB SQLite
+```
+
+Or run everything at once:
+
+```bash
+./scripts/setup.sh
+```
+
+### 3) Start the server
+
 ```bash
 bun run dev
 ```
@@ -48,9 +79,7 @@ In another terminal, run the worker:
 bun run worker
 ```
 
-Open the app at:
-- http://localhost:8000
-
+Open the app at http://localhost:8000.
 The single server handles both the API (`/api/*`) and the frontend (static files + SPA fallback).
 
 ---
@@ -64,7 +93,10 @@ cp apps/api/.env.example apps/api/.env
 ```
 
 Key vars:
-- `CHEWBER_DB_PATH` (default: `./chewber.sqlite`)
+- `CHEWBER_DB_PATH` (default: `./chewber.sqlite`) — operational app database
+- `CHEWBER_REF_DB_PATH` (default: `data/usda.sqlite`) — USDA + additive risks reference DB
+- `OFF_PARQUET_PATH` (default: `data/off-food.parquet`) — OFF product data
+- `OFF_INDEX_PATH` (default: `data/off-index.sqlite`) — OFF search index
 - `CHEWBER_UPLOAD_DIR` (default: `./uploads`)
 - `CHEWBER_LLM_PROVIDER` (`stub` by default)
 - `OPENAI_API_KEY` (optional; required if you enable OpenAI provider)
@@ -90,22 +122,14 @@ This scaffold uses grep-friendly TODO tags:
 This repo is a *scaffold* and contains structured TODOs where production details vary by jurisdiction, data source terms, and the exact additive risk taxonomy you choose to adopt.
 
 
-### Build USDA reference database
+### Build scripts (reference databases)
 
-Downloads USDA FoodData Central (~300 MB), imports ~2M products with nutrition data, and seeds the additive risk table:
+All reference data lives in `data/` (gitignored) and is reproducible from public sources.
 
-```bash
-./scripts/build-usda-db.sh
-```
+| Script | Source | Output | Size |
+|---|---|---|---|
+| `scripts/build-off-parquet.sh` | HuggingFace OFF parquet (~4.4 GB) | `data/off-food.parquet` | ~450 MB |
+| `scripts/build-off-index.sh` | Reads `off-food.parquet` | `data/off-index.sqlite` | ~490 MB |
+| `scripts/build-usda-db.sh` | USDA FoodData Central CSV (~300 MB) | `data/usda.sqlite` | ~1.6 GB |
 
-Output: `data/usda.sqlite` (~1.2 GB) — USDA products + FTS5 index + additive risks.
-
-### Build Open Food Facts parquet (offline product database)
-
-Requires `duckdb` CLI (v1.4+). Downloads ~4.4 GB from HuggingFace, produces a ~450 MB slim parquet:
-
-```bash
-./scripts/build-off-parquet.sh
-```
-
-The output `data/off-food.parquet` contains ~4.3M products with barcodes, names, brands, categories, ingredients, additives, allergens, nutriscore, and nutriments. Queried at runtime via DuckDB.
+To rebuild any dataset, delete the output file and re-run the script. The OFF index depends on the OFF parquet, so rebuild the parquet first if needed.
