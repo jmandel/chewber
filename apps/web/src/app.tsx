@@ -1167,6 +1167,13 @@ function ComparePage() {
     }
   }, []);
 
+  // Keep URL in sync with selected foods
+  useEffect(() => {
+    const ids = foods.map(f => f.id).join(",");
+    const url = ids ? `/compare?ids=${encodeURIComponent(ids)}` : "/compare";
+    window.history.replaceState(null, "", url);
+  }, [foods]);
+
   // Fetch suggestions based on the first food's categories, fallback to recent
   useEffect(() => {
     if (foods.length === 0) { setSuggestions([]); return; }
