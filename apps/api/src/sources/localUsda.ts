@@ -1,4 +1,4 @@
-import { getDb } from "../db";
+import { getReferenceDb } from "../db/referenceDb";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -57,7 +57,7 @@ function barcodeVariants(raw: string): string[] {
  * Tries zero-padded variants for UPC-A / EAN-13 / GTIN-14 flexibility.
  */
 export function localUsdaBarcodeLookup(barcode: string): LocalUsdaProduct[] {
-  const db = getDb();
+  const db = getReferenceDb();
   const variants = barcodeVariants(barcode);
   if (variants.length === 0) return [];
 
@@ -108,7 +108,7 @@ export function localUsdaSearchText(
   query: string,
   limit: number = 10
 ): LocalUsdaProduct[] {
-  const db = getDb();
+  const db = getReferenceDb();
   const tokens = ftsTokenize(query);
   if (tokens.length === 0) return [];
 

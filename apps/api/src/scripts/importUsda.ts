@@ -12,9 +12,7 @@
 import { Database } from "bun:sqlite";
 import { existsSync, readdirSync, writeFileSync, unlinkSync } from "node:fs";
 import { resolve, join } from "node:path";
-import { getEnv, loadEnvFileIfPresent } from "../env";
 
-loadEnvFileIfPresent();
 
 const DATA_DIR = process.argv[2];
 if (!DATA_DIR) {
@@ -49,8 +47,8 @@ async function sh(cmd: string): Promise<string> {
 }
 
 async function main() {
-  const env = getEnv();
-  const dbPath = resolve(process.cwd(), env.CHEWBER_DB_PATH);
+  const dbPath = process.env.CHEWBER_REF_DB_PATH ??
+    resolve(import.meta.dir, "../../../../data/usda.sqlite");
   console.log(`Database: ${dbPath}`);
   console.log(`Data dir: ${DATA_DIR}\n`);
 

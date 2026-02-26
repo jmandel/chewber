@@ -1,4 +1,5 @@
-import { getDb } from "../db";
+import { Database } from "bun:sqlite";
+import { resolve } from "node:path";
 import { nowIso } from "../utils/id";
 
 /**
@@ -319,7 +320,9 @@ const SEED: Array<{ code: string; name: string; risk_level: "risk_free" | "limit
   { code: "E1520", name: "Propylene glycol", risk_level: "limited" },
 ];
 
-const db = getDb();
+const dbPath = process.env.CHEWBER_REF_DB_PATH ??
+  resolve(import.meta.dir, "../../../../data/usda.sqlite");
+const db = new Database(dbPath);
 const ts = nowIso();
 
 db.transaction(() => {

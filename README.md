@@ -90,11 +90,15 @@ This scaffold uses grep-friendly TODO tags:
 This repo is a *scaffold* and contains structured TODOs where production details vary by jurisdiction, data source terms, and the exact additive risk taxonomy you choose to adopt.
 
 
-### Seed example additive risk table
+### Build USDA reference database
+
+Downloads USDA FoodData Central (~300 MB), imports ~2M products with nutrition data, and seeds the additive risk table:
 
 ```bash
-bun -C apps/api src/scripts/seedAdditiveRisks.ts
+./scripts/build-usda-db.sh
 ```
+
+Output: `data/usda.sqlite` (~1.2 GB) — USDA products + FTS5 index + additive risks.
 
 ### Build Open Food Facts parquet (offline product database)
 

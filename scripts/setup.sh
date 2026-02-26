@@ -82,19 +82,30 @@ fi
 mkdir -p "$DATA_DIR"
 mkdir -p "$API_DIR/uploads"
 
-# ── Database setup (schema + migrations) ─────────────────────
-step "Setting up database"
+# ── App database (schema + migrations) ─────────────────────
+step "Setting up app database"
 cd "$API_DIR"
 
 # Just starting the DB module applies schema.sql automatically
 bun -e "require('./src/db').getDb(); console.log('Schema applied');"
-info "SQLite database ready"
+info "App database ready"
 
-# ── Seed additive risks ──────────────────────────────────────
-step "Seeding additive risk table"
-cd "$API_DIR"
-bun src/scripts/seedAdditiveRisks.ts
-info "Additive risks seeded (~230 entries)"
+# ── USDA reference database ─────────────────────────────────
+USDA_DB="$DATA_DIR/usda.sqlite"
+
+if [ "$QUICK" = true ]; then
+  warn "Skipping USDA download (--quick mode)"
+else
+  step "USDA reference database"
+
+  if [ -f "$USDA_DB" ]; then
+    USDA_SIZE=$(du -h "$USDA_DB" | cut -f1)
+    info "USDA reference DB already exists ($USDA_SIZE) — skipping build"
+    info "To rebuild: rm $USDA_DB && ./scripts/build-usda-db.sh"
+  else
+    "$ROOT_DIR/scripts/build-usda-db.sh"
+  fi
+fi
 
 # ── Open Food Facts (Parquet via DuckDB) ─────────────────────
 OFF_PARQUET="$DATA_DIR/off-food.parquet"
@@ -129,16 +140,18 @@ step "Setup complete!"
 echo ""
 
 # Show database stats
+echo "  Database stats:"
+
 cd "$API_DIR"
-bun -e "
-  const { getDb } = require('./src/db');
-  const db = getDb();
-  const adds = db.query('SELECT COUNT(*) as c FROM additive_risks').get();
-  const foods = db.query('SELECT COUNT(*) as c FROM foods').get();
-  console.log('  Database stats:');
-  console.log('    Additive risks: ' + adds.c);
-  console.log('    Scored foods:   ' + foods.c);
-" 2>/dev/null || true
+FOOD_COUNT=$(bun -e "const{getDb}=require('./src/db');console.log(getDb().query('SELECT COUNT(*)as c FROM foods').get().c)" 2>/dev/null || echo "?")
+echo "    Scored foods:   $FOOD_COUNT (app DB)"
+
+if [ -f "$DATA_DIR/usda.sqlite" ]; then
+  USDA_COUNT=$(sqlite3 "$DATA_DIR/usda.sqlite" "SELECT COUNT(*) FROM dataset_usda_products;" 2>/dev/null || echo "?")
+  ADD_COUNT=$(sqlite3 "$DATA_DIR/usda.sqlite" "SELECT COUNT(*) FROM additive_risks;" 2>/dev/null || echo "?")
+  echo "    USDA products:  $USDA_COUNT (reference DB)"
+  echo "    Additive risks: $ADD_COUNT (reference DB)"
+fi
 
 if [ -f "$DATA_DIR/off-food.parquet" ] && command -v duckdb &>/dev/null; then
   OFF_COUNT=$(duckdb -noheader -csv -c "SELECT COUNT(*) FROM '$DATA_DIR/off-food.parquet';" 2>/dev/null || echo "?")

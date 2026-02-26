@@ -122,13 +122,8 @@ CREATE TABLE IF NOT EXISTS job_events (
 
 CREATE INDEX IF NOT EXISTS idx_job_events_job_id ON job_events(job_id);
 
--- Additive risk map (curated)
-CREATE TABLE IF NOT EXISTS additive_risks (
-  code TEXT PRIMARY KEY,
-  name TEXT,
-  risk_level TEXT NOT NULL CHECK (risk_level IN ('risk_free','limited','moderate','high')),
-  updated_at TEXT NOT NULL
-);
+-- Additive risks + USDA data are in the reference database (data/usda.sqlite).
+-- See db/referenceDb.ts.
 
 -- Category registry: human-readable names + descriptions for food categories
 CREATE TABLE IF NOT EXISTS categories (

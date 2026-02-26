@@ -1,4 +1,4 @@
-import { getDb } from "../db";
+import { getReferenceDb } from "../db/referenceDb";
 
 export type RiskLevel = "risk_free" | "limited" | "moderate" | "high";
 
@@ -31,7 +31,7 @@ export const RISK_PENALTY: Record<RiskLevel, number> = {
 };
 
 export function lookupAdditiveRisk(code: string): { risk_level: RiskLevel; name?: string | null } {
-  const db = getDb();
+  const db = getReferenceDb();
   const row = db
     .query(`SELECT risk_level, name FROM additive_risks WHERE code = ? LIMIT 1`)
     .get(code) as any;
