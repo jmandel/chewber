@@ -294,7 +294,6 @@ function Header() {
           >About</button>
         </div>
         <Link to="/" style={{ textDecoration: "none" }}>
-          <div className="muted" style={{ fontSize: 10.5, marginTop: 3, letterSpacing: "0.01em" }}>Food score in seconds</div>
         </Link>
       </div>
       {showAbout && <AboutOverlay onClose={() => setShowAbout(false)} />}
