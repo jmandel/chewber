@@ -176,11 +176,52 @@ Record this as the scoring_track in your report.
 
 ## 2) Classification for scoring
 - Nutri-Score category: general_food | beverage | added_fat | cheese
-- IMPORTANT Nutri-Score category rules (original algorithm):
-  - GENERAL_FOOD: most foods, PLUS milk, drinkable yoghurt, flavoured/chocolate milk (>80% milk), soups, gazpacho, plant-based drinks
-  - BEVERAGE: water-based drinks only — sodas, juices, flavored waters, energy drinks, iced teas
-  - ADDED_FAT: oils, butter, margarine, cream, plant-based cooking fats. NOT mayonnaise.
-  - CHEESE: cheeses, processed cheeses, cheese specialties. NOT quark, NOT plant-based cheese alternatives.
+
+### DECISION TREE — follow in order, stop at first match:
+
+**Step 1 → CHEESE?**
+Yes if: traditional cheese, processed cheese, cream cheese, cheese spreads, cheese specialties (including ricotta, mascarpone, halloumi, paneer, feta, brie, etc.)
+No if: quark, fromage frais, plant-based cheese alternatives, cottage cheese → classify as general_food
+→ If yes: **CHEESE**
+
+**Step 2 → ADDED_FAT?**
+Yes if: the product's primary identity IS a fat or oil used for cooking, frying, or spreading on bread. Includes: vegetable oils, olive oil, coconut oil, butter, ghee, clarified butter, margarine, lard, tallow, schmaltz, cooking sprays, cream (dairy or coconut), cocoa butter, shortening.
+No if: the product merely CONTAINS a lot of fat but is primarily a sauce, condiment, dip, spread, or food. NOT added_fat: mayonnaise, pesto, hummus, guacamole, nut butters, tahini, salad dressings, cheese sauces.
+→ If yes: **ADDED_FAT**
+
+**Step 3 → Is it a drinkable liquid?**
+If not drinkable → **GENERAL_FOOD** (skip to Step 4)
+If drinkable → check these exceptions:
+
+  **3a) Dairy/dairy-like exceptions → GENERAL_FOOD:**
+  - Milk (any fat level: whole, 2%, skim)
+  - Flavoured milk, chocolate milk (>80% milk content)
+  - Drinkable yoghurt, kefir, lassi, ayran
+  - Plant-based milks/drinks (soy, oat, almond, rice, coconut milk)
+
+  **3b) Soup/broth exceptions → GENERAL_FOOD:**
+  - Soups (all types), gazpacho, bone broth, vegetable broth consumed as soup
+
+  **3c) Meal replacement exceptions → GENERAL_FOOD:**
+  - Liquid meal replacements (Soylent, Huel, Ensure)
+  - RTD protein shakes where base is >80% milk
+
+  **3d) Everything else that's a drink → BEVERAGE:**
+  - Sodas, colas, lemonades
+  - Fruit juices (100% juice, juice blends, nectars)
+  - Vegetable juices (V8, carrot juice)
+  - Flavoured water, sparkling water, mineral water, coconut water
+  - Iced teas, sweet teas, ready-to-drink coffees
+  - Energy drinks, sports drinks (Gatorade, electrolyte drinks)
+  - Kombucha
+  - Drinking vinegars, shrubs
+  - Smoothies with water/juice base (not milk-based)
+  - Any other flavoured or sweetened drink
+
+**Step 4 → Everything else: GENERAL_FOOD**
+
+**Key principle:** The category is about WHAT THE PRODUCT IS, not its nutrient profile. A high-fat sauce is still general_food. A sugary drink is still beverage. Follow the decision tree, not intuition about nutrient levels.
+
 - Is water? (beverage-only): yes/no
 - Reconstituted product? yes/no
   - If yes: describe preparation instructions and whether nutrition is "as prepared" vs "as sold"
@@ -195,25 +236,51 @@ Record this as the scoring_track in your report.
 
     **How to estimate FVPN% — follow this priority order:**
 
-    1. **Use the OFF database estimate when available.** Open Food Facts tool results include `fvpn_estimate` with `fruits_vegetables_nuts_percent` (FVN) and `fruits_vegetables_legumes_percent` (FVL). These are computed algorithmically from parsed ingredient lists. Use the FVN value as your starting point for FVPN%. You may round it (e.g. 84.9 → 85).
+    1. **Use the OFF database estimate when available.** Open Food Facts tool results include `fvpn_estimate` with `fruits_vegetables_nuts_percent` (FVN) and `fruits_vegetables_legumes_percent` (FVL). These are computed algorithmically from parsed ingredient lists. **Use the FVN value as your FVPN%.** You may round it (e.g. 84.9 → 85). This is your answer — proceed to the next section.
 
-    2. **When multiple OFF entries exist** (text search returns several results for the same product), their FVPN estimates may vary widely (e.g. 61% to 98% for the same sauce). This happens because OFF's ingredient parser produces different results depending on how each barcode's ingredients were entered. In this case: **prefer the lower/median values** over outlier highs — high values often mean the parser failed to discount water in reconstituted ingredients.
+    2. **When multiple OFF entries exist** (text search returns several results for the same product), their FVPN estimates may vary. **Use the median FVN value.** Ignore outlier highs (>90% for products with reconstituted ingredients) — those usually mean the parser failed to discount water.
 
-    3. **Cross-check with the water-discount method below.** If an OFF estimate seems implausibly high for a product whose #1 ingredient is reconstituted (e.g. "Tomato Puree (Water, Tomato Paste)" getting 97% FVPN), apply the water-discount method and use the lower result. Conversely, if an OFF estimate seems too low (e.g. 21% for a sauce that's mostly whole tomatoes), apply the method and use the higher result.
+    3. **If no OFF estimate exists**, estimate from the ingredient list using the water-discount method below.
 
-    4. **If no OFF estimate exists**, estimate from the ingredient list using the water-discount method below.
-
-    5. **Only invent a number without any method** as a last resort. Never claim high confidence for a freehand guess.
+    4. **If you believe an OFF estimate is wrong**, you MUST show your work using the water-discount method below. Write out the calculation step by step: identify each FVPN-eligible ingredient, estimate its percentage of the total product weight, apply the water-discount factor, and sum. The result of this calculation is your FVPN% — not a round number you feel is right. "Premium standards" or "high quality" are NOT evidence. Only a concrete arithmetic disagreement with the OFF parser justifies an override.
 
     **Water-discount method (for manual estimation):**
-    Reconstituted ingredients like "Tomato Puree (Water, Tomato Paste)" contain significant water. Water does NOT count toward FVPN%. You must discount it:
-    - Tomato puree (from paste + water): ~25-35% tomato solids by weight (the rest is water)
-    - Tomato paste: ~65-75% tomato solids (concentrated)
-    - Diced/crushed tomatoes: ~90-95% tomato solids
-    - Whole peeled tomatoes (in juice/puree): ~70-80% tomato solids
-    - Fruit juice from concentrate: ~30-50% fruit solids
-    - Vegetable broth/stock: ~5-10% vegetable solids
-    When an ingredient sub-lists water (e.g. "Tomato Puree (Water, Tomato Paste)"), the water fraction is NOT fruit/vegetable content.
+    Reconstituted ingredients contain significant water. Water does NOT count toward FVPN%. You must discount it.
+
+    Common solids fractions (the remainder is water — which does NOT count):
+    - Puree from concentrate (any fruit/veg paste + water): ~25-35% solids
+    - Concentrated paste (tomato paste, fruit paste): ~65-75% solids
+    - Diced/crushed whole produce: ~90-95% solids
+    - Whole produce packed in juice or puree: ~70-80% solids (the packing liquid is ~25-35% solids)
+    - Juice from concentrate: ~30-50% fruit solids
+    - Broth/stock: ~5-10% solids
+
+    Key principle: when an ingredient sub-lists water (e.g. "[X] Puree (Water, [X] Paste)"), the water fraction is NOT fruit/vegetable content. Reconstituted purees are mostly water.
+
+    **Worked example — orange juice from concentrate:**
+    Ingredients: "Water, Orange Juice Concentrate, Natural Flavors"
+    Step 1: Estimate weight fractions from ingredient order:
+      - Water: ~60% of product (listed first — does NOT count toward FVPN)
+      - Orange juice concentrate: ~39% of product
+      - Natural flavors: ~1% (non-FVPN)
+    Step 2: Apply solids fractions:
+      - Juice from concentrate: use ~30-50% fruit solids from the table.
+      - The reconstituted product is ~40% concentrate by weight, and concentrate is ~100% fruit solids (it's just dehydrated juice). So: 39% × 100% = 39% FVPN.
+      - But we should also consider: the final product is juice with water added back. Industry standard for reconstituted OJ is ~45-50% fruit equivalent.
+    Step 3: Use ~**45% FVPN**
+    (Note: OFF typically estimates 40-55% for OJ from concentrate — our calculation lands in range)
+
+    **Worked example — vegetable soup:**
+    Ingredients: "Water, Carrots, Potatoes, Celery, Onions, Olive Oil, Salt, Spices"
+    Step 1: Estimate weight fractions from ingredient order:
+      - Water: ~55% (listed first, does NOT count)
+      - Carrots + Potatoes + Celery + Onions: ~35% total
+      - Olive oil: ~5%
+      - Salt + spices: ~5% (non-FVPN)
+    Step 2: Apply solids fractions:
+      - Vegetables are whole/diced (not reconstituted): 35% × 100% = 35% FVPN
+      - Olive oil counts fully: 5% × 100% = 5% FVPN
+    Step 3: Sum = 35 + 5 = **40% FVPN**
 
     **Quick-reference cases:**
     - Single-ingredient natural produce (apple, carrot): FVPN% = 100
@@ -221,7 +288,7 @@ Record this as the scoring_track in your report.
     - Seed butters (sunflower butter, tahini): FVPN% = 0
     - Do NOT set FVPN% = 100 just because a product is "100% X" — X must be in the allowed categories above
 
-    **Consistency principle:** Two similar products (e.g. two brands of marinara sauce with similar ingredient lists) should get similar FVPN% values. If you're estimating, sanity-check against the OFF estimates of comparable products in the same tool results.
+    **Consistency principle:** Two similar products (e.g. two brands of marinara sauce with similar ingredient lists) MUST get similar FVPN% values. A 20+ point gap between similar products means something is wrong. If your estimate is >15 points away from the OFF estimate, you almost certainly made an error — re-check your math.
 
 ## 3) Nutrition facts (per 100 g or per 100 mL)
 Provide numeric values with units; use null if unknown.
