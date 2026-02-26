@@ -1243,17 +1243,28 @@ function ComparePage() {
         <div style={{ overflowX: "auto" }}>
           <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
             <thead>
-              <tr style={{ borderBottom: "2px solid var(--slate)" }}>
-                <th style={{ textAlign: "left", padding: "10px 8px", fontSize: 12, color: "var(--fog)", minWidth: 100 }}>per 100g</th>
+              {/* Name row */}
+              <tr>
+                <th style={{ textAlign: "left", padding: "6px 8px", minWidth: 80 }} />
                 {foods.map(f => (
-                  <th key={f.id} style={{ padding: "8px", textAlign: "center", minWidth: 100 }}>
-                    <div style={{ fontWeight: 700, fontSize: 14 }}>{f.canonical_name}</div>
-                    {f.brand && <div className="muted" style={{ fontSize: 11 }}>{f.brand}</div>}
-                    <div style={{ margin: "4px auto" }}><ScorePill score={f.score ?? null} size={24} /></div>
-                    <button onClick={() => removeFood(f.id)} style={{
-                      background: "none", border: "none", color: "var(--fog)", cursor: "pointer",
-                      fontSize: 11, padding: "2px 6px"
-                    }}>✕ remove</button>
+                  <th key={f.id} style={{ padding: "6px 8px", textAlign: "center", minWidth: 100, verticalAlign: "bottom" }}>
+                    <div style={{ fontWeight: 700, fontSize: 14, lineHeight: 1.2 }}>{f.canonical_name}</div>
+                    {f.brand && <div className="muted" style={{ fontSize: 11, marginTop: 1 }}>{f.brand}</div>}
+                  </th>
+                ))}
+              </tr>
+              {/* Score + remove row */}
+              <tr style={{ borderBottom: "2px solid var(--slate)" }}>
+                <th style={{ textAlign: "left", padding: "4px 8px", fontSize: 12, color: "var(--fog)", fontWeight: 400 }}>per 100g</th>
+                {foods.map(f => (
+                  <th key={f.id} style={{ padding: "4px 8px", textAlign: "center", verticalAlign: "middle" }}>
+                    <div style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+                      <ScorePill score={f.score ?? null} size={24} />
+                      <button onClick={() => removeFood(f.id)} style={{
+                        background: "none", border: "none", color: "var(--fog)", cursor: "pointer",
+                        fontSize: 11, padding: "2px 4px", lineHeight: 1
+                      }}>✕</button>
+                    </div>
                   </th>
                 ))}
               </tr>
