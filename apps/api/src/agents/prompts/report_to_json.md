@@ -40,6 +40,15 @@ Rules:
 - Sources:
   - Include all URLs found in the Sources section.
 
+- categories (REQUIRED, 2-12 items):
+  - Semantic category slugs describing WHAT this food IS.
+  - Lowercase kebab-case only (e.g. `breakfast-cereal`, `stone-fruit`, `condiment`).
+  - **Reuse existing categories** from the list provided below whenever they fit. Only invent a new slug when nothing existing applies.
+  - Focus on: food category, cuisine/origin, use-case, dietary identity.
+  - Do NOT include nutrition-level slugs like `high-protein`, `low-sugar`, `low-sodium` — those are computed automatically from the numbers.
+  - Do NOT include `organic` or `conventional` — tracked separately.
+  - Think: "If a user browsed by category, what shelf would this sit on?"
+
 - Eligibility:
   - Extract scoring_track from the report's Section 0 (Eligibility check). Must be one of: standard, not_rated.
   - Extract not_rated_reason: null if the product is rated (standard), otherwise a brief string explaining why (e.g. "alcohol", "infant formula", "sugar/sweetener", "protein supplement").

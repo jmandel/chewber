@@ -23,7 +23,7 @@ You MUST:
 
 3. **Exact transcription**: Copy nutrition values exactly as they appear in tool results. Do NOT "correct" them from your training knowledge. If a tool says fiber is 2.1g, write 2.1g — even if you "know" it should be different.
 
-4. **Single-source warning**: If nutrition data comes from only ONE source (e.g. only local DB, no web confirmation), flag this prominently in Section 7: "⚠️ Single source only — not cross-referenced."
+4. **Single-source warning**: If nutrition data comes from only ONE source (e.g. only local DB, no web confirmation), flag this prominently in Section 8: "⚠️ Single source only — not cross-referenced."
 
 5. **US label rounding warning**: When using US nutrition labels (per-serving), flag any 0g values for fiber, fat, or protein with: "⚠️ May be rounded to 0g per US labeling rules (values <0.5g round to 0)." Actively search for unrounded per-100g data before accepting 0g.
 
@@ -217,10 +217,15 @@ If you converted from per-serving, show: `[value] per [serving_size] → [conver
 - If the input query specifies isOrganic: "yes" or "no", trust the user's answer — they confirmed this during clarification. Carry it forward.
 - If isOrganic: "unknown", only upgrade to "yes" with concrete evidence (organic label, database field, product name includes "organic"). Otherwise keep "unknown".
 
-## 6) Sources
+## 6) Categories
+List 2-12 lowercase kebab-case category slugs describing what this food IS — its food category, cuisine, use-case, and dietary identity.
+Focus on the kind of food, not nutrition levels (those are computed automatically).
+Examples: `breakfast-cereal`, `whole-grain`, `stone-fruit`, `leafy-green`, `fermented`, `snack-bar`, `condiment`, `frozen-meal`, `plant-based`, `gluten-free`, `dairy`, `nut-butter`, `tropical-fruit`, `root-vegetable`
+
+## 7) Sources
 List all sources as bullet points with URLs.
 
-## 7) Uncertainties & follow-ups
+## 8) Uncertainties & follow-ups
 - Data quality flags: (single-source only? US label rounding suspected? per-serving conversion used?)
 - Missing fields:
 - Tool calls that returned no useful data: (list any searches/lookups that failed or returned empty)

@@ -23,6 +23,60 @@ function parseTags(tagsJson: string | null): string[] {
 
 // NOTE: literal routes MUST be registered BEFORE /foods/:id
 
+// Related foods — find others sharing the most tags
+foodsRoutes.get("/foods/:idOrSlug/related", (c) => {
+  const db = c.get("db");
+  const param = c.req.param("idOrSlug");
+  const limit = Math.min(Number(c.req.query("limit") ?? 8), 20);
+
+  // Find the food
+  let row = db.query(`SELECT id, tags_json FROM foods WHERE id = ? LIMIT 1`).get(param) as any;
+  if (!row) row = db.query(`SELECT id, tags_json FROM foods WHERE slug = ? LIMIT 1`).get(param) as any;
+  if (!row) return c.json({ related: [] });
+
+  const tags = parseTags(row.tags_json);
+  if (tags.length === 0) return c.json({ related: [] });
+
+  // Find all other foods that share at least one tag, rank by overlap count
+  // Uses json_each to unnest tags, then counts matches
+  const related = db.query(`
+    WITH my_tags(tag) AS (
+      SELECT value FROM json_each(?)
+    ),
+    matches AS (
+      SELECT f.id, f.slug, f.canonical_name, f.brand, f.tags_json,
+             COUNT(DISTINCT mt.tag) AS shared_count
+      FROM foods f, json_each(f.tags_json) jt
+      JOIN my_tags mt ON mt.tag = jt.value
+      WHERE f.id != ?
+      GROUP BY f.id
+      ORDER BY shared_count DESC, f.updated_at DESC
+      LIMIT ?
+    )
+    SELECT m.*, a.score, a.abstraction_json
+    FROM matches m
+    LEFT JOIN food_abstractions a ON a.food_id = m.id AND a.status = 'active'
+    ORDER BY m.shared_count DESC
+  `).all(JSON.stringify(tags), row.id, limit) as any[];
+
+  return c.json({
+    related: related.map((r: any) => {
+      const foodTags = parseTags(r.tags_json);
+      const shared = tags.filter(t => foodTags.includes(t));
+      return {
+        id: r.id,
+        slug: r.slug ?? r.id,
+        canonical_name: r.canonical_name,
+        brand: r.brand,
+        tags: foodTags,
+        shared_tags: shared,
+        score: r.score ?? null,
+        organic: r.abstraction_json ? extractOrganic(r.abstraction_json) : null,
+      };
+    })
+  });
+});
+
 foodsRoutes.get("/foods/recent", (c) => {
   const db = c.get("db");
   const limit = Math.min(Number(c.req.query("limit") ?? 10), 50);
@@ -219,18 +273,48 @@ foodsRoutes.get("/foods/:idOrSlug", (c) => {
 
 foodsRoutes.get("/categories", (c) => {
   const db = c.get("db");
-  const rows = db
-    .query(`SELECT DISTINCT category_path FROM foods WHERE category_path IS NOT NULL AND category_path != '' ORDER BY category_path ASC`)
-    .all() as any[];
-  return c.json({ categories: rows.map((r: any) => r.category_path) });
+  // Return from the categories registry, with usage counts
+  const rows = db.query(`
+    SELECT c.slug, c.display_name, c.description,
+           COUNT(DISTINCT f.id) AS food_count
+    FROM categories c
+    LEFT JOIN foods f ON EXISTS (
+      SELECT 1 FROM json_each(f.tags_json) WHERE value = c.slug
+    )
+    GROUP BY c.slug
+    ORDER BY food_count DESC, c.display_name ASC
+  `).all() as any[];
+  return c.json({
+    categories: rows.map((r: any) => ({
+      slug: r.slug,
+      display_name: r.display_name,
+      description: r.description,
+      food_count: r.food_count
+    }))
+  });
 });
 
 foodsRoutes.get("/tags", (c) => {
   const db = c.get("db");
+  // All tags currently in use across foods
   const rows = db.query(`SELECT tags_json FROM foods`).all() as any[];
-  const set = new Set<string>();
+  const counts = new Map<string, number>();
   for (const r of rows) {
-    for (const t of parseTags((r as any).tags_json)) set.add(t);
+    for (const t of parseTags((r as any).tags_json)) {
+      counts.set(t, (counts.get(t) ?? 0) + 1);
+    }
   }
-  return c.json({ tags: Array.from(set).sort() });
+  // Enrich with display names from category registry
+  const catRows = db.query(`SELECT slug, display_name FROM categories`).all() as any[];
+  const catMap = new Map(catRows.map((r: any) => [r.slug, r.display_name]));
+
+  const tags = Array.from(counts.entries())
+    .sort((a, b) => b[1] - a[1])
+    .map(([slug, count]) => ({
+      slug,
+      display_name: catMap.get(slug) ?? slug,
+      count
+    }));
+
+  return c.json({ tags });
 });

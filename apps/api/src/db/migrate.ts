@@ -1,5 +1,6 @@
 import { getDb } from "./index";
 import { makeSlug } from "../utils/slug";
+import { generateTags } from "../utils/autoTags";
 
 const db = getDb();
 console.log("[migrate] schema applied");
@@ -46,6 +47,31 @@ if (foodsWithoutSlug.length > 0) {
   console.log(`[migrate] backfilled slugs for ${foodsWithoutSlug.length} food(s)`);
 } else {
   console.log("[migrate] all foods have slugs");
+}
+
+// Migration: backfill tags_json from abstractions for foods with empty tags
+const foodsEmptyTags = db.query(
+  `SELECT f.id, f.tags_json, a.abstraction_json
+   FROM foods f
+   LEFT JOIN food_abstractions a ON a.food_id = f.id AND a.status = 'active'
+   WHERE (f.tags_json IS NULL OR f.tags_json = '[]') AND a.abstraction_json IS NOT NULL`
+).all() as { id: string; tags_json: string; abstraction_json: string }[];
+
+if (foodsEmptyTags.length > 0) {
+  const updateTags = db.prepare(`UPDATE foods SET tags_json = ?, updated_at = ? WHERE id = ?`);
+  const now = new Date().toISOString();
+  for (const f of foodsEmptyTags) {
+    try {
+      const abs = JSON.parse(f.abstraction_json);
+      const tags = generateTags(abs);
+      if (tags.length > 0) {
+        updateTags.run(JSON.stringify(tags), now, f.id);
+      }
+    } catch {}
+  }
+  console.log(`[migrate] backfilled tags for ${foodsEmptyTags.length} food(s)`);
+} else {
+  console.log("[migrate] all foods have tags (or no abstractions yet)");
 }
 
 console.log("[migrate] done");

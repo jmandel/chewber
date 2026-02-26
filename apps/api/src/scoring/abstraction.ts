@@ -50,6 +50,7 @@ export const FoodAbstractionSchema = z.object({
     is_certified_organic: z.enum(["yes", "no", "unknown"]),
     evidence: z.string().nullable()
   }),
+  categories: z.array(z.string()).min(1).max(12),
   sources: z.array(
     z.object({
       url: z.string(),

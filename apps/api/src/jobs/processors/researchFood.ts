@@ -4,6 +4,7 @@ import { appendJobEvent } from "../events";
 import { updateJob } from "../queue";
 import { nowIso, newId } from "../../utils/id";
 import { makeSlug } from "../../utils/slug";
+import { generateTags } from "../../utils/autoTags";
 import { runResearchAgent } from "../../agents/researchAgent";
 import { reportToJson } from "../../agents/jsonStage";
 import { FoodAbstractionSchema, type FoodAbstraction, toScoreInputs } from "../../scoring/abstraction";
@@ -89,6 +90,8 @@ export async function processResearchFoodJob(job: { id: string; payload_json: st
 function upsertFood(abs: FoodAbstraction, structured_query: any): string {
   const db = getDb();
   const barcode = (abs.identification.barcode ?? structured_query?.barcode ?? null)?.toString().trim() || null;
+  const tags = generateTags(abs);
+  const tagsJson = JSON.stringify(tags);
 
   // Try barcode match first
   if (barcode) {
@@ -97,12 +100,13 @@ function upsertFood(abs: FoodAbstraction, structured_query: any): string {
       // update basic fields
       const slug = makeSlug(abs.identification.canonical_name, abs.identification.brand, row.id, abs.organic.is_certified_organic);
       db.query(
-        `UPDATE foods SET canonical_name=?, brand=?, kind=?, slug=?, updated_at=? WHERE id=?`
+        `UPDATE foods SET canonical_name=?, brand=?, kind=?, slug=?, tags_json=?, updated_at=? WHERE id=?`
       ).run(
         abs.identification.canonical_name,
         abs.identification.brand,
         abs.identification.kind === "unknown" ? (structured_query?.kind ?? "unknown") : abs.identification.kind,
         slug,
+        tagsJson,
         nowIso(),
         row.id
       );
@@ -125,7 +129,7 @@ function upsertFood(abs: FoodAbstraction, structured_query: any): string {
     abs.identification.brand,
     abs.identification.kind === "unknown" ? (structured_query?.kind ?? "unknown") : abs.identification.kind,
     null,
-    "[]",
+    tagsJson,
     "agent",
     ts,
     ts

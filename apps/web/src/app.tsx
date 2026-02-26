@@ -5,6 +5,8 @@ import {
   type AssistResponse,
   type FoodDetail,
   type FoodSummary,
+  type RelatedFood,
+  type Category,
   type PriorAnswer,
   type StructuredFoodQuery,
 } from "./api";
@@ -181,6 +183,7 @@ export function App() {
           <Route path="/barcode" element={<BarcodeStep fs={fs} />} />
           <Route path="/photo" element={<PhotoStep fs={fs} />} />
           <Route path="/food/:slug" element={<FoodPage />} />
+          <Route path="/category/:slug" element={<CategoryPage />} />
         </Routes>
       )}
     </div>
@@ -305,27 +308,21 @@ function Header() {
 function PickScreen() {
   const nav = useNavigate();
   const [recent, setRecent] = useState<FoodSummary[]>([]);
-  const [categories, setCategories] = useState<string[]>([]);
-  const [tags, setTags] = useState<string[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [catFilter, setCatFilter] = useState("");
-  const [tagFilter, setTagFilter] = useState("");
 
   useEffect(() => {
     api.getRecentFoods(10).then(r => setRecent(r.foods)).catch(() => {});
-    api.getCategories().then(r => setCategories(r.categories)).catch(() => {});
-    api.getTags().then(r => setTags(r.tags)).catch(() => {});
+    api.getCategories().then(r => setCategories(r.categories.filter(c => c.food_count > 0))).catch(() => {});
   }, []);
 
   const filteredCats = catFilter
-    ? categories.filter(c => c.toLowerCase().includes(catFilter.toLowerCase()))
+    ? categories.filter(c => c.display_name.toLowerCase().includes(catFilter.toLowerCase()) || c.slug.includes(catFilter.toLowerCase()))
     : categories;
-  const filteredTags = tagFilter
-    ? tags.filter(t => t.toLowerCase().includes(tagFilter.toLowerCase()))
-    : tags;
 
   return (
-    <>
-      <div style={{ display: "flex", flexDirection: "column", gap: 10, maxWidth: 480, margin: "0 auto" }}>
+    <div style={{ maxWidth: 480, margin: "0 auto" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
         <Link to="/text" className="pick-btn">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--fog)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <span><strong>Search</strong><br/><span className="muted">Type a food or product name</span></span>
@@ -352,32 +349,19 @@ function PickScreen() {
       {categories.length > 0 && (
         <div className="card" style={{ marginTop: 8 }}>
           <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Categories</div>
-          <input placeholder="Filter…" value={catFilter} onChange={e => setCatFilter(e.target.value)}
-            style={{ width: "100%", marginBottom: 8, fontSize: 13, padding: "8px 12px" }} />
-          <div style={{ maxHeight: 200, overflowY: "auto" }}>
+          {categories.length > 8 && (
+            <input placeholder="Filter categories…" value={catFilter} onChange={e => setCatFilter(e.target.value)}
+              style={{ width: "100%", marginBottom: 8, fontSize: 13, padding: "8px 12px" }} />
+          )}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 6, maxHeight: 240, overflowY: "auto" }}>
             {filteredCats.length === 0 && <div className="muted" style={{ fontSize: 13 }}>None found.</div>}
             {filteredCats.map(c => (
-              <div key={c} className="muted" style={{ padding: "6px 0", fontSize: 13, cursor: "pointer", borderBottom: "1px solid var(--slate)" }}
-                onClick={() => nav("/text")}>{c}</div>
+              <CategoryChip key={c.slug} category={c} onClick={() => nav(`/category/${encodeURIComponent(c.slug)}`)} />
             ))}
           </div>
         </div>
       )}
-
-      {tags.length > 0 && (
-        <div className="card" style={{ marginTop: 8 }}>
-          <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Tags</div>
-          <input placeholder="Filter…" value={tagFilter} onChange={e => setTagFilter(e.target.value)}
-            style={{ width: "100%", marginBottom: 8, fontSize: 13, padding: "8px 12px" }} />
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 6, maxHeight: 200, overflowY: "auto" }}>
-            {filteredTags.map(t => (
-              <span key={t} className="badge" style={{ cursor: "pointer", padding: "4px 10px", fontSize: 12 }}
-                onClick={() => nav("/text")}>{t}</span>
-            ))}
-          </div>
-        </div>
-      )}
-    </>
+    </div>
   );
 }
 
@@ -738,6 +722,69 @@ function ClarifyStep(props: {
   );
 }
 
+// ── Share button ────────────────────────────────────────────
+function ShareButton({ food }: { food: FoodDetail }) {
+  const [copied, setCopied] = useState(false);
+
+  const score = food.score != null ? food.score : null;
+  const zagat = food.abstraction?.zagat_line as string | undefined;
+  const name = food.canonical_name;
+  const brand = food.brand;
+
+  const title = score != null
+    ? `${name}${brand ? ` (${brand})` : ""} — ${score}/100 on Chewber`
+    : `${name}${brand ? ` (${brand})` : ""} — Chewber`;
+
+  const text = zagat
+    ? `"${zagat}"`
+    : score != null
+      ? `Scored ${score}/100`
+      : "Check this food out";
+
+  const url = window.location.href;
+
+  async function handleShare() {
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, text, url });
+      } catch {}
+    } else {
+      try {
+        await navigator.clipboard.writeText(`${title}\n${text}\n${url}`);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } catch {}
+    }
+  }
+
+  return (
+    <button
+      onClick={handleShare}
+      className="btn-full"
+      style={{
+        marginTop: 8, marginBottom: 0, display: "flex", alignItems: "center",
+        justifyContent: "center", gap: 8, fontSize: 14, fontWeight: 600,
+        padding: "10px 16px", background: "transparent",
+        border: "1px solid var(--slate)", borderRadius: "var(--radius-sm)",
+        color: copied ? "var(--kale)" : "var(--fog)", cursor: "pointer",
+        transition: "color 0.2s",
+      }}
+    >
+      {copied ? (
+        <>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--kale)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Copied!
+        </>
+      ) : (
+        <>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          Share
+        </>
+      )}
+    </button>
+  );
+}
+
 // ── Food detail page ────────────────────────────────────────
 function FoodPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -770,7 +817,17 @@ function FoodPage() {
   return (
     <>
       <ScoreHero food={food} />
+      {food.tags && food.tags.length > 0 && (
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginTop: 8 }}>
+          {food.tags.map(t => (
+            <span key={t} className="badge" onClick={() => nav(`/category/${encodeURIComponent(t)}`)}
+              style={{ cursor: "pointer", fontSize: 11, padding: "3px 8px" }}>{t}</span>
+          ))}
+        </div>
+      )}
+      <ShareButton food={food} />
       <FoodDetailView food={food} />
+      <RelatedFoods foodId={food.id} />
       <button onClick={() => nav("/")} className="btn-full" style={{ marginTop: 12 }}>← New search</button>
     </>
   );
@@ -1022,6 +1079,79 @@ function LogRow({ ev, bg, fg }: { ev: any; bg: string; fg: string }) {
   );
 }
 
+// ── Category browse page ────────────────────────────────────
+function CategoryPage() {
+  const { slug } = useParams<{ slug: string }>();
+  const nav = useNavigate();
+  const [foods, setFoods] = useState<FoodSummary[]>([]);
+  const [catName, setCatName] = useState(
+    slug ? slug.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") : ""
+  );
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!slug) return;
+    setLoading(true);
+    // Fetch category display name
+    api.getCategories().then(r => {
+      const cat = r.categories.find(c => c.slug === slug);
+      if (cat) setCatName(cat.display_name);
+    }).catch(() => {});
+    // Fetch foods with this tag
+    api.searchFoodsByTag(slug).then(r => {
+      setFoods(r.foods);
+      setLoading(false);
+    }).catch(() => setLoading(false));
+  }, [slug]);
+
+  return (
+    <div style={{ maxWidth: 480, margin: "0 auto" }}>
+      <BackLink />
+      <div className="card">
+        <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 4 }}>{catName}</div>
+        <div className="muted" style={{ fontSize: 13, marginBottom: 12 }}>{foods.length} food{foods.length !== 1 ? "s" : ""}</div>
+        {loading && <div className="muted" style={{ textAlign: "center", padding: 20 }}>Loading…</div>}
+        {!loading && foods.length === 0 && <div className="muted" style={{ textAlign: "center", padding: 20 }}>No foods in this category yet.</div>}
+        {foods.map(f => (
+          <FoodListItem key={f.id} food={f} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ── Related foods section ───────────────────────────────────
+function RelatedFoods({ foodId }: { foodId: string }) {
+  const nav = useNavigate();
+  const [related, setRelated] = useState<RelatedFood[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    api.getRelatedFoods(foodId, 6).then(r => {
+      setRelated(r.related);
+      setLoading(false);
+    }).catch(() => setLoading(false));
+  }, [foodId]);
+
+  if (loading || related.length === 0) return null;
+
+  return (
+    <div className="card" style={{ marginTop: 8 }}>
+      <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 10 }}>Related Foods</div>
+      {related.map(f => (
+        <div key={f.id}>
+          <FoodListItem food={f} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} />
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginTop: -4, marginBottom: 6, paddingLeft: 2 }}>
+            {f.shared_tags.map(t => (
+              <span key={t} className="badge" style={{ fontSize: 9, padding: "1px 6px", opacity: 0.7 }}>{t}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // ── Shared small components ─────────────────────────────────
 function TabBtn({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
   return (
@@ -1040,6 +1170,18 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 function KV({ label, value }: { label: string; value: string }) {
   return <div style={{ display: "flex", justifyContent: "space-between", padding: "6px 0", borderBottom: "1px solid var(--slate)", fontSize: 13 }}><span className="muted">{label}</span><span>{value}</span></div>;
 }
+function CategoryChip({ category, onClick }: { category: Category; onClick: () => void }) {
+  return (
+    <span onClick={onClick} className="badge" style={{
+      cursor: "pointer", padding: "5px 10px", fontSize: 12, display: "inline-flex",
+      alignItems: "center", gap: 5
+    }}>
+      {category.display_name}
+      <span style={{ opacity: 0.5, fontSize: 10 }}>{category.food_count}</span>
+    </span>
+  );
+}
+
 function BackLink({ onBeforeBack }: { onBeforeBack?: () => void } = {}) {
   const nav = useNavigate();
   return (

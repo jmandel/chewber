@@ -130,6 +130,14 @@ CREATE TABLE IF NOT EXISTS additive_risks (
   updated_at TEXT NOT NULL
 );
 
+-- Category registry: human-readable names + descriptions for food categories
+CREATE TABLE IF NOT EXISTS categories (
+  slug TEXT PRIMARY KEY,
+  display_name TEXT NOT NULL,
+  description TEXT NOT NULL DEFAULT '',
+  created_at TEXT NOT NULL
+);
+
 -- Cache of raw source lookups (optional)
 CREATE TABLE IF NOT EXISTS source_cache (
   id TEXT PRIMARY KEY,

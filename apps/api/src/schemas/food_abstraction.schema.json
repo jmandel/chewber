@@ -14,6 +14,7 @@
     "additives",
     "flags",
     "organic",
+    "categories",
     "sources",
     "notes",
     "eligibility"
@@ -310,6 +311,16 @@
           ]
         }
       }
+    },
+    "categories": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 12,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+      },
+      "description": "Semantic category slugs describing WHAT this food IS. 2-12 lowercase kebab-case slugs. Reuse existing categories from the provided list when they fit. Invent new ones only when nothing existing applies. Focus on food category, cuisine, use-case, and dietary identity. Do NOT include nutrition-level tags (high-protein, low-sugar) — those are computed separately."
     },
     "sources": {
       "type": "array",

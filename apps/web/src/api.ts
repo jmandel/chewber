@@ -57,6 +57,23 @@ export type FoodSummary = {
   organic?: string | null;
 };
 
+export type RelatedFood = FoodSummary & {
+  shared_tags: string[];
+};
+
+export type Category = {
+  slug: string;
+  display_name: string;
+  description: string;
+  food_count: number;
+};
+
+export type TagInfo = {
+  slug: string;
+  display_name: string;
+  count: number;
+};
+
 export type FoodDetail = FoodSummary & {
   abstraction?: any;
   report_md?: string | null;
@@ -124,9 +141,10 @@ export const api = {
   searchFoodsByCategory: (category: string) => http<{ foods: FoodSummary[] }>("/api/foods/search?category=" + encodeURIComponent(category)),
   getFood: (idOrSlug: string) => http<FoodDetail>("/api/foods/" + encodeURIComponent(idOrSlug)),
   getRecentFoods: (limit = 10) => http<{ foods: FoodSummary[] }>("/api/foods/recent?limit=" + limit),
-  getCategories: () => http<{ categories: string[] }>("/api/categories"),
-  getTags: () => http<{ tags: string[] }>("/api/tags"),
+  getCategories: () => http<{ categories: Category[] }>("/api/categories"),
+  getTags: () => http<{ tags: TagInfo[] }>("/api/tags"),
 
   getJob: (id: string) => http<JobStatus>("/api/jobs/" + encodeURIComponent(id)),
-  getJobByFood: (foodId: string) => http<{ job: any; events: JobEvent[] }>("/api/jobs/by-food/" + encodeURIComponent(foodId))
+  getJobByFood: (foodId: string) => http<{ job: any; events: JobEvent[] }>("/api/jobs/by-food/" + encodeURIComponent(foodId)),
+  getRelatedFoods: (idOrSlug: string, limit = 8) => http<{ related: RelatedFood[] }>(`/api/foods/${encodeURIComponent(idOrSlug)}/related?limit=${limit}`)
 };
