@@ -284,7 +284,7 @@ function Header() {
       <div style={{ marginBottom: 16 }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <Link to="/" style={{ display: "flex", alignItems: "center", gap: 7, textDecoration: "none", color: "inherit" }}>
-            <img src="/tuber-header.png" alt="" height={24} style={{ display: 'block' }} />
+            <img src="/tuber-header.png" alt="" height={36} style={{ display: 'block', marginTop: -6 }} />
             <span style={{ fontSize: 21, fontWeight: 900, letterSpacing: "-0.5px", lineHeight: 1 }}>Chewber</span>
           </Link>
           <button
