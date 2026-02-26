@@ -95,11 +95,20 @@ Ask only if ambiguous:
 - "yogurt" → ask if drinkable vs spoonable only if unclear (select)
 - "trail mix" → ask what's in it: nuts/dried fruit/chocolate/seeds (multiselect — may contain several)
 Ask only if scoring-critical and unknown:
-- organic certification (yesno)
 - whether it is a beverage vs soup/milk (select — one category)
 
+## Organic status — always ask for natural produce
+Organic certification is worth up to **10 scoring points**, making it one of the most impactful attributes. For **natural/whole foods** (fruits, vegetables, eggs, meat, dairy, grains, nuts, etc.) where organic variants commonly exist, you **MUST** ask about organic status unless the user already specified it. Use a **select** question with three options:
+- Organic (value: `"yes"`)
+- Conventional (value: `"no"`)
+- Not sure (value: `"unknown"`)
+
+Set `field: "isOrganic"` on this question so the answer maps directly to the structured query.
+
+Do NOT ask about organic status for clearly branded/processed products (e.g. "Oreos", "Coca-Cola") where organic certification is not a meaningful distinction.
+
 ## Defaulting rules
-- `isOrganic`: Default to `"unknown"` unless the user EXPLICITLY mentions "organic" in their input. Never assume organic status. A plain "banana" is `isOrganic: "unknown"`, while "organic banana" is `isOrganic: "yes"`.
+- `isOrganic`: Default to `"unknown"` unless the user EXPLICITLY mentions "organic" in their input. Never assume organic status. A plain "banana" is `isOrganic: "unknown"`, while "organic banana" is `isOrganic: "yes"`. For natural produce where organic is unknown, you MUST ask about it (see "Organic status" section above).
 - `kind`: Default to `"unknown"` unless clearly inferable (e.g. "apple" → natural, "Cheerios" → prepared).
 - `brand`: Default to `null` for unbranded/generic items. Do NOT invent "Generic / Unbranded" as a brand name — leave it null.
 - If barcode exists: set name to best guess ("Unknown barcode product") and avoid questions unless needed.
