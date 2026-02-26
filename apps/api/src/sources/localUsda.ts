@@ -79,13 +79,29 @@ export function localUsdaBarcodeLookup(barcode: string): LocalUsdaProduct[] {
 // FTS text search
 // ---------------------------------------------------------------------------
 
-function ftsEscapeToken(t: string): string {
-  return t.replace(/[^\w]/g, "");
+/**
+ * Tokenize a query the way FTS5's default (unicode61) tokenizer does:
+ * split on non-alphanumeric chars (apostrophes, hyphens, etc.) and drop
+ * fragments ≤1 char (the leftover "s" from "Joe's", etc.).
+ * Also deduplicates tokens (case-insensitive).
+ */
+function ftsTokenize(query: string): string[] {
+  const raw = query.split(/[^\w]+/).filter((t) => t.length > 1);
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const t of raw) {
+    const low = t.toLowerCase();
+    if (!seen.has(low)) {
+      seen.add(low);
+      out.push(t);
+    }
+  }
+  return out;
 }
 
 /**
  * Full-text search across USDA products by description, brand.
- * Multi-strategy: AND → brand-boosted → OR → individual tokens.
+ * Multi-strategy: AND → progressive relaxation → brand-boosted → NEAR.
  * Prefers results WITH nutrition data.
  */
 export function localUsdaSearchText(
@@ -93,7 +109,7 @@ export function localUsdaSearchText(
   limit: number = 10
 ): LocalUsdaProduct[] {
   const db = getDb();
-  const tokens = query.split(/\s+/).map(ftsEscapeToken).filter((t) => t.length > 0);
+  const tokens = ftsTokenize(query);
   if (tokens.length === 0) return [];
 
   // Prefer results with nutrition data (ORDER BY nutriments_json not null)
@@ -114,11 +130,13 @@ export function localUsdaSearchText(
     }
   };
 
+  const andExpr = (toks: string[]) => toks.map((t) => `"${t}"*`).join(" ");
+
   // Strategy 1: AND (all tokens)
-  let results = run(tokens.map((t) => `"${t}"*`).join(" "));
+  let results = run(andExpr(tokens));
   if (results.length > 0) return results;
 
-  // Strategy 2: Brand-boosted
+  // Strategy 2: Brand-boosted AND
   if (tokens.length >= 2) {
     const boosted = `{brand_owner brand_name}: "${tokens[0]}"* ${tokens.slice(1).map((t) => `"${t}"*`).join(" ")}`;
     results = run(boosted);
@@ -128,22 +146,35 @@ export function localUsdaSearchText(
     if (results.length > 0) return results;
   }
 
-  // Strategy 3: OR
-  results = run(tokens.map((t) => `"${t}"*`).join(" OR "));
-  if (results.length > 0) return results;
-
-  // Strategy 4: Individual tokens merged
-  const seen = new Set<number>();
-  const merged: LocalUsdaProduct[] = [];
-  for (const t of tokens) {
-    if (merged.length >= limit) break;
-    for (const p of run(`"${t}"*`)) {
-      if (!seen.has(p.fdc_id)) {
-        seen.add(p.fdc_id);
-        merged.push(p);
-        if (merged.length >= limit) break;
-      }
+  // Strategy 3: Progressive relaxation — drop one token at a time (least
+  // important first, i.e. from the end) until we get results. This avoids
+  // the full OR which matches any single token and returns garbage.
+  if (tokens.length > 2) {
+    for (let drop = 1; drop < tokens.length - 1; drop++) {
+      const subset = tokens.slice(0, tokens.length - drop);
+      results = run(andExpr(subset));
+      if (results.length > 0) return results;
     }
   }
-  return merged;
+
+  // Strategy 4: Pairwise NEAR — try the most-specific consecutive pairs
+  if (tokens.length >= 2) {
+    const seen = new Set<number>();
+    const merged: LocalUsdaProduct[] = [];
+    for (let i = tokens.length - 1; i >= 1; i--) {
+      const nearExpr = `NEAR("${tokens[i - 1]}"* "${tokens[i]}"*, 3)`;
+      for (const p of run(nearExpr)) {
+        if (!seen.has(p.fdc_id)) {
+          seen.add(p.fdc_id);
+          merged.push(p);
+          if (merged.length >= limit) return merged;
+        }
+      }
+    }
+    if (merged.length > 0) return merged;
+  }
+
+  // Strategy 5: OR as last resort
+  results = run(tokens.map((t) => `"${t}"*`).join(" OR "));
+  return results;
 }

@@ -88,11 +88,24 @@ export function localOffBarcodeLookup(barcode: string): LocalOffProduct | null {
 // Text search
 // ---------------------------------------------------------------------------
 
-/** Escape FTS5 special characters from a raw token */
-function ftsEscapeToken(t: string): string {
-  // FTS5 special chars: " * ^ ( ) : + -   OR AND NOT NEAR
-  // Safest: keep only word characters and whitespace
-  return t.replace(/[^\w]/g, "");
+/**
+ * Tokenize a query the way FTS5's default (unicode61) tokenizer does:
+ * split on non-alphanumeric chars (apostrophes, hyphens, etc.) and drop
+ * fragments ≤1 char (the leftover "s" from "Joe's", etc.).
+ * Also deduplicates tokens (case-insensitive).
+ */
+function ftsTokenize(query: string): string[] {
+  const raw = query.split(/[^\w]+/).filter((t) => t.length > 1);
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const t of raw) {
+    const low = t.toLowerCase();
+    if (!seen.has(low)) {
+      seen.add(low);
+      out.push(t);
+    }
+  }
+  return out;
 }
 
 /**
@@ -100,11 +113,11 @@ function ftsEscapeToken(t: string): string {
  * Uses the FTS5 index for fast matching.
  *
  * Strategy:
- *  1. Try an AND query with all tokens (prefix-matched via *).
- *  2. If that yields no results, fall back to an OR query so partial
- *     matches (e.g. brand-only) still surface products.
- *  3. If the query contains 2+ words, also try a column-weighted search
- *     boosting brand matches.
+ *  1. AND query (all tokens, prefix-matched)
+ *  2. Brand-boosted AND
+ *  3. Progressive relaxation (drop tokens from end)
+ *  4. Pairwise NEAR
+ *  5. OR as last resort
  */
 export function localOffSearchText(
   query: string,
@@ -112,11 +125,7 @@ export function localOffSearchText(
 ): LocalOffProduct[] {
   const db = getDb();
 
-  const tokens = query
-    .split(/\s+/)
-    .map(ftsEscapeToken)
-    .filter((t) => t.length > 0);
-
+  const tokens = ftsTokenize(query);
   if (tokens.length === 0) return [];
 
   const baseSql = `
@@ -128,7 +137,6 @@ export function localOffSearchText(
     ORDER BY rank
     LIMIT ?`;
 
-  // Helper: run a query and return results
   const run = (matchExpr: string): LocalOffProduct[] => {
     try {
       const rows = db.query(baseSql).all(matchExpr, limit) as any[];
@@ -138,51 +146,49 @@ export function localOffSearchText(
     }
   };
 
+  const andExpr = (toks: string[]) => toks.map((t) => `"${t}"*`).join(" ");
+
   // --- Strategy 1: AND query (all tokens, prefix-matched) ---
-  // e.g. "Special K cereal" -> '"Special"* "K"* "cereal"*'
-  const andExpr = tokens.map((t) => `"${t}"*`).join(" ");
-  let results = run(andExpr);
+  let results = run(andExpr(tokens));
   if (results.length > 0) return results;
 
-  // --- Strategy 2: Column-boosted search (brand + product_name) ---
-  // Try matching individual tokens against the brands column specifically
-  // FTS5 column filters: {brands}: token
+  // --- Strategy 2: Brand-boosted AND ---
   if (tokens.length >= 2) {
-    // Try: first token in brands, rest in any field
-    const brandToken = tokens[0];
-    const rest = tokens.slice(1);
-    const boostedExpr = `{brands}: "${brandToken}"* ${rest.map((t) => `"${t}"*`).join(" ")}`;
-    results = run(boostedExpr);
+    const boosted = `{brands}: "${tokens[0]}"* ${tokens.slice(1).map((t) => `"${t}"*`).join(" ")}`;
+    results = run(boosted);
     if (results.length > 0) return results;
-
-    // Try the reverse: last token as brand
-    const brandTokenLast = tokens[tokens.length - 1];
-    const restFront = tokens.slice(0, -1);
-    const boostedExpr2 = `{brands}: "${brandTokenLast}"* ${restFront.map((t) => `"${t}"*`).join(" ")}`;
-    results = run(boostedExpr2);
+    const boosted2 = `{brands}: "${tokens[tokens.length - 1]}"* ${tokens.slice(0, -1).map((t) => `"${t}"*`).join(" ")}`;
+    results = run(boosted2);
     if (results.length > 0) return results;
   }
 
-  // --- Strategy 3: OR query (any token matches) ---
-  const orExpr = tokens.map((t) => `"${t}"*`).join(" OR ");
-  results = run(orExpr);
-  if (results.length > 0) return results;
-
-  // --- Strategy 4: Individual token search (most lenient) ---
-  // Try each token alone, merge results (useful when combined query confuses FTS)
-  const seen = new Set<string>();
-  const merged: LocalOffProduct[] = [];
-  for (const t of tokens) {
-    if (merged.length >= limit) break;
-    const single = run(`"${t}"*`);
-    for (const p of single) {
-      if (!seen.has(p.barcode)) {
-        seen.add(p.barcode);
-        merged.push(p);
-        if (merged.length >= limit) break;
-      }
+  // --- Strategy 3: Progressive relaxation ---
+  if (tokens.length > 2) {
+    for (let drop = 1; drop < tokens.length - 1; drop++) {
+      const subset = tokens.slice(0, tokens.length - drop);
+      results = run(andExpr(subset));
+      if (results.length > 0) return results;
     }
   }
 
-  return merged;
+  // --- Strategy 4: Pairwise NEAR ---
+  if (tokens.length >= 2) {
+    const seen = new Set<string>();
+    const merged: LocalOffProduct[] = [];
+    for (let i = tokens.length - 1; i >= 1; i--) {
+      const nearExpr = `NEAR("${tokens[i - 1]}"* "${tokens[i]}"*, 3)`;
+      for (const p of run(nearExpr)) {
+        if (!seen.has(p.barcode)) {
+          seen.add(p.barcode);
+          merged.push(p);
+          if (merged.length >= limit) return merged;
+        }
+      }
+    }
+    if (merged.length > 0) return merged;
+  }
+
+  // --- Strategy 5: OR as last resort ---
+  results = run(tokens.map((t) => `"${t}"*`).join(" OR "));
+  return results;
 }
