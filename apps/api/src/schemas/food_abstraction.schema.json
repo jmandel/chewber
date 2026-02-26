@@ -6,6 +6,7 @@
   "additionalProperties": false,
   "required": [
     "schema_version",
+    "zagat_line",
     "identification",
     "classification",
     "nutrition_per_100",
@@ -23,6 +24,10 @@
     "schema_version": {
       "type": "integer",
       "const": 1
+    },
+    "zagat_line": {
+      "type": "string",
+      "description": "A single Zagat-style summary sentence: vivid, opinionated, concise (under 140 chars). Describes taste, quality, and health profile in the style of a Zagat restaurant blurb. Example: 'This crispy, salty classic delivers bold crunch but sky-high sodium and a laundry list of additives dock it hard.'"
     },
     "identification": {
       "type": "object",

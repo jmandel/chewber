@@ -831,15 +831,32 @@ function renderMarkdown(md: string): string {
 }
 
 function FoodDetailView({ food }: { food: FoodDetail }) {
-  const [tab, setTab] = useState<"report" | "data" | "log">("report");
+  const zagat = food.abstraction?.zagat_line as string | undefined;
+  const [tab, setTab] = useState<"summary" | "report" | "data" | "log">("summary");
   return (
     <div className="card" style={{ padding: 0, overflow: "hidden" }}>
       <div style={{ display: "flex", borderBottom: "1px solid var(--slate)" }}>
+        <TabBtn active={tab === "summary"} onClick={() => setTab("summary")}>Summary</TabBtn>
         <TabBtn active={tab === "report"} onClick={() => setTab("report")}>Report</TabBtn>
         <TabBtn active={tab === "data"} onClick={() => setTab("data")}>Data</TabBtn>
         <TabBtn active={tab === "log"} onClick={() => setTab("log")}>Log</TabBtn>
       </div>
       <div style={{ padding: "16px 20px", overflow: "hidden" }}>
+        {tab === "summary" && (
+          <div>
+            {zagat ? (
+              <div style={{
+                fontSize: 17, fontStyle: "italic", lineHeight: 1.5,
+                color: "var(--cream)", padding: "8px 0 16px"
+              }}>
+                “{zagat}”
+              </div>
+            ) : (
+              <div className="muted" style={{ textAlign: "center", padding: 20 }}>No summary available yet.</div>
+            )}
+            {food.abstraction && <SummaryDetails food={food} />}
+          </div>
+        )}
         {tab === "report" && (
           food.report_md
             ? <div className="md-body" dangerouslySetInnerHTML={{ __html: renderMarkdown(food.report_md) }} />
@@ -856,6 +873,52 @@ function FoodDetailView({ food }: { food: FoodDetail }) {
           </div>
         )}
         {tab === "log" && <ResearchLog foodId={food.id} />}
+      </div>
+    </div>
+  );
+}
+
+function SummaryDetails({ food }: { food: FoodDetail }) {
+  const abs = food.abstraction;
+  if (!abs) return null;
+  const nutr = abs.nutrition_per_100;
+  const cls = abs.classification;
+  const org = abs.organic;
+
+  return (
+    <div style={{ fontSize: 13 }}>
+      {/* Key nutrition highlights */}
+      {nutr && (
+        <div style={{ marginBottom: 12 }}>
+          <div style={{ fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--fog)", marginBottom: 6 }}>Nutrition per 100{nutr.unit_basis === "per_100ml" ? " mL" : " g"}</div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px 16px" }}>
+            {nutr.energy_kcal != null && <KV label="Calories" value={`${nutr.energy_kcal} kcal`} />}
+            {nutr.sugars_g != null && <KV label="Sugars" value={`${nutr.sugars_g} g`} />}
+            {nutr.saturated_fat_g != null && <KV label="Sat. fat" value={`${nutr.saturated_fat_g} g`} />}
+            {nutr.sodium_mg != null && <KV label="Sodium" value={`${nutr.sodium_mg} mg`} />}
+            {nutr.fiber_g != null && <KV label="Fiber" value={`${nutr.fiber_g} g`} />}
+            {nutr.protein_g != null && <KV label="Protein" value={`${nutr.protein_g} g`} />}
+          </div>
+        </div>
+      )}
+
+      {/* Additives count */}
+      {abs.additives && abs.additives.length > 0 && (
+        <div style={{ marginBottom: 12 }}>
+          <div style={{ fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--fog)", marginBottom: 6 }}>Additives ({abs.additives.length})</div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+            {abs.additives.map((a: any, i: number) => (
+              <span key={i} className="badge" style={{ fontSize: 11, padding: "2px 8px" }}>{a.name ?? a.code ?? "unknown"}</span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Quick facts */}
+      <div>
+        {cls?.nutri_score_category && cls.nutri_score_category !== "unknown" && <KV label="Category" value={cls.nutri_score_category.replace("_", " ")} />}
+        {org?.is_certified_organic && org.is_certified_organic !== "unknown" && <KV label="Organic" value={org.is_certified_organic === "yes" ? "✅ Certified" : "❌ No"} />}
+        {cls?.fvp_percent != null && <KV label="Fruit/veg/nut %" value={`${cls.fvp_percent}%`} />}
       </div>
     </div>
   );

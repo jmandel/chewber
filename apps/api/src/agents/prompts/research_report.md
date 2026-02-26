@@ -70,6 +70,13 @@ B) Final report:
 
 # Chewber Food Research Report
 
+## Zagat line
+A single Zagat-style summary sentence (under 140 characters). Vivid, opinionated, concise — describes taste, quality, and health profile in the punchy voice of a Zagat restaurant blurb. Use present tense, no quotes.
+Examples:
+- "Creamy and satisfying with clean ingredients, this Greek yogurt is a protein powerhouse that earns its top marks."
+- "This neon-orange snack delivers addictive crunch but packs a sodium wallop and enough additives to fill a chemistry set."
+- "A simple, honest banana — nature's perfect grab-and-go fuel with zero downsides."
+
 ## 0) Eligibility check
 Before anything else, determine if this product is eligible for scoring:
 - Alcohol → NOT RATED

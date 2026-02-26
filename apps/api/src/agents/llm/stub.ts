@@ -104,6 +104,7 @@ All values: null (no data gathered)
   private abstractionStub() {
     return {
       schema_version: 1,
+      zagat_line: "Demo mode — no LLM configured, so this stub blurb is standing in for a real Zagat-style zinger.",
       identification: {
         canonical_name: "\u26a0\ufe0f Unknown (DEMO MODE)",
         brand: null,

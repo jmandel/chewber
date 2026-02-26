@@ -12,6 +12,11 @@ Rules:
   - salt_g = (sodium_mg / 1000) * 2.5
   - If one is unknown, leave it null.
 
+- zagat_line:
+  - Extract the Zagat-style summary sentence from the "Zagat line" section of the report.
+  - Must be a single sentence, under 140 characters, vivid and opinionated.
+  - If the report doesn't have one, compose one based on the report content.
+
 - unit_basis:
   - Use per_100ml for beverages, per_100g otherwise (unless report says otherwise)
 
