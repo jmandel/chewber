@@ -1,12 +1,17 @@
 {
   "name": "chewber",
   "private": true,
+  "scripts": {
+    "dev": "bun --hot -C apps/api src/index.ts",
+    "worker": "bun --hot -C apps/api src/jobs/worker.ts"
+  },
   "workspaces": [
     "apps/api",
     "apps/web"
   ],
-  "scripts": {
-    "dev": "bun --hot -C apps/api src/index.ts",
-    "worker": "bun --hot -C apps/api src/jobs/worker.ts"
+  "dependencies": {
+    "@duckdb/node-api": "^1.4.4-r.1",
+    "@duckdb/node-bindings": "^1.4.4-r.1",
+    "@duckdb/node-bindings-linux-x64": "^1.4.4-r.1"
   }
 }

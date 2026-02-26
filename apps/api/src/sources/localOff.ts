@@ -1,4 +1,9 @@
-import { getDb } from "../db";
+import { DuckDBInstance, DuckDBConnection } from "@duckdb/node-api";
+import path from "node:path";
+
+// ---------------------------------------------------------------------------
+// Types
+// ---------------------------------------------------------------------------
 
 export interface LocalOffProduct {
   barcode: string;
@@ -10,78 +15,110 @@ export interface LocalOffProduct {
   additives: string[] | null;
 }
 
+// ---------------------------------------------------------------------------
+// DuckDB connection (singleton, lazy-init)
+// ---------------------------------------------------------------------------
+
+const PARQUET_PATH =
+  process.env.OFF_PARQUET_PATH ??
+  path.resolve(import.meta.dir, "../../../../data/off-food.parquet");
+
+let _instance: DuckDBInstance | null = null;
+let _conn: DuckDBConnection | null = null;
+let _initPromise: Promise<DuckDBConnection> | null = null;
+
+async function getConn(): Promise<DuckDBConnection> {
+  if (_conn) return _conn;
+  if (_initPromise) return _initPromise;
+  _initPromise = (async () => {
+    _instance = await DuckDBInstance.create();
+    _conn = await _instance.connect();
+    await _conn.run("SET memory_limit='256MB'");
+    await _conn.run("SET threads=2");
+    // Warm parquet metadata
+    await _conn.runAndReadAll(
+      `SELECT 1 FROM '${PARQUET_PATH}' LIMIT 1`
+    );
+    return _conn;
+  })();
+  return _initPromise;
+}
+
+// ---------------------------------------------------------------------------
+// Row conversion
+// ---------------------------------------------------------------------------
+
 function rowToProduct(row: any): LocalOffProduct {
   return {
-    barcode: row.barcode,
+    barcode: row.barcode ?? "",
     product_name: row.product_name ?? null,
     brands: row.brands ?? null,
     categories: row.categories ?? null,
     nutriments: row.nutriments_json ? JSON.parse(row.nutriments_json) : null,
     ingredients_text: row.ingredients_text ?? null,
-    additives: row.additives_json ? JSON.parse(row.additives_json) : null,
+    additives: row.additives ? row.additives.split(",").filter(Boolean) : null,
   };
 }
+
+// ---------------------------------------------------------------------------
+// Shared SQL fragments
+// ---------------------------------------------------------------------------
+
+const SELECT_PRODUCT = `
+  code AS barcode,
+  product_name[1]."text" AS product_name,
+  brands,
+  categories,
+  CASE WHEN len(ingredients_text) > 0 THEN ingredients_text[1]."text" ELSE NULL END AS ingredients_text,
+  CASE WHEN len(additives_tags) > 0 THEN array_to_string(additives_tags, ',') ELSE NULL END AS additives,
+  CASE WHEN len(nutriments) > 0
+    THEN '{' || array_to_string(
+      [concat('"', n.name, '_100g":', CAST(n."100g" AS VARCHAR))
+       FOR n IN nutriments IF n."100g" IS NOT NULL], ','
+    ) || '}'
+    ELSE NULL
+  END AS nutriments_json
+`;
 
 // ---------------------------------------------------------------------------
 // Barcode normalization
 // ---------------------------------------------------------------------------
 
-/**
- * Generate all plausible barcode variants for a given input.
- *
- * Real-world barcodes come in several lengths:
- *   - UPC-A:  12 digits
- *   - EAN-13: 13 digits (most common in Open Food Facts)
- *   - EAN-14 / GTIN-14: 14 digits (sometimes used by LLMs / scanning APIs)
- *
- * The DB may store any of these. We strip leading zeros to get a canonical
- * "core", then generate 12-, 13-, and 14-digit zero-padded variants plus
- * the raw input itself, deduped.
- */
 function barcodeVariants(raw: string): string[] {
-  // Keep only digits
   const digits = raw.replace(/\D/g, "");
   if (!digits) return [];
-
-  // Core = stripped of all leading zeros (but keep at least 1 char)
   const core = digits.replace(/^0+/, "") || "0";
-
   const variants = new Set<string>();
-
-  // Always try the raw input as-is
   variants.add(digits);
-
-  // Pad to standard lengths
-  if (core.length <= 12) variants.add(core.padStart(12, "0")); // UPC-A
-  if (core.length <= 13) variants.add(core.padStart(13, "0")); // EAN-13
-  if (core.length <= 14) variants.add(core.padStart(14, "0")); // GTIN-14
-
-  // Also try the bare core (no padding)
+  if (core.length <= 12) variants.add(core.padStart(12, "0"));
+  if (core.length <= 13) variants.add(core.padStart(13, "0"));
+  if (core.length <= 14) variants.add(core.padStart(14, "0"));
   variants.add(core);
-
   return [...variants];
 }
 
-/**
- * Look up a product by barcode — instant SQLite lookup.
- * Tries multiple zero-padded barcode variants to handle UPC-A / EAN-13 / GTIN-14 mismatches.
- */
-export function localOffBarcodeLookup(barcode: string): LocalOffProduct | null {
-  const db = getDb();
+// ---------------------------------------------------------------------------
+// Barcode lookup
+// ---------------------------------------------------------------------------
+
+export async function localOffBarcodeLookup(
+  barcode: string
+): Promise<LocalOffProduct | null> {
+  const conn = await getConn();
   const variants = barcodeVariants(barcode);
   if (variants.length === 0) return null;
 
-  const placeholders = variants.map(() => "?").join(", ");
-  const row = db
-    .query(
-      `SELECT barcode, product_name, brands, categories, nutriments_json, ingredients_text, additives_json
-       FROM dataset_off_products
-       WHERE barcode IN (${placeholders})
-       LIMIT 1`
-    )
-    .get(...variants) as any;
-  if (!row) return null;
-  return rowToProduct(row);
+  const inList = variants.map((v) => `'${v}'`).join(",");
+  const result = await conn.runAndReadAll(`
+    SELECT ${SELECT_PRODUCT}
+    FROM '${PARQUET_PATH}'
+    WHERE code IN (${inList})
+    LIMIT 1
+  `);
+
+  const rows = result.getRowObjects();
+  if (rows.length === 0) return null;
+  return rowToProduct(rows[0]);
 }
 
 // ---------------------------------------------------------------------------
@@ -89,106 +126,60 @@ export function localOffBarcodeLookup(barcode: string): LocalOffProduct | null {
 // ---------------------------------------------------------------------------
 
 /**
- * Tokenize a query the way FTS5's default (unicode61) tokenizer does:
- * split on non-alphanumeric chars (apostrophes, hyphens, etc.) and drop
- * fragments ≤1 char (the leftover "s" from "Joe's", etc.).
- * Also deduplicates tokens (case-insensitive).
+ * Text search across OFF products using DuckDB's contains().
+ * The parquet is sorted by code, so column scans are efficient.
+ * Strategy: try progressively looser matching.
  */
-function ftsTokenize(query: string): string[] {
-  const raw = query.split(/[^\w]+/).filter((t) => t.length > 1);
-  const seen = new Set<string>();
-  const out: string[] = [];
-  for (const t of raw) {
-    const low = t.toLowerCase();
-    if (!seen.has(low)) {
-      seen.add(low);
-      out.push(t);
-    }
-  }
-  return out;
-}
-
-/**
- * Full-text search by product name / brand / category / ingredients.
- * Uses the FTS5 index for fast matching.
- *
- * Strategy:
- *  1. AND query (all tokens, prefix-matched)
- *  2. Brand-boosted AND
- *  3. Progressive relaxation (drop tokens from end)
- *  4. Pairwise NEAR
- *  5. OR as last resort
- */
-export function localOffSearchText(
+export async function localOffSearchText(
   query: string,
   limit: number = 20
-): LocalOffProduct[] {
-  const db = getDb();
-
-  const tokens = ftsTokenize(query);
+): Promise<LocalOffProduct[]> {
+  const conn = await getConn();
+  const tokens = query
+    .split(/[^\w]+/)
+    .filter((t) => t.length > 1)
+    .map((t) => t.toLowerCase());
   if (tokens.length === 0) return [];
 
-  const baseSql = `
-    SELECT p.barcode, p.product_name, p.brands, p.categories,
-           p.nutriments_json, p.ingredients_text, p.additives_json
-    FROM dataset_off_products_fts fts
-    JOIN dataset_off_products p ON p.id = fts.rowid
-    WHERE dataset_off_products_fts MATCH ?
-    ORDER BY rank
-    LIMIT ?`;
-
-  const run = (matchExpr: string): LocalOffProduct[] => {
+  const run = async (whereClause: string): Promise<LocalOffProduct[]> => {
     try {
-      const rows = db.query(baseSql).all(matchExpr, limit) as any[];
-      return rows.map(rowToProduct);
+      const r = await conn.runAndReadAll(`
+        SELECT ${SELECT_PRODUCT}
+        FROM '${PARQUET_PATH}'
+        WHERE ${whereClause}
+        LIMIT ${limit}
+      `);
+      return r.getRowObjects().map(rowToProduct);
     } catch {
       return [];
     }
   };
 
-  const andExpr = (toks: string[]) => toks.map((t) => `"${t}"*`).join(" ");
+  // Build a contains() expression for a set of tokens against combined fields
+  const allContains = (toks: string[]) =>
+    toks
+      .map(
+        (t) =>
+          `(contains(lower(coalesce(product_name[1]."text",'')), '${t}') OR contains(lower(coalesce(brands,'')), '${t}'))`
+      )
+      .join(" AND ");
 
-  // --- Strategy 1: AND query (all tokens, prefix-matched) ---
-  let results = run(andExpr(tokens));
+  // Strategy 1: AND all tokens
+  let results = await run(allContains(tokens));
   if (results.length > 0) return results;
 
-  // --- Strategy 2: Brand-boosted AND ---
-  if (tokens.length >= 2) {
-    const boosted = `{brands}: "${tokens[0]}"* ${tokens.slice(1).map((t) => `"${t}"*`).join(" ")}`;
-    results = run(boosted);
-    if (results.length > 0) return results;
-    const boosted2 = `{brands}: "${tokens[tokens.length - 1]}"* ${tokens.slice(0, -1).map((t) => `"${t}"*`).join(" ")}`;
-    results = run(boosted2);
-    if (results.length > 0) return results;
-  }
-
-  // --- Strategy 3: Progressive relaxation ---
+  // Strategy 2: Progressive relaxation — drop tokens from end
   if (tokens.length > 2) {
     for (let drop = 1; drop < tokens.length - 1; drop++) {
-      const subset = tokens.slice(0, tokens.length - drop);
-      results = run(andExpr(subset));
+      results = await run(allContains(tokens.slice(0, tokens.length - drop)));
       if (results.length > 0) return results;
     }
   }
 
-  // --- Strategy 4: Pairwise NEAR ---
-  if (tokens.length >= 2) {
-    const seen = new Set<string>();
-    const merged: LocalOffProduct[] = [];
-    for (let i = tokens.length - 1; i >= 1; i--) {
-      const nearExpr = `NEAR("${tokens[i - 1]}"* "${tokens[i]}"*, 3)`;
-      for (const p of run(nearExpr)) {
-        if (!seen.has(p.barcode)) {
-          seen.add(p.barcode);
-          merged.push(p);
-          if (merged.length >= limit) return merged;
-        }
-      }
-    }
-    if (merged.length > 0) return merged;
-  }
-
-  // --- Strategy 5: OR as last resort ---
-  results = run(tokens.map((t) => `"${t}"*`).join(" OR "));
+  // Strategy 3: OR any token (in product_name only to avoid noise)
+  const orContains = tokens
+    .map((t) => `contains(lower(coalesce(product_name[1]."text",'')), '${t}')`)
+    .join(" OR ");
+  results = await run(orContains);
   return results;
 }

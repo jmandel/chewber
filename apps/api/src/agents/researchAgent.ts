@@ -289,7 +289,7 @@ async function runTool(tool: string, args: any): Promise<any> {
     // ── Local Open Food Facts ──────────────────────────────────
     case "local.barcode_lookup": {
       const barcode = String(args.barcode);
-      const result = localOffBarcodeLookup(barcode);
+      const result = await localOffBarcodeLookup(barcode);
       if (!result) {
         return {
           found: false,
@@ -315,7 +315,7 @@ async function runTool(tool: string, args: any): Promise<any> {
 
     case "local.search": {
       const query = String(args.query ?? "");
-      const results = localOffSearchText(query, args.limit ?? 10);
+      const results = await localOffSearchText(query, args.limit ?? 10);
       const withNutrition = results.filter(r => r.nutriments && Object.keys(r.nutriments).length > 0);
       return {
         count: results.length,
