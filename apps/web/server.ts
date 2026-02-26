@@ -1,5 +1,5 @@
-import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { readFileSync, existsSync } from "node:fs";
+import { resolve, join, extname } from "node:path";
 
 const PORT = Number(process.env.CHEWBER_WEB_PORT ?? 8000);
 const API_UPSTREAM = process.env.CHEWBER_API_UPSTREAM ?? "http://localhost:8787";
@@ -7,6 +7,21 @@ const API_UPSTREAM = process.env.CHEWBER_API_UPSTREAM ?? "http://localhost:8787"
 const INDEX_PATH = resolve(import.meta.dir, "./index.html");
 const CSS_PATH = resolve(import.meta.dir, "./src/styles.css");
 const ENTRY_PATH = resolve(import.meta.dir, "./src/main.tsx");
+const PUBLIC_DIR = resolve(import.meta.dir, "./public");
+
+const MIME_TYPES: Record<string, string> = {
+  ".html": "text/html",
+  ".css": "text/css",
+  ".js": "application/javascript",
+  ".json": "application/json",
+  ".svg": "image/svg+xml",
+  ".png": "image/png",
+  ".ico": "image/x-icon",
+  ".webp": "image/webp",
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".webmanifest": "application/manifest+json",
+};
 
 let cachedBundle: { code: string; builtAt: number } | null = null;
 
@@ -92,6 +107,22 @@ Bun.serve({
       } catch (err: any) {
         return new Response(String(err?.stack ?? err), { status: 500 });
       }
+    }
+
+    // Serve static files from public/
+    const publicPath = join(PUBLIC_DIR, url.pathname);
+    if (existsSync(publicPath) && !Bun.file(publicPath).name?.endsWith("/")) {
+      const file = Bun.file(publicPath);
+      const ext = extname(url.pathname);
+      const contentType = MIME_TYPES[ext] ?? "application/octet-stream";
+      return new Response(file, {
+        headers: {
+          "Content-Type": contentType,
+          "Cache-Control": ext === ".json" || ext === ".webmanifest"
+            ? "no-cache"
+            : "public, max-age=86400"
+        }
+      });
     }
 
     // SPA fallback
