@@ -1148,7 +1148,7 @@ function RelatedFoods({ foodId }: { foodId: string }) {
 }
 
 // ── Compare page ──────────────────────────────────────
-function truncName(name: string, maxWords = 8): string {
+function truncName(name: string, maxWords = 4): string {
   const words = name.split(/\s+/);
   return words.length > maxWords ? words.slice(0, maxWords).join(" ") + "…" : name;
 }
