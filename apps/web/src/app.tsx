@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
-import { Routes, Route, useNavigate, useParams, Link } from "react-router-dom";
+import { Routes, Route, useNavigate, useNavigationType, useParams, useLocation, Link } from "react-router-dom";
 import {
   api,
   type AssistResponse,
@@ -158,6 +158,15 @@ function FlowOverlay({ flow, setFlow, onJobCompleted }: {
 // ── App shell ───────────────────────────────────────────────
 export function App() {
   const fs = useFlowState();
+  const location = useLocation();
+  const navType = useNavigationType();
+
+  // Reset flow state on browser back/forward (POP navigation)
+  useEffect(() => {
+    if (navType === "POP" && fs.flow.kind !== "idle") {
+      fs.setFlow({ kind: "idle" });
+    }
+  }, [location.pathname]);
 
   return (
     <div className="container">
