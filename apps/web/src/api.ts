@@ -123,6 +123,32 @@ async function http<T>(path: string, init?: RequestInit): Promise<T> {
   return (await res.json()) as T;
 }
 
+export type AdditiveListItem = {
+  code: string;
+  name: string | null;
+  risk_level: string;
+  function_category: string | null;
+  description: string | null;
+  has_research: boolean;
+  updated_at: string;
+};
+
+export type AdditiveResearchData = {
+  report_md: string;
+  abstraction: Record<string, any> | null;
+};
+
+export type AdditiveDetail = {
+  code: string;
+  name: string | null;
+  risk_level: string | null;
+  function_category: string | null;
+  description: string | null;
+  justification: string | null;
+  updated_at: string | null;
+  research: AdditiveResearchData | null;
+};
+
 export const api = {
   assist: (rawText: string, imageIds: string[] = [], barcode?: string, priorAnswers?: PriorAnswer[]) =>
     http<AssistResponse>("/api/query/assist", {
@@ -152,5 +178,8 @@ export const api = {
     fetch(`${API_BASE}/api/foods/${encodeURIComponent(idOrSlug)}`, {
       method: "DELETE",
       headers: { "X-Admin-Key": adminKey },
-    }).then(r => { if (!r.ok) throw new Error(`${r.status}`); return r.json(); })
+    }).then(r => { if (!r.ok) throw new Error(`${r.status}`); return r.json(); }),
+
+  getAdditives: () => http<{ count: number; additives: AdditiveListItem[] }>("/api/additives"),
+  getAdditive: (code: string) => http<AdditiveDetail>("/api/additives/" + encodeURIComponent(code)),
 };

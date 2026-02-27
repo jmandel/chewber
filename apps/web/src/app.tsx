@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
 import { Routes, Route, useNavigate, useNavigationType, useParams, useLocation, Link } from "react-router-dom";
+import { marked } from "marked";
 import {
   api,
   type AssistResponse,
@@ -9,6 +10,8 @@ import {
   type Category,
   type PriorAnswer,
   type StructuredFoodQuery,
+  type AdditiveListItem,
+  type AdditiveDetail,
 } from "./api";
 import { JobStatusView } from "./components/JobStatusView";
 
@@ -185,6 +188,8 @@ export function App() {
           <Route path="/food/:slug" element={<FoodPage />} />
           <Route path="/category/:slug" element={<CategoryPage />} />
           <Route path="/compare" element={<ComparePage />} />
+          <Route path="/additives" element={<AdditivesListPage />} />
+          <Route path="/additive/:code" element={<AdditivePage />} />
         </Routes>
       )}
     </div>
@@ -1026,17 +1031,7 @@ function OrganicPill({ organic }: { organic?: string }) {
 
 // ── Food detail with tabs ───────────────────────────────────
 function renderMarkdown(md: string): string {
-  return md
-    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
-    .replace(/^### (.+)$/gm, '<h4>$1</h4>')
-    .replace(/^## (.+)$/gm, '<h3>$1</h3>')
-    .replace(/^# (.+)$/gm, '<h2>$1</h2>')
-    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-    .replace(/\*(.+?)\*/g, "<em>$1</em>")
-    .replace(/^- (.+)$/gm, '<li>$1</li>')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
-    .replace(/^(?!<[hla-z])(\S.*)$/gm, '<p>$1</p>')
-    .replace(/\n{3,}/g, "\n\n");
+  return marked.parse(md, { async: false }) as string;
 }
 
 function FoodDetailView({ food }: { food: FoodDetail }) {
@@ -1158,11 +1153,19 @@ function SummaryDetails({ food }: { food: FoodDetail }) {
             }).map((a: any, i: number) => {
               const risk = getAdditiveRisk(a, food.score_breakdown);
               const style = ADDITIVE_RISK_STYLES[risk];
-              return (
-                <span key={i} className="badge" title={`${risk.replace("_", " ")}${style.penalty ? ` (−${style.penalty} pts)` : ""}`} style={{
+              const code = a.code ? normalizeCode(a.code) : null;
+              const badge = (
+                <span className="badge" title={`${risk.replace("_", " ")}${style.penalty ? ` (−${style.penalty} pts)` : ""}`} style={{
                   fontSize: 11, padding: "2px 8px",
                   background: style.bg, color: style.fg, border: `1px solid ${style.border}`
                 }}>{style.marker} {a.name ?? a.code ?? "unknown"}</span>
+              );
+              return code ? (
+                <Link key={i} to={`/additive/${code}`} style={{ textDecoration: "none" }}>
+                  {badge}
+                </Link>
+              ) : (
+                <span key={i}>{badge}</span>
               );
             })}
           </div>
@@ -1183,6 +1186,501 @@ function SummaryDetails({ food }: { food: FoodDetail }) {
 
         {cls?.fvp_percent != null && <KV label="Fruit/veg/nut %" value={`${cls.fvp_percent}%`} />}
       </div>
+    </div>
+  );
+}
+
+// ── Additives List Page ───────────────────────────────────
+function AdditivesListPage() {
+  const [data, setData] = useState<{ count: number; additives: AdditiveListItem[] } | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [searchText, setSearchText] = useState("");
+  const [riskFilter, setRiskFilter] = useState<string>("all");
+  const nav = useNavigate();
+
+  useEffect(() => {
+    api.getAdditives()
+      .then(setData)
+      .catch(e => setError(String(e?.message ?? e)));
+  }, []);
+
+  if (error) return <div className="muted" style={{ textAlign: "center", padding: 40 }}>Failed to load additives: {error}</div>;
+  if (!data) return <div style={{ textAlign: "center", padding: 40 }}><div className="spinner" /></div>;
+
+  // Filter by search text
+  let filtered = data.additives.filter(a => {
+    const search = searchText.toLowerCase();
+    if (!search) return true;
+    return (
+      a.code.toLowerCase().includes(search) ||
+      (a.name && a.name.toLowerCase().includes(search))
+    );
+  });
+
+  // Filter by risk level
+  if (riskFilter !== "all") {
+    filtered = filtered.filter(a => a.risk_level === riskFilter);
+  }
+
+  // Sort: high risk first, then by code
+  const sorted = [...filtered].sort((a, b) => {
+    const orderA = ADDITIVE_RISK_STYLES[a.risk_level]?.order ?? 9;
+    const orderB = ADDITIVE_RISK_STYLES[b.risk_level]?.order ?? 9;
+    if (orderA !== orderB) return orderA - orderB;
+    return a.code.localeCompare(b.code);
+  });
+
+  const withResearch = filtered.filter(a => a.has_research).length;
+
+  return (
+    <div>
+      <BackLink />
+      <div style={{ marginBottom: 16 }}>
+        <h1 style={{ fontSize: 24, fontWeight: 700, marginBottom: 8 }}>Food Additives</h1>
+        <div className="muted" style={{ fontSize: 13 }}>Comprehensive database of E-numbers and food additives</div>
+      </div>
+
+      {/* Search bar */}
+      <input
+        type="text"
+        placeholder="Search by code or name..."
+        value={searchText}
+        onChange={e => setSearchText(e.target.value)}
+        style={{
+          width: "100%",
+          padding: "10px 12px",
+          fontSize: 14,
+          borderRadius: "var(--radius-sm)",
+          border: "1px solid var(--slate)",
+          background: "var(--charcoal)",
+          color: "var(--cream)",
+          marginBottom: 12,
+        }}
+      />
+
+      {/* Risk filter pills */}
+      <div style={{ display: "flex", gap: 6, marginBottom: 12, flexWrap: "wrap" }}>
+        {["all", "risk_free", "limited", "moderate", "high"].map(level => {
+          const style = level === "all" ? { bg: "var(--slate)", fg: "var(--cream)", border: "var(--fog)" } : ADDITIVE_RISK_STYLES[level];
+          const active = riskFilter === level;
+          return (
+            <button
+              key={level}
+              onClick={() => setRiskFilter(level)}
+              style={{
+                padding: "6px 12px",
+                fontSize: 12,
+                borderRadius: "var(--radius-sm)",
+                border: `1px solid ${active ? style.fg : style.border}`,
+                background: active ? style.bg : "transparent",
+                color: active ? style.fg : "var(--fog)",
+                cursor: "pointer",
+                fontWeight: active ? 600 : 400,
+              }}
+            >
+              {level === "all" ? "All" : level.replace("_", " ")}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Count display */}
+      <div className="muted" style={{ fontSize: 12, marginBottom: 16 }}>
+        Showing {sorted.length} of {data.count} additives ({withResearch} with research)
+      </div>
+
+      {/* Cards */}
+      <div style={{ display: "grid", gap: 10 }}>
+        {sorted.map(add => {
+          const style = ADDITIVE_RISK_STYLES[add.risk_level] || ADDITIVE_RISK_STYLES.limited;
+          const hasResearch = add.has_research;
+          return (
+            <div
+              key={add.code}
+              className="card"
+              onClick={() => hasResearch && nav(`/additive/${encodeURIComponent(add.code)}`)}
+              style={{
+                cursor: hasResearch ? "pointer" : "default",
+                opacity: hasResearch ? 1 : 0.6,
+                transition: "opacity 0.2s",
+                padding: 14,
+              }}
+            >
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 6 }}>
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: 15 }}>{add.code}</div>
+                  {add.name && <div className="muted" style={{ fontSize: 13, marginTop: 2 }}>{add.name}</div>}
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                  <span
+                    className="badge"
+                    style={{
+                      fontSize: 11,
+                      padding: "3px 8px",
+                      background: style.bg,
+                      color: style.fg,
+                      border: `1px solid ${style.border}`,
+                    }}
+                  >
+                    {style.marker} {add.risk_level.replace("_", " ")}
+                  </span>
+                  {hasResearch && (
+                    <span title="Has detailed research" style={{ fontSize: 14 }}>📊</span>
+                  )}
+                </div>
+              </div>
+              {add.function_category && (
+                <div className="muted" style={{ fontSize: 12, marginTop: 4 }}>
+                  {add.function_category}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// ── Additive Detail Page ──────────────────────────────────
+function AdditivePage() {
+  const { code } = useParams<{ code: string }>();
+  const [data, setData] = useState<AdditiveDetail | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [tab, setTab] = useState<"overview" | "report">("overview");
+  const nav = useNavigate();
+
+  useEffect(() => {
+    if (!code) return;
+    api.getAdditive(code)
+      .then(setData)
+      .catch(e => setError(String(e?.message ?? e)));
+  }, [code]);
+
+  if (error) return <div className="muted" style={{ textAlign: "center", padding: 40 }}>Failed to load additive: {error}</div>;
+  if (!data) return <div style={{ textAlign: "center", padding: 40 }}><div className="spinner" /></div>;
+
+  const riskLevel = data.risk_level || "limited";
+  const style = ADDITIVE_RISK_STYLES[riskLevel] || ADDITIVE_RISK_STYLES.limited;
+  const hasResearch = !!data.research;
+  const abstraction = data.research?.abstraction;
+
+  return (
+    <div>
+      <BackLink />
+      <div style={{ marginBottom: 8, fontSize: 13 }}>
+        <Link to="/additives" style={{ color: "var(--fog)", textDecoration: "none" }}>← All additives</Link>
+      </div>
+
+      {/* Header */}
+      <div style={{ marginBottom: 20 }}>
+        <h1 style={{ fontSize: 28, fontWeight: 700, marginBottom: 4 }}>{data.code}</h1>
+        {data.name && <div className="muted" style={{ fontSize: 16, marginBottom: 8 }}>{data.name}</div>}
+        <span
+          className="badge"
+          style={{
+            fontSize: 12,
+            padding: "4px 10px",
+            background: style.bg,
+            color: style.fg,
+            border: `1px solid ${style.border}`,
+          }}
+        >
+          {style.marker} {riskLevel.replace("_", " ")}
+        </span>
+      </div>
+
+      {/* Tabs */}
+      {hasResearch && (
+        <div style={{ display: "flex", gap: 12, marginBottom: 16, borderBottom: "1px solid var(--slate)" }}>
+          <button
+            onClick={() => setTab("overview")}
+            style={{
+              padding: "8px 0",
+              fontSize: 14,
+              fontWeight: tab === "overview" ? 600 : 400,
+              color: tab === "overview" ? "var(--cream)" : "var(--fog)",
+              background: "transparent",
+              border: "none",
+              borderBottom: tab === "overview" ? "2px solid var(--kale)" : "2px solid transparent",
+              cursor: "pointer",
+            }}
+          >
+            Overview
+          </button>
+          <button
+            onClick={() => setTab("report")}
+            style={{
+              padding: "8px 0",
+              fontSize: 14,
+              fontWeight: tab === "report" ? 600 : 400,
+              color: tab === "report" ? "var(--cream)" : "var(--fog)",
+              background: "transparent",
+              border: "none",
+              borderBottom: tab === "report" ? "2px solid var(--kale)" : "2px solid transparent",
+              cursor: "pointer",
+            }}
+          >
+            Full Report
+          </button>
+        </div>
+      )}
+
+      {/* Content */}
+      {!hasResearch ? (
+        <div className="card" style={{ padding: 16 }}>
+          <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 8 }}>Basic Information</div>
+          <div className="muted" style={{ fontSize: 12, marginBottom: 12 }}>Detailed research pending for this additive.</div>
+          {data.description && (
+            <div style={{ marginBottom: 12 }}>
+              <div style={{ fontWeight: 600, fontSize: 12, color: "var(--fog)", marginBottom: 4 }}>Description</div>
+              <div style={{ fontSize: 13 }}>{data.description}</div>
+            </div>
+          )}
+          {data.justification && (
+            <div>
+              <div style={{ fontWeight: 600, fontSize: 12, color: "var(--fog)", marginBottom: 4 }}>Risk Justification</div>
+              <div style={{ fontSize: 13 }}>{data.justification}</div>
+            </div>
+          )}
+        </div>
+      ) : tab === "overview" && abstraction ? (
+        <AdditiveOverview abstraction={abstraction} />
+      ) : tab === "report" && data.research?.report_md ? (
+        <div className="card" style={{ padding: 20 }}>
+          <div className="md-body" dangerouslySetInnerHTML={{ __html: renderMarkdown(data.research.report_md) }} />
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+// ── Additive Overview (structured abstraction) ────────────
+function AdditiveOverview({ abstraction }: { abstraction: Record<string, any> }) {
+  const identity = abstraction.identity || {};
+  const func = abstraction.function || {};
+  const regulatory = abstraction.regulatory || {};
+  const safety = abstraction.safety_evidence || {};
+  const risk = abstraction.risk_assessment || {};
+  const sources = abstraction.sources || [];
+
+  const sectionHeaderStyle: React.CSSProperties = {
+    fontWeight: 700,
+    fontSize: 12,
+    textTransform: "uppercase",
+    letterSpacing: "0.05em",
+    color: "var(--fog)",
+    marginBottom: 8,
+    marginTop: 16,
+  };
+
+  return (
+    <div className="card" style={{ padding: 20 }}>
+      {/* Identity */}
+      {identity && (
+        <div style={{ marginBottom: 20 }}>
+          <div style={sectionHeaderStyle}>Identity</div>
+          <div style={{ display: "grid", gap: 8, fontSize: 13 }}>
+            {identity.chemical_class && <KV label="Chemical class" value={identity.chemical_class} />}
+            {identity.origin && <KV label="Origin" value={identity.origin} />}
+            {identity.cas_numbers && identity.cas_numbers.length > 0 && (
+              <KV label="CAS numbers" value={identity.cas_numbers.join(", ")} />
+            )}
+            {identity.synonyms && identity.synonyms.length > 0 && (
+              <div style={{ paddingTop: 6 }}>
+                <div className="muted" style={{ fontSize: 12, marginBottom: 4 }}>Synonyms</div>
+                <div style={{ fontSize: 12, color: "var(--fog)" }}>{identity.synonyms.join(", ")}</div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Function */}
+      {func && (
+        <div style={{ marginBottom: 20 }}>
+          <div style={sectionHeaderStyle}>Function</div>
+          <div style={{ display: "grid", gap: 8, fontSize: 13 }}>
+            {func.primary_category && <KV label="Primary category" value={func.primary_category} />}
+            {func.mechanism && (
+              <div style={{ paddingTop: 6 }}>
+                <div className="muted" style={{ fontSize: 12, marginBottom: 4 }}>Mechanism</div>
+                <div style={{ fontSize: 13 }}>{func.mechanism}</div>
+              </div>
+            )}
+            {func.common_food_categories && func.common_food_categories.length > 0 && (
+              <div style={{ paddingTop: 6 }}>
+                <div className="muted" style={{ fontSize: 12, marginBottom: 4 }}>Common food categories</div>
+                <div style={{ fontSize: 12, color: "var(--fog)" }}>{func.common_food_categories.join(", ")}</div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Regulatory */}
+      {regulatory && Object.keys(regulatory).length > 0 && (
+        <div style={{ marginBottom: 20 }}>
+          <div style={sectionHeaderStyle}>Regulatory Status</div>
+          <div style={{ display: "grid", gap: 12 }}>
+            {regulatory.efsa && (
+              <div>
+                <div style={{ fontWeight: 600, fontSize: 13, marginBottom: 4 }}>EFSA (Europe)</div>
+                <div style={{ fontSize: 12, color: "var(--fog)" }}>
+                  Status: {regulatory.efsa.status || "N/A"}
+                  {regulatory.efsa.adi && (
+                    <span> | ADI: {regulatory.efsa.adi.value} {regulatory.efsa.adi.unit}</span>
+                  )}
+                  {regulatory.efsa.last_evaluation_year && (
+                    <span> | Evaluated: {regulatory.efsa.last_evaluation_year}</span>
+                  )}
+                </div>
+                {regulatory.efsa.key_finding && (
+                  <div style={{ fontSize: 12, marginTop: 4 }}>{regulatory.efsa.key_finding}</div>
+                )}
+              </div>
+            )}
+            {regulatory.fda && (
+              <div>
+                <div style={{ fontWeight: 600, fontSize: 13, marginBottom: 4 }}>FDA (USA)</div>
+                <div style={{ fontSize: 12, color: "var(--fog)" }}>
+                  Status: {regulatory.fda.status || "N/A"}
+                  {regulatory.fda.cfr_citation && <span> | {regulatory.fda.cfr_citation}</span>}
+                </div>
+              </div>
+            )}
+            {regulatory.jecfa && (
+              <div>
+                <div style={{ fontWeight: 600, fontSize: 13, marginBottom: 4 }}>JECFA (International)</div>
+                <div style={{ fontSize: 12, color: "var(--fog)" }}>
+                  {regulatory.jecfa.adi && (
+                    <span>ADI: {regulatory.jecfa.adi.value} {regulatory.jecfa.adi.unit}</span>
+                  )}
+                  {regulatory.jecfa.last_evaluation_year && (
+                    <span> | Evaluated: {regulatory.jecfa.last_evaluation_year}</span>
+                  )}
+                </div>
+              </div>
+            )}
+            {regulatory.iarc_classification && (
+              <div style={{ fontSize: 12 }}>
+                <span className="muted">IARC Classification:</span> {regulatory.iarc_classification}
+              </div>
+            )}
+            {regulatory.notable_bans && regulatory.notable_bans.length > 0 && (
+              <div style={{ fontSize: 12, color: "var(--coral)" }}>
+                ⚠️ Banned in: {regulatory.notable_bans.join(", ")}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Safety Evidence */}
+      {safety && (safety.concerns?.length > 0 || safety.no_concern_confirmed?.length > 0 || safety.adi_exceedance) && (
+        <div style={{ marginBottom: 20 }}>
+          <div style={sectionHeaderStyle}>Safety Evidence</div>
+          {safety.concerns && safety.concerns.length > 0 && (
+            <div style={{ marginBottom: 12 }}>
+              <div style={{ fontWeight: 600, fontSize: 13, marginBottom: 6 }}>Concerns</div>
+              {safety.concerns.map((c: any, i: number) => (
+                <div key={i} style={{ marginBottom: 8, padding: 10, background: "rgba(234,138,60,0.08)", borderRadius: "var(--radius-sm)", border: "1px solid rgba(234,138,60,0.25)" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
+                    <span className="badge" style={{ fontSize: 10, padding: "2px 6px", background: "rgba(234,138,60,0.15)", color: "#ea8a3c", border: "1px solid rgba(234,138,60,0.35)" }}>
+                      {c.category}
+                    </span>
+                    <span className="muted" style={{ fontSize: 11 }}>Evidence: {c.evidence_strength || "unknown"}</span>
+                  </div>
+                  <div style={{ fontSize: 12, marginBottom: 4 }}>{c.summary}</div>
+                  {c.key_references && c.key_references.length > 0 && (
+                    <div className="muted" style={{ fontSize: 11 }}>{c.key_references.join(", ")}</div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+          {safety.no_concern_confirmed && safety.no_concern_confirmed.length > 0 && (
+            <div style={{ marginBottom: 12 }}>
+              <div style={{ fontWeight: 600, fontSize: 13, marginBottom: 6 }}>No Concern Confirmed</div>
+              {safety.no_concern_confirmed.map((note: string, i: number) => (
+                <div key={i} style={{ fontSize: 12, marginBottom: 4, color: "var(--fog)" }}>• {note}</div>
+              ))}
+            </div>
+          )}
+          {safety.adi_exceedance && safety.adi_exceedance.at_risk && (
+            <div style={{ padding: 10, background: "rgba(220,60,60,0.08)", borderRadius: "var(--radius-sm)", border: "1px solid rgba(220,60,60,0.25)" }}>
+              <div style={{ fontWeight: 600, fontSize: 12, marginBottom: 4, color: "var(--coral)" }}>⚠️ ADI Exceedance Risk</div>
+              {safety.adi_exceedance.populations && safety.adi_exceedance.populations.length > 0 && (
+                <div style={{ fontSize: 12, marginBottom: 4 }}>At-risk populations: {safety.adi_exceedance.populations.join(", ")}</div>
+              )}
+              {safety.adi_exceedance.notes && (
+                <div style={{ fontSize: 11, color: "var(--fog)" }}>{safety.adi_exceedance.notes}</div>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Risk Assessment */}
+      {risk && risk.recommended_level && (
+        <div style={{ marginBottom: 20 }}>
+          <div style={sectionHeaderStyle}>Risk Assessment</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
+            <span
+              className="badge"
+              style={{
+                fontSize: 14,
+                padding: "6px 12px",
+                background: ADDITIVE_RISK_STYLES[risk.recommended_level]?.bg || "var(--slate)",
+                color: ADDITIVE_RISK_STYLES[risk.recommended_level]?.fg || "var(--cream)",
+                border: `1px solid ${ADDITIVE_RISK_STYLES[risk.recommended_level]?.border || "var(--fog)"}`,
+              }}
+            >
+              {ADDITIVE_RISK_STYLES[risk.recommended_level]?.marker || ""} {risk.recommended_level.replace("_", " ")}
+            </span>
+            {risk.confidence != null && (
+              <div style={{ flex: 1 }}>
+                <div className="muted" style={{ fontSize: 11, marginBottom: 2 }}>Confidence: {Math.round(risk.confidence * 100)}%</div>
+                <div style={{ height: 6, background: "var(--slate)", borderRadius: 3, overflow: "hidden" }}>
+                  <div style={{ width: `${risk.confidence * 100}%`, height: "100%", background: "var(--kale)" }} />
+                </div>
+              </div>
+            )}
+          </div>
+          {risk.rationale && (
+            <div style={{ fontSize: 13, marginBottom: 8 }}>{risk.rationale}</div>
+          )}
+          {risk.key_factors && risk.key_factors.length > 0 && (
+            <div>
+              <div className="muted" style={{ fontSize: 12, marginBottom: 4 }}>Key factors:</div>
+              <ul style={{ margin: 0, paddingLeft: 18, fontSize: 12, color: "var(--fog)" }}>
+                {risk.key_factors.map((f: string, i: number) => <li key={i}>{f}</li>)}
+              </ul>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Sources */}
+      {sources && sources.length > 0 && (
+        <div>
+          <div style={sectionHeaderStyle}>Sources</div>
+          <div style={{ fontSize: 11, display: "grid", gap: 6 }}>
+            {sources.map((s: any, i: number) => (
+              <div key={i}>
+                {s.url ? (
+                  <a href={s.url} target="_blank" rel="noopener" style={{ color: "var(--blue)", textDecoration: "none" }}>
+                    {s.title || s.url}
+                  </a>
+                ) : (
+                  <span className="muted">{s.title}</span>
+                )}
+                {s.type && <span className="muted" style={{ marginLeft: 6 }}>({s.type})</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
