@@ -36,7 +36,7 @@ Chewber separates **operational data** (user-created) from **reference data** (i
 
 | File | Purpose | Size | Writable | Built by |
 |---|---|---|---|---|
-| `apps/api/chewber.sqlite` | App data: scored foods, abstractions, jobs, queries | ~650 KB | Read-write | Auto-created on startup |
+| `data/chewber.sqlite` | App data: scored foods, abstractions, jobs, queries | ~650 KB | Read-write | Auto-created on startup |
 | `data/usda.sqlite` | USDA FoodData Central (~2M products) + additive risks (~243) | ~1.6 GB | Read-only¹ | `scripts/build-usda-db.sh` |
 | `data/off-food.parquet` | Open Food Facts (~4.3M products, full records) | ~450 MB | Read-only | `scripts/build-off-parquet.sh` |
 | `data/off-index.sqlite` | OFF search index (barcode + FTS5 on name/brand) | ~490 MB | Read-only | `scripts/build-off-index.sh` |
@@ -106,7 +106,7 @@ All variables have sensible defaults — the app runs out of the box with no key
 | Variable | Default | Description |
 |---|---|---|
 | `CHEWBER_PORT` | `8787` (schema) / `8000` (.env.example) | HTTP listen port |
-| `CHEWBER_DB_PATH` | `./chewber.sqlite` | Operational app database |
+| `CHEWBER_DB_PATH` | `../../data/chewber.sqlite` | Operational app database |
 | `CHEWBER_UPLOAD_DIR` | `./uploads` | Photo upload directory |
 | `CHEWBER_WEB_ORIGIN` | `http://localhost:5173` | Allowed CORS origin (`*` for dev) |
 | `CHEWBER_ADMIN_KEY` | *(unset)* | If set, required via `X-Admin-Key` header to delete foods |
@@ -163,7 +163,7 @@ bun run apps/api/src/scripts/syncAdditiveResearch.ts
   → updates additive_risks in data/usda.sqlite
     ↓
 bun run apps/api/src/scripts/rescore.ts      # (chained automatically)
-  → updates food scores in apps/api/chewber.sqlite
+  → updates food scores in data/chewber.sqlite
     ↓
 sudo systemctl restart chewber               # reload caches
 ```

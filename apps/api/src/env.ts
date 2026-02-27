@@ -41,7 +41,7 @@ export function loadEnvFileIfPresent() {
 
 const EnvSchema = z.object({
   CHEWBER_PORT: z.coerce.number().default(8787),
-  CHEWBER_DB_PATH: z.string().default("./chewber.sqlite"),
+  CHEWBER_DB_PATH: z.string().default("../../data/chewber.sqlite"),
   CHEWBER_UPLOAD_DIR: z.string().default("./uploads"),
 
   CHEWBER_LLM_PROVIDER: z.enum(["stub", "openai", "openrouter"]).default("stub"),

@@ -3,9 +3,9 @@
 ## Database Locations
 
 ### App database (operational — user-created data)
-- **Path**: `apps/api/chewber.sqlite` (relative to repo root)
-- **Resolved at runtime from**: `WorkingDirectory=/home/exedev/chewber/apps/api` in systemd + `CHEWBER_DB_PATH=./chewber.sqlite` in `.env`
-- **Absolute**: `/home/exedev/chewber/apps/api/chewber.sqlite`
+- **Path**: `data/chewber.sqlite` (relative to repo root)
+- **Resolved at runtime from**: `WorkingDirectory=/home/exedev/chewber/apps/api` in systemd + `CHEWBER_DB_PATH=../../data/chewber.sqlite` in `.env`
+- **Absolute**: `/home/exedev/chewber/data/chewber.sqlite`
 - **Contains**: foods, food_abstractions, jobs, job_events, queries, categories, source_cache
 - **Read-write** by the API server and worker
 
@@ -43,6 +43,6 @@ research/additives/{CODE}-abstraction.json
   → bun run apps/api/src/scripts/syncAdditiveResearch.ts
     → updates additive_risks in data/usda.sqlite
       → bun run apps/api/src/scripts/rescore.ts (chained automatically)
-        → updates food scores in apps/api/chewber.sqlite
+        → updates food scores in data/chewber.sqlite
           → sudo systemctl restart chewber (reload caches)
 ```

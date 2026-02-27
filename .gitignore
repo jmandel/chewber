@@ -4,9 +4,6 @@ bun.lock
 .DS_Store
 
 # runtime
-apps/api/chewber.sqlite
-apps/api/chewber.sqlite-wal
-apps/api/chewber.sqlite-shm
 apps/api/uploads/
 data/
 
