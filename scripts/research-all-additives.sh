@@ -61,8 +61,9 @@ run_one() {
 
   # Skip if output already exists
   if $SKIP_EXISTING; then
-    if [[ -f "$ABS_OUTDIR/${CODE}-report.md" && -f "$ABS_OUTDIR/${CODE}-abstraction.json" ]]; then
-      echo "SKIP $CODE ($NAME) — already exists"
+    if [[ -f "$ABS_OUTDIR/${CODE}-report.md" && -f "$ABS_OUTDIR/${CODE}-abstraction.json" ]] \
+       && jq . "$ABS_OUTDIR/${CODE}-abstraction.json" > /dev/null 2>&1; then
+      echo "SKIP $CODE ($NAME) — already exists with valid JSON"
       touch "$COUNT_DIR/skipped/$CODE"
       return 0
     fi
@@ -77,7 +78,7 @@ run_one() {
   echo "━━━ [$idx/$TOTAL] $CODE — $NAME ━━━"
 
   local rc=0
-  timeout 600 bash "$RESEARCH_SCRIPT" \
+  bash "$RESEARCH_SCRIPT" \
     --code "$CODE" \
     --name "$NAME" \
     --output-dir "$OUTDIR" \
