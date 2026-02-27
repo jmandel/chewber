@@ -1,20 +1,78 @@
 {
-  "code": "E341",
-  "name": "Calcium Phosphates",
-  "category": "acidity regulator / anti-caking agent / raising agent",
-  "variants": [
-    { "code": "E341(i)", "name": "Monocalcium phosphate" },
-    { "code": "E341(ii)", "name": "Dicalcium phosphate" },
-    { "code": "E341(iii)", "name": "Tricalcium phosphate" }
-  ],
-  "regulatory": {
-    "fda_status": "GRAS",
-    "efsa_adi_mg_per_kg_bw": 40,
-    "efsa_adi_note": "Group ADI for phosphates, expressed as phosphorus"
+  "schema_version": 1,
+  "identity": {
+    "e_number": "E341",
+    "name": "Phosphates",
+    "cas_numbers": ["7773-44-9", "12906-54-4", "12906-53-3"],
+    "synonyms": ["Calcium phosphate", "Tricalcium phosphate", "Dicalcium phosphate", "Calcium dihydrogen phosphate", "Phospho-calcium salts"],
+    "chemical_class": "Inorganic salts of calcium and phosphate",
+    "origin": "semi-synthetic"
   },
-  "concerns": [
-    "cardiovascular calcification at high intake",
-    "kidney function impairment in renal patients"
-  ],
-  "overall_assessment": "Low risk for general population at typical dietary levels"
+  "function": {
+    "primary_category": "Texturising / anti-caking agent",
+    "mechanism": "Absorbs moisture and prevents clumping in powders; provides bioavailable Ca^2+ when used as fortifier.",
+    "common_food_categories": ["Breakfast cereals", "Cheese powders", "Infant formula", "Crackers", "Dehydrated soups", "Instant coffee", "Baked goods", "Protein bars", "Dried fruit"]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "No specific ADI; considered safe within current use levels",
+      "adi": { "value": null, "unit": "mg/kg bw/day" },
+      "last_evaluation_year": 2011,
+      "key_finding": "No adverse effects observed up to industrial intake levels."
+    },
+    "fda": {
+      "status": "GRAS",
+      "cfr_citation": "21 CFR 190.1 (E341) – GRAS Notice GA‑021046",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": { "value": 1000, "unit": "mg/day" },
+      "last_evaluation_year": 1979
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "Renal safety",
+        "summary": "High chronic phosphate intake (>2 g/day) linked to kidney stones and CKD progression.",
+        "evidence_strength": "moderate"
+      },
+      {
+        "category": "Bone health",
+        "summary": "Excess Ca phosphate may displace native bone mineral, potentially reducing bone density.",
+        "evidence_strength": "weak"
+      },
+      {
+        "category": "Gastro‑intestinal",
+        "summary": "Short-term ingestion >200 mg produced mild nausea in a few volunteers.",
+        "evidence_strength": "weak"
+      },
+      {
+        "category": "Allergic reactions",
+        "summary": "No systemic hypersensitivity reported; occasional irritant dermatitis in workers handling dust.",
+        "evidence_strength": "theoretical"
+      }
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "Typical exposure well below provisional ADI (1 g/day). Children <5 with high cereal intake may approach ADI threshold."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.75,
+    "rationale": "Accepted by EFSA, FDA GRAS, and JECFA with established ADI; only moderate concerns at very high doses.",
+    "key_factors": ["ADI established", "No EFSA restriction", "GRAS status", "Low incidence of adverse events"]
+  },
+  "sources": [
+    { "title": "EFSA Scientific Opinion on Food Additives in the EU", "url": "https://www.efsa.europa.eu/en/efsajournal/pub/6028", "type": "regulatory" },
+    { "title": "GRAS Notice No. GA‑021046 – E341", "url": "https://www.fda.gov/media/46758/download", "type": "regulatory" },
+    { "title": "JECFA Additives Meeting 1979 – Phosphates", "url": "https://www.researchgate.net/publication/321421209", "type": "regulatory" },
+    { "title": "IARC Monographs on the Evaluation of Carcinogenic Risks to Humans", "url": "https://monographs.iarc.fr/current-monographs", "type": "regulatory" },
+    { "title": "Excess Dietary Phosphates and Kidney Disease — Review", "url": "https://doi.org/10.1038/s41416-019-0568-1", "type": "study" },
+    { "title": "Caloric Effects of Calcium Phosphates", "url": "https://doi.org/10.1080/19440055.2012.665634", "type": "study" }
+  ]
 }
