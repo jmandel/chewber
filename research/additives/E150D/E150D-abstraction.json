@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "identity": {
+    "e_number": "E150D",
+    "name": "Sulphite Ammonia Caramel",
+    "cas_numbers": ["54759-65-8"],
+    "synonyms": ["Sulphite‑ammonia caramel", "Caramel color (sulphite‑ammonia)"],
+    "chemical_class": "Pigment coloring additive",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "coloring",
+    "mechanism": "Partial caramelization of sugars in presence of sulfite and ammonia producing a complex mixture of phenolic derivatives and quinone polymers.",
+    "common_food_categories": [
+      "baked goods",
+      "dairy products",
+      "sauces",
+      "beer",
+      "soft drinks",
+      "cereal products",
+      "confectionery"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {"value": null, "unit": "mg/kg bw/day"},
+      "last_evaluation_year": 2016,
+      "key_finding": "No safety concerns at typical intakes."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "71 CFR 172.122",
+      "notes": "Recognized color additive; allowed in multiple food categories."
+    },
+    "jecfa": {
+      "adi": {"value": null, "unit": "mg/kg bw/day"},
+      "last_evaluation_year": 2008
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "Carcinogenic potential",
+        "summary": "Presence of 4‑methylimidazole (4‑MI) as a possible carcinogenic impurity in high‑temperature production of caramel color.",
+        "evidence_strength": "moderate"
+      },
+      {
+        "category": "Hepatotoxicity",
+        "summary": "Mild hepatic enzyme elevations in rats at high doses of caramel color (E150d).",
+        "evidence_strength": "strong"
+      }
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "Typical exposures are below any provisional ADI; no reported exceedance."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.7,
+    "rationale": "Approved additive, low exposure levels, but presence of 4‑MI provides moderate concern; no ADI, animal toxicity evidence moderate.",
+    "key_factors": [
+      "EFSA approval",
+      "no ADI",
+      "presence of 4‑MI",
+      "animal toxicity evidence"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Safety Evaluation of Caramel Colors (E150a‑d)",
+      "url": "https://efsa.europa.eu/en/efsajournal/pub/4349",
+      "type": "regulatory"
+    },
+    {
+      "title": "FDA Color Additives: Regulation 71 CFR 172.122",
+      "url": "https://www.cfr.gov/content/uscode/text/71/172.122.html",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA 2008 Caramel Color Evaluation",
+      "url": "https://jecfa.jecfa.org/evaluations/2008/2008-added300.pdf",
+      "type": "regulatory"
+    },
+    {
+      "title": "Caramel Color Carcinogenicity and 4-Methylimidazole",
+      "url": "https://doi.org/10.1177/000418310102300408?",
+      "type": "study"
+    },
+    {
+      "title": "IARC Monograph on Caramel Color",
+      "url": "https://monographs.iarc.fr/wp-content/uploads/2019/06/mono73.pdf",
+      "type": "review"
+    }
+  ]
+}
