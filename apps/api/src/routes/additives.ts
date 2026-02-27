@@ -1,5 +1,6 @@
 import { Hono } from "hono";
 import { getReferenceDb } from "../db/referenceDb";
+import { getDb } from "../db";
 import { getAdditiveResearch, getResearchCodes } from "../sources/additiveResearch";
 import { normalizeAdditiveCode } from "../scoring/additives";
 
@@ -123,5 +124,67 @@ additivesRoutes.get("/additives/:code", (c) => {
           abstraction: research.abstraction,
         }
       : null,
+  });
+});
+
+/**
+ * GET /api/additives/:code/foods
+ *
+ * Returns foods whose abstraction JSON contains this additive.
+ * Searches the `additives` array in abstraction_json for matching codes.
+ * Returns up to 20 most recently updated foods.
+ */
+additivesRoutes.get("/additives/:code/foods", (c) => {
+  const rawCode = c.req.param("code");
+  const code = normalizeAdditiveCode(rawCode);
+
+  // Also compute base code for variant matching (E150D → E150)
+  const baseMatch = code.match(/^(E\d+)[A-Z]$/i);
+  const baseCode = baseMatch ? baseMatch[1] : null;
+
+  const db = getDb();
+
+  // Use json_each to search through the additives array in abstraction_json.
+  // We normalize the stored codes (which may be "en:e322-lecithins" format)
+  // by stripping the "en:" prefix and splitting on "-", then uppercasing.
+  const rows = db
+    .query(
+      `SELECT DISTINCT f.id, f.slug, f.canonical_name, f.brand, f.category_path,
+              f.tags_json, fa.score, fa.updated_at
+       FROM food_abstractions fa
+       JOIN foods f ON f.id = fa.food_id
+       JOIN json_each(json_extract(fa.abstraction_json, '$.additives')) AS je
+       WHERE fa.status = 'active'
+         AND fa.abstraction_json IS NOT NULL
+         AND (
+           UPPER(REPLACE(REPLACE(
+             CASE WHEN json_extract(je.value, '$.code') LIKE 'en:%'
+               THEN SUBSTR(json_extract(je.value, '$.code'), 4)
+               ELSE json_extract(je.value, '$.code')
+             END, '-', ''), ' ', '')) LIKE ?
+           OR UPPER(REPLACE(REPLACE(
+             CASE WHEN json_extract(je.value, '$.code') LIKE 'en:%'
+               THEN SUBSTR(json_extract(je.value, '$.code'), 4)
+               ELSE json_extract(je.value, '$.code')
+             END, '-', ''), ' ', '')) LIKE ?
+         )
+       ORDER BY fa.updated_at DESC
+       LIMIT 20`
+    )
+    .all(code + "%", (baseCode ?? code) + "%") as any[];
+
+  return c.json({
+    code,
+    count: rows.length,
+    foods: rows.map((r) => ({
+      id: r.id,
+      slug: r.slug,
+      canonical_name: r.canonical_name,
+      brand: r.brand ?? null,
+      category_path: r.category_path ?? null,
+      tags: JSON.parse(r.tags_json || "[]"),
+      score: r.score ?? null,
+      updated_at: r.updated_at,
+    })),
   });
 });
