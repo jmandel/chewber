@@ -1367,68 +1367,50 @@ function AdditivePage() {
   if (!data) return <div style={{ textAlign: "center", padding: 40 }}><div className="spinner" /></div>;
 
   const riskLevel = data.risk_level || "limited";
-  const style = ADDITIVE_RISK_STYLES[riskLevel] || ADDITIVE_RISK_STYLES.limited;
+  const rstyle = ADDITIVE_RISK_STYLES[riskLevel] || ADDITIVE_RISK_STYLES.limited;
   const hasResearch = !!data.research;
   const abstraction = data.research?.abstraction;
+  const funcCategory = data.function_category || abstraction?.function?.primary_category;
 
   return (
-    <div>
-      <BackLink />
-      <div style={{ marginBottom: 8, fontSize: 13 }}>
-        <Link to="/additives" style={{ color: "var(--fog)", textDecoration: "none" }}>← All additives</Link>
-      </div>
+    <div className="additive-page">
+      {/* Breadcrumb */}
+      <Link to="/additives" className="additive-breadcrumb">← All additives</Link>
 
-      {/* Header */}
-      <div style={{ marginBottom: 20 }}>
-        <h1 style={{ fontSize: 28, fontWeight: 700, marginBottom: 4 }}>{data.name ?? data.code}</h1>
-        <div className="muted" style={{ fontSize: 14, marginBottom: 8 }}>{data.code}</div>
-        <span
-          className="badge"
-          style={{
-            fontSize: 12,
-            padding: "4px 10px",
-            background: style.bg,
-            color: style.fg,
-            border: `1px solid ${style.border}`,
-          }}
-        >
-          {style.marker} {riskLevel.replace("_", " ")}
-        </span>
+      {/* Hero header */}
+      <div className="additive-hero">
+        <div className="additive-hero-top">
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <h1 className="additive-hero-name">{data.name ?? data.code}</h1>
+            <div className="additive-hero-meta">
+              <span className="additive-hero-code">{data.code}</span>
+              {funcCategory && <span className="additive-hero-func">{funcCategory}</span>}
+            </div>
+          </div>
+          <span
+            className="additive-risk-badge"
+            style={{ background: rstyle.bg, color: rstyle.fg, borderColor: rstyle.border }}
+          >
+            <span className="additive-risk-marker">{rstyle.marker}</span>
+            {riskLevel.replace("_", " ")}
+          </span>
+        </div>
+        {data.justification && (
+          <p className="additive-hero-summary">{data.justification}</p>
+        )}
       </div>
 
       {/* Tabs */}
       {hasResearch && (
-        <div style={{ display: "flex", gap: 12, marginBottom: 16, borderBottom: "1px solid var(--slate)" }}>
+        <div className="additive-tabs">
           <button
+            className={`additive-tab${tab === "overview" ? " active" : ""}`}
             onClick={() => setTab("overview")}
-            style={{
-              padding: "8px 0",
-              fontSize: 14,
-              fontWeight: tab === "overview" ? 600 : 400,
-              color: tab === "overview" ? "var(--cream)" : "var(--fog)",
-              background: "transparent",
-              border: "none",
-              borderBottom: tab === "overview" ? "2px solid var(--kale)" : "2px solid transparent",
-              cursor: "pointer",
-            }}
-          >
-            Overview
-          </button>
+          >Overview</button>
           <button
+            className={`additive-tab${tab === "report" ? " active" : ""}`}
             onClick={() => setTab("report")}
-            style={{
-              padding: "8px 0",
-              fontSize: 14,
-              fontWeight: tab === "report" ? 600 : 400,
-              color: tab === "report" ? "var(--cream)" : "var(--fog)",
-              background: "transparent",
-              border: "none",
-              borderBottom: tab === "report" ? "2px solid var(--kale)" : "2px solid transparent",
-              cursor: "pointer",
-            }}
-          >
-            Full Report
-          </button>
+          >Full Report</button>
         </div>
       )}
 
@@ -1441,12 +1423,6 @@ function AdditivePage() {
             <div style={{ marginBottom: 12 }}>
               <div style={{ fontWeight: 600, fontSize: 12, color: "var(--fog)", marginBottom: 4 }}>Description</div>
               <div style={{ fontSize: 13 }}>{data.description}</div>
-            </div>
-          )}
-          {data.justification && (
-            <div>
-              <div style={{ fontWeight: 600, fontSize: 12, color: "var(--fog)", marginBottom: 4 }}>Risk Justification</div>
-              <div style={{ fontSize: 13 }}>{data.justification}</div>
             </div>
           )}
         </div>
@@ -1477,17 +1453,14 @@ function AdditiveFoods({ code }: { code: string }) {
   if (foods === null || foods.length === 0) return null;
 
   return (
-    <div style={{ marginTop: 20 }}>
-      <div style={{ fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--fog)", marginBottom: 10 }}>
-        Foods with this additive
-      </div>
-      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+    <div className="additive-section">
+      <div className="additive-section-head">Found in</div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
         {foods.map(f => (
           <div
             key={f.id}
-            className="card"
+            className="card additive-food-row"
             onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)}
-            style={{ cursor: "pointer", padding: "12px 16px", display: "flex", alignItems: "center", gap: 12 }}
           >
             {f.score != null && <ScorePill score={f.score} size={18} />}
             <div style={{ flex: 1, minWidth: 0 }}>
@@ -1496,6 +1469,7 @@ function AdditiveFoods({ code }: { code: string }) {
               </div>
               {f.brand && <div className="muted" style={{ fontSize: 11 }}>{f.brand}</div>}
             </div>
+            <span className="muted" style={{ fontSize: 14 }}>›</span>
           </div>
         ))}
       </div>
@@ -1504,6 +1478,45 @@ function AdditiveFoods({ code }: { code: string }) {
 }
 
 // ── Additive Overview (structured abstraction) ────────────
+
+function AdditiveSection({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div className="additive-section">
+      <div className="additive-section-head">{title}</div>
+      <div className="card additive-section-body">{children}</div>
+    </div>
+  );
+}
+
+function AdditiveKV({ label, value, stacked }: { label: string; value: string; stacked?: boolean }) {
+  return (
+    <div className={`additive-kv${stacked ? " stacked" : ""}`}>
+      <span className="additive-kv-label">{label}</span>
+      <span className="additive-kv-value">{value}</span>
+    </div>
+  );
+}
+
+function RegulatoryRow({ agency, region, status, details, note }: {
+  agency: string; region: string; status: string; details?: string; note?: string;
+}) {
+  const statusUpper = status.toUpperCase();
+  const isApproved = /approved|gras/i.test(status);
+  return (
+    <div className="additive-reg-row">
+      <div className="additive-reg-header">
+        <div>
+          <span style={{ fontWeight: 600, fontSize: 13 }}>{agency}</span>
+          <span className="muted" style={{ fontSize: 11, marginLeft: 6 }}>{region}</span>
+        </div>
+        <span className={`additive-reg-status${isApproved ? " approved" : ""}`}>{statusUpper}</span>
+      </div>
+      {details && <div className="additive-reg-details">{details}</div>}
+      {note && <div className="additive-reg-note">{note}</div>}
+    </div>
+  );
+}
+
 function AdditiveOverview({ abstraction }: { abstraction: Record<string, any> }) {
   const identity = abstraction.identity || {};
   const func = abstraction.function || {};
@@ -1511,222 +1524,214 @@ function AdditiveOverview({ abstraction }: { abstraction: Record<string, any> })
   const safety = abstraction.safety_evidence || {};
   const risk = abstraction.risk_assessment || {};
   const sources = abstraction.sources || [];
+  const [sourcesOpen, setSourcesOpen] = useState(false);
 
-  const sectionHeaderStyle: React.CSSProperties = {
-    fontWeight: 700,
-    fontSize: 12,
-    textTransform: "uppercase",
-    letterSpacing: "0.05em",
-    color: "var(--fog)",
-    marginBottom: 8,
-    marginTop: 16,
-  };
+  // Group sources by type
+  const sourcesByType: Record<string, any[]> = {};
+  for (const s of sources) {
+    const t = s.type || "other";
+    if (!sourcesByType[t]) sourcesByType[t] = [];
+    sourcesByType[t].push(s);
+  }
 
   return (
-    <div className="card" style={{ padding: 20 }}>
+    <div className="additive-overview">
+
       {/* Identity */}
       {identity && (
-        <div style={{ marginBottom: 20 }}>
-          <div style={sectionHeaderStyle}>Identity</div>
-          <div style={{ display: "grid", gap: 8, fontSize: 13 }}>
-            {identity.chemical_class && <KV label="Chemical class" value={identity.chemical_class} />}
-            {identity.origin && <KV label="Origin" value={identity.origin} />}
-            {identity.cas_numbers && identity.cas_numbers.length > 0 && (
-              <KV label="CAS numbers" value={identity.cas_numbers.join(", ")} />
-            )}
-            {identity.synonyms && identity.synonyms.length > 0 && (
-              <div style={{ paddingTop: 6 }}>
-                <div className="muted" style={{ fontSize: 12, marginBottom: 4 }}>Synonyms</div>
-                <div style={{ fontSize: 12, color: "var(--fog)" }}>{identity.synonyms.join(", ")}</div>
-              </div>
-            )}
-          </div>
-        </div>
+        <AdditiveSection title="Identity">
+          {identity.chemical_class && <AdditiveKV label="Chemical class" value={identity.chemical_class} stacked />}
+          {identity.origin && <AdditiveKV label="Origin" value={identity.origin} />}
+          {identity.cas_numbers?.length > 0 && (
+            <AdditiveKV label="CAS" value={identity.cas_numbers.join(", ")} stacked />
+          )}
+          {identity.synonyms?.length > 0 && (
+            <div className="additive-synonyms">
+              {identity.synonyms.map((s: string, i: number) => (
+                <span key={i} className="additive-synonym-chip">{s}</span>
+              ))}
+            </div>
+          )}
+        </AdditiveSection>
       )}
 
       {/* Function */}
-      {func && (
-        <div style={{ marginBottom: 20 }}>
-          <div style={sectionHeaderStyle}>Function</div>
-          <div style={{ display: "grid", gap: 8, fontSize: 13 }}>
-            {func.primary_category && <KV label="Primary category" value={func.primary_category} />}
-            {func.mechanism && (
-              <div style={{ paddingTop: 6 }}>
-                <div className="muted" style={{ fontSize: 12, marginBottom: 4 }}>Mechanism</div>
-                <div style={{ fontSize: 13 }}>{func.mechanism}</div>
+      {func && (func.mechanism || func.common_food_categories?.length > 0) && (
+        <AdditiveSection title="How it works">
+          {func.mechanism && <p className="additive-mechanism">{func.mechanism}</p>}
+          {func.secondary_categories?.length > 0 && (
+            <div className="additive-func-tags">
+              {func.secondary_categories.map((c: string, i: number) => (
+                <span key={i} className="additive-func-tag">{c}</span>
+              ))}
+            </div>
+          )}
+          {func.common_food_categories?.length > 0 && (
+            <div className="additive-food-cats">
+              <div className="additive-kv-label" style={{ marginBottom: 4 }}>Commonly found in</div>
+              <div className="additive-food-cat-list">
+                {func.common_food_categories.map((c: string, i: number) => (
+                  <span key={i}>{c}</span>
+                ))}
               </div>
-            )}
-            {func.common_food_categories && func.common_food_categories.length > 0 && (
-              <div style={{ paddingTop: 6 }}>
-                <div className="muted" style={{ fontSize: 12, marginBottom: 4 }}>Common food categories</div>
-                <div style={{ fontSize: 12, color: "var(--fog)" }}>{func.common_food_categories.join(", ")}</div>
-              </div>
-            )}
-          </div>
-        </div>
+            </div>
+          )}
+        </AdditiveSection>
       )}
 
       {/* Regulatory */}
-      {regulatory && Object.keys(regulatory).length > 0 && (
-        <div style={{ marginBottom: 20 }}>
-          <div style={sectionHeaderStyle}>Regulatory Status</div>
-          <div style={{ display: "grid", gap: 12 }}>
-            {regulatory.efsa && (
-              <div>
-                <div style={{ fontWeight: 600, fontSize: 13, marginBottom: 4 }}>EFSA (Europe)</div>
-                <div style={{ fontSize: 12, color: "var(--fog)" }}>
-                  Status: {regulatory.efsa.status || "N/A"}
-                  {regulatory.efsa.adi && (
-                    <span> | ADI: {regulatory.efsa.adi.value} {regulatory.efsa.adi.unit}</span>
-                  )}
-                  {regulatory.efsa.last_evaluation_year && (
-                    <span> | Evaluated: {regulatory.efsa.last_evaluation_year}</span>
-                  )}
-                </div>
-                {regulatory.efsa.key_finding && (
-                  <div style={{ fontSize: 12, marginTop: 4 }}>{regulatory.efsa.key_finding}</div>
-                )}
+      {regulatory && Object.keys(regulatory).filter(k => !['iarc_classification','notable_bans'].includes(k)).length > 0 && (
+        <AdditiveSection title="Regulatory status">
+          {regulatory.efsa && (
+            <RegulatoryRow
+              agency="EFSA" region="Europe"
+              status={regulatory.efsa.status || "N/A"}
+              details={[
+                regulatory.efsa.adi?.value != null ? `ADI: ${regulatory.efsa.adi.value} ${regulatory.efsa.adi.unit}` : null,
+                regulatory.efsa.last_evaluation_year ? `Evaluated ${regulatory.efsa.last_evaluation_year}` : null,
+              ].filter(Boolean).join(" · ") || undefined}
+              note={regulatory.efsa.key_finding}
+            />
+          )}
+          {regulatory.fda && (
+            <RegulatoryRow
+              agency="FDA" region="USA"
+              status={regulatory.fda.status || "N/A"}
+              details={regulatory.fda.cfr_citation || undefined}
+            />
+          )}
+          {regulatory.jecfa && (
+            <RegulatoryRow
+              agency="JECFA" region="International"
+              status={regulatory.jecfa.adi?.value != null ? `ADI: ${regulatory.jecfa.adi.value} ${regulatory.jecfa.adi.unit}` : "Evaluated"}
+              details={regulatory.jecfa.last_evaluation_year ? `Evaluated ${regulatory.jecfa.last_evaluation_year}` : undefined}
+            />
+          )}
+          {regulatory.iarc_classification && (
+            <div className="additive-reg-row">
+              <div className="additive-reg-header">
+                <span style={{ fontWeight: 600, fontSize: 13 }}>IARC</span>
+                <span className="additive-reg-details">{regulatory.iarc_classification}</span>
               </div>
-            )}
-            {regulatory.fda && (
-              <div>
-                <div style={{ fontWeight: 600, fontSize: 13, marginBottom: 4 }}>FDA (USA)</div>
-                <div style={{ fontSize: 12, color: "var(--fog)" }}>
-                  Status: {regulatory.fda.status || "N/A"}
-                  {regulatory.fda.cfr_citation && <span> | {regulatory.fda.cfr_citation}</span>}
-                </div>
-              </div>
-            )}
-            {regulatory.jecfa && (
-              <div>
-                <div style={{ fontWeight: 600, fontSize: 13, marginBottom: 4 }}>JECFA (International)</div>
-                <div style={{ fontSize: 12, color: "var(--fog)" }}>
-                  {regulatory.jecfa.adi && (
-                    <span>ADI: {regulatory.jecfa.adi.value} {regulatory.jecfa.adi.unit}</span>
-                  )}
-                  {regulatory.jecfa.last_evaluation_year && (
-                    <span> | Evaluated: {regulatory.jecfa.last_evaluation_year}</span>
-                  )}
-                </div>
-              </div>
-            )}
-            {regulatory.iarc_classification && (
-              <div style={{ fontSize: 12 }}>
-                <span className="muted">IARC Classification:</span> {regulatory.iarc_classification}
-              </div>
-            )}
-            {regulatory.notable_bans && regulatory.notable_bans.length > 0 && (
-              <div style={{ fontSize: 12, color: "var(--coral)" }}>
-                ⚠️ Banned in: {regulatory.notable_bans.join(", ")}
-              </div>
-            )}
-          </div>
-        </div>
+            </div>
+          )}
+          {regulatory.notable_bans?.length > 0 && (
+            <div className="additive-alert danger">
+              <span className="additive-alert-icon">⚠</span>
+              <span>Banned in {regulatory.notable_bans.join(", ")}</span>
+            </div>
+          )}
+        </AdditiveSection>
       )}
 
       {/* Safety Evidence */}
       {safety && (safety.concerns?.length > 0 || safety.no_concern_confirmed?.length > 0 || safety.adi_exceedance) && (
-        <div style={{ marginBottom: 20 }}>
-          <div style={sectionHeaderStyle}>Safety Evidence</div>
-          {safety.concerns && safety.concerns.length > 0 && (
-            <div style={{ marginBottom: 12 }}>
-              <div style={{ fontWeight: 600, fontSize: 13, marginBottom: 6 }}>Concerns</div>
+        <AdditiveSection title="Safety evidence">
+          {safety.concerns?.length > 0 && (
+            <div className="additive-concerns">
               {safety.concerns.map((c: any, i: number) => (
-                <div key={i} style={{ marginBottom: 8, padding: 10, background: "rgba(234,138,60,0.08)", borderRadius: "var(--radius-sm)", border: "1px solid rgba(234,138,60,0.25)" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
-                    <span className="badge" style={{ fontSize: 10, padding: "2px 6px", background: "rgba(234,138,60,0.15)", color: "#ea8a3c", border: "1px solid rgba(234,138,60,0.35)" }}>
-                      {c.category}
-                    </span>
-                    <span className="muted" style={{ fontSize: 11 }}>Evidence: {c.evidence_strength || "unknown"}</span>
+                <div key={i} className="additive-concern">
+                  <div className="additive-concern-header">
+                    <span className="additive-concern-cat">{c.category}</span>
+                    {c.evidence_strength && (
+                      <span className={`additive-evidence-strength ${c.evidence_strength}`}>
+                        {c.evidence_strength}
+                      </span>
+                    )}
                   </div>
-                  <div style={{ fontSize: 12, marginBottom: 4 }}>{c.summary}</div>
-                  {c.key_references && c.key_references.length > 0 && (
-                    <div className="muted" style={{ fontSize: 11 }}>{c.key_references.join(", ")}</div>
+                  <p className="additive-concern-text">{c.summary}</p>
+                  {c.key_references?.length > 0 && (
+                    <div className="additive-concern-refs">{c.key_references.join(" · ")}</div>
                   )}
                 </div>
               ))}
             </div>
           )}
-          {safety.no_concern_confirmed && safety.no_concern_confirmed.length > 0 && (
-            <div style={{ marginBottom: 12 }}>
-              <div style={{ fontWeight: 600, fontSize: 13, marginBottom: 6 }}>No Concern Confirmed</div>
+          {safety.no_concern_confirmed?.length > 0 && (
+            <div className="additive-safe-notes">
+              <div className="additive-safe-label">✓ No concern confirmed</div>
               {safety.no_concern_confirmed.map((note: string, i: number) => (
-                <div key={i} style={{ fontSize: 12, marginBottom: 4, color: "var(--fog)" }}>• {note}</div>
+                <p key={i} className="additive-safe-note">{note}</p>
               ))}
             </div>
           )}
-          {safety.adi_exceedance && safety.adi_exceedance.at_risk && (
-            <div style={{ padding: 10, background: "rgba(220,60,60,0.08)", borderRadius: "var(--radius-sm)", border: "1px solid rgba(220,60,60,0.25)" }}>
-              <div style={{ fontWeight: 600, fontSize: 12, marginBottom: 4, color: "var(--coral)" }}>⚠️ ADI Exceedance Risk</div>
-              {safety.adi_exceedance.populations && safety.adi_exceedance.populations.length > 0 && (
-                <div style={{ fontSize: 12, marginBottom: 4 }}>At-risk populations: {safety.adi_exceedance.populations.join(", ")}</div>
+          {safety.adi_exceedance?.at_risk && (
+            <div className="additive-alert warning">
+              <div className="additive-alert-title">⚠ ADI Exceedance Risk</div>
+              {safety.adi_exceedance.populations?.length > 0 && (
+                <div className="additive-alert-pops">
+                  {safety.adi_exceedance.populations.map((p: string, i: number) => (
+                    <span key={i} className="additive-pop-chip">{p}</span>
+                  ))}
+                </div>
               )}
               {safety.adi_exceedance.notes && (
-                <div style={{ fontSize: 11, color: "var(--fog)" }}>{safety.adi_exceedance.notes}</div>
+                <p className="additive-alert-note">{safety.adi_exceedance.notes}</p>
               )}
             </div>
           )}
-        </div>
+        </AdditiveSection>
       )}
 
       {/* Risk Assessment */}
-      {risk && risk.recommended_level && (
-        <div style={{ marginBottom: 20 }}>
-          <div style={sectionHeaderStyle}>Risk Assessment</div>
-          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
+      {risk?.recommended_level && (
+        <AdditiveSection title="Risk assessment">
+          <div className="additive-risk-summary">
             <span
-              className="badge"
+              className="additive-risk-badge"
               style={{
-                fontSize: 14,
-                padding: "6px 12px",
                 background: ADDITIVE_RISK_STYLES[risk.recommended_level]?.bg || "var(--slate)",
                 color: ADDITIVE_RISK_STYLES[risk.recommended_level]?.fg || "var(--cream)",
-                border: `1px solid ${ADDITIVE_RISK_STYLES[risk.recommended_level]?.border || "var(--fog)"}`,
+                borderColor: ADDITIVE_RISK_STYLES[risk.recommended_level]?.border || "var(--fog)",
               }}
             >
-              {ADDITIVE_RISK_STYLES[risk.recommended_level]?.marker || ""} {risk.recommended_level.replace("_", " ")}
+              <span className="additive-risk-marker">{ADDITIVE_RISK_STYLES[risk.recommended_level]?.marker || ""}</span>
+              {risk.recommended_level.replace("_", " ")}
             </span>
             {risk.confidence != null && (
-              <div style={{ flex: 1 }}>
-                <div className="muted" style={{ fontSize: 11, marginBottom: 2 }}>Confidence: {Math.round(risk.confidence * 100)}%</div>
-                <div style={{ height: 6, background: "var(--slate)", borderRadius: 3, overflow: "hidden" }}>
-                  <div style={{ width: `${risk.confidence * 100}%`, height: "100%", background: "var(--kale)" }} />
+              <div className="additive-confidence">
+                <div className="additive-confidence-label">{Math.round(risk.confidence * 100)}% confidence</div>
+                <div className="additive-confidence-track">
+                  <div className="additive-confidence-fill" style={{ width: `${risk.confidence * 100}%` }} />
                 </div>
               </div>
             )}
           </div>
-          {risk.rationale && (
-            <div style={{ fontSize: 13, marginBottom: 8 }}>{risk.rationale}</div>
+          {risk.rationale && <p className="additive-rationale">{risk.rationale}</p>}
+          {risk.key_factors?.length > 0 && (
+            <ul className="additive-factors">
+              {risk.key_factors.map((f: string, i: number) => <li key={i}>{f}</li>)}
+            </ul>
           )}
-          {risk.key_factors && risk.key_factors.length > 0 && (
-            <div>
-              <div className="muted" style={{ fontSize: 12, marginBottom: 4 }}>Key factors:</div>
-              <ul style={{ margin: 0, paddingLeft: 18, fontSize: 12, color: "var(--fog)" }}>
-                {risk.key_factors.map((f: string, i: number) => <li key={i}>{f}</li>)}
-              </ul>
-            </div>
-          )}
-        </div>
+        </AdditiveSection>
       )}
 
-      {/* Sources */}
-      {sources && sources.length > 0 && (
-        <div>
-          <div style={sectionHeaderStyle}>Sources</div>
-          <div style={{ fontSize: 11, display: "grid", gap: 6 }}>
-            {sources.map((s: any, i: number) => (
-              <div key={i}>
-                {s.url ? (
-                  <a href={s.url} target="_blank" rel="noopener" style={{ color: "var(--blue)", textDecoration: "none" }}>
-                    {s.title || s.url}
-                  </a>
-                ) : (
-                  <span className="muted">{s.title}</span>
-                )}
-                {s.type && <span className="muted" style={{ marginLeft: 6 }}>({s.type})</span>}
-              </div>
-            ))}
-          </div>
+      {/* Sources — collapsible */}
+      {sources.length > 0 && (
+        <div className="additive-section">
+          <button className="additive-sources-toggle" onClick={() => setSourcesOpen(!sourcesOpen)}>
+            <span className="additive-section-head" style={{ margin: 0 }}>Sources</span>
+            <span className="additive-sources-count">{sources.length}</span>
+            <span className="additive-sources-chevron" style={{ transform: sourcesOpen ? "rotate(180deg)" : "none" }}>▾</span>
+          </button>
+          {sourcesOpen && (
+            <div className="card additive-section-body additive-sources-list">
+              {Object.entries(sourcesByType).map(([type, items]) => (
+                <div key={type} className="additive-source-group">
+                  <div className="additive-source-type">{type}</div>
+                  {items.map((s: any, i: number) => (
+                    <div key={i} className="additive-source-item">
+                      {s.url ? (
+                        <a href={s.url} target="_blank" rel="noopener">{s.title || s.url}</a>
+                      ) : (
+                        <span className="muted">{s.title}</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
     </div>
