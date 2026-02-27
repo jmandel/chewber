@@ -127,7 +127,7 @@ case "$BACKEND" in
     cid=$(echo "$chat_json" | jq -r '.conversation_id')
     [[ -z "$cid" || "$cid" == "null" ]] && { log "ERROR: no conversation_id: $chat_json"; exit 1; }
     log "Conversation $cid — waiting..."
-    shelley client read -wait "$cid" > /dev/null &
+    shelley client read -wait "$cid" &
     CHILD_PIDS+=($!); wait $! || true
     ;;
   codex)
@@ -136,7 +136,7 @@ case "$BACKEND" in
     CHILD_PIDS+=($!); wait $! || true
     ;;
   claude)
-    claude -p "$PROMPT" --output-format text 2>/dev/null &
+    claude -p "$PROMPT" --output-format text &
     CHILD_PIDS+=($!); wait $! || true
     ;;
 esac
