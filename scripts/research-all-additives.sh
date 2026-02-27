@@ -8,7 +8,7 @@ set -euo pipefail
 #   scripts/research-all-additives.sh [--dry-run] [--skip-existing] [--backend codex]
 #
 # Reads additive_risks from data/usda.sqlite and runs research-additive.sh
-# for each one, sequentially (one at a time to respect rate limits).
+# for each one. Supports --parallel N to run multiple jobs concurrently.
 ###############################################################################
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -19,14 +19,16 @@ DB="$REPO_ROOT/data/usda.sqlite"
 BACKEND="codex"
 DRY_RUN=false
 SKIP_EXISTING=false
+PARALLEL=1
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --dry-run)       DRY_RUN=true;       shift ;;
     --skip-existing) SKIP_EXISTING=true; shift ;;
     --backend)       BACKEND="$2";       shift 2 ;;
+    --parallel|-j)   PARALLEL="$2";      shift 2 ;;
     -h|--help)
-      echo "Usage: $0 [--dry-run] [--skip-existing] [--backend codex|shelley|claude]"
+      echo "Usage: $0 [--dry-run] [--skip-existing] [--parallel N] [--backend codex|shelley|claude]"
       exit 0 ;;
     *) echo "Unknown arg: $1" >&2; exit 1 ;;
   esac
@@ -41,48 +43,73 @@ fi
 mapfile -t ROWS < <(sqlite3 "$DB" "SELECT code || '|' || name FROM additive_risks ORDER BY code")
 
 TOTAL=${#ROWS[@]}
-echo "=== Research all additives ($TOTAL total) via $BACKEND ==="
+echo "=== Research all additives ($TOTAL total) via $BACKEND, parallelism $PARALLEL ==="
 echo ""
 
-DONE=0
-SKIPPED=0
-FAILED=0
+# Counters (use a temp dir for parallel-safe counting)
+COUNT_DIR=$(mktemp -d)
+trap 'rm -rf "$COUNT_DIR"' EXIT
+mkdir -p "$COUNT_DIR"/{done,skipped,failed}
 
-for row in "${ROWS[@]}"; do
-  CODE="${row%%|*}"
-  NAME="${row#*|}"
-  OUTDIR="research/additives/$CODE"
-  ABS_OUTDIR="$REPO_ROOT/$OUTDIR"
+run_one() {
+  local row="$1" idx="$2"
+  local CODE="${row%%|*}"
+  local NAME="${row#*|}"
+  local OUTDIR="research/additives/$CODE"
+  local ABS_OUTDIR="$REPO_ROOT/$OUTDIR"
 
   # Skip if output already exists
   if $SKIP_EXISTING; then
     if [[ -f "$ABS_OUTDIR/${CODE}-report.md" && -f "$ABS_OUTDIR/${CODE}-abstraction.json" ]]; then
       echo "SKIP $CODE ($NAME) — already exists"
-      SKIPPED=$((SKIPPED + 1))
-      continue
+      touch "$COUNT_DIR/skipped/$CODE"
+      return 0
     fi
   fi
 
   if $DRY_RUN; then
     echo "DRY-RUN: $RESEARCH_SCRIPT --code $CODE --name \"$NAME\" --output-dir $OUTDIR --backend $BACKEND"
-    continue
+    return 0
   fi
 
   echo ""
-  echo "━━━ [$((DONE + SKIPPED + FAILED + 1))/$TOTAL] $CODE — $NAME ━━━"
+  echo "━━━ [$idx/$TOTAL] $CODE — $NAME ━━━"
 
   if bash "$RESEARCH_SCRIPT" \
     --code "$CODE" \
     --name "$NAME" \
     --output-dir "$OUTDIR" \
     --backend "$BACKEND"; then
-    DONE=$((DONE + 1))
+    touch "$COUNT_DIR/done/$CODE"
     echo "✓ $CODE done"
   else
-    FAILED=$((FAILED + 1))
+    touch "$COUNT_DIR/failed/$CODE"
     echo "✗ $CODE FAILED"
   fi
+}
+
+export -f run_one
+export SKIP_EXISTING DRY_RUN RESEARCH_SCRIPT REPO_ROOT BACKEND TOTAL COUNT_DIR
+
+IDX=0
+ACTIVE=0
+
+for row in "${ROWS[@]}"; do
+  IDX=$((IDX + 1))
+  run_one "$row" "$IDX" &
+  ACTIVE=$((ACTIVE + 1))
+
+  if [[ $ACTIVE -ge $PARALLEL ]]; then
+    wait -n 2>/dev/null || true
+    ACTIVE=$((ACTIVE - 1))
+  fi
 done
+
+wait
+
+DONE=$(find "$COUNT_DIR/done" -type f 2>/dev/null | wc -l)
+SKIPPED=$(find "$COUNT_DIR/skipped" -type f 2>/dev/null | wc -l)
+FAILED=$(find "$COUNT_DIR/failed" -type f 2>/dev/null | wc -l)
 
 echo ""
 echo "=== Complete ==="
