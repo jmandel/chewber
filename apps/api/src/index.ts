@@ -67,11 +67,11 @@ const INDEX_PATH = resolve(WEB_DIR, "index.html");
 const CSS_PATH = resolve(WEB_DIR, "src/styles.css");
 const ENTRY_PATH = resolve(WEB_DIR, "src/main.tsx");
 
-let cachedBundle: { code: string; builtAt: number } | null = null;
+let cachedBundle: { code: string; hash: string; builtAt: number } | null = null;
 
-async function getBundle(): Promise<string> {
+async function getBundle(): Promise<{ code: string; hash: string }> {
   const now = Date.now();
-  if (cachedBundle && now - cachedBundle.builtAt < 1000) return cachedBundle.code;
+  if (cachedBundle && now - cachedBundle.builtAt < 30_000) return cachedBundle;
   const result = await Bun.build({
     entrypoints: [ENTRY_PATH],
     target: "browser",
@@ -84,12 +84,18 @@ async function getBundle(): Promise<string> {
     throw new Error("Bundle failed:\n" + msg);
   }
   const out = await result.outputs[0].text();
-  cachedBundle = { code: out, builtAt: now };
-  return out;
+  const hasher = new Bun.CryptoHasher("md5");
+  hasher.update(out);
+  const hash = hasher.digest("hex").slice(0, 10);
+  cachedBundle = { code: out, hash, builtAt: now };
+  return cachedBundle;
 }
 
-function indexHtml(): string {
-  return readFileSync(INDEX_PATH, "utf-8").replace("%CHEWBER_API_BASE%", "");
+async function indexHtml(): Promise<string> {
+  const { hash } = await getBundle();
+  return readFileSync(INDEX_PATH, "utf-8")
+    .replace("%CHEWBER_API_BASE%", "")
+    .replace("app.js", `app.${hash}.js`);
 }
 
 // Static public files (favicon, manifest, og-image, etc.)
@@ -119,11 +125,18 @@ app.get("/assets/styles.css", (c) => {
   });
 });
 
-app.get("/assets/app.js", async (c) => {
+// Serve JS bundle — any /assets/app*.js URL (hashed or plain)
+app.get("/assets/:file", async (c) => {
+  const file = c.req.param("file");
+  if (!file.startsWith("app") || !file.endsWith(".js")) return c.notFound();
   try {
-    const code = await getBundle();
+    const { code, hash } = await getBundle();
+    const isHashed = file.includes(hash);
     return new Response(code, {
-      headers: { "Content-Type": "application/javascript; charset=utf-8", "Cache-Control": "no-cache" }
+      headers: {
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Cache-Control": isHashed ? "public, max-age=31536000, immutable" : "no-cache",
+      }
     });
   } catch (err: any) {
     return new Response(String(err?.stack ?? err), { status: 500 });
@@ -131,8 +144,8 @@ app.get("/assets/app.js", async (c) => {
 });
 
 // SPA fallback — everything that isn't /api or /assets
-app.get("*", (c) => {
-  return new Response(indexHtml(), {
+app.get("*", async (c) => {
+  return new Response(await indexHtml(), {
     headers: { "Content-Type": "text/html; charset=utf-8" }
   });
 });
