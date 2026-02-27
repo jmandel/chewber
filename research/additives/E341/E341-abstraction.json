@@ -7,44 +7,39 @@
   "identity": {
     "e_number": "E341",
     "name": "Calcium phosphates",
-    "cas_numbers": ["7758-23-8", "7757-93-9", "7789-77-7", "7758-87-4"],
+    "cas_numbers": ["7758-23-8", "7757-93-9", "7758-87-4"],
     "synonyms": [
       "Monocalcium phosphate",
       "Dicalcium phosphate",
       "Tricalcium phosphate",
-      "Calcium orthophosphate",
-      "Bone phosphate",
-      "Precipitated calcium phosphate",
-      "Calcium biphosphate",
-      "Acid calcium phosphate"
+      "Calcium dihydrogen phosphate",
+      "Calcium hydrogen phosphate",
+      "MCP",
+      "DCP",
+      "TCP",
+      "Bone phosphate of lime"
     ],
     "chemical_class": "Inorganic calcium phosphate salts",
-    "origin": "synthetic"
+    "origin": "semi-synthetic"
   },
   "function": {
-    "primary_category": "Acidity regulator / Buffer",
+    "primary_category": "Leavening agent",
     "secondary_categories": [
-      "Leavening agent",
+      "Mineral fortifier",
       "Anti-caking agent",
-      "Firming agent",
-      "Texturizing agent",
-      "Sequestrant",
-      "Nutrient supplement",
+      "Acidity regulator",
       "Emulsifying salt",
-      "Dough conditioner",
-      "Yeast food"
+      "Stabiliser"
     ],
-    "mechanism": "Calcium phosphates regulate pH as buffering agents, react with sodium bicarbonate to produce CO2 gas for leavening, absorb moisture to prevent caking in powders, interact with pectins for firming, and provide bioavailable calcium and phosphorus as nutrients.",
+    "mechanism": "Dissociates in aqueous media to release calcium and phosphate ions. E341(i) is acidic and reacts with sodium bicarbonate to produce CO2 for leavening. E341(ii) and E341(iii) are neutral/alkaline and function as mineral supplements and anti-caking agents. All forms contribute to buffering capacity and texture modification.",
     "common_food_categories": [
-      "Baking powders and self-rising flours",
-      "Powdered foods and spice mixes",
-      "Processed cheese and dairy products",
-      "Infant formula and baby foods",
+      "Baked goods and baking powder",
+      "Processed cheese",
       "Breakfast cereals",
-      "Nutritional supplements",
+      "Powdered drink mixes and instant soups",
+      "Nutritional supplements and infant formula",
       "Canned fruits and vegetables",
-      "Powdered beverages and drink mixes",
-      "Table salt"
+      "Spice blends and powdered seasonings"
     ]
   },
   "regulatory": {
@@ -53,21 +48,21 @@
       "adi": {
         "value": 40,
         "unit": "mg/kg bw/day",
-        "basis": "Group ADI for phosphates (E 338-341, E 343, E 450-452) expressed as phosphorus. Derived from toxicological studies; protective for the human population."
+        "basis": "Group ADI expressed as phosphorus, derived from NOAEL of 167 mg P/kg bw/day (Hodge 1960 chronic rat study) with chemical-specific adjustment factor of 4 and phosphorus-specific uncertainty factor of 4. Covers all phosphate additives E338-341, E343, E450-452."
       },
       "last_evaluation_year": 2019,
-      "key_finding": "Low acute oral toxicity, no genotoxicity or carcinogenicity concern. ADI of 40 mg P/kg bw/day established. Exposure exceeds ADI for infants, toddlers, and children at mean levels and for all children/adolescents at 95th percentile."
+      "key_finding": "No concern for genotoxicity or carcinogenicity. Primary adverse effect is renal calcification at high doses. ADI exceedance identified in infants, toddlers, and children at mean intake. ADI not protective for ~10% of population with chronic kidney disease. Panel recommended numerical MPLs for supplements and revised contaminant limits."
     },
     "fda": {
       "status": "gras",
-      "cfr_citation": "21 CFR § 182.1217 (mono-, di-, tribasic); 21 CFR § 182.6215 (monobasic, nutrient)",
-      "notes": "Generally recognized as safe when used in accordance with good manufacturing practice. No numerical usage limits specified."
+      "cfr_citation": "21 CFR § 182.1217",
+      "notes": "Covers mono-, di-, and tribasic calcium phosphate. GRAS when used in accordance with good manufacturing practice. No numerical use limits specified."
     },
     "jecfa": {
       "adi": {
         "value": 70,
         "unit": "mg/kg bw/day",
-        "basis": "Maximum Tolerable Daily Intake (MTDI) as phosphorus from all dietary sources including phosphates, diphosphates, and polyphosphates."
+        "basis": "Maximum Tolerable Daily Intake (MTDI) expressed as phosphorus from all food sources (natural + additive). JECFA concluded ADI was not appropriate since phosphorus is an essential nutrient; set MTDI instead."
       },
       "last_evaluation_year": 1982
     },
@@ -78,38 +73,27 @@
     "concerns": [
       {
         "category": "renal",
-        "summary": "Chronic excessive phosphate intake is a recognized progression factor for chronic kidney disease (CKD). High inorganic phosphate absorption from additives (~100% bioavailability) can lead to hyperphosphatemia. Intraluminal calcium phosphate particles may provoke renal inflammation. Approximately 10% of the general population has impaired renal function and may be inadequately protected by the current ADI.",
-        "evidence_strength": "moderate",
+        "summary": "Primary target organ. Excess phosphate causes renal calcification and tubular nephropathy in chronic rat studies. In humans, doses of 4,800 mg P/day (68.6 mg/kg bw/day) elicit renal impairment; doses up to 2,000 mg/day do not. The ADI is explicitly not protective for ~10% of the population with moderate to severe CKD.",
+        "evidence_strength": "strong",
         "key_references": [
-          "Rubio-Aliaga & Krapf, Pflugers Arch 2022 (PMID 35511366)",
-          "Lampen et al., Arch Toxicol 2026 (PMID 41654650)",
-          "EFSA 2019 (PMID 32626329)"
+          "EFSA 2019 (PMC7009158)",
+          "Lampen et al. 2026 (PMID 41654650)"
         ]
       },
       {
         "category": "cardiovascular",
-        "summary": "High-normal serum phosphate is an independent predictor of cardiovascular events and mortality in both CKD patients and the general population. Main pathophysiological effects include endothelial dysfunction and vascular calcification. Phosphate additives disproportionately contribute due to their near-complete absorption.",
+        "summary": "Inorganic phosphate additives are absorbed at 80-90% efficiency, elevating serum phosphate more than organically bound phosphates in whole foods. Elevated serum phosphate is associated with vascular calcification and endothelial dysfunction, particularly in CKD patients. Mechanistic pathways through PTH and FGF-23 are plausible. Epidemiological evidence in the general healthy population is suggestive but not conclusive.",
         "evidence_strength": "moderate",
         "key_references": [
-          "Ritz et al., Dtsch Arztebl Int 2012 (PMID 22334826)",
-          "Rubio-Aliaga & Krapf, Pflugers Arch 2022 (PMID 35511366)"
-        ]
-      },
-      {
-        "category": "other",
-        "summary": "Commercial E341(iii) tricalcium phosphate has been identified as a nanomaterial (hydroxyapatite nanoparticles). While these particles dissolve in gastric acid (pH < 5), they aggregate at pH > 6, raising questions about gastrointestinal tract persistency. This is an emerging concern with limited safety data specific to nanoscale calcium phosphate food additives.",
-        "evidence_strength": "weak",
-        "key_references": [
-          "El Moussaoui et al., Nanomaterials 2023 (PMID 37368253)",
-          "Enax et al., Nanomaterials 2022 (PMID 36432359)"
+          "Calvo et al. 2023 (PMID 37630701)",
+          "Fulgoni et al. 2022 (PMID 35565706)"
         ]
       }
     ],
     "no_concern_confirmed": [
-      "Genotoxicity: EFSA 2019 found no concern",
-      "Carcinogenicity: EFSA 2019 found no concern; no IARC classification",
-      "Developmental toxicity: No adverse effects reported in developmental studies",
-      "Acute toxicity: Low acute oral toxicity confirmed"
+      "Genotoxicity — standard battery of assays negative (EFSA 2019)",
+      "Carcinogenicity — no concern per EFSA 2019; not evaluated by IARC",
+      "Reproductive/developmental toxicity — no effects at any dose tested in mice, rats, rabbits, or hamsters (EFSA 2019)"
     ],
     "adi_exceedance": {
       "at_risk": true,
@@ -118,83 +102,69 @@
         "Toddlers (mean and 95th percentile)",
         "Children (mean and 95th percentile)",
         "Adolescents (95th percentile)",
-        "Food supplement users",
-        "Individuals with chronic kidney disease (~10% of population)"
+        "Food supplement users"
       ],
-      "notes": "EFSA 2019 estimated dietary phosphate exposure from all sources exceeds the group ADI of 40 mg P/kg bw/day for multiple young age groups. The SKLM (2026) confirmed these concerns and recommended risk management measures particularly for infants, toddlers, and children."
+      "notes": "EFSA 2019 analytical data scenario shows total phosphorus exposure exceeds group ADI of 40 mg P/kg bw/day in young populations. This reflects cumulative exposure from all dietary sources, not calcium phosphates alone. The ADI of 40 mg P/kg bw/day corresponds to 2,800 mg P/day for a 70 kg adult, within EFSA NDA Panel's 3,000 mg/day safety level for healthy adults."
     }
   },
   "risk_assessment": {
     "recommended_level": "limited",
     "confidence": 0.85,
-    "rationale": "Calcium phosphates are well-established, universally approved food additives providing essential nutrients (calcium and phosphorus). No genotoxicity, carcinogenicity, or developmental toxicity concerns. However, the EFSA-derived ADI of 40 mg P/kg bw/day is exceeded in children at typical dietary levels. Epidemiological evidence links chronic high phosphate intake to cardiovascular and renal risks, particularly relevant to the ~10% of the population with impaired kidney function. The near-100% bioavailability of inorganic phosphate from additives vs ~40-60% from natural sources makes additive exposure disproportionately significant. These are real but manageable concerns that keep the rating at 'limited' rather than 'risk_free', while the universal approval, essential nutrient status, and natural occurrence prevent escalation to 'moderate'.",
+    "rationale": "Calcium phosphates are approved by all major regulatory bodies (EFSA, FDA, JECFA) with a long history of safe use. No genotoxicity, carcinogenicity, or reproductive toxicity concerns. The primary adverse effect (renal calcification) occurs only at doses well above typical single-additive exposure. However, ADI exceedance is documented in children, the ADI is not protective for CKD patients (~10% of adults), inorganic phosphate additives have high bioavailability (80-90%), and emerging evidence links cumulative phosphate additive intake to cardiorenal risk pathways. These concerns are real but limited to cumulative exposure across all phosphate additives, specific vulnerable groups, and long-term chronic effects still under investigation.",
     "key_factors": [
-      "Essential mineral nutrient (calcium + phosphorus)",
-      "GRAS in USA, approved in EU with group ADI of 40 mg P/kg bw/day",
-      "JECFA MTDI of 70 mg P/kg bw/day from all sources",
-      "No IARC classification, no genotoxicity, no carcinogenicity",
-      "ADI exceedance documented in children (EFSA 2019)",
-      "Cardiovascular and renal concerns with chronic high intake",
-      "Near-100% bioavailability from inorganic additive form",
-      "Naturally occurring in bones, teeth, and milk",
-      "No bans in any jurisdiction"
+      "EFSA group ADI of 40 mg P/kg bw/day established with adequate safety margin for healthy adults",
+      "ADI exceedance in infants, toddlers, and children at mean intake levels",
+      "ADI not protective for ~10% of population with chronic kidney disease",
+      "High bioavailability of inorganic phosphate additives (80-90%) vs natural phosphate (40-60%)",
+      "No genotoxicity, carcinogenicity, or reproductive toxicity concerns",
+      "Emerging but inconclusive cardiovascular signal from cumulative phosphate additive intake"
     ]
   },
   "sources": [
     {
-      "title": "Re-evaluation of phosphoric acid-phosphates - di-, tri- and polyphosphates (E 338-341, E 343, E 450-452) as food additives (EFSA 2019)",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/32626329/",
+      "title": "Re-evaluation of phosphoric acid–phosphates – di-, tri- and polyphosphates (E 338–341, E 343, E 450–452) as food additives and the safety of proposed extension of use (EFSA 2019)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009158/",
       "type": "regulatory"
     },
     {
-      "title": "21 CFR § 182.1217 - Calcium phosphate (GRAS listing)",
-      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-182/subpart-B/section-182.1217",
+      "title": "21 CFR § 182.1217 — Calcium phosphate (FDA eCFR)",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-182/subpart-D/section-182.1217",
       "type": "regulatory"
     },
     {
-      "title": "21 CFR § 182.6215 - Monobasic calcium phosphate (GRAS nutrient)",
-      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-182/subpart-G/section-182.6215",
+      "title": "JECFA — Calcium hydrogen phosphate specification (FAO)",
+      "url": "https://www.fao.org/fileadmin/user_upload/jecfa_additives/docs/monograph1/additive-069.pdf",
       "type": "regulatory"
     },
     {
-      "title": "JECFA Evaluation - Calcium dihydrogen phosphate (INS 341i)",
-      "url": "https://inchem.org/documents/jecfa/jeceval/jec_310.htm",
+      "title": "JECFA — Tricalcium phosphate specification (FAO)",
+      "url": "https://www.fao.org/fileadmin/user_upload/jecfa_additives/docs/monograph1/additive-072.pdf",
       "type": "regulatory"
     },
     {
-      "title": "JECFA Evaluation - Tricalcium phosphate (INS 341iii)",
-      "url": "https://inchem.org/documents/jecfa/jeceval/jec_2306.htm",
+      "title": "IARC Monographs — Agents Classified, Volumes 1–140",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc-monographs/",
       "type": "regulatory"
     },
     {
-      "title": "IARC Monographs - List of Classifications (Volumes 1-140)",
-      "url": "https://monographs.iarc.who.int/list-of-classifications/",
-      "type": "database"
+      "title": "Industrial Use of Phosphate Food Additives: A Mechanism Linking Ultra-Processed Food Intake to Cardiorenal Disease Risk? (Calvo et al. 2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37630701/",
+      "type": "review"
     },
     {
-      "title": "The True Nature of Tricalcium Phosphate Used as Food Additive (E341(iii)) - El Moussaoui et al. 2023",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/37368253/",
+      "title": "Association of Total, Added, and Natural Phosphorus Intakes with Biomarkers of Health Status and Mortality in Healthy Adults in the United States (Fulgoni et al. 2022)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35565706/",
       "type": "study"
     },
     {
-      "title": "Phosphate intake, hyperphosphatemia, and kidney function - Rubio-Aliaga & Krapf 2022",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/35511366/",
-      "type": "review"
-    },
-    {
-      "title": "Phosphate additives in food - a health risk - Ritz et al. 2012",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/22334826/",
-      "type": "review"
-    },
-    {
-      "title": "Dietary phosphate exposure - strategies to protect vulnerable population groups - Lampen et al. 2026",
+      "title": "Dietary phosphate exposure — strategies to protect vulnerable population groups (Lampen et al. 2026)",
       "url": "https://pubmed.ncbi.nlm.nih.gov/41654650/",
       "type": "review"
     },
     {
-      "title": "On the Application of Calcium Phosphate Micro- and Nanoparticles as Food Additive - Enax et al. 2022",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/36432359/",
-      "type": "review"
+      "title": "E341 – Calcium Phosphates (i, ii, iii) — eadditives.com",
+      "url": "https://www.eadditives.com/e341-calcium-phosphates",
+      "type": "database"
     }
   ]
 }
