@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -uo pipefail
+# NOTE: no -e — we want to continue on individual job failures
 
 ###############################################################################
 # research-all-additives.sh — Run research for every additive in the DB
@@ -75,16 +76,20 @@ run_one() {
   echo ""
   echo "━━━ [$idx/$TOTAL] $CODE — $NAME ━━━"
 
-  if bash "$RESEARCH_SCRIPT" \
+  local rc=0
+  timeout 600 bash "$RESEARCH_SCRIPT" \
     --code "$CODE" \
     --name "$NAME" \
     --output-dir "$OUTDIR" \
-    --backend "$BACKEND"; then
+    --backend "$BACKEND" || rc=$?
+
+  if [[ $rc -eq 0 ]]; then
     touch "$COUNT_DIR/done/$CODE"
     echo "✓ $CODE done"
   else
     touch "$COUNT_DIR/failed/$CODE"
-    echo "✗ $CODE FAILED"
+    echo "✗ $CODE FAILED (exit $rc)"
+    # Don't let a single failure kill the batch
   fi
 }
 

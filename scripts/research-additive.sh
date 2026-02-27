@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -uo pipefail
+# NOTE: no -e — individual step failures are handled explicitly
 
 ###############################################################################
 # research-additive.sh — Send a research prompt to an LLM backend and split
@@ -330,7 +331,11 @@ SHELLEY_EOF
 
   # Wait for the conversation to finish (we don't care about the text output;
   # keep stderr visible so errors aren't silently swallowed)
-  shelley client read -wait "$cid" > /dev/null
+  local shelley_rc=0
+  shelley client read -wait "$cid" > /dev/null || shelley_rc=$?
+  if [[ $shelley_rc -ne 0 ]]; then
+    log "WARNING: shelley read exited with code $shelley_rc — checking if files were written anyway"
+  fi
 
   # Check if files were created
   if [[ -f "$report_file" && -s "$report_file" ]]; then
@@ -442,12 +447,17 @@ CODEX_EOF
 )
 
   # Run codex in yolo mode with gpt-5.3-codex and high reasoning
+  local codex_rc=0
   codex exec \
     -m gpt-5.3-codex \
     -c 'model_reasoning_effort="high"' \
     --dangerously-bypass-approvals-and-sandbox \
     -C "$REPO_ROOT" \
-    "$codex_prompt" 2>&1 | tee /dev/stderr | tail -1 > /dev/null
+    "$codex_prompt" 2>&1 || codex_rc=$?
+
+  if [[ $codex_rc -ne 0 ]]; then
+    log "WARNING: codex exited with code $codex_rc — checking if files were written anyway"
+  fi
 
   # Check if files were created
   if [[ -f "$report_file" && -s "$report_file" ]]; then
