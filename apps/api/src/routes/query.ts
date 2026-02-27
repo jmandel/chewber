@@ -30,6 +30,16 @@ queryRoutes.post("/query/assist", async (c) => {
     // Ensure imageIds are carried through
     result.structured_query.imageIds = body.imageIds ?? [];
 
+    // If the helper agent rejected the query (not a food), return early
+    if (result.rejected) {
+      return c.json({
+        ...result,
+        needs_followup: false,
+        has_more_rounds: false,
+        questions: []
+      });
+    }
+
     return c.json(result);
   } catch (e: any) {
     if (e instanceof ZodError) {

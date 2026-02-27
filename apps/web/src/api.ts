@@ -33,6 +33,8 @@ export type StructuredFoodQuery = {
 export type PriorAnswer = { question_id: string; answer: string };
 
 export type AssistResponse = {
+  rejected?: boolean;
+  rejection_reason?: string | null;
   structured_query: StructuredFoodQuery;
   needs_followup: boolean;
   has_more_rounds: boolean;
@@ -43,7 +45,8 @@ export type AssistResponse = {
 
 export type ResolveResponse =
   | { kind: "found"; food: FoodDetail }
-  | { kind: "queued"; job_id: string; query_id: string };
+  | { kind: "queued"; job_id: string; query_id: string }
+  | { kind: "rejected"; reason: string };
 
 export type FoodSummary = {
   id: string;

@@ -35,6 +35,10 @@ function useFlowState() {
     setFlow({ kind: "thinking", label: rawText });
     try {
       const res = await api.assist(rawText, imageIds);
+      if (res.rejected) {
+        setFlow({ kind: "error", message: res.rejection_reason || "That doesn\u2019t appear to be a food or beverage." });
+        return;
+      }
       if (res.needs_followup && res.questions.length > 0) {
         setFlow({ kind: "clarify", assist: res, rawText, priorAnswers: [] });
       } else {
@@ -65,6 +69,10 @@ function useFlowState() {
     setFlow({ kind: "thinking", label: rawText });
     try {
       const res = await api.assist(rawText, imageIds, undefined, accumulated);
+      if (res.rejected) {
+        setFlow({ kind: "error", message: res.rejection_reason || "That doesn\u2019t appear to be a food or beverage." });
+        return;
+      }
       if (res.needs_followup && res.questions.length > 0) {
         // Another round needed
         setFlow({ kind: "clarify", assist: res, rawText, priorAnswers: accumulated });
@@ -81,7 +89,9 @@ function useFlowState() {
     setFlow({ kind: "resolving", query });
     try {
       const r = await api.resolve({ structured_query: query, rawText, imageIds });
-      if (r.kind === "found") {
+      if (r.kind === "rejected") {
+        setFlow({ kind: "error", message: r.reason || "That doesn\u2019t appear to be a food or beverage." });
+      } else if (r.kind === "found") {
         nav(`/food/${encodeURIComponent(r.food.id)}`, { replace: true });
       } else {
         const name = query.name + (query.brand ? ` by ${query.brand}` : "");

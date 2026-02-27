@@ -50,12 +50,21 @@ const BodySchema = z.object({
   structured_query: StructuredQuerySchema
 });
 
+/** Quick heuristic check — rejects obviously non-food queries before any DB work */
+const NON_FOOD_PATTERNS = /\b(cleanser|shampoo|conditioner|lotion|sunscreen|detergent|soap|bleach|moisturiz|serum|toner|deodorant|toothpaste|lipstick|mascara|perfume|cologne|disinfect|sanitiz|laundry|dishwash|skincare|makeup|cosmetic|pharmaceutical|medicine|tablet|capsule|dog food|cat food|pet food|kitty litter|cat litter)\b/i;
+
 resolveRoutes.post("/resolve", async (c) => {
   const db = c.get("db");
   const body = BodySchema.parse(await c.req.json());
 
   const q = body.structured_query;
   const barcode = (q.barcode ?? "").trim();
+
+  // Guard: reject obviously non-food queries
+  const textToCheck = `${q.name ?? ""} ${q.brand ?? ""} ${q.notes ?? ""}`;
+  if (NON_FOOD_PATTERNS.test(textToCheck)) {
+    return c.json({ kind: "rejected", reason: "Chewber only scores food and beverages. This doesn\u2019t appear to be a food product." });
+  }
 
   // 1) Resolve by barcode first
   if (barcode) {

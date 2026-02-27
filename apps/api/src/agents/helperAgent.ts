@@ -39,6 +39,8 @@ const StructuredQuerySchema = z.object({
 });
 
 const AssistSchema = z.object({
+  rejected: z.boolean().optional().default(false),
+  rejection_reason: z.string().nullable().optional().default(null),
   structured_query: StructuredQuerySchema,
   needs_followup: z.boolean(),
   has_more_rounds: z.boolean().optional().default(false),
