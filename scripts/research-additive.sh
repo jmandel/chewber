@@ -96,172 +96,49 @@ fi
 # ── Logging helper ───────────────────────────────────────────────────────────
 log() { echo "[research-additive] $*" >&2; }
 
-# ── Build the prompt (single version for all backends) ───────────────────────
-#
-# All backends (codex, shelley, claude) can search the web and write files.
-# The prompt instructs them to: (1) gather real data, (2) write two output files.
-
 REPORT_FILE="${OUTPUT_DIR}/${CODE}-report.md"
 JSON_FILE="${OUTPUT_DIR}/${CODE}-abstraction.json"
 
-build_prompt() {
-  cat <<PROMPT_EOF
-Research food additive ${CODE}${NAME:+ (${NAME})}${FUNCTION:+, used as: ${FUNCTION}}.
+# ── Load prompt template and substitute variables ───────────────────────────
+PROMPT_TEMPLATE="${SCRIPT_DIR}/prompts/research-additive.prompt.md"
+[[ -f "$PROMPT_TEMPLATE" ]] || { log "ERROR: prompt template not found: $PROMPT_TEMPLATE"; exit 1; }
 
-## STEP 1 — GATHER REAL DATA (mandatory)
+NAME_CLAUSE=""; [[ -n "$NAME" ]]     && NAME_CLAUSE=" (${NAME})"
+FUNCTION_CLAUSE=""; [[ -n "$FUNCTION" ]] && FUNCTION_CLAUSE=", used as: ${FUNCTION}"
 
-You MUST use your tools (web search, browser, curl, shell) to visit authoritative
-sources and extract real data. Do NOT skip this step. Do NOT rely on memory alone.
+PROMPT=$(sed \
+  -e "s|{{CODE}}|${CODE}|g" \
+  -e "s|{{NAME}}|${NAME:-}|g" \
+  -e "s|{{NAME_CLAUSE}}|${NAME_CLAUSE}|g" \
+  -e "s|{{FUNCTION_CLAUSE}}|${FUNCTION_CLAUSE}|g" \
+  -e "s|{{REPORT_FILE}}|${REPORT_FILE}|g" \
+  -e "s|{{JSON_FILE}}|${JSON_FILE}|g" \
+  "$PROMPT_TEMPLATE")
 
-1. **EFSA**: Search for "${CODE}" or "${NAME:-}" on efsa.europa.eu to find the
-   latest scientific opinion or re-evaluation. Extract: approval status, ADI (value + unit),
-   evaluation year, key conclusions.
-
-2. **FDA/CFR**: Search ecfr.gov for the additive name in Title 21 (Food and Drugs).
-   Extract: GRAS status, specific CFR section citation, any conditions of use.
-
-3. **JECFA/WHO**: Search apps.who.int/food-additives-contaminants-jecfa-database/
-   or who.int for the additive. Extract: ADI, last evaluation year.
-
-4. **IARC**: Check monographs.iarc.who.int for any classification.
-
-5. **PubMed**: Search pubmed.ncbi.nlm.nih.gov for recent safety studies on this additive.
-
-For each source, record the actual URL you visited and the specific data you found.
-If a page is inaccessible, note that and try alternative search queries.
-
-## STEP 2 — WRITE OUTPUT FILES
-
-After gathering data, write BOTH files.
-
-File 1: ${REPORT_FILE}
-  A detailed markdown research report with these sections:
-  - **Identity**: E-number, CAS number(s), chemical class, common synonyms, natural vs synthetic
-  - **Function in Food**: mechanism of action, common food categories
-  - **Regulatory Status**: EFSA opinion + ADI, FDA GRAS + CFR citation, JECFA ADI, IARC, notable bans
-  - **Key Safety Evidence**: animal studies, epidemiological data, mechanistic concerns
-  - **Exposure Assessment**: typical dietary intake, ADI exceedance risk, vulnerable populations
-  - **Risk Assessment**: use the structured tier analysis described below
-  - **Sources**: every claim attributed with title, year, and the actual URL you visited
-
-  ### Risk Assessment Instructions
-
-  Tier definitions:
-    * risk_free — No credible evidence of harm, EFSA/JECFA "ADI not specified" or very high ADI, naturally occurring or identical to endogenous substances
-    * limited — GRAS/approved with established ADI, no serious safety signals, minor concerns only at high doses
-    * moderate — Approved but with caveats: EFSA reduced ADI, ADI exceeded in some populations (especially children), credible animal studies, or allergenicity >0.5%
-    * high — Banned in major jurisdictions, IARC 2A/2B with corroborating regulatory action, EFSA unable to confirm safety, bioaccumulation with TWI exceedance, or strong mechanistic evidence of harm
-
-  You MUST use this structure in the Risk Assessment section:
-    1. **Tier-by-tier analysis**: For EACH of the four tiers (risk_free, limited, moderate, high),
-       state what evidence supports placing this additive in that tier and what evidence argues against it.
-    2. **Rationale**: Summarize the key factors driving the tier choice.
-    3. **Recommended tier**: State the single chosen tier.
-
-File 2: ${JSON_FILE}
-  A single valid JSON object (no markdown fences, no commentary) matching this schema:
-  {
-    "schema_version": 1,
-    "research_metadata": { "date": "<ISO-8601>", "prompt_version": "2.0" },
-    "identity": { "e_number": "${CODE}", "name": "...", "cas_numbers": [...], "synonyms": [...], "chemical_class": "...", "origin": "synthetic|natural|semi-synthetic" },
-    "function": { "primary_category": "...", "secondary_categories": [...], "mechanism": "...", "common_food_categories": [...] },
-    "regulatory": {
-      "efsa": { "status": "approved|restricted|withdrawn|not_evaluated", "adi": { "value": <number|null>, "unit": "mg/kg bw/day", "basis": "..." }, "last_evaluation_year": <number|null>, "key_finding": "..." },
-      "fda": { "status": "gras|approved|banned|not_evaluated", "cfr_citation": "21 CFR ...", "notes": null },
-      "jecfa": { "adi": { "value": <number|null>, "unit": "mg/kg bw/day", "basis": "..." }, "last_evaluation_year": <number|null> },
-      "iarc_classification": "<null|Group 1|Group 2A|Group 2B|Group 3>",
-      "notable_bans": []
-    },
-    "safety_evidence": {
-      "concerns": [{ "category": "cardiovascular|carcinogenic|genotoxic|endocrine|gut_microbiome|allergenic|neurotoxic|renal|other", "summary": "...", "evidence_strength": "strong|moderate|weak|theoretical", "key_references": [...] }],
-      "no_concern_confirmed": [...],
-      "adi_exceedance": { "at_risk": <bool>, "populations": [...], "notes": "..." }
-    },
-    "risk_assessment": { "recommended_level": "risk_free|limited|moderate|high", "confidence": <0.0-1.0>, "rationale": "...", "key_factors": [...] },
-    "sources": [{ "title": "...", "url": "<actual URL you visited or null>", "type": "regulatory|study|review|database" }]
-  }
-
-## RULES
-- You MUST search the web first. Do not write files until you have gathered real data.
-- The JSON must be valid (parseable by jq). Verify with: jq . ${JSON_FILE}
-- Use null for values you genuinely could not find after searching.
-- Every URL in sources should be a real URL you actually visited, not a guessed one.
-- After writing both files, confirm with a brief summary.
-PROMPT_EOF
-}
-
-PROMPT="$(build_prompt)"
 log "Researching additive ${CODE} via ${BACKEND}..."
 
-# ── Backend dispatch ─────────────────────────────────────────────────────────
-#
-# All backends receive the same prompt. The only difference is how we invoke
-# the tool and pass the prompt to it.
+# ── Run backend ──────────────────────────────────────────────────────────────
+mkdir -p "$OUTPUT_DIR"
+rm -f "$REPORT_FILE" "$JSON_FILE"
 
-run_shelley() {
-  log "Sending prompt to shelley (model=${SHELLEY_MODEL})..."
-  mkdir -p "$OUTPUT_DIR"
-  rm -f "$REPORT_FILE" "$JSON_FILE"
-
-  local chat_json cid
-  chat_json=$(shelley client chat -model "$SHELLEY_MODEL" -p "$PROMPT" -cwd "$REPO_ROOT")
-  cid=$(echo "$chat_json" | jq -r '.conversation_id')
-  if [[ -z "$cid" || "$cid" == "null" ]]; then
-    log "ERROR: Failed to get conversation_id: $chat_json"
-    return 1
-  fi
-  log "Conversation ID: $cid — waiting for shelley to finish..."
-
-  local shelley_rc=0
-  shelley client read -wait "$cid" > /dev/null &
-  local shelley_pid=$!
-  CHILD_PIDS+=("$shelley_pid")
-  wait "$shelley_pid" || shelley_rc=$?
-  if [[ $shelley_rc -ne 0 ]]; then
-    log "WARNING: shelley read exited with code $shelley_rc — checking if files were written anyway"
-  fi
-}
-
-run_codex() {
-  log "Sending prompt to codex (gpt-5.3-codex, reasoning=high, yolo mode)..."
-  mkdir -p "$OUTPUT_DIR"
-  rm -f "$REPORT_FILE" "$JSON_FILE"
-
-  local codex_rc=0
-  codex exec \
-    -m gpt-5.3-codex \
-    -c 'model_reasoning_effort="high"' \
-    --dangerously-bypass-approvals-and-sandbox \
-    -C "$REPO_ROOT" \
-    "$PROMPT" 2>&1 &
-  local codex_pid=$!
-  CHILD_PIDS+=("$codex_pid")
-  wait "$codex_pid" || codex_rc=$?
-  if [[ $codex_rc -ne 0 ]]; then
-    log "WARNING: codex exited with code $codex_rc — checking if files were written anyway"
-  fi
-}
-
-run_claude() {
-  log "Sending prompt to claude..."
-  mkdir -p "$OUTPUT_DIR"
-  rm -f "$REPORT_FILE" "$JSON_FILE"
-
-  local claude_rc=0
-  claude -p "$PROMPT" --output-format text 2>/dev/null &
-  local claude_pid=$!
-  CHILD_PIDS+=("$claude_pid")
-  wait "$claude_pid" || claude_rc=$?
-  if [[ $claude_rc -ne 0 ]]; then
-    log "WARNING: claude exited with code $claude_rc — checking if files were written anyway"
-  fi
-}
-
-# ── Run the chosen backend ───────────────────────────────────────────────────
 case "$BACKEND" in
-  shelley) run_shelley ;;
-  codex)   run_codex   ;;
-  claude)  run_claude  ;;
+  shelley)
+    chat_json=$(shelley client chat -model "$SHELLEY_MODEL" -p "$PROMPT" -cwd "$REPO_ROOT")
+    cid=$(echo "$chat_json" | jq -r '.conversation_id')
+    [[ -z "$cid" || "$cid" == "null" ]] && { log "ERROR: no conversation_id: $chat_json"; exit 1; }
+    log "Conversation $cid — waiting..."
+    shelley client read -wait "$cid" > /dev/null &
+    CHILD_PIDS+=($!); wait $! || true
+    ;;
+  codex)
+    codex exec -m gpt-5.3-codex -c 'model_reasoning_effort="high"' \
+      --dangerously-bypass-approvals-and-sandbox -C "$REPO_ROOT" "$PROMPT" 2>&1 &
+    CHILD_PIDS+=($!); wait $! || true
+    ;;
+  claude)
+    claude -p "$PROMPT" --output-format text 2>/dev/null &
+    CHILD_PIDS+=($!); wait $! || true
+    ;;
 esac
 
 # ── Verify output files ──────────────────────────────────────────────────────
