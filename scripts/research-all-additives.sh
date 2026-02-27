@@ -78,7 +78,7 @@ run_one() {
   echo "━━━ [$idx/$TOTAL] $CODE — $NAME ━━━"
 
   local rc=0
-  bash "$RESEARCH_SCRIPT" \
+  timeout 1800 bash "$RESEARCH_SCRIPT" \
     --code "$CODE" \
     --name "$NAME" \
     --output-dir "$OUTDIR" \
