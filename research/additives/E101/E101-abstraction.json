@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T02:35:04+00:00",
+    "prompt_version": "1.0"
+  },
+  "identity": {
+    "e_number": "E101",
+    "name": "Riboflavin (Vitamin B2)",
+    "cas_numbers": [
+      "83-88-5",
+      "130-40-5",
+      "6184-17-4"
+    ],
+    "synonyms": [
+      "Vitamin B2",
+      "Lactoflavin",
+      "Riboflavin-5'-phosphate sodium",
+      "Riboflavin sodium phosphate",
+      "Flavin mononucleotide sodium salt",
+      "E101(i)",
+      "E101(ii)"
+    ],
+    "chemical_class": "Flavin (isoalloxazine) vitamin derivative",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "color additive",
+    "secondary_categories": [
+      "nutrient fortification"
+    ],
+    "mechanism": "Provides yellow coloration/fluorescence and serves as precursor of FMN/FAD coenzymes involved in cellular redox and energy metabolism.",
+    "common_food_categories": [
+      "Foods generally (US color additive use under 21 CFR 73.450)",
+      "Fortified cereal and grain products",
+      "Milk and milk drinks",
+      "Bread and bread products"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA ANS Panel (2013) concluded no need for a numerical ADI for E101(i)/(ii) at reported uses and use levels."
+      },
+      "last_evaluation_year": 2013,
+      "key_finding": "Riboflavin (E101(i)) and riboflavin-5'-phosphate sodium (E101(ii)) were not of safety concern at currently reported uses and use levels."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1695; 21 CFR 73.450",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA ADI listed as 'not limited'."
+      },
+      "last_evaluation_year": 1969
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "A recent rat study using high-dose neonatal riboflavin (100 mg/kg) reported metabolic and mitochondrial remodeling; relevance to routine food-additive exposure is uncertain.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41539788/"
+        ]
+      },
+      {
+        "category": "carcinogenic",
+        "summary": "Human observational findings summarized by NIH are mixed/inconclusive for cancer endpoints and do not show a consistent harmful association at dietary intake levels.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://ods.od.nih.gov/factsheets/Riboflavin-HealthProfessional/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2013 re-evaluation found no safety concern at reported uses and no numerical ADI needed.",
+      "JECFA lists ADI as not limited.",
+      "NIH ODS reports no established UL because adverse effects from high riboflavin intakes have not been reported in available data."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "toddlers",
+        "children"
+      ],
+      "notes": "EFSA refined exposure estimates reached up to 1.3 mg/kg bw/day in high-level toddlers/children; with no numerical EFSA ADI and JECFA ADI 'not limited', routine exceedance determination is not applicable."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "risk_free",
+    "confidence": 0.84,
+    "rationale": "Riboflavin is a naturally occurring vitamin with broad regulatory acceptance (EFSA approved, FDA GRAS, JECFA ADI not limited), and no credible evidence of harm at normal food-additive exposure levels.",
+    "key_factors": [
+      "EFSA: no safety concern at reported uses and no numerical ADI needed",
+      "FDA: GRAS affirmation under 21 CFR 184.1695 and color use under 21 CFR 73.450",
+      "JECFA: ADI not limited",
+      "No riboflavin entry found in IARC classified agents list"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Food Colours topic page (E101 listing)",
+      "url": "https://www.efsa.europa.eu/en/topics/topic/food-colours",
+      "type": "regulatory"
+    },
+    {
+      "title": "Scientific Opinion on the re-evaluation of riboflavin (E 101(i)) and riboflavin-5'-phosphate sodium (E 101(ii)) as food additives (Europe PMC mirror)",
+      "url": "https://europepmc.org/article/efsa/j.efsa.2013.3357",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal entry URL (access attempted)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/3357",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 184.1695 Riboflavin",
+      "url": "https://www.law.cornell.edu/cfr/text/21/184.1695",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 73.450 Riboflavin",
+      "url": "https://www.law.cornell.edu/cfr/text/21/73.450",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Title 21 current page (access attempted)",
+      "url": "https://www.ecfr.gov/current/title-21",
+      "type": "regulatory"
+    },
+    {
+      "title": "FAO/JECFA additive detail: Riboflavin",
+      "url": "https://www.fao.org/food/food-safety-quality/scientific-advice/jecfa/jecfa-additives/detail/en/c/445/",
+      "type": "database"
+    },
+    {
+      "title": "WHO/INCHEM JECFA monograph: Riboflavin and riboflavin-5-phosphate sodium",
+      "url": "https://inchem.org/documents/jecfa/jecmono/v01je15.htm",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs: Agents Classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "Preventive Medications in Pediatric Migraine: A Network Meta-Analysis (PMID 39388181)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39388181/",
+      "type": "study"
+    },
+    {
+      "title": "High-dose neonatal riboflavin remodels energy metabolism and brain mitochondrial ultrastructure in rats exposed to maternal high-fat diet (PMID 41539788)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41539788/",
+      "type": "study"
+    },
+    {
+      "title": "NIH ODS Riboflavin Health Professional Fact Sheet",
+      "url": "https://ods.od.nih.gov/factsheets/Riboflavin-HealthProfessional/",
+      "type": "review"
+    },
+    {
+      "title": "PubChem Compound: Riboflavin (CID 493570)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/493570",
+      "type": "database"
+    },
+    {
+      "title": "PubChem Compound: Riboflavin sodium phosphate (CID 23666409)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/23666409",
+      "type": "database"
+    }
+  ]
+}

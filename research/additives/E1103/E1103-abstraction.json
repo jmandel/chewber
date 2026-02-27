@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T02:52:40Z",
+    "prompt_version": "1.0"
+  },
+  "identity": {
+    "e_number": "E1103",
+    "name": "Invertase (beta-fructofuranosidase)",
+    "cas_numbers": [
+      "977122-97-6"
+    ],
+    "synonyms": [
+      "beta-fructofuranosidase",
+      "beta-d-fructofuranoside fructohydrolase",
+      "Invertase from Saccharomyces cerevisiae"
+    ],
+    "chemical_class": "Food-processing enzyme (glycoside hydrolase)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "enzyme (processing aid)",
+    "secondary_categories": [
+      "stabilizer or thickener"
+    ],
+    "mechanism": "Hydrolyzes sucrose into glucose and fructose (invert sugar).",
+    "common_food_categories": [
+      "confectionery processes",
+      "sugar syrup/invert syrup manufacturing",
+      "general food manufacturing enzyme uses under cGMP"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No numerical ADI was set in the latest EFSA invertase food-enzyme opinion (2024); conclusion was no safety concern under intended use."
+      },
+      "last_evaluation_year": 2024,
+      "key_finding": "EFSA FEZ (2024, e9128) concluded beta-fructofuranosidase from Saccharomyces cerevisiae does not give rise to safety concerns under intended conditions of use."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1(b) (cGMP framework for affirmed GRAS direct food ingredients); 21 CFR 170.3(o) (technical effects). No invertase-specific named section was found in current eCFR Title 21 XML.",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA database lists ADI as 'NOT SPECIFIED' for invertase from Saccharomyces cerevisiae (ID 1726)."
+      },
+      "last_evaluation_year": 2001
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "allergenic",
+        "summary": "EFSA evaluations note that dietary allergic reactions cannot be excluded; one dossier found sequence homology with a tomato allergen, but overall likelihood was described as low.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "EFSA Journal 2024;22(12):e9128 (PMID 39698587)",
+          "EFSA Journal 2025;23(10):e9674 (PMID 41103772)"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2024 invertase opinion concluded no safety concern under intended conditions of use.",
+      "Recent EFSA 2025/2026 beta-fructofuranosidase evaluations reported no genotoxicity concern and high NOAEL values in 90-day studies where required.",
+      "JECFA assigned ADI 'not specified' with GMP-limited use."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "tomato-allergic individuals (potential low-likelihood sensitivity flagged in one EFSA dossier)"
+      ],
+      "notes": "No numeric ADI was established by EFSA/JECFA for invertase, so standard ADI exceedance analysis is not directly applicable."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "risk_free",
+    "confidence": 0.75,
+    "rationale": "Regulatory evaluations are consistently favorable (EFSA no-safety-concern conclusions; JECFA ADI not specified with GMP controls; FDA GRAS notice with no-questions outcome). No IARC carcinogenic classification was identified. Main residual uncertainty is low-probability allergenicity in sensitive individuals.",
+    "key_factors": [
+      "EFSA 2024 conclusion of no safety concern under intended use",
+      "JECFA ADI not specified (2001) with GMP limitation",
+      "FDA GRAS notice GRN 88 closed with 'FDA has no questions'",
+      "No IARC listing/classification found for invertase"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal publication page for e9128",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/9128",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed EFSA abstract fetch for PMID 39698587",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=39698587&rettype=abstract&retmode=text",
+      "type": "study"
+    },
+    {
+      "title": "PubMed EFSA abstract fetch for PMIDs 40071032, 41103772, 41531465",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=40071032,41103772,41531465&rettype=abstract&retmode=text",
+      "type": "study"
+    },
+    {
+      "title": "Regulation (EC) No 1333/2008 consolidated text",
+      "url": "https://eur-lex.europa.eu/eli/reg/2008/1333/2023-10-31/eng",
+      "type": "regulatory"
+    },
+    {
+      "title": "FDA Substances Added to Food search (invertase)",
+      "url": "https://hfpappexternal.fda.gov/Scripts/Fdcc/index.cfm?set=FoodSubstances&type=basic&search=invertase",
+      "type": "database"
+    },
+    {
+      "title": "FDA Substances Added to Food detail: INVERTASE FROM SACCHAROMYCES CEREVISIAE",
+      "url": "https://hfpappexternal.fda.gov/Scripts/Fdcc/index.cfm?set=FoodSubstances&id=INVERTASEFROMSACCHAROMYCESCEREVISIAE",
+      "type": "database"
+    },
+    {
+      "title": "FDA GRAS Notice GRN 88 detail page",
+      "url": "https://hfpappexternal.fda.gov/Scripts/Fdcc/index.cfm?set=GRASNotices&id=88",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 full XML (2026-02-19 issue date)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA API search by partial name: invertase",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/invertase",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical page for INVERTASE from SACCHAROMYCES CEREVISIAE (ID 1726)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1726",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of Classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset script used by list page",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    }
+  ]
+}
