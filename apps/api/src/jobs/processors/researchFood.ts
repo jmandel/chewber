@@ -9,7 +9,6 @@ import { runResearchAgent } from "../../agents/researchAgent";
 import { reportToJson } from "../../agents/jsonStage";
 import { FoodAbstractionSchema, type FoodAbstraction, toScoreInputs } from "../../scoring/abstraction";
 import { scoreFood } from "../../scoring/score";
-import { mergeAdditives } from "../../scoring/additiveEnrich";
 
 const PayloadSchema = z.object({
   query_id: z.string(),
@@ -60,24 +59,6 @@ export async function processResearchFoodJob(job: { id: string; payload_json: st
       emit({ level: "error", message: "Abstraction JSON failed schema validation", data: { error: String(e?.message ?? e) } });
       throw new Error("Abstraction JSON failed validation");
     }
-
-    updateJob(job.id, { progress: 72 });
-    emit({ level: "info", message: "Enriching additive detection…" });
-
-    // Stage B.5: deterministic additive enrichment
-    // Merge LLM-detected additives with observations captured during research
-    const offTags = observations.offAdditiveTags.length > 0 ? observations.offAdditiveTags : null;
-    // Use all ingredient texts seen by the agent (OFF, USDA, web) for scanning
-    const allIngredientText = observations.ingredientTexts.join(" \n ");
-    const enriched = mergeAdditives(abs.additives, offTags, allIngredientText || abs.ingredients.ingredients_text);
-    const addedCount = enriched.length - abs.additives.length;
-    if (addedCount > 0) {
-      emit({ level: "info", message: `Additive enrichment added ${addedCount} item(s)`, data: {
-        before: abs.additives.map(a => a.code ?? a.name),
-        after: enriched.map(a => a.code ?? a.name)
-      }});
-    }
-    abs = { ...abs, additives: enriched };
 
     updateJob(job.id, { progress: 75 });
     emit({ level: "info", message: "Computing score…" });
