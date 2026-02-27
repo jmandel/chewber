@@ -1198,6 +1198,26 @@ function SummaryDetails({ food }: { food: FoodDetail }) {
         </div>
       )}
 
+      {/* Ingredients */}
+      {abs.ingredients && (abs.ingredients as any).ingredients_list?.length > 0 ? (
+        <div style={{ marginBottom: 12 }}>
+          <div style={{ fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--fog)", marginBottom: 6 }}>Ingredients ({(abs.ingredients as any).ingredients_list.length})</div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+            {(abs.ingredients as any).ingredients_list.map((ing: string, i: number) => (
+              <span key={i} style={{
+                fontSize: 11, padding: "3px 8px", borderRadius: 4,
+                background: "var(--slate)", color: "var(--fog)",
+              }}>{ing}</span>
+            ))}
+          </div>
+        </div>
+      ) : abs.ingredients?.ingredients_text ? (
+        <div style={{ marginBottom: 12 }}>
+          <div style={{ fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--fog)", marginBottom: 6 }}>Ingredients</div>
+          <div style={{ fontSize: 12, color: "var(--fog)", lineHeight: 1.55 }}>{abs.ingredients.ingredients_text}</div>
+        </div>
+      ) : null}
+
       {/* Quick facts */}
       <div>
         {cls?.nutri_score_category && cls.nutri_score_category !== "unknown" && <KV label="Category" value={cls.nutri_score_category.replace("_", " ")} />}

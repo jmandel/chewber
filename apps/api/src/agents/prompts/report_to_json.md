@@ -35,6 +35,17 @@ Rules:
 - unit_basis:
   - Use per_100ml for beverages, per_100g otherwise (unless report says otherwise)
 
+- Ingredients:
+  - `ingredients_text`: The raw ingredient string exactly as it appears on the label / in the report.
+  - `ingredients_list`: An ordered array of individual ingredient names, parsed from ingredients_text.
+    - Split by commas at the TOP level only (do not split sub-ingredients inside parentheses).
+    - Trim whitespace and normalize to Title Case (e.g. "high fructose corn syrup" → "High Fructose Corn Syrup").
+    - Keep sub-ingredient detail inside the parent: "Tomato Puree (Water, Tomato Paste)" is ONE entry.
+    - Remove trailing periods.
+    - For natural foods with no ingredient list, use an empty array [].
+    - Example: `"SUGAR, UNBLEACHED ENRICHED FLOUR (WHEAT FLOUR, NIACIN), PALM OIL, COCOA, SALT"` →
+      `["Sugar", "Unbleached Enriched Flour (Wheat Flour, Niacin)", "Palm Oil", "Cocoa", "Salt"]`
+
 - Additives:
   - Include one object per additive detected in the research report.
   - Additive codes MUST be in bare E-number format: "E322", "E330", "E150d"

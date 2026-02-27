@@ -33,7 +33,8 @@ export const FoodAbstractionSchema = z.object({
     fiber_g: z.number().min(0).nullable()
   }),
   ingredients: z.object({
-    ingredients_text: z.string().nullable()
+    ingredients_text: z.string().nullable(),
+    ingredients_list: z.array(z.string()).optional().default([])
   }),
   additives: z.array(
     z.object({
