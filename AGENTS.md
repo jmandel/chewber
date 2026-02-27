@@ -21,9 +21,6 @@
 - **Path**: `data/off-index.sqlite`
 - FTS5 index over Open Food Facts products (barcode + name/brand search)
 
-### Stale / empty files to ignore
-- `data/chewber.sqlite` — empty 0-byte file, not used by anything
-
 ## Worker concurrency
 - Default: 3 parallel research jobs (`CHEWBER_WORKER_CONCURRENCY=3`)
 - Each job takes ~30-60s (LLM calls), so throughput is ~4-6 foods/min at concurrency 3
@@ -33,7 +30,7 @@
 ## Key file paths
 - Server entry: `apps/api/src/index.ts`
 - Server .env: `apps/api/.env`
-- Systemd services: `chewber.service`, `chewber-worker.service`
+- Systemd services: `/etc/systemd/system/chewber.service`, `/etc/systemd/system/chewber-worker.service` (not in repo)
 - Research output: `research/additives/{CODE}/{CODE}-report.md` and `{CODE}-abstraction.json`
 - Research scripts: `scripts/research-additive.sh`, `scripts/research-all-additives.sh`
 - Prompt template: `scripts/prompts/research-additive.prompt.md`
