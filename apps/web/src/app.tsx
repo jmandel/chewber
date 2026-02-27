@@ -618,7 +618,7 @@ function BarcodeStep({ fs }: { fs: ReturnType<typeof useFlowState> }) {
           <>
             <button onClick={startScan} className="btn-primary btn-full"
               style={{ padding: "14px 16px", fontSize: 16, fontWeight: 700, marginBottom: 12 }}>
-              📷 Scan barcode with camera
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="7" y1="8" x2="7" y2="16"/><line x1="11" y1="8" x2="11" y2="16"/><line x1="15" y1="8" x2="15" y2="13"/><line x1="19" y1="8" x2="19" y2="16"/></svg> Scan barcode with camera
             </button>
 
             {error && (
@@ -681,12 +681,14 @@ function PhotoStep({ fs }: { fs: ReturnType<typeof useFlowState> }) {
             <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 4 }}>Snap or upload a food photo</div>
             <div className="muted" style={{ fontSize: 13, marginBottom: 14 }}>Label, ingredients list, or nutrition facts</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              <label className="btn-primary btn-full" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, padding: "14px 16px", cursor: "pointer", fontSize: 16, fontWeight: 700 }}>
-                📷 Take photo
+              <label className="btn-primary btn-full" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, padding: "14px 16px", cursor: "pointer", fontSize: 16, fontWeight: 700 }}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                Take photo
                 <input type="file" accept="image/*" capture="environment" onChange={e => handleFiles(e.target.files)} style={{ display: "none" }} />
               </label>
-              <label className="btn-full" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, padding: "12px 16px", cursor: "pointer", fontSize: 14, border: "1px solid var(--slate)", borderRadius: "var(--radius-sm)", background: "transparent", color: "var(--cream)" }}>
-                🖼️ Choose from gallery
+              <label className="btn-full" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, padding: "12px 16px", cursor: "pointer", fontSize: 14, border: "1px solid var(--slate)", borderRadius: "var(--radius-sm)", background: "transparent", color: "var(--cream)" }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                Choose from gallery
                 <input type="file" accept="image/*" multiple onChange={e => handleFiles(e.target.files)} style={{ display: "none" }} />
               </label>
             </div>
@@ -1298,18 +1300,18 @@ function AdditivesListPage() {
             <div
               key={add.code}
               className="card"
-              onClick={() => hasResearch && nav(`/additive/${encodeURIComponent(add.code)}`)}
+              onClick={() => nav(`/additive/${encodeURIComponent(add.code)}`)}
               style={{
-                cursor: hasResearch ? "pointer" : "default",
-                opacity: hasResearch ? 1 : 0.6,
+                cursor: "pointer",
+                opacity: hasResearch ? 1 : 0.65,
                 transition: "opacity 0.2s",
                 padding: 14,
               }}
             >
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 6 }}>
-                <div>
-                  <div style={{ fontWeight: 700, fontSize: 15 }}>{add.code}</div>
-                  {add.name && <div className="muted" style={{ fontSize: 13, marginTop: 2 }}>{add.name}</div>}
+                <div style={{ minWidth: 0, flex: 1 }}>
+                  <div style={{ fontWeight: 700, fontSize: 15, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{add.name ?? add.code}</div>
+                  <div className="muted" style={{ fontSize: 11, marginTop: 2 }}>{add.code}</div>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
                   <span
@@ -1324,9 +1326,7 @@ function AdditivesListPage() {
                   >
                     {style.marker} {add.risk_level.replace("_", " ")}
                   </span>
-                  {hasResearch && (
-                    <span title="Has detailed research" style={{ fontSize: 14 }}>📊</span>
-                  )}
+
                 </div>
               </div>
               {add.function_category && (
@@ -1374,8 +1374,8 @@ function AdditivePage() {
 
       {/* Header */}
       <div style={{ marginBottom: 20 }}>
-        <h1 style={{ fontSize: 28, fontWeight: 700, marginBottom: 4 }}>{data.code}</h1>
-        {data.name && <div className="muted" style={{ fontSize: 16, marginBottom: 8 }}>{data.name}</div>}
+        <h1 style={{ fontSize: 28, fontWeight: 700, marginBottom: 4 }}>{data.name ?? data.code}</h1>
+        <div className="muted" style={{ fontSize: 14, marginBottom: 8 }}>{data.code}</div>
         <span
           className="badge"
           style={{
