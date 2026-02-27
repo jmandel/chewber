@@ -4,8 +4,8 @@ set -euo pipefail
 DB="${1:-data/usda.sqlite}"
 
 sqlite3 "$DB" <<'SQL'
-INSERT OR IGNORE INTO additive_risks (code, name, risk_level, updated_at) VALUES
-  ('E150b', 'Caustic sulphite caramel', 'limited', datetime('now')),
+INSERT OR REPLACE INTO additive_risks (code, name, risk_level, updated_at) VALUES
+  ('E150b', 'Caustic sulphite caramel', 'moderate', datetime('now')),
   ('E150c', 'Ammonia caramel', 'moderate', datetime('now')),
   ('E150d', 'Sulphite ammonia caramel', 'moderate', datetime('now')),
   ('E319', 'Tertiary butylhydroquinone (TBHQ)', 'high', datetime('now')),

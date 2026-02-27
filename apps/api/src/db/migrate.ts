@@ -74,4 +74,13 @@ if (foodsEmptyTags.length > 0) {
   console.log("[migrate] all foods have tags (or no abstractions yet)");
 }
 
+// Migration: add updated_at column to categories if missing
+try {
+  db.exec(`ALTER TABLE categories ADD COLUMN updated_at TEXT NOT NULL DEFAULT ''`);
+  db.exec(`UPDATE categories SET updated_at = created_at WHERE updated_at = ''`);
+  console.log("[migrate] added updated_at column to categories");
+} catch {
+  // column already exists
+}
+
 console.log("[migrate] done");

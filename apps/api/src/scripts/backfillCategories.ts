@@ -71,7 +71,14 @@ console.log("[backfill] LLM assigned categories:");
 
 const updateAbs = db.prepare(`UPDATE food_abstractions SET abstraction_json = ?, updated_at = ? WHERE id = ?`);
 const updateTags = db.prepare(`UPDATE foods SET tags_json = ?, updated_at = ? WHERE id = ?`);
-const insertCat = db.prepare(`INSERT OR IGNORE INTO categories (slug, display_name, description, created_at) VALUES (?, ?, ?, ?)`);
+const upsertCat = db.prepare(
+  `INSERT INTO categories (slug, display_name, description, created_at, updated_at)
+   VALUES (?, ?, ?, ?, ?)
+   ON CONFLICT(slug) DO UPDATE SET
+     display_name = CASE WHEN excluded.display_name != '' THEN excluded.display_name ELSE categories.display_name END,
+     description  = CASE WHEN excluded.description  != '' THEN excluded.description  ELSE categories.description  END,
+     updated_at   = excluded.updated_at`
+);
 const now = new Date().toISOString();
 const existingSlugs = new Set(existingCats.map((c: any) => c.slug));
 
@@ -86,7 +93,7 @@ for (const a of assignments) {
   for (const slug of cats) {
     if (!existingSlugs.has(slug)) {
       const displayName = slug.split("-").map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
-      insertCat.run(slug, displayName, "", now);
+      upsertCat.run(slug, displayName, "", now, now);
       existingSlugs.add(slug);
       console.log(`    [new category] ${slug}`);
     }

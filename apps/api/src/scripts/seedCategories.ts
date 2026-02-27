@@ -1,6 +1,7 @@
 /**
  * Seed the categories registry with starter categories.
- * Idempotent — skips existing slugs.
+ * Idempotent — upserts display_name and description so re-running
+ * picks up any changes to the curated list.
  */
 import { getDb } from "../db";
 
@@ -78,18 +79,21 @@ const STARTER_CATEGORIES: [slug: string, displayName: string, description: strin
 
 const db = getDb();
 
-const insert = db.prepare(
-  `INSERT OR IGNORE INTO categories (slug, display_name, description, created_at) VALUES (?, ?, ?, ?)`
+const upsert = db.prepare(
+  `INSERT INTO categories (slug, display_name, description, created_at, updated_at)
+   VALUES (?, ?, ?, ?, ?)
+   ON CONFLICT(slug) DO UPDATE SET
+     display_name = excluded.display_name,
+     description  = excluded.description,
+     updated_at   = excluded.updated_at`
 );
 
 const now = new Date().toISOString();
-let inserted = 0;
 
 db.exec("BEGIN");
 for (const [slug, displayName, description] of STARTER_CATEGORIES) {
-  const result = insert.run(slug, displayName, description, now);
-  if (result.changes > 0) inserted++;
+  upsert.run(slug, displayName, description, now, now);
 }
 db.exec("COMMIT");
 
-console.log(`[seedCategories] inserted ${inserted} new categories (${STARTER_CATEGORIES.length - inserted} already existed)`);
+console.log(`[seedCategories] upserted ${STARTER_CATEGORIES.length} categories`);

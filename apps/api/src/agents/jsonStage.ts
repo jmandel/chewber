@@ -98,11 +98,16 @@ function slugToTitle(slug: string): string {
 function registerCategories(items: { slug: string; display_name: string; description: string }[]) {
   const db = getDb();
   const now = new Date().toISOString();
-  const insert = db.prepare(
-    `INSERT OR IGNORE INTO categories (slug, display_name, description, created_at) VALUES (?, ?, ?, ?)`
+  const upsert = db.prepare(
+    `INSERT INTO categories (slug, display_name, description, created_at, updated_at)
+     VALUES (?, ?, ?, ?, ?)
+     ON CONFLICT(slug) DO UPDATE SET
+       display_name = CASE WHEN excluded.display_name != '' THEN excluded.display_name ELSE categories.display_name END,
+       description  = CASE WHEN excluded.description  != '' THEN excluded.description  ELSE categories.description  END,
+       updated_at   = excluded.updated_at`
   );
   for (const item of items) {
-    insert.run(item.slug, item.display_name, item.description || "", now);
+    upsert.run(item.slug, item.display_name, item.description || "", now, now);
   }
 }
 
