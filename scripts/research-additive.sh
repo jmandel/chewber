@@ -11,6 +11,39 @@ set -uo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
+# ── Ensure ALL child processes (codex, shelley, etc.) die when we exit ────────
+# Track child PIDs so we can kill them on exit. Codex in particular can spawn
+# sub-processes that survive SIGTERM to the parent.
+CHILD_PIDS=()
+
+# Recursively list all descendant PIDs of a given PID (deepest first)
+kill_tree() {
+  local sig="$1" pid="$2"
+  local children
+  children=$(pgrep -P "$pid" 2>/dev/null) || true
+  for child in $children; do
+    kill_tree "$sig" "$child"
+  done
+  kill -"$sig" "$pid" 2>/dev/null || true
+}
+
+cleanup_children() {
+  for pid in "${CHILD_PIDS[@]}"; do
+    if kill -0 "$pid" 2>/dev/null; then
+      kill_tree TERM "$pid"
+    fi
+  done
+  sleep 1
+  for pid in "${CHILD_PIDS[@]}"; do
+    if kill -0 "$pid" 2>/dev/null; then
+      kill_tree 9 "$pid"
+    fi
+  done
+  # Clean up temp file
+  rm -f "${PROMPT_FILE:-}"
+}
+trap cleanup_children EXIT INT TERM HUP
+
 # ── Defaults ─────────────────────────────────────────────────────────────────
 CODE=""
 NAME=""
@@ -230,7 +263,7 @@ PROMPT="${BASE_PROMPT}"
 
 # Write prompt to a temp file to avoid shell argument-length issues
 PROMPT_FILE=$(mktemp /tmp/research-prompt-XXXXXX.txt)
-trap 'rm -f "$PROMPT_FILE"' EXIT
+# (cleanup_children trap already handles PROMPT_FILE removal)
 printf '%s' "$PROMPT" > "$PROMPT_FILE"
 log "Prompt written to $PROMPT_FILE ($(wc -c < "$PROMPT_FILE") bytes)"
 
@@ -332,7 +365,10 @@ SHELLEY_EOF
   # Wait for the conversation to finish (we don't care about the text output;
   # keep stderr visible so errors aren't silently swallowed)
   local shelley_rc=0
-  shelley client read -wait "$cid" > /dev/null || shelley_rc=$?
+  shelley client read -wait "$cid" > /dev/null &
+  local shelley_pid=$!
+  CHILD_PIDS+=("$shelley_pid")
+  wait "$shelley_pid" || shelley_rc=$?
   if [[ $shelley_rc -ne 0 ]]; then
     log "WARNING: shelley read exited with code $shelley_rc — checking if files were written anyway"
   fi
@@ -446,14 +482,19 @@ File 2: ${json_file}
 CODEX_EOF
 )
 
-  # Run codex in yolo mode with gpt-5.3-codex and high reasoning
+  # Run codex in yolo mode with gpt-5.3-codex and high reasoning.
+  # We run it in the background and track its PID so our EXIT trap
+  # can kill it and all its descendants if we're interrupted.
   local codex_rc=0
   codex exec \
     -m gpt-5.3-codex \
     -c 'model_reasoning_effort="high"' \
     --dangerously-bypass-approvals-and-sandbox \
     -C "$REPO_ROOT" \
-    "$codex_prompt" 2>&1 || codex_rc=$?
+    "$codex_prompt" 2>&1 &
+  local codex_pid=$!
+  CHILD_PIDS+=("$codex_pid")
+  wait "$codex_pid" || codex_rc=$?
 
   if [[ $codex_rc -ne 0 ]]; then
     log "WARNING: codex exited with code $codex_rc — checking if files were written anyway"
@@ -485,7 +526,10 @@ run_claude() {
   log "Sending prompt to claude..."
   local prompt_text
   prompt_text=$(cat "$PROMPT_FILE")
-  claude -p "$prompt_text" --output-format text 2>/dev/null
+  claude -p "$prompt_text" --output-format text 2>/dev/null &
+  local claude_pid=$!
+  CHILD_PIDS+=("$claude_pid")
+  wait "$claude_pid"
 }
 
 # ── Run the chosen backend ───────────────────────────────────────────────────

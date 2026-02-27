@@ -17,6 +17,36 @@ REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 RESEARCH_SCRIPT="$SCRIPT_DIR/research-additive.sh"
 DB="$REPO_ROOT/data/usda.sqlite"
 
+# ── Ensure ALL descendants die when this script exits ────────────────────────
+# We put ourselves in a new process group so we can kill the whole tree.
+# Recursively list all descendant PIDs of a given PID
+list_descendants() {
+  local pid="$1"
+  local children
+  children=$(pgrep -P "$pid" 2>/dev/null) || true
+  for child in $children; do
+    list_descendants "$child"
+  done
+  echo "$pid"
+}
+
+cleanup_children() {
+  echo "" >&2
+  echo "=== Cleaning up child processes ===" >&2
+  # Collect all descendant PIDs (deepest first) before killing anything
+  local all_pids
+  local my_pid=$$
+  all_pids=$(list_descendants "$my_pid" | grep -v "^${my_pid}$" | tac)
+  if [[ -n "$all_pids" ]]; then
+    # SIGTERM first
+    echo "$all_pids" | xargs kill -TERM 2>/dev/null || true
+    sleep 2
+    # SIGKILL stragglers
+    echo "$all_pids" | xargs kill -9 2>/dev/null || true
+  fi
+}
+# (trap is set after COUNT_DIR is created, so it can clean up both)
+
 BACKEND="codex"
 DRY_RUN=false
 SKIP_EXISTING=false
@@ -49,7 +79,9 @@ echo ""
 
 # Counters (use a temp dir for parallel-safe counting)
 COUNT_DIR=$(mktemp -d)
-trap 'rm -rf "$COUNT_DIR"' EXIT
+# (COUNT_DIR cleanup folded into the main EXIT trap below)
+# Override the earlier trap to include COUNT_DIR cleanup
+trap 'rm -rf "$COUNT_DIR"; cleanup_children' EXIT INT TERM HUP
 mkdir -p "$COUNT_DIR"/{done,skipped,failed}
 
 run_one() {
@@ -78,7 +110,11 @@ run_one() {
   echo "━━━ [$idx/$TOTAL] $CODE — $NAME ━━━"
 
   local rc=0
-  timeout 1800 bash "$RESEARCH_SCRIPT" \
+  # Run in a new session so we can kill the entire process tree.
+  # research-additive.sh has its own cleanup trap that kills its
+  # process group on exit.
+  timeout --kill-after=60 1800 \
+    bash "$RESEARCH_SCRIPT" \
     --code "$CODE" \
     --name "$NAME" \
     --output-dir "$OUTDIR" \
