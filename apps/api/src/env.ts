@@ -23,12 +23,19 @@ function parseDotEnv(text: string): Record<string, string> {
   return out;
 }
 
+/** Directory containing this file (apps/api/src/) — anchor for relative paths */
+const API_DIR = resolve(import.meta.dir, "..");
+
 /**
  * Loads apps/api/.env if present.
  * This keeps the repo runnable without requiring bun --env-file.
+ * Looks for .env next to apps/api/ (not process.cwd()) so scripts
+ * work correctly regardless of where they're invoked from.
  */
 export function loadEnvFileIfPresent() {
-  const envPath = resolve(process.cwd(), ".env");
+  // Try .env relative to apps/api/ first, then cwd as fallback
+  let envPath = resolve(API_DIR, ".env");
+  if (!existsSync(envPath)) envPath = resolve(process.cwd(), ".env");
   if (!existsSync(envPath)) return;
   const txt = readFileSync(envPath, "utf-8");
   const parsed = parseDotEnv(txt);

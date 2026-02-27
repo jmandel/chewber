@@ -3,12 +3,16 @@ import { dirname, resolve } from "node:path";
 import { existsSync, mkdirSync, readFileSync } from "node:fs";
 import { getEnv } from "../env";
 
+/** apps/api/ directory — anchor for resolving relative DB paths */
+const API_DIR = resolve(import.meta.dir, "..", "..");
+
 let _db: Database | null = null;
 
 export function getDb(): Database {
   if (_db) return _db;
   const env = getEnv();
-  const dbPath = resolve(process.cwd(), env.CHEWBER_DB_PATH);
+  // Resolve relative to apps/api/ so scripts work from any cwd
+  const dbPath = resolve(API_DIR, env.CHEWBER_DB_PATH);
   // Ensure parent dir exists
   const parent = dirname(dbPath);
   if (!existsSync(parent)) mkdirSync(parent, { recursive: true });

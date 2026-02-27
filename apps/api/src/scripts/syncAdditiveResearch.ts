@@ -157,8 +157,8 @@ if (!noRescore && !dryRun && updated > 0) {
   console.log();
   console.log("=== Re-scoring foods ===");
   const result = Bun.spawnSync({
-    cmd: ["bun", "run", "apps/api/src/scripts/rescore.ts"],
-    cwd: REPO_ROOT,
+    cmd: ["bun", "run", "src/scripts/rescore.ts"],
+    cwd: join(REPO_ROOT, "apps", "api"),
     stdout: "inherit",
     stderr: "inherit",
   });

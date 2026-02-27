@@ -4,7 +4,7 @@
 
 ### App database (operational — user-created data)
 - **Path**: `data/chewber.sqlite` (relative to repo root)
-- **Resolved at runtime from**: `WorkingDirectory=/home/exedev/chewber/apps/api` in systemd + `CHEWBER_DB_PATH=../../data/chewber.sqlite` in `.env`
+- **Resolved at runtime from**: `CHEWBER_DB_PATH=../../data/chewber.sqlite` in `apps/api/.env`, resolved relative to `apps/api/` via `import.meta.dir` (works from any cwd)
 - **Absolute**: `/home/exedev/chewber/data/chewber.sqlite`
 - **Contains**: foods, food_abstractions, jobs, job_events, queries, categories, source_cache
 - **Read-write** by the API server and worker
@@ -38,11 +38,25 @@
 - Rescore script: `apps/api/src/scripts/rescore.ts`
 
 ## Pipeline: research → scores
+
+All scripts can be run from the **repo root** — they resolve DB paths and
+`.env` relative to `apps/api/` via `import.meta.dir`, not `process.cwd()`.
+
+```bash
+# From repo root (or any directory):
+bun run apps/api/src/scripts/syncAdditiveResearch.ts
+#   → updates additive_risks in data/usda.sqlite
+#   → automatically chains rescore.ts if any risk levels changed
+#     → updates food scores in data/chewber.sqlite
+sudo systemctl restart chewber   # reload caches
 ```
-research/additives/{CODE}-abstraction.json
-  → bun run apps/api/src/scripts/syncAdditiveResearch.ts
-    → updates additive_risks in data/usda.sqlite
-      → bun run apps/api/src/scripts/rescore.ts (chained automatically)
-        → updates food scores in data/chewber.sqlite
-          → sudo systemctl restart chewber (reload caches)
+
+Flags:
+- `--dry-run` — preview changes without writing
+- `--no-rescore` — skip the automatic rescore step
+
+You can also run rescore independently:
+```bash
+bun run apps/api/src/scripts/rescore.ts          # all foods
+bun run apps/api/src/scripts/rescore.ts --dry-run # preview
 ```

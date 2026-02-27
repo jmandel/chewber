@@ -22,7 +22,8 @@ uploadRoutes.post("/upload", async (c) => {
   const db = c.get("db");
   const env = c.get("env");
 
-  const uploadDir = resolve(process.cwd(), env.CHEWBER_UPLOAD_DIR);
+  const API_DIR = resolve(import.meta.dir, "..", "..");
+  const uploadDir = resolve(API_DIR, env.CHEWBER_UPLOAD_DIR);
   if (!existsSync(uploadDir)) mkdirSync(uploadDir, { recursive: true });
 
   const body = await c.req.parseBody();
