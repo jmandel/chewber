@@ -182,4 +182,5 @@ export const api = {
 
   getAdditives: () => http<{ count: number; additives: AdditiveListItem[] }>("/api/additives"),
   getAdditive: (code: string) => http<AdditiveDetail>("/api/additives/" + encodeURIComponent(code)),
+  getAdditiveFoods: (code: string) => http<{ code: string; count: number; foods: FoodSummary[] }>("/api/additives/" + encodeURIComponent(code) + "/foods"),
 };

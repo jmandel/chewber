@@ -1457,6 +1457,48 @@ function AdditivePage() {
           <div className="md-body" dangerouslySetInnerHTML={{ __html: renderMarkdown(data.research.report_md) }} />
         </div>
       ) : null}
+
+      {/* Foods containing this additive */}
+      <AdditiveFoods code={data.code} />
+    </div>
+  );
+}
+
+function AdditiveFoods({ code }: { code: string }) {
+  const [foods, setFoods] = useState<FoodSummary[] | null>(null);
+  const nav = useNavigate();
+
+  useEffect(() => {
+    api.getAdditiveFoods(code)
+      .then(r => setFoods(r.foods))
+      .catch(() => setFoods([]));
+  }, [code]);
+
+  if (foods === null || foods.length === 0) return null;
+
+  return (
+    <div style={{ marginTop: 20 }}>
+      <div style={{ fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--fog)", marginBottom: 10 }}>
+        Foods with this additive
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        {foods.map(f => (
+          <div
+            key={f.id}
+            className="card"
+            onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)}
+            style={{ cursor: "pointer", padding: "12px 16px", display: "flex", alignItems: "center", gap: 12 }}
+          >
+            {f.score != null && <ScorePill score={f.score} size={18} />}
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ fontWeight: 600, fontSize: 14, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                {f.canonical_name}
+              </div>
+              {f.brand && <div className="muted" style={{ fontSize: 11 }}>{f.brand}</div>}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
