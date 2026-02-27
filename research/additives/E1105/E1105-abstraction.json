@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T02:56:01Z",
+    "prompt_version": "1.0"
+  },
+  "identity": {
+    "e_number": "E1105",
+    "name": "Lysozyme",
+    "cas_numbers": [
+      "9066-59-5"
+    ],
+    "synonyms": [
+      "Lysozyme hydrochloride",
+      "Muramidase",
+      "Hen egg-white lysozyme",
+      "Peptidoglycan N-acetylmuramoylhydrolase"
+    ],
+    "chemical_class": "Enzyme protein (peptidoglycan N-acetylmuramoylhydrolase; EC 3.2.1.17)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "antimicrobial",
+      "processing aid"
+    ],
+    "mechanism": "Hydrolyzes bacterial peptidoglycan (especially Gram-positive bacteria), helping control spoilage and malolactic-related instability.",
+    "common_food_categories": [
+      "wine",
+      "cheese and cheese products",
+      "brewing/beer"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No numeric ADI identified in EFSA lysozyme opinions reviewed; conclusions are qualitative (no safety concern under intended use except allergenicity in susceptible individuals)."
+      },
+      "last_evaluation_year": 2025,
+      "key_finding": "EFSA concluded no general safety concern under intended conditions of use, except possible adverse allergic reactions in susceptible (egg-allergic) individuals."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR Title 21 eCFR search returned no current lysozyme food-additive GRAS section; lysozyme use conditions are listed in 27 CFR 24.246 (FDA advisory opinion; wine use up to 500 mg/L).",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not specified (JECFA, 1992)."
+      },
+      "last_evaluation_year": 1992
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "allergenic",
+        "summary": "Residual lysozyme in treated wine/beer/cheese may trigger allergic reactions in susceptible egg-allergic individuals.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "EFSA Journal 2025;23(9):9345",
+          "EFSA Journal 2023;21(4):e07918",
+          "Food Chemistry 2025;469:142541"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA opinions report no general safety concern under intended conditions of use aside from allergenicity in susceptible individuals.",
+      "JECFA assigned ADI as not specified for lysozyme hydrochloride (1992)."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "egg-allergic individuals"
+      ],
+      "notes": "No numeric ADI was set (JECFA: not specified; EFSA opinions reviewed did not set a numeric ADI). Risk characterization is driven mainly by allergenicity rather than ADI exceedance."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.73,
+    "rationale": "Regulatory evaluations indicate low general toxicological concern under intended uses, but there is a credible and established allergenic risk for susceptible egg-allergic consumers.",
+    "key_factors": [
+      "EFSA no-general-safety-concern conclusions under intended conditions",
+      "JECFA ADI not specified (1992)",
+      "Documented allergenicity caveat for sensitized individuals",
+      "Current U.S. CFR evidence supports controlled wine-use conditions (27 CFR 24.246)"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal - Safety evaluation of the food enzyme lysozyme from hens' eggs (Article 9345)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/9345",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal 2023 full text (PMC10068600)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10068600/",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database - LYSOZYME HYDROCHLORIDE (ID 3398)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3398",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API search results for lysozyme",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=lysozyme",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API full text - 27 CFR 24.246 (wine treatment materials)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-27.xml?section=24.246",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full text - 21 CFR 184.1545",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?section=184.1545",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC Monographs - Agents classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of Classifications app dataset (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed - Safety evaluation of the food enzyme lysozyme from hens' eggs",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37020685/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed - Rapid and sensitive quantitation of hen egg-white lysozyme in foods using paper sensor",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39709916/",
+      "type": "study"
+    }
+  ]
+}

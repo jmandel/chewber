@@ -1,38 +1,38 @@
 {
   "schema_version": 1,
   "research_metadata": {
-    "date": "2026-02-27T02:10:00Z",
-    "prompt_version": "1.0"
+    "date": "2026-02-27T03:16:05Z",
+    "prompt_version": "2.0"
   },
   "identity": {
     "e_number": "E621",
-    "name": "Monosodium L-glutamate",
+    "name": "Monosodium glutamate",
     "cas_numbers": [
       "142-47-2"
     ],
     "synonyms": [
-      "Monosodium glutamate",
-      "MSG",
+      "Monosodium L-glutamate",
       "Sodium glutamate",
-      "Glutamic acid monosodium salt"
+      "MSG",
+      "Glutamic acid monosodium salt monohydrate"
     ],
-    "chemical_class": "Sodium salt of L-glutamic acid",
-    "origin": "semi-synthetic"
+    "chemical_class": "sodium salt of L-glutamic acid (amino acid salt); flavour enhancer",
+    "origin": "synthetic"
   },
   "function": {
     "primary_category": "flavour enhancer",
     "secondary_categories": [
-      "umami enhancer",
-      "palatability enhancer"
+      "umami taste enhancer",
+      "seasoning additive"
     ],
-    "mechanism": "Provides free glutamate that enhances umami (savory) taste.",
+    "mechanism": "Provides umami (savory) taste by activating umami taste pathways responsive to glutamate, including T1R1/T1R3 receptor signaling.",
     "common_food_categories": [
-      "fine bakery wares",
       "soups and broths",
       "sauces",
+      "seasoning and condiments",
       "meat and meat products",
-      "seasonings and condiments",
-      "food supplements"
+      "fine bakery wares",
+      "processed savory foods"
     ]
   },
   "regulatory": {
@@ -41,21 +41,21 @@
       "adi": {
         "value": 30,
         "unit": "mg/kg bw/day",
-        "basis": "Group ADI for glutamic acid and glutamates (E620-E625), expressed as glutamic acid, derived from NOAEL 3200 mg MSG/kg bw/day with UF 100 (EFSA 2017)."
+        "basis": "EFSA 2017 group ADI for glutamic acid and glutamates (E620-E625), derived from NOAEL 3200 mg MSG/kg bw/day with UF 100."
       },
       "last_evaluation_year": 2017,
-      "key_finding": "EFSA concluded exposure can exceed the ADI in some population groups and recommended reviewing maximum permitted levels."
+      "key_finding": "EFSA concluded no genotoxicity concern and set a group ADI, but noted exposure in some population groups may exceed the ADI and recommended reviewing maximum permitted levels."
     },
     "fda": {
       "status": "gras",
-      "cfr_citation": "21 CFR 182.1; 21 CFR 101.22(a)(5)",
+      "cfr_citation": "21 CFR 182.1; 21 CFR 101.22(h)(5)",
       "notes": null
     },
     "jecfa": {
       "adi": {
         "value": null,
         "unit": "mg/kg bw/day",
-        "basis": "ADI not specified (group ADI context for L-glutamic acid and its salts in WHO JECFA entry)."
+        "basis": "WHO/JECFA entry for MONOSODIUM L-GLUTAMATE states ADI NOT SPECIFIED (group ADI for glutamic acid and ammonium/calcium/monosodium/magnesium/potassium salts)."
       },
       "last_evaluation_year": 1987
     },
@@ -65,76 +65,81 @@
   "safety_evidence": {
     "concerns": [
       {
-        "category": "renal",
-        "summary": "A 2025 rat overconsumption study (0.8-3 g/kg bw/day for 8 weeks) reported dose-dependent hepatic, renal, and cardiac toxicity markers and histopathology.",
+        "category": "neurotoxic",
+        "summary": "A recent rat perinatal study reported developmental neurotoxicity-related findings at high doses (LOAEL 6000 mg/kg bw; NOAEL 3000 mg/kg bw), indicating potential hazard at extreme exposure levels.",
         "evidence_strength": "weak",
         "key_references": [
-          "PMID:40407528"
-        ]
-      },
-      {
-        "category": "gut_microbiome",
-        "summary": "A 2024 systematic review reported possible links between MSG exposure and gut microbiota/metabolic dysbiosis, but evidence was limited and largely preclinical.",
-        "evidence_strength": "weak",
-        "key_references": [
-          "PMID:39139924"
+          "https://pubmed.ncbi.nlm.nih.gov/40570974/"
         ]
       },
       {
         "category": "other",
-        "summary": "In controlled human challenge data, large bolus doses without food may trigger transient symptoms in some self-identified sensitive individuals, with inconsistent reproducibility.",
-        "evidence_strength": "moderate",
+        "summary": "A 2025 rat study reported dose-dependent reproductive toxicity and sperm dysfunction after 30-day exposure (30-1000 mg/kg bw), but translational relevance to typical human intake remains uncertain.",
+        "evidence_strength": "weak",
         "key_references": [
-          "PMID:11080723",
-          "FDA MSG Q&A"
+          "https://pubmed.ncbi.nlm.nih.gov/41060891/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent reviews discuss obesity and maternal-offspring concerns, but they consistently note limited high-quality human evidence and need for rigorous prospective studies.",
+        "evidence_strength": "theoretical",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/39914377/",
+          "https://pubmed.ncbi.nlm.nih.gov/40651333/"
         ]
       }
     ],
     "no_concern_confirmed": [
-      "EFSA found no concern for genotoxicity for glutamic acid and glutamates (E620-E625).",
-      "A 2025 publication of GLP-style 28-day and 90-day dietary rat studies reported no toxicologically significant findings up to the highest tested doses (NOAEL at top dose)."
+      "EFSA re-evaluation found no concern for genotoxicity and set a regulatory group ADI.",
+      "FDA states MSG is GRAS and blinded challenge studies have not consistently reproduced MSG-specific reactions in self-identified sensitive individuals.",
+      "A 2025 methodology review found many published MSG toxicity studies had low relevance/reliability for human-safety inference."
     ],
     "adi_exceedance": {
       "at_risk": true,
       "populations": [
-        "high consumers across population groups (EFSA refined assessment)",
-        "toddlers and children at medium exposure",
-        "highly exposed infants, children, and adolescents"
+        "children and adolescents with high intake patterns",
+        "high consumers of savory processed foods"
       ],
-      "notes": "EFSA reported potential exceedance of the 30 mg/kg bw/day group ADI in several scenarios; a 2023 China assessment estimated 17.63 mg/kg bw/day from measured data and 40.20 mg/kg bw/day from apparent-consumption data."
+      "notes": "EFSA reported that estimated exposure for some population groups may exceed the 30 mg/kg bw/day group ADI."
     }
   },
   "risk_assessment": {
     "recommended_level": "moderate",
-    "confidence": 0.79,
-    "rationale": "MSG remains widely authorized (EU authorized with EFSA re-evaluation, FDA GRAS, JECFA ADI not specified), but EFSA established a finite ADI and identified exceedance risk in some populations, and high-dose literature still reports adverse findings.",
+    "confidence": 0.72,
+    "rationale": "MSG remains approved/GRAS in major jurisdictions and JECFA retains ADI not specified, but EFSA established a finite ADI and flagged potential exceedance in some groups. Recent animal studies show potential neurodevelopmental/reproductive effects at elevated doses, while human causal evidence remains limited.",
     "key_factors": [
-      "EFSA group ADI of 30 mg/kg bw/day with exceedance concern",
-      "FDA GRAS status under 21 CFR with GMP and labeling requirements",
-      "JECFA ADI not specified",
-      "No IARC Monographs group classification identified",
-      "Mixed newer safety literature including high-dose animal toxicity reports"
+      "EFSA group ADI 30 mg/kg bw/day with exceedance concern for some populations",
+      "FDA GRAS status and CFR recognition under intended use/GMP",
+      "JECFA ADI not specified (group ADI context)",
+      "Recent animal studies with adverse findings at higher or prolonged doses",
+      "No IARC carcinogenic classification found"
     ]
   },
   "sources": [
     {
-      "title": "EFSA reviews safety of glutamates added to food (2017)",
+      "title": "EFSA reviews safety of glutamates added to food",
       "url": "https://www.efsa.europa.eu/en/press/news/170712",
       "type": "regulatory"
     },
     {
-      "title": "Re-evaluation of glutamic acid (E620) and glutamates (E621-E625) as food additives (EFSA Journal record)",
+      "title": "Re-evaluation of glutamic acid (E620-E625) as food additives (EFSA opinion indexed in PubMed)",
       "url": "https://pubmed.ncbi.nlm.nih.gov/32625571/",
       "type": "regulatory"
     },
     {
-      "title": "eCFR API Title 21 full XML (2026-02-19 issue)",
-      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "title": "EFSA Journal DOI page for 10.2903/j.efsa.2017.4910",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2017.4910",
       "type": "regulatory"
     },
     {
-      "title": "eCFR API search results for monosodium glutamate",
-      "url": "https://www.ecfr.gov/api/search/v1/results?query=monosodium%20glutamate&per_page=500&page=1",
+      "title": "eCFR Title 21 full XML snapshot",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR section access attempt for 21 CFR 182.1",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-182/section-182.1",
       "type": "regulatory"
     },
     {
@@ -143,12 +148,12 @@
       "type": "regulatory"
     },
     {
-      "title": "WHO JECFA database home",
-      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/",
+      "title": "WHO JECFA SearchChemical API query for glutamate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/glutamate",
       "type": "database"
     },
     {
-      "title": "WHO JECFA chemical entry: MONOSODIUM L-GLUTAMATE (ID 2257)",
+      "title": "WHO JECFA Chemical 2257 (MONOSODIUM L-GLUTAMATE)",
       "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2257",
       "type": "database"
     },
@@ -158,34 +163,39 @@
       "type": "database"
     },
     {
-      "title": "IARC list application dataset script",
+      "title": "IARC list dataset script",
       "url": "https://webapi.iarc.who.int/loc/loc.app.js",
       "type": "database"
     },
     {
-      "title": "The safety of monosodium glutamate demonstrated in 28-day and 90-day dietary toxicity studies with Sprague-Dawley rats (2025)",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40571242/",
+      "title": "Approach for systematically assessing study reliability and relevance in evaluations of monosodium glutamate safety",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41030520/",
       "type": "study"
     },
     {
-      "title": "Evaluation of the Effects of Monosodium Glutamate Overconsumption on the Functions of the Liver, Kidney, and Heart of Male Rats (2025)",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40407528/",
+      "title": "Monosodium glutamate is associated with dose-dependent reproductive toxicity and sperm dysfunction in male wistar rats",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41060891/",
       "type": "study"
     },
     {
-      "title": "Association between monosodium glutamate consumption with changes in gut microbiota and related metabolic dysbiosis - A systematic review (2024)",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/39139924/",
+      "title": "Effect of parental perinatal exposure to L-glutamate monosodium salt monohydrate on developmental neurotoxicity in rat offspring",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40570974/",
+      "type": "study"
+    },
+    {
+      "title": "Monosodium glutamate: A hidden risk factor for obesity?",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39914377/",
       "type": "review"
     },
     {
-      "title": "Monosodium Glutamate Intake and Risk Assessment in China Nationwide, and a Comparative Analysis Worldwide (2023)",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/37299405/",
-      "type": "study"
+      "title": "A review of the implications of maternal monosodium glutamate consumption on offspring health",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40651333/",
+      "type": "review"
     },
     {
-      "title": "Multicenter, double-blind, placebo-controlled, multiple-challenge evaluation of reported reactions to monosodium glutamate (2000)",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/11080723/",
-      "type": "study"
+      "title": "The umami taste: from discovery to clinical use",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27387211/",
+      "type": "review"
     }
   ]
 }

@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T02:57:10+00:00",
+    "prompt_version": "1.0"
+  },
+  "identity": {
+    "e_number": "E1200",
+    "name": "Polydextrose",
+    "cas_numbers": [
+      "68424-04-4"
+    ],
+    "synonyms": [
+      "poly[dextrose]",
+      "modified polydextroses",
+      "polydextrose-A",
+      "polydextrose-N",
+      "INS 1200"
+    ],
+    "chemical_class": "Synthetic randomly bonded glucose polymer (polymerized dextrose)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "bulking agent",
+    "secondary_categories": [
+      "texturizer",
+      "humectant",
+      "low-digestible carbohydrate/fiber replacer"
+    ],
+    "mechanism": "Mostly not absorbed intact in the small intestine; partially fermented in the colon to short-chain fatty acids, providing bulk and reduced caloric impact compared with sugars.",
+    "common_food_categories": [
+      "sugar substitutes",
+      "salad dressings",
+      "frozen dairy desserts and fruit ices",
+      "food supplements",
+      "tabletop sweeteners"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA (2021) concluded there is no need for a numerical ADI for polydextrose (E1200)."
+      },
+      "last_evaluation_year": 2021,
+      "key_finding": "No concern regarding genotoxicity or carcinogenicity; no need for a numerical ADI."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.841",
+      "notes": "Polydextrose is listed as a direct food additive under specified conditions of use and exclusions (including baby foods and infant formulas) in this CFR section; this citation is not a GRAS listing."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA database entry lists ADI as 'not specified' for polydextrose."
+      },
+      "last_evaluation_year": 1987
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "High acute intakes can cause gastrointestinal intolerance (gas, bloating, laxation/diarrhea), consistent with partial colonic fermentation.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009404/",
+          "https://pubmed.ncbi.nlm.nih.gov/37078654/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent human trials focused on gut/constipation outcomes and infant formula tolerance did not identify major new systemic toxicity signals in reviewed abstracts.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41527066/",
+          "https://pubmed.ncbi.nlm.nih.gov/38274477/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2021 found no concern regarding genotoxicity.",
+      "EFSA 2021 found no concern regarding carcinogenicity from available long-term studies.",
+      "JECFA ADI listed as not specified."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "toddlers",
+        "children",
+        "high consumers of supplements/tabletop sweeteners"
+      ],
+      "notes": "EFSA did not establish a numerical ADI, so standard ADI exceedance comparison is not directly applicable; highest modeled exposures were in younger age groups."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.84,
+    "rationale": "Regulatory evaluations are favorable (EFSA no numerical ADI needed; JECFA ADI not specified; FDA-approved uses under 21 CFR 172.841), but dose-related GI intolerance is credible at high acute intakes.",
+    "key_factors": [
+      "EFSA 2021: no genotoxicity/carcinogenicity concern",
+      "JECFA ADI not specified",
+      "US CFR permits use with explicit conditions",
+      "GI side effects occur at higher bolus doses"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of polydextrose (E 1200) as a food additive",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/6361",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed record: Re-evaluation of polydextrose (E 1200) as a food additive",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33369253/",
+      "type": "database"
+    },
+    {
+      "title": "PMC full text: Re-evaluation of polydextrose (E 1200) as a food additive",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009404/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Title 21 Section 172.841 Polydextrose",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-172/subpart-I/section-172.841",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA Food Additives Database: Polydextrose",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3389",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs site",
+      "url": "https://monographs.iarc.who.int/",
+      "type": "database"
+    },
+    {
+      "title": "IARC Publications site",
+      "url": "https://publications.iarc.fr/",
+      "type": "database"
+    },
+    {
+      "title": "IARC Search page",
+      "url": "https://www.iarc.who.int/search",
+      "type": "database"
+    },
+    {
+      "title": "Safety and tolerance of a novel infant formula containing GOS and polydextrose",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41527066/",
+      "type": "study"
+    },
+    {
+      "title": "Effects of polydextrose and partially hydrolyzed guar gum on stool consistency and frequency",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37078654/",
+      "type": "study"
+    },
+    {
+      "title": "Effect of prebiotic polydextrose supplementation on fecal p-cresol and constipation in hemodialysis patients",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38274477/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed search query: polydextrose safety",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=polydextrose+safety",
+      "type": "database"
+    }
+  ]
+}
