@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T08:53:51Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E228",
+    "name": "Potassium hydrogen sulfite",
+    "cas_numbers": [
+      "7773-03-7"
+    ],
+    "synonyms": [
+      "Potassium bisulfite",
+      "Potassium hydrogen sulphite",
+      "Potassium acid sulfite"
+    ],
+    "chemical_class": "Inorganic sulfite (hydrogen sulfite) salt",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "antioxidant"
+    ],
+    "mechanism": "Releases sulfite/SO2-equivalent species in food, which suppress oxidative deterioration and preservative-relevant spoilage reactions.",
+    "common_food_categories": [
+      "wine and wine products",
+      "preserved tomatoes",
+      "mixed alcoholic beverages",
+      "dried vegetables",
+      "dried fruit"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "restricted",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2022 follow-up for sulfur dioxide/sulfites (E220-E228) concluded no ADI could be established; EFSA 2016 had previously set a group ADI of 0.7 mg/kg bw/day as SO2 equivalents."
+      },
+      "last_evaluation_year": 2022,
+      "key_finding": "EFSA 2022 reported that no ADI could be established and MOE analysis indicated safety concern for high consumers in all population groups and for mean consumers in infants, toddlers and children."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.3862",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 0.7,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI expressed as sulfur dioxide for sulfur dioxide and related sulfites, including potassium hydrogen sulfite (reported as 0-0.7 mg/kg bw/day)."
+      },
+      "last_evaluation_year": 2008
+    },
+    "iarc_classification": "Group 3",
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "allergenic",
+        "summary": "Sulfite-sensitive individuals, especially a subset of asthmatic patients, can experience adverse reactions; EFSA 2016 stated ADI-based assessment did not cover sulfite-sensitive people.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "EFSA Journal 2016;14(4):4438",
+          "PMID: 35787011",
+          "PMID: 39948615"
+        ]
+      },
+      {
+        "category": "genotoxic",
+        "summary": "A 2024 PubMed-indexed study reported sulfite preservatives increased DNA damage in human TK6 cells when incubated with mouse fecal supernatants, suggesting microbiome-modulated genotoxic potential.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID: 38502991"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "EFSA 2016 identified increased gastric hyperplasia incidence in rats in a 2-year study as the critical endpoint used to derive the earlier group ADI.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "EFSA Journal 2016;14(4):4438"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "IARC classifies sulfites and sulfur dioxide as Group 3 (not classifiable as to carcinogenicity to humans)."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "infants",
+        "toddlers",
+        "children",
+        "high consumers in all age groups"
+      ],
+      "notes": "EFSA 2016 estimated exceedance of the former ADI in younger groups; EFSA 2022 MOE analysis indicated concern in high consumers across all groups and in mean consumers for infants/toddlers/children; EFSA 2025 exposure update reported upper chronic estimates up to 5.8 mg/kg bw/day in infants (SO2 equivalents)."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "high",
+    "confidence": 0.72,
+    "rationale": "EFSA's latest opinion could not establish an ADI and identified safety concerns at observed exposure patterns, especially for children and high consumers; this outweighs older less-restrictive assessments, although no broad ban is in place.",
+    "key_factors": [
+      "EFSA 2022: no ADI established for E220-E228",
+      "MOE-based concern for high consumers in all population groups",
+      "Exposure pressure remains high in younger populations",
+      "Known sulfite-sensitive subgroup (not protected by standard ADI framing)",
+      "No IARC carcinogenic signal (Group 3) and no broad jurisdictional ban"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of sulfur dioxide and sulfites (E 220-228) as food additives (EFSA Journal, 2016)",
+      "url": "https://onlinelibrary.wiley.com/doi/epdf/10.2903/j.efsa.2016.4438",
+      "type": "regulatory"
+    },
+    {
+      "title": "Follow-up of the re-evaluation of sulfur dioxide (E 220) and sulfites (E 221-228) as food additives in light of an extension of use (EFSA Journal, 2022)",
+      "url": "https://onlinelibrary.wiley.com/doi/epdf/10.2903/j.efsa.2022.7355",
+      "type": "regulatory"
+    },
+    {
+      "title": "Dietary exposure to sulfur dioxide-sulfites (E220-228) from their use as food additives (EFSA Supporting Publications, 2025)",
+      "url": "https://onlinelibrary.wiley.com/doi/epdf/10.2903/sp.efsa.2025.EN-9187",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 182.3862 Potassium bisulfite",
+      "url": "https://www.ecfr.gov/current/title-21/section-182.3862",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 582.3616 Potassium bisulfite",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-E/part-582/subpart-D/section-582.3616",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA database entry: POTASSIUM HYDROGEN SULFITE (Chemical 2445)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2445",
+      "type": "database"
+    },
+    {
+      "title": "JECFA database entry: SULFUR DIOXIDE (Chemical 289)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/289",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list data app (contains Sulfites and Sulfur dioxide entries)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Sulfite preservatives are genotoxic: possible role of microbiome (PMID: 38502991)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38502991/",
+      "type": "study"
+    },
+    {
+      "title": "Sulfite Intolerance: Pathophysiology and Clinical Management (PMID: 35787011)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35787011/",
+      "type": "review"
+    },
+    {
+      "title": "Exposure to sulfites and associated health effects: an update (PMID: 39948615)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39948615/",
+      "type": "review"
+    },
+    {
+      "title": "PubChem Compound: Potassium Bisulfite (CID 23663620)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/23663620",
+      "type": "database"
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T09:10:26Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E231",
+    "name": "Orthophenyl phenol (2-phenylphenol)",
+    "cas_numbers": [
+      "90-43-7"
+    ],
+    "synonyms": [
+      "o-Phenylphenol",
+      "2-Phenylphenol",
+      "Biphenyl-2-ol",
+      "(1,1'-Biphenyl)-2-ol",
+      "2-Hydroxydiphenyl",
+      "OPP"
+    ],
+    "chemical_class": "Phenolic aromatic compound (hydroxybiphenyl)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "post-harvest surface antimicrobial",
+      "fungistatic treatment",
+      "food-contact sanitizing active (US CFR context)"
+    ],
+    "mechanism": "Phenolic antimicrobial activity on treated surfaces, reducing microbial/fungal growth.",
+    "common_food_categories": [
+      "citrus fruit surface treatment",
+      "pear post-harvest treatment (residue context)",
+      "food-contact surface sanitizing systems"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "restricted",
+      "adi": {
+        "value": 0.4,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA peer-review PRAPeR meeting text (2008, published within EFSA-Q-2008-392 evidence files) indicates ADI changed to 0.4 mg/kg bw/day and no ARfD set."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "Latest published EFSA output found is 2017 MRL review; consultation materials indicate no consumer-risk signal in modeled scenarios but MRLs remained tentative pending metabolite toxicology clarification."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 175.105; 21 CFR 176.210; 21 CFR 177.1632; 21 CFR 178.1010",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 0.4,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA database entry for INS 231 lists ADI 0-0.4 mg/kg bw (1999), evaluation year 2000."
+      },
+      "last_evaluation_year": 2000
+    },
+    "iarc_classification": "Group 3",
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "carcinogenic",
+        "summary": "Regulatory toxicology history includes high-dose rodent urinary bladder findings; EFSA peer-review discussions addressed uncertainty factors and threshold interpretation.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://open.efsa.europa.eu/api/study/getEvidence",
+          "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2008-392"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent zebrafish studies report developmental, oxidative-stress, and cardiotoxic effects at experimental exposures.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41365378/",
+          "https://pubmed.ncbi.nlm.nih.gov/37268146/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Population-based analysis reported associations of urinary OPP (with other phenols) with diabetes/prediabetes outcomes and mortality; causality is not established.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/38653021/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA entry states no safety concern at current intake levels for flavoring-agent use context.",
+      "EFSA dossier calculations reported TMDI about 10 µg/kg bw/day (about 5% of ADI) with no ARfD/ADI exceedance in assessed scenarios."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "In retrieved EFSA residue-assessment text, modeled long/short-term intakes were below ADI/ARfD thresholds for assessed commodities."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.63,
+    "rationale": "Regulatory ADI frameworks and modeled intake margins are reassuring, but EFSA workflow caveats (metabolite toxicology uncertainty) plus animal/mechanistic signals support caution above a purely limited-risk classification.",
+    "key_factors": [
+      "EFSA peer-review ADI management with no ARfD set for OPP",
+      "JECFA ADI 0-0.4 mg/kg bw and no-safety-concern wording at current intake in specific use context",
+      "EFSA MRL workflow noted tentative aspects pending metabolite data",
+      "Recent mechanistic and model-organism toxicity publications"
+    ]
+  },
+  "sources": [
+    {
+      "title": "OpenEFSA substance record: 2-phenylphenol",
+      "url": "https://open.efsa.europa.eu/api/substance/get?termExtendedName=2-phenylphenol",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA substance questions list: 2-phenylphenol",
+      "url": "https://open.efsa.europa.eu/api/substance/getQuestions?termExtendedName=2-phenylphenol",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA question details EFSA-Q-2010-01068",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2010-01068",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA question details EFSA-Q-2008-392",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2008-392",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA study evidence download endpoint",
+      "url": "https://open.efsa.europa.eu/api/study/getEvidence",
+      "type": "database"
+    },
+    {
+      "title": "eCFR Title 21 XML snapshot",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA search by partial name: phenylphenol",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/phenylphenol",
+      "type": "database"
+    },
+    {
+      "title": "JECFA Chemical 3846 (o-Phenylphenol, INS 231)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3846",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA Chemical 5232 (Sodium o-Phenylphenol, INS 232)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/5232",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC LOC dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 41365378",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41365378/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 37268146",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37268146/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 38653021",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38653021/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 38101641",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38101641/",
+      "type": "study"
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T03:32:50Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E124",
+    "name": "Ponceau 4R",
+    "cas_numbers": [
+      "2611-82-7"
+    ],
+    "synonyms": [
+      "Cochineal Red A",
+      "New Coccine",
+      "C.I. Food Red 7",
+      "Acid Red 18",
+      "Food Red No. 102"
+    ],
+    "chemical_class": "Synthetic sulfonated azo dye (trisodium naphthalenesulfonate azo colorant)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "food color",
+    "secondary_categories": [
+      "color additive",
+      "azo dye"
+    ],
+    "mechanism": "Azo-conjugated chromophore absorbs visible light and imparts red coloration in food matrices.",
+    "common_food_categories": [
+      "confectionery",
+      "flavored drinks",
+      "desserts",
+      "colored processed foods"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "restricted",
+      "adi": {
+        "value": 0.7,
+        "unit": "mg/kg bw/day",
+        "basis": "Set in EFSA 2009 re-evaluation for Ponceau 4R (E124); retained in subsequent refined exposure statement context."
+      },
+      "last_evaluation_year": 2015,
+      "key_finding": "EFSA retained ADI-based authorization, and 2015 revised exposure estimates no longer exceeded ADI in assessed populations using updated use levels."
+    },
+    "fda": {
+      "status": "not_evaluated",
+      "cfr_citation": "21 CFR 170.30(g); 21 CFR 70.5; 21 CFR 74.340",
+      "notes": "eCFR Title 21 search for Ponceau 4R returned no listing; no Ponceau 4R/New Coccine/Cochineal Red A entry was found in consulted Title 21 content."
+    },
+    "jecfa": {
+      "adi": {
+        "value": 4,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA ADI reported as 0-4 mg/kg bw; 2011 evaluation concluded no need to revise ADI."
+      },
+      "last_evaluation_year": 2011
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "neurotoxic",
+        "summary": "Recent and legacy nonclinical studies reported behavioral/oxidative-stress signals, including C. elegans and rodent findings; one modern rodent study involved an artificial-color mixture that included Ponceau 4R.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID:37254351",
+          "PMID:31679476",
+          "PMID:16782257"
+        ]
+      },
+      {
+        "category": "genotoxic",
+        "summary": "EFSA 2009 identified unresolved concern context tied to possible unknown low-level constituents from genotoxicity datasets, despite no direct concern for the major dye itself.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "EFSA Journal 2009;7(11):1328"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "A 2024 review judged current ADIs mostly safe but noted many official assessments are old and may need updates with newer evidence.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID:39058118"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA 2011 concluded existing ADI of 0-4 mg/kg bw remained appropriate and estimated exposure did not present a health concern.",
+      "EFSA 2015 revised exposure estimates did not exceed ADI in assessed populations using updated use levels.",
+      "Long-term rat study (PMID 3692403) did not show treatment-related increase in tumor incidence."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "children",
+        "high consumers of highly colored foods/beverages"
+      ],
+      "notes": "Scenario dependent: conservative child high-percentile assumptions can exceed ADI, while refined exposure assessments have reported lower estimates."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.69,
+    "rationale": "E124 remains ADI-managed in EFSA and JECFA systems, but EFSA's lowered ADI, historical high-percentile child exceedance scenarios, and continuing nonclinical neuro/oxidative signals support a middle-risk tier rather than limited or high.",
+    "key_factors": [
+      "EFSA ADI set at 0.7 mg/kg bw/day in re-evaluation",
+      "EFSA 2015 refined exposure no longer exceeded ADI",
+      "JECFA ADI remains 0-4 mg/kg bw with 2011 no-health-concern conclusion",
+      "No IARC monograph classification identified in checked resources",
+      "No Title 21 eCFR listing found for Ponceau 4R in U.S. search"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal (2009): Scientific Opinion on the Re-evaluation of Ponceau 4R (E124)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/1328",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal (2015): Statement on the revised exposure assessment for Ponceau 4R (E124)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4436",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API search (Title 21, query: Ponceau 4R)",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=%22Ponceau%204R%22%20title:21&per_page=20",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR versioner full Title 21 XML (2026-02-19)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 70.5 General restrictions on use of color additives",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-70/section-70.5",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 170.30 Eligibility for classification as GRAS",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-170/section-170.30",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 74.340 FD&C Red No. 40",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-74/subpart-A/section-74.340",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA chemical entry: PONCEAU 4R (ID 4941)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4941",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA API partial-name search: ponceau",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/ponceau",
+      "type": "database"
+    },
+    {
+      "title": "IARC: Agents Classified by the IARC Monographs",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC WP REST search query for Ponceau 4R",
+      "url": "https://monographs.iarc.who.int/wp-json/wp/v2/search?search=ponceau%204r&per_page=20",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search: (Ponceau 4R OR Cochineal Red A OR E124) food additive safety",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%28Ponceau+4R+OR+Cochineal+Red+A+OR+E124%29+food+additive+safety",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 39058118 (2024 review)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39058118/",
+      "type": "review"
+    },
+    {
+      "title": "PubMed PMID 37254351 (2023 C. elegans study)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37254351/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 31679476 (2021 prenatal AFCA mixture study)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31679476/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 16782257 (2006 Ponceau 4R mouse study)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16782257/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 3692403 (1987 long-term rat study)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3692403/",
+      "type": "study"
+    },
+    {
+      "title": "PubChem Ponceau 4R properties/synonyms",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/ponceau%204r/property/Title,IUPACName,MolecularFormula/JSON",
+      "type": "database"
+    }
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T06:58:50Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E174",
+    "name": "Silver",
+    "cas_numbers": [
+      "7440-22-4"
+    ],
+    "synonyms": [
+      "Silver",
+      "Metallic silver",
+      "Argentum",
+      "INS 174",
+      "CI 77820"
+    ],
+    "chemical_class": "Elemental metal food colour",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "color (decorative surface coating)",
+    "secondary_categories": [
+      "decorative metallic appearance",
+      "confectionery surface decoration"
+    ],
+    "mechanism": "Metallic silver flakes/particles reflect light and create a lustrous silver appearance on food surfaces.",
+    "common_food_categories": [
+      "Decorative external coating of confectionery/chocolate",
+      "Decorative use in some liqueur applications"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "restricted",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2016 reported no numerical ADI could be established; EFSA 2025 follow-up could not conclude on safety due inadequate data."
+      },
+      "last_evaluation_year": 2025,
+      "key_finding": "Latest EFSA follow-up (2025) concluded that submitted data were inadequate and safety of E174 could not be concluded; nanoscale risk assessment is required."
+    },
+    "fda": {
+      "status": "not_evaluated",
+      "cfr_citation": "21 CFR 73.2500 (cosmetics); no silver GRAS listing found in 21 CFR Parts 182/184 for food use",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA silver record shows ADI outcome as decision postponed (1977); 2018 entry notes not re-evaluated and provisions withdrawn at CCFA50."
+      },
+      "last_evaluation_year": 2018
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "genotoxic",
+        "summary": "EFSA follow-up reported that submitted genotoxicity evidence for E174 was inadequate for a safety conclusion.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "EFSA Journal 2025 follow-up (PMID: 40270597)",
+          "https://pubmed.ncbi.nlm.nih.gov/40270597/"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "Reviews of nanoparticle food additives including E174 report oral-exposure associations with gastrointestinal and microbiota-related effects and oxidative-stress-mediated toxicity hypotheses.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "Food Chem Toxicol 2020 (PMID: 33068655)",
+          "https://pubmed.ncbi.nlm.nih.gov/33068655/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Material-characterization studies on market E174 and decorated products found substantial nanoparticle fractions and release of silver nanoparticles from pastry decoration materials.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "Food Addit Contam A 2020 (PMID: 32946346)",
+          "J Agric Food Chem 2015 (PMID: 25768118)",
+          "https://pubmed.ncbi.nlm.nih.gov/32946346/",
+          "https://pubmed.ncbi.nlm.nih.gov/25768118/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "children",
+        "high consumers of decorated confectionery"
+      ],
+      "notes": "No numeric ADI is available, so conventional ADI exceedance cannot be quantified; EFSA identified unresolved uncertainty and could not conclude safety in 2025."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "high",
+    "confidence": 0.77,
+    "rationale": "Latest EFSA assessment was unable to conclude safety, with unresolved particle characterization and toxicology gaps, and no numerical ADI available for routine margin-based risk management.",
+    "key_factors": [
+      "EFSA 2016: no numerical ADI could be established",
+      "EFSA 2025: unable to conclude on safety of E174",
+      "Evidence of nanoparticle fractions/release in E174-containing products",
+      "JECFA silver record lacks a positive ADI allocation and notes withdrawn provisions context",
+      "No U.S. food GRAS listing identified in CFR Parts 182/184"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal page: Re-evaluation of silver (E 174) as food additive (2016)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4364",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal page: Follow-up of the re-evaluation of silver (E 174) (2025)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/9316",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed: Follow-up of the re-evaluation of silver (E 174) as a food additive (PMID 40270597)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40270597/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API documentation",
+      "url": "https://www.ecfr.gov/developers/documentation/api/v1",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API: 21 CFR 73.2500 Silver",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?chapter=I&subchapter=A&part=73&section=73.2500",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR Part 73",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?chapter=I&subchapter=A&part=73",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR Part 182 (GRAS)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?chapter=I&subchapter=B&part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR Part 184 (Direct food substances affirmed as GRAS)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?chapter=I&subchapter=B&part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database home",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API search: silver",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/silver",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA SILVER record (ID 3411)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3411",
+      "type": "database"
+    },
+    {
+      "title": "IARC agents classified page",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list-of-classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC classification dataset bundle",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: Food additives containing nanoparticles induce gastrotoxicity... (PMID 33068655)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33068655/",
+      "type": "review"
+    },
+    {
+      "title": "PubMed: Physico-chemical characterisation of silver (nano)particles in E174 (PMID 32946346)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32946346/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Release of silver nanoparticles from pastry decoration (PMID 25768118)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25768118/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Interactions between Nanoparticles and Intestine (PMID 35457155)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35457155/",
+      "type": "review"
+    },
+    {
+      "title": "PubChem Silver synonyms/CAS (CID 23954)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/23954/synonyms/JSON",
+      "type": "database"
+    }
+  ]
+}

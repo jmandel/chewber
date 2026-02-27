@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T12:47:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E338",
+    "name": "Phosphoric acid",
+    "cas_numbers": [
+      "7664-38-2"
+    ],
+    "synonyms": [
+      "Orthophosphoric acid",
+      "o-Phosphoric acid",
+      "Acidum phosphoricum"
+    ],
+    "chemical_class": "Inorganic mineral acid (phosphorus oxyacid)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "acid",
+      "antioxidant synergist",
+      "sequestrant",
+      "synergist"
+    ],
+    "mechanism": "Lowers food pH and contributes tartness; phosphate species can also act as sequestrants/synergists that influence formulation stability.",
+    "common_food_categories": [
+      "cola and other acidic soft drinks",
+      "processed foods requiring pH control",
+      "food categories where phosphates are technologically needed for acidification/stabilization"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 40,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2019 group ADI for phosphorus from phosphates (including E338), expressed as phosphorus."
+      },
+      "last_evaluation_year": 2019,
+      "key_finding": "EFSA re-evaluation set a group ADI of 40 mg phosphorus/kg bw/day and identified exceedance scenarios mainly in infants/toddlers and some brand-loyal high consumers."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.1073",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 70,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA chemical record reports group MTDI 70 mg/kg bw (as phosphorus) for phosphorus from all sources."
+      },
+      "last_evaluation_year": 1982
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "A case-control study reported higher CKD odds with drinking two or more colas/day (colas contain phosphoric acid); non-cola carbonated beverages were not associated.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/17525693/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "A 2024 randomized cross-over trial in healthy adults found that meals with inorganic phosphate additives altered acute calcium-phosphate homeostasis compared with comparator meals.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/39238566/"
+        ]
+      },
+      {
+        "category": "cardiovascular",
+        "summary": "Recent CKD-focused review literature links higher inorganic phosphate intake (including additives) with pathways relevant to vascular calcification and cardiovascular risk in CKD populations.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/40111420/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA and JECFA both provide quantitative intake thresholds for phosphate exposure rather than concluding outright prohibition.",
+      "FDA lists phosphoric acid as GRAS in 21 CFR 182.1073 under good manufacturing practice conditions.",
+      "No IARC monograph classification entry for phosphoric acid was identified in the current IARC classification dataset reviewed."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "infants",
+        "toddlers",
+        "children and adolescents in brand-loyal/high-consumer scenarios",
+        "people with CKD or impaired phosphate handling"
+      ],
+      "notes": "EFSA reported exceedance of the 40 mg phosphorus/kg bw/day group ADI in some high-exposure scenarios, especially younger age groups."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.8,
+    "rationale": "Regulators continue to allow E338, but EFSA set a finite group ADI and documented exceedance in vulnerable/high-consuming younger populations; human mechanistic and observational literature provides additional concern signals at higher inorganic phosphate intakes.",
+    "key_factors": [
+      "EFSA 2019 group ADI: 40 mg phosphorus/kg bw/day",
+      "EFSA exceedance scenarios in infants/toddlers/high consumers",
+      "FDA GRAS status with GMP condition in 21 CFR 182.1073",
+      "JECFA group MTDI 70 mg/kg bw (as phosphorus)",
+      "No IARC classification entry for phosphoric acid in reviewed list"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of phosphates (E 338-341, E 343, E 450-452) as food additives (EFSA Journal, 2019)",
+      "url": "https://open.efsa.europa.eu/publications/17577",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal shortlink page for publication 5674",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5674",
+      "type": "regulatory"
+    },
+    {
+      "title": "Wiley EFSA article page for DOI 10.2903/j.efsa.2019.5674",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2019.5674",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API titles metadata (Title 21)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/titles.json",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full Title 21 XML (includes 21 CFR 182.1073)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR current section URL attempted for 21 CFR 182.1073",
+      "url": "https://www.ecfr.gov/current/title-21/section-182.1073",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA database entry: PHOSPHORIC ACID (ID 2530)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2530",
+      "type": "database"
+    },
+    {
+      "title": "JECFA database entry: ORTHOPHOSPHORIC ACID (ID 1777)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1777",
+      "type": "database"
+    },
+    {
+      "title": "JECFA API partial-name search for phosphoric acid",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/phosphoric%20acid",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classification dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Inorganic phosphate additives in meals... randomized cross-over studies in healthy adults (2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39238566/",
+      "type": "study"
+    },
+    {
+      "title": "Habitual high phosphorus intakes and foods with phosphate additives... (2009)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19216809/",
+      "type": "study"
+    },
+    {
+      "title": "Carbonated beverages and chronic kidney disease (2007)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17525693/",
+      "type": "study"
+    },
+    {
+      "title": "Dietary Phosphorus and Metabolic Health in CKD and ESKD (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40111420/",
+      "type": "review"
+    },
+    {
+      "title": "Common Dietary Sources of Natural and Artificial Phosphate in Food (2022)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35288876/",
+      "type": "review"
+    },
+    {
+      "title": "PubChem synonyms for phosphoric acid (CID 1004)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/1004/synonyms/JSON",
+      "type": "database"
+    }
+  ]
+}

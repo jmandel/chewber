@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T07:21:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E203",
+    "name": "Calcium sorbate",
+    "cas_numbers": [
+      "7492-55-9"
+    ],
+    "synonyms": [
+      "Calcium salts of trans,trans-2,4-hexadienoic acid",
+      "Calcium bis((2E,4E)-hexa-2,4-dienoate)",
+      "Calcium sorbate"
+    ],
+    "chemical_class": "Sorbic acid calcium salt preservative (unsaturated carboxylate)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "antifungal",
+      "antimicrobial"
+    ],
+    "mechanism": "Sorbate preservatives are most effective in weakly acidic foods, where sorbic acid/sorbate activity inhibits spoilage organisms such as yeasts and moulds.",
+    "common_food_categories": [
+      "bread and rolls",
+      "fine bakery wares",
+      "flavoured drinks",
+      "sauces",
+      "processed cheese"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "withdrawn",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA (2015) excluded calcium sorbate (E203) from the temporary group ADI; temporary ADI 3 mg/kg bw/day was set for E200/E202 only."
+      },
+      "last_evaluation_year": 2015,
+      "key_finding": "EFSA could not confirm E203 safety due to missing genotoxicity data; EU subsequently removed E203 from approved additive lists (applies from 12 August 2018)."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.3225 (food); 21 CFR 582.3225 (animal feed)",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 25,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI 0-25 mg/kg bw (expressed as sorbic acid) for sorbic acid and calcium/potassium/sodium sorbates."
+      },
+      "last_evaluation_year": 1973
+    },
+    "iarc_classification": null,
+    "notable_bans": [
+      "European Union: calcium sorbate (E203) removed from the Union list of approved food additives; application date 12 August 2018 (Regulation (EU) 2018/98)."
+    ]
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "genotoxic",
+        "summary": "EFSA identified a critical genotoxicity data gap for calcium sorbate and could not confirm safety, leading to exclusion from EFSA group ADI and later EU withdrawal.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://europepmc.org/article/PMC/PMC7009115",
+          "https://eur-lex.europa.eu/eli/reg/2018/98/oj/eng"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Direct recent calcium sorbate toxicology is sparse; broader sorbate literature shows mixed findings (some negative older genotoxicity studies, but newer preservative literature reports cytogenotoxicity signals for related preservatives under some conditions).",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/11271702/",
+          "https://pubmed.ncbi.nlm.nih.gov/10956157/",
+          "https://pubmed.ncbi.nlm.nih.gov/41400292/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "FDA lists calcium sorbate as GRAS in 21 CFR 182.3225 when used according to GMP.",
+      "JECFA retains a group ADI of 0-25 mg/kg bw (as sorbic acid) that includes calcium sorbate."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "toddlers",
+        "children",
+        "high consumers of sorbate-containing processed foods"
+      ],
+      "notes": "EFSA 2015 sorbate-group exposure estimates reported exceedance of the temporary 3 mg/kg bw/day ADI in some high-consumption child scenarios; this was before EU removal of E203."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "high",
+    "confidence": 0.74,
+    "rationale": "The strongest evidence is regulatory: EFSA could not confirm safety of E203 due to missing genotoxicity data, and the EU removed E203 from authorized additive lists. This matches the high-tier trigger in the provided framework even though FDA/JECFA status remains permissive.",
+    "key_factors": [
+      "EFSA 2015 inability to confirm safety for E203",
+      "EU withdrawal from authorized list (effective 12 August 2018)",
+      "No IARC classification found for calcium sorbate",
+      "FDA GRAS status under GMP",
+      "JECFA group ADI includes calcium sorbate"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal 2015 re-evaluation of E200, E202, E203",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4144",
+      "type": "regulatory"
+    },
+    {
+      "title": "Europe PMC mirror of EFSA 2015 opinion (PMC7009115)",
+      "url": "https://europepmc.org/article/PMC/PMC7009115",
+      "type": "database"
+    },
+    {
+      "title": "EFSA follow-up opinion (2019) for E200/E202",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5625",
+      "type": "regulatory"
+    },
+    {
+      "title": "Europe PMC mirror of EFSA 2019 follow-up (PMC7009157)",
+      "url": "https://europepmc.org/article/PMC/PMC7009157",
+      "type": "database"
+    },
+    {
+      "title": "Commission Regulation (EU) 2018/98 as regards calcium sorbate (E203)",
+      "url": "https://eur-lex.europa.eu/eli/reg/2018/98/oj/eng",
+      "type": "regulatory"
+    },
+    {
+      "title": "Commission Regulation (EU) No 231/2012 additive specifications",
+      "url": "https://eur-lex.europa.eu/eli/reg/2012/231/oj/eng",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Title 21 versions index (sorbate sections)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/versions/title-21.json",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Title 21 full XML snapshot (contains 182.3225 and 582.3225)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA chemical entry for calcium sorbate (ID 2088)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2088",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API search result for calcium sorbate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/calcium%20sorbate",
+      "type": "database"
+    },
+    {
+      "title": "IARC list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classification dataset bundle (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubChem calcium sorbate properties",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/calcium%20sorbate/property/Title,IUPACName,MolecularFormula,MolecularWeight,CanonicalSMILES/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem calcium sorbate synonyms",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/calcium%20sorbate/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "Food applications of sorbic acid and its salts",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/2253815/",
+      "type": "review"
+    },
+    {
+      "title": "Mutagenicity and genotoxicity of sorbic acid-amine reaction products",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11271702/",
+      "type": "study"
+    },
+    {
+      "title": "Genotoxicity study of reaction products of sorbic acid",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10956157/",
+      "type": "study"
+    },
+    {
+      "title": "Thermal behavior of food preservative sorbic acid and its derivates",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32795858/",
+      "type": "study"
+    },
+    {
+      "title": "Safety assessment of sodium acetate, sodium diacetate and potassium sorbate food additives",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29622200/",
+      "type": "study"
+    },
+    {
+      "title": "Assessment of hepato-renal damage and genotoxicity induced by long-term exposure to five permitted food additives in rats",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29981020/",
+      "type": "study"
+    },
+    {
+      "title": "Cytogenotoxicity of food preservatives in mammalian cells: A systematic review",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41400292/",
+      "type": "review"
+    }
+  ]
+}

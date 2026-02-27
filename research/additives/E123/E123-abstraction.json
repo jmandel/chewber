@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T03:25:40+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E123",
+    "name": "Amaranth",
+    "cas_numbers": [
+      "915-67-3"
+    ],
+    "synonyms": [
+      "FD&C Red No. 2",
+      "Acid Red 27",
+      "C.I. Food Red 9",
+      "Azorubin S",
+      "Naphtol Rot S"
+    ],
+    "chemical_class": "Synthetic sulfonated azo dye (trisodium azo colorant)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "food color",
+    "secondary_categories": [
+      "color additive",
+      "azo dye"
+    ],
+    "mechanism": "Conjugated azo chromophore absorbs visible light and imparts red coloration; sulfonate groups increase water solubility in beverages and other aqueous foods.",
+    "common_food_categories": [
+      "soft drinks",
+      "powdered/reconstituted juice drinks",
+      "confectionery",
+      "other colored processed foods"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "restricted",
+      "adi": {
+        "value": 0.15,
+        "unit": "mg/kg bw/day",
+        "basis": "Temporary ADI set in EFSA 2010 re-evaluation and used in later refined exposure assessment."
+      },
+      "last_evaluation_year": 2013,
+      "key_finding": "EFSA did not confirm carcinogenic/genotoxic concern in its 2010 re-evaluation, but lowered ADI and identified potential exceedance in high consumers (especially children) under some scenarios."
+    },
+    "fda": {
+      "status": "banned",
+      "cfr_citation": "21 CFR 81.10(f); 21 CFR 81.30(j)(1)",
+      "notes": "Not GRAS for food use; provisional listing for FD&C Red No. 2 was terminated and certificates were cancelled under Part 81."
+    },
+    "jecfa": {
+      "adi": {
+        "value": 0.5,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA ADI range reported as 0-0.5 mg/kg bw."
+      },
+      "last_evaluation_year": 1984
+    },
+    "iarc_classification": null,
+    "notable_bans": [
+      "United States (FD&C Red No. 2 food use terminated/certificates cancelled under 21 CFR Part 81)"
+    ]
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "neurotoxic",
+        "summary": "Recent zebrafish study reported dose-dependent developmental and neurobehavioral effects, oxidative stress, and alpha-synuclein-associated changes after amaranth exposure.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID:40738365"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Population-level intake modeling in Brazil found that consumers-only and younger groups can exceed ADI, with adolescents reaching up to about three times ADI in worst-case scenarios.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID:35475754"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Zebrafish embryo data for multiple azo dyes including amaranth showed developmental toxicity at high test concentrations, though authors noted tested levels were above expected human dietary exposure.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:31933405"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2010 reported no evidence supporting carcinogenicity or genotoxicity for amaranth in the reviewed dataset.",
+      "EFSA refined exposure (2013) was mostly below ADI in assessed populations, with exceedance mainly in high-consuming child scenarios."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "children",
+        "adolescents",
+        "high consumers of colored beverages/confectionery"
+      ],
+      "notes": "Exceedance appears scenario-dependent: more common under maximum-permitted-level assumptions and in high-percentile/consumers-only intake models."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.72,
+    "rationale": "Amaranth has ADI-based regulatory acceptance in EFSA/JECFA frameworks, but ADI exceedance in child/high-consumer groups and recent non-clinical neurodevelopmental signals support a cautionary middle tier rather than risk_free/limited.",
+    "key_factors": [
+      "EFSA temporary ADI reduced to 0.15 mg/kg bw/day",
+      "Potential ADI exceedance in child/high-consumer scenarios",
+      "Recent zebrafish neurodevelopmental toxicity signals",
+      "US food-use termination under 21 CFR Part 81",
+      "No specific IARC group classification found in checked IARC resources"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA news (2010): Panel sets ADI for food colour amaranth",
+      "url": "https://www.efsa.europa.eu/en/press/news/ans100723",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal (2010): Scientific Opinion on the re-evaluation of Amaranth (E 123) as a food additive",
+      "url": "https://publications.efsa.europa.eu/en/efsajournal/pub/1647",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Supporting Publication (2013): Refined exposure assessment for Amaranth (E 123)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/443",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API search results for FD&C Red No. 2 (Title 21)",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=%22FD%26C%20Red%20No.%202%22&per_page=100",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 81.10 (Termination of provisional listings of color additives)",
+      "url": "https://www.law.cornell.edu/cfr/text/21/81.10",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 81.30 (Cancellation of certificates)",
+      "url": "https://www.law.cornell.edu/cfr/text/21/81.30",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA chemical entry: AMARANTH (ID 996)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/996",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA API partial-name query for amaranth",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/amaranth",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs: Agents Classified by the IARC Monographs",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC site search endpoint query for amaranth",
+      "url": "https://monographs.iarc.who.int/wp-json/wp/v2/search?search=amaranth&per_page=20",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search: amaranth food color toxicity",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=amaranth+food+color+toxicity",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 40738365 (2025): zebrafish neurotoxicity study",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40738365/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 35475754 (2022): Brazilian intake/risk study",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35475754/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 31933405 (2020): zebrafish embryo azo-dye toxicity study",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31933405/",
+      "type": "study"
+    },
+    {
+      "title": "PubChem CID 13506 properties and synonyms",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/13506/synonyms/JSON",
+      "type": "database"
+    }
+  ]
+}

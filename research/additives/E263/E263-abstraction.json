@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T09:52:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E263",
+    "name": "Calcium acetate",
+    "cas_numbers": [
+      "62-54-4"
+    ],
+    "synonyms": [
+      "Acetate of lime",
+      "Vinegar salts",
+      "Calcium ethanoate"
+    ],
+    "chemical_class": "Calcium salt of acetic acid (organic acetate salt)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "preservative",
+      "firming agent",
+      "stabilizer",
+      "texturizer",
+      "sequestrant",
+      "processing aid"
+    ],
+    "mechanism": "Acts as an acetate buffering/pH-control salt and preservative contributor; calcium ion supports firmness and texture/stabilization functions.",
+    "common_food_categories": [
+      "baked goods",
+      "cheese",
+      "gelatins/puddings/fillings",
+      "sweet sauces/toppings/syrups",
+      "other foods at very low CGMP levels"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No published EFSA food-additive re-evaluation ADI entry identified for E263 in the current EU summary table; E263 listed as permitted and re-evaluation shown as not completed."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "E263 (calcium acetate) appears in the EU summary table of permitted additives; EFSA food-additive re-evaluation fields are blank for E263 as of the 18 Feb 2026 status table."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1185",
+      "notes": "In Part 184 (direct food substances affirmed as GRAS); use is under CGMP with listed maximum as-served levels (e.g., 0.2% baked goods, 0.02% cheese, 0.0001% all other categories)."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not limited"
+      },
+      "last_evaluation_year": 1973
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "Therapeutic-dose calcium-based phosphate binder literature in CKD/dialysis populations reports higher hypercalcemia risk compared with some non-calcium binders; this reflects medicinal high-dose exposure rather than typical food-additive intake.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/40576086/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Historical JECFA toxicology reported limited direct calcium acetate toxicity data; acetate and calcium were considered physiologic moieties, with ADI set to not limited.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "http://www.inchem.org/documents/jecfa/jecmono/v05je83.htm",
+          "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2804"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "No IARC classification entry found for calcium acetate (name or CAS 62-54-4) in the current IARC list data bundle.",
+      "JECFA record lists ADI as not limited.",
+      "FDA affirms GRAS status under specified conditions of use in 21 CFR 184.1185."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "No general-population ADI exceedance signal identified from checked regulatory sources"
+      ],
+      "notes": "JECFA ADI is non-numerical (not limited). EFSA numerical ADI for E263 food-additive re-evaluation was not identified in the current EU summary table."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.66,
+    "rationale": "Regulatory status is broadly permissive (FDA GRAS, JECFA ADI not limited, EU permitted listing), with no IARC carcinogenic classification identified. Main safety caveat comes from high-dose clinical calcium-binder use (hypercalcemia risk), which is not directly representative of normal food-additive exposure.",
+    "key_factors": [
+      "FDA GRAS with explicit CGMP and category-level limits",
+      "JECFA ADI not limited and long history of use",
+      "No IARC listing for calcium acetate/CAS 62-54-4",
+      "EFSA food-additive re-evaluation entry for E263 not found as completed in current EU summary table",
+      "High-dose CKD therapeutic data indicate calcium-load caution in susceptible groups"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of food additives (European Commission state-of-play page)",
+      "url": "https://food.ec.europa.eu/food-safety/food-improvement-agents/additives/re-evaluation-food-additives_en",
+      "type": "regulatory"
+    },
+    {
+      "title": "Summary table of permitted food additives and status of their re-evaluation by EFSA (status as of 18 February 2026)",
+      "url": "https://food.ec.europa.eu/document/download/7471ebd9-5a9a-4f8a-ae85-b64502a15353_en?filename=fs_food-improvement-agents_reeval_summary-table.xls",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 184.1 Substances added directly to human food affirmed as GRAS",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?section=184.1",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 184.1185 Calcium acetate",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?section=184.1185",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database chemical record: CALCIUM ACETATE",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2804",
+      "type": "database"
+    },
+    {
+      "title": "WHO Food Additives Series 5 monograph: Calcium acetate, chloride, gluconate and sulfate",
+      "url": "http://www.inchem.org/documents/jecfa/jecmono/v05je83.htm",
+      "type": "review"
+    },
+    {
+      "title": "IARC Monographs list-of-classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list data bundle (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 37522098: Assessment of the safety of the feed additives acetic acid, calcium acetate and sodium diacetate for fish",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37522098/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 34923600: Gut microbiome in hemodialysis patients treated with calcium acetate or treated with sucroferric oxyhydroxide",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34923600/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 33106892: Safety and efficacy of sucroferric oxyhydroxide in pediatric patients with chronic kidney disease",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33106892/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 40576086: Phosphate binders for preventing and treating chronic kidney disease-mineral and bone disorder (CKD-MBD)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40576086/",
+      "type": "review"
+    },
+    {
+      "title": "EFSA Journal endpoint redirect for publication 8176",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/8176",
+      "type": "regulatory"
+    }
+  ]
+}

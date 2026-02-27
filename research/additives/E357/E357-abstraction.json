@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T13:37:28Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E357",
+    "name": "Potassium adipate",
+    "cas_numbers": [
+      "19147-16-1"
+    ],
+    "synonyms": [
+      "Dipotassium adipate",
+      "Dipotassium hexanedioate",
+      "Adipic acid, dipotassium salt"
+    ],
+    "chemical_class": "Potassium salt of an aliphatic dicarboxylic acid (adipate salt)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "buffer",
+      "pH control agent"
+    ],
+    "mechanism": "Provides adipate buffering/acidulant function to adjust and stabilize product acidity (pH) and sourness profile.",
+    "common_food_categories": [
+      "No direct E357 category list identified in retrieved sources",
+      "Related adipic-acid CFR categories include baked goods, nonalcoholic beverages, condiments and relishes, dairy analogs, gelatin/puddings, gravies, meat products, and snack foods"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No EFSA ADI for E357 identified in the retrieved official EU re-evaluation summary table (status as of 18 Feb 2026); EFSA opinion date/publication/link fields were blank for E357."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "E357 is listed as already permitted before 20 January 2009, but the table marks re-evaluation as not completed and gives a deadline of 2018-12-31 with no linked EFSA opinion."
+    },
+    "fda": {
+      "status": "not_evaluated",
+      "cfr_citation": "No direct potassium adipate citation found in Title 21; related adipic acid citations: 21 CFR 184.1009 and 21 CFR 582.1009",
+      "notes": "FDA eCFR Title 21 and FDA Food Substances database search did not return a direct potassium adipate record in this research run."
+    },
+    "jecfa": {
+      "adi": {
+        "value": 5,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI 0-5 mg/kg bw for adipic acid and its potassium, sodium and ammonium salts (1977 entry); potassium adipate record also contains a 2015 note that provisions were withdrawn at CCFA47 and not re-evaluated."
+      },
+      "last_evaluation_year": 2015
+    },
+    "iarc_classification": null,
+    "notable_bans": [
+      "JECFA record notes provisions for potassium adipate were withdrawn at CCFA47 (Codex context)."
+    ]
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Historical JECFA group toxicology indicates gastrointestinal effects (diarrhoea) in a 2-year rat study at higher dietary concentrations; group ADI was set at 0-5 mg/kg bw.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/194",
+          "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3636"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "JECFA 2025 adipate-group exposure commentary indicates conservative exposure estimates can greatly exceed the current group ADI and that updated toxicology re-evaluation is needed.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/194"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Direct contemporary potassium-adipate-specific human safety literature is sparse (PubMed exact title/abstract query returned zero records).",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%22potassium+adipate%22%5BTitle%2FAbstract%5D&retmode=json"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "No IARC classification entry was found for potassium adipate or adipic acid in the retrieved IARC classification dataset.",
+      "A PubMed toxicology review for adipic acid (indirect evidence) reports low acute oral toxicity and no clear genotoxic/developmental toxicity signal in tested systems."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "general consumers under conservative adipate-group exposure scenarios",
+        "high consumers (group-level concern)"
+      ],
+      "notes": "Direct E357-only intake estimates were not identified, but JECFA adipate-group 2025 commentary reports potential and substantial exceedances of the current group ADI in conservative scenarios."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.64,
+    "rationale": "E357 appears legacy-permitted in EU state-of-play data and has an established JECFA group ADI, but key caveats include incomplete EFSA re-evaluation fields for E357 in the latest retrieved table, sparse direct modern E357 safety literature, and JECFA adipate-group commentary indicating possible ADI exceedance and need for toxicology re-evaluation.",
+    "key_factors": [
+      "EU summary table marks E357 as permitted before 2009 but re-evaluation not completed with no linked EFSA opinion",
+      "No direct potassium adipate listing found in retrieved current U.S. Title 21/FDA food-substances query",
+      "JECFA group ADI 0-5 mg/kg bw applies to adipic acid and potassium/sodium/ammonium salts",
+      "JECFA potassium adipate page includes 2015 note about provision withdrawal at CCFA47",
+      "IARC dataset search found no potassium adipate classification"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA search for E357 (access attempt)",
+      "url": "https://www.efsa.europa.eu/en/search?text=E357",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA search for potassium adipate (access attempt)",
+      "url": "https://www.efsa.europa.eu/en/search?text=potassium%20adipate",
+      "type": "regulatory"
+    },
+    {
+      "title": "European Commission - Re-evaluation of food additives in the EU",
+      "url": "https://food.ec.europa.eu/food-safety/food-improvement-agents/additives/re-evaluation_en",
+      "type": "regulatory"
+    },
+    {
+      "title": "Summary table of permitted food additives and status of their re-evaluation by EFSA (status as of 18 February 2026)",
+      "url": "https://food.ec.europa.eu/document/download/7471ebd9-5a9a-4f8a-ae85-b64502a15353_en?filename=fs_food-improvement-agents_reeval_summary-table.xls",
+      "type": "database"
+    },
+    {
+      "title": "eCFR full Title 21 XML (2026-02-25)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR section 184.1009 (Adipic acid)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=184&section=184.1009",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR section 582.1009 (Adipic acid)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=582&section=582.1009",
+      "type": "regulatory"
+    },
+    {
+      "title": "FDA page - Substances Added to Food (formerly EAFUS)",
+      "url": "https://www.fda.gov/food/food-additives-petitions/substances-added-food-formerly-eafus",
+      "type": "database"
+    },
+    {
+      "title": "FDA CFSAN Food Substances query for potassium adipate (no records)",
+      "url": "https://www.cfsanappsexternal.fda.gov/scripts/fdcc/index.cfm?set=FoodSubstances&type=basic&search=potassium%20adipate",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical record - Potassium adipate (Chemical 3636)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3636",
+      "type": "database"
+    },
+    {
+      "title": "INCHEM JECFA evaluation entry - Potassium adipate (INS 357)",
+      "url": "http://www.inchem.org/documents/jecfa/jeceval/jec_1964.htm",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical record - Adipic acid (Chemical 194)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/194",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs - List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset bundle (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed E-utilities exact query for potassium adipate title/abstract",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%22potassium+adipate%22%5BTitle%2FAbstract%5D&retmode=json",
+      "type": "database"
+    },
+    {
+      "title": "PubMed E-utilities broad query for adipic acid food additive toxicity/safety",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%28adipic+acid%29+AND+%28food+additive%29+AND+%28toxicity+OR+safety%29&retmax=20&sort=pub+date&retmode=json",
+      "type": "database"
+    },
+    {
+      "title": "PubMed record - Toxicity of adipic acid (2002)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12024802/",
+      "type": "review"
+    },
+    {
+      "title": "PubChem properties for potassium adipate",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/potassium%20adipate/property/Title,MolecularFormula,IUPACName/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem synonyms for potassium adipate CID 9794493",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/9794493/synonyms/JSON",
+      "type": "database"
+    }
+  ]
+}

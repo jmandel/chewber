@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T12:32:25+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E335",
+    "name": "Sodium tartrates",
+    "cas_numbers": [
+      "868-18-8"
+    ],
+    "synonyms": [
+      "Sodium tartrate",
+      "Disodium L(+)-tartrate",
+      "Sodium tartrates"
+    ],
+    "chemical_class": "Sodium salts of tartaric acid (tartrate salts)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "emulsifier",
+      "pH control agent",
+      "sequestrant"
+    ],
+    "mechanism": "Tartrate anions buffer acidity and can complex metal ions; in CFR sodium tartrate is listed for emulsification and pH control uses.",
+    "common_food_categories": [
+      "cheeses",
+      "fats and oils",
+      "jams and jellies",
+      "processed cheese products"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 240,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA FAF 2020 group ADI for L(+)-tartaric acid-tartrates (E334-337, E354), expressed as tartaric acid."
+      },
+      "last_evaluation_year": 2020,
+      "key_finding": "EFSA re-evaluation reported no genotoxic concern, no carcinogenicity signal in chronic rat data, and refined non-brand-loyal exposure estimates below the group ADI."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1801",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 30,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA group ADI 0-30 mg/kg bw for L(+)-tartaric acid and sodium, potassium, potassium sodium salts (expressed as tartaric acid), reaffirmed in 2017 entry."
+      },
+      "last_evaluation_year": 2017
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "High-dose animal data with related tartrate salts (DL-potassium hydrogen tartrate) showed obstructive nephropathy in F344 rats, indicating potential renal hazard at sufficiently high exposure.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:26028818"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "A sodium-tartrate-containing iron complex (FemTA) produced GI inflammatory and clinical chemistry effects at mid/high doses in rats, interpreted by authors as iron-overload related rather than tartrate-specific toxicity.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:24015727"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2020 found no genotoxic signal and no carcinogenicity indication for monosodium L(+)-tartrate in chronic rat study conditions.",
+      "FDA lists sodium tartrate as a direct food substance affirmed as GRAS under 21 CFR 184.1801 with GMP-limited use.",
+      "No sodium tartrate-specific IARC carcinogenic classification was identified in the IARC classification dataset checked."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "EFSA reported refined non-brand-loyal exposure estimates below its group ADI; no retrieved dataset in this run showed population-level exceedance for E335."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.79,
+    "rationale": "E335 remains permitted by EFSA/FDA/JECFA with defined ADIs and no strong human-relevant toxicity signal at typical food-use conditions. Concern evidence is mainly from high-dose or related-salt animal studies.",
+    "key_factors": [
+      "EFSA 2020 group ADI of 240 mg/kg bw/day and no refined-scenario exceedance",
+      "FDA GRAS status under 21 CFR 184.1801 with GMP conditions",
+      "JECFA group ADI 0-30 mg/kg bw for tartaric acid and sodium/potassium tartrate salts",
+      "No IARC listing for sodium tartrate/tartaric acid as a classified carcinogenic agent",
+      "High-dose renal findings in related tartrate-salt rat studies"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal page: Re-evaluation of tartaric acid and tartrates (E334-337, E354)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/6030",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed: EFSA re-evaluation of tartaric acid/tartrates (PMID: 32874248)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32874248/",
+      "type": "study"
+    },
+    {
+      "title": "eCFR search API results for sodium tartrate",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=sodium%20tartrate",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full Title 21 XML (issue date 2026-02-19)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO food additives and contaminants JECFA database home",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA chemical page: L(+)-TARTARIC ACID (ID 4746)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4746",
+      "type": "database"
+    },
+    {
+      "title": "INCHEM JECFA evaluations summary: L(+)-TARTARIC ACID",
+      "url": "https://inchem.org/documents/jecfa/jeceval/jec_2226.htm",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs: Agents classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications application bundle (data source)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: Obstructive nephropathy induced with DL-potassium hydrogen tartrate in F344 rats (PMID: 26028818)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26028818/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Subchronic and reproductive/developmental toxicity of iron trichloride and sodium tartrate complexation products (PMID: 24015727)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24015727/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed targeted search query for sodium tartrate safety/toxicity",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%28sodium+tartrate%5BTitle%2FAbstract%5D+OR+potassium+sodium+tartrate%5BTitle%2FAbstract%5D+OR+Rochelle+salt%5BTitle%2FAbstract%5D%29+AND+%28toxicity+OR+safety+OR+adverse%29",
+      "type": "database"
+    }
+  ]
+}

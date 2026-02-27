@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T10:11:04Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E282",
+    "name": "Calcium propionate",
+    "cas_numbers": [
+      "4075-81-4"
+    ],
+    "synonyms": [
+      "Calcium propanoate",
+      "Propionic acid calcium salt"
+    ],
+    "chemical_class": "Calcium salt of propionic acid (short-chain fatty acid salt preservative)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "antimicrobial",
+      "anti-mould agent"
+    ],
+    "mechanism": "Weak-acid preservative action: propionate inhibits mould and some bacterial growth, especially in bakery matrices and mildly acidic conditions.",
+    "common_food_categories": [
+      "Baked goods",
+      "Cheeses",
+      "Confections and frostings",
+      "Gelatins, puddings, and fillings",
+      "Jams and jellies"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA ANS Panel (2014) concluded there was no need for a numerical ADI for propionic acid and its salts (including E282)."
+      },
+      "last_evaluation_year": 2014,
+      "key_finding": "EFSA re-evaluation reported no safety concern at reported uses and use levels for E280-E283 and no need for a numerical ADI."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1221; 21 CFR 582.3221",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA group ADI for propionic acid and calcium/potassium/sodium salts is stated as NOT LIMITED (established 1973 and maintained at meeting 49 in 1997)."
+      },
+      "last_evaluation_year": 1973
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "A 2026 prospective cohort (NutriNet-Sante) observed higher type 2 diabetes incidence associated with several preservatives, including calcium propionate; observational design limits causal inference.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41501013/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "A randomized crossover human study (n=28) found acute 1500 mg calcium propionate increased glucagon/catecholamine responses and endogenous glucose production versus placebo.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/34312159/"
+        ]
+      },
+      {
+        "category": "genotoxic",
+        "summary": "In vitro lymphocyte studies reported cytotoxic/genotoxic effects at tested concentrations, but external validity for normal dietary exposure is uncertain.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/39262268/",
+          "https://pubmed.ncbi.nlm.nih.gov/23188648/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA (2014) concluded no safety concern at reported uses/use levels and no need for a numerical ADI for propionates.",
+      "JECFA lists a group ADI of NOT LIMITED for propionic acid and its calcium/potassium/sodium salts.",
+      "U.S. regulations list calcium propionate as GRAS under specified GMP conditions."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "Toddlers with high bakery-product intake",
+        "High consumers of preservative-rich processed foods"
+      ],
+      "notes": "EFSA/JECFA do not provide a numeric ADI cap for this group (EFSA: no numerical ADI needed; JECFA: ADI not limited), so classical ADI exceedance is not directly calculable."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.72,
+    "rationale": "Regulatory consensus remains permissive (EFSA/JECFA/FDA), with no IARC carcinogenic classification or major bans, but emerging human epidemiologic/mechanistic findings suggest a non-zero uncertainty that merits monitoring.",
+    "key_factors": [
+      "EFSA 2014: no need for numerical ADI; no safety concern at reported uses",
+      "JECFA: group ADI not limited for propionic acid and salts",
+      "FDA/eCFR: GRAS status under GMP use conditions",
+      "No IARC listing/classification for calcium propionate",
+      "Recent observational and mechanistic human studies suggest possible metabolic concerns"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Scientific Opinion on the re-evaluation of propionic acid (E 280), sodium propionate (E 281), calcium propionate (E 282) and potassium propionate (E 283) as food additives",
+      "url": "https://api.sonar.expert/science-sources/web/efsa/publication/54ecef59-89f1-11eb-9d5a-bf7d0f385dd0",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full text, 21 CFR Part 184 (includes section 184.1221 Calcium propionate)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full text, 21 CFR Part 582 (includes section 582.3221 Calcium propionate)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=582",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database chemical entry: CALCIUM PROPIONATE",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2163",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA search API result for calcium propionate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/calcium%20propionate",
+      "type": "database"
+    },
+    {
+      "title": "WHO Food Additives Series 5 monograph: Propionic acid and its calcium, potassium and sodium salts",
+      "url": "http://www.inchem.org/documents/jecfa/jecmono/v05je16.htm",
+      "type": "review"
+    },
+    {
+      "title": "IARC Monographs: List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC list-of-classifications app dataset (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Associations between preservative food additives and type 2 diabetes incidence in the NutriNet-Sante prospective cohort",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41501013/",
+      "type": "study"
+    },
+    {
+      "title": "Acute effects of the food preservative propionic acid on glucose metabolism in humans",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34312159/",
+      "type": "study"
+    },
+    {
+      "title": "Cellular toxicity of calcium propionate in human lymphocyte",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39262268/",
+      "type": "study"
+    }
+  ]
+}

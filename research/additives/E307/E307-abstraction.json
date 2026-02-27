@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T11:05:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E307",
+    "name": "Alpha-tocopherol",
+    "cas_numbers": [
+      "59-02-9",
+      "10191-41-0"
+    ],
+    "synonyms": [
+      "Vitamin E",
+      "d-alpha-tocopherol",
+      "dl-alpha-tocopherol",
+      "all-rac-alpha-tocopherol"
+    ],
+    "chemical_class": "Tocopherol (fat-soluble phenolic antioxidant)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "antioxidant",
+    "secondary_categories": [
+      "nitrosamine inhibitor",
+      "nutrient"
+    ],
+    "mechanism": "Scavenges lipid radicals and interrupts oxidation chain reactions in fats and oils.",
+    "common_food_categories": [
+      "Fat-containing foods and oils",
+      "Processed foods using tocopherols as antioxidants",
+      "Pump-cured bacon (specific U.S. CFR condition)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2015 re-evaluation (E306-E309) reported it could not establish an ADI due limited toxicity data, while concluding no safety concern at reported uses/use levels."
+      },
+      "last_evaluation_year": 2015,
+      "key_finding": "No safety concern at reported uses/use levels; data insufficient to derive a numerical ADI."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.3890; 21 CFR 184.1890",
+      "notes": "Tocopherols are GRAS under GMP (182.3890). Alpha-tocopherols in 184.1890 are affirmed as GRAS with use limited to nitrosamine inhibition in pump-cured bacon at GMP while broader evaluation continues."
+    },
+    "jecfa": {
+      "adi": {
+        "value": 2,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI range 0.15-2 mg/kg bw/day for dl-alpha-tocopherol and d-alpha-tocopherol concentrate; value field stores upper bound."
+      },
+      "last_evaluation_year": 1986
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "cardiovascular",
+        "summary": "JECFA human studies reported increased bleeding time at >2 mg/kg bw/day and slight increases at 1-2 mg/kg bw/day; a 2025 PubMed case report described reversible coagulopathy after vitamin E excess.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "WHO/JECFA Details 1795",
+          "PMID: 40499949"
+        ]
+      },
+      {
+        "category": "cardiovascular",
+        "summary": "A 2024 meta-analysis found no stroke prevention benefit from vitamin E alone and reported increased hemorrhagic stroke risk when vitamin E was combined with other antioxidants (RR 1.22).",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID: 37698992"
+        ]
+      },
+      {
+        "category": "carcinogenic",
+        "summary": "The SELECT trial (2011) found increased prostate cancer risk with 400 IU/day all-rac-alpha-tocopheryl acetate supplementation (HR 1.17); this reflects supplement-dose exposure rather than typical additive intake.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID: 21990298"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA (2015) reported no safety concern at reported food-additive uses/use levels for E306-E309.",
+      "FDA/eCFR retains GRAS status for tocopherols in Title 21.",
+      "No IARC monograph classification was identified for alpha-tocopherol."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "Children with high intake relative to body weight",
+        "High-dose vitamin E supplement users"
+      ],
+      "notes": "EFSA did not set a numerical ADI and reported one children survey exceeding UL; JECFA provides a finite ADI range (0.15-2 mg/kg bw/day)."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.68,
+    "rationale": "E307 remains approved/GRAS, but EFSA could not establish an ADI, EFSA identified a child UL exceedance signal in one survey, and JECFA/PubMed data support coagulation-related concern at higher exposures. Evidence for harm at ordinary additive exposure remains limited, so overall risk is best characterized as moderate rather than high.",
+    "key_factors": [
+      "EFSA 2015 no-safety-concern conclusion at reported uses but no ADI established",
+      "FDA GRAS status with specific CFR use conditions",
+      "JECFA ADI range 0.15-2 mg/kg bw/day and human bleeding-time findings",
+      "Recent PubMed high-dose safety signals (coagulopathy, hemorrhagic stroke context)",
+      "No IARC classification and no major-jurisdiction bans identified"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Vitamin E food additives: no safety concern at reported uses and use levels",
+      "url": "https://www.efsa.europa.eu/en/news/vitamin-e-food-additives-no-safety-concern-reported-uses-and-use-levels",
+      "type": "regulatory"
+    },
+    {
+      "title": "Scientific Opinion on the re-evaluation of tocopherol-rich extract (E 306), alpha-tocopherol (E 307), gamma-tocopherol (E 308) and delta-tocopherol (E 309) as food additives",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4247",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal DOI landing page (visited; full text blocked in this environment)",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2015.4247",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full text for 21 CFR Part 182 (issue date 2026-02-25)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?chapter=I&subchapter=B&part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full text for 21 CFR Part 184 (issue date 2026-02-25)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?chapter=I&subchapter=B&part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Search API query for tocopherol",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=tocopherol&per_page=10",
+      "type": "database"
+    },
+    {
+      "title": "JECFA database: (+)-ALPHA-TOCOPHEROL CONCENTRATE (Chemical ID 22)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/22",
+      "type": "database"
+    },
+    {
+      "title": "JECFA database: Toxicological evaluation details (Record 1795)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Details/1795",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs: Agents Classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC WordPress API posts search for tocopherol",
+      "url": "https://monographs.iarc.who.int/wp-json/wp/v2/posts?search=tocopherol&per_page=5",
+      "type": "database"
+    },
+    {
+      "title": "IARC WordPress API pages search for tocopherol",
+      "url": "https://monographs.iarc.who.int/wp-json/wp/v2/pages?search=tocopherol&per_page=5",
+      "type": "database"
+    },
+    {
+      "title": "Reversible coagulopathy associated with vitamin E excess (PMID: 40499949)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40499949/",
+      "type": "study"
+    },
+    {
+      "title": "Vitamin E supplementation (alone or with other antioxidants) and stroke: a meta-analysis (PMID: 37698992)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37698992/",
+      "type": "review"
+    },
+    {
+      "title": "Vitamin E and the risk of prostate cancer: the Selenium and Vitamin E Cancer Prevention Trial (SELECT) (PMID: 21990298)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21990298/",
+      "type": "study"
+    }
+  ]
+}

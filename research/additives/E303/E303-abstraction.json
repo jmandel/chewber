@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T10:42:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E303",
+    "name": "Potassium ascorbate",
+    "cas_numbers": [
+      "15421-15-5"
+    ],
+    "synonyms": [
+      "Potassium L-ascorbate",
+      "Monopotassium ascorbate",
+      "INS 303",
+      "E-303"
+    ],
+    "chemical_class": "Ascorbate salt (potassium salt of L-ascorbic acid)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "antioxidant",
+    "secondary_categories": [],
+    "mechanism": "Acts as a reducing antioxidant (ascorbate), helping limit oxidative reactions in food matrices.",
+    "common_food_categories": [
+      "Historically antioxidant uses in processed foods",
+      "Applications analogous to other ascorbate salts"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "not_evaluated",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No E303-specific EFSA ADI identified; EFSA 2015 re-evaluation for related ascorbates E300-E302 reported no need for a numerical ADI."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "Accessible EFSA opinion located for E300-E302 (2015) concluded no safety concern at reported uses and no genotoxicity concern; no dedicated E303 EFSA opinion was identified in this search."
+    },
+    "fda": {
+      "status": "not_evaluated",
+      "cfr_citation": "21 CFR Part 182 (no explicit potassium ascorbate entry in current text); related ascorbate entries: 21 CFR 182.3189 and 21 CFR 182.3731",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI NOT SPECIFIED (group ADI for ascorbic acid and its sodium, potassium and calcium salts)."
+      },
+      "last_evaluation_year": 2015
+    },
+    "iarc_classification": null,
+    "notable_bans": [
+      "JECFA database comment (2015): provisions for potassium ascorbate withdrawn at CCFA47."
+    ]
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Direct modern food-additive toxicology evidence specific to potassium ascorbate is sparse; PubMed search for potassium ascorbate with toxicity/safety terms returned no items.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PubMed search: potassium ascorbate[Title/Abstract]",
+          "PubMed toxicity/safety query for potassium ascorbate"
+        ]
+      },
+      {
+        "category": "renal",
+        "summary": "High total/supplemental vitamin C intake has been associated with increased incident kidney stone risk in men (not specific to typical additive-level exposure).",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID: 26463139"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA group ADI not specified for ascorbic acid and sodium/potassium/calcium salts.",
+      "EFSA related ascorbate assessment (E300-E302) reported no safety concern and no genotoxicity concern at reported uses."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "Children/toddlers may have higher relative exposure to related ascorbate additives"
+      ],
+      "notes": "Formal ADI exceedance framing is limited because JECFA group ADI is not specified and EFSA related assessment did not set a numerical ADI."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.67,
+    "rationale": "Related ascorbate toxicology is broadly reassuring (JECFA group ADI not specified; EFSA related assessment no safety concern), but E303-specific modern data and explicit CFR listing are limited.",
+    "key_factors": [
+      "JECFA ADI not specified group finding",
+      "EFSA related-compound reassurance (E300-E302)",
+      "No IARC classification identified",
+      "Sparse direct potassium ascorbate safety literature",
+      "No explicit current Title 21 CFR listing for potassium ascorbate"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Scientific Opinion on the re-evaluation of ascorbic acid (E300), sodium ascorbate (E301) and calcium ascorbate (E302) as food additives",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4087",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API - 21 CFR Part 182 full text (issue date 2026-02-19)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API - 21 CFR full text (issue date 2026-02-19)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA Database - Potassium ascorbate (INS 303)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3233",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API - SearchChemical ByPartialName ascorbate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/ascorbate",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs - Agents classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list-of-classifications application data",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search - potassium ascorbate[Title/Abstract]",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%22potassium+ascorbate%22%5BTitle%2FAbstract%5D",
+      "type": "database"
+    },
+    {
+      "title": "Potassium Ascorbate with Ribose: Promising Therapeutic Approach for Melanoma Treatment. (PMID: 29290903)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29290903/",
+      "type": "study"
+    },
+    {
+      "title": "The effect of ascorbic acid, storage period and packaging material on the formation of volatile N-nitrosamine in sausages. (PMID: 35531396)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35531396/",
+      "type": "study"
+    },
+    {
+      "title": "Total, Dietary, and Supplemental Vitamin C Intake and Risk of Incident Kidney Stones. (PMID: 26463139)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26463139/",
+      "type": "study"
+    },
+    {
+      "title": "PubChem Compound Summary - Potassium ascorbate (CID 23687519)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/23687519",
+      "type": "database"
+    }
+  ]
+}

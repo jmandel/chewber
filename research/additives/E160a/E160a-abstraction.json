@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T06:02:34+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E160a",
+    "name": "Beta-carotene (carotenes)",
+    "cas_numbers": [
+      "7235-40-7"
+    ],
+    "synonyms": [
+      "beta-carotene",
+      "\u03b2-carotene",
+      "beta,beta-carotene",
+      "all-trans-beta-carotene",
+      "E160a",
+      "Food Orange 5"
+    ],
+    "chemical_class": "Carotenoid (tetraterpene hydrocarbon pigment)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "food colour",
+    "secondary_categories": [
+      "provitamin A source",
+      "antioxidant"
+    ],
+    "mechanism": "Conjugated double-bond chromophore absorbs visible light to impart yellow-orange color; can be cleaved to vitamin A.",
+    "common_food_categories": [
+      "foods generally (colouring)",
+      "dairy product analogs",
+      "fats and oils",
+      "processed fruits and fruit juices",
+      "infant formula (as vitamin A source)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2012 additive re-evaluation did not establish an ADI; concluded no safety concern for current food-additive uses under assessed exposure conditions."
+      },
+      "last_evaluation_year": 2012,
+      "key_finding": "No safety concern was identified for current uses/levels of E160a from food additives; concern context is high supplemental exposure in heavy smokers."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1245; 21 CFR 73.95",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA (2019) withdrew prior group ADIs (historically 0-5 mg/kg bw/day) and could not establish a group ADI applicable to the general population including heavy smokers."
+      },
+      "last_evaluation_year": 2019
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "carcinogenic",
+        "summary": "Supplemental beta-carotene is associated with increased lung cancer risk in smokers in randomized-trial evidence syntheses; meta-analysis of RCTs reported elevated lung cancer risk (RR about 1.19).",
+        "evidence_strength": "strong",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/36715090/",
+          "https://pubmed.ncbi.nlm.nih.gov/24338499/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Mechanistic literature indicates smoke co-exposure plus high supplemental doses may increase oxidative beta-carotene metabolite formation and pro-proliferative signaling.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/39522798/",
+          "https://www.efsa.europa.eu/en/efsajournal/pub/2953"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA reported no safety concern for E160a at current food-additive uses and levels assessed.",
+      "FDA allows use under GMP as a color additive and affirms GRAS direct-food use under listed conditions.",
+      "Dietary (food-source) antioxidant patterns are not consistently associated with harm and may be protective in observational datasets."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "heavy smokers using beta-carotene supplements",
+        "high-dose supplement users"
+      ],
+      "notes": "EFSA statement estimated typical total intake from diet plus additives generally below ~15 mg/day; risk signal is tied to supplemental intakes (e.g., 20-30 mg/day in smoker trials) rather than ordinary additive exposure."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.78,
+    "rationale": "Regulatory approvals remain in place for food-additive use, but credible smoker-specific carcinogenic risk signals at supplemental doses and JECFA ADI withdrawal prevent a low-concern classification.",
+    "key_factors": [
+      "EFSA 2012 additive re-evaluation found no concern at current additive exposure levels",
+      "FDA CFR status is permitted/GRAS under GMP conditions",
+      "JECFA withdrew prior group ADI in 2019",
+      "RCT/meta-analytic evidence shows increased lung cancer risk with supplemental beta-carotene in smokers",
+      "No IARC classification for beta-carotene found in checked classification resources"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Scientific Opinion on the re-evaluation of \u03b2-Carotene (E 160a(i)) and \u03b2-Carotene from Blakeslea trispora (E 160a(ii)) as food additives",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/2593",
+      "type": "regulatory"
+    },
+    {
+      "title": "Statement on the safety of the use of beta-carotene-rich ingredients from natural sources in food supplements and in foods intended for the general population (including supplements and foods intended for heavy smokers)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/2953",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 73.95 \u03b2-Carotene",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2026-02-19/title-21?chapter=I&subchapter=A&part=73&subpart=A&section=73.95",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 184.1245 Beta-carotene",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2026-02-19/title-21?chapter=I&subchapter=B&part=184&subpart=B&section=184.1245",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA chemical page: beta-CAROTENE (synthetic)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1514",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs - List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC LOC data bundle",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Association between \u03b2-carotene supplementation and risk of cancer: a meta-analysis of randomized controlled trials",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36715090/",
+      "type": "study"
+    },
+    {
+      "title": "Investigating the relationship between \u03b2-carotene intake from diet and supplements, smoking, and lung cancer risk",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39522798/",
+      "type": "study"
+    },
+    {
+      "title": "Association between Dietary and Supplemental Antioxidants Intake and Lung Cancer Risk",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36829901/",
+      "type": "study"
+    },
+    {
+      "title": "Effects of \u03b1-tocopherol and \u03b2-carotene supplementation on cancer incidence and mortality: 18-year postintervention follow-up",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24338499/",
+      "type": "study"
+    },
+    {
+      "title": "Scientific opinion on the tolerable upper intake level for preformed vitamin A and \u03b2-carotene",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38846679/",
+      "type": "review"
+    },
+    {
+      "title": "PubChem beta-carotene properties",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/beta-carotene/property/IUPACName,MolecularFormula,MolecularWeight,CanonicalSMILES/JSON",
+      "type": "database"
+    }
+  ]
+}

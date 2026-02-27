@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T12:06:12Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E327",
+    "name": "Calcium lactate",
+    "cas_numbers": [
+      "814-80-2",
+      "5743-48-6"
+    ],
+    "synonyms": [
+      "Calcium dilactate",
+      "Calcium 2-hydroxypropanoate",
+      "Calcium bis(2-hydroxypropanoate)"
+    ],
+    "chemical_class": "Organic acid salt (calcium salt of lactic acid)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "firming agent",
+      "flavor enhancer",
+      "nutrient supplement",
+      "stabilizer"
+    ],
+    "mechanism": "Acts as a calcium lactate buffer/salt for pH control and texture support, while also contributing calcium in fortified foods.",
+    "common_food_categories": [
+      "processed foods under GMP conditions",
+      "acidified foods",
+      "calcium-fortified foods",
+      "products using firming/stabilizing salts"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "OpenEFSA record EFSA-Q-2011-00602 shows re-evaluation of E327 is ongoing and no finalized EFSA output/ADI is linked."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "Latest EFSA record for E327 re-evaluation is in Ongoing Risk Assessment (last modified 2026-01-19), with no final scientific output published in that record."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1207",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA chemical page reports ADI as NOT LIMITED (qualitative, non-numeric)."
+      },
+      "last_evaluation_year": 1974
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Regulatory caution exists for infant-related use contexts (FDA excludes infant foods/formulas; JECFA comment states D(-)-/DL-lactic acid should not be used in infant foods).",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?subtitle=B&chapter=I&subchapter=B&part=184",
+          "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/88"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "An in vitro 2023 study reported reduced endothelial cell viability for calcium lactate at higher concentrations; dietary relevance at normal food-use exposures is uncertain.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/36536829/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "Two-year F344 rat study reported no treatment-related carcinogenic signal for calcium lactate (PMID: 1937289).",
+      "Subchronic F344 rat study reported no severe toxicological findings up to 5% in drinking water (PMID: 2636938).",
+      "FDA affirms calcium lactate as GRAS under 21 CFR 184.1207 with CGMP conditions.",
+      "JECFA lists ADI as NOT LIMITED for calcium lactate."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "infants",
+        "individuals with lactate-handling vulnerabilities"
+      ],
+      "notes": "Numeric ADI exceedance cannot be calculated from JECFA because ADI is qualitative (NOT LIMITED); risk boundary is mainly subgroup-based caution."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.75,
+    "rationale": "Regulatory evidence indicates low concern at normal food-use levels (FDA GRAS and JECFA not-limited ADI), but EFSA re-evaluation for E327 remains unresolved and infant-related caution appears in both U.S. and JECFA records.",
+    "key_factors": [
+      "EFSA E327 re-evaluation record is ongoing with no final output linked",
+      "FDA GRAS status under 21 CFR 184.1207 with CGMP use and infant-food/formula exclusion",
+      "JECFA ADI is NOT LIMITED (evaluation year listed as 1974)",
+      "No IARC listing found for calcium lactate in current classification dataset",
+      "Animal toxicology studies do not indicate strong carcinogenic/toxic signals at tested levels"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA OpenEFSA API question EFSA-Q-2011-00602 (Re-evaluation of E327)",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00602",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA OpenEFSA API substance record: Calcium lactate",
+      "url": "https://open.efsa.europa.eu/api/substance/get?termExtendedName=Calcium%20lactate",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API Title 21 versions metadata",
+      "url": "https://www.ecfr.gov/api/versioner/v1/versions/title-21.json",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API Title 21 Part 184 XML (includes 21 CFR 184.1207)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?subtitle=B&chapter=I&subchapter=B&part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA ChemicalData/GetBy partial-name query for calcium lactate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/ChemicalData/GetBy/par/calcium%20lactate",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA SearchChemical by partial name: calcium lactate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/calcium%20lactate",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA chemical page: CALCIUM LACTATE (ID 88)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/88",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications app bundle (LOC dataset)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubChem PUG REST calcium lactate properties",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/calcium%20lactate/property/Title,MolecularFormula,IUPACName/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem PUG REST calcium lactate synonyms",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/13144/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "Long-term toxicity/carcinogenicity study of calcium lactate in F344 rats (1991)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/1937289/",
+      "type": "study"
+    },
+    {
+      "title": "Subchronic oral toxicity study of calcium lactate in F344 rats (1989)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/2636938/",
+      "type": "study"
+    },
+    {
+      "title": "Single oral dose toxicity test of polycalcium/calcium lactate-gluconate in SD rat (2013)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24191319/",
+      "type": "study"
+    },
+    {
+      "title": "Safety of lactic acid and calcium lactate when used as technological additives for all animal species (EFSA Journal, 2017)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625591/",
+      "type": "review"
+    },
+    {
+      "title": "In vitro safety assessment of alkyl lactate esters in HUVECs (2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36536829/",
+      "type": "study"
+    }
+  ]
+}

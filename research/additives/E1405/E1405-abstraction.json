@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T04:04:55Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E1405",
+    "name": "Enzyme-treated starches",
+    "cas_numbers": [
+      "9005-84-9"
+    ],
+    "synonyms": [
+      "STARCHES, ENZYME-TREATED",
+      "ENZYME treated STARCHES",
+      "INS 1405"
+    ],
+    "chemical_class": "Enzymatically modified starch (partially hydrolyzed carbohydrate polymer)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "thickener",
+    "secondary_categories": [
+      "texturizer",
+      "stabilizer"
+    ],
+    "mechanism": "Enzymatic hydrolysis of edible starch alters polymer chain length and rheology; in CFR enzymatic treatment can produce a nonsweet nutritive saccharide polymer (DE < 20).",
+    "common_food_categories": [
+      "processed foods using starch-based texture control",
+      "soups and sauces",
+      "bakery and confectionery formulations",
+      "beverage systems using modified starch functionality"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "not_evaluated",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No dedicated EFSA E1405 opinion/ADI identified in accessible sources. The 2017 EFSA modified-starches re-evaluation (12 starch additives) excluded E1405 and concluded no numerical ADI needed for that evaluated group."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "No dedicated EFSA E1405 re-evaluation located; nearest EFSA 2017 modified-starch opinion did not include E1405."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.892",
+      "notes": "No direct E1405/enzyme-treated starch GRAS listing found in queried 21 CFR Part 184; regulated via Food starch-modified conditions in Part 172."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA entry for ENZYME treated STARCHES shows ADI NOT SPECIFIED (2016, 1982); 2018 evaluation was specification-only."
+      },
+      "last_evaluation_year": 2018
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Recent cohort analyses reported associations between some food-additive mixtures (one including modified starches) and higher type 2 diabetes incidence; these are mixture-level observational findings and do not establish E1405-specific causality.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID: 40198579",
+          "PMID: 34608173"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA: ADI NOT SPECIFIED for enzyme-treated starches (2016 and 1982 entries).",
+      "FDA: Food starch-modified may be safely used in food under 21 CFR 172.892 conditions.",
+      "No IARC monograph classification identified for enzyme-treated starch in checked IARC resources."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "high consumers of additive-rich processed foods",
+        "children (general additive-intake vulnerability context)"
+      ],
+      "notes": "No numeric ADI was identified for E1405 (JECFA uses ADI not specified), and no E1405-specific intake distribution enabling numeric exceedance calculation was found in retrieved sources."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.66,
+    "rationale": "Regulatory evidence is broadly permissive (FDA conditional approval; JECFA ADI not specified) and no carcinogenic classification was found, but E1405-specific modern human outcome data are limited and most recent concerns are mixture-based rather than additive-specific.",
+    "key_factors": [
+      "JECFA ADI NOT SPECIFIED history for enzyme-treated starches",
+      "FDA authorization under 21 CFR 172.892 with explicit process limitations",
+      "No IARC classification identified",
+      "No dedicated EFSA E1405 re-evaluation identified in accessible sources",
+      "Recent epidemiologic concern is mixture-level and non-causal"
+    ]
+  },
+  "sources": [
+    {
+      "title": "WHO JECFA database - ENZYME treated STARCHES (Chemical 2884)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2884",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API search - enzyme treated starches",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/enzyme%20treated%20starches",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API full text - 21 CFR Part 172",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=172",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full text - 21 CFR Part 184",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal page (re-evaluation of modified starches, DOI 10.2903/j.efsa.2017.4911)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4911",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA website search query for E1405",
+      "url": "https://www.efsa.europa.eu/en/search?search_api_fulltext=E1405",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed record of EFSA modified starches opinion (PMID 32625282)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625282/",
+      "type": "regulatory"
+    },
+    {
+      "title": "EUR-Lex Regulation (EC) No 1333/2008 (food additives)",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32008R1333",
+      "type": "regulatory"
+    },
+    {
+      "title": "EUR-Lex Commission Regulation (EU) No 1129/2011",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32011R1129",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC Agents Classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC cumulative cross-index PDF",
+      "url": "https://monographs.iarc.who.int/wp-content/uploads/2018/07/cumulative-cross-index.pdf",
+      "type": "database"
+    },
+    {
+      "title": "PubMed query - E1405",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=E1405",
+      "type": "database"
+    },
+    {
+      "title": "PubMed query - \"enzyme-treated starch\"",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%22enzyme-treated+starch%22",
+      "type": "database"
+    },
+    {
+      "title": "Food additive mixtures and type 2 diabetes incidence (PMID 40198579)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40198579/",
+      "type": "study"
+    },
+    {
+      "title": "Exposure to food additive mixtures in 106,000 French adults (PMID 34608173)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34608173/",
+      "type": "study"
+    },
+    {
+      "title": "Chemically Modified Starches as Food Additives (PMID 38005262)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38005262/",
+      "type": "review"
+    }
+  ]
+}

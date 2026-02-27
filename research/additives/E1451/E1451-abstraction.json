@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T04:53:45Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E1451",
+    "name": "Acetylated oxidized starch",
+    "cas_numbers": [],
+    "synonyms": [
+      "Acetylated oxidised starch",
+      "INS 1451",
+      "E1451"
+    ],
+    "chemical_class": "Chemically modified starch (oxidized and acetylated starch derivative)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "thickener",
+    "secondary_categories": [
+      "stabilizer",
+      "emulsifier",
+      "binder"
+    ],
+    "mechanism": "Oxidation and acetylation of starch alter gel/texture properties and improve clarity and stability, supporting thickening and stabilization functions.",
+    "common_food_categories": [
+      "soft jelly confectionery",
+      "processed foods using modified starches for texture",
+      "other foods where modified starch acts as emulsifier/stabilizer"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2017 re-evaluation of modified starches (including E1451) concluded no need for a numerical ADI and no safety concern at reported uses/use levels."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "E1451 was included in EFSA's modified-starch group re-evaluation; EFSA concluded no safety concern at reported uses/use levels and no numerical ADI required."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.892",
+      "notes": "Regulated as food starch-modified under food additive provisions. Relevant conditions include oxidation and acetylation reagent limits; no explicit standalone CFR GRAS entry naming acetylated oxidized starch was identified in reviewed Part 182/184/186 exports."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO JECFA record shows ADI NOT SPECIFIED (2016 and 2001 entries); 2018 entry is specification-only."
+      },
+      "last_evaluation_year": 2018
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "In a 90-day rat study summarized by JECFA, urinary bladder and kidney microscopic changes were reported at the highest dietary concentration; NOEL was 5900 mg/kg bw/day.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://www.inchem.org/documents/jecfa/jecmono/v48je09.htm"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "High-dose rat studies reported gastrointestinal-adaptive findings (soft feces, enlarged/dilated caeca) at elevated dietary levels.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://www.inchem.org/documents/jecfa/jecmono/v48je09.htm"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA's 2017 re-evaluation did not identify a safety concern for modified starches (including E1451) at reported uses/use levels.",
+      "EFSA indicated no genotoxic concern for modified starches in its read-across framework.",
+      "JECFA retained ADI as NOT SPECIFIED for acetylated oxidized starch."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "High consumers of confectionery, including adolescents"
+      ],
+      "notes": "No numerical ADI is established by EFSA/JECFA for this additive context; therefore numerical ADI exceedance cannot be directly calculated from these evaluations."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.77,
+    "rationale": "Regulatory assessments (EFSA/JECFA) are consistently permissive with no numerical ADI and no current IARC classification signal. Animal high-dose findings exist but were interpreted within a no-safety-concern conclusion at intended use levels.",
+    "key_factors": [
+      "EFSA 2017 concluded no safety concern at reported use levels for modified starches including E1451",
+      "JECFA ADI is NOT SPECIFIED and latest update is specification-focused",
+      "FDA/eCFR regulates use via 21 CFR 172.892 with reagent/composition limits",
+      "No E1451-specific IARC monograph classification identified",
+      "Recent PubMed evidence is limited for direct modern E1451-specific toxicology"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA search page for E1451 (visited; robots restriction encountered)",
+      "url": "https://www.efsa.europa.eu/en/search?query=E1451",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal publication page 4911 (redirect target for 2017 re-evaluation)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4911",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed record for EFSA 2017 modified starches re-evaluation (PMID 32625282)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625282/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR 172.892 Food starch-modified",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?section=172.892",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR Part 184 Direct Food Substances Affirmed as GRAS",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR Part 182 Substances Generally Recognized as Safe",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA chemical entry ACETYLATED OXIDIZED STARCH (Home/Chemical/178)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/178",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API partial-name search returning chemical Id 178",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/Acetylated%20oxidized%20starch",
+      "type": "database"
+    },
+    {
+      "title": "WHO Food Additives Series 48 monograph: Acetylated oxidized starch",
+      "url": "https://www.inchem.org/documents/jecfa/jecmono/v48je09.htm",
+      "type": "review"
+    },
+    {
+      "title": "IARC list of classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset script (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed exact title/abstract query for acetylated oxidized starch",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%22acetylated+oxidized+starch%22%5BTitle%2FAbstract%5D",
+      "type": "database"
+    },
+    {
+      "title": "PubMed eUtils query for acetylated starch and toxicity",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%22acetylated+starch%22+AND+(toxicology+OR+toxicity)&retmax=10&retmode=json",
+      "type": "database"
+    },
+    {
+      "title": "PubMed review article on acetylated starch functionalities (2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37544556/",
+      "type": "study"
+    },
+    {
+      "title": "Legacy WHO JECFA FoodAdditives.aspx endpoint (redirects during this run)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/FoodAdditives.aspx?ChemicalName=Acetylated%20oxidized%20starch",
+      "type": "database"
+    }
+  ]
+}

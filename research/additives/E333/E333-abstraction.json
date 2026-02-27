@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T12:28:06+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E333",
+    "name": "Calcium citrates",
+    "cas_numbers": [
+      "813-94-5"
+    ],
+    "synonyms": [
+      "Tricalcium citrate",
+      "Tricalcium salt of 2-hydroxy-1,2,3-propanetricarboxylic acid",
+      "Tricalcium salt of beta-hydroxytricarballylic acid"
+    ],
+    "chemical_class": "calcium salts of citric acid (tricarboxylate salts)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "firming agent",
+      "sequestrant",
+      "calcium source"
+    ],
+    "mechanism": "Buffers/adjusts food acidity and complexes metal ions; supplies calcium in formulation contexts.",
+    "common_food_categories": [
+      "processed foods requiring pH control",
+      "foods using sequestrant systems",
+      "infant formula (where legally applicable)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "Latest retrievable OpenEFSA re-evaluation record for E333 is ongoing and did not provide a published output/ADI in the API response."
+      },
+      "last_evaluation_year": 2026,
+      "key_finding": "OpenEFSA question EFSA-Q-2011-00611 (E333 iii) is marked 'Ongoing Risk Assessment' (last modified 2026-01-19) with no published output object in the retrieved record."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1195",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "NOT LIMITED (not specified)."
+      },
+      "last_evaluation_year": 1973
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "Recent clinical literature in nephrolithiasis contexts indicates calcium/citrate urinary balance is relevant to stone risk in susceptible groups; this is not direct proof of harm at typical additive exposure.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:41673302",
+          "PMID:40936162"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "A prospective elderly cohort using oral calcium citrate reported mostly mild adverse reactions (mainly gastrointestinal) and no serious adverse reaction signal in that study context.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID:38345765"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA entry for calcium citrate reports ADI NOT LIMITED (not specified).",
+      "21 CFR Part 184 (direct food substances affirmed as GRAS) includes 21 CFR 184.1195 calcium citrate with GMP-limited use conditions.",
+      "No specific IARC calcium citrate classification was identified in retrieved IARC search/classification pages."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "Numerical ADI exceedance assessment is not applicable for JECFA's 'not specified/not limited' ADI; EFSA numeric ADI was not retrievable from the latest ongoing record."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.62,
+    "rationale": "Regulatory evidence remains permissive (FDA GRAS framework and JECFA ADI not specified/not limited). The latest retrievable EFSA E333 re-evaluation record is ongoing without a published output in the retrieved API result, and renal stone-risk literature supports caution for susceptible subgroups rather than broad population-level high concern.",
+    "key_factors": [
+      "JECFA ADI NOT LIMITED (not specified)",
+      "FDA listing in 21 CFR 184.1195 under Part 184 GRAS framework",
+      "OpenEFSA E333 re-evaluation currently marked ongoing with no retrieved output object",
+      "No major-jurisdiction ban identified in retrieved sources",
+      "Renal/lithogenic context evidence suggests subgroup caution at higher-risk physiology"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA website search for E333",
+      "url": "https://www.efsa.europa.eu/en/search?search_api_fulltext=E%20333",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA question search (citrates food additives)",
+      "url": "https://open.efsa.europa.eu/api/question/searchAdvanced?offset=0&limit=200&search=citrates%20food%20additives",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA question detail EFSA-Q-2011-00611",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00611",
+      "type": "database"
+    },
+    {
+      "title": "EUR-Lex listing for Regulation (EC) No 1333/2008 consolidated text",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A02008R1333-20180718",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full Title 21 XML (queried 2026-02-19)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA search API for calcium citrate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/calcium%20citrate",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical page CALCIUM CITRATE (ID 2938)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2938",
+      "type": "database"
+    },
+    {
+      "title": "IARC search page for citric acid",
+      "url": "https://monographs.iarc.who.int/?s=citric+acid",
+      "type": "database"
+    },
+    {
+      "title": "IARC search page for calcium citrate",
+      "url": "https://monographs.iarc.who.int/?s=calcium+citrate",
+      "type": "database"
+    },
+    {
+      "title": "IARC agents classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search for calcium citrate safety-related terms",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%28%22calcium+citrate%22%5BTitle%2FAbstract%5D%29+AND+%28safety+OR+toxicity+OR+adverse+OR+risk%29",
+      "type": "database"
+    },
+    {
+      "title": "Evaluating adherence, tolerability and safety of oral calcium citrate in elderly osteopenic subjects (2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38345765/",
+      "type": "study"
+    },
+    {
+      "title": "Dietary interventions on nutritional management of population with urolithiasis (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40936162/",
+      "type": "review"
+    },
+    {
+      "title": "Urinary calcium-to-citrate ratio predicts kidney stone risk in children under the age of two years (2026)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41673302/",
+      "type": "study"
+    },
+    {
+      "title": "Role of calcium salts in modulating benzo[a]pyrene levels in barbecued pork sausages (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39332372/",
+      "type": "study"
+    }
+  ]
+}

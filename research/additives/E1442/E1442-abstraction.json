@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T04:44:44Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E1442",
+    "name": "Hydroxypropyl distarch phosphate",
+    "cas_numbers": [
+      "53124-00-8"
+    ],
+    "synonyms": [
+      "HPDSP",
+      "HDP",
+      "INS 1442",
+      "Starch hydrogen phosphate 2-hydroxypropyl ether"
+    ],
+    "chemical_class": "Chemically modified starch (cross-linked hydroxypropylated starch phosphate)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "thickener",
+    "secondary_categories": [
+      "stabilizer",
+      "emulsifier"
+    ],
+    "mechanism": "Hydrated modified starch polymer increases viscosity and water binding; hydroxypropyl/phosphate modifications improve process stability, while amylase can hydrolyze it and reduce viscosity.",
+    "common_food_categories": [
+      "starch-based thickeners for dysphagia diets",
+      "pasteurized yogurt systems",
+      "frozen dough/steamed-bread improver systems",
+      "processed foods using food starch-modified under GMP"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2017 re-evaluation concluded no need for a numerical ADI for modified starches including E1442."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "No safety concern for reported uses/use levels in the general population; no numerical ADI needed."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.892",
+      "notes": "Covered as food starch-modified with specified reagent/residual limits; not identified as a standalone GRAS listing in this CFR section."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA record lists ADI as NOT SPECIFIED (2016 and earlier); 2018 entry was specification-only."
+      },
+      "last_evaluation_year": 2016
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "An 89-week mouse feeding study with very high dietary inclusion reported mild renal/urinary findings (e.g., intratubular nephrosis) alongside GI enlargement, with partial reversibility after stopping exposure.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/2430873/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Rat studies reported reduced iron and zinc absorption in some hydroxypropyl distarch phosphate diet contexts.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/11160549/",
+          "https://pubmed.ncbi.nlm.nih.gov/993856/"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "Regulatory and experimental evidence indicates digestion by hydrolysis/fermentation rather than intact absorption; current concern is mainly physiological effects at high experimental exposures rather than established harm at normal use levels.",
+        "evidence_strength": "theoretical",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/32625282/",
+          "https://pubmed.ncbi.nlm.nih.gov/9566992/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2017 found no safety concern at reported use levels and no need for a numerical ADI.",
+      "JECFA lists ADI as NOT SPECIFIED for hydroxypropyl distarch phosphate.",
+      "1986 chronic mouse study did not provide evidence of carcinogenicity for hydroxypropyl distarch phosphate."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "No numerical ADI is set by EFSA/JECFA for this additive category, so numeric ADI exceedance cannot be directly computed; EFSA reported no safety concern at reported use levels."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.79,
+    "rationale": "Regulatory consensus (EFSA/JECFA/FDA framework) supports current uses with no numerical ADI, while older animal studies indicate some high-dose physiological effects and mineral-absorption caveats that justify continued monitoring but not high-risk classification.",
+    "key_factors": [
+      "EFSA 2017: no safety concern at reported uses; no numerical ADI needed",
+      "JECFA ADI: NOT SPECIFIED",
+      "US regulation under 21 CFR 172.892 with use constraints",
+      "Older animal studies show mineral absorption and mild renal/GI effects under high experimental intakes",
+      "No IARC carcinogenic classification found"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal re-evaluation page (E1404-E1452 including E1442)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4911",
+      "type": "regulatory"
+    },
+    {
+      "title": "Re-evaluation of modified starches as food additives (PMID 32625282)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625282/",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 172.892 Food starch-modified",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-172/subpart-I/section-172.892",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Title 21 XML (versioner API)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2025-01-01/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA Chemical record: HYDROXYPROPYL DISTARCH PHOSPHATE (INS 1442)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2343",
+      "type": "database"
+    },
+    {
+      "title": "JECFA search API by partial name",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/hydroxypropyl%20distarch%20phosphate",
+      "type": "database"
+    },
+    {
+      "title": "IARC Agents Classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "Chronic (89-week) feeding study with hydroxypropyl distarch phosphate in mice (PMID 2430873)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/2430873/",
+      "type": "study"
+    },
+    {
+      "title": "Hydroxypropyl-distarch phosphate reduces zinc and iron absorption in rats (PMID 11160549)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11160549/",
+      "type": "study"
+    },
+    {
+      "title": "Hydroxypropyl-modified potato starch increases fecal bile acid excretion in rats (PMID 9566992)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9566992/",
+      "type": "study"
+    },
+    {
+      "title": "Exposure to food additive mixtures in the NutriNet-Sante cohort (PMID 34608173)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34608173/",
+      "type": "study"
+    },
+    {
+      "title": "PubChem CID 24847848: Hydroxypropyl distarch phosphate",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/24847848",
+      "type": "database"
+    }
+  ]
+}

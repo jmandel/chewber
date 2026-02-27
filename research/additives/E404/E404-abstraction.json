@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T14:32:23+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E404",
+    "name": "Calcium alginate",
+    "cas_numbers": [
+      "9005-35-0"
+    ],
+    "synonyms": [
+      "Alginic acid, calcium salt",
+      "Calcium salt of alginic acid",
+      "INS 404"
+    ],
+    "chemical_class": "Alginic acid salt (alginate hydrocolloid polysaccharide)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "stabilizer",
+    "secondary_categories": [
+      "thickener",
+      "gelling agent",
+      "emulsifier"
+    ],
+    "mechanism": "Hydrocolloid behavior: increases viscosity and stabilizes matrices; alginate systems form gel networks via ionic interactions, including calcium-mediated gelation behavior.",
+    "common_food_categories": [
+      "baked goods",
+      "alcoholic beverages",
+      "confections and frostings",
+      "egg products",
+      "fats and oils",
+      "gelatins and puddings",
+      "gravies and sauces",
+      "jams and jellies",
+      "sweet sauces",
+      "other food categories"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA (2017) concluded no need for a numerical ADI (ADI not specified) for alginic acid and its salts (E400-E404)."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "No safety concern at refined exposure for reported uses/levels; insufficient data for adequate assessment in certain infant and young-child FSMP categories."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1187; 21 CFR 582.7187",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA listing for calcium alginate (INS 404): ADI NOT SPECIFIED."
+      },
+      "last_evaluation_year": 1992
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "EFSA identified a data gap for infants and young children consuming foods for special medical purposes (FC 13.1.5.1 and 13.1.5.2), so safety could not be adequately assessed for those categories.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/32625343/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7010146/"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "Recent rat data show sodium alginate can modulate gut microbiota and bile-acid/SCFA profiles with sex- and viscosity-dependent effects; adverse clinical significance for humans at food-additive exposures remains unclear.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/40600413/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA re-evaluation of E400-E404 found no need for a numerical ADI and no safety concern at refined exposure estimates for reported uses.",
+      "JECFA calcium alginate record reports ADI NOT SPECIFIED.",
+      "No IARC monograph classification entry identified for calcium alginate/alginic acid in the current IARC classifications dataset."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "infants and young children consuming FSMP (assessment data gap noted by EFSA)"
+      ],
+      "notes": "Numerical exceedance cannot be computed because EFSA/JECFA did not set a numeric ADI for E404; EFSA still flagged uncertainty for specific FSMP infant/young-child categories."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.79,
+    "rationale": "Regulatory consensus (EFSA, FDA/CFR, JECFA) indicates low concern under authorized food-use conditions, but not enough evidence supports a fully risk-free classification due to unresolved pediatric medical-food data gaps and limited modern human long-term outcome data specific to E404.",
+    "key_factors": [
+      "EFSA 2017: no numerical ADI needed and no safety concern at refined exposure for reported uses",
+      "US CFR: GRAS status with explicit food-use conditions",
+      "JECFA: ADI not specified (1992)",
+      "No IARC classification entry found for calcium alginate",
+      "Uncertainty remains for infants/young children in FSMP categories"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of alginic acid and its sodium, potassium, ammonium and calcium salts (E 400-E 404) as food additives (EFSA Journal)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5049",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed record for EFSA 2017 E400-E404 re-evaluation (PMID: 32625343)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625343/",
+      "type": "database"
+    },
+    {
+      "title": "PMCID full text for EFSA 2017 E400-E404 re-evaluation (PMC7010146)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7010146/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API documentation",
+      "url": "https://www.ecfr.gov/developers/documentation/api/v1",
+      "type": "database"
+    },
+    {
+      "title": "eCFR Title 21 XML snapshot (includes 21 CFR 184.1187 and 21 CFR 582.7187)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2025-10-16/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA Chemical record: Calcium alginate (Chemical 2806)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2806",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs - Agents classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs - List of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list app dataset script (last_update field and agent list)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Alginate enhances excretion and reduces absorption of strontium and cesium in rats (2013)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23318531/",
+      "type": "study"
+    },
+    {
+      "title": "The sex-specific effects of sodium alginate with varying viscosities on lipid metabolism and gut microbiota in rats (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40600413/",
+      "type": "study"
+    },
+    {
+      "title": "Gelling, thickening, and biological properties of marine algal polysaccharides: Implications for food applications (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40973263/",
+      "type": "review"
+    }
+  ]
+}

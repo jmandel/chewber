@@ -1,0 +1,223 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T12:56:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E341",
+    "name": "Calcium phosphates",
+    "cas_numbers": [
+      "7758-23-8",
+      "7757-93-9",
+      "7758-87-4"
+    ],
+    "synonyms": [
+      "Monocalcium phosphate",
+      "Monobasic calcium phosphate",
+      "Dicalcium phosphate",
+      "Dibasic calcium phosphate",
+      "Tricalcium phosphate",
+      "Tribasic calcium phosphate",
+      "Precipitated calcium phosphate"
+    ],
+    "chemical_class": "Inorganic calcium salts of phosphoric acid (orthophosphates)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "anticaking agent",
+      "raising agent",
+      "firming agent",
+      "flour treatment agent",
+      "nutrient supplement",
+      "sequestrant",
+      "texturizer",
+      "thickener",
+      "yeast food"
+    ],
+    "mechanism": "Calcium phosphates regulate pH/buffering, reduce caking by improving powder flow, and provide acid-reacting/raising functionality in baked systems; some forms also contribute calcium/phosphorus fortification.",
+    "common_food_categories": [
+      "processed cheese and cheese analogues",
+      "bread and rolls",
+      "fine bakery wares",
+      "infant formula and foods for infants/young children",
+      "processed foods using phosphate salts for texture and processing"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 40,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2019 group ADI for phosphates (including E341), expressed as phosphorus."
+      },
+      "last_evaluation_year": 2019,
+      "key_finding": "EFSA concluded the group ADI is protective for healthy adults, but estimated exposure exceeded the ADI in several younger/high-consumer groups and the ADI does not apply to moderate-severe renal impairment."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.1217",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 70,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA calcium phosphate entries report a group MTDI of 70 mg/kg bw (as phosphorus) from all sources."
+      },
+      "last_evaluation_year": 1982
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "EFSA identified renal calcification/tubular nephropathy as a key adverse effect in phosphate toxicology and noted the ADI does not apply to moderate-severe renal impairment.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009158/"
+        ]
+      },
+      {
+        "category": "cardiovascular",
+        "summary": "A cohort study reported higher urinary phosphate associated with higher cardiovascular disease incidence, with interpretation linked to higher intake of highly processed foods.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/37330983/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "A randomized cross-over study in healthy adults found meals containing inorganic phosphate additives altered acute calcium/phosphate homeostasis.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/39238566/"
+        ]
+      },
+      {
+        "category": "neurotoxic",
+        "summary": "A 2025 mouse study observed anxiety-like behavior and neuroimmune changes under high dietary phosphate intake.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41050506/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA reported no concern for genotoxicity and carcinogenicity for the phosphate additive group in its 2019 re-evaluation.",
+      "FDA lists calcium phosphate as GRAS in 21 CFR 182.1217 when used under good manufacturing practice.",
+      "No specific IARC monograph classification entry for calcium phosphate was identified in the current IARC list dataset searched."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "infants",
+        "toddlers",
+        "children",
+        "adolescents (high exposure)",
+        "high consumers of phosphate-additive foods",
+        "people with moderate-to-severe renal impairment"
+      ],
+      "notes": "EFSA analytical-data exposure scenario exceeded the 40 mg/kg bw/day group ADI in several younger populations; supplements were also noted as potentially exceeding ADI."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.84,
+    "rationale": "E341 remains approved in major jurisdictions, but EFSA set a finite group ADI and documented exceedance in younger/high-exposure populations, with additional human and mechanistic studies supporting caution at higher inorganic phosphate intakes.",
+    "key_factors": [
+      "EFSA 2019 group ADI: 40 mg/kg bw/day as phosphorus",
+      "Documented ADI exceedance in infants/toddlers/children and high-exposure groups",
+      "FDA GRAS status under 21 CFR 182.1217 with GMP condition",
+      "JECFA group MTDI 70 mg/kg bw (as P), evaluation year 1982",
+      "No IARC classification entry for calcium phosphate in the current IARC list dataset"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal publication page 5674: Re-evaluation of phosphoric acid-phosphates (E 338-341, E 343, E 450-452)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5674",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA re-evaluation full-text mirror (PMCID: PMC7009158)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009158/",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA search URL for E341 (robot-restricted in this environment)",
+      "url": "https://www.efsa.europa.eu/en/search?search_api_fulltext=E341",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API section 21 CFR 182.1217 (Calcium phosphate)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?chapter=I&subchapter=B&part=182&section=182.1217",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API section 21 CFR 582.1217 (Calcium phosphate; animal food context)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?chapter=I&subchapter=E&part=582&section=582.1217",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA database entry: MONOBASIC CALCIUM PHOSPHATE (ID 37, INS 341(i))",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/37",
+      "type": "database"
+    },
+    {
+      "title": "JECFA database entry: CALCIUM HYDROGEN PHOSPHATE (ID 80, INS 341(ii))",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/80",
+      "type": "database"
+    },
+    {
+      "title": "JECFA database entry: CALCIUM PHOSPHATE, TRIBASIC (ID 656, INS 341(iii))",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/656",
+      "type": "database"
+    },
+    {
+      "title": "JECFA API partial-name search for calcium phosphate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/calcium%20phosphate",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset script (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Inorganic phosphate additives in meals ... randomized cross-over studies in healthy adults (2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39238566/",
+      "type": "study"
+    },
+    {
+      "title": "Urinary phosphate is associated with cardiovascular disease incidence (2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37330983/",
+      "type": "study"
+    },
+    {
+      "title": "High dietary phosphate intake induces anxiety in normal male mice (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41050506/",
+      "type": "study"
+    },
+    {
+      "title": "Phosphate-based additives in processed foods: US packaged food supply cross-sectional study (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40180501/",
+      "type": "study"
+    },
+    {
+      "title": "Industrial Use of Phosphate Food Additives: cardiorenal risk mechanism review (2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37630701/",
+      "type": "review"
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T00:00:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E154",
+    "name": "Brown FK",
+    "cas_numbers": [
+      "8062-14-4"
+    ],
+    "synonyms": [
+      "C.I. Food Brown 1",
+      "INS 154",
+      "Brown FK",
+      "E154"
+    ],
+    "chemical_class": "Synthetic sulfonated azo dye mixture (food colour)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "colour",
+    "secondary_categories": [
+      "appearance restoration",
+      "surface colouring"
+    ],
+    "mechanism": "Mixture of azo dyes that imparts brown colour through visible-light absorption by azo chromophores; historically used to colour smoked kippers.",
+    "common_food_categories": [
+      "Smoked fish (kippers)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "withdrawn",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA (2010) cited historical SCF ADI of 0.15 mg/kg bw/day but concluded it could not confirm safety due deficiencies in the toxicity database."
+      },
+      "last_evaluation_year": 2010,
+      "key_finding": "EFSA Panel was unable to conclude on the safety of Brown FK (E154) because the available toxicity dataset was deficient."
+    },
+    "fda": {
+      "status": "not_evaluated",
+      "cfr_citation": "21 CFR 70.3(f); 21 CFR 70.5; Title 21 Parts 73/74/81 (no Brown FK listing found in Title 21 XML search)",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "Latest JECFA evaluation (1986): NO ADI ALLOCATED; previous temporary ADI in 1985 was 0-0.075 mg/kg bw/day."
+      },
+      "last_evaluation_year": 1986
+    },
+    "iarc_classification": null,
+    "notable_bans": [
+      "European Union: E154 not identified in the current consolidated Annex II Union list text checked.",
+      "United States: Brown FK not identified in eCFR Title 21 colour-additive listings reviewed."
+    ]
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "genotoxic",
+        "summary": "Older studies reported mutagenicity/genotoxicity findings for Brown FK or related components in bacterial systems and in assays using rat excreta after oral dosing.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID:6998843",
+          "PMID:6750376",
+          "PMID:6381263",
+          "WHO Food Additives Series 20 (Brown FK)"
+        ]
+      },
+      {
+        "category": "cardiovascular",
+        "summary": "JECFA toxicology monograph described some metabolites as cardiotoxic and reported dose-related myopathy/pigment deposition findings in animal studies at higher doses.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "WHO Food Additives Series 20 (Brown FK)",
+          "JECFA evaluation summary (jec_239)"
+        ]
+      },
+      {
+        "category": "carcinogenic",
+        "summary": "Long-term animal studies had uncertainty and data gaps (including incomplete lower-dose histopathology), leading EFSA to state it could not conclude on safety.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "EFSA Journal 2010;8(4):1535",
+          "WHO Food Additives Series 20 (Brown FK)"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA comments noted no clear increase in tumour incidence and no adverse reproductive/teratogenic findings in reviewed studies, but overall data quality limitations remained."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "Children (high-percentile consumers of smoked fish products)"
+      ],
+      "notes": "EFSA 2010 refined exposure reached up to 0.14 mg/kg bw/day in children at P95, close to the historical SCF ADI of 0.15 mg/kg bw/day."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "high",
+    "confidence": 0.84,
+    "rationale": "Authoritative reassessments did not confirm safety (EFSA non-conclusion; JECFA NO ADI ALLOCATED), while older toxicology indicates plausible genotoxic/cardiotoxic concerns and current major-jurisdiction positive-list support was not found.",
+    "key_factors": [
+      "EFSA (2010) unable to conclude on safety due toxicity-data deficiencies",
+      "JECFA latest status: NO ADI ALLOCATED",
+      "No Brown FK listing identified in reviewed EU/US current legal listings",
+      "Older genotoxic and cardiotoxic-related animal/mechanistic concern signals"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Scientific Opinion on the re-evaluation of Brown FK (E 154) as a food additive",
+      "url": "https://doi.org/10.2903/j.efsa.2010.1535",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA scientific opinion page (access attempted)",
+      "url": "https://www.efsa.europa.eu/en/science/scientific-opinion/reevaluation-brown-fk-e-154-food-additive",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA database: Brown FK (Chemical/1274)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1274",
+      "type": "database"
+    },
+    {
+      "title": "JECFA API search by partial name",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/Brown%20FK",
+      "type": "database"
+    },
+    {
+      "title": "JECFA Evaluations - Brown FK",
+      "url": "http://www.inchem.org/documents/jecfa/jeceval/jec_239.htm",
+      "type": "database"
+    },
+    {
+      "title": "WHO Food Additives Series 20: Brown FK",
+      "url": "http://www.inchem.org/documents/jecfa/jecmono/v20je10.htm",
+      "type": "review"
+    },
+    {
+      "title": "eCFR Title 21 full XML snapshot (2026-02-20)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-20/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Regulation (EC) No 1333/2008 consolidated text",
+      "url": "https://eur-lex.europa.eu/eli/reg/2008/1333/2024-12-31/eng",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed E-utilities search endpoint",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi",
+      "type": "database"
+    },
+    {
+      "title": "Mutagenicity studies of urine and faecal samples from rats treated orally with the food colourings Brown FK and Red 2G",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/6381263/",
+      "type": "study"
+    },
+    {
+      "title": "Studies on the genotoxicity of the food colour Brown FK and its component dyes using bacterial assays",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/6750376/",
+      "type": "study"
+    },
+    {
+      "title": "Genotoxicity of the food colours red 2G and brown FK in bacterial systems; use of structurally-related dyes and azo-reduction",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/6998843/",
+      "type": "study"
+    },
+    {
+      "title": "Brown FK and the colouring of smoked fish--a risk-benefit analysis",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3653448/",
+      "type": "study"
+    },
+    {
+      "title": "An Improved Analytical Method for the Determination of Brown FK in Food using HPLC",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29562249/",
+      "type": "study"
+    }
+  ]
+}

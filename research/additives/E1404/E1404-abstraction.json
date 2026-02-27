@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T03:57:32+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E1404",
+    "name": "Oxidized starch",
+    "cas_numbers": [
+      "65996-62-5"
+    ],
+    "synonyms": [
+      "Starch, oxidized",
+      "OXIDIZED STARCH",
+      "INS 1404 Oxidized starch"
+    ],
+    "chemical_class": "Chemically modified starch (oxidized polysaccharide)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "thickener",
+    "secondary_categories": [
+      "stabilizer",
+      "emulsifier",
+      "texturizer"
+    ],
+    "mechanism": "Oxidation introduces carbonyl/carboxyl groups into starch polymers, altering viscosity, gel behavior, and processing stability.",
+    "common_food_categories": [
+      "sauces and soups",
+      "bakery batters and coatings",
+      "processed foods requiring texture/viscosity control"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA (2017, DOI 10.2903/j.efsa.2017.4911) concluded no need for a numerical ADI and no safety concern at reported uses and use levels for modified starches including E1404."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "No safety concern for modified starches (including E1404) at reported uses/use levels; no numerical ADI needed."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.892",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI NOT SPECIFIED in oxidized starch/modifed starch evaluations; latest oxidized-starch entry includes 2018 specification-only review."
+      },
+      "last_evaluation_year": 2018
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Recent cohort studies on food additive mixtures (not E1404 alone) reported associations between some additive-mixture patterns including modified starches and higher type 2 diabetes incidence; causality was not established.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID: 40198579",
+          "PMID: 34608173"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2017: no genotoxic concern identified for the modified starch group including E1404.",
+      "EFSA 2017: no safety concern at reported uses/use levels; no numerical ADI required.",
+      "JECFA evaluations: ADI not specified for oxidized/modified starches."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "general population",
+        "high consumers"
+      ],
+      "notes": "No numerical ADI established by EFSA/JECFA for this additive group; EFSA reported high-percentile combined exposure for E1404-E1451 but still concluded no safety concern at reported use levels."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.8,
+    "rationale": "Current EFSA/JECFA conclusions and U.S. CFR authorization support low concern under authorized use conditions, while newer epidemiology raises non-specific mixture-level uncertainty rather than E1404-specific causal evidence.",
+    "key_factors": [
+      "EFSA 2017 conclusion: no safety concern and no numerical ADI needed",
+      "JECFA ADI not specified with subsequent specification-focused updates",
+      "FDA authorization under 21 CFR 172.892 with explicit process/use limits",
+      "No IARC carcinogenic classification identified",
+      "Recent concerns are mixture-based and not specific to E1404 alone"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of oxidised starch ... as food additives (EFSA opinion via PubMed)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625282/",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal publication page (direct access attempted)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4911",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full text, Title 21 Part 172",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=172",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full text, Title 21 Part 184",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database - OXIDIZED STARCH (Chemical 889)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/889",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA database - MODIFIED STARCHES (Chemical 398)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/398",
+      "type": "database"
+    },
+    {
+      "title": "IARC cumulative cross-index PDF",
+      "url": "https://monographs.iarc.who.int/wp-content/uploads/2018/07/cumulative-cross-index.pdf",
+      "type": "database"
+    },
+    {
+      "title": "Chemically Modified Starches as Food Additives",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38005262/",
+      "type": "review"
+    },
+    {
+      "title": "Food additive mixtures and type 2 diabetes incidence",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40198579/",
+      "type": "study"
+    },
+    {
+      "title": "Exposure to food additive mixtures in 106,000 French adults",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34608173/",
+      "type": "study"
+    },
+    {
+      "title": "PubChem PUG-REST substance synonyms for starch, oxidized",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/name/starch,%20oxidized/synonyms/JSON",
+      "type": "database"
+    }
+  ]
+}

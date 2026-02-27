@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T00:00:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E226",
+    "name": "Calcium sulfite",
+    "cas_numbers": [
+      "10257-55-3",
+      "15091-91-5"
+    ],
+    "synonyms": [
+      "Calcium sulphite",
+      "Sulfurous acid, calcium salt (1:1)",
+      "INS 226",
+      "E-226"
+    ],
+    "chemical_class": "Inorganic sulfite salt",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "antioxidant",
+      "reducing agent"
+    ],
+    "mechanism": "Sulfites act as reducing/antioxidant agents that inhibit oxidation and enzymatic browning, helping preserve color and stability in susceptible foods and beverages.",
+    "common_food_categories": [
+      "dried fruit",
+      "non-alcoholic beverages and fruit juices",
+      "wine",
+      "sausages and processed meat products",
+      "processed potato products",
+      "beer"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "restricted",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA follow-up (2022) withdrew the temporary group ADI (0.7 mg/kg bw/day as SO2 equivalents) because available data were inadequate to derive an ADI."
+      },
+      "last_evaluation_year": 2025,
+      "key_finding": "EFSA concluded safety concern for sulfur dioxide-sulfites (E220-E228) under assessed exposure scenarios (MOE approach); 2025 update still reported exceedance in parts of surveyed populations."
+    },
+    "fda": {
+      "status": "not_evaluated",
+      "cfr_citation": "21 CFR 182.3798; 21 CFR 182.3862 (and related sulfite listings in 21 CFR Part 182 Subpart D; calcium sulfite not found in Title 21 snapshot searched)",
+      "notes": "eCFR Title 21 XML search (2026-02-25 snapshot) returned no 'calcium sulfite' listing; related sulfites are GRAS with use restrictions."
+    },
+    "jecfa": {
+      "adi": {
+        "value": 0.7,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI for sulfur dioxide and specified sulfites (including calcium sulfite), expressed as sulfur dioxide, shown as 0-0.7 mg/kg bw."
+      },
+      "last_evaluation_year": 1998
+    },
+    "iarc_classification": "Group 3",
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "allergenic",
+        "summary": "Sulfites can trigger adverse reactions in susceptible individuals, with asthmatics repeatedly identified as a higher-risk subgroup; recent dermatology review also highlights contact allergy relevance.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://www.fda.gov/food/food-additives-petitions/sulfites-food-and-drug-products",
+          "https://pubmed.ncbi.nlm.nih.gov/39787305/"
+        ]
+      },
+      {
+        "category": "neurotoxic",
+        "summary": "Recent rodent studies with repeated sodium metabisulfite/sulfite exposure reported anxiety/depression-like behavior, altered hippocampal signaling, and oxidative stress biomarkers.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/40706911/",
+          "https://pubmed.ncbi.nlm.nih.gov/36449323/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "EFSA concluded that available toxicity data were insufficient to derive an ADI and that current exposure scenarios raise safety concern.",
+        "evidence_strength": "strong",
+        "key_references": [
+          "https://www.efsa.europa.eu/en/efsajournal/pub/7594",
+          "https://pubmed.ncbi.nlm.nih.gov/36440381/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "IARC classified sulfur dioxide/some sulfites as Group 3 (not classifiable as to carcinogenicity to humans).",
+      "A 2023 cosmetic safety review concluded listed sulfites are safe under current cosmetic use concentrations."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "high consumers of sulfited foods/beverages",
+        "high regular wine consumers",
+        "some child and adolescent consumer groups"
+      ],
+      "notes": "JECFA intake evaluations and EFSA exposure assessments indicate that upper-percentile consumers can exceed health-based guidance values or fall below protective MOE margins."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "high",
+    "confidence": 0.68,
+    "rationale": "EFSA follow-up withdrew the temporary ADI and identified safety concern across assessed exposure scenarios, with later exposure updates still showing exceedance in subsets of populations. Although IARC carcinogenic concern is low (Group 3) and JECFA retains a historical group ADI, current EU risk conclusions and exposure patterns justify a high-tier precautionary classification.",
+    "key_factors": [
+      "EFSA 2022: temporary ADI withdrawn; toxicity database deemed inadequate",
+      "EFSA MOE-based assessment identified population safety concern",
+      "EFSA 2025 exposure update still found exceedance in some surveys",
+      "Known sulfite sensitivity in susceptible populations (especially asthmatics)",
+      "No strong carcinogenic signal from IARC (Group 3) mitigates but does not remove concern"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Follow-up of the re-evaluation of sulfur dioxide (E220) ... calcium sulfite (E226) ... (EFSA Journal)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/7594",
+      "type": "regulatory"
+    },
+    {
+      "title": "Sulfur dioxide and sulfites (E220-228): refined exposure assessment and uncertainty analyses (EFSA Supporting Publication)",
+      "url": "https://www.efsa.europa.eu/en/supporting/pub/en-9754",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed record for EFSA follow-up opinion (PMID: 36440381)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36440381/",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API full text snapshot: Title 21 (2026-02-25)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 182.3798 Sodium sulfite",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-182/subpart-D/section-182.3798",
+      "type": "regulatory"
+    },
+    {
+      "title": "Substances Added to Food (formerly EAFUS) - FDA",
+      "url": "https://www.fda.gov/food/food-additives-petitions/substances-added-food-former-eafus",
+      "type": "regulatory"
+    },
+    {
+      "title": "Sulfites in Food and Drug Products - FDA",
+      "url": "https://www.fda.gov/food/food-additives-petitions/sulfites-food-and-drug-products",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA database: CALCIUM SULFITE",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1361",
+      "type": "database"
+    },
+    {
+      "title": "JECFA database: SULFITES",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/289",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs Volume 54 PDF (sulfur dioxide and some sulfites overall evaluation)",
+      "url": "https://monographs.iarc.who.int/wp-content/uploads/2018/06/mono54.pdf",
+      "type": "regulatory"
+    },
+    {
+      "title": "Nitric oxide plays a role in anxiety- and depression-like behaviors induced by sodium metabisulfite intake in rats",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40706911/",
+      "type": "study"
+    },
+    {
+      "title": "Sulfites: The 2024 American Contact Dermatitis Society Allergen of the Year",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39787305/",
+      "type": "review"
+    },
+    {
+      "title": "Sulfites (Cosmetic Ingredient Review)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37843013/",
+      "type": "review"
+    },
+    {
+      "title": "Effects of ghrelin on sulfite induced changes in lipid peroxidation, spatial memory, and locomotor activity in rats",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36449323/",
+      "type": "study"
+    },
+    {
+      "title": "PubChem Compound: Calcium sulfite (CID 10154041)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/10154041",
+      "type": "database"
+    }
+  ]
+}

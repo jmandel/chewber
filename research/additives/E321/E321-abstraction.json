@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T11:34:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E321",
+    "name": "Butylated hydroxytoluene (BHT)",
+    "cas_numbers": [
+      "128-37-0"
+    ],
+    "synonyms": [
+      "2,6-di-tert-butyl-4-methylphenol",
+      "DBPC",
+      "BHT"
+    ],
+    "chemical_class": "synthetic phenolic antioxidant",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "antioxidant preservative",
+    "secondary_categories": [
+      "oxidation inhibitor",
+      "shelf-life stabilizer"
+    ],
+    "mechanism": "Chain-breaking antioxidant in lipid systems; used to inhibit oxidation in fat/oil-containing foods (functional inference from regulatory use limits).",
+    "common_food_categories": [
+      "fat- and oil-containing foods",
+      "foods containing essential oils",
+      "processed foods where antioxidant content is regulated relative to fat/oil"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 0.25,
+        "unit": "mg/kg bw/day",
+        "basis": "Temporary ADI set by EFSA ANS Panel in the 2012 re-evaluation (EFSA Journal 2012;10(3):2588)."
+      },
+      "last_evaluation_year": 2012,
+      "key_finding": "No safety concern at currently permitted uses and use levels, but ADI exceedance possible in maximum-permitted-level scenarios."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.3173; 21 CFR 172.115",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 0.3,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO JECFA database entry reports ADI range 0-0.3 mg/kg bw."
+      },
+      "last_evaluation_year": 1995
+    },
+    "iarc_classification": "Group 3",
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Recent experimental studies report developmental toxicity signals for BHT metabolites (zebrafish) and altered differentiation signatures in human embryonic stem-cell models for synthetic phenolic antioxidants including BHT transformation products.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/40050344/",
+          "https://pubmed.ncbi.nlm.nih.gov/40250273/"
+        ]
+      },
+      {
+        "category": "neurotoxic",
+        "summary": "A 2025 zebrafish study reported spinal malformations/scoliosis and reduced motility, with proposed Hedgehog-pathway inhibition mechanism after BHT exposure.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/40775025/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Human biomonitoring in Germany found widespread detection of a BHT metabolite and highlighted uncertainty in metabolism-based reverse dosimetry, especially for children.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41399998/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA ANS Panel (2012) concluded no safety concern at currently permitted uses and use levels.",
+      "IARC classification dataset lists BHT in Group 3."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "toddlers",
+        "children",
+        "adolescents",
+        "high consumers in maximum-permitted-level scenarios"
+      ],
+      "notes": "EFSA reported mean exposure up to 0.31 mg/kg bw/day and high exposure up to 1.29 mg/kg bw/day in younger groups; exceedance also projected if all foods contain BHT at maximum permitted levels."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.78,
+    "rationale": "BHT remains authorized by major regulators with numeric intake limits, but EFSA's temporary ADI, modeled exceedance scenarios, and recent mechanistic/developmental toxicity findings support a caveated mid-tier risk classification rather than risk-free/limited.",
+    "key_factors": [
+      "EFSA temporary ADI (0.25 mg/kg bw/day) and exceedance scenarios",
+      "FDA GRAS status with concentration constraints",
+      "JECFA ADI 0-0.3 mg/kg bw",
+      "IARC Group 3 classification",
+      "Recent developmental/mechanistic toxicity signals in zebrafish and hESC models"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Science Media Centre: Butylated hydroxytoluene (BHT) (2012)",
+      "url": "https://www.efsa.europa.eu/en/news/butylated-hydroxytoluene-bht",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal DOI landing page (access attempt)",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2012.2588",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR 21 CFR 182.3173 Butylated hydroxytoluene",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-182/subpart-D/section-182.3173",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR 21 CFR 172.115 Butylated hydroxytoluene",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-172/subpart-B/section-172.115",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA API search result for BUTYLATED HYDROXYTOLUENE",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/BUTYLATED%20HYDROXYTOLUENE",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA Chemical 2142: BUTYLATED HYDROXYTOLUENE",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2142",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC LOC app dataset bundle (contains BHT Group 3 entry)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubChem CID lookup for 2,6-di-tert-butyl-4-methylphenol",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/2%2C6-di-tert-butyl-4-methylphenol/cids/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem synonyms for CID 31404",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/31404/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search: butylated hydroxytoluene toxicity",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=butylated+hydroxytoluene+toxicity",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 40050344",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40050344/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 40250273",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40250273/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 40775025",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40775025/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 41399998",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41399998/",
+      "type": "study"
+    },
+    {
+      "title": "NCBI E-utilities efetch abstracts for selected PMIDs",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=40050344,40250273,40775025,41399998&retmode=xml",
+      "type": "database"
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T05:37:10Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E151",
+    "name": "Brilliant Black BN",
+    "cas_numbers": [
+      "2519-30-4"
+    ],
+    "synonyms": [
+      "Brilliant Black PN",
+      "Black PN",
+      "C.I. Food Black 1",
+      "Food Black 1",
+      "INS 151"
+    ],
+    "chemical_class": "Synthetic sulfonated bis-azo food dye",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "colour",
+    "secondary_categories": [
+      "appearance standardization"
+    ],
+    "mechanism": "A synthetic azo chromophore system absorbs visible light to impart dark blue-black/purple colour in foods.",
+    "common_food_categories": [
+      "confectionery",
+      "desserts",
+      "sauces and condiments",
+      "selected beverages",
+      "processed foods requiring dark colour standardization"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 5,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2010 re-evaluation retained ADI 5 mg/kg bw/day; 2015 refined exposure update followed this ADI framework."
+      },
+      "last_evaluation_year": 2015,
+      "key_finding": "EFSA retained ADI 5 mg/kg bw/day; intake was generally below ADI but high-percentile child exposure could exceed ADI in upper-end scenarios."
+    },
+    "fda": {
+      "status": "not_evaluated",
+      "cfr_citation": "21 CFR 70.3(j); 21 CFR 70.5; 21 CFR Part 73 Subpart A; 21 CFR Part 74 Subpart A",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 1,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA ADI 0-1 mg/kg bw; 2019 entry states no reason to revise previously established ADI."
+      },
+      "last_evaluation_year": 2019
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "genotoxic",
+        "summary": "A 2004 study reported positive micronucleus/Comet assay findings for Brilliant Black BN in tested systems; EFSA also discussed in vitro positive micronucleus/Comet findings in its 2010 re-evaluation context.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID: 15048155",
+          "EFSA DOI 10.2903/j.efsa.2010.1540"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Brilliant Black BN showed receptor-level allosteric pharmacology in vitro (adenosine A1/A3 receptor study), indicating biological activity but not establishing chronic dietary harm.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID: 20086038"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2010 concluded no reason to revise ADI and noted long-term carcinogenicity studies were negative.",
+      "JECFA 2019 concluded newly available information did not warrant revising ADI 0-1 mg/kg bw."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "children under 10 years (high-percentile consumers)",
+        "toddlers and children in upper-end refined exposure scenarios"
+      ],
+      "notes": "EFSA 2010 reported a child 95th-percentile estimate above ADI (6.9 mg/kg bw/day) while mean intakes were generally below ADI."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.74,
+    "rationale": "E151 has established ADIs and ongoing regulatory acceptance, but upper-end child exposure scenarios and persistent genotoxicity/mechanistic discussion prevent classifying it as clearly low concern across all intake strata.",
+    "key_factors": [
+      "EFSA ADI retained at 5 mg/kg bw/day",
+      "JECFA ADI retained at 0-1 mg/kg bw (latest evaluation year 2019)",
+      "High-percentile child exposure can exceed ADI in EFSA scenarios",
+      "In vitro genotoxic signals reported in published literature",
+      "No IARC monograph classification identified for E151"
+    ]
+  },
+  "sources": [
+    {
+      "title": "WHO/JECFA: BRILLIANT BLACK PN (Chemical record)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/399",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA API: GetBy/par/BRILLIANT BLACK PN",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/ChemicalData/GetBy/par/BRILLIANT%20BLACK%20PN",
+      "type": "database"
+    },
+    {
+      "title": "EFSA DOI metadata: Scientific Opinion on the re-evaluation of Brilliant Black BN (E 151) as a food additive",
+      "url": "https://data.europa.eu/doi/10.2903/j.efsa.2010.1540",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA publication page 1540",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/1540",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA publication page 3960 (Refined exposure assessment for Brilliant Black BN)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/3960",
+      "type": "regulatory"
+    },
+    {
+      "title": "Crossref work record for DOI 10.2903/j.efsa.2015.3960",
+      "url": "https://api.crossref.org/works/10.2903/j.efsa.2015.3960",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API titles metadata",
+      "url": "https://www.ecfr.gov/api/versioner/v1/titles.json",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full Title 21 XML (2026-02-19)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications app bundle dataset",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed query (Brilliant Black BN plus safety terms)",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%28%22Brilliant%20Black%20BN%22%5BTitle/Abstract%5D%29%20AND%20%28toxicity%5BTitle/Abstract%5D%20OR%20genotoxicity%5BTitle/Abstract%5D%20OR%20carcinogenicity%5BTitle/Abstract%5D%20OR%20safety%5BTitle/Abstract%5D%20OR%20mutagenicity%5BTitle/Abstract%5D%20OR%20zebrafish%5BTitle/Abstract%5D%20OR%20in%20vivo%5BTitle/Abstract%5D%29&retmax=20&sort=pub_date&retmode=json",
+      "type": "database"
+    },
+    {
+      "title": "PubMed efetch abstracts (PMIDs 40220374, 31167919, 15048155, 26304415)",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=40220374,31167919,15048155,26304415&retmode=text&rettype=abstract",
+      "type": "study"
+    },
+    {
+      "title": "PubMed efetch abstract (PMID 20086038)",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=20086038&retmode=text&rettype=abstract",
+      "type": "study"
+    }
+  ]
+}

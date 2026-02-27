@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T14:41:55Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E406",
+    "name": "Agar",
+    "cas_numbers": [
+      "9002-18-0"
+    ],
+    "synonyms": [
+      "Agar-agar",
+      "Japan agar",
+      "Gelose",
+      "Bengal/Ceylon/Chinese/Japanese isinglass",
+      "Layor carang"
+    ],
+    "chemical_class": "Hydrocolloid polysaccharide from red algae (Rhodophyceae)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "gelling agent",
+    "secondary_categories": [
+      "stabilizer",
+      "thickener",
+      "emulsifier",
+      "surface finisher",
+      "humectant"
+    ],
+    "mechanism": "Hydrates and forms a gel/viscous hydrocolloid network that structures water-rich foods and stabilizes texture.",
+    "common_food_categories": [
+      "Baked goods and baking mixes",
+      "Confections and frostings",
+      "Soft candy",
+      "General food categories (low-level use)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2016 concluded no need for a numerical ADI (equivalent to ADI not specified) and no safety concern at reported uses/use levels."
+      },
+      "last_evaluation_year": 2016,
+      "key_finding": "Re-evaluation found agar (E406) not of safety concern at reported uses/use levels, including infant/toddler exposure scenarios assessed."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1115",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA database lists ADI as NOT LIMITED for AGAR (INS 406)."
+      },
+      "last_evaluation_year": 1973
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "A published case report described agar-agar bezoar with gastric pouch dilation after Roux-en-Y bypass, indicating possible mechanical GI risk in susceptible anatomy/high-gelling intake contexts.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/26077699/"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "Recent review literature on seaweed polysaccharides notes remaining uncertainty around digestion/fermentation behavior and long-term effects, though agar itself is generally described as low-dispute/nontoxic.",
+        "evidence_strength": "theoretical",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41295380/",
+          "https://pubmed.ncbi.nlm.nih.gov/34281484/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2016 re-evaluation: no safety concern at reported uses/use levels; no numerical ADI needed.",
+      "JECFA AGAR entry: ADI NOT LIMITED.",
+      "Randomized pediatric trial including gelose (agar-agar) reported treatment as safe, with adverse events not attributed to study medication."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "EFSA reported highest modeled exposures in infants/toddlers, but no numerical ADI was set and no safety concern was concluded at reported use levels."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "risk_free",
+    "confidence": 0.81,
+    "rationale": "Major regulatory bodies converge on low toxicological concern (EFSA no numerical ADI needed; JECFA ADI not limited; US Part 184 GRAS framework). Residual risk signals are contextual and mechanical rather than evidence of systemic toxicity at typical food-use exposures.",
+    "key_factors": [
+      "EFSA 2016 no-safety-concern conclusion with no numerical ADI",
+      "JECFA ADI NOT LIMITED for AGAR (INS 406)",
+      "FDA GRAS-affirmed listing under 21 CFR 184.1115 with specified use limits",
+      "No IARC classification found for agar in current classified-agent dataset",
+      "Only isolated contextual adverse-case report (bezoar) rather than broad toxic signal"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of agar (E 406) as a food additive (EFSA Journal 2016;14(11):4645)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4645",
+      "type": "regulatory"
+    },
+    {
+      "title": "DOI landing page for EFSA agar opinion",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2016.4645",
+      "type": "database"
+    },
+    {
+      "title": "21 CFR 184.1115 Agar-agar (eCFR API section text)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2024-06-03/title-21.xml?part=184&section=184.1115",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 184.1 Substances affirmed as GRAS (eCFR API section text)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2024-06-03/title-21.xml?part=184&section=184.1",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR version history endpoint for Title 21",
+      "url": "https://www.ecfr.gov/api/versioner/v1/versions/title-21.json",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA database AGAR (Chemical ID 1163)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1163",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA API search by partial name (agar)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/agar",
+      "type": "database"
+    },
+    {
+      "title": "IARC list of classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications app dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Seaweed Polysaccharides: A Rational Approach for Food Safety Studies (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41295380/",
+      "type": "review"
+    },
+    {
+      "title": "Algae-derived hydrocolloids in foods: applications and health-related issues (2021)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34281484/",
+      "type": "review"
+    },
+    {
+      "title": "Randomized, placebo-controlled trial of xyloglucan and gelose for the treatment of acute diarrhea in children (2021)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33028102/",
+      "type": "study"
+    },
+    {
+      "title": "An unusual cause of solid food intolerance and gastric pouch dilation 5 years after Roux-en-Y gastric bypass: agar-agar bezoar (2015)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26077699/",
+      "type": "study"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T08:25:45+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E221",
+    "name": "Sodium sulfite",
+    "cas_numbers": [
+      "7757-83-7"
+    ],
+    "synonyms": [
+      "Disodium sulfite",
+      "Sodium sulphite",
+      "INS No. 221",
+      "E-221"
+    ],
+    "chemical_class": "Inorganic sulfite salt (sulfurous acid salt)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "antioxidant",
+      "anti-browning agent",
+      "reducing agent"
+    ],
+    "mechanism": "Forms sulfite/bisulfite reducing species that limit oxidation and can inhibit spoilage-related reactions; used as a preservative/antioxidant in food systems.",
+    "common_food_categories": [
+      "sulfite-permitted beverages",
+      "processed/preserved foods",
+      "products regulated with sulfite limits"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "restricted",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "Temporary group ADI 0.7 mg SO2 equivalents/kg bw/day (2016) was withdrawn in 2022 follow-up; EFSA used MOE approach and identified safety concern at current exposure scenarios."
+      },
+      "last_evaluation_year": 2022,
+      "key_finding": "Available toxicity database was inadequate to derive an ADI; temporary ADI withdrawn; MOE results indicated safety concern for several population groups."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.3798",
+      "notes": "GRAS with GMP restrictions: not used in meats; not in foods recognized as vitamin B1 source; not on fruits/vegetables intended to be served or sold raw/fresh."
+    },
+    "jecfa": {
+      "adi": {
+        "value": 0.7,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI of 0-0.7 mg/kg bw for sulfites (as SO2-equivalent context), with later intake/evaluation entries in the WHO/JECFA database."
+      },
+      "last_evaluation_year": 2008
+    },
+    "iarc_classification": "Group 3",
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "allergenic",
+        "summary": "Reviews and regulatory assessments indicate sulfites can trigger bronchial hyper-responsiveness/allergic-type reactions in sensitive individuals, especially asthma phenotypes.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID 40282975",
+          "PMID 36440381"
+        ]
+      },
+      {
+        "category": "neurotoxic",
+        "summary": "EFSA follow-up used prolonged visual evoked potential latency data for benchmark-dose derivation and judged data gaps unresolved, supporting concern at high dietary exposures.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID 36440381",
+          "PMCID PMC9685353"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "Experimental saliva microbiome work reported rapid shifts in viability/composition after sulfite preservative exposure at tested concentrations.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID 35390016"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent in vitro/animal studies report oxidative-stress and ferroptosis-related toxicity signals (gastric cells, bone model), but dose relevance to regulated human dietary exposure remains uncertain.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID 34074194",
+          "PMID 40681799"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2022 follow-up concluded sulfur dioxide/sulfites used as food additives do not raise a concern with respect to genotoxicity."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "high consumers",
+        "multiple population groups at high-percentile exposure in EFSA scenarios",
+        "sulfite-sensitive individuals"
+      ],
+      "notes": "EFSA MOE values fell below target for several groups in refined and MPL-based scenarios; JECFA database also notes potential ADI exceedance in high consumers."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.78,
+    "rationale": "E221 remains permitted but with significant caveats: EFSA withdrew the temporary ADI and identified safety concern in exposure modeling, while JECFA retains a bounded group ADI and FDA allows use with explicit restrictions. Evidence supports concern without meeting high-tier triggers such as major-jurisdiction bans or IARC Group 2/1 classification.",
+    "key_factors": [
+      "EFSA 2022 withdrawal of temporary ADI",
+      "MOE-based safety concern under high exposure",
+      "JECFA ADI exists but high-consumer exceedance potential noted",
+      "FDA GRAS with specific restrictions",
+      "IARC sulfites classification is Group 3"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Follow-up of the re-evaluation of sulfur dioxide (E220) ... potassium bisulfite (E228)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9685353/",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed record: EFSA follow-up opinion (PMID 36440381)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36440381/",
+      "type": "database"
+    },
+    {
+      "title": "eCFR section request (blocked at access time)",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-182/section-182.3798",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR § 182.3798 - Sodium sulfite (Cornell LII mirror of e-CFR)",
+      "url": "https://www.law.cornell.edu/cfr/text/21/182.3798",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database - Chemical 289",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/289",
+      "type": "database"
+    },
+    {
+      "title": "IARC list of classifications app dataset",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs - List of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubChem Sodium Sulfite CID 24437",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/24437/synonyms/TXT",
+      "type": "database"
+    },
+    {
+      "title": "Sodium sulfite causes gastric mucosal cell death by inducing oxidative stress",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34074194/",
+      "type": "study"
+    },
+    {
+      "title": "Melatonin alleviates sodium sulfite-induced osteoporosis in mice via suppression of the ferroptosis pathway",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40681799/",
+      "type": "study"
+    },
+    {
+      "title": "Sulfite preservatives effects on the mouth microbiome",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35390016/",
+      "type": "study"
+    },
+    {
+      "title": "Effect of Artificial Food Additives on Lung Health-An Overview",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40282975/",
+      "type": "review"
+    },
+    {
+      "title": "Food additive mixtures and type 2 diabetes incidence",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40198579/",
+      "type": "study"
+    }
+  ]
+}

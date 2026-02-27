@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T06:49:47+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E172",
+    "name": "Iron oxides and hydroxides",
+    "cas_numbers": [
+      "1309-37-1",
+      "1317-61-9"
+    ],
+    "synonyms": [
+      "Ferric oxide",
+      "Ferroso ferric oxide",
+      "Iron (II,III) oxide",
+      "C.I. Pigment Black 11"
+    ],
+    "chemical_class": "Inorganic iron oxide/hydroxide pigments",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "food colour",
+    "secondary_categories": [
+      "pigment",
+      "surface coloring"
+    ],
+    "mechanism": "Insoluble iron oxide/hydroxide particles impart red/yellow/black tones through mineral pigment light absorption and scattering.",
+    "common_food_categories": [
+      "Sausage casings",
+      "Soft and hard candy",
+      "Mints",
+      "Chewing gum",
+      "Dietary supplement tablets and capsules"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "restricted",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2015 re-evaluation indexed summary indicates no numerical ADI was allocated and adequate safety assessment could not be completed because of data gaps."
+      },
+      "last_evaluation_year": 2015,
+      "key_finding": "EFSA re-evaluated E172 and identified major toxicological data gaps (notably reproductive/developmental), with no numerical ADI allocated in that opinion summary."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 73.200",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 0.5,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA database entry for iron oxides reports ADI range 0-0.5 mg/kg bw."
+      },
+      "last_evaluation_year": 1999
+    },
+    "iarc_classification": "Group 3",
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "A 2024 rat repeated oral study with food-grade iron(III) oxide nanoparticles reported gut microbiota dysbiosis and altered short-chain fatty acid profile, strongest at 200 mg/kg bw.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/38188661/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "A 2019 acute oral rat study explicitly discussing E172 context reported low overall toxicity but liver inflammatory findings with iron deposits in hepatocytes and Kupffer cells.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/30878530/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "A 2020 review of nanoparticle food additives (including E172) describes evidence for gastrotoxicity/hepatotoxicity and proposes oxidative stress as a key mechanism requiring further confirmation.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/33068655/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "IARC classification dataset lists ferric oxide as Group 3 (not classifiable as to carcinogenicity to humans).",
+      "FDA permits synthetic iron oxide as a color additive in foods under defined limits in 21 CFR 73.200.",
+      "WHO/JECFA database reports a numeric ADI range (0-0.5 mg/kg bw) for iron oxides."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "Children",
+        "High consumers of colored confectionery",
+        "Frequent users of colored supplements"
+      ],
+      "notes": "Recent population-level E172 exposure distributions were not identified in the visited regulatory records, so exceedance versus the JECFA ADI cannot be quantified from these sources."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.67,
+    "rationale": "E172 remains approved in major jurisdictions with explicit use limits and a JECFA ADI, but EFSA's 2015 re-evaluation summary indicates unresolved database gaps and no numerical ADI allocation in that assessment, while animal studies show plausible gut and liver effects at experimental doses.",
+    "key_factors": [
+      "FDA approval with explicit concentration/use restrictions (21 CFR 73.200)",
+      "Related GRAS affirmation is limited to indirect use (21 CFR 186.1300)",
+      "JECFA ADI range 0-0.5 mg/kg bw and evaluation listing",
+      "EFSA 2015 uncertainty and missing-data signal",
+      "Recent animal/mechanistic studies indicate nontrivial but not definitive toxicity signals",
+      "No major-jurisdiction full ban identified from visited sources"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal publication page: Scientific Opinion on the re-evaluation of iron oxides and hydroxides (E 172)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4317",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR section page (access attempt): 21 CFR 73.200",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-73/subpart-A/section-73.200",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 XML (contains 21 CFR 73.200 and 21 CFR 186.1300 text)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2025-12-30/title-21.xml",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA database: IRON OXIDES",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1541",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA database: IRON OXIDE BLACK",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4080",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs: List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classification dataset script used by list page",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Effects of food-grade iron(III) oxide nanoparticles on microbiota and SCFAs in rats (PMID 38188661)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38188661/",
+      "type": "study"
+    },
+    {
+      "title": "Multiscale investigation of oral iron oxide nanoparticle effects in rats (PMID 30878530)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30878530/",
+      "type": "study"
+    },
+    {
+      "title": "Review: nanoparticle food additives and toxicity mechanisms (PMID 33068655)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33068655/",
+      "type": "review"
+    },
+    {
+      "title": "Characterisation of iron oxide-containing pearlescent pigments used as food colourants (PMID 36305852)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36305852/",
+      "type": "study"
+    }
+  ]
+}

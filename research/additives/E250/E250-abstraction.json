@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T09:25:04+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E250",
+    "name": "Sodium nitrite",
+    "cas_numbers": [
+      "7632-00-0"
+    ],
+    "synonyms": [
+      "Sodium nitrite",
+      "Nitrous acid sodium salt",
+      "INS 250",
+      "E250"
+    ],
+    "chemical_class": "Inorganic nitrite salt",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "colour fixative",
+      "antimicrobial"
+    ],
+    "mechanism": "Inhibits Clostridium botulinum growth/toxin formation in specific cured/smoked products and stabilizes cured-meat color as a nitrite curing agent.",
+    "common_food_categories": [
+      "processed/cured meats",
+      "home meat-curing preparations",
+      "smoked cured fish products (e.g., tuna, salmon, sablefish, shad)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "restricted",
+      "adi": {
+        "value": 0.07,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2017 re-evaluation for E249/E250 set ADI at 0.07 mg/kg bw/day, expressed as nitrite ion; EFSA highlighted possible exceedance in younger high consumers and nitrosation concerns."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "E250 remained authorized with ADI-based limits; EFSA identified that high-exposure scenarios (notably younger groups) can approach or exceed ADI and emphasized endogenous nitrosation/nitrosamine concerns."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 181.34; 21 CFR 172.175",
+      "notes": "Not listed as GRAS in searched 21 CFR parts 182/184 extracts; regulated via prior sanction (181.34) and specific food additive conditions with ppm limits (172.175)."
+    },
+    "jecfa": {
+      "adi": {
+        "value": 0.07,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA summary evaluation for nitrite reports ADI 0-0.07 mg/kg bw, expressed as nitrite ion; ADI does not apply to infants below 3 months."
+      },
+      "last_evaluation_year": 2002
+    },
+    "iarc_classification": "Group 2A",
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "carcinogenic",
+        "summary": "IARC classifies ingested nitrate/nitrite under endogenous nitrosation conditions as Group 2A, and recent cohort evidence reported a positive association between sodium nitrite intake and prostate cancer incidence.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "IARC Volume 94 classification dataset (Group 2A condition)",
+          "PMID: 41500678"
+        ]
+      },
+      {
+        "category": "cardiovascular",
+        "summary": "In a large prospective cohort, additives-originated nitrites (particularly sodium nitrite/E250) were associated with higher hypertension risk.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID: 36533633"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Large cohort analyses found higher dietary exposure to additives-originated nitrites/sodium nitrite associated with higher type 2 diabetes incidence.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID: 36649248",
+          "PMID: 41501013"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA monograph reported no carcinogenicity in rats or male mice in referenced long-term studies, though some findings were equivocal in female mice.",
+      "EFSA 2017 re-evaluation did not indicate clear evidence of genotoxicity/carcinogenicity for nitrite itself in the assessed dataset."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "toddlers and children with high processed-food exposure",
+        "high consumers of cured/processed meats",
+        "infants below 3 months (JECFA ADI not applicable)"
+      ],
+      "notes": "EFSA reported potential ADI exceedance in some younger high-exposure scenarios; JECFA specifies infant (<3 months) caveat."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.81,
+    "rationale": "E250 is still authorized by major regulators and has explicit ADI/ppm limits, but safety is conditional and caveated by nitrosation concerns, younger-group exposure exceedance risk, and recent large-cohort associations with hypertension, diabetes, and prostate cancer incidence. This is stronger than a limited-risk profile but does not meet high-risk criteria such as broad regulatory bans.",
+    "key_factors": [
+      "EFSA/JECFA ADI: 0.07 mg/kg bw/day (nitrite ion basis)",
+      "U.S. regulation via prior sanction and additive-specific ppm limits",
+      "IARC Group 2A context for ingested nitrate/nitrite under endogenous nitrosation conditions",
+      "Recent cohort evidence linking additive nitrites/sodium nitrite with hypertension, T2D, and prostate cancer signals",
+      "Exposure vulnerability in younger/high consumers"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA press news (2017): Nitrites and nitrates in food: benefits and risks",
+      "url": "https://www.efsa.europa.eu/en/press/news/170614",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal entry (2017) for E249/E250 re-evaluation",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4786",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 section 172.175 (Sodium nitrite)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?chapter=I&subchapter=B&part=172&section=172.175",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 section 181.34 (Prior sanction)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?chapter=I&subchapter=B&part=181&section=181.34",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 part 182 (GRAS part searched)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?chapter=I&subchapter=B&part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 part 184 (GRAS affirmed part searched)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?chapter=I&subchapter=B&part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA Summary Evaluation: NITRITE (latest evaluation 2002; ADI 0-0.07)",
+      "url": "https://inchem.org/documents/jecfa/jeceval/jec_1702.htm",
+      "type": "database"
+    },
+    {
+      "title": "JECFA Food Additives Series 50 monograph: Nitrite",
+      "url": "https://www.inchem.org/documents/jecfa/jecmono/v50je05.htm",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC classifications dataset payload (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubChem property record for sodium nitrite",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/sodium%20nitrite/property/Title,MolecularFormula,MolecularWeight/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem synonyms record for sodium nitrite",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/sodium%20nitrite/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubMed 2023: Dietary exposure to nitrites and nitrates in association with type 2 diabetes risk",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36649248/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed 2022: Nitrites, Nitrates, and Cardiovascular Outcomes",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36533633/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed 2026: Intake of food additive preservatives and incidence of cancer",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41500678/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed 2026: Associations between preservative food additives and type 2 diabetes incidence",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41501013/",
+      "type": "study"
+    },
+    {
+      "title": "EFSA news (2023): Nitrosamines in food raise health concern",
+      "url": "https://www.efsa.europa.eu/en/news/nitrosamines-food-raise-health-concern",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA food additives database search page (attempted)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/search.aspx",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA details page endpoint (attempted)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/search/details.html?fc=3738",
+      "type": "database"
+    }
+  ]
+}

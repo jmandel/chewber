@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T06:31:45Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E161b",
+    "name": "Lutein",
+    "cas_numbers": [
+      "127-40-2"
+    ],
+    "synonyms": [
+      "lutein from Tagetes erecta",
+      "vegetable lutein",
+      "vegetable luteol",
+      "Bo-Xan",
+      "all-trans-lutein"
+    ],
+    "chemical_class": "xanthophyll carotenoid",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "food colour",
+    "secondary_categories": [
+      "nutrient supplement"
+    ],
+    "mechanism": "Conjugated carotenoid chromophore absorbs blue-violet light, producing yellow-orange coloration.",
+    "common_food_categories": [
+      "EU-authorized food additive uses assessed by EFSA",
+      "chicken feed pigmentation (US 21 CFR 73.295)",
+      "food supplements"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "restricted",
+      "adi": {
+        "value": 1,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA ANS re-evaluation (2010) set ADI at 1 mg/kg bw/day from NOAEL 200 mg/kg bw/day with UF 200; 2012 statement refined exposure estimates but retained child high-consumer caveat."
+      },
+      "last_evaluation_year": 2012,
+      "key_finding": "E161b remained in authorized-use context, but EFSA identified possible ADI exceedance for high-consuming children under some exposure scenarios."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 73.295",
+      "notes": "Listed as Tagetes (Aztec marigold) meal and extract color additive exempt from certification, with use limited to chicken feed; no lutein/tagetes listing found in 21 CFR Part 184 GRAS scan."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "At the 86th JECFA (2018), a group ADI of not specified was established for lutein from Tagetes erecta, lutein esters from Tagetes erecta, and synthetic zeaxanthin, superseding the 2004 group ADI of 0-2 mg/kg bw."
+      },
+      "last_evaluation_year": 2018
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "EFSA exposure assessments identified potential ADI exceedance in high-consuming child subpopulations (toddlers/pre-school/school children) under some use scenarios.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://doi.org/10.2903/j.efsa.2010.1634",
+          "https://www.efsa.europa.eu/en/efsajournal/pub/2589"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA (2018) assigned a group ADI of not specified for lutein from Tagetes erecta and related carotenoids.",
+      "Cochrane review in preterm infants reported no adverse effects in included lutein/zeaxanthin studies.",
+      "Recent rodent toxicology report (PMID 41596229) described no treatment-related adverse effects in the tested preparation."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "high-consuming toddlers",
+        "high-consuming pre-school children",
+        "high-consuming school children"
+      ],
+      "notes": "EFSA child high-consumer exceedance concern persisted after exposure refinement, while most other groups were below ADI in refined scenarios."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.74,
+    "rationale": "Regulatory authorities continue to permit lutein under specified conditions, but EFSA repeatedly flagged child high-end exposure relative to ADI, which is a material caveat above a simple low-concern profile.",
+    "key_factors": [
+      "EFSA ADI is numeric (1 mg/kg bw/day) with child high-consumer exceedance scenarios",
+      "JECFA 2018 group ADI is not specified",
+      "US CFR listing is a restricted approval context (chicken feed color additive)",
+      "No lutein-specific IARC classification identified",
+      "Recent clinical/toxicology literature did not show strong adverse-event signals at studied doses"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Scientific Opinion on the re-evaluation of lutein (E 161b) as a food additive",
+      "url": "https://doi.org/10.2903/j.efsa.2010.1634",
+      "type": "regulatory"
+    },
+    {
+      "title": "Statement on the safety assessment of the exposure to lutein preparations based on new data on the use levels of lutein",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/2589",
+      "type": "regulatory"
+    },
+    {
+      "title": "Statement on the safety of lutein from Tagetes erecta for uses in foods for particular nutritional uses, food supplements and foods intended for infants and young children",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/2144",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 73.295 Tagetes (Aztec marigold) meal and extract",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2026-02-19/title-21?chapter=I&subchapter=A&part=73&subpart=A&section=73.295",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR Part 184 GRAS substances (scan target)",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2026-02-19/title-21?chapter=I&subchapter=B&part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA chemical page: LUTEIN from TAGETES ERECTA",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4904",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA API search by partial name (lutein)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/lutein",
+      "type": "database"
+    },
+    {
+      "title": "FAO JECFA Monographs 22: Lutein from Tagetes erecta",
+      "url": "http://www.fao.org/3/ca2330en/CA2330EN.pdf",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC Monographs List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC list data bundle (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Lutein and zeaxanthin for reducing morbidity and mortality in preterm infants",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40292760/",
+      "type": "review"
+    },
+    {
+      "title": "Effect of Lutein Ester Supplement on Choroidal Thickness in Children: A Randomized Controlled Trial",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41342624/",
+      "type": "study"
+    },
+    {
+      "title": "New infant formulas for healthy term infants: safety study",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41406156/",
+      "type": "study"
+    },
+    {
+      "title": "Oral Toxicity Profile of a Novel Silk Lutein Extract and Assessment of Its Cardiovascular Benefits in Rodents",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41596229/",
+      "type": "study"
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T08:31:59Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E223",
+    "name": "Sodium metabisulfite",
+    "cas_numbers": [
+      "7681-57-4"
+    ],
+    "synonyms": [
+      "Sodium pyrosulfite",
+      "Sodium disulfite",
+      "Disodium pyrosulfite",
+      "Sodium metabisulphite"
+    ],
+    "chemical_class": "Inorganic sulfite salt (sulfur dioxide-releasing preservative)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "antioxidant",
+      "anti-browning agent",
+      "bleaching agent"
+    ],
+    "mechanism": "Releases sulfur dioxide/bisulfite species that inhibit microbial growth and oxidative/enzymatic browning reactions.",
+    "common_food_categories": [
+      "dried fruits and vegetables",
+      "wine",
+      "beer",
+      "fruit and vegetable juices",
+      "flavored drinks",
+      "some meat preparations"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2016 set a temporary group ADI of 0.7 mg/kg bw/day as SO2 equivalents; EFSA 2022 follow-up withdrew that temporary ADI due to insufficient toxicological database and applied an MOE approach."
+      },
+      "last_evaluation_year": 2022,
+      "key_finding": "Temporary ADI was withdrawn; MOE target of at least 80 indicated concern in high consumers and in sulfite-sensitive subgroups under evaluated scenarios."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.3766",
+      "notes": "GRAS under GMP with restrictions: not used in meats, foods recognized as vitamin B1 sources, or on fruits/vegetables intended to be served/sold raw as fresh."
+    },
+    "jecfa": {
+      "adi": {
+        "value": 0.7,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI 0-0.7 mg/kg bw (expressed as sulfur dioxide) for sulfites including sodium metabisulfite."
+      },
+      "last_evaluation_year": 1998
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "allergenic",
+        "summary": "Sulfites are associated with hypersensitivity reactions in susceptible individuals, especially some asthmatics; this is reflected in FDA sulfite labeling policy and EFSA concern for sulfite-sensitive groups.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+          "https://www.efsa.europa.eu/en/efsajournal/pub/7594",
+          "https://pubmed.ncbi.nlm.nih.gov/33270584/"
+        ]
+      },
+      {
+        "category": "neurotoxic",
+        "summary": "A 2025 rat study reported anxiety/depression-like behavior and NO-pathway changes at repeated oral sulfite doses (not directly representative of typical dietary exposure).",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/40706911/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Animal and in vitro studies report oxidative stress, organ injury biomarkers, and cytotoxicity at moderate/high experimental concentrations.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/37854041/",
+          "https://pubmed.ncbi.nlm.nih.gov/35067933/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "No direct IARC carcinogenic classification for sodium metabisulfite was identified in IARC Monographs classification lists; related sulfur dioxide is Group 3."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "infants",
+        "toddlers",
+        "children",
+        "high consumers",
+        "sulfite-sensitive individuals (including some asthmatics)"
+      ],
+      "notes": "EFSA 2016 reported temporary ADI exceedance in some groups; EFSA 2022 withdrew ADI and identified MOE-based concerns; 2025 EFSA exposure update metadata reports highest exposures in toddlers under some scenarios."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.82,
+    "rationale": "The additive remains approved/GRAS with defined restrictions, but EFSA withdrew the temporary ADI and identified concern for high consumers and sulfite-sensitive groups; this supports a moderate rather than limited tier.",
+    "key_factors": [
+      "EFSA temporary ADI withdrawn in 2022",
+      "MOE-based concern in high consumers",
+      "Known sulfite hypersensitivity subgroup risk",
+      "No major-jurisdiction blanket ban",
+      "No direct IARC carcinogenic classification for sodium metabisulfite"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Follow-up of the re-evaluation of sulfur dioxide (E220) ... sodium metabisulfite (E223) ...",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/7594",
+      "type": "regulatory"
+    },
+    {
+      "title": "Scientific Opinion on the re-evaluation of sulfur dioxide ... sodium metabisulfite (E223) ...",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4438",
+      "type": "regulatory"
+    },
+    {
+      "title": "Update of the dietary exposure to sulfur dioxide-sulfites (E220-E228) with alternative MPLs",
+      "url": "https://api.crossref.org/works/10.2903%2Fsp.efsa.2025.EN-9754",
+      "type": "regulatory"
+    },
+    {
+      "title": "Sodium metabisulfite (eCFR section page)",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-182/subpart-D/section-182.3766",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full Title 21 XML",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA Database - Chemical entry SODIUM METABISULFITE",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1824",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API - SearchChemical ByPartialName sodium metabisulfite",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/sodium%20metabisulfite",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs - List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs - Agents Classified by the IARC Monographs, Alphabetical Order",
+      "url": "https://monographs.iarc.who.int/wp-content/uploads/2019/07/ClassificationsAlphaOrder.pdf",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search: sodium metabisulfite toxicity",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=sodium+metabisulfite+toxicity",
+      "type": "database"
+    },
+    {
+      "title": "Nitric oxide plays a role in anxiety- and depression-like behaviors induced by sodium metabisulfite intake in rats",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40706911/",
+      "type": "study"
+    },
+    {
+      "title": "Sodium Metabisulfite-Induced Hematotoxicity, Oxidative Stress, and Organ Damage Ameliorated by Standardized Ginkgo biloba in Mice",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37854041/",
+      "type": "study"
+    },
+    {
+      "title": "Sodium metabisulfite in dried plum and its cytotoxic effects on K-562 and L-929 normal cell lines",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35067933/",
+      "type": "study"
+    },
+    {
+      "title": "Sulfites in meat: Occurrence, activity, toxicity, regulation, and detection. A comprehensive review",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33336981/",
+      "type": "review"
+    },
+    {
+      "title": "PubChem sodium metabisulfite synonyms (includes CAS 7681-57-4)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/sodium%20metabisulfite/synonyms/JSON",
+      "type": "database"
+    }
+  ]
+}

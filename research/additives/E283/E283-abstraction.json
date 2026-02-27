@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T10:16:41Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E283",
+    "name": "Potassium propionate",
+    "cas_numbers": [
+      "327-62-8",
+      "79-09-4"
+    ],
+    "synonyms": [
+      "Potassium propanoate",
+      "Propanoic acid, potassium salt",
+      "Potassium propionate"
+    ],
+    "chemical_class": "Short-chain carboxylate salt (propionate preservative)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "antimicrobial",
+      "flavoring agent"
+    ],
+    "mechanism": "Acts through propionic acid/propionate antimicrobial effects that inhibit mold and some bacterial growth; regulatory parent-acid context in CFR also lists flavoring use.",
+    "common_food_categories": [
+      "bakery and bread-type products",
+      "processed foods under GMP/table-3 style permissions",
+      "food-contact closure systems (indirect use in U.S. CFR)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA re-evaluation of E280-E283 concluded no need for a numerical ADI and no safety concern at reported uses/use levels."
+      },
+      "last_evaluation_year": 2014,
+      "key_finding": "Group re-evaluation (E280-E283) did not indicate safety concern at reported use levels; numerical ADI not required."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 177.1210 (potassium propionate listed for closure-sealing gasket composition, 2% max); related direct-food GRAS parent acid at 21 CFR 184.1081",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI 'not limited' for the sum of propionic acid and its calcium, potassium, and sodium salts, expressed as propionic acid."
+      },
+      "last_evaluation_year": 1997
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Recent human translational studies reported acute counter-regulatory hormonal and metabolic effects after propionate exposure (glucagon/catecholamine signaling, insulin-action-related changes).",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID:34312159",
+          "PMID:31019023"
+        ]
+      },
+      {
+        "category": "genotoxic",
+        "summary": "In vitro and non-mammalian model studies reported oxidative stress/genotoxicity signals for propionate preservatives at tested concentrations.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:39262268",
+          "PMID:36253933",
+          "PMID:18328610"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA group re-evaluation (E280-E283) reported no safety concern at submitted use levels and no need for numerical ADI.",
+      "JECFA assigned ADI 'not limited' group status for propionic acid and calcium/potassium/sodium salts."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "ADI is non-numerical in EFSA/JECFA framing, so standard numeric ADI exceedance calculation is not the main risk metric."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.72,
+    "rationale": "Current regulatory consensus supports continued permitted use without numerical ADI, while emerging mechanistic/metabolic and experimental genotoxicity signals indicate the additive is biologically active and should continue to be monitored.",
+    "key_factors": [
+      "EFSA and JECFA non-numerical ADI/no-safety-concern conclusions",
+      "No IARC group classification identified",
+      "No major jurisdiction-wide ban identified",
+      "Recent human and experimental studies report potential metabolic/genotoxic signals"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal publication page: Re-evaluation of propionic acid (E280), sodium propionate (E281), calcium propionate (E282) and potassium propionate (E283)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/3779",
+      "type": "regulatory"
+    },
+    {
+      "title": "DOI record for EFSA opinion (10.2903/j.efsa.2014.3779)",
+      "url": "https://doi.org/10.2903/j.efsa.2014.3779",
+      "type": "database"
+    },
+    {
+      "title": "Crossref metadata for DOI 10.2903/j.efsa.2014.3779",
+      "url": "https://api.crossref.org/works/10.2903/j.efsa.2014.3779",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API Title 21 full XML (snapshot date 2026-02-25)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API titles metadata",
+      "url": "https://www.ecfr.gov/api/versioner/v1/titles.json",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA potassium propionate entry (Chemical 3004)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3004",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA propionic acid entry (Chemical 3438)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3438",
+      "type": "database"
+    },
+    {
+      "title": "Codex GSFA details for Potassium propionate (INS 283)",
+      "url": "https://www.fao.org/gsfaonline/additives/results.html?ins=283&searchBy=ins&lang=en",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications data script (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubChem Potassium propionate",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/Potassium-propionate",
+      "type": "database"
+    },
+    {
+      "title": "PubChem PUG synonyms endpoint for potassium propionate",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/potassium%20propionate/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: Acute effects of the food preservative propionic acid on glucose metabolism in humans",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34312159/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: The short-chain fatty acid propionate increases glucagon and FABP4 production, impairing insulin action in mice and humans",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31019023/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Genotoxicity mechanism of food preservative propionic acid in the in vivo Drosophila model",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36253933/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Cellular toxicity of calcium propionate in human lymphocyte",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39262268/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Evaluation of genotoxic effects of sodium propionate, calcium propionate and potassium propionate on the root meristem cells of Allium cepa",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18328610/",
+      "type": "study"
+    }
+  ]
+}

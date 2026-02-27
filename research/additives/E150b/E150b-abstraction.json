@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T05:15:15Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E150b",
+    "name": "Caustic sulfite caramel",
+    "cas_numbers": [
+      "8028-89-5"
+    ],
+    "synonyms": [
+      "Caustic sulphite caramel",
+      "Caramel colour, Class II",
+      "INS 150b"
+    ],
+    "chemical_class": "Class II caramel colour (sulfite process caramel)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "food colour additive",
+    "secondary_categories": [
+      "colour",
+      "browning colorant"
+    ],
+    "mechanism": "Controlled heat processing of carbohydrates (with sulfite and alkali reagents for Class II) forms complex coloured compounds that impart brown colour in foods.",
+    "common_food_categories": [
+      "foods generally (GMP-limited under 21 CFR 73.85)",
+      "beverages",
+      "sauces and seasonings",
+      "bakery and prepared foods"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 300,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2011 re-evaluation established a group ADI for caramel colours (E150a,b,c,d); class II exposure estimates were below ADI in that opinion."
+      },
+      "last_evaluation_year": 2011,
+      "key_finding": "EFSA reported class II (E150b) exposure estimates below ADI; concern in that opinion focused more on other classes and certain constituents (e.g., THI in class III)."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 73.85; 21 CFR 182.1235",
+      "notes": "21 CFR 73.85 authorizes caramel as a color additive for foods generally at GMP; 21 CFR 182.1235 lists caramel as GRAS under GMP."
+    },
+    "jecfa": {
+      "adi": {
+        "value": 160,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA/WHO entry for caustic sulfite caramel (Class II) lists ADI 0-160 mg/kg bw."
+      },
+      "last_evaluation_year": 2000
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "carcinogenic",
+        "summary": "IARC classifies 4-methylimidazole (a related caramel-process contaminant context) as Group 2B; this is a broader caramel-colour concern rather than a direct E150b monograph classification.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://publications.iarc.fr/_publications/media/download/3185/4edebfd7ef72c6f16316f818e38f3f9f66f6f353.pdf",
+          "https://webapi.iarc.who.int/loc/loc.app.js"
+        ]
+      },
+      {
+        "category": "neurotoxic",
+        "summary": "Recent high-dose animal 4-MEI studies report acute neurobehavioral toxicity signals, indicating potential hazard at sufficiently high doses.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41702566/",
+          "https://pubmed.ncbi.nlm.nih.gov/41106562/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Reproductive-related effects are reported in some 4-MEI animal models, but exposure-based risk assessments at current U.S. dietary levels reported MOEs >100 and low concern.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/39083984/",
+          "https://pubmed.ncbi.nlm.nih.gov/40412543/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2011 caramel-colour re-evaluation reported class II (E150b) exposure estimates below ADI.",
+      "WHO/JECFA maintains ADI 0-160 mg/kg bw for caustic sulfite caramel (Class II).",
+      "A 2025 reproductive/developmental risk assessment for 4-MEI reported margins of exposure above commonly used concern thresholds for U.S. dietary exposure scenarios."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "Within the EFSA 2011 re-evaluation context, class II exposure was below ADI; exceedance concerns in that opinion were not centered on class II."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.76,
+    "rationale": "E150b is approved by EFSA/FDA and evaluated by JECFA with explicit ADI values and no direct IARC classification for E150b itself. Existing concern signals are mainly from related contaminant literature (not direct class-II-specific harm at regulated intake levels).",
+    "key_factors": [
+      "EFSA group ADI framework with class II exposure below ADI in the 2011 opinion",
+      "JECFA ADI 0-160 mg/kg bw for class II",
+      "U.S. CFR authorization under 21 CFR 73.85 and GRAS listing of caramel in 21 CFR 182.1235",
+      "No direct IARC classification for E150b",
+      "Recent toxicology concern literature is primarily 4-MEI-focused and not directly equivalent to E150b exposure"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Scientific Opinion on the re-evaluation of caramel colours (E 150 a,b,c,d) as food additives (EFSA URL reached)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/2004",
+      "type": "regulatory"
+    },
+    {
+      "title": "DOI metadata for EFSA 2011 caramel-colour opinion (contains abstract with ADI and conclusions)",
+      "url": "https://data.europa.eu/doi/10.2903/j.efsa.2011.2004",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API Title 21 Part 73 (includes 21 CFR 73.85 Caramel)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=73",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 Part 182 (includes 21 CFR 182.1235 Caramel)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API titles metadata",
+      "url": "https://www.ecfr.gov/api/versioner/v1/titles.json",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA database: Caustic sulfite caramel (Chemical 1389)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1389",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA API search for caramel entries",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/caramel",
+      "type": "database"
+    },
+    {
+      "title": "Inchem/JECFA summary: Caramel colours",
+      "url": "https://inchem.org/documents/jecfa/jecmono/v46je06.htm",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list dataset script (agent list used by classification page)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs Volume 101 PDF (4-Methylimidazole Group 2B)",
+      "url": "https://publications.iarc.fr/_publications/media/download/3185/4edebfd7ef72c6f16316f818e38f3f9f66f6f353.pdf",
+      "type": "regulatory"
+    },
+    {
+      "title": "An updated U.S. population dietary exposure assessment for 4-methylimidazole (PMID 41542868)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41542868/",
+      "type": "study"
+    },
+    {
+      "title": "Reproductive and developmental toxicity risk assessment for 4-methylimidazole (PMID 40412543)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40412543/",
+      "type": "study"
+    },
+    {
+      "title": "Toxicological evaluation of 4-methylimidazole: review (PMID 41106562)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41106562/",
+      "type": "review"
+    },
+    {
+      "title": "OECD 425-Based Acute Oral LD50 Evaluation of 4-Methylimidazole (PMID 41702566)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41702566/",
+      "type": "study"
+    },
+    {
+      "title": "4-methylimidazole exposure impairs sperm mobility in mice (PMID 39083984)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39083984/",
+      "type": "study"
+    },
+    {
+      "title": "Dietary intake assessment of caramel colours and by-products for the Chinese population (PMID 31100047)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31100047/",
+      "type": "study"
+    }
+  ]
+}

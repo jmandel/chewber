@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T06:38:04Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E170",
+    "name": "Calcium carbonate",
+    "cas_numbers": [
+      "471-34-1"
+    ],
+    "synonyms": [
+      "Chalk",
+      "Limestone (ground)",
+      "Precipitated calcium carbonate",
+      "INS 170(i)"
+    ],
+    "chemical_class": "Inorganic carbonate salt",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "anticaking_agent",
+    "secondary_categories": [
+      "color_additive"
+    ],
+    "mechanism": "Acts as an inert mineral flow aid (reducing powder caking) and as a white pigment/opacifier in authorized color uses.",
+    "common_food_categories": [
+      "Dietary supplement tablets and capsules",
+      "Soft and hard candies and mints",
+      "Printing inks on chewing gum",
+      "Powdered foods where anticaking function is needed"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No numerical ADI required for calcium carbonate itself in EFSA follow-up; impurity specifications (notably aluminium) remain a concern."
+      },
+      "last_evaluation_year": 2023,
+      "key_finding": "EFSA concluded no safety concern for calcium carbonate per se at reported uses (including infants <16 weeks), but raised concern about unavoidable aluminium impurity and recommended specification updates."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1191",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "NOT LIMITED (JECFA), with consideration of total dietary calcium load."
+      },
+      "last_evaluation_year": 1965
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Regulatory concern is centered on unavoidable aluminium impurity in E170 specifications rather than intrinsic toxicity of calcium carbonate.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://www.efsa.europa.eu/en/efsajournal/pub/8106",
+          "https://pubmed.ncbi.nlm.nih.gov/37522100/"
+        ]
+      },
+      {
+        "category": "cardiovascular",
+        "summary": "Calcium supplement literature is mixed: one meta-analysis reported increased CVD risk in postmenopausal women, while a later meta-analysis of randomized trials did not find significant excess CHD/stroke risk.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/33530332/",
+          "https://pubmed.ncbi.nlm.nih.gov/37181938/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "High total calcium intake from multiple sources (diet plus supplementation/fortification) can approach or exceed nutritional upper levels in some populations, even if additive-only exposure is lower.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://www.efsa.europa.eu/en/efsajournal/pub/2318",
+          "https://www.efsa.europa.eu/en/efsajournal/pub/8106"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2023 found no safety concern for calcium carbonate per se at currently reported uses and use levels, including infants below 16 weeks.",
+      "JECFA ADI is NOT LIMITED for calcium carbonate.",
+      "US FDA framework lists calcium carbonate under direct food substances affirmed as GRAS (21 CFR Part 184, section 184.1191)."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "No numerical ADI is set by EFSA/JECFA for calcium carbonate itself; risk management focuses on total calcium load and additive impurities."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.78,
+    "rationale": "Core toxicology and regulatory reviews indicate low concern for calcium carbonate itself at authorized uses, but practical caveats remain for impurity control (aluminium) and cumulative calcium exposure from multiple sources.",
+    "key_factors": [
+      "EFSA: no numerical ADI needed and no concern for calcium carbonate per se at reported uses",
+      "JECFA ADI NOT LIMITED",
+      "FDA GRAS listing under 21 CFR 184.1191 with cGMP condition",
+      "No IARC classification found for calcium carbonate",
+      "Residual uncertainty from impurity concerns and mixed high-dose supplement cardiovascular literature"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal (2023): Re-evaluation of calcium carbonate (E 170)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/8106",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal (2011): Scientific Opinion on re-evaluation of calcium carbonate (E 170)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/2318",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR 184.1191 Calcium carbonate",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2024-01-01/title-21.xml?section=184.1191",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR Part 184 (Direct food substances affirmed as GRAS)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2024-01-01/title-21.xml?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR 73.70 Calcium carbonate (color additive)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2024-01-01/title-21.xml?section=73.70",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database: Calcium carbonate (Chemical ID 457)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/457",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs: List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC LOC app dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 37522100",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37522100/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 35228849",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35228849/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 37181938",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37181938/",
+      "type": "review"
+    },
+    {
+      "title": "PubMed PMID 33530332",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33530332/",
+      "type": "review"
+    },
+    {
+      "title": "eCFR web page access attempt (blocked in environment)",
+      "url": "https://www.ecfr.gov/current/title-21/section-184.1191",
+      "type": "regulatory"
+    }
+  ]
+}

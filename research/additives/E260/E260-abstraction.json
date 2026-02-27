@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T09:31:26Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E260",
+    "name": "Acetic acid",
+    "cas_numbers": [
+      "64-19-7"
+    ],
+    "synonyms": [
+      "Ethanoic acid",
+      "Vinegar acid",
+      "Acetate"
+    ],
+    "chemical_class": "Short-chain carboxylic acid",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "preservative",
+      "flavouring agent",
+      "pH control agent",
+      "curing and pickling agent"
+    ],
+    "mechanism": "Acidifies food and, in its undissociated form, disrupts microbial growth by intracellular acidification and metabolic inhibition.",
+    "common_food_categories": [
+      "condiments and relishes",
+      "gravies and sauces",
+      "cheeses and dairy product analogs",
+      "baked goods",
+      "meat products",
+      "fats and oils",
+      "chewing gum"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not considered necessary / historically not specified for acetic acid and salts (SCF; reaffirmed in EFSA context including 2013 citation in EFSA 2022 opinion)."
+      },
+      "last_evaluation_year": 2022,
+      "key_finding": "EFSA concluded no safety concern for buffered vinegar at proposed maximum/typical use levels; for acetic acid oral intake EFSA references ADI not necessary."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1005",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI not limited for acetic acid and potassium/sodium salts (17th meeting, maintained at 49th meeting); current entry also states no safety concern at current levels for flavouring-agent use."
+      },
+      "last_evaluation_year": 2004
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "carcinogenic",
+        "summary": "A 2026 prospective cohort (NutriNet-Sante) reported an association between higher acetic-acid preservative intake and overall cancer incidence (HR 1.12, 95% CI 1.01-1.25); causality was not established.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41500678/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Concentrated or massive ingestion can cause severe corrosive/systemic toxicity (including reported multiorgan failure and fatal case reports).",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/35950544/",
+          "https://pubmed.ncbi.nlm.nih.gov/36444903/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2022: no safety concern for buffered vinegar at proposed maximum/typical use levels.",
+      "EFSA reference context: ADI for acetic acid oral intake not considered necessary.",
+      "JECFA: group ADI not limited for acetic acid and sodium/potassium salts.",
+      "FDA: acetic acid affirmed as GRAS under 21 CFR 184.1005 when used under GMP."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "toddlers",
+        "children"
+      ],
+      "notes": "No numeric ADI applies in EFSA/JECFA assessments (not necessary/not limited), so classic ADI exceedance is not the primary risk metric; highest modeled exposures occur in young children."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.77,
+    "rationale": "Regulatory consensus supports low concern at intended use levels (GRAS/approved; ADI not necessary or not limited), but recent observational epidemiology and known high-dose corrosive toxicity argue against classifying as risk_free.",
+    "key_factors": [
+      "EU authorization and EFSA no-safety-concern conclusion at proposed use levels",
+      "FDA GRAS affirmation with GMP and use conditions",
+      "JECFA group ADI not limited history",
+      "Recent cohort association signal requiring follow-up",
+      "Concentration-dependent corrosive toxicity at high exposures"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA search page for E260 (access attempt)",
+      "url": "https://www.efsa.europa.eu/en/search?search_api_fulltext=E260",
+      "type": "database"
+    },
+    {
+      "title": "EFSA search page for acetic acid food additive (access attempt)",
+      "url": "https://www.efsa.europa.eu/en/search?search_api_fulltext=acetic%20acid%20food%20additive",
+      "type": "database"
+    },
+    {
+      "title": "Safety evaluation of buffered vinegar as a food additive (EFSA Journal, 2022)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35795292/",
+      "type": "regulatory"
+    },
+    {
+      "title": "Safety evaluation of buffered vinegar as a food additive (full text)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9247865/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API titles metadata",
+      "url": "https://www.ecfr.gov/api/versioner/v1/titles",
+      "type": "database"
+    },
+    {
+      "title": "eCFR Title 21 Part 184 XML",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA API search for acetic acid",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/acetic%20acid",
+      "type": "database"
+    },
+    {
+      "title": "JECFA Chemical 4785 (Acetic acid, INS 260)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4785",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC list backing data script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Intake of food additive preservatives and incidence of cancer (BMJ, 2026)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41500678/",
+      "type": "study"
+    },
+    {
+      "title": "Vinegar - a beneficial food additive: production, safety, possibilities, and applications (Food Funct, 2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39327882/",
+      "type": "review"
+    },
+    {
+      "title": "Lethal toxicity induced by combined ingestion of dietary acetic acid and carbamazepine (Drug Chem Toxicol, 2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35950544/",
+      "type": "study"
+    },
+    {
+      "title": "Multiorgan failure after ingestion of acetic acid (Clin Toxicol, 2022)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36444903/",
+      "type": "study"
+    }
+  ]
+}

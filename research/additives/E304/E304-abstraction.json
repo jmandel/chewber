@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T10:53:15Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E304",
+    "name": "Ascorbyl palmitate",
+    "cas_numbers": [
+      "137-66-6"
+    ],
+    "synonyms": [
+      "L-ascorbyl palmitate",
+      "6-palmitoyl-3-keto-L-gulofuranolactone",
+      "2,3-dehydro-L-threo-hexono-1,4-lactone-6-palmitate",
+      "Vitamin C palmitate"
+    ],
+    "chemical_class": "Fatty-acid ester of ascorbic acid (lipophilic antioxidant)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "antioxidant",
+    "secondary_categories": [
+      "stabilizer"
+    ],
+    "mechanism": "Acts as a lipid-phase antioxidant and is assumed to be rapidly hydrolysed pre-systemically to ascorbic acid and palmitate.",
+    "common_food_categories": [
+      "Fat-containing foods and oils",
+      "Infant formulae (EU FC 13.1.1)",
+      "Foods for special medical purposes for infants (EU FC 13.1.5.1)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2020 follow-up states ANS (2015) found data too limited to establish a specific ADI for ascorbyl palmitate; historical JECFA temporary ADI 1.25 mg/kg bw/day is discussed in EFSA text."
+      },
+      "last_evaluation_year": 2020,
+      "key_finding": "At MPLs in infant formula/infant FSMP, intake of hydrolysis products (ascorbic acid and palmitate) does not raise safety concerns; EFSA recommended specification updates."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.3149",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "Latest JECFA evaluation (2025) lists group ADI 'not specified' and withdraws previous 0-1.25 mg/kg bw/day."
+      },
+      "last_evaluation_year": 2025
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "EFSA reports additive-specific toxicological data were too limited to set a stand-alone ADI for ascorbyl palmitate in prior re-evaluation; clinical infant-formula studies were not designed to isolate ascorbyl palmitate effects and had design limitations.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "EFSA Journal 2020;18(6):e06153 (PMID 32874329, PMCID PMC7448004)",
+          "OpenEFSA record EFSA-Q-2018-00089"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Historical exposure scenarios can exceed historical temporary ADI benchmarks (0-1.25 mg/kg bw/day), especially in infant FSMP and brand-loyal child scenarios.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "EFSA Journal 2020 full text discussion of prior ANS/JECFA context",
+          "EFSA 2020 infant exposure estimates"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2020: intake of metabolites at MPLs in infant formula and infant FSMP does not raise safety concerns.",
+      "JECFA 2025: rapid/extensive pre-systemic hydrolysis and low systemic exposure supported a group ADI not specified.",
+      "eCFR: GRAS status in 21 CFR 182.3149 under GMP conditions."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "Infants below 16 weeks consuming FSMP at high-level scenarios",
+        "Children in historical brand-loyal high-percentile exposure scenarios"
+      ],
+      "notes": "Exceedance refers to historical temporary ADI benchmarks (0-1.25 mg/kg bw/day). Current JECFA position is ADI not specified, and EFSA 2020 did not identify safety concern at assessed MPL scenarios."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.72,
+    "rationale": "Major regulators continue to permit use; EFSA and JECFA emphasize hydrolysis to common metabolites and report no safety concern at assessed uses. Residual uncertainty remains because additive-specific toxicology and controlled human data are limited.",
+    "key_factors": [
+      "EFSA 2020 no-safety-concern conclusion for infant formula contexts",
+      "JECFA 2025 ADI transition to 'not specified' with withdrawal of prior temporary ADI",
+      "US GRAS status under 21 CFR 182.3149",
+      "Absence of IARC listing/classification signal",
+      "Documented data gaps and high-exposure scenarios in some subpopulations"
+    ]
+  },
+  "sources": [
+    {
+      "title": "OpenEFSA question record EFSA-Q-2011-00473",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00473",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA question record EFSA-Q-2018-00089",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2018-00089",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA suggestions API query for ascorbyl palmitate",
+      "url": "https://open.efsa.europa.eu/api/suggestions?searchType=QUESTION&searchText=ascorbyl%20palmitate",
+      "type": "database"
+    },
+    {
+      "title": "EFSA Journal 2020 opinion full text (Europe PMC PMCID: PMC7448004)",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7448004/fullTextXML",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 182.3149 Ascorbyl palmitate (eCFR API)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=182&section=182.3149",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 582.3149 Ascorbyl palmitate (eCFR API)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=582&section=582.3149",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA SearchChemical API (ascorbyl palmitate)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/ascorbyl%20palmitate",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA Chemical Page: ASCORBYL PALMITATE (Id 60)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/60",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC List of Classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list-of-classifications dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: EFSA 2020 E304 opinion (PMID 32874329)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32874329/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: EFSA FEEDAP renewal incl. ascorbyl palmitate (PMID 41158677)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41158677/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Food Chemistry liposome/in vitro security profile (PMID 39083967)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39083967/",
+      "type": "study"
+    }
+  ]
+}

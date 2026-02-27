@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T09:44:39Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E261",
+    "name": "Potassium acetate",
+    "cas_numbers": [
+      "127-08-2"
+    ],
+    "synonyms": [
+      "Potassium acetate",
+      "E 261(i)",
+      "INS 261(i)"
+    ],
+    "chemical_class": "Potassium salt of acetic acid (acetate salt)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator/preservative",
+    "secondary_categories": [
+      "flavoring adjuvant"
+    ],
+    "mechanism": "Weak-acid/acetate action supports pH control and antimicrobial preservation; also used for flavor adjustment in some formulations.",
+    "common_food_categories": [
+      "Processed meats (e.g., bologna)",
+      "Poultry products",
+      "Flavoring applications under 21 CFR 172.515"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No final EFSA ADI published for E261 in the ongoing EFSA-Q-2011-00593 re-evaluation entry."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "Open EFSA states E261 is already authorised in the EU; re-evaluation is ongoing/planned (last modified 2026-01-17)."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.515",
+      "notes": "Listed as a permitted synthetic flavoring substance/adjuvant with minimum-use and GMP conditions; no dedicated potassium acetate GRAS listing found in 21 CFR parts 182/184."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI NOT LIMITED (group ADI for acetic acid and potassium/sodium salts), maintained at 49th meeting (1997)."
+      },
+      "last_evaluation_year": 1997
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Recent potassium-acetate-associated food studies are primarily antimicrobial/shelf-life studies rather than long-term toxicology or epidemiology, leaving a modern evidence gap.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/36916599/",
+          "https://pubmed.ncbi.nlm.nih.gov/34896912/",
+          "https://pubmed.ncbi.nlm.nih.gov/27833832/"
+        ]
+      },
+      {
+        "category": "renal",
+        "summary": "As a potassium salt, high total potassium intake is a theoretical concern for potassium-restricted individuals, although this was not demonstrated as an E261-specific dietary risk in the retrieved studies.",
+        "evidence_strength": "theoretical",
+        "key_references": [
+          "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=172&section=172.515",
+          "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3218"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA assigned a group ADI of NOT LIMITED for acetic acid and potassium/sodium salts.",
+      "No potassium acetate entry was found in the IARC classified agents dataset reviewed."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "No general-population numeric ADI exceedance assessment available (JECFA ADI is not limited).",
+        "People on potassium-restricted diets may need case-by-case caution at high cumulative potassium intake."
+      ],
+      "notes": "EFSA's dedicated E261 re-evaluation output is still pending; JECFA uses a non-numeric ADI framework for this acetate group."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.66,
+    "rationale": "Regulatory anchors are generally permissive (EU authorised status, US CFR listing, JECFA ADI not limited) and no IARC classification signal was found, but EFSA's dedicated re-evaluation remains ongoing and modern additive-specific long-term datasets are limited.",
+    "key_factors": [
+      "JECFA ADI NOT LIMITED (group ADI)",
+      "EFSA question EFSA-Q-2011-00593 is ongoing/planned with no final output",
+      "21 CFR 172.515 allows use with GMP/minimum-use conditions",
+      "No IARC classification entry found for potassium acetate",
+      "Recent literature emphasizes food preservation efficacy more than chronic toxicity"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Open EFSA API - Substance record: Potassium acetate",
+      "url": "https://open.efsa.europa.eu/api/substance/get?termExtendedName=Potassium%20acetate",
+      "type": "database"
+    },
+    {
+      "title": "Open EFSA API - Questions for Potassium acetate",
+      "url": "https://open.efsa.europa.eu/api/substance/getQuestions?termExtendedName=Potassium%20acetate",
+      "type": "database"
+    },
+    {
+      "title": "Open EFSA API - Question detail EFSA-Q-2011-00593",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00593",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API - 21 CFR 172.515 Synthetic flavoring substances and adjuvants",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=172&section=172.515",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API - 21 CFR Part 184",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API - 21 CFR Part 182",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database - POTASSIUM ACETATE (Chemical 3218)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3218",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API - SearchChemical ByPartialName/POTASSIUM ACETATE",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/POTASSIUM%20ACETATE",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of Classifications app dataset",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed - Viability of Listeria monocytogenes and Salmonella spp... (J Food Prot)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36916599/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed - Improved microbial and sensory quality of chicken meat... (Int J Food Microbiol)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34896912/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed - Electro-activation of potassium acetate... (SpringerPlus)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27833832/",
+      "type": "study"
+    }
+  ]
+}

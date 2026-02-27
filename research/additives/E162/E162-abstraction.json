@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T06:32:26+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E162",
+    "name": "Beetroot red (Betanin)",
+    "cas_numbers": [
+      "57917-55-2",
+      "7659-95-2"
+    ],
+    "synonyms": [
+      "Beet red",
+      "Beetroot red",
+      "Betanine",
+      "Betanin"
+    ],
+    "chemical_class": "Betalain pigment (primarily betacyanins)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "color additive",
+    "secondary_categories": [
+      "food colour"
+    ],
+    "mechanism": "Water-soluble betalain pigments (mainly betanin) absorb visible light and provide red-violet coloration in foods.",
+    "common_food_categories": [
+      "confectionery (including hard candy)",
+      "beverages",
+      "desserts",
+      "foods generally under GMP where authorized"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA (2015) did not establish a numerical ADI; concluded no safety concern under refined current-use exposure estimates."
+      },
+      "last_evaluation_year": 2015,
+      "key_finding": "Re-evaluation concluded no numerical ADI could be established for E162 and no safety concern for refined exposure scenario; 2016 extension assessment also found no safety concern for hard candy use."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 73.40",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not specified (1987), with nitrate-specification caveat and GMP-based use."
+      },
+      "last_evaluation_year": 1987
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "JECFA highlighted nitrate as a component of beet red and emphasized specification control, with particular caution for foods for infants and young children.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/877"
+        ]
+      },
+      {
+        "category": "carcinogenic",
+        "summary": "No IARC carcinogenic classification was identified for betanin/beetroot red in the current IARC list dataset.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://monographs.iarc.who.int/list-of-classifications/",
+          "https://webapi.iarc.who.int/loc/loc.app.js"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA re-evaluation summary indicates no safety concern at refined current-use exposure.",
+      "EFSA extension-of-use assessment (hard candy) indicates no safety concern.",
+      "JECFA assigned ADI 'not specified' under GMP/specification conditions.",
+      "US 21 CFR 73.40 allows use under GMP with exemption from certification."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "toddlers (higher modeled exposure)",
+        "infants and young children (nitrate-specification sensitivity context)"
+      ],
+      "notes": "A numeric ADI is not set by EFSA/JECFA for this additive; EFSA refined exposure summary indicates no safety concern despite high-end toddler estimates."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.78,
+    "rationale": "Major regulators (EFSA, FDA/eCFR, JECFA) allow use with no current strong safety signal, but EFSA did not set a numerical ADI and JECFA flagged nitrate-specification management, especially relevant to younger populations.",
+    "key_factors": [
+      "EU and US regulatory allowance with defined conditions",
+      "EFSA and JECFA no-alarm conclusions",
+      "No IARC classification identified",
+      "Nitrate-specification caveat and limited modern additive-specific long-term human safety datasets"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of beetroot red (E 162) as a food additive",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4318",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA Study Inventory - EFSA-Q-2011-00807",
+      "url": "https://open.efsa.europa.eu/study-inventory/EFSA-Q-2011-00807",
+      "type": "database"
+    },
+    {
+      "title": "Assessment of the extension of use of beetroot red (E 162)",
+      "url": "https://www.efsa.europa.eu/en/supporting/pub/en-988",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA Study Inventory - EFSA-Q-2014-00557",
+      "url": "https://open.efsa.europa.eu/study-inventory/EFSA-Q-2014-00557",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API full title XML (Title 21)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API search results for beet in CFR",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=beet&per_page=100&page=1",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA Chemical Entry: BEET RED",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/877",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA Chemical Entry: BEETROOT RED",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/878",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs - List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC LOC dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Betalains: A Narrative Review on Pharmacological Mechanisms Supporting the Nutraceutical Potential Towards Health Benefits",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39682981/",
+      "type": "review"
+    },
+    {
+      "title": "Betalain-rich dragon fruit (pitaya) consumption improves vascular function in men and women: a double-blind, randomized controlled crossover trial",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35265960/",
+      "type": "study"
+    }
+  ]
+}

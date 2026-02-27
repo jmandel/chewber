@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T06:09:14+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E160b",
+    "name": "Annatto (annatto extracts; annatto E)",
+    "cas_numbers": [
+      "1393-63-1",
+      "6983-79-5",
+      "542-40-5"
+    ],
+    "synonyms": [
+      "Rocou",
+      "Orlean",
+      "Terre Orellana",
+      "L. Orange",
+      "bixin",
+      "norbixin"
+    ],
+    "chemical_class": "Natural carotenoid colorants (apocarotenoids)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "food colour",
+    "secondary_categories": [
+      "color additive",
+      "carotenoid pigment"
+    ],
+    "mechanism": "Color is imparted by annatto pigments (primarily bixin and norbixin) that absorb visible light; extract form affects solubility and application.",
+    "common_food_categories": [
+      "cheese and dairy applications",
+      "snacks and bakery items",
+      "processed foods where orange-yellow coloring is desired"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 6,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2019 opinion applied ADI established in 2016 for bixin (6 mg/kg bw/day); EFSA also references norbixin ADI of 0.3 mg/kg bw/day."
+      },
+      "last_evaluation_year": 2019,
+      "key_finding": "Annatto E did not raise concern for genotoxicity; EFSA considered exposures generally not of health concern under assessed scenarios, with caveats for high-percentile norbixin exposure in some child groups."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 73.30",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA (2006): bixin ADI 0-12 mg/kg bw; norbixin and sodium/potassium salts group ADI 0-0.6 mg/kg bw (expressed as norbixin)."
+      },
+      "last_evaluation_year": 2006
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "allergenic",
+        "summary": "Clinical reports describe IgE-mediated annatto hypersensitivity, including placebo-controlled oral challenge-confirmed reactions and pediatric case reports.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/34320336/",
+          "https://pubmed.ncbi.nlm.nih.gov/27613468/",
+          "https://pubmed.ncbi.nlm.nih.gov/19772519/"
+        ]
+      },
+      {
+        "category": "genotoxic",
+        "summary": "EFSA concluded annatto E does not raise concern for genotoxicity in its 2019 opinion.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/32626252/",
+          "https://www.efsa.europa.eu/en/efsajournal/pub/5626"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Exposure-based concern is scenario-dependent: high-percentile child/toddler norbixin exposure can approach or exceed ADI assumptions in some assessments.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/32626252/",
+          "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2706"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "No IARC monograph classification entry found for annatto, bixin, or norbixin in the current IARC list dataset.",
+      "EFSA did not identify a genotoxicity concern for annatto E."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "toddlers/children at high-percentile (norbixin-focused scenarios)",
+        "high direct annatto-seed consumers in historical intake datasets"
+      ],
+      "notes": "EFSA states overestimation/uncertainty likely reduces concern in refined scenarios; JECFA historical comments describe exceedance in specific high-consumption contexts."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.63,
+    "rationale": "Regulatory approvals and ADIs support overall managed safety, but non-zero caveats remain from high-percentile exposure scenarios and clinically documented hypersensitivity in susceptible individuals.",
+    "key_factors": [
+      "EFSA and JECFA maintain ADI-based management rather than unrestricted safety",
+      "High-percentile norbixin exposure can reach/exceed ADI assumptions in some child scenarios",
+      "Confirmed rare IgE-mediated hypersensitivity cases exist",
+      "No current IARC carcinogenic classification entry identified"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Safety of annatto E and the exposure to the annatto colouring principles bixin and norbixin (E 160b) when used as a food additive",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5626",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed record: EFSA annatto E opinion (PMID 32626252)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32626252/",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API Title 21 XML (current)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA database: Annatto extracts (Chemical 2706)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2706",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list dataset payload",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Food Additives and Adverse Reactions: Are They to Blame?",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35685357/",
+      "type": "review"
+    },
+    {
+      "title": "Annatto hypersensitivity after oral ingestion confirmed by placebo-controlled oral challenge",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34320336/",
+      "type": "study"
+    },
+    {
+      "title": "Annatto seed hypersensitivity in a pediatric patient",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27613468/",
+      "type": "study"
+    },
+    {
+      "title": "Allergy for cheese: evidence for an IgE-mediated reaction from the natural dye annatto",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19772519/",
+      "type": "study"
+    },
+    {
+      "title": "PubChem bixin synonyms",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5281226/synonyms/TXT",
+      "type": "database"
+    },
+    {
+      "title": "PubChem norbixin synonyms",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5281249/synonyms/TXT",
+      "type": "database"
+    }
+  ]
+}

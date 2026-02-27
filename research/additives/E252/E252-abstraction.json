@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T09:31:49+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E252",
+    "name": "Potassium nitrate",
+    "cas_numbers": [
+      "7757-79-1"
+    ],
+    "synonyms": [
+      "Saltpetre",
+      "Saltpeter",
+      "Nitre"
+    ],
+    "chemical_class": "Inorganic nitrate salt",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "curing agent",
+      "colour retention agent"
+    ],
+    "mechanism": "Provides nitrate in curing systems, serving as a nitrite source that helps control microbial growth (including botulism risk) and supports cured-meat color/flavor characteristics.",
+    "common_food_categories": [
+      "cured meat products",
+      "cured poultry products",
+      "fish products",
+      "cheese products",
+      "cod roe"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 3.7,
+        "unit": "mg/kg bw/day",
+        "basis": "Expressed as nitrate ion; EFSA communication on 2017 re-evaluation reported no need to change existing safe level."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "At permitted additive uses, nitrite/nitrate levels were considered sufficiently protective; additive-only nitrate exposure generally stayed within safe levels, while total dietary nitrate from all sources may exceed ADI in some groups."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.160; 21 CFR 181.33",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 3.7,
+        "unit": "mg/kg bw/day",
+        "basis": "Expressed as nitrate ion; JECFA retained this ADI in the 2002 nitrate entry and notes ADI does not apply to infants below 3 months in potassium nitrate record."
+      },
+      "last_evaluation_year": 2002
+    },
+    "iarc_classification": "Group 2A",
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "carcinogenic",
+        "summary": "IARC classifies ingested nitrate/nitrite under endogenous nitrosation conditions as Group 2A, and EFSA flags nitrosamine-formation pathways as a key concern context.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "IARC list of classifications (Volume 94 entry)",
+          "EFSA nitrites/nitrates re-evaluation communication (2017)"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent prospective cohort evidence reported positive associations between higher potassium nitrate preservative intake and cancer incidence, but design is observational and residual confounding remains possible.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "BMJ 2026 NutriNet-Sante cancer incidence study (PMID: 41500678)"
+        ]
+      },
+      {
+        "category": "endocrine",
+        "summary": "Animal and mechanistic studies using nitrate contexts (often sodium nitrate or co-exposure models) report endocrine/metabolic disruption signals, supporting biological plausibility but not direct human causal proof for E252 alone.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "J Nutr Biochem 2025 zebrafish co-exposure study (PMID: 40023200)",
+          "Int J Hyg Environ Health 2026 scoping review (PMID: 41248583)"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA concluded nitrite/nitrate additives at permitted levels are sufficiently protective for consumers.",
+      "JECFA ADI framework for nitrate remains established at 0-3.7 mg/kg bw/day (as nitrate ion)."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "children with high intake of foods containing nitrite/nitrate additives",
+        "medium/high total dietary nitrate consumers across age groups when all sources are included"
+      ],
+      "notes": "EFSA reported additive-only nitrate exposure generally below ADI, but all-source dietary nitrate may exceed ADI in some population groups."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.73,
+    "rationale": "Regulators continue to authorize E252 with ADI/conditions, but exceedance scenarios, mechanistic nitrosation concerns, and emerging cohort associations argue against a low-concern tier.",
+    "key_factors": [
+      "EFSA/JECFA maintain ADI-based approval context",
+      "IARC Group 2A hazard context for nitrate/nitrite under endogenous nitrosation conditions",
+      "Exposure caveats for children and high total-dietary-exposure groups",
+      "Recent observational associations involving potassium nitrate preservative exposure"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA confirms safe levels for nitrites and nitrates added to food",
+      "url": "https://www.efsa.europa.eu/en/press/news/170615",
+      "type": "regulatory"
+    },
+    {
+      "title": "Re-evaluation of sodium nitrate (E 251) and potassium nitrate (E 252) as food additives",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2017.4787",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR Part 172 XML (includes §172.160 Potassium nitrate)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=172",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR Part 181 XML (includes §181.33 Sodium nitrate and potassium nitrate)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=181",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA chemical record: POTASSIUM NITRATE (chemID 390)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/chemical.aspx?chemID=390",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical record: NITRATE (chemID 709)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/chemical.aspx?chemID=709",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications data script (contains nitrate/nitrite Group 2A entry)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Intake of food additive preservatives and incidence of cancer: results from the NutriNet-Sante prospective cohort",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41500678/",
+      "type": "study"
+    },
+    {
+      "title": "Associations between preservative food additives and type 2 diabetes incidence in the NutriNet-Sante prospective cohort",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41501013/",
+      "type": "study"
+    },
+    {
+      "title": "Dietary Sources of Nitrate and Nitrite and Associations with Blood Pressure and Other Cardiovascular Disease Risk Factors in a Representative United Kingdom Population",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41297631/",
+      "type": "study"
+    },
+    {
+      "title": "Prenatal nitrate and nitrite intake in mammals: A scoping review of effects and associations with pregnancy and maternal and child health",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41248583/",
+      "type": "review"
+    },
+    {
+      "title": "Nitrate and nitrite content in hot dogs and assessment of health risks to Polish consumers",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40707635/",
+      "type": "study"
+    },
+    {
+      "title": "Exposure to bisphenol A and sodium nitrate found in processed meat induces endocrine disruption and dyslipidemia through PI3K/AKT/SREBP pathway in zebrafish larvae",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40023200/",
+      "type": "study"
+    },
+    {
+      "title": "PubChem Potassium Nitrate identifiers and synonyms",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/24434/synonyms/TXT",
+      "type": "database"
+    }
+  ]
+}

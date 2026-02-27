@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T06:51:27Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E173",
+    "name": "Aluminium (metallic aluminum powder)",
+    "cas_numbers": [
+      "7429-90-5"
+    ],
+    "synonyms": [
+      "Aluminum",
+      "Aluminum powder",
+      "Metallic aluminum",
+      "Aluminium"
+    ],
+    "chemical_class": "Elemental metal color additive",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "color (surface decoration)",
+    "secondary_categories": [
+      "decorative coating",
+      "surface colorant"
+    ],
+    "mechanism": "Finely divided metallic particles create a silver/metallic appearance by surface reflectance on external coatings.",
+    "common_food_categories": [
+      "External coating of sugar confectionery for decoration of cakes and pastries (EU food category 05.4)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "restricted",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No ADI established; EFSA (2008) set a TWI of 1 mg/kg bw/week for aluminium from all dietary sources (equivalent to about 0.143 mg/kg bw/day)."
+      },
+      "last_evaluation_year": 2008,
+      "key_finding": "EFSA reported that parts of the population, especially some children, could exceed the aluminium TWI from dietary exposure."
+    },
+    "fda": {
+      "status": "not_evaluated",
+      "cfr_citation": "21 CFR 73.1645; 21 CFR 73.2645; 21 CFR 182.1125-182.1131",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ALUMINIUM POWDER (JECFA ID 1756): NO ADI ALLOCATED (1977). Broader aluminium-compound guidance later used PTWI values (e.g., 2 mg/kg bw/week in 2011)."
+      },
+      "last_evaluation_year": 1977
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "JECFA's broader aluminium evaluations cite renal and developmental effects as key toxicological endpoints for deriving tolerable intake guidance values.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "WHO JECFA ALUMINIUM record (ID 298, 2006/2011 entries)"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "Rodent oral-exposure studies report gastrointestinal/visceral sensitivity and microbiome-linked effects with some oral aluminium forms, including persistent colorectal hypersensitivity and phase-dependent nanoparticle hepatotoxicity pathways.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID: 30534582",
+          "PMID: 40139036"
+        ]
+      },
+      {
+        "category": "genotoxic",
+        "summary": "A rat oral-exposure nanomaterial study found DNA damage signals in bone marrow for Al2O3 nanomaterials (comet assay) without micronucleus increase.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID: 32053952"
+        ]
+      },
+      {
+        "category": "neurotoxic",
+        "summary": "Regulatory risk frameworks for aluminium compounds include concern for developmental nervous-system effects at higher exposure ranges.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "WHO JECFA ALUMINIUM record (ID 298)",
+          "EFSA aluminium opinion (2008)"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA ALUMINIUM POWDER (1977) concluded very limited confectionery silvering use and no ADI allocation.",
+      "A 2025 Swedish total diet study reported aluminium intake from food did not indicate concern in that sampled population (PMID: 40921320)."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "children",
+        "infants (especially high-consumption/specialized diets)",
+        "high consumers of aluminium-containing foods"
+      ],
+      "notes": "EFSA (2008) and JECFA (2011, broader aluminium record) indicate tolerable intake exceedance can occur in some child populations when considering aggregate aluminium exposure."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.73,
+    "rationale": "E173 itself is authorized only in narrow decorative uses (EU) and historically had no ADI allocated by JECFA for its very limited use, but broader aluminium exposure assessments consistently identify potential exceedance in some child populations and credible toxicological concerns for certain aluminium forms and doses.",
+    "key_factors": [
+      "EU authorization is restricted to external confectionery decoration use (quantum satis in a narrow category)",
+      "JECFA additive-specific record for aluminium powder: NO ADI ALLOCATED (1977) due very limited use",
+      "EFSA/JECFA broader aluminium guidance values indicate exceedance risk in some populations, especially children",
+      "U.S. CFR lists aluminum powder for external drugs/cosmetics, not food color use"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA News: Safety of aluminium from dietary intake",
+      "url": "https://www.efsa.europa.eu/en/press/news/afc070628",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal 2008;6(7):754 - Safety of aluminium from dietary intake",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/full/10.2903/j.efsa.2008.754",
+      "type": "regulatory"
+    },
+    {
+      "title": "Commission Regulation (EU) No 1129/2011 (Annex II food additive list)",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32011R1129",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 full text (Food and Drugs)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API search results for aluminum powder",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=%22aluminum%20powder%22&per_page=20&order=relevance",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database chemical page: ALUMINIUM POWDER (ID 1756)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1756",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA database chemical page: ALUMINIUM (ID 298)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/298",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs - List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications app data bundle",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubChem PUG REST synonyms for CID 5359268 (aluminium)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5359268/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "Aluminum Ingestion Promotes Colorectal Hypersensitivity in Rodents (PMID: 30534582)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30534582/",
+      "type": "study"
+    },
+    {
+      "title": "Genotoxicity of Aluminum and Aluminum Oxide Nanomaterials in Rats Following Oral Exposure (PMID: 32053952)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32053952/",
+      "type": "study"
+    },
+    {
+      "title": "Aggregated aluminium exposure: risk assessment for the general population (PMID: 31659427)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31659427/",
+      "type": "review"
+    },
+    {
+      "title": "Probabilistic Risk Analysis to Assess Dietary Exposure to Aluminum in the Taiwanese Population (PMID: 33530648)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33530648/",
+      "type": "study"
+    },
+    {
+      "title": "Pediatric Health Risk Assessment for Exposure to Aluminum from Infant Formulas (PMID: 36010503)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36010503/",
+      "type": "study"
+    },
+    {
+      "title": "Phase-dependent hepatotoxicity of Aluminum oxide nanoparticles (PMID: 40139036)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40139036/",
+      "type": "study"
+    },
+    {
+      "title": "Exposure to silver, aluminium, arsenic, cadmium, mercury, nickel and lead from food in Swedish populations (PMID: 40921320)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40921320/",
+      "type": "study"
+    }
+  ]
+}

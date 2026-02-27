@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T14:17:28+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E401",
+    "name": "Sodium alginate",
+    "cas_numbers": [
+      "9005-38-3"
+    ],
+    "synonyms": [
+      "Sodium alginate",
+      "Alginate sodium",
+      "INS 401"
+    ],
+    "chemical_class": "Alginic acid sodium salt (anionic polysaccharide/polyuronide)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "stabilizer/thickener",
+    "secondary_categories": [
+      "emulsifier",
+      "gelling agent",
+      "texturizer",
+      "formulation aid"
+    ],
+    "mechanism": "Hydrophilic polymer that increases viscosity and forms gels, improving water binding, texture, and dispersion stability.",
+    "common_food_categories": [
+      "condiments and relishes",
+      "confections and frostings",
+      "gelatins and puddings",
+      "hard candy",
+      "processed fruits and fruit juices",
+      "other food categories (category-specific limits in 21 CFR 184.1724)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No numerical ADI needed (EFSA re-evaluation conclusion)."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "No safety concern at refined exposure for reported uses; insufficient data for certain infant/young-child FSMP categories."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1724",
+      "notes": "Listed under 21 CFR Part 184 (direct food substances affirmed as GRAS) with category-specific maximum use levels and functional-use limits."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not specified."
+      },
+      "last_evaluation_year": 1992
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "At therapeutic pediatric doses used for reflux (about 417-834 mg/kg bw/day), gastrointestinal side effects have been reported, including rare intragastric mass formation.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7010146/"
+        ]
+      },
+      {
+        "category": "allergenic",
+        "summary": "EFSA noted possible hypersensitivity issues from protein impurities and recommended reducing protein limits in specifications as much as possible.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7010146/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Data were considered insufficient for adequate safety assessment in infants/young children consuming specific foods for special medical purposes (FC 13.1.5.1 and 13.1.5.2).",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/32625343/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7010146/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA and JECFA concluded no numerical ADI needed / ADI not specified for alginic acid and salts including E401.",
+      "EFSA found no genotoxicity concern for alginic acid and salts using available data and read-across.",
+      "EFSA did not identify carcinogenic concern in available long-term animal studies.",
+      "Recent clinical studies in reflux populations reported no major new safety signals for alginate-based oral products."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "infants",
+        "young children",
+        "infants/young children on special medical purpose diets"
+      ],
+      "notes": "Formal ADI exceedance is not applicable because ADI is not numerical; EFSA still recommends keeping infant/young-child exposure below therapeutic-dose ranges where GI side effects occur."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.8,
+    "rationale": "Regulatory consensus is favorable (EU authorized, US GRAS, JECFA ADI not specified) with no strong genotoxic/carcinogenic signal for typical use, but there are meaningful caveats for vulnerable infant FSMP populations and high-dose GI effects.",
+    "key_factors": [
+      "EFSA 2017: no numerical ADI needed and no safety concern at refined exposure for reported uses.",
+      "FDA: sodium alginate listed under 21 CFR Part 184 with explicit use conditions (21 CFR 184.1724).",
+      "JECFA entry: ADI not specified.",
+      "EFSA identified data gaps for specific infant/young-child FSMP categories.",
+      "No IARC listing found for sodium alginate in current IARC classifications dataset."
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of alginic acid and its sodium, potassium, ammonium and calcium salts (E 400-E 404) as food additives (PubMed record)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625343/",
+      "type": "regulatory"
+    },
+    {
+      "title": "Re-evaluation of alginic acid and its sodium, potassium, ammonium and calcium salts (E 400-E 404) as food additives (PMCID: PMC7010146)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7010146/",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database: SODIUM ALGINATE (Chemical ID 1823)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1823",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA database API: search sodium alginate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/sodium%20alginate",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API: 21 CFR Part 184 (Direct food substances affirmed as GRAS)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?chapter=I&part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR 184.1724 Sodium alginate",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?chapter=I&part=184&section=184.1724",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC Monographs: List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications app dataset bundle",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Comparable efficacy of generic and original alginate for symptom control in PPI-refractory GERD",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40760009/",
+      "type": "study"
+    },
+    {
+      "title": "Laryngopharyngeal reflux disease: a pilot study with a new multicomponent",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41186604/",
+      "type": "study"
+    },
+    {
+      "title": "The sex-specific effects of sodium alginate with varying viscosities on lipid metabolism and gut microbiota in rats",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40600413/",
+      "type": "study"
+    }
+  ]
+}

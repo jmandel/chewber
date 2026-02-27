@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T13:31:47Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E356",
+    "name": "Sodium adipate",
+    "cas_numbers": [
+      "7486-38-6",
+      "18996-34-4"
+    ],
+    "synonyms": [
+      "Disodium adipate",
+      "Sodium hydrogen adipate",
+      "Disodium hexanedioate",
+      "Sodium hexanedioate"
+    ],
+    "chemical_class": "Sodium salt(s) of adipic acid (dicarboxylate acidulant/buffer salts)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "buffering agent",
+      "pH control agent"
+    ],
+    "mechanism": "Provides adipate-based acid-base buffering and pH adjustment in formulated foods.",
+    "common_food_categories": [
+      "baked goods",
+      "nonalcoholic beverages",
+      "condiments and relishes",
+      "dairy product analogs",
+      "fats and oils",
+      "gelatins and puddings",
+      "gravies",
+      "meat products",
+      "snack foods"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "not_evaluated",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA search and OpenFoodTox row-level retrieval were blocked in this environment; no EFSA ADI value could be extracted for E356 in this run."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "Direct EFSA extraction was blocked (search/robots and dashboard data authorization), so latest EFSA opinion details for E356 could not be retrieved in this run."
+    },
+    "fda": {
+      "status": "not_evaluated",
+      "cfr_citation": "21 CFR 184.1009; 21 CFR 582.1009",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 5,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI 0-5 mg/kg bw for adipic acid and its potassium, sodium and ammonium salts (free-acid basis)."
+      },
+      "last_evaluation_year": 2015
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Older high-dose animal studies summarized by JECFA reported effects such as diarrhea and reduced growth at higher dietary doses.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "http://www.inchem.org/documents/jecfa/jecmono/v12je02.htm"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Direct modern human safety and intake datasets specific to E356 were limited in retrieved sources, adding uncertainty to current exposure characterization.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%22sodium%20adipate%22%5BTitle%2FAbstract%5D&retmax=20&sort=pub+date&retmode=json"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA established a group ADI of 0-5 mg/kg bw for adipic acid and potassium/sodium/ammonium salts.",
+      "JECFA monograph summaries reported no compound-related embryotoxic or teratogenic effects in tested species/dose ranges.",
+      "No IARC listing for sodium adipate or adipic acid was found in the current IARC classification dataset reviewed."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "Current E356-specific intake distributions were not retrieved in this run, so population ADI exceedance prevalence could not be quantified."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.64,
+    "rationale": "JECFA provides a bounded historical group ADI with no strong carcinogenicity classification signal from IARC, and CFR has adipic-acid GRAS anchors, while major uncertainty remains due limited modern E356-specific exposure data and inability to extract EFSA details in this environment.",
+    "key_factors": [
+      "JECFA sodium adipate page reports group ADI context and 2015 note that provisions were withdrawn at CCFA47",
+      "eCFR exact search did not find standalone 'sodium adipate' section text in Title 21",
+      "Closest U.S. regulatory anchors are adipic acid sections 21 CFR 184.1009 and 582.1009",
+      "No IARC entry found for sodium adipate/adipic acid in current list dataset",
+      "Recent PubMed direct sodium adipate hits were sparse and not core dietary safety outcome studies"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA search page query for sodium adipate (blocked in this run)",
+      "url": "https://www.efsa.europa.eu/en/search?search_api_fulltext=Sodium%20adipate",
+      "type": "database"
+    },
+    {
+      "title": "EFSA OpenFoodTox dashboard landing page",
+      "url": "https://www.efsa.europa.eu/en/microstrategy/openfoodtox",
+      "type": "database"
+    },
+    {
+      "title": "EFSA OpenFoodTox embedded MicroStrategy endpoint",
+      "url": "https://dwh.efsa.europa.eu/MicroStrategy_PORTAL/servlet/mstrWeb",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API Title 21 full XML (2026-02-25)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR search API exact phrase query \"sodium adipate\"",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=%22sodium%20adipate%22",
+      "type": "database"
+    },
+    {
+      "title": "eCFR search API exact phrase query \"adipic acid\"",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=%22adipic%20acid%22",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA chemical page: SODIUM ADIPATE (ID 2972)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2972",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA API SearchChemical by partial name: sodium adipate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/sodium%20adipate",
+      "type": "database"
+    },
+    {
+      "title": "JECFA Evaluation page: ADIPIC ACID",
+      "url": "http://www.inchem.org/documents/jecfa/jeceval/jec_44.htm",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO Food Additives Series 12 toxicological monograph: ADIPIC ACID",
+      "url": "http://www.inchem.org/documents/jecfa/jecmono/v12je02.htm",
+      "type": "review"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC LOC classification dataset bundle",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed E-utilities search for sodium adipate",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%22sodium%20adipate%22%5BTitle%2FAbstract%5D&retmax=20&sort=pub+date&retmode=json",
+      "type": "database"
+    },
+    {
+      "title": "PubMed E-utilities summary for PMIDs 39371667 and 32798980",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=39371667,32798980&retmode=json",
+      "type": "database"
+    },
+    {
+      "title": "PubChem PUG REST: sodium adipate properties",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/sodium%20adipate/property/Title,MolecularFormula,IUPACName/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem PUG REST: disodium adipate synonyms (CID 24073)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/24073/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem PUG REST: sodium hydrogen adipate properties",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/sodium%20hydrogen%20adipate/property/Title,MolecularFormula,IUPACName/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem PUG REST: sodium hydrogen adipate synonyms (CID 23705258)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/23705258/synonyms/JSON",
+      "type": "database"
+    }
+  ]
+}

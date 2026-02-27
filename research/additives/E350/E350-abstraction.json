@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T13:06:13Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E350",
+    "name": "Sodium malates",
+    "cas_numbers": [
+      "3105-51-9",
+      "676-46-0"
+    ],
+    "synonyms": [
+      "Malic acid monosodium salt",
+      "Monosodium DL-malate",
+      "Malic acid sodium salt",
+      "Disodium DL-malate",
+      "Hydroxybutanedioic acid disodium salt"
+    ],
+    "chemical_class": "Sodium salts of malic acid (hydroxy-dicarboxylic acid salts)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "flavouring agent",
+      "flavour enhancer",
+      "pH control agent",
+      "humectant"
+    ],
+    "mechanism": "Provides acidification/buffering and tartness through malate salts, supporting pH control and flavor balance.",
+    "common_food_categories": [
+      "nonalcoholic beverages",
+      "chewing gum",
+      "gelatins, puddings, and fillings",
+      "hard candy",
+      "jams and jellies",
+      "processed fruits and fruit juices",
+      "soft candy"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No final EFSA numerical ADI was identified in the retrieved EFSA 2024 call-for-data re-evaluation material for E296/E350/E351/E352."
+      },
+      "last_evaluation_year": 2024,
+      "key_finding": "EFSA published a 2024 call for technical/toxicological data for malic acid and salts, with scientific output requested by 31 Dec 2026, indicating re-evaluation is ongoing."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1069",
+      "notes": "Direct Title 21 search for 'sodium malate' returned no hit; relevant human-food GRAS conditions are specified for malic acid in Part 184. Use is under GMP, excluding baby food, with category-specific maximum levels listed in 184.1069(d)."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA records for INS 350(i) and INS 350(ii) report ADI NOT SPECIFIED as part of the group ADI for malic acid and its sodium/potassium/calcium salts."
+      },
+      "last_evaluation_year": 1982
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "JECFA group toxicology context states that for D(-)-malic acid and its salts, the ADI is not applicable to very young infants, indicating age/stereoisomer-specific caution.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "WHO/JECFA DL-malic acid chemical page (ID 5163)"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Historical safety review data indicate irritation potential at certain cosmetic-use conditions, while systemic oral toxicity findings were generally low in reviewed animal data.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PubMed PMID 11358110",
+          "PubMed PMID 35993419"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA ADI for E350(i)/E350(ii): NOT SPECIFIED",
+      "No IARC monograph classification entry found for malic acid or sodium malate in the current IARC classification dataset",
+      "U.S. CFR Part 184 affirms GRAS status framework for listed direct food ingredients, including malic acid under 21 CFR 184.1069"
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "very young infants (D(-)-malic acid salt caveat)",
+        "high consumers of acidic beverages/confectionery"
+      ],
+      "notes": "A numerical ADI is not set (JECFA: NOT SPECIFIED), so conventional percent-ADI exceedance calculations are not directly applicable; caution remains for very young infants in JECFA group context."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.68,
+    "rationale": "Regulatory evidence supports continued permitted use (JECFA ADI not specified; U.S. GRAS framework via 21 CFR 184.1069), with no IARC carcinogenic classification found. However, unresolved uncertainty remains due to EFSA re-evaluation in progress and JECFA's infant caveat for D(-)-malic acid salts.",
+    "key_factors": [
+      "JECFA ADI NOT SPECIFIED for INS 350(i) and 350(ii)",
+      "21 CFR 184.1069 specifies GMP use conditions and excludes baby food",
+      "No IARC classification listing found",
+      "EFSA 2024 re-evaluation data call indicates pending contemporary EU scientific output",
+      "JECFA caveat for very young infants with D(-)-malic acid salts"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA call for technical and toxicological data on malic acid and its salts (E296, E350, E351, E352)",
+      "url": "https://www.efsa.europa.eu/en/call/call-technical-and-toxicological-data-malic-acid-and-its-salts-e296-e350-e351-and-e352-food",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Part 184 — Direct food substances affirmed as generally recognized as safe",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2025-04-01/title-21?chapter=I&subchapter=B&part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR 21 CFR 184.1069 — Malic acid",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2025-04-01/title-21?chapter=I&subchapter=B&part=184&section=184.1069",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR search API query: sodium malate",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=sodium%20malate&per_page=20&page=1&order=relevance&date=2026-02-19",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical record: MALIC ACID MONOSODIUM SALT (INS 350(i))",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/575",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical record: MALIC ACID SODIUM SALT (INS 350(ii))",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/5577",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical record: DL-MALIC ACID (group ADI context)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/5163",
+      "type": "database"
+    },
+    {
+      "title": "IARC Agents Classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list-of-classifications application dataset",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Amended Safety Assessment of Malic Acid and Sodium Malate as Used in Cosmetics (PMID 35993419)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35993419/?format=pubmed",
+      "type": "study"
+    },
+    {
+      "title": "Final report on the safety assessment of Malic Acid and Sodium Malate (PMID 11358110)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11358110/?format=pubmed",
+      "type": "review"
+    },
+    {
+      "title": "Reduction of cisplatin toxicity and lethality by sodium malate in mice (PMID 9477166)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9477166/?format=pubmed",
+      "type": "study"
+    }
+  ]
+}

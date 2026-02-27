@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T15:01:13+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E414",
+    "name": "Acacia gum (Gum arabic)",
+    "cas_numbers": [
+      "9000-01-5"
+    ],
+    "synonyms": [
+      "Gum arabic",
+      "Acacia gum",
+      "Gum Arabic (Acacia senegal)",
+      "Gum Arabic (Acacia seyal)",
+      "Arabic gum"
+    ],
+    "chemical_class": "Natural plant exudate polysaccharide (arabinogalactan-rich hydrocolloid)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "emulsifier",
+    "secondary_categories": [
+      "stabilizer",
+      "thickener",
+      "dietary fiber"
+    ],
+    "mechanism": "Forms protective colloids/interfacial films to stabilize emulsions, with modest viscosity and texture effects in aqueous foods.",
+    "common_food_categories": [
+      "beverages",
+      "chewing gum",
+      "confections and frostings",
+      "hard and soft candy",
+      "grain-based bars",
+      "soups and soup mixes",
+      "snack foods",
+      "dairy product analogs"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA ANS (2017) and FAF (2019) concluded a numerical ADI is not required (no safety concern at reported uses)."
+      },
+      "last_evaluation_year": 2019,
+      "key_finding": "No safety concern for the general population or infants below 16 weeks under assessed use/exposure scenarios; recommendation to control impurities/specifications."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1330; 21 CFR 582.7330; see also 21 CFR 172.780",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO JECFA database lists ADI as NOT SPECIFIED (evaluation year 1989, Meeting 49)."
+      },
+      "last_evaluation_year": 1989
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "allergenic",
+        "summary": "Occupational exposure case reports describe allergic rhinitis/contact urticaria to gum arabic; EFSA FEEDAP (2025) also noted dermal and respiratory sensitisation risk for users/handlers.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "Contact Dermatitis (2018) PMID 29446105",
+          "EFSA Journal (2025) PMID 40677975"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "As a fermentable soluble fiber, higher doses can increase bloating/flatulence/GI rumbling, though reported tolerability remained generally good in healthy adults.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "Nutrients (2021) PMID 33672963",
+          "Br J Nutr (2008) PMID 18466655"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Subchronic rodent oral study found no adverse toxicological findings at the highest tested dose (NOAEL at 5% diet, ~3.1-3.3 g/kg bw/day).",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "Food Chem Toxicol (2006) PMID 16256256"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA (2017) re-evaluation: no genotoxicity concern and no consumer safety concern at reported use levels.",
+      "EFSA (2019) infant follow-up: no safety concern in infants below 16 weeks under assessed scenarios.",
+      "JECFA ADI not specified and longstanding authorization history in major jurisdictions."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "toddlers/high consumers",
+        "children using supplement-containing products",
+        "infants in specific formula/FSMP scenarios"
+      ],
+      "notes": "Exposure can be high on a body-weight basis in children, but EFSA/JECFA do not set a numerical ADI for E414; EFSA did not identify a safety concern at assessed exposures."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.83,
+    "rationale": "The additive is broadly approved (EU/FDA/JECFA) with ADI not specified/not required and no major systemic toxicity signal at intended dietary uses, but limited caveats remain for occupational sensitisation and mild high-dose GI intolerance.",
+    "key_factors": [
+      "EFSA 2017/2019 no-safety-concern conclusions",
+      "JECFA ADI not specified",
+      "US CFR GRAS framework and defined use conditions",
+      "No IARC carcinogenic classification identified",
+      "Occupational allergy/sensitisation case evidence"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of acacia gum (E 414) as a food additive (EFSA Journal)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4741",
+      "type": "regulatory"
+    },
+    {
+      "title": "Re-evaluation of acacia gum (E 414) as a food additive (Wiley full text)",
+      "url": "https://onlinelibrary.wiley.com/doi/epdf/10.2903/j.efsa.2017.4741",
+      "type": "regulatory"
+    },
+    {
+      "title": "Re-evaluation of acacia gum (E 414) in foods for infants below 16 weeks and follow-up (EFSA Journal)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5922",
+      "type": "regulatory"
+    },
+    {
+      "title": "Re-evaluation of acacia gum (E 414) in foods for infants below 16 weeks and follow-up (Wiley full text)",
+      "url": "https://onlinelibrary.wiley.com/doi/10.2903/j.efsa.2019.5922",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API titles index",
+      "url": "https://www.ecfr.gov/api/versioner/v1/titles.json",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API full Title 21 XML (used for sections 172.780, 184.1330, 582.7330)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA database: GUM ARABIC (Chemical 865)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/865",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC LOC application dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Acacia Gum Is Well Tolerated While Increasing Satiety and Lowering Peak Blood Glucose Response in Healthy Human Subjects",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33672963/?format=pubmed",
+      "type": "study"
+    },
+    {
+      "title": "Biochemical effects and safety of Gum arabic supplementation in patients with sickle cell anemia",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30956961/?format=pubmed",
+      "type": "study"
+    },
+    {
+      "title": "A ninety-day oral toxicity study of a processed gum arabic in F344 rats",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16256256/?format=pubmed",
+      "type": "study"
+    },
+    {
+      "title": "Occupational allergic rhinitis and contact urticaria caused by Gum Arabic in a candy factory worker",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29446105/?format=pubmed",
+      "type": "study"
+    },
+    {
+      "title": "Safety and efficacy of a feed additive consisting of acacia gum for all animal species",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40677975/?format=pubmed",
+      "type": "regulatory"
+    }
+  ]
+}

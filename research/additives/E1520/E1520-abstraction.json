@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T05:46:09Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E1520",
+    "name": "Propylene glycol",
+    "cas_numbers": [
+      "57-55-6"
+    ],
+    "synonyms": [
+      "propane-1,2-diol",
+      "1,2-propanediol",
+      "1,2-dihydroxypropane",
+      "methyl glycol",
+      "propanediol"
+    ],
+    "chemical_class": "Diol (polyol alcohol)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "carrier/solvent",
+    "secondary_categories": [
+      "humectant",
+      "emulsifier",
+      "stabilizer/thickener",
+      "processing aid"
+    ],
+    "mechanism": "Acts as a water-miscible carrier/solvent that dissolves and distributes flavorings and additives; also binds water to reduce drying and maintain texture.",
+    "common_food_categories": [
+      "alcoholic beverages",
+      "confections and frostings",
+      "frozen dairy products",
+      "seasonings and flavorings",
+      "nuts and nut products",
+      "other foods under cGMP"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 25,
+        "unit": "mg/kg bw/day",
+        "basis": "SCF-derived ADI from chronic rat data (NOAEL 2,500 mg/kg bw/day, UF 100); EFSA 2018 concluded no reason to revise."
+      },
+      "last_evaluation_year": 2018,
+      "key_finding": "EFSA re-evaluation retained ADI 25 mg/kg bw/day; refined brand-loyal mean and P95 exposures did not exceed ADI, with highest reported P95 of 23.3 mg/kg bw/day in children."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1666",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 25,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA ADI listed as 0-25 mg/kg bw (allocated 1973); database entry evaluation year 2002 with flavoring-use evaluation note."
+      },
+      "last_evaluation_year": 2002
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "In mice, 28-day oral dosing at 1 and 5 g/kg/day produced nephrotoxicity markers; this is far above typical food-additive exposure levels.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/34461418/"
+        ]
+      },
+      {
+        "category": "allergenic",
+        "summary": "Human patch-test literature indicates propylene glycol can act as a weak skin allergen in some contexts, mainly relevant to dermal exposure.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/36702195/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "A severe toxicity case (metabolic acidosis/multisystem illness) was reported in an adolescent with extreme chronic cornstarch ingestion, representing atypical high exposure.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/38756767/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "In vitro co-exposure work suggests propylene glycol may increase dispersion/solubility and cytotoxicity of ZnO nanoparticles, indicating interaction-dependent rather than standalone hazard.",
+        "evidence_strength": "theoretical",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/37764602/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2018 found no genotoxicity concern in the evaluated dataset.",
+      "EFSA retained ADI at 25 mg/kg bw/day and found refined P95 dietary exposure below ADI.",
+      "No IARC Group classification entry identified for propylene glycol in the current IARC list dataset."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "children",
+        "toddlers"
+      ],
+      "notes": "EFSA refined brand-loyal scenario did not exceed ADI in any population group; highest P95 reported was 23.3 mg/kg bw/day in children."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.82,
+    "rationale": "Major regulators maintain approval with an established ADI and EFSA did not identify ADI exceedance in refined exposure scenarios. Evidence of harm is mainly associated with high-dose or atypical exposures rather than routine regulated dietary intake.",
+    "key_factors": [
+      "EFSA retained ADI 25 mg/kg bw/day in 2018",
+      "Refined EFSA exposure scenario remained below ADI (highest P95 23.3 mg/kg bw/day in children)",
+      "FDA status is GRAS under 21 CFR 184.1666 with cGMP constraints",
+      "JECFA ADI remains 0-25 mg/kg bw",
+      "No current IARC group listing identified for propylene glycol"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of propane-1,2-diol (E 1520) as a food additive (EFSA Journal, PMCID mirror)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009459/",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal landing page (visited; redirected to blocked Wiley endpoint in this environment)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5235",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 184.1666 (Propylene glycol) via eCFR API XML",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 582.1666 (Propylene glycol) via eCFR API XML",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=582",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database chemical page: PROPYLENE GLYCOL (ID 2698)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2698",
+      "type": "database"
+    },
+    {
+      "title": "IARC list of classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset bundle (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Tiered intake assessment for propylene glycol in beverages",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39819376/",
+      "type": "study"
+    },
+    {
+      "title": "Acute and subacute oral toxicity of propylene glycol enantiomers in mice and the underlying nephrotoxic mechanism",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34461418/",
+      "type": "study"
+    },
+    {
+      "title": "Propylene glycol toxicity in an adolescent secondary to chronic cornstarch ingestion",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38756767/",
+      "type": "study"
+    },
+    {
+      "title": "Propylene glycol, skin sensitisation and allergic contact dermatitis: A scientific and regulatory conundrum",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36702195/",
+      "type": "review"
+    },
+    {
+      "title": "Food Additive Solvents Increase the Dispersion, Solubility, and Cytotoxicity of ZnO Nanoparticles",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37764602/",
+      "type": "study"
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T14:36:25Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E405",
+    "name": "Propane-1,2-diol alginate (propylene glycol alginate)",
+    "cas_numbers": [
+      "9005-37-2"
+    ],
+    "synonyms": [
+      "Propylene glycol alginate",
+      "Propane-1,2-diol alginate",
+      "1,2-Propane-diol ester of alginic acid",
+      "Hydroxypropyl alginate",
+      "Propylene glycol ester of alginic acid"
+    ],
+    "chemical_class": "Partially esterified alginic acid derivative (alginic acid propylene glycol ester)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "stabilizer",
+    "secondary_categories": [
+      "emulsifier",
+      "thickener",
+      "flavoring adjuvant",
+      "surfactant",
+      "formulation aid"
+    ],
+    "mechanism": "A partially esterified alginate polymer that increases viscosity and helps stabilize oil-water interfaces; the amphiphilic structure supports thickening and emulsion stability.",
+    "common_food_categories": [
+      "Frozen dairy desserts",
+      "Fruit and water ices",
+      "Confections and frostings",
+      "Baked goods",
+      "Cheeses",
+      "Fats and oils",
+      "Gelatins and puddings",
+      "Gravies and sweet sauces",
+      "Jams and jellies",
+      "Condiments and relishes",
+      "Seasonings and flavors",
+      "Other foods"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 55,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA (2018) reaffirmed ADI of 55 mg/kg bw/day, based on SCF rationale using a NOAEL of 2,500 mg/kg bw/day from a 2-year rat study and uncertainty factor 45."
+      },
+      "last_evaluation_year": 2018,
+      "key_finding": "EFSA concluded no safety concern at reported uses/use levels, while noting potential ADI exceedance in conservative toddler and supplement-user scenarios."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.858",
+      "notes": "Regulated as a food additive with category-specific maximum use levels; not listed as a dedicated GRAS-affirmed monograph in Parts 182/184/186 in the current Title 21 XML reviewed."
+    },
+    "jecfa": {
+      "adi": {
+        "value": 70,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO JECFA database entry reports ADI range 0-70 mg/kg bw."
+      },
+      "last_evaluation_year": 1993
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "allergenic",
+        "summary": "A 2023 study reported allergy-related mechanisms for propylene glycol alginate sodium sulfate (PSS), including IgE-linked mast-cell signaling; relevance to standard food-grade E405 is indirect.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/37119889/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent PubMed literature on propylene glycol alginate is dominated by formulation/materials applications rather than direct chronic oral dietary safety studies in humans.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/?term=%22propylene+glycol+alginate%22%5BTitle%2FAbstract%5D+OR+%22E405%22%5BTitle%2FAbstract%5D&sort=date"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2018 re-evaluation concluded no safety concern for the reported uses and use levels.",
+      "US CFR permits use under specified concentration limits across food categories."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "Toddlers (non-brand-loyal regulatory maximum-level scenario)",
+        "Consumers of food supplements containing E405 at maximum reported levels"
+      ],
+      "notes": "EFSA identified potential exceedance in conservative scenarios, despite an overall no-safety-concern conclusion at reported uses/use levels."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.74,
+    "rationale": "E405 remains authorized by EFSA and FDA with explicit ADIs/use limits, and EFSA concluded no safety concern at reported use levels. Potential exceedance appears scenario-dependent (mainly conservative toddler/supplement scenarios), and recent direct oral safety evidence is limited rather than strongly adverse.",
+    "key_factors": [
+      "EFSA ADI 55 mg/kg bw/day with 2018 no-safety-concern conclusion",
+      "JECFA ADI range 0-70 mg/kg bw and 1993 evaluation listing",
+      "FDA approval under 21 CFR 172.858 with category-specific limits",
+      "No IARC classification identified for this additive",
+      "Potential ADI exceedance in conservative toddler/supplement scenarios"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of propane-1,2-diol alginate (E 405) as a food additive",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5235",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 172.858 Propylene glycol alginate",
+      "url": "https://www.ecfr.gov/current/title-21/section-172.858",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full Title 21 XML (issue date 2026-02-25)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA database - PROPYLENE GLYCOL ALGINATE",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/585",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API search by partial name",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/propylene%20glycol%20alginate",
+      "type": "database"
+    },
+    {
+      "title": "INCHEM JECFA evaluation summary - Propylene glycol alginate",
+      "url": "https://inchem.org/documents/jecfa/jeceval/jec_1759.htm",
+      "type": "database"
+    },
+    {
+      "title": "Agents Classified by the IARC Monographs, Volumes 1-140",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search: \"propylene glycol alginate\" OR \"E405\"",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%22propylene+glycol+alginate%22%5BTitle%2FAbstract%5D+OR+%22E405%22%5BTitle%2FAbstract%5D&sort=date",
+      "type": "database"
+    },
+    {
+      "title": "The reason and mechanism of propylene glycol alginate sodium sulfate (PSS) mediated allergic side effect",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37119889/",
+      "type": "study"
+    },
+    {
+      "title": "Graphene Oxide and Reduced Graphene Oxide Nanoflakes Coated with Glycol Chitosan, Propylene Glycol Alginate, and Polydopamine: Characterization and Cytotoxicity in Human Chondrocytes",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34443935/",
+      "type": "study"
+    }
+  ]
+}

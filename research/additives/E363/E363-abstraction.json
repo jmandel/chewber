@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T13:40:41+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E363",
+    "name": "Succinic acid",
+    "cas_numbers": [
+      "110-15-6"
+    ],
+    "synonyms": [
+      "Amber acid",
+      "Ethylenesuccinic acid",
+      "1,4-butanedioic acid",
+      "Butanedioic acid"
+    ],
+    "chemical_class": "Aliphatic dicarboxylic acid",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "flavor enhancer"
+    ],
+    "mechanism": "Acts as an organic acid that adjusts pH and contributes flavor enhancement (acid/sour and taste-modulating effects).",
+    "common_food_categories": [
+      "Condiments and relishes",
+      "Meat products"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "not_evaluated",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "Latest EFSA-accessible material reviewed was a 2024 call for missing technical/toxicological data; no numeric EFSA ADI identified for E363 in these sources."
+      },
+      "last_evaluation_year": 2024,
+      "key_finding": "E363 re-evaluation remains pending; EFSA reported prior calls had no submitted data and no date can be set for final scientific output."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1091",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO JECFA database (Chemical 6593) lists 'No ADI established' (2023) and references prior conclusion of no hazard at likely food additive use levels due normal metabolic role."
+      },
+      "last_evaluation_year": 2023
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Recent mechanistic literature links elevated succinate/SUCNR1 signaling to inflammatory and metabolic pathways; relevance to typical E363 dietary exposure remains uncertain.",
+        "evidence_strength": "theoretical",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/38933270/?format=pubmed",
+          "https://pubmed.ncbi.nlm.nih.gov/38182909/?format=pubmed",
+          "https://pubmed.ncbi.nlm.nih.gov/41096986/?format=pubmed"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA database comment: previously evaluated as food additive and concluded not a hazard at likely use levels.",
+      "FDA GRAS-affirmed listing under 21 CFR Part 184 with GMP-based conditions of use."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "No numeric EFSA ADI identified and JECFA entry is 'No ADI established'; exceedance against a numeric ADI cannot be computed from available sources."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.72,
+    "rationale": "Regulatory baseline is generally permissive (FDA GRAS; JECFA no hazard at likely use levels), but EFSA re-evaluation is still pending with explicit data gaps, and recent publications are largely mechanistic rather than direct additive-exposure risk studies.",
+    "key_factors": [
+      "Endogenous metabolite with established intermediary metabolic role",
+      "FDA GRAS status with condition-of-use limits in 21 CFR 184.1091",
+      "JECFA 2023 entry: no ADI established and prior no-hazard conclusion at likely use levels",
+      "EFSA re-evaluation not finalized and data-call indicates missing submitted data",
+      "Limited modern human epidemiology directly tied to E363 intake"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA public call for technical and toxicological data on succinic acid (E363) as authorised food additive",
+      "url": "https://www.efsa.europa.eu/en/call/public-call-technical-and-toxicological-data-succinic-acid-e-363-authorised-food",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA public call for technical and occurrence data for certain food additives permitted in the EU prior to 20 January 2009",
+      "url": "https://www.efsa.europa.eu/en/calls/public-call-technical-and-occurrence-data-certain-food-additives-permitted-eu-prior-20",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR Part 184 - Direct food substances affirmed as generally recognized as safe",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?chapter=I&subchapter=B&part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR 184.1091 - Succinic acid",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2016-11-22/title-21.xml?chapter=I&subchapter=B&part=184&subpart=B&section=184.1091",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database - SUCCINIC ACID (Chemical 6593)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/6593",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API - SearchChemical ByPartialName 'succinic'",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/succinic",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs - Agents Classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC WordPress search API query for 'succinic'",
+      "url": "https://monographs.iarc.who.int/wp-json/wp/v2/search?search=succinic&per_page=20",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search results for 'succinic acid food additive safety'",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%22succinic+acid%22+food+additive+safety",
+      "type": "database"
+    },
+    {
+      "title": "Bisphenol AF Induces Hepatic Steatosis via Succinate-SUCNR1-Mediated Macrophage-Hepatocyte Interactions",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41096986/?format=pubmed",
+      "type": "study"
+    },
+    {
+      "title": "Cellular succinate metabolism and signaling in inflammation: implications for therapeutic intervention",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38933270/?format=pubmed",
+      "type": "review"
+    },
+    {
+      "title": "Type 2 diabetes and succinate: unmasking an age-old molecule",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38182909/?format=pubmed",
+      "type": "review"
+    },
+    {
+      "title": "Dietary succinic acid mitigates adverse effects of starch high-starch diet in largemouth bass",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40802136/?format=pubmed",
+      "type": "study"
+    }
+  ]
+}

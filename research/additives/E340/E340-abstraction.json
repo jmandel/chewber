@@ -1,0 +1,216 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T12:55:23+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E340",
+    "name": "Potassium phosphates",
+    "cas_numbers": [
+      "7778-77-0",
+      "7758-11-4",
+      "7778-53-2"
+    ],
+    "synonyms": [
+      "Monopotassium phosphate",
+      "Dipotassium phosphate",
+      "Tripotassium phosphate",
+      "Potassium dihydrogen phosphate",
+      "Dipotassium hydrogen phosphate",
+      "Tribasic potassium phosphate"
+    ],
+    "chemical_class": "Inorganic phosphate salts (potassium salts of phosphoric acid)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "raising agent",
+      "sequestrant",
+      "stabilizer",
+      "water retention agent"
+    ],
+    "mechanism": "Buffers and adjusts pH, complexes metal ions, supports water retention and structure in processed foods, and can support leavening systems.",
+    "common_food_categories": [
+      "fine bakery wares",
+      "meat products",
+      "processed cheese",
+      "sauces",
+      "soft and energy drinks"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 40,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI for phosphates, expressed as phosphorus (EFSA re-evaluation)"
+      },
+      "last_evaluation_year": 2019,
+      "key_finding": "EFSA re-evaluation set a group ADI of 40 mg/kg bw/day (as phosphorus) and identified ADI exceedance in younger populations, with concern for those with impaired renal function."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.6285; 21 CFR 160.110(b)",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not specified for monopotassium, dipotassium, and tripotassium phosphate entries"
+      },
+      "last_evaluation_year": 1982
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "Controlled feeding data indicate lowering phosphorus additive intake reduces urinary phosphorus, FGF23, and PTH, especially in CKD participants, supporting biologically meaningful mineral-metabolism effects.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID:40359505",
+          "EFSA 2019 phosphate re-evaluation"
+        ]
+      },
+      {
+        "category": "cardiovascular",
+        "summary": "Mechanistic and review evidence links rapidly absorbed inorganic phosphate additives to pathways relevant to vascular calcification and cardiorenal risk (FGF23/PTH axis), but causal long-term evidence specific to E340 in healthy populations is limited.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:37630701",
+          "PMID:41654650"
+        ]
+      },
+      {
+        "category": "neurotoxic",
+        "summary": "A recent mouse study reported anxiety-like behavior and neuroimmune changes after chronic high-phosphate feeding; human relevance remains uncertain.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:41050506"
+        ]
+      },
+      {
+        "category": "carcinogenic",
+        "summary": "One observational study suggested higher breast cancer risk at high phosphorus intake, but statistical uncertainty and design limitations prevent causal inference.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:37686766"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "A single phosphate-enriched meal (700 mg phosphorus) did not significantly worsen postprandial inflammatory markers in healthy adults (PMID:38175251)."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "infants",
+        "toddlers",
+        "children",
+        "high-consuming adolescents",
+        "people with impaired renal function"
+      ],
+      "notes": "EFSA reported group ADI exceedance for younger populations and flagged renal-vulnerable groups as a concern."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.79,
+    "rationale": "E340 remains approved/GRAS, but EFSA identified ADI exceedance in younger populations and uncertainty for vulnerable groups; human and mechanistic evidence indicates meaningful mineral-metabolism effects at relevant exposures.",
+    "key_factors": [
+      "EFSA group ADI (40 mg/kg bw/day as phosphorus) with exceedance in youth",
+      "FDA GRAS status for dipotassium phosphate under GMP (21 CFR 182.6285)",
+      "JECFA entries report ADI not specified for potassium phosphate salts",
+      "No IARC listing/classification found for potassium phosphates",
+      "Intervention evidence shows additive phosphorus reduction changes FGF23/PTH markers"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal: Re-evaluation of phosphates (E338-341, E343, E450-452)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5674",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA news: Phosphates in food raise public health concern",
+      "url": "https://www.efsa.europa.eu/en/news/phosphates-food-raise-public-health-concern",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 full XML (2026-02-25)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API titles metadata",
+      "url": "https://www.ecfr.gov/api/versioner/v1/titles.json",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA database: Monopotassium phosphate (INS 340(i))",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3887",
+      "type": "database"
+    },
+    {
+      "title": "JECFA database: Dipotassium phosphate (INS 340(ii))",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3885",
+      "type": "database"
+    },
+    {
+      "title": "JECFA database: Tripotassium phosphate (INS 340(iii))",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3886",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC list data script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Effects of Lowering Dietary Phosphorus Additive Intake on Mineral Metabolism in Adults with and without CKD",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40359505/",
+      "type": "study"
+    },
+    {
+      "title": "Phosphate-based additives in processed foods: US packaged food supply",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40180501/",
+      "type": "study"
+    },
+    {
+      "title": "Single phosphate-enriched meal and postprandial inflammatory markers",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38175251/",
+      "type": "study"
+    },
+    {
+      "title": "Industrial Use of Phosphate Food Additives and cardiorenal risk",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37630701/",
+      "type": "review"
+    },
+    {
+      "title": "High dietary phosphate intake induces anxiety in male mice",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41050506/",
+      "type": "study"
+    },
+    {
+      "title": "Dietary phosphate exposure-strategies to protect vulnerable population groups",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41654650/",
+      "type": "review"
+    },
+    {
+      "title": "High Dietary Phosphorus and breast cancer risk in middle-aged women",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37686766/",
+      "type": "study"
+    }
+  ]
+}

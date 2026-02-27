@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T05:42:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E1510",
+    "name": "Ethanol",
+    "cas_numbers": [
+      "64-17-5"
+    ],
+    "synonyms": [
+      "Ethyl alcohol",
+      "Alcohol",
+      "Spirit alcohol"
+    ],
+    "chemical_class": "Primary aliphatic alcohol",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "carrier solvent",
+    "secondary_categories": [
+      "extraction solvent",
+      "flavouring solvent",
+      "antimicrobial agent"
+    ],
+    "mechanism": "Acts as a solvent/carrier for flavours and additives and, at sufficient concentration, exerts antimicrobial effects.",
+    "common_food_categories": [
+      "flavouring preparations",
+      "foods with solvent-carried ingredients",
+      "pizza crust antimicrobial treatment (US-specific use condition)",
+      "foods with endogenous fermentation ethanol (e.g., some baked goods, fruit products)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "not_evaluated",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No EFSA E1510-specific scientific opinion/ADI could be retrieved in this VM session due EFSA search endpoint access limitations (403/429)."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "No retrievable EFSA re-evaluation specific to E1510 was identified during this run; EFSA search pages returned access/inaccessibility responses."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1293",
+      "notes": "Section affirms specific GRAS use of ethyl alcohol as an antimicrobial agent on pizza crusts before final baking, not exceeding 2.0% by product weight."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI listed as LIMITED BY GMP (use as solvent, 1970); page also notes no safety concern at current intake for flavouring-agent context at the 46th meeting (1996)."
+      },
+      "last_evaluation_year": 1996
+    },
+    "iarc_classification": "Group 1",
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "carcinogenic",
+        "summary": "IARC classifies ethanol in alcoholic beverages as Group 1 carcinogenic to humans; epidemiological evidence links alcohol use with increased cancer risk (including EOCRC meta-analysis signal).",
+        "evidence_strength": "strong",
+        "key_references": [
+          "https://webapi.iarc.who.int/loc/loc.app.js",
+          "https://pubmed.ncbi.nlm.nih.gov/40544033/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Low-dose food exposure studies found that while most foods were not high-risk acutely, some chronic exposure scenarios and child-focused puree scenarios may exceed study-derived thresholds.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/36724847/",
+          "https://pubmed.ncbi.nlm.nih.gov/38088392/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA entry states LIMITED BY GMP for solvent use and includes a 1996 committee note of no safety concern at current intake for flavouring-agent context.",
+      "A 2023 low-dose food ethanol risk assessment reported low acute concern for most sampled foods."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "infants and young children with high intake of certain fruit purees",
+        "high chronic consumers of foods with endogenous/added ethanol"
+      ],
+      "notes": "No numeric EFSA ADI was retrievable; JECFA uses GMP-limited approach. Study-level analyses indicate potential exceedance of derived low-dose guidance values in some scenarios."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.67,
+    "rationale": "Regulatory frameworks permit use with constraints (FDA specific use condition; JECFA GMP-limited basis), but carcinogenic hazard context for ethanol and some low-dose/chronic exposure findings (especially in children under specific consumption assumptions) support a cautious middle-tier classification rather than risk_free/limited.",
+    "key_factors": [
+      "FDA 21 CFR 184.1293 specific GRAS use condition",
+      "JECFA ADI basis: LIMITED BY GMP",
+      "IARC Group 1 listing for ethanol in alcoholic beverages",
+      "PubMed low-dose food exposure studies showing scenario-dependent concerns"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA search page for E1510",
+      "url": "https://www.efsa.europa.eu/en/search?text=E1510",
+      "type": "database"
+    },
+    {
+      "title": "EFSA search page using query parameter",
+      "url": "https://www.efsa.europa.eu/en/search?s=E1510",
+      "type": "database"
+    },
+    {
+      "title": "EFSA topic page: Food additives",
+      "url": "https://www.efsa.europa.eu/en/topics/topic/food-additives",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR endpoint for 21 CFR 184.1293 (access blocked in VM)",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-184/subpart-B/section-184.1293",
+      "type": "regulatory"
+    },
+    {
+      "title": "Cornell LII e-CFR mirror: 21 CFR 184.1293 Ethyl alcohol",
+      "url": "https://www.law.cornell.edu/cfr/text/21/184.1293",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA Ethanol chemical page",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2026",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA API lookup for ethanol (CAS 64-17-5)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/ChemicalData/GetBy/par/64-17-5",
+      "type": "database"
+    },
+    {
+      "title": "IARC Agents Classified by the IARC Monographs",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of Classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC LOC app bundle with embedded classification dataset",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Risk assessment of low-dose ethanol in food (2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36724847/",
+      "type": "study"
+    },
+    {
+      "title": "Estimation of ethanol and methanol exposure through jarred fruit purees (2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38088392/",
+      "type": "study"
+    },
+    {
+      "title": "Associations of Alcohol Use and Smoking With Early-Onset Colorectal Cancer (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40544033/",
+      "type": "study"
+    }
+  ]
+}

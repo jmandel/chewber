@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T08:41:03+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E225",
+    "name": "Potassium sulfite",
+    "cas_numbers": [
+      "10117-38-1"
+    ],
+    "synonyms": [
+      "Dipotassium sulfite",
+      "Potassium sulphite",
+      "Sulfurous acid, dipotassium salt",
+      "INS 225"
+    ],
+    "chemical_class": "Inorganic sulfite salt (sulfurous acid salt)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "antioxidant",
+      "anti-browning agent",
+      "reducing agent"
+    ],
+    "mechanism": "SO2-releasing sulfite chemistry provides reducing/antioxidant and antimicrobial effects and can inhibit enzymatic browning in relevant foods.",
+    "common_food_categories": [
+      "beverages and beverage bases",
+      "fruit products (including preserved cherries)",
+      "condiments and relishes",
+      "frozen potato products",
+      "confectionery and syrups",
+      "dried fruit and vegetables",
+      "seafood and wine-related products"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "not_evaluated",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2022 sulfite follow-up withdrew the temporary group ADI (0.7 mg/kg bw/day) because toxicity data were insufficient; E225 was not explicitly listed in the additives covered on the visited EFSA pages."
+      },
+      "last_evaluation_year": 2022,
+      "key_finding": "For the sulfite group assessed by EFSA in 2022, existing ADI was withdrawn and MOE analysis indicated safety concerns for high consumers."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.3798",
+      "notes": "Listed under GRAS substances with GMP and category-specific maxima (as SO2), including 0.04% for beverages/beverage bases, 0.1% for preserved cherries and several condiment/sweetening categories, and 0.05% for frozen/liquid potatoes; related processing conditions are described in 21 CFR 173.325."
+    },
+    "jecfa": {
+      "adi": {
+        "value": 0.7,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA entry for potassium sulfite (INS 225) reports a group ADI of 0-0.7 mg/kg bw, expressed as sulfur dioxide."
+      },
+      "last_evaluation_year": 1998
+    },
+    "iarc_classification": "Group 3",
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "allergenic",
+        "summary": "Recent clinical review literature highlights sulfites as relevant allergens/contact sensitizers, with susceptible individuals at higher risk of reactions.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID: 37590472",
+          "PMID: 33336981"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "Sulfite-focused food toxicology review and mechanistic literature describe possible dysbiotic and gastrointestinal concerns, with direct evidence still limited and heterogeneous.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID: 33336981",
+          "PMID: 35114314"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Experimental sulfite-class studies (e.g., sodium bisulfite) reported oxidative stress and inflammatory signaling in intestinal models, supporting mechanistic caution but not proving risk at all regulated dietary exposures.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID: 35114314"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "IARC lists sulfites and sulfur dioxide as Group 3 (not classifiable as to carcinogenicity to humans).",
+      "No separate IARC agent entry for potassium sulfite was identified in the visited classification dataset."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "high consumers of sulfite-containing foods",
+        "children in high-intake scenarios",
+        "adults in high-intake scenarios",
+        "sulfite-sensitive individuals"
+      ],
+      "notes": "EFSA 2022 communication reported MOE-based safety concern for high consumers and cited potential exceedance margins up to 12.5% (children) and 60% (adults) in the assessed sulfite context."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.72,
+    "rationale": "Potassium sulfite remains permitted in major frameworks (FDA GRAS and JECFA group ADI), but sulfite-class risk evaluation in EFSA indicates unresolved uncertainty and high-consumer concern, and hypersensitivity evidence is credible in susceptible groups. This supports a moderate, caveat-heavy risk level rather than risk_free/limited or high.",
+    "key_factors": [
+      "FDA GRAS listing with specific conditions (21 CFR 182.3798)",
+      "JECFA group ADI 0-0.7 mg/kg bw for sulfites including INS 225",
+      "EFSA sulfite follow-up withdrew temporary ADI and flagged high-consumer concern",
+      "IARC Group 3 classification for sulfites/sulfur dioxide",
+      "Human allergenicity/hypersensitivity concern in susceptible populations"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA news: Sulfites: safety concern for high consumers, but data lacking",
+      "url": "https://www.efsa.europa.eu/en/news/sulfites-safety-concern-high-consumers-data-lacking",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA plain-language summary (2022) for sulfur dioxide/sulfites follow-up",
+      "url": "https://www.efsa.europa.eu/en/plain-language-summary/follow-re-evaluation-sulfur-dioxide-e-220-sodium-sulfite-e-221-sodium",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR 21 CFR 182.3798 Potassium sulfite",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-182/subpart-D/section-182.3798",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR 21 CFR 173.325 Sulfiting agents for use in foods",
+      "url": "https://www.ecfr.gov/current/title-21/section-173.325",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA API search result for potassium sulfite",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/potassium%20sulfite",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA database entry Chemical 2483 (Potassium sulfite)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2483",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of Classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC list data file (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubChem Potassium Sulfite CID 24958",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/24958",
+      "type": "database"
+    },
+    {
+      "title": "PubChem PUG REST synonyms for CID 24958",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/24958/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "Sulfites in meat: Occurrence, activity, toxicity, regulation, and detection (2020)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33336981/",
+      "type": "review"
+    },
+    {
+      "title": "Food additive sodium bisulfite induces intracellular imbalance... (2022)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35114314/",
+      "type": "study"
+    },
+    {
+      "title": "Sulfites: Allergen of the Year 2024",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37590472/",
+      "type": "review"
+    },
+    {
+      "title": "Food additive mixtures and type 2 diabetes incidence (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40198579/",
+      "type": "study"
+    }
+  ]
+}

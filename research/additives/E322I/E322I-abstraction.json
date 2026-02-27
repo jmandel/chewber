@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T11:39:14Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E322I",
+    "name": "Lecithin (non-fractionated)",
+    "cas_numbers": [
+      "8002-43-5"
+    ],
+    "synonyms": [
+      "Lecithins",
+      "Phosphatides",
+      "Phospholipids",
+      "Soy lecithin"
+    ],
+    "chemical_class": "Complex mixture of phospholipids (mainly phosphatidylcholine, phosphatidylethanolamine, phosphatidylinositol)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "emulsifier",
+    "secondary_categories": [
+      "antioxidant"
+    ],
+    "mechanism": "Amphiphilic phospholipids align at oil-water interfaces and reduce interfacial tension, stabilizing dispersions/emulsions.",
+    "common_food_categories": [
+      "bakery and confectionery products",
+      "fat-based spreads and similar emulsified foods",
+      "infant formula/follow-on formula categories",
+      "foods for special medical purposes"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA ANS Panel (2017) concluded there is no need for a numerical ADI for lecithins (E 322)."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "No safety concern at refined exposure estimates for the assessed populations and uses, including infants from 12 weeks."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1400",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO JECFA database lists lecithin ADI as NOT LIMITED."
+      },
+      "last_evaluation_year": 1973
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "Recent in vitro and mouse studies reported gut microbiota composition shifts and intestinal barrier/morphology changes with lecithin exposure, although severity varied and some effects were less pronounced than with CMC.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID:33250870",
+          "PMID:38525281"
+        ]
+      },
+      {
+        "category": "allergenic",
+        "summary": "Hypersensitivity risk is linked to residual soy/egg proteins in lecithin preparations; most non-IgE soy-allergic children tolerated soya lecithin in one crossover trial, with rare reactions.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:31603281",
+          "EFSA Journal 2017;15:e04742"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA re-evaluation found no need for a numerical ADI and no safety concern at refined exposure estimates.",
+      "JECFA lists lecithin ADI as NOT LIMITED.",
+      "A randomized crossover human trial using a soy-lecithin comparator beverage reported no adverse endotoxemia/gut-barrier/cardiometabolic biomarker signal attributable to comparator exposure in study context."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "Numerical ADI not established (EFSA no numerical ADI; JECFA NOT LIMITED). EFSA nevertheless reported highest refined P95 exposures in children/toddlers under brand-loyal scenarios without concluding safety concern."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.74,
+    "rationale": "Regulatory consensus is permissive (EFSA no numerical ADI, JECFA not limited, US GRAS) with no IARC listing or major-jurisdiction bans. Emerging gut-microbiome and allergenicity edge-case signals justify ongoing caution but do not currently outweigh the core regulatory safety conclusions for authorized uses.",
+    "key_factors": [
+      "EFSA 2017: no numerical ADI and no safety concern at refined exposure",
+      "FDA/eCFR status in Part 184 GRAS framework with GMP-based use limitation",
+      "JECFA ADI not limited",
+      "No lecithin entry in IARC classifications dataset",
+      "Recent in vitro/animal microbiome findings and residual-protein allergenicity considerations"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of lecithins (E 322) as a food additive (EFSA Journal)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7010002/",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal landing page for opinion 4742",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4742",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR current section 184.1400 (human-readable page)",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-184/subpart-B/section-184.1400",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API - 21 CFR 184.1400 Lecithin",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?section=184.1400",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API - 21 CFR 184.1 GRAS framework",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?section=184.1",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database - LECITHIN (INS 322(i))",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1477",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs - List of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC list-of-classifications data script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Dietary Emulsifiers Alter Composition and Activity of the Human Gut Microbiota in vitro, Irrespective of Chemical or Natural Emulsifier Origin",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33250870/",
+      "type": "study"
+    },
+    {
+      "title": "Inulin protects against the harmful effects of dietary emulsifiers on mice gut microbiome",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38525281/",
+      "type": "study"
+    },
+    {
+      "title": "Milk-Fat-Globule-Membrane-Enriched Dairy Milk Compared with a Soy-Lecithin-Enriched Beverage Did Not Adversely Affect Endotoxemia or Biomarkers of Gut Barrier Function and Cardiometabolic Risk in Adults with Metabolic Syndrome",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37513677/",
+      "type": "study"
+    },
+    {
+      "title": "Tolerance of soya lecithin in children with non-immunoglobulin E-mediated soya allergy: a randomised, double-blind, cross-over trial",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31603281/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed DOI search record for 10.2903/j.efsa.2017.4742",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=10.2903%2Fj.efsa.2017.4742",
+      "type": "database"
+    }
+  ]
+}

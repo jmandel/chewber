@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T07:05:23Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E201",
+    "name": "Sodium sorbate",
+    "cas_numbers": [
+      "7757-81-5"
+    ],
+    "synonyms": [
+      "Sorbic acid, sodium salt",
+      "Sodium (E,E)-2,4-hexadienoate",
+      "2,4-Hexadienoic acid, sodium salt",
+      "INS 201"
+    ],
+    "chemical_class": "Sorbic acid sodium salt (unsaturated aliphatic carboxylate preservative)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "antimicrobial"
+    ],
+    "mechanism": "Sorbate preservatives inhibit growth of spoilage microorganisms (especially yeasts/moulds) in acidic food systems; efficacy depends on matrix and concentration.",
+    "common_food_categories": [
+      "bread and rolls",
+      "fine bakery wares",
+      "flavoured drinks",
+      "sauces",
+      "processed cheese",
+      "beverages"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "restricted",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No EFSA ADI specifically identified for sodium sorbate (E201); EFSA ADIs in 2015 and 2019 were set for sorbic acid (E200) and potassium sorbate (E202)."
+      },
+      "last_evaluation_year": 2019,
+      "key_finding": "EFSA re-evaluation context reported possible genotoxicity concern for sodium sorbate in 2015 and did not include it in the group ADI; 2019 follow-up established 11 mg/kg bw/day group ADI for E200/E202."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.3795",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 25,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI 0-25 mg/kg bw (expressed as sorbic acid) for sorbic acid and calcium, potassium, and sodium salts."
+      },
+      "last_evaluation_year": 1985
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "genotoxic",
+        "summary": "Mixed genotoxicity literature: several older studies were negative for sorbic acid/potassium sorbate, while weak clastogenic effects were reported for stored sodium sorbate and one in-vitro human lymphocyte study reported genotoxic effects at higher concentrations.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/22373823/",
+          "https://pubmed.ncbi.nlm.nih.gov/2210512/",
+          "https://pubmed.ncbi.nlm.nih.gov/1544601/",
+          "https://www.efsa.europa.eu/en/efsajournal/pub/4144"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Observational epidemiology found an association between potassium sorbate exposure and higher type 2 diabetes incidence in a large French cohort; causality is not established.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41501013/"
+        ]
+      },
+      {
+        "category": "carcinogenic",
+        "summary": "No direct IARC carcinogenic classification for sodium sorbate was identified in the current IARC classifications dataset.",
+        "evidence_strength": "theoretical",
+        "key_references": [
+          "https://monographs.iarc.who.int/list-of-classifications",
+          "https://webapi.iarc.who.int/loc/loc.app.js"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "FDA lists sodium sorbate as GRAS under 21 CFR 182.3795 when used per GMP.",
+      "JECFA maintains a group ADI (0-25 mg/kg bw as sorbic acid) including sodium sorbate."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "toddlers and children in earlier EFSA temporary ADI scenarios for sorbates",
+        "high consumers of preservative-rich processed foods"
+      ],
+      "notes": "EFSA 2019 indicates non-brand-loyal high estimates (children 95th percentile 3.7 mg/kg bw/day) did not exceed the updated 11 mg/kg bw/day ADI for E200/E202; E201-specific EFSA ADI was not identified."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.62,
+    "rationale": "Regulatory acceptance persists (FDA GRAS, JECFA group ADI), but EFSA re-evaluation context flagged sodium sorbate genotoxicity concern and excluded it from group ADI framing; combined with mixed genotoxic data and emerging observational signals, this supports a cautious moderate tier rather than limited or high.",
+    "key_factors": [
+      "FDA GRAS status under GMP with specific CFR citation",
+      "JECFA group ADI includes sodium sorbate",
+      "EFSA 2015 concern on sodium sorbate genotoxicity and no clear E201-specific ADI",
+      "Mixed experimental genotoxicity findings",
+      "No IARC classification identified"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of sorbic acid (E 200), potassium sorbate (E 202) and calcium sorbate (E 203) as food additives",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4144",
+      "type": "regulatory"
+    },
+    {
+      "title": "Opinion on the follow-up of the re-evaluation of sorbic acid (E200) and potassium sorbate (E202) as food additives",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5625",
+      "type": "regulatory"
+    },
+    {
+      "title": "Opinion on the follow-up of the re-evaluation of sorbic acid (E200) and potassium sorbate (E202) as food additives (PMC mirror)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009143/",
+      "type": "regulatory"
+    },
+    {
+      "title": "Title 21 Part 182 XML (includes 21 CFR 182.3795 Sodium sorbate)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2025-12-19/title-21.xml?chapter=I&subchapter=B&part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA Chemical 4755 (INS 201 sodium sorbate)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4755",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC LOC application dataset bundle",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubChem Sodium Sorbate compound properties",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/sodium%20sorbate/property/Title,IUPACName,MolecularFormula,CanonicalSMILES/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem Sodium Sorbate synonyms",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/sodium%20sorbate/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "Associations between preservative food additives and type 2 diabetes incidence in the NutriNet-Santé prospective cohort",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41501013/",
+      "type": "study"
+    },
+    {
+      "title": "Cytogenotoxicity of food preservatives in mammalian cells: A systematic review",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41400292/",
+      "type": "review"
+    },
+    {
+      "title": "Genotoxicity of food preservative sodium sorbate in human lymphocytes in vitro",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22373823/",
+      "type": "study"
+    },
+    {
+      "title": "Re-examination of potassium sorbate and sodium sorbate for possible genotoxic potential",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/2210512/",
+      "type": "study"
+    },
+    {
+      "title": "Evaluation of the genotoxic potential of sorbic acid and potassium sorbate",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/1544601/",
+      "type": "study"
+    }
+  ]
+}

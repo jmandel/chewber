@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T12:03:10+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E330",
+    "name": "Citric acid",
+    "cas_numbers": [
+      "77-92-9",
+      "5949-29-1"
+    ],
+    "synonyms": [
+      "2-hydroxy-1,2,3-propanetricarboxylic acid",
+      "2-hydroxy-1,2,3-propane-tricarboxylic acid",
+      "citrate (salt forms)"
+    ],
+    "chemical_class": "alpha-hydroxy tricarboxylic acid",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "acidulant/pH control agent",
+    "secondary_categories": [
+      "sequestrant",
+      "antioxidant synergist",
+      "flavouring support"
+    ],
+    "mechanism": "Lowers and buffers food pH; citrate complexes metal ions, which can stabilize flavor/color systems and reduce metal-catalyzed oxidation.",
+    "common_food_categories": [
+      "beverages",
+      "confectionery",
+      "processed foods broadly under GMP use conditions",
+      "foods requiring acidity control"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No standalone EFSA numerical ADI identified for E330 in this search; EFSA-linked texts reference legacy SCF ADI 'not specified' context for citric acid."
+      },
+      "last_evaluation_year": 2025,
+      "key_finding": "Latest EFSA citric-acid-related opinion identified (2025, E472c in infant foods) reported no safety concern at assessed use levels; no new standalone E330 numerical ADI was identified."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1033",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI NOT LIMITED; 2014 entry notes specification-focused consideration and retains non-numerical ADI context."
+      },
+      "last_evaluation_year": 2014
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "In vitro dental studies show citric-acid solutions can increase enamel/dentin erosion, especially at lower pH and longer contact times.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID:40743870",
+          "PMID:39492327",
+          "PMID:37658357"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "Recent mouse work reported increased colon permeability, inflammatory markers, and microbiota shifts with enhanced citrate feeding.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:40320183"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "A mouse study reported acute insulin resistance and hyperinsulinemia under citrate-enriched diet conditions.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:34371126"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA entry for citric acid reports ADI NOT LIMITED (WHO JECFA database).",
+      "US FDA eCFR places citric acid in 21 CFR Part 184 (direct food substances affirmed as GRAS), with GMP-based use limits.",
+      "IARC classified-agent dataset check found no standalone citric acid classification entry."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "For a non-numerical ADI ('not limited'), classical ADI exceedance calculations are not the primary risk discriminator; concern profile is mainly local acidity effects and emerging mechanistic hypotheses."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.74,
+    "rationale": "Regulatory evidence remains strongly permissive (GRAS, ADI not limited), while available concern signals are primarily local erosive effects and non-definitive animal mechanistic findings that are not yet supported by substance-specific human causal evidence or major regulatory restrictions.",
+    "key_factors": [
+      "JECFA ADI NOT LIMITED for citric acid",
+      "US FDA GRAS listing under 21 CFR 184.1033 with GMP use",
+      "No standalone IARC carcinogenic classification identified for citric acid",
+      "In vitro oral-surface erosion signals are consistent at low pH/high exposure",
+      "Recent mouse studies suggest possible metabolic/gut effects but need corroboration"
+    ]
+  },
+  "sources": [
+    {
+      "title": "21 CFR Part 184 and 21 CFR 184.1033 (Citric acid)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA Chemical Entry: CITRIC ACID (ID 3594)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3594",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA API partial-name search for citric",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/citric",
+      "type": "database"
+    },
+    {
+      "title": "EFSA Journal page 6032",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/6032",
+      "type": "regulatory"
+    },
+    {
+      "title": "Re-evaluation of acetic acid, lactic acid, citric acid, tartaric acid ... (E472a-f)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7448088/",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal page 9202",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/9202",
+      "type": "regulatory"
+    },
+    {
+      "title": "Re-evaluation of citric acid esters of mono- and diglycerides of fatty acids (E 472c) in infants below 16 weeks",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39816965/",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC Monographs List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classified agents web dataset (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "The early wear susceptibility of dentine following exposure to citric acid",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40743870/",
+      "type": "study"
+    },
+    {
+      "title": "Impact of citric acid exposures on the erosion susceptibility and microhardness of anatomically different enamel surfaces",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39492327/",
+      "type": "study"
+    },
+    {
+      "title": "Effects of a commercial whitening toothpaste containing hydrogen peroxide and citric acid on dentin abrasion and erosion",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37658357/",
+      "type": "study"
+    },
+    {
+      "title": "Dietary citrate acutely induces insulin resistance and markers of liver inflammation in mice",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34371126/",
+      "type": "study"
+    },
+    {
+      "title": "Enhanced citrate consumption increases colon permeability in C57BL/6J mice",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40320183/",
+      "type": "study"
+    },
+    {
+      "title": "Food additive mixtures and type 2 diabetes incidence: NutriNet-Sante cohort",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40198579/",
+      "type": "study"
+    }
+  ]
+}

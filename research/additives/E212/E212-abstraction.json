@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T07:39:46Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E212",
+    "name": "Potassium benzoate",
+    "cas_numbers": [
+      "582-25-2"
+    ],
+    "synonyms": [
+      "Potassium benzoate",
+      "Benzoic acid, potassium salt",
+      "Potassium salt of benzenecarboxylic acid",
+      "INS 212"
+    ],
+    "chemical_class": "Potassium salt of benzoic acid (aromatic carboxylate preservative)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "antimicrobial"
+    ],
+    "mechanism": "Weak-acid benzoate preservative system; antimicrobial effect is strongest in acidic foods where the benzoic acid form can inhibit microbial growth.",
+    "common_food_categories": [
+      "Non-alcoholic flavoured drinks",
+      "Acidic processed foods",
+      "Fermented milk products",
+      "Sauces"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 5,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI for benzoic acid and benzoates (E210-E213), expressed as benzoic acid"
+      },
+      "last_evaluation_year": 2016,
+      "key_finding": "EFSA's 2016 re-evaluation maintained the group ADI but reported high-percentile exposure exceedance in younger groups under some scenarios."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 177.1210",
+      "notes": "eCFR API shows potassium benzoate in indirect food-contact use (closure-sealing gaskets) at 1% limit; no standalone direct-food GRAS section for potassium benzoate was identified in 21 CFR part 184."
+    },
+    "jecfa": {
+      "adi": {
+        "value": 20,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA 2021 group ADI 0-20 mg/kg bw, expressed as benzoic acid equivalents, replacing previous 0-5 mg/kg bw"
+      },
+      "last_evaluation_year": 2021
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "genotoxic",
+        "summary": "A human-lymphocyte in vitro study reported increased chromosomal aberrations, micronuclei, and comet-assay DNA damage for potassium benzoate and sodium benzoate at tested concentrations.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID: 21130826"
+        ]
+      },
+      {
+        "category": "neurotoxic",
+        "summary": "Rodent data with benzoate preservatives (mainly sodium benzoate) reported oxidative-stress and learning/memory effects, but direct transfer to potassium-benzoate dietary risk remains uncertain.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID: 29243862"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent review and computational literature continue to flag possible cytogenotoxic concerns for common preservatives, including benzoates, but evidence quality is heterogeneous and often indirect.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID: 41400292",
+          "PMID: 38159899"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "No IARC Group 1/2A/2B classification identified for potassium benzoate in the current IARC list dataset.",
+      "A randomized trial in children found no significant adverse behavioral effect for sodium benzoate alone in that study design.",
+      "JECFA increased the benzoate group ADI to 0-20 mg/kg bw in 2021."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "toddlers",
+        "children",
+        "adolescents",
+        "high consumers of benzoate-containing beverages"
+      ],
+      "notes": "EFSA re-evaluation reported high-percentile benzoate exposures above the EU group ADI (5 mg/kg bw/day) in some younger population groups."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.74,
+    "rationale": "Potassium benzoate remains regulated and not IARC-classified, but EFSA identified high-consumer ADI exceedance in children for benzoates and there are credible in vitro/mechanistic safety signals that justify a moderate-caution tier rather than limited-risk.",
+    "key_factors": [
+      "EFSA group ADI of 5 mg/kg bw/day with high-percentile exceedance in younger groups",
+      "FDA CFR citation found for indirect food-contact use (21 CFR 177.1210) with explicit limit",
+      "JECFA 2021 group ADI updated to 0-20 mg/kg bw",
+      "No IARC listing/classification for potassium benzoate",
+      "Potassium-benzoate genotoxicity signal reported in human-lymphocyte in vitro testing"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal page: Re-evaluation of benzoic acid (E210), sodium benzoate (E211), potassium benzoate (E212), calcium benzoate (E213)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4433",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA search result for DOI 10.2903/j.efsa.2016.4433",
+      "url": "https://www.efsa.europa.eu/en/search?text=10.2903%2Fj.efsa.2016.4433",
+      "type": "database"
+    },
+    {
+      "title": "Crossref metadata for DOI 10.2903/j.efsa.2016.4433",
+      "url": "https://api.crossref.org/works/10.2903/j.efsa.2016.4433",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API: Title 21 Part 184 versions",
+      "url": "https://www.ecfr.gov/api/versioner/v1/versions/title-21.json?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API renderer: 21 CFR 177.1210 (Closures with sealing gaskets)",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-21?chapter=I&subchapter=B&part=177&section=177.1210",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API renderer: 21 CFR 184.1021 (Benzoic acid)",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-21?chapter=I&subchapter=B&part=184&section=184.1021",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API renderer: 21 CFR 184.1733 (Sodium benzoate)",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-21?chapter=I&subchapter=B&part=184&section=184.1733",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database: Potassium benzoate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2283",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs: List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list app data bundle (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Pharmacokinetic data reduce uncertainty in the acceptable daily intake for benzoic acid and its salts",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28720346/",
+      "type": "study"
+    },
+    {
+      "title": "The evaluation of the genotoxicity of two food preservatives: sodium benzoate and potassium benzoate",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21130826/",
+      "type": "study"
+    },
+    {
+      "title": "Food additives and behavior in 8- to 9-year-old children in Hong Kong",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24217026/",
+      "type": "study"
+    },
+    {
+      "title": "Effects of sodium benzoate on learning, memory, and oxidative stress in brain of mice",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29243862/",
+      "type": "study"
+    },
+    {
+      "title": "Cytogenotoxicity of food preservatives in mammalian cells: A systematic review",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41400292/",
+      "type": "review"
+    },
+    {
+      "title": "Molecular docking study of frequently used food additives for selected targets depending on chromosomal abnormalities",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38159899/",
+      "type": "study"
+    },
+    {
+      "title": "PubChem potassium benzoate properties",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/potassium%20benzoate/property/Title,IUPACName,MolecularFormula,CanonicalSMILES/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem potassium benzoate synonyms",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/23661960/synonyms/JSON",
+      "type": "database"
+    }
+  ]
+}

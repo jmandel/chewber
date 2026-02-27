@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T14:28:34+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E402",
+    "name": "Potassium alginate",
+    "cas_numbers": [
+      "9005-36-1"
+    ],
+    "synonyms": [
+      "Potassium salt of alginic acid",
+      "INS 402",
+      "E 402"
+    ],
+    "chemical_class": "Alginate salt (anionic polysaccharide hydrocolloid)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "thickener",
+    "secondary_categories": [
+      "stabilizer",
+      "gelling agent",
+      "emulsifier"
+    ],
+    "mechanism": "Hydrophilic alginate polymer increases viscosity and water retention; in suitable conditions it contributes to gel network formation and emulsion stabilization.",
+    "common_food_categories": [
+      "Confections and frostings",
+      "Gelatins and puddings",
+      "Processed fruits and fruit juices",
+      "Other foods at low residual levels"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No numerical ADI needed (equivalent to ADI not specified) in EFSA 2017 re-evaluation of E400-E404."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "EFSA found no safety concern at refined exposure for reported uses, but noted insufficient data for certain infant/young-child FSMP categories and advised exposure to remain below therapeutic-dose ranges where GI side effects occur."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1610",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not specified (group ADI for alginic acid and ammonium/calcium/potassium/sodium salts)."
+      },
+      "last_evaluation_year": 1992
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "High intakes are associated with gastrointestinal/laxative effects; EFSA flagged infant/young-child FSMP contexts as insufficiently characterized for safety.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7010146/fullTextXML",
+          "https://www.inchem.org/documents/jecfa/jecmono/v30je10.htm"
+        ]
+      },
+      {
+        "category": "allergenic",
+        "summary": "EFSA highlighted potential hypersensitivity relevance of residual protein impurities and recommended reducing protein limits in specifications.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7010146/fullTextXML"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA concluded no concern for genotoxicity for alginic acid and its salts (E400-E404).",
+      "EFSA did not identify carcinogenic concern from available long-term animal evidence.",
+      "JECFA allocated ADI not specified to alginic acid salts group."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "Infants (12 weeks-11 months) at higher dietary exposure estimates",
+        "Toddlers/young children consuming FSMP categories 13.1.5.1 and 13.1.5.2"
+      ],
+      "notes": "No numeric ADI exists; concern is context-specific (infant/young-child medical-diet categories with limited dedicated safety data and proximity to therapeutic-dose GI side-effect ranges)."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.74,
+    "rationale": "Core regulatory evaluations support broad safety at approved uses, but EFSA retained a meaningful caveat for specific infant/young-child FSMP uses and acknowledged GI effects at higher intakes.",
+    "key_factors": [
+      "EFSA 2017: no numerical ADI required and no general safety concern at refined reported-use exposure",
+      "EFSA 2017: inadequate data for certain infant/young-child FSMP categories",
+      "JECFA: ADI not specified with high-intake laxative caveat",
+      "US: affirmed GRAS with explicit use limits in 21 CFR 184.1610",
+      "No IARC monograph classification identified"
+    ]
+  },
+  "sources": [
+    {
+      "title": "OpenEFSA substance record: Potassium alginate",
+      "url": "https://open.efsa.europa.eu/api/substance/get?termExtendedName=potassium%20alginate",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA: questions linked to Potassium alginate",
+      "url": "https://open.efsa.europa.eu/api/substance/getQuestions?termExtendedName=Potassium%20alginate",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA question EFSA-Q-2011-00503 (E402 re-evaluation metadata)",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00503",
+      "type": "database"
+    },
+    {
+      "title": "EFSA Journal re-evaluation full text (PMCID PMC7010146)",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7010146/fullTextXML",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API titles metadata (Title 21)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/titles.json",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API versions for Title 21 (section 184.1610 metadata)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/versions/title-21.json",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full Title 21 XML (contains 21 CFR 184.1610 text)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2024-06-03/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA API search by partial name: potassium alginate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/potassium%20alginate",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA chemical page: Potassium alginate (ID 3122)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3122",
+      "type": "database"
+    },
+    {
+      "title": "JECFA toxicological monograph: Alginic acid and its ammonium, calcium, potassium and sodium salts (FAS 30)",
+      "url": "https://www.inchem.org/documents/jecfa/jecmono/v30je10.htm",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC agents classified overview",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list of classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list-of-classifications data bundle",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: Algae-derived hydrocolloids in foods: applications and health-related issues (2021)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34281484/",
+      "type": "review"
+    },
+    {
+      "title": "PubMed: Safety and efficacy of a feed additive consisting of sodium alginate for all animal species (2022)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35281636/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Re-evaluation of alginic acid and its sodium, potassium, ammonium and calcium salts (E 400-E 404) (2017)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625343/",
+      "type": "study"
+    }
+  ]
+}

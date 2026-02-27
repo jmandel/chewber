@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T11:22:52Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E312",
+    "name": "Dodecyl gallate",
+    "cas_numbers": [
+      "1166-52-5"
+    ],
+    "synonyms": [
+      "Lauryl gallate",
+      "Dodecyl 3,4,5-trihydroxybenzoate"
+    ],
+    "chemical_class": "Alkyl gallate (gallic acid ester), synthetic phenolic antioxidant",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "antioxidant",
+    "secondary_categories": [
+      "preservative"
+    ],
+    "mechanism": "Phenolic chain-breaking antioxidant activity that slows lipid oxidation in fat-containing foods.",
+    "common_food_categories": [
+      "Margarine/oleomargarine (US standard of identity context)",
+      "Chewing-gum-related EU category context in 2018 follow-up legal text"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "restricted",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2015 re-evaluation abstract indicates insufficient data to complete assessment and that the previous group ADI should no longer be considered valid."
+      },
+      "last_evaluation_year": 2015,
+      "key_finding": "EFSA reported no concern at reported use levels in the assessed context but also insufficient reproductive/developmental data for full safety confirmation and ADI support; EU follow-up applied strong restrictions."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 166.110(b)(5)",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA entry for dodecyl gallate lists NO ADI ALLOCATED; temporary ADI from 1993 was not extended."
+      },
+      "last_evaluation_year": 1996
+    },
+    "iarc_classification": null,
+    "notable_bans": [
+      "EU follow-up Regulation (EU) 2018/1481 documented unresolved EFSA data gaps and removed/limited uses for E312 in the Union list framework."
+    ]
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "genotoxic",
+        "summary": "A 2021 review of synthetic phenolic antioxidants (including lauryl gallate) reports high-dose animal toxicity concerns (including DNA-damage/cancer-relevant signals) at class level.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PubMed PMID 34146526"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "In vitro melanoma-cell evidence shows dodecyl gallate can induce oxidative stress and apoptosis-related pathways at experimental concentrations.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PubMed PMID 21856409"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Regulatory uncertainty remains material: EFSA re-evaluation reported insufficient data for complete safety assessment and invalidated support for the previous group ADI.",
+        "evidence_strength": "strong",
+        "key_references": [
+          "EFSA Journal 2015 E312 opinion",
+          "Regulation (EU) 2018/1481"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA abstract also reports no safety concern for the then-reported uses and use levels.",
+      "No IARC Group 1/2A/2B/3 listing for dodecyl/lauryl gallate was identified in checked IARC classification resources.",
+      "A 2018 in vivo/in vitro therapeutic-model paper reported low toxicity in tested systems, though this is not a chronic dietary safety dataset."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "High consumers in jurisdictions where use remains legally possible",
+        "Children/high consumers of confectionery-like products"
+      ],
+      "notes": "Classical ADI exceedance cannot be robustly quantified because EFSA did not support a valid current group ADI and JECFA lists no ADI allocated."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "high",
+    "confidence": 0.69,
+    "rationale": "Despite some jurisdiction-specific permitted uses, EFSA's latest re-evaluation for E312 identified unresolved data gaps and did not support continued validity of the previous group ADI, followed by strong EU restriction/removal measures. This places E312 above a moderate caveat profile.",
+    "key_factors": [
+      "EFSA 2015: insufficient reproductive/developmental data for complete assessment",
+      "EFSA: prior group ADI support not maintained",
+      "EU follow-up Regulation (EU) 2018/1481 tightened/remodeled authorizations",
+      "US allowance is narrow and use-specific (21 CFR 166.110(b)(5))",
+      "JECFA status is NO ADI ALLOCATED",
+      "No IARC carcinogenic classification identified"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal page: Scientific Opinion on the re-evaluation of dodecyl gallate (E 312) as a food additive",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4086",
+      "type": "regulatory"
+    },
+    {
+      "title": "Crossref metadata: DOI 10.2903/j.efsa.2015.4086",
+      "url": "https://api.crossref.org/works/10.2903/j.efsa.2015.4086",
+      "type": "database"
+    },
+    {
+      "title": "Commission Regulation (EU) 2018/1481",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32018R1481",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Title 21 full XML (2026-02-20)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-20/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA API search: dodecyl gallate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/dodecyl%20gallate",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical page: DODECYL GALLATE (chemID 1885)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1885",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC Agents classified by the IARC Monographs",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list-of-classifications dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed query: dodecyl gallate toxicity (date sort)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=dodecyl+gallate+toxicity&sort=date",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 34146526 (Environmental Research, 2021)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34146526/",
+      "type": "review"
+    },
+    {
+      "title": "PubMed PMID 21856409 (Toxicology in Vitro, 2011)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21856409/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 29883792 (International Journal of Pharmaceutics, 2018)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29883792/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 41062049 (Archives of Biochemistry and Biophysics, 2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41062049/",
+      "type": "study"
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T10:32:14+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E301",
+    "name": "Sodium ascorbate",
+    "cas_numbers": [
+      "134-03-2",
+      "205-126-1",
+      "58657-35-5",
+      "912284-14-1"
+    ],
+    "synonyms": [
+      "Sodium L-ascorbate",
+      "L-ascorbic acid sodium salt",
+      "Vitamin C sodium salt",
+      "INS 301"
+    ],
+    "chemical_class": "Sodium salt of L-ascorbic acid (vitamin C derivative)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "antioxidant",
+    "secondary_categories": [
+      "reducing agent",
+      "cure accelerator"
+    ],
+    "mechanism": "Acts as a reducing antioxidant that limits oxidation and, in nitrite-cured systems, can lower residual nitrite and influence nitrosamine formation.",
+    "common_food_categories": [
+      "processed/cured meats",
+      "other foods using antioxidant preservatives under GMP"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2015 re-evaluation concluded no need for a numerical ADI for ascorbic acid and its salts"
+      },
+      "last_evaluation_year": 2015,
+      "key_finding": "No safety concern at reported uses and use levels for ascorbic acid (E300), sodium ascorbate (E301), and calcium ascorbate (E302)."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.3731; 21 CFR 582.3731",
+      "notes": "GRAS when used in accordance with good manufacturing practice (and good feeding practice for animal feed)."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not specified (group ADI for ascorbic acid and its sodium, potassium, and calcium salts)"
+      },
+      "last_evaluation_year": 1981
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "A 2026 prospective cohort (NutriNet-Sante) reported an association between sodium ascorbate exposure and higher type 2 diabetes incidence among preservative additives; causality is not established.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:41501013"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Food-system studies show nitrosamine outcomes are process/formulation dependent, although sodium ascorbate generally lowers residual nitrite.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:30902302"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2015 reported no genotoxicity concern and no safety concern at reported uses/use levels.",
+      "In a rat bladder carcinogenesis promotion model, sodium ascorbate did not increase papillomas or transitional cell carcinomas (PMID:29471778).",
+      "JECFA and EFSA both use non-numerical ADI conclusions (ADI not specified / no numerical ADI needed) for this substance group."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "Numeric ADI exceedance assessment is not applicable because EFSA/JECFA do not set a numerical ADI for this additive group."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.74,
+    "rationale": "Core regulatory evaluations (EFSA, JECFA, FDA GRAS) are broadly reassuring, but an emerging observational epidemiology signal supports caution rather than a fully risk-free label.",
+    "key_factors": [
+      "EFSA 2015: no safety concern at reported uses; no numerical ADI needed",
+      "JECFA: ADI not specified (group ADI context)",
+      "FDA eCFR GRAS listings under GMP",
+      "No IARC classification identified for sodium ascorbate",
+      "Recent observational association with type 2 diabetes requires follow-up"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Scientific Opinion on the re-evaluation of ascorbic acid (E 300), sodium ascorbate (E 301) and calcium ascorbate (E 302) as food additives (EFSA Journal, 2015)",
+      "url": "https://doi.org/10.2903/j.efsa.2015.4087",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal publication page 4087",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4087",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 Part 182 (includes 21 CFR 182.3731 Sodium ascorbate)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2025-09-25/title-21.xml?chapter=I&part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 Part 582 (includes 21 CFR 582.3731 Sodium ascorbate)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2025-09-25/title-21.xml?chapter=I&part=582",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database: Sodium Ascorbate (Chemical ID 2372)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2372",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API search endpoint for sodium ascorbate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/sodium%20ascorbate",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs - Agents Classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list data script used by classification page",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Associations between preservative food additives and type 2 diabetes incidence in the NutriNet-Sante prospective cohort",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41501013/",
+      "type": "study"
+    },
+    {
+      "title": "Evaluation of Uracil, Sodium Ascorbate, and Rosiglitazone as Promoters of Urinary Bladder Transitional Cell Carcinomas in Male Sprague-Dawley Rats",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29471778/",
+      "type": "study"
+    },
+    {
+      "title": "Nitrosamines in sucuk: Effects of black pepper, sodium ascorbate and cooking level",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30902302/",
+      "type": "study"
+    },
+    {
+      "title": "PubChem sodium ascorbate property endpoint",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/sodium%20ascorbate/property/Title,MolecularFormula,MolecularWeight,IUPACName/JSON",
+      "type": "database"
+    }
+  ]
+}

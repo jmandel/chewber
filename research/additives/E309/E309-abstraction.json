@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T11:07:36Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E309",
+    "name": "Delta-tocopherol",
+    "cas_numbers": [
+      "119-13-1",
+      "251562-63-7"
+    ],
+    "synonyms": [
+      "delta-Tocopherol",
+      "(+)-delta-Tocopherol",
+      "8-Methyltocol",
+      "RRR-delta-Tocopherol",
+      "delta-Vitamin E"
+    ],
+    "chemical_class": "Tocopherol (vitamin E isoform; lipophilic phenolic antioxidant)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "antioxidant",
+    "secondary_categories": [
+      "preservative",
+      "nutrient source"
+    ],
+    "mechanism": "Chain-breaking antioxidant in lipid phases that interrupts propagation of oxidative radical reactions and slows rancidity.",
+    "common_food_categories": [
+      "fats and oils",
+      "lipid-containing processed foods",
+      "foods using tocopherols under GMP antioxidant use"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2015 E306-E309 re-evaluation concluded no need for a numerical ADI for tocopherols as food additives; EFSA also referenced a historical group ADI context of 2 mg/kg bw/day for vitamin E source use."
+      },
+      "last_evaluation_year": 2015,
+      "key_finding": "EFSA concluded tocopherols (including E309) were not of safety concern at reported food-additive uses/use levels."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.3890",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 2,
+        "unit": "mg/kg bw/day",
+        "basis": "No standalone delta-tocopherol/E309 record found in WHO JECFA partial-name search; closest additive entry is Mixed TOCOPHEROLS concentrate (INS 306) with ADI 0-2 mg/kg bw."
+      },
+      "last_evaluation_year": 1973
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "A 2025 CKD cohort reported a U-shaped association between dietary delta-tocopherol and CKD progression risk, suggesting possible non-linear intake-response in a vulnerable population.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/40053500/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "A 2026 prospective cohort associated several preservatives, including alpha-tocopherol, with higher incident type 2 diabetes; relevance to E309 specifically is indirect and observational.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41501013/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2015 re-evaluation for E306-E309 concluded no safety concern at reported additive uses/use levels.",
+      "Short-term phase-0 supplementation with a tocopherol mixture that increased delta-tocopherol tissue levels reported no adverse events.",
+      "No IARC monograph classification entry was identified for delta-tocopherol in the IARC list dataset reviewed."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "high-end consumers of tocopherols from all dietary sources",
+        "people with chronic kidney disease"
+      ],
+      "notes": "EFSA indexed metadata for the 2015 opinion reported high-percentile total-source tocopherol exposure up to 8.49 mg/kg bw/day, above the older 2 mg/kg bw/day vitamin E-source ADI context; additive-specific exceedance for E309 alone remains uncertain."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.64,
+    "rationale": "Regulatory bodies currently support tocopherol use (EFSA no-safety-concern conclusion for additive use; FDA GRAS/GMP), and no IARC carcinogenic classification or major ban signal was identified. Remaining uncertainty comes from limited E309-specific modern exposure granularity and observational non-linear associations in CKD populations.",
+    "key_factors": [
+      "EFSA 2015 E306-E309 re-evaluation reported no safety concern for additive use",
+      "No numerical additive ADI set by EFSA for tocopherols in that opinion",
+      "FDA eCFR lists tocopherols under GRAS with GMP conditions (21 CFR 182.3890 and 182.1)",
+      "No standalone JECFA delta-tocopherol record identified; closest INS 306 mixed tocopherols ADI is 0-2 mg/kg bw",
+      "No IARC monograph listing identified for delta-tocopherol",
+      "Recent observational CKD data suggest possible non-linear association for dietary delta-tocopherol"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Scientific Opinion on the re-evaluation of tocopherol-rich extract (E 306), alpha-tocopherol (E 307), gamma-tocopherol (E 308) and delta-tocopherol (E 309) as food additives",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4247",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA/Wiley DOI landing for 10.2903/j.efsa.2015.4247 (access blocked in this environment)",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2015.4247",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 182.3890 Tocopherols (eCFR API renderer, 2026-02-25)",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2026-02-25/title-21?section=182.3890",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 182.1 Substances generally recognized as safe (eCFR API renderer, 2026-02-25)",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2026-02-25/title-21?section=182.1",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA API SearchChemical ByPartialName delta tocopherol",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/delta%20tocopherol",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA chemical record Mixed TOCOPHEROLS concentrate (INS 306)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3027",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list app dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubChem delta-tocopherol synonyms",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/delta-tocopherol/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search: delta-tocopherol safety",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=delta-tocopherol+safety",
+      "type": "database"
+    },
+    {
+      "title": "Dietary vitamin E and tocopherol isoform intake and the progression of chronic kidney disease",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40053500/",
+      "type": "study"
+    },
+    {
+      "title": "Associations between preservative food additives and type 2 diabetes incidence in the NutriNet-Sante prospective cohort",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41501013/",
+      "type": "study"
+    },
+    {
+      "title": "Plasma, Prostate and Urine Levels of Tocopherols and Metabolites in Men after Supplementation with a gamma-Tocopherol-Rich Vitamin E Mixture",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33319628/",
+      "type": "study"
+    },
+    {
+      "title": "Effects of meat-based, meat-based with alpha-tocopherol, and pesco-vegetarian diets on biomarkers associated with colorectal cancer risk",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41361349/",
+      "type": "study"
+    }
+  ]
+}

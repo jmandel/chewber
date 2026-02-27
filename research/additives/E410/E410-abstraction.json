@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T14:47:53+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E410",
+    "name": "Locust bean gum",
+    "cas_numbers": [
+      "9000-40-2"
+    ],
+    "synonyms": [
+      "Carob gum",
+      "Carob bean gum",
+      "Carob bean gum (clarified)"
+    ],
+    "chemical_class": "Galactomannan polysaccharide (carob seed endosperm gum)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "Thickener and stabilizer",
+    "secondary_categories": [
+      "emulsifier"
+    ],
+    "mechanism": "Hydrocolloid that increases viscosity and stabilizes food systems; largely not digested intact and fermented in the gut.",
+    "common_food_categories": [
+      "foods for infants and young children",
+      "foods for special medical purposes (including anti-regurgitation formulas)",
+      "bread and rolls",
+      "processed foods"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2017 concluded no need for a numerical ADI for the general population; EFSA 2023 used a 1,400 mg/kg bw/day reference point with an MoE approach for infant/FSMP scenarios."
+      },
+      "last_evaluation_year": 2023,
+      "key_finding": "No general-population safety concern at refined exposure, but infant FSMP scenarios can yield MoE below 1 at maximum/high exposure levels."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1343",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not specified (database shows evaluations including 1981, 2016, and 2025)."
+      },
+      "last_evaluation_year": 2025
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "EFSA 2023 identified a reference point of 1,400 mg/kg bw/day based on reduced blood zinc in neonatal piglets; high infant FSMP exposure scenarios produced MoE below 1.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/36789355/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC9909383/"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "JECFA 2025 considered intestinal microbiota disruption and concluded no concern at assessed uses, while still identifying potential risk at 10,000 mg/L infant formula via MoE.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2872"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "A 2025 case report suggests carob-bean-gum-thickened formula may impair levothyroxine absorption in congenital hypothyroidism.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/38054412/"
+        ]
+      },
+      {
+        "category": "allergenic",
+        "summary": "EFSA follow-up mentions limited adverse reaction reporting, including rare allergy signal(s), with low event count.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC9909383/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2017: no adverse effects at highest doses in 90-day and carcinogenicity rodent studies",
+      "EFSA 2017: no concern for genotoxicity or reproductive/developmental toxicity",
+      "Infant formula studies (2023 real-world, 2024 RCT) reported good tolerance and no major new safety signal"
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "infants below 16 weeks consuming FSMP at maximum/high use levels",
+        "infants above 16 weeks consuming FSMP at high (p95) exposure"
+      ],
+      "notes": "No numeric ADI is set; risk characterization is based on MoE to a 1,400 mg/kg bw/day reference point, and MoE can fall below 1 in high infant scenarios."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.76,
+    "rationale": "Regulatory acceptance is broad (EU authorized, US GRAS, JECFA ADI not specified), but EFSA and JECFA both identify scenario-dependent concern in infant special-medical-purpose uses at higher concentrations/exposures.",
+    "key_factors": [
+      "EFSA 2017: no numerical ADI needed for general population",
+      "EFSA 2023: RP 1,400 mg/kg bw/day and MoE below 1 in some infant scenarios",
+      "JECFA 2025: potential risk at 10,000 mg/L infant formula, low risk at lower concentrations",
+      "Recent infant clinical studies generally show good tolerance",
+      "No IARC carcinogenic classification found"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of locust bean gum (E 410) as a food additive",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625248/",
+      "type": "regulatory"
+    },
+    {
+      "title": "Re-evaluation of locust bean gum (E 410) as a food additive (PMC full text)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7010100/",
+      "type": "regulatory"
+    },
+    {
+      "title": "Re-evaluation of locust bean gum (E 410) ... infants below 16 weeks ...",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36789355/",
+      "type": "regulatory"
+    },
+    {
+      "title": "Re-evaluation of locust bean gum (E 410) ... infants below 16 weeks ... (PMC full text)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9909383/",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA Food Additives Database - LOCUST BEAN GUM",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2872",
+      "type": "database"
+    },
+    {
+      "title": "eCFR 21 CFR 184.1343 Locust bean gum",
+      "url": "https://www.ecfr.gov/current/title-21/section-184.1343",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC Monographs - Agents classified by the IARC Monographs",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs - List of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "Tolerance and Safety of an Anti-Regurgitation Formula Containing Locust Bean Gum...",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38542810/",
+      "type": "study"
+    },
+    {
+      "title": "Digestive Tolerance and Safety of an Anti-Regurgitation Formula Containing Locust Bean Gum...",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37736220/",
+      "type": "study"
+    },
+    {
+      "title": "Worsening of Congenital Hypothyroidism After Start of Carob-bean Gum Thickened Formula",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38054412/",
+      "type": "study"
+    }
+  ]
+}

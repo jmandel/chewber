@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T11:32:43Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E320",
+    "name": "Butylated hydroxyanisole (BHA)",
+    "cas_numbers": [
+      "25013-16-5"
+    ],
+    "synonyms": [
+      "BHA",
+      "Butylated hydroxyanisole",
+      "3-tert-butyl-4-hydroxyanisole",
+      "2-tert-butyl-4-hydroxyanisole"
+    ],
+    "chemical_class": "Synthetic phenolic antioxidant",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "antioxidant",
+    "secondary_categories": [
+      "preservative"
+    ],
+    "mechanism": "Scavenges radicals and slows oxidative deterioration of fats/oils, reducing rancidity in food matrices.",
+    "common_food_categories": [
+      "Dry breakfast cereals",
+      "Dehydrated potato products",
+      "Dry beverage and dessert mixes",
+      "Fat/oil-containing processed foods",
+      "Flavoring substances"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 1.0,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA re-evaluation maintained the ADI set by SCF and reported no genotoxicity concern; exposure statement later discussed potential exceedance in conservative combined scenarios."
+      },
+      "last_evaluation_year": 2012,
+      "key_finding": "EFSA re-evaluation did not identify genotoxicity concern; refined exposure work indicated possible ADI exceedance in some high-consumer child groups under combined-assumption scenarios."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.3169; 21 CFR 172.110",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 0.5,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA ADI is expressed as 0-0.5 mg/kg bw (upper bound 0.5), with evaluation year 1988 in WHO/JECFA chemical entry."
+      },
+      "last_evaluation_year": 1988
+    },
+    "iarc_classification": "Group 2B",
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "carcinogenic",
+        "summary": "IARC classification lists BHA as Group 2B; JECFA toxicological monograph discusses high-dose forestomach lesions/tumors in rats with uncertain direct human relevance.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://webapi.iarc.who.int/loc/loc.app.js",
+          "http://www.inchem.org/documents/jecfa/jecmono/v024je02.htm"
+        ]
+      },
+      {
+        "category": "neurotoxic",
+        "summary": "Recent zebrafish embryo-larval study reports developmental and neurobehavioral disruption after low-ppb BHA exposure.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/40700163/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent hESC-derived hepatocyte model study on 3-BHA (BHA isomer) reported developmental hepatotoxicity-associated signals.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41108958/"
+        ]
+      },
+      {
+        "category": "renal",
+        "summary": "Mouse co-exposure study (nanoplastics plus 3-BHA) reported aggravated kidney injury via TGF-beta/SMAD pathway, indicating potential concern in mixed-exposure contexts.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/40914085/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA re-evaluation reported no concern with respect to genotoxicity.",
+      "Ex vivo human gut microbiome study found minimal effect under tested BHA conditions."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "toddlers",
+        "children",
+        "high consumers under conservative combined-exposure assumptions"
+      ],
+      "notes": "EFSA refined exposure statement and WHO/JECFA intake text indicate potential exceedance in upper-end consumer scenarios."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.74,
+    "rationale": "BHA remains regulated/authorized with explicit limits, but credible caveats remain: IARC Group 2B classification, high-dose animal hazard findings, and modeled exceedance risk in some child/high-consumer scenarios.",
+    "key_factors": [
+      "EFSA ADI of 1.0 mg/kg bw/day with no genotoxicity concern",
+      "JECFA ADI 0-0.5 mg/kg bw and intake exceedance caveat for high consumers",
+      "CFR conditions and concentration limits in 21 CFR 172.110 and 182.3169",
+      "IARC Group 2B listing",
+      "Recent experimental studies indicating potential neurodevelopmental/hepatic/renal concerns"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal: Scientific Opinion on the re-evaluation of butylated hydroxyanisole - BHA (E 320)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/2392",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal: Statement on the refined exposure assessment of butylated hydroxyanisole (BHA) (E 320)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/2759",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 Part 172 (includes 21 CFR 172.110 BHA)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?chapter=I&subchapter=B&part=172",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 Part 182 (includes 21 CFR 182.3169 Butylated hydroxyanisole)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?chapter=I&subchapter=B&part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database chemical entry: BUTYLATED HYDROXYANISOLE (Chemical 2140)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2140",
+      "type": "database"
+    },
+    {
+      "title": "JECFA monograph: Butylated hydroxyanisole (WHO Food Additives Series 24)",
+      "url": "http://www.inchem.org/documents/jecfa/jecmono/v024je02.htm",
+      "type": "review"
+    },
+    {
+      "title": "IARC Monographs classifications page",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list data script (loc.app.js) containing BHA Group 2B entry",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: The food additive butylated hydroxyanisole minimally affects the human gut microbiome ex vivo (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39919360/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: BHA disrupts brain signalling in embryo-larval zebrafish (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40700163/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Hepatic developmental toxicity of synthetic phenolic antioxidant 3-BHA (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41108958/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Combined effects of nanoplastics and 3-BHA on kidney injury in mice (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40914085/",
+      "type": "study"
+    }
+  ]
+}

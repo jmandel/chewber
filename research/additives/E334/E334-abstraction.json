@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T12:22:50+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E334",
+    "name": "L(+)-tartaric acid",
+    "cas_numbers": [
+      "87-69-4"
+    ],
+    "synonyms": [
+      "tartaric acid",
+      "L(+)-tartaric acid",
+      "L-2,3-dihydroxysuccinic acid",
+      "L-2,3-dihydroxybutanedioic acid",
+      "INS 334"
+    ],
+    "chemical_class": "alpha-hydroxy dicarboxylic acid",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "pH control agent",
+      "firming agent",
+      "flavor enhancer",
+      "humectant",
+      "sequestrant"
+    ],
+    "mechanism": "Provides acidity/pH adjustment and buffering; tartrate anions can complex metal ions (sequestration/synergy), supporting stability and flavor profile.",
+    "common_food_categories": [
+      "beverages (including wine-related applications)",
+      "confectionery",
+      "bakery products",
+      "processed foods requiring acidity regulation"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 240,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI for L(+)-tartaric acid-tartrates (E334-337, E354), expressed as tartaric acid; EFSA 2020 opinion."
+      },
+      "last_evaluation_year": 2020,
+      "key_finding": "EFSA set a group ADI of 240 mg/kg bw/day for L(+)-tartaric acid-tartrates; refined exposure did not exceed this ADI for E334-337/E354. ADI does not apply to D(-), DL, or meso tartrates."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1099",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 30,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI range 0-30 mg/kg bw for L(+)-tartaric acid and sodium/potassium/potassium-sodium salts; latest listed evaluation year 2017."
+      },
+      "last_evaluation_year": 2017
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "EFSA notes nephropathy findings in studies involving DL/meso-related tartrate material at high doses in rats; EFSA group ADI is restricted to L(+)-forms and explicitly excludes D(-)/DL/meso tartrates.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7448015/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "In EFSA combined high-end exposure modelling (including other tartaric-releasing additives and natural occurrence), toddler P95 could exceed ADI, but EFSA judged this as likely overestimation rather than a confirmed safety concern.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7448015/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA reported no indication of genotoxic potential for tartaric acid and sodium/potassium salts.",
+      "EFSA reported no carcinogenicity indication in chronic rat study with monosodium L(+)-tartrate at highest tested dose.",
+      "EFSA refined non-brand-loyal exposure estimates for E334-337/E354 did not exceed the EFSA group ADI.",
+      "JECFA maintained group ADI range (0-30 mg/kg bw) at latest listed evaluation in 2017 for L(+)-form group context."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "infants",
+        "toddlers (combined high-end scenario only)"
+      ],
+      "notes": "For E334-337/E354 alone, EFSA refined exposure was below ADI. A combined scenario including other tartaric-acid sources showed toddler P95 above ADI, but EFSA considered this overestimated and not indicative of health concern."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.82,
+    "rationale": "Major regulators (EFSA, FDA, JECFA) permit use with ADI/cGMP controls, and EFSA found no major hazard signals for authorized L(+)-forms at typical use levels. Remaining caveats are stereoisomer specificity, specification/impurity controls, and conservative high-end combined exposure modelling.",
+    "key_factors": [
+      "EFSA group ADI 240 mg/kg bw/day for L(+)-tartaric acid-tartrates (2020)",
+      "FDA GRAS affirmation in 21 CFR 184.1099 with cGMP conditions",
+      "JECFA group ADI range 0-30 mg/kg bw maintained in latest listed 2017 evaluation",
+      "No IARC classification identified for tartaric acid in the IARC list dataset checked",
+      "EFSA ADI explicitly excludes D(-)/DL/meso tartrates"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of l(+)-tartaric acid (E 334), sodium tartrates (E 335), potassium tartrates (E 336), potassium sodium tartrate (E 337) and calcium tartrate (E 354) as food additives",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7448015/",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed record for EFSA E334-E354 re-evaluation (PMID: 32874248)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32874248/",
+      "type": "database"
+    },
+    {
+      "title": "21 CFR Part 184 enhanced content (includes 21 CFR 184.1099 Tartaric acid)",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2026-02-19/title-21?chapter=I&subchapter=B&part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR direct page for 21 CFR 184.1099 (access challenge page in this environment)",
+      "url": "https://www.ecfr.gov/current/title-21/section-184.1099",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA entry: L(+)-TARTARIC ACID (Chemical ID 4746)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4746",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA search API by partial name (tartaric)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/tartaric",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list dataset script used by classification app",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Assessment of dietary exposure to annatto, nitrites, sulphites and tartaric acid (E334) in the French population",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22380884/",
+      "type": "study"
+    },
+    {
+      "title": "Food additive emulsifiers and risk of type 2 diabetes (includes E472e context)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38663950/",
+      "type": "study"
+    },
+    {
+      "title": "EFSA page for publication 6030 (redirect/challenge observed)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/6030",
+      "type": "regulatory"
+    }
+  ]
+}

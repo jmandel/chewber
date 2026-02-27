@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T12:40:02+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E337",
+    "name": "Sodium potassium tartrate",
+    "cas_numbers": [
+      "304-59-6",
+      "6381-59-5"
+    ],
+    "synonyms": [
+      "Potassium sodium L(+)-tartrate",
+      "Rochelle salt",
+      "Seignette salt",
+      "Potassium sodium dextro-tartrate",
+      "INS 337"
+    ],
+    "chemical_class": "Tartrate salt (mixed sodium and potassium salt of L(+)-tartaric acid)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "acidity regulator / pH control agent",
+    "secondary_categories": [
+      "emulsifier",
+      "emulsifying salt"
+    ],
+    "mechanism": "Provides buffering and tartrate-ion complexation; in cheese systems acts as an emulsifying salt supporting homogeneous melt and texture while contributing pH control.",
+    "common_food_categories": [
+      "cheeses",
+      "jams and jellies",
+      "pasteurized process cheese",
+      "pasteurized process cheese food",
+      "pasteurized process cheese spread"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 240,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI for L(+)-tartaric acid-tartrates (E334-337, E354), expressed as tartaric acid (EFSA Journal 2020;18(3):6030)."
+      },
+      "last_evaluation_year": 2020,
+      "key_finding": "No indication of genotoxicity; no carcinogenicity indication in chronic rat data reviewed; refined exposure estimates did not exceed the group ADI."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1804",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 30,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI range shown as 0-30 mg/kg bw for potassium sodium L(+)-tartrate, expressed as L(+)-tartaric acid (WHO JECFA database)."
+      },
+      "last_evaluation_year": 1973
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "Case-series and case reports on high-dose related tartrate exposures (cream of tartar/tartaric acid contexts) describe acute kidney injury in dogs and severe hyperkalemia in humans under non-typical ingestion conditions.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:35869755",
+          "PMID:22926733"
+        ]
+      },
+      {
+        "category": "genotoxic",
+        "summary": "EFSA re-evaluation reported no indication of genotoxic potential for tartaric acid and sodium/potassium tartrates at evaluated uses.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID:32874248"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "A subchronic rat study on an iron-sodium tartrate complex (not E337 itself) found GI/inflammation-related effects at higher doses; relevance to standard E337 food use is limited.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:24015727"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA found no carcinogenicity indication in chronic rat data reviewed.",
+      "EFSA found no genotoxicity indication for tartaric acid/tartrate salts.",
+      "EFSA refined exposure scenario did not exceed ADI across assessed population groups."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "EFSA 2020 reported no ADI exceedance in the refined non-brand-loyal scenario for assessed population groups."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.82,
+    "rationale": "Major regulators retain approval/GRAS status; EFSA established a group ADI with no exceedance in refined exposure assessment; severe effects are mainly linked to atypical high-dose ingestion of related tartrate preparations rather than normal E337 food use.",
+    "key_factors": [
+      "EFSA group ADI 240 mg/kg bw/day (2020)",
+      "FDA GRAS affirmation in 21 CFR 184.1804 with GMP use conditions",
+      "JECFA ADI range 0-30 mg/kg bw with last evaluation year listed as 1973",
+      "No IARC listing identified for sodium potassium tartrate",
+      "Limited direct modern human epidemiology specific to E337"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal publication page for opinion 6030 (access issue encountered in session)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/6030",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed abstract: Re-evaluation of l(+)-tartaric acid/tartrates (PMID 32874248)",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=32874248&retmode=text&rettype=abstract",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 XML (includes 21 CFR 184.1804 and related sections)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR current section page 21 CFR 184.1804 (Request Access page encountered)",
+      "url": "https://www.ecfr.gov/current/title-21/section-184.1804",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database: Chemical page for POTASSIUM SODIUM L(+)-TARTRATE (ID 2377)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2377",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API search result for potassium sodium",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/potassium%20sodium",
+      "type": "database"
+    },
+    {
+      "title": "FAO JECFA additive detail: Potassium Sodium L(+)-Tartrate (c/174)",
+      "url": "https://www.fao.org/food/food-safety-quality/scientific-advice/jecfa/jecfa-additives/detail/en/c/174/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list of classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list-of-classifications application dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed abstract: Life-threatening hyperkalemia from cream of tartar ingestion (PMID 22926733)",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=22926733&retmode=text&rettype=abstract",
+      "type": "study"
+    },
+    {
+      "title": "PubMed abstract: AKI in dogs after cream of tartar/tamarind ingestion (PMID 35869755)",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=35869755&retmode=text&rettype=abstract",
+      "type": "study"
+    },
+    {
+      "title": "PubMed abstract: FemTA subchronic/repro toxicity study (PMID 24015727)",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=24015727&retmode=text&rettype=abstract",
+      "type": "study"
+    },
+    {
+      "title": "PubMed abstract: French TDS exposure to tartaric acid (PMID 22380884)",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=22380884&retmode=text&rettype=abstract",
+      "type": "study"
+    },
+    {
+      "title": "PubChem PUG REST properties for potassium sodium tartrate",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/potassium%20sodium%20tartrate/property/Title,MolecularFormula/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem PUG REST synonyms for potassium sodium tartrate",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/potassium%20sodium%20tartrate/synonyms/JSON",
+      "type": "database"
+    }
+  ]
+}

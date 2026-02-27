@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T00:00:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E343",
+    "name": "Magnesium phosphates",
+    "cas_numbers": [
+      "13092-66-5",
+      "7782-75-4",
+      "7757-86-0",
+      "7757-87-1"
+    ],
+    "synonyms": [
+      "Monomagnesium phosphate",
+      "Magnesium dihydrogen phosphate",
+      "Magnesium hydrogen phosphate",
+      "Dimagnesium phosphate",
+      "Trimagnesium phosphate",
+      "Magnesium phosphate (di- and tribasic)"
+    ],
+    "chemical_class": "Inorganic magnesium phosphate salts",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "pH control agent",
+      "stabilizer",
+      "sequestrant",
+      "raising agent",
+      "anti-caking agent"
+    ],
+    "mechanism": "Acts as a phosphate buffer and ionic-strength modifier; phosphate anions complex cations and support pH control, stabilization, and processing functions in food systems.",
+    "common_food_categories": [
+      "processed cheese and dairy products",
+      "bakery and cereal products",
+      "processed meat products",
+      "composite processed foods",
+      "specialized nutrition products"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 40,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI expressed as phosphorus for phosphoric acid and phosphates (E338-341, E343, E450-452), EFSA re-evaluation 2019"
+      },
+      "last_evaluation_year": 2019,
+      "key_finding": "EFSA reduced the phosphate group ADI and reported that high consumers, especially children, may exceed the ADI under some scenarios."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1434; 21 CFR 582.5434",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 70,
+        "unit": "mg/kg bw/day",
+        "basis": "Group MTDI as phosphorus for phosphoric acid and phosphates in WHO/JECFA summary"
+      },
+      "last_evaluation_year": 1982
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "High intake of readily absorbable inorganic phosphate additives is associated with increased phosphorus burden and concern for kidney-related outcomes; EFSA used nephrocalcinosis-related evidence in group ADI setting.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "EFSA 2019 re-evaluation (E338-341, E343, E450-452)",
+          "Dietary phosphorus burden and human health (2024 review)",
+          "Dietary Phosphates and Human Health (2025 review)"
+        ]
+      },
+      {
+        "category": "cardiovascular",
+        "summary": "Human and review evidence indicates phosphate additive intake can acutely raise phosphate-regulatory biomarkers (e.g., FGF23/PTH), with broader concern for cardiovascular risk at sustained high phosphorus burden.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "Randomized crossover breakfast study in healthy adults (2017)",
+          "Dietary phosphorus burden and human health (2024 review)",
+          "Dietary Phosphates and Human Health (2025 review)"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "No specific IARC carcinogenic classification identified for magnesium phosphates in the current IARC classified-agents dataset."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "toddlers",
+        "children",
+        "high consumers of phosphate-containing processed foods"
+      ],
+      "notes": "EFSA 2019 exposure assessment indicated potential exceedance of the group ADI in young/high-intake groups under some scenarios."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.79,
+    "rationale": "E343 remains authorized (EU/FDA) but with important caveats: EFSA set a stricter group ADI and identified possible exceedance in younger/high-intake populations, and human/mechanistic evidence supports concern at higher phosphate additive exposure.",
+    "key_factors": [
+      "EFSA group ADI 40 mg/kg bw/day (as phosphorus) with exceedance concern",
+      "FDA GRAS status under GMP conditions",
+      "WHO/JECFA historical group MTDI framework for phosphates",
+      "Human biomarker shifts after additive-phosphate meals",
+      "No IARC-specific classification for magnesium phosphates"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Phosphate food additives re-evaluated by EFSA",
+      "url": "https://www.efsa.europa.eu/en/news/phosphate-food-additives-re-evaluated-efsa",
+      "type": "regulatory"
+    },
+    {
+      "title": "Re-evaluation of phosphoric acid-phosphates as food additives (EFSA Journal 2019)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009658/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Title 21 full XML (issue date 2026-02-25)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO INCHEM/JECFA summary: Phosphoric acid and phosphates",
+      "url": "https://inchem.org/documents/jecfa/jecmono/v20je17.htm",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs: List of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classification dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Adding food additive phosphorus to a breakfast meal increases postprandial serum phosphorus in healthy adults",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27893251/",
+      "type": "study"
+    },
+    {
+      "title": "Dietary Phosphates and Human Health: Promising Insights and Current Challenges",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40068419/",
+      "type": "review"
+    },
+    {
+      "title": "Dietary phosphorus burden and human health",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38831428/",
+      "type": "review"
+    },
+    {
+      "title": "PubChem PUG REST: magnesium dihydrogen phosphate CIDs",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/magnesium%20dihydrogen%20phosphate/cids/TXT",
+      "type": "database"
+    },
+    {
+      "title": "PubChem PUG REST: CID 6096959 synonyms",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/6096959/synonyms/TXT",
+      "type": "database"
+    }
+  ]
+}

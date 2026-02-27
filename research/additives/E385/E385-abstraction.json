@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T00:00:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E385",
+    "name": "Calcium disodium EDTA",
+    "cas_numbers": [
+      "662-33-9"
+    ],
+    "synonyms": [
+      "Calcium disodium ethylenediaminetetraacetate",
+      "Calcium disodium EDTA",
+      "Calcium disodium edetate",
+      "Calcium disodium (ethylene-dinitrilo)-tetraacetate"
+    ],
+    "chemical_class": "Aminopolycarboxylate chelating agent (EDTA salt)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "sequestrant",
+    "secondary_categories": [
+      "preservative",
+      "antioxidant synergist"
+    ],
+    "mechanism": "Chelates polyvalent metal ions (e.g., iron and copper), reducing metal-catalyzed oxidation and preserving color/flavor/texture.",
+    "common_food_categories": [
+      "Pickled vegetables",
+      "Canned carbonated soft drinks",
+      "Mayonnaise and salad dressings",
+      "Sauces",
+      "Canned seafood",
+      "Fermented malt beverages",
+      "Distilled alcoholic beverages",
+      "Canned legumes"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 1.9,
+        "unit": "mg/kg bw/day",
+        "basis": "Current ADI as EDTA in EFSA 2018 opinion context; equivalent to 2.5 mg/kg bw/day as calcium disodium EDTA."
+      },
+      "last_evaluation_year": 2018,
+      "key_finding": "EFSA reported no scientific justification to increase the current ADI; re-evaluation call workflow indicates assessment completion targeted by end of 2026."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.120",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 2.5,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA ADI expressed as 0-2.5 mg/kg bw/day for calcium disodium EDTA."
+      },
+      "last_evaluation_year": 1973
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "Legacy toxicology reports renal injury mainly under high parenteral exposure conditions, supporting conservative oral ADI management.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "INCHEM JECFA Monograph v05je25"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Chelation may alter essential mineral handling at high exposures; infant/high-intake scenarios were highlighted in EFSA ferric sodium EDTA exposure context.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "EFSA Journal 2018 (pub/5369 archived)",
+          "WHO/JECFA Chemical 3011"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "Low oral absorption with predominantly fecal excretion in older ADME data.",
+      "FDA permits use with explicit category limits in 21 CFR 172.120.",
+      "JECFA and EFSA maintain numeric ADIs rather than withdrawing authorization."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "High-intake infants (scenario in EFSA ferric sodium EDTA assessment context)",
+        "Children with high preserved-beverage intake"
+      ],
+      "notes": "EFSA indicated potential high-intake exceedance in infant scenario modeling; a 2026 beverage survey found higher relative exposure in children, though overall HI remained below 1 in that dataset."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.72,
+    "rationale": "E385 remains approved with ADI-based controls, but available evidence supports non-trivial caveats for high-intake groups (especially infants/children) and high-dose toxicity context.",
+    "key_factors": [
+      "ADI maintained by EFSA/JECFA rather than ADI-not-specified",
+      "EFSA high-intake infant scenario caveat",
+      "FDA authorization is conditional with explicit ppm limits",
+      "No IARC carcinogenic group assignment identified"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Further call for data for the re-evaluation of calcium disodium EDTA (E 385) (archived EFSA page)",
+      "url": "https://wayback.archive-it.org/12090/20250728164413/https://www.efsa.europa.eu/en/call/further-call-data-reevaluation-calcium-disodium-edta-e-385",
+      "type": "regulatory"
+    },
+    {
+      "title": "Scientific opinion on ferric sodium EDTA (EFSA Journal pub/5369 archived page)",
+      "url": "https://wayback.archive-it.org/12090/20231020101310/https://www.efsa.europa.eu/en/efsajournal/pub/5369",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API titles metadata",
+      "url": "https://www.ecfr.gov/api/versioner/v1/titles.json",
+      "type": "database"
+    },
+    {
+      "title": "21 CFR 172.120 Calcium disodium EDTA (eCFR API XML)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?section=172.120",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA chemical page: CALCIUM DISODIUM ETHYLENEDIAMINETETRAACETATE (INS 385)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3011",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA API search by partial name",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/calcium%20disodium%20edta",
+      "type": "database"
+    },
+    {
+      "title": "INCHEM JECFA evaluation summary: Calcium disodium edta",
+      "url": "https://inchem.org/documents/jecfa/jeceval/jec_436.htm",
+      "type": "database"
+    },
+    {
+      "title": "INCHEM JECFA monograph: Ethylenediaminetetraacetate, disodium and calcium disodium salts",
+      "url": "http://www.inchem.org/documents/jecfa/jecmono/v05je25.htm",
+      "type": "review"
+    },
+    {
+      "title": "IARC list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset script (agents list payload)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search: \"calcium disodium edta\" sorted by date",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%22calcium+disodium+edta%22&sort=date",
+      "type": "database"
+    },
+    {
+      "title": "Dietary Exposure and Chronic Health Risks of Beverage Preservatives",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41496444/",
+      "type": "study"
+    },
+    {
+      "title": "EDTA and Salts",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37772606/",
+      "type": "review"
+    },
+    {
+      "title": "Do Nanoparticles of Calcium Disodium EDTA Minimize the Toxic Effects of Cadmium in Female Rats?",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37721680/",
+      "type": "study"
+    }
+  ]
+}

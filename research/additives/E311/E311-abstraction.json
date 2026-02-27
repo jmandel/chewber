@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T11:16:25Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E311",
+    "name": "Octyl gallate",
+    "cas_numbers": [
+      "1034-01-1"
+    ],
+    "synonyms": [
+      "Octyl ester of gallic acid",
+      "n-Octyl ester of 3,4,5-trihydroxybenzoic acid",
+      "Octyl 3,4,5-trihydroxybenzoate"
+    ],
+    "chemical_class": "Alkyl gallate (gallic acid ester), phenolic antioxidant",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "antioxidant",
+    "secondary_categories": [
+      "preservative"
+    ],
+    "mechanism": "Phenolic chain-breaking antioxidant that inhibits lipid oxidation; classified in JECFA as a food additive antioxidant.",
+    "common_food_categories": [
+      "Food supplements in solid form (EU retained category 17.1)",
+      "Margarine or oleomargarine (US standard-of-identity preservative context)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "restricted",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2015 re-evaluation reported inability to establish an ADI for broader uses; no safety concern for then-current solid food supplement use at maximum permitted level, as cited in Regulation (EU) 2018/1462."
+      },
+      "last_evaluation_year": 2015,
+      "key_finding": "EFSA could not establish a general ADI and EU subsequently removed uses except food supplements category 17.1."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 166.110(b)(5)",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA octyl gallate entry lists NO ADI ALLOCATED (evaluation year 1996; temporary ADI from 1993 not extended)."
+      },
+      "last_evaluation_year": 1996
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "genotoxic",
+        "summary": "A 2023 in vitro human lymphocyte study reported no major genotoxic effect across several endpoints, but did find increased sister chromatid exchange and reduced mitotic index at higher tested concentrations.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PubMed PMID 36882025"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "A 2024 mouse study reported altered fecal microbiome diversity/community structure after octyl gallate administration.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PubMed PMID 39200031"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "EU risk management narrowed authorized uses after EFSA reported insufficient data to establish a broad ADI.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "Regulation (EU) 2018/1462",
+          "EFSA Journal 2015 opinion on E311"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA-derived conclusion cited by EU legal text: no safety concern for retained solid food supplement use at maximum level.",
+      "IARC classification dataset search found no octyl gallate listing.",
+      "2023 in vitro study did not show major genotoxic action at tested concentrations despite some high-dose cellular effects."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "No numeric EFSA or JECFA ADI is currently available for straightforward exceedance comparison; risk control is mainly through use restriction."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.77,
+    "rationale": "Octyl gallate remains allowed in some jurisdictions but with significant caveats: EFSA could not establish a broad ADI and EU removed most uses, while recent mechanistic/in vitro signals are not strong enough to indicate high risk at current regulated uses.",
+    "key_factors": [
+      "EFSA ADI not established for broader uses",
+      "EU legal restriction to food supplements category 17.1",
+      "US use-specific approval in margarine standard",
+      "JECFA status NO ADI ALLOCATED",
+      "No direct IARC classification listing"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal page: Scientific Opinion on the re-evaluation of octyl gallate (E311)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4248",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA search page for octyl gallate",
+      "url": "https://www.efsa.europa.eu/en/search?text=octyl%20gallate",
+      "type": "database"
+    },
+    {
+      "title": "Commission Regulation (EU) 2018/1462",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32018R1462",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API search results for octyl gallate",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=octyl%20gallate",
+      "type": "database"
+    },
+    {
+      "title": "eCFR Title 21 full XML (2026-02-19)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR titles metadata endpoint",
+      "url": "https://www.ecfr.gov/api/versioner/v1/titles.json",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical page: Octyl gallate (chemID 4118)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/chemical.aspx?chemID=4118",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA API partial-name search: octyl gallate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/octyl%20gallate",
+      "type": "database"
+    },
+    {
+      "title": "IARC Agents classified by the IARC Monographs",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list-of-classifications dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed query: octyl gallate toxicity",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=octyl+gallate+toxicity&sort=date",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 36882025 (Mutagenesis 2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36882025/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 39200031 (Antibiotics (Basel) 2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39200031/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 38382789 (Int J Biol Macromol 2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38382789/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 40693965 (Med Mycol 2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40693965/",
+      "type": "study"
+    }
+  ]
+}

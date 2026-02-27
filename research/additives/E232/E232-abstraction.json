@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T00:00:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E232",
+    "name": "Sodium o-phenylphenol (Sodium orthophenylphenol)",
+    "cas_numbers": [
+      "132-27-4"
+    ],
+    "synonyms": [
+      "Sodium orthophenylphenol",
+      "Sodium o-phenylphenate",
+      "Sodium o-phenylphenolate",
+      "Sodium (1,1'-biphenyl)-2-olate"
+    ],
+    "chemical_class": "Aromatic phenolic preservative (sodium salt of o-phenylphenol)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "post-harvest fungicide",
+      "antimicrobial",
+      "indirect food-contact process aid"
+    ],
+    "mechanism": "Phenolic antimicrobial/fungicidal action; used to reduce post-harvest fungal spoilage on treated fruit surfaces.",
+    "common_food_categories": [
+      "citrus fruits (post-harvest surface treatment)",
+      "food-contact paper and paperboard manufacturing (defoaming-agent formulations)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "restricted",
+      "adi": {
+        "value": 0.15,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2015 re-evaluation for orthophenylphenol/sodium orthophenylphenol; ADI derived from toxicology dataset with nephrotoxicity/body-weight effects as key drivers."
+      },
+      "last_evaluation_year": 2015,
+      "key_finding": "Use at reported levels as post-harvest fungicides for citrus fruits was not a safety concern when peel is not consumed; conservative combined exposure scenarios could exceed ADI."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 176.210 (d)(3)",
+      "notes": "Listed in defoaming-agent formulations for paper/paperboard used with food, with use limited to technical effect; no direct GRAS listing for this term was identified in searched Title 21 text."
+    },
+    "jecfa": {
+      "adi": {
+        "value": 0.2,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO JECFA database entry reports ADI 0-0.2 mg/kg bw for sodium o-phenylphenol (evaluation year shown: 1964)."
+      },
+      "last_evaluation_year": 1964
+    },
+    "iarc_classification": "Group 2B",
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "carcinogenic",
+        "summary": "IARC classification dataset lists sodium ortho-phenylphenate as Group 2B (possibly carcinogenic to humans).",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "IARC list-of-classifications dataset (webapi.iarc.who.int/loc/loc.app.js)"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent zebrafish studies report developmental cardiotoxicity and craniofacial toxicity linked to impaired progenitor cell migration and oxidative stress pathways under OPP exposure.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PubMed 41365378",
+          "PubMed 37268146"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "In reconstructed human skin/airway biocide models including 2-phenylphenol, airway viability reductions were observed for several biocides, indicating inhalation/irritation concern in non-dietary exposure contexts.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PubMed 33596452"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA re-evaluation concluded no concern for genotoxicity.",
+      "EFSA reported no adverse effects in a two-generation reproductive study at tested doses."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "high consumers of citrus peel-containing products",
+        "children/toddlers in conservative exposure scenarios"
+      ],
+      "notes": "EFSA reported conservative combined exposure estimates above ADI in some scenarios; safety concern was not identified when treated peel is not consumed."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.75,
+    "rationale": "E232 has established ADIs and conditional regulatory acceptance, but not an unrestricted safety profile. Conservative exposure scenarios can exceed ADI, IARC classifies sodium ortho-phenylphenate as Group 2B, and recent mechanistic toxicology studies report developmental toxicity signals in model organisms.",
+    "key_factors": [
+      "EFSA ADI 0.15 mg/kg bw/day with conditional safety conclusion tied to peel consumption assumptions",
+      "JECFA ADI 0-0.2 mg/kg bw",
+      "IARC Group 2B classification",
+      "Evidence of developmental/mechanistic toxicity in recent zebrafish studies",
+      "Specific-use FDA CFR authorization rather than broad direct GRAS context"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal 2015;13(6):4143 - Re-evaluation of biphenyl (E 230), orthophenylphenol (E 231) and sodium orthophenylphenol (E 232) as food additives",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4143",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA search endpoint (access attempt; robots.txt restriction observed in shell)",
+      "url": "https://www.efsa.europa.eu/en/search?search_api_fulltext=orthophenylphenol",
+      "type": "database"
+    },
+    {
+      "title": "eCFR - 21 CFR 176.210 (Defoaming agents used in manufacture of paper and paperboard)",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-176/section-176.210",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API - Full Title 21 XML (versioned)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database - SODIUM o-PHENYLPHENOL",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/5232",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA database API search - ByPartialName/phenylphenol",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/phenylphenol",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs - List of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications app dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed 41365378 - O-phenylphenol induces cardiac injury by regulating cardiac progenitor cells in zebrafish",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41365378/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed 37268146 - Toxicity of o-phenylphenol on craniofacial cartilage development through ROS-induced oxidative stress in zebrafish embryos",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37268146/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed 33596452 - Skin irritation and inhalation toxicity of biocides evaluated with reconstructed human epidermis and airway models",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33596452/",
+      "type": "study"
+    }
+  ]
+}

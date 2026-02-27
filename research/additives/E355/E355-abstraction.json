@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "research_metadata": { "date": "2026-02-27T13:22:22Z", "prompt_version": "2.0" },
+  "identity": {
+    "e_number": "E355",
+    "name": "Adipic acid",
+    "cas_numbers": ["124-04-9"],
+    "synonyms": ["Hexanedioic acid", "1,4-butanedicarboxylic acid"],
+    "chemical_class": "Aliphatic dicarboxylic acid",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": ["flavouring agent", "leavening agent", "pH control agent"],
+    "mechanism": "Acts as an acidulant that lowers/controls pH and contributes sourness; in leavening systems it serves as an acid component.",
+    "common_food_categories": ["baked goods", "nonalcoholic beverages", "condiments and relishes", "dairy product analogs", "frozen dairy desserts", "gelatin and puddings", "gravies", "meat products", "snack foods", "flavoured milk drinks"]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": { "value": null, "unit": "mg/kg bw/day", "basis": "No published EFSA E355 re-evaluation opinion/ADI identified in the 18-Feb-2026 official EU state-of-play summary table." },
+      "last_evaluation_year": null,
+      "key_finding": "E355 is listed as already permitted before 20 January 2009, but the EFSA re-evaluation entry shows not completed and no opinion publication/link in the latest official summary table retrieved."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1009",
+      "notes": "Listed in 21 CFR Part 184 (direct food substances affirmed as GRAS); used at GMP with category-specific maximum levels."
+    },
+    "jecfa": {
+      "adi": { "value": 5, "unit": "mg/kg bw/day", "basis": "Group ADI 0-5 mg/kg bw for adipic acid and selected adipate salts; JECFA 2025 exposure review retained reference to current group ADI and called for toxicology re-evaluation." },
+      "last_evaluation_year": 2025
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "JECFA 2025 exposure scenarios showed frequent exceedances of the current group ADI (0-5 mg/kg bw/day), especially in children/high consumers, with some modeled high-end exceedances in the hundreds to thousands of percent.",
+        "evidence_strength": "moderate",
+        "key_references": ["https://iris.who.int/server/api/core/bitstreams/e31f56ec-00c5-4f92-94e4-37fd0fb84471/content", "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/194"]
+      },
+      {
+        "category": "other",
+        "summary": "Historical toxicology basis includes long-term rat findings of reduced body-weight gain/diarrhoea at high dietary concentrations, indicating dose-related gastrointestinal/systemic effects at sufficiently high intake.",
+        "evidence_strength": "moderate",
+        "key_references": ["https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/194", "https://pubmed.ncbi.nlm.nih.gov/12024802/"]
+      },
+      {
+        "category": "other",
+        "summary": "Recent food-contact/packaging studies report adipic-acid-related oligomer migrants with TTC-based concern in some scenarios, but these findings are not direct proof of harm from E355 as intentionally added food additive.",
+        "evidence_strength": "weak",
+        "key_references": ["https://pubmed.ncbi.nlm.nih.gov/37567267/", "https://pubmed.ncbi.nlm.nih.gov/39029188/"]
+      }
+    ],
+    "no_concern_confirmed": [
+      "A 2002 toxicology review reports low acute oral toxicity and no clear genotoxic or developmental toxicity signal in tested systems/species.",
+      "No IARC monograph classification entry was identified for adipic acid/CAS 124-04-9 in the currently retrieved classification dataset."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": ["children", "high consumers of foods with higher adipic acid use levels"],
+      "notes": "JECFA 2025 reported that conservative exposure estimates often exceeded the current group ADI; e.g., high estimates up to 33 mg/kg bw/day (children) in current-maximum scenarios and up to 410 mg/kg bw/day in current+proposed scenarios."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.8,
+    "rationale": "E355 remains authorized, but the best current quantitative source (JECFA 2025) indicates substantial potential ADI exceedance in high-intake scenarios, especially for children, and recommends updated toxicology/ADI reassessment. No IARC carcinogenic classification or major bans were identified.",
+    "key_factors": [
+      "FDA GRAS listing under 21 CFR 184.1009",
+      "JECFA group ADI 0-5 mg/kg bw/day with 2025 exposure exceedance concerns",
+      "JECFA recommendation to re-evaluate toxicology and reassess ADI",
+      "EU state-of-play table shows EFSA re-evaluation entry for E355 still incomplete",
+      "No IARC listing for adipic acid found in current retrieved classification dataset"
+    ]
+  },
+  "sources": [
+    { "title": "EFSA site search for E355 (access response: 403 disallowed by robots.txt)", "url": "https://www.efsa.europa.eu/en/search?text=E355", "type": "regulatory" },
+    { "title": "EFSA site search for adipic acid (access response: 403 disallowed by robots.txt)", "url": "https://www.efsa.europa.eu/en/search?text=adipic%20acid", "type": "regulatory" },
+    { "title": "European Commission - Re-evaluation of food additives in the EU", "url": "https://food.ec.europa.eu/food-safety/food-improvement-agents/additives/re-evaluation-food-additives-eu_en", "type": "regulatory" },
+    { "title": "Summary table of permitted food additives and status of their re-evaluation by EFSA (status as of 18 February 2026)", "url": "https://food.ec.europa.eu/document/download/7471ebd9-5a9a-4f8a-ae85-b64502a15353_en?filename=fs_food-improvement-agents_reeval_summary-table.xls", "type": "database" },
+    { "title": "eCFR API search results for adipic acid", "url": "https://www.ecfr.gov/api/search/v1/results?query=adipic%20acid&per_page=20&page=1", "type": "database" },
+    { "title": "eCFR API titles metadata", "url": "https://www.ecfr.gov/api/versioner/v1/titles.json", "type": "database" },
+    { "title": "eCFR full Title 21 XML (2026-02-25)", "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml", "type": "regulatory" },
+    { "title": "WHO/JECFA Chemical record: ADIPIC ACID (Chemical 194)", "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/194", "type": "database" },
+    { "title": "WHO Technical Report Series 1058 (JECFA 100, 2025)", "url": "https://iris.who.int/server/api/core/bitstreams/e31f56ec-00c5-4f92-94e4-37fd0fb84471/content", "type": "regulatory" },
+    { "title": "IARC Monographs - List of Classifications", "url": "https://monographs.iarc.who.int/list-of-classifications/", "type": "database" },
+    { "title": "IARC LOC dataset bundle (classifications app data)", "url": "https://webapi.iarc.who.int/loc/loc.app.js", "type": "database" },
+    { "title": "Toxicity of adipic acid (Drug Chem Toxicol, 2002)", "url": "https://pubmed.ncbi.nlm.nih.gov/12024802/", "type": "review" },
+    { "title": "Evaluation and identification of chemical migrants leached from baby food pouch packaging (Chemosphere, 2023)", "url": "https://pubmed.ncbi.nlm.nih.gov/37567267/", "type": "study" },
+    { "title": "Synthesis and quantification of oligoesters migrating from starch-based food packaging materials (J Hazard Mater, 2024)", "url": "https://pubmed.ncbi.nlm.nih.gov/39029188/", "type": "study" },
+    { "title": "PubMed search results: adipic acid food additive safety", "url": "https://pubmed.ncbi.nlm.nih.gov/?term=adipic+acid+food+additive+safety", "type": "database" }
+  ]
+}

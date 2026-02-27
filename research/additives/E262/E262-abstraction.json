@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T09:49:04+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E262",
+    "name": "Sodium acetates (sodium acetate and sodium hydrogen diacetate)",
+    "cas_numbers": [
+      "127-09-3",
+      "6131-90-4",
+      "126-96-5"
+    ],
+    "synonyms": [
+      "Sodium acetate",
+      "Sodium ethanoate",
+      "Sodium diacetate",
+      "Sodium hydrogen diacetate"
+    ],
+    "chemical_class": "Salts and acid salts of acetic acid (short-chain carboxylate food additives)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "preservative",
+      "pH control agent",
+      "flavoring agent/adjuvant"
+    ],
+    "mechanism": "Acidification and buffering effects plus antimicrobial activity associated with acetate/acetic acid systems.",
+    "common_food_categories": [
+      "baked goods",
+      "fats and oils",
+      "grain products and pastas",
+      "snack foods",
+      "hard and soft candy",
+      "jams and jellies",
+      "meat products",
+      "soups and soup mixes",
+      "gravies and sauces",
+      "breakfast cereals"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA (2022) cites prior EFSA conclusion (2013) that establishing an ADI for acetic acid/acetates is not considered necessary."
+      },
+      "last_evaluation_year": 2022,
+      "key_finding": "E262 is already authorised in the EU; EFSA re-evaluation entries are ongoing, and a related 2022 EFSA opinion on acetate-based buffered vinegar found no safety concern at proposed use levels (but not at quantum satis)."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1; 21 CFR 184.1721; 21 CFR 184.1754",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA lists sodium acetate (INS 262(i)) as ADI not limited and sodium hydrogen diacetate (INS 262(ii)) as ADI 0-15 mg/kg bw (both evaluation year 1973; sodium acetate note indicates maintenance at 49th meeting, 1997)."
+      },
+      "last_evaluation_year": 1973
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "genotoxic",
+        "summary": "Recent in vitro studies in human lymphocytes/cell models reported concentration-dependent DNA damage, chromosomal aberrations, or cytotoxic effects at higher sodium acetate/sodium diacetate concentrations.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:39958174",
+          "PMID:30019796",
+          "PMID:29622200"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Some non-human cell/microalgae systems show condition-dependent toxicity for sodium diacetate (greater under acidic conditions), with limited direct relevance to normal dietary human exposure.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:29090701"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2022 concluded no safety concern at proposed maximum/typical use levels for buffered vinegar (acetate-based).",
+      "FDA lists sodium acetate and sodium diacetate as GRAS-affirmed direct food ingredients under specified conditions.",
+      "JECFA sodium acetate record uses ADI 'not limited' with maintenance note at 49th meeting."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "No direct ADI exceedance determination was identified for E262 in reviewed sources. EFSA reports high-end modeled exposure for buffered vinegar in young children but still concluded no safety concern at proposed levels; sodium-sensitive individuals remain a general dietary-sodium consideration."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.77,
+    "rationale": "Regulatory bodies (EFSA/FDA/JECFA) broadly support safety under defined use conditions, while recent adverse findings are mainly high-concentration in vitro signals without strong corroborating epidemiological or in vivo dietary harm evidence at typical exposure levels.",
+    "key_factors": [
+      "EFSA/FDA/JECFA permissive regulatory status with conditions",
+      "EFSA ADI-not-necessary framing for acetate context",
+      "JECFA split ADI outputs between 262(i) and 262(ii)",
+      "In vitro genotoxicity/cytotoxicity signals at high concentrations",
+      "No IARC group listing identified for sodium acetate/diacetate"
+    ]
+  },
+  "sources": [
+    {
+      "title": "OpenEFSA record EFSA-Q-2011-00594 (Re-evaluation of E262(i) Sodium acetate)",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00594",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA record EFSA-Q-2011-00627 (Re-evaluation of E262(ii) Sodium diacetate)",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00627",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA record EFSA-Q-2021-00349 (ON-7351 published output)",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2021-00349",
+      "type": "regulatory"
+    },
+    {
+      "title": "Safety evaluation of buffered vinegar as a food additive (EFSA Journal, 2022)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35795292/",
+      "type": "review"
+    },
+    {
+      "title": "21 CFR 184.1 Substances added directly to human food affirmed as GRAS",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=184&subpart=&section=184.1",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 184.1721 Sodium acetate",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=184&subpart=&section=184.1721",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 184.1754 Sodium diacetate",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=184&subpart=&section=184.1754",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA sodium acetate search endpoint",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/sodium%20acetate",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA sodium diacetate search endpoint",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/sodium%20diacetate",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA chemical record: Sodium acetate (INS 262(i))",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2970",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA chemical record: Sodium hydrogen diacetate (INS 262(ii))",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1654",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications app dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Safety assessment of sodium acetate, sodium diacetate and potassium sorbate food additives (Food Chemistry, 2018)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29622200/",
+      "type": "study"
+    },
+    {
+      "title": "Sodium Acetate, Sodium Acid Pyrophosphate, and Citric Acid Impacts... (J Biochem Mol Toxicol, 2018)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30019796/",
+      "type": "study"
+    },
+    {
+      "title": "Analysis of genotoxic effects of food preservatives sodium acetate (E262)... (Food Sci Biotechnol, 2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39958174/",
+      "type": "study"
+    },
+    {
+      "title": "Comparative toxic effects of butylparaben sodium, sodium diacetate and potassium sorbate... (Food & Function, 2017)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29090701/",
+      "type": "study"
+    }
+  ]
+}

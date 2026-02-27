@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T11:53:27Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E326",
+    "name": "Potassium lactate",
+    "cas_numbers": [
+      "996-31-6"
+    ],
+    "synonyms": [
+      "Potassium 2-hydroxypropanoate",
+      "Potassium-L-lactate",
+      "INS 326",
+      "E326"
+    ],
+    "chemical_class": "Lactate salt (potassium salt of lactic acid)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "Acidity regulator / pH control agent",
+    "secondary_categories": [
+      "humectant",
+      "flavor enhancer",
+      "flavoring agent/adjuvant",
+      "preservative-support"
+    ],
+    "mechanism": "Modulates pH and water activity and contributes ionic effects that can inhibit microbial growth in many processed food systems, especially meat products.",
+    "common_food_categories": [
+      "processed meats",
+      "ready-to-eat meats (ham, turkey products)",
+      "sausages/salami",
+      "marinated meat and fish products"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "Latest EFSA OpenEFSA dossier for E326 is ongoing risk assessment (no final output/ADI yet)."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "EFSA indicates E326 is already authorised but re-evaluation is ongoing; January 19, 2026 update notes a new call for data in 2026 and expected completion in 2027."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1639",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI NOT LIMITED (JECFA potassium lactate solution record; infant-food caveat stated)."
+      },
+      "last_evaluation_year": 1974
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Infant-use caution appears in both regulatory frameworks reviewed: FDA excludes use in infant foods/formula and JECFA comments that D(-)- or DL-lactic acid forms should not be used in infant foods.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://www.ecfr.gov/api/versioner/v1/full/2025-01-01/title-21.xml?part=184&section=184.1639",
+          "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2777"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Some food-microbiology literature reports adaptive resistance/cross-protection of Listeria under exposure to organic acid salts including potassium lactate; this is mainly a process-control concern rather than direct human toxicology.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/25911485/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA record lists ADI as NOT LIMITED for potassium lactate (solution).",
+      "FDA affirms potassium lactate as GRAS under GMP in 21 CFR 184.1639 (with infant-food exclusion).",
+      "No specific IARC monograph classification entry for potassium lactate was identified in reviewed IARC resources."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "infants (use restrictions apply)",
+        "high consumers of processed meats (quantitative benchmark unavailable in current EFSA dossier)"
+      ],
+      "notes": "No current EFSA numerical ADI found in the active E326 re-evaluation dossier; JECFA uses a non-numeric ADI category (NOT LIMITED), so formal exceedance calculation is not available from these sources."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.71,
+    "rationale": "Current evidence supports continued controlled use: FDA GRAS and JECFA ADI not limited, with no major carcinogenic listing identified. Residual uncertainty remains because EFSA re-evaluation is ongoing and infant-use caveats exist.",
+    "key_factors": [
+      "FDA GRAS with GMP and defined use conditions",
+      "JECFA ADI NOT LIMITED and 1974 evaluation record",
+      "No specific IARC classification found for potassium lactate",
+      "EFSA re-evaluation for E326 is active and not finalized",
+      "Infant-related regulatory cautions"
+    ]
+  },
+  "sources": [
+    {
+      "title": "OpenEFSA API: Substance - Potassium lactate",
+      "url": "https://open.efsa.europa.eu/api/substance/get?termExtendedName=Potassium%20lactate",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA API: Questions for Potassium lactate",
+      "url": "https://open.efsa.europa.eu/api/substance/getQuestions?termExtendedName=Potassium%20lactate",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA API: Question EFSA-Q-2011-00601 (Re-evaluation of E326 Potassium lactate)",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00601",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA API: Question EFSA-Q-2011-00596",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00596",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA API: Question EFSA-Q-2011-00600",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00600",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA API: Question EFSA-Q-2011-00602",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00602",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA API: Question EFSA-Q-2011-00690",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00690",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR 184.1639 Potassium lactate",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2025-01-01/title-21.xml?part=184&section=184.1639",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database: Potassium lactate (solution), Chemical 2777",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2777",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA API search endpoint used for potassium lactate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/potassium%20lactate",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC search attempt for potassium lactate",
+      "url": "https://monographs.iarc.who.int/?s=potassium+lactate",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search results (potassium lactate food additive safety)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=potassium+lactate+food+additive+safety",
+      "type": "database"
+    },
+    {
+      "title": "PubMed E-utilities title query for potassium lactate",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%22potassium%20lactate%22%5BTitle%5D&retmax=50&retmode=json",
+      "type": "database"
+    },
+    {
+      "title": "Comprehensive Effects of Potassium Lactate... in Low-Sodium Marinated Beef (2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38254592/",
+      "type": "study"
+    },
+    {
+      "title": "Potassium Lactate as a Strategy for Sodium Content Reduction... in Salami (2021)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33430446/",
+      "type": "study"
+    },
+    {
+      "title": "The effect of potassium lactate on ... ready-to-eat pastırma (2022)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35250054/",
+      "type": "study"
+    },
+    {
+      "title": "Inhibition of Clostridium perfringens growth by potassium lactate... (2013)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24215704/",
+      "type": "study"
+    },
+    {
+      "title": "VirR-Mediated Resistance of Listeria monocytogenes against Food Antimicrobials... (2015)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25911485/",
+      "type": "study"
+    }
+  ]
+}

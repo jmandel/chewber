@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T11:46:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E322II",
+    "name": "Partially hydrolysed lecithin",
+    "cas_numbers": [
+      "85711-58-6",
+      "8002-43-5"
+    ],
+    "synonyms": [
+      "Hydrolysed lecithins",
+      "Lecithins",
+      "Phosphatides",
+      "Phospholipids"
+    ],
+    "chemical_class": "Complex phospholipid/phosphatide mixture (modified lecithin)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "emulsifier",
+    "secondary_categories": [
+      "antioxidant synergist",
+      "synergist",
+      "stabilizer"
+    ],
+    "mechanism": "Amphiphilic phospholipids reduce oil-water interfacial tension and stabilize emulsions; digestion releases choline-containing metabolites.",
+    "common_food_categories": [
+      "Foods generally (GMP-limited uses)",
+      "Infant formula (EU FC 13.1.1)",
+      "Foods for special medical purposes (EU FC 13.1.5.1)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2017 concluded there was no need for a numerical ADI for lecithins (E 322); 2020 follow-up found no safety concerns up to MPL for infants below 16 weeks in assessed categories."
+      },
+      "last_evaluation_year": 2020,
+      "key_finding": "No safety concern was identified at refined exposure estimates in the 2017 re-evaluation, and no safety concern up to MPL for infants below 16 weeks in the 2020 follow-up."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1400; 21 CFR 184.1063",
+      "notes": "Part 184 is the GRAS-affirmed framework; lecithin and enzyme-modified lecithin are used under current good manufacturing practice. Related modified lecithin rule: 21 CFR 172.814 (hydroxylated lecithin)."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA entry for LECITHIN, partially hydrolyzed (ID 1478) does not display a separate ADI statement; parent LECITHIN entry (ID 1477) has ADI 'NOT LIMITED'."
+      },
+      "last_evaluation_year": 1990
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "allergenic",
+        "summary": "Residual soy/egg proteins in lecithins can trigger reactions in sensitive individuals; EFSA noted residual proteins should be reduced as much as possible.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7010002/",
+          "https://pubmed.ncbi.nlm.nih.gov/31603281/?format=pubmed",
+          "https://pubmed.ncbi.nlm.nih.gov/35023195/?format=pubmed",
+          "https://pubmed.ncbi.nlm.nih.gov/10024228/?format=pubmed"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Potential neurodevelopment concern in very young infants was specifically reviewed by EFSA in 2020 and not confirmed as a safety issue up to MPL.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/33204307/?format=pubmed"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2017: no need for a numerical ADI and no safety concern at refined exposure estimates.",
+      "EFSA 2020: no safety concerns up to MPL in infant formula/FSMP uses for infants below 16 weeks.",
+      "JECFA parent lecithin entry lists ADI as NOT LIMITED."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "Not directly applicable because EFSA did not set a numerical ADI for E322 and JECFA parent lecithin ADI is not limited",
+        "Allergy-susceptible soy/egg-sensitive individuals remain a practical concern"
+      ],
+      "notes": "EFSA refined exposure estimates are available, but classic ADI exceedance calculation is not applicable for this additive group due absence of a numeric ADI."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.82,
+    "rationale": "Regulatory evaluations from EFSA and JECFA do not indicate a broad population safety concern at assessed uses, and US CFR places lecithin forms in GRAS/approved frameworks under GMP. The main residual risk is allergenicity from trace proteins in sensitive individuals.",
+    "key_factors": [
+      "EFSA 2017: no numerical ADI needed and no safety concern in assessed populations",
+      "EFSA 2020: infant-below-16-weeks follow-up did not identify safety concerns up to MPL",
+      "eCFR Part 184 GRAS framework includes lecithin and enzyme-modified lecithin",
+      "JECFA parent lecithin ADI is not limited; partial hydrolyzed entry exists with no separate ADI text",
+      "No IARC monograph classification found for lecithin in current IARC classification feed",
+      "Residual allergen risk remains for soy/egg-sensitive individuals"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal page: Re-evaluation of lecithins (E 322) as a food additive",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4742",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed formatted record for EFSA 2017 E322 opinion (PMID 32625454)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625454/?format=pubmed",
+      "type": "regulatory"
+    },
+    {
+      "title": "PMC full text of EFSA 2017 E322 opinion (PMCID: PMC7010002)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7010002/",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed formatted record for EFSA 2020 infant follow-up (PMID 33204307)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33204307/?format=pubmed",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 full XML (snapshot date 2026-02-25)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR section page attempted: 21 CFR 184.1400",
+      "url": "https://www.ecfr.gov/current/title-21/section-184.1400",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA search API by partial name: lecithin",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/lecithin",
+      "type": "database"
+    },
+    {
+      "title": "JECFA chemical page: LECITHIN, partially hydrolyzed (ID 1478)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1478",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA chemical page: LECITHIN (ID 1477)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1477",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC list-of-classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classification dataset script (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed RCT: soya lecithin tolerance in children with non-IgE-mediated soy allergy (PMID 31603281)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31603281/?format=pubmed",
+      "type": "study"
+    },
+    {
+      "title": "PubMed case report: fixed food eruption caused by soy lecithin (PMID 35023195)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35023195/?format=pubmed",
+      "type": "study"
+    },
+    {
+      "title": "PubMed study: antigenicity of proteins in soy lecithin and soy oil (PMID 10024228)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10024228/?format=pubmed",
+      "type": "study"
+    },
+    {
+      "title": "PubMed review: Lecithin and cardiovascular health (PMID 39001966)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39001966/?format=pubmed",
+      "type": "review"
+    }
+  ]
+}

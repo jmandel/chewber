@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T10:25:41Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E297",
+    "name": "Fumaric acid",
+    "cas_numbers": [
+      "110-17-8"
+    ],
+    "synonyms": [
+      "2(trans)-butenedioic acid",
+      "(E)-butenedioic acid",
+      "(E)-1,2-ethylenedicarboxylic acid",
+      "allomaleic acid",
+      "boletic acid"
+    ],
+    "chemical_class": "unsaturated dicarboxylic acid",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "acidulant",
+      "flavouring agent",
+      "preservative"
+    ],
+    "mechanism": "Acts as an acidulant/acidity regulator by lowering food pH, contributing sourness and conditions that can inhibit growth of some microorganisms.",
+    "common_food_categories": [
+      "powdered beverage bases",
+      "fruit juice drinks",
+      "dry gelatin dessert preparations",
+      "acidified foods where permitted"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 6,
+        "unit": "mg/kg bw/day",
+        "basis": "SCF ADI 0-6 mg/kg bw/day (opinion year 1990) as recorded in EFSA OpenFoodTox; critical effect nephrocalcinosis in rats, NOAEL 600 mg/kg bw/day with UF 100; EFSA food-additive re-evaluation process was active in 2024."
+      },
+      "last_evaluation_year": 1990,
+      "key_finding": "E297 remains permitted in the EU, but EFSA re-evaluation is ongoing; preliminary EFSA exposure modelling (2024 background document) estimated high-end toddler intake up to 54.7 mg/kg bw/day under conservative assumptions."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.350",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI not specified for fumaric acid and its salts (established 1989; maintained at 53rd meeting in 1999)."
+      },
+      "last_evaluation_year": 1999
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "Historical SCF toxicological basis in EFSA OpenFoodTox identifies nephrocalcinosis in rats as the critical effect; ADI derived from a rat NOAEL of 600 mg/kg bw/day.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://www.efsa.europa.eu/en/microstrategy/openfoodtox/endpoints?endpoint=5085",
+          "https://www.efsa.europa.eu/en/microstrategy/openfoodtox/sources?source=417"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "In EFSA's 2024 feed additive renewal opinion, fumaric acid was described as irritant to skin/eyes/respiratory tract and as skin/respiratory sensitiser in user-handling context; this is primarily occupational rather than dietary consumer exposure.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/39449760/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent safety alerts on fumaric acid esters (drug class) report severe GI adverse events, but these findings are indirect for E297 and not direct evidence of equivalent dietary additive risk.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/39931911/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA chemical record reports ADI 'not specified' (1989), maintained in 1999 with comment of no safety concern at current flavouring-use intake.",
+      "EFSA/JECFA background materials describe fumaric acid as a normal metabolic intermediate in the tricarboxylic acid cycle.",
+      "A PubMed-indexed packaging biocompatibility study reported no in vitro cytotoxicity in tested human keratinocyte assays for fumaric-acid-functionalized materials."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "toddlers",
+        "children"
+      ],
+      "notes": "EFSA 2024 preliminary conservative exposure estimates reached up to 54.7 mg/kg bw/day (95th percentile toddlers), which exceeds the historical SCF ADI of 0-6 mg/kg bw/day."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.67,
+    "rationale": "Regulatory approvals persist (EU/US; JECFA ADI not specified), but EFSA's historical SCF-based ADI is numerical and conservative exposure modelling indicates potential exceedance in children while EFSA re-evaluation remains incomplete.",
+    "key_factors": [
+      "EU permitted status with ongoing EFSA re-evaluation",
+      "Historical SCF ADI 0-6 mg/kg bw/day in EFSA OpenFoodTox",
+      "JECFA group ADI not specified maintained in 1999",
+      "Conservative EFSA exposure estimates high in toddlers/children",
+      "No IARC carcinogenic group listing identified"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Call for technical and toxicological data on fumaric acid and its salts (E 297) for use as a food additive",
+      "url": "https://www.efsa.europa.eu/en/call/call-technical-and-toxicological-data-fumaric-acid-and-its-salts-e-297-food-additive",
+      "type": "regulatory"
+    },
+    {
+      "title": "Fumaric acid and its salts (E297) background document",
+      "url": "https://www.efsa.europa.eu/sites/default/files/2024-07/Fumaric%20acid%20and%20its%20salts%20%28E297%29%20bg%20doc.pdf",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA OpenFoodTox evaluations - Fumaric acid",
+      "url": "https://www.efsa.europa.eu/en/microstrategy/openfoodtox/evaluations?chemical=530",
+      "type": "database"
+    },
+    {
+      "title": "EFSA OpenFoodTox endpoint 5085 (ADI basis)",
+      "url": "https://www.efsa.europa.eu/en/microstrategy/openfoodtox/endpoints?endpoint=5085",
+      "type": "database"
+    },
+    {
+      "title": "EFSA OpenFoodTox source 417 (SCF report reference)",
+      "url": "https://www.efsa.europa.eu/en/microstrategy/openfoodtox/sources?source=417",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API titles",
+      "url": "https://www.ecfr.gov/api/versioner/v1/titles.json",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API structure for Title 21",
+      "url": "https://www.ecfr.gov/api/versioner/v1/structure/2026-02-25/title-21.json",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API full Title 21 XML",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA Chemical record: FUMARIC ACID",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1723",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA API search by partial name (fumaric)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/fumaric",
+      "type": "database"
+    },
+    {
+      "title": "JECFA monograph context (FAS 44)",
+      "url": "https://www.inchem.org/documents/jecfa/jecmono/v44jec10.htm",
+      "type": "review"
+    },
+    {
+      "title": "IARC Monographs: Agents classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search: fumaric acid food additive safety",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=fumaric+acid+food+additive+safety&sort=date",
+      "type": "database"
+    },
+    {
+      "title": "Safety and efficacy of a feed additive consisting of fumaric acid... (PMID 39449760)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39449760/",
+      "type": "study"
+    },
+    {
+      "title": "Mechanism of monosodium fumarate in inhibiting Bacillus cereus spore growth... (PMID 41267269)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41267269/",
+      "type": "study"
+    },
+    {
+      "title": "Severe gastrointestinal adverse reactions... fumaric acid ester class... (PMID 39931911)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39931911/",
+      "type": "study"
+    },
+    {
+      "title": "Antimicrobial functionalization ... with fumaric acid ... biocompatibility (PMID 36140038)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36140038/",
+      "type": "study"
+    }
+  ]
+}

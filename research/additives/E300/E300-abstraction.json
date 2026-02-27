@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T10:33:05+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E300",
+    "name": "Ascorbic acid (Vitamin C)",
+    "cas_numbers": [
+      "50-81-7"
+    ],
+    "synonyms": [
+      "Vitamin C",
+      "L-Ascorbic acid",
+      "3-Keto-L-gulofuranolactone",
+      "2,3-Dehydro-L-threo-hexono-1,4-lactone"
+    ],
+    "chemical_class": "Water-soluble vitamin (ascorbate) and antioxidant organic acid (lactone)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "antioxidant",
+    "secondary_categories": [
+      "nutrient fortification"
+    ],
+    "mechanism": "Acts as a reducing agent/electron donor, limiting oxidation reactions in food matrices.",
+    "common_food_categories": [
+      "processed fruit and vegetable products",
+      "beverages",
+      "general processed foods requiring oxidation control"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2015 re-evaluation indicated no need for a numerical ADI."
+      },
+      "last_evaluation_year": 2015,
+      "key_finding": "EFSA concluded no safety concern at reported uses and use levels for E300/E301/E302 and no numerical ADI was needed."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.3013",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA lists ADI as NOT SPECIFIED (group ADI for ascorbic acid and sodium/potassium/calcium salts)."
+      },
+      "last_evaluation_year": 1981
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "Kidney stone and oxalate-related risk signals are mainly reported at high supplemental or IV doses (often around or above 1,000 mg/day), rather than normal additive exposure.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "Total, Dietary, and Supplemental Vitamin C Intake and Risk of Incident Kidney Stones (2016)",
+          "Ascorbic Acid Supplements and Kidney Stones Incidence Among Men and Women: A systematic review and meta-analysis (2019)",
+          "Harm of IV High-Dose Vitamin C Therapy in Adult Patients: A Scoping Review (2020)"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "High-dose IV contexts have reported adverse-event concerns including hemolysis risk in G6PD deficiency and glucometer interference.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "Harm of IV High-Dose Vitamin C Therapy in Adult Patients: A Scoping Review (2020)"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2015 re-evaluation reported no safety concern at reported food-additive use levels and no need for a numerical ADI.",
+      "JECFA lists ADI as not specified for ascorbic acid group."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "No specific ADI exceedance group identified for normal food-additive exposure"
+      ],
+      "notes": "EFSA/JECFA use a non-numeric ADI framework (not specified/no numerical ADI). Risk concerns arise mainly in high-dose supplement or therapeutic settings."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.86,
+    "rationale": "Regulatory authorities (EFSA, FDA, JECFA) support use with no numerical ADI/ADI not specified and no major concern at food-additive levels; adverse findings are mostly limited to high-dose supplemental or IV exposure contexts.",
+    "key_factors": [
+      "EFSA 2015 no numerical ADI and no safety concern at reported uses",
+      "FDA GRAS status under 21 CFR 182.3013 with GMP condition",
+      "JECFA ADI not specified (group ADI)",
+      "Renal adverse signals concentrate at high-dose non-additive exposures"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Scientific Opinion on the re-evaluation of ascorbic acid (E 300), sodium ascorbate (E 301) and calcium ascorbate (E 302) as food additives",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4087",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 content versions",
+      "url": "https://www.ecfr.gov/api/versioner/v1/versions/title-21.json",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API Title 21 Part 182 full text",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA Chemical Record: Ascorbic acid (ID 59)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/59",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC LOC data script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Harm of IV High-Dose Vitamin C Therapy in Adult Patients: A Scoping Review",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32404636/",
+      "type": "review"
+    },
+    {
+      "title": "Total, Dietary, and Supplemental Vitamin C Intake and Risk of Incident Kidney Stones",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26463139/",
+      "type": "study"
+    },
+    {
+      "title": "Ascorbic Acid Supplements and Kidney Stones Incidence Among Men and Women: A systematic review and meta-analysis",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30178451/",
+      "type": "review"
+    },
+    {
+      "title": "Contribution of Dietary Oxalate and Oxalate Precursors to Urinary Oxalate Excretion",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33379176/",
+      "type": "study"
+    },
+    {
+      "title": "High composite dietary antioxidant index is associated with reduced risk of kidney stones",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39059059/",
+      "type": "study"
+    },
+    {
+      "title": "NIH ODS Vitamin C Fact Sheet for Health Professionals",
+      "url": "https://ods.od.nih.gov/factsheets/VitaminC-HealthProfessional/",
+      "type": "database"
+    }
+  ]
+}

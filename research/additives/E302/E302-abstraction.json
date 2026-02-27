@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T10:41:41+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E302",
+    "name": "Calcium ascorbate",
+    "cas_numbers": [
+      "5743-27-1"
+    ],
+    "synonyms": [
+      "Calcium ascorbate dihydrate",
+      "Calcium salt of 2,3-didehydro-L-threo-hexono-1,4-lactone dihydrate",
+      "L-ascorbic acid calcium salt (2:1)",
+      "Calcium L-ascorbate dihydrate"
+    ],
+    "chemical_class": "Ascorbate salt (calcium salt of L-ascorbic acid)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "antioxidant",
+    "secondary_categories": [
+      "anti-browning agent",
+      "nutrient source"
+    ],
+    "mechanism": "Acts as a reducing antioxidant (ascorbate) that limits oxidative reactions and helps suppress enzymatic browning in foods.",
+    "common_food_categories": [
+      "fresh-cut potatoes",
+      "fresh-cut apples",
+      "fresh-cut vegetable products",
+      "processed meat products"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA re-evaluation reported no need for a numerical ADI for ascorbic acid and its salts (including E302)."
+      },
+      "last_evaluation_year": 2015,
+      "key_finding": "No safety concern was identified at reported uses and use levels in the EFSA re-evaluation record for E300/E301/E302."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.3189",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not specified; group ADI for ascorbic acid and its sodium, potassium, and calcium salts."
+      },
+      "last_evaluation_year": 1981
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "Very high vitamin C intakes can increase urinary oxalate; kidney-stone concern is discussed mainly for high supplemental intakes or predisposed individuals, not typical additive exposure.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "JECFA Calcium ascorbate monograph (WHO Food Additives Series 16)",
+          "NIH ODS Vitamin C Fact Sheet (Health Professional)"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "In EFSA FEEDAP renewal context (2025), the panel could not conclude on user/handler safety specifically for calcium ascorbate due to insufficient data.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "EFSA FEEDAP 2025 renewal opinion (PMID 41158677)"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA food-additive re-evaluation indicates no safety concern at reported uses and no numerical ADI needed.",
+      "JECFA established ADI not specified and did not envisage special restrictions for food-additive/nutritional use.",
+      "US CFR lists calcium ascorbate as GRAS when used according to good manufacturing practice (21 CFR 182.3189)."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "A numerical ADI is not set by EFSA/JECFA for this additive group; exceedance is therefore not assessed as a numeric ADI comparison."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.74,
+    "rationale": "Regulatory evaluations place calcium ascorbate in a low-concern category for food use (EFSA/JECFA no numerical ADI; US GRAS/GMP). Remaining concerns are conditional and mainly linked to high total vitamin C intakes or user/handler data gaps rather than normal dietary additive exposure.",
+    "key_factors": [
+      "EFSA re-evaluation (2015): no numerical ADI and no safety concern at reported uses.",
+      "JECFA: ADI not specified with inclusion of calcium ascorbate in group ADI.",
+      "US 21 CFR 182.3189: GRAS under GMP.",
+      "High-dose vitamin C caveats (oxalate/renal) and limited user-safety data in specific non-consumer contexts."
+    ]
+  },
+  "sources": [
+    {
+      "title": "Scientific Opinion on the re-evaluation of ascorbic acid (E 300), sodium ascorbate (E 301) and calcium ascorbate (E 302) as food additives",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4087",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 Part 182 (includes 21 CFR 182.3189)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database chemical record: CALCIUM ASCORBATE",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1348",
+      "type": "database"
+    },
+    {
+      "title": "Calcium ascorbate (WHO Food Additives Series 16)",
+      "url": "http://www.inchem.org/documents/jecfa/jecmono/v16je06.htm",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC Monographs - List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC list-of-classifications application bundle (dataset source)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Assessment of the feed additives ... calcium ascorbate ... renewal of their authorisations (PMID 41158677)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41158677/",
+      "type": "study"
+    },
+    {
+      "title": "Comparative Effectiveness of Ascorbic Acid vs. Calcium Ascorbate Ingestion ... (PMID 39408325)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39408325/",
+      "type": "study"
+    },
+    {
+      "title": "Enhanced Vitamin C Delivery: A Systematic Literature Review ... (PMID 39861409)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39861409/",
+      "type": "review"
+    },
+    {
+      "title": "Vitamin C - Health Professional Fact Sheet (NIH ODS)",
+      "url": "https://ods.od.nih.gov/factsheets/VitaminC-HealthProfessional/",
+      "type": "database"
+    },
+    {
+      "title": "PubChem synonyms for calcium ascorbate (CID 54740489)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/54740489/synonyms/JSON",
+      "type": "database"
+    }
+  ]
+}

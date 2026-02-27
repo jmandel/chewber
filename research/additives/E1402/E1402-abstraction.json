@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T03:50:02+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E1402",
+    "name": "Alkaline-treated starch",
+    "cas_numbers": [
+      "9005-84-9"
+    ],
+    "synonyms": [
+      "Starch, Alkaline treated",
+      "Starch, alkaline treated"
+    ],
+    "chemical_class": "Chemically modified starch",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "thickener",
+    "secondary_categories": [
+      "stabilizer",
+      "emulsifier"
+    ],
+    "mechanism": "Produced by alkali treatment of starch (up to 1% hydroxide in JECFA monograph context), causing physicochemical modification mainly via depolymerization that changes texture/viscosity functionality.",
+    "common_food_categories": [
+      "processed foods using modified-starch texturizing",
+      "food systems using food starch-modified ingredients",
+      "alkaline noodle applications"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "not_evaluated",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No E1402-specific EFSA ADI identified in the accessed EFSA opinion/re-evaluation sources."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "No directly identified EFSA scientific opinion specific to E1402 in accessed sources; EFSA 2017 re-evaluation of related modified starches (E1404-E1451 list) reported no safety concern."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.892",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA database lists ADI as NOT SPECIFIED (historical monograph context: Not limited)."
+      },
+      "last_evaluation_year": 2018
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Recent literature directly tied to food-additive safety of E1402 is sparse; available recent papers are mostly physicochemical/functional and not robust human or chronic animal toxicity datasets.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=5&term=%22alkali-treated%20starch%22%5BTitle%2FAbstract%5D",
+          "https://pubmed.ncbi.nlm.nih.gov/22953904/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA toxicological monograph notes alkali treatment does not create appreciable chemical difference from normal food constituents and assigned ADI Not limited in that historical context.",
+      "WHO/JECFA database shows ADI NOT SPECIFIED in later evaluations.",
+      "No IARC classification entry identified for alkaline-treated starch/E1402."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "Numerical ADI exceedance is not applicable because JECFA ADI is NOT SPECIFIED; however, modern E1402-specific intake datasets were not identified in accessed sources."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.73,
+    "rationale": "Regulatory sources indicate low concern (JECFA ADI not specified; FDA food-starch-modified permissions with conditions), but direct modern E1402-specific toxicology and exposure data are limited.",
+    "key_factors": [
+      "WHO/JECFA ADI status: NOT SPECIFIED",
+      "Historical JECFA toxicological commentary indicates minimal chemical departure from native starch",
+      "FDA allows relevant modified starch use under 21 CFR 172.892 conditions",
+      "No IARC monograph classification identified for E1402",
+      "Limited recent E1402-specific safety-study depth"
+    ]
+  },
+  "sources": [
+    {
+      "title": "WHO JECFA database chemical page: Alkaline treated starch (Id 2358)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2358",
+      "type": "database"
+    },
+    {
+      "title": "WHO Food Additives Series 5: Alkali-treated starches",
+      "url": "http://www.inchem.org/documents/jecfa/jecmono/v05je64.htm",
+      "type": "review"
+    },
+    {
+      "title": "eCFR Title 21 full XML (issue date 2026-02-25)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal 2017;15(10):4911 Re-evaluation of modified starches as food additives",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4911",
+      "type": "regulatory"
+    },
+    {
+      "title": "European Commission: Re-evaluation of food additives",
+      "url": "https://food.ec.europa.eu/food-safety/food-improvement-agents/additives/re-evaluation-food-additives_en",
+      "type": "regulatory"
+    },
+    {
+      "title": "European Commission summary table of permitted food additives and EFSA re-evaluation status (XLS)",
+      "url": "https://food.ec.europa.eu/document/download/7471ebd9-5a9a-4f8a-ae85-b64502a15353_en?filename=fs_food-improvement-agents_reeval_summary-table.xls",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications data script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed query: alkali-treated starch",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%22alkali-treated+starch%22",
+      "type": "database"
+    },
+    {
+      "title": "NCBI E-utilities search: alkali-treated starch[Title/Abstract]",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=5&term=%22alkali-treated%20starch%22%5BTitle%2FAbstract%5D",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 22953904",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22953904/",
+      "type": "study"
+    }
+  ]
+}

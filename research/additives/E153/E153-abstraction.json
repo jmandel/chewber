@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T05:55:24Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E153",
+    "name": "Vegetable carbon",
+    "cas_numbers": [
+      "440-44-0",
+      "1333-86-4"
+    ],
+    "synonyms": [
+      "Vegetable black",
+      "Carbon black (vegetable sources)",
+      "Carbon"
+    ],
+    "chemical_class": "Carbonaceous food colour additive (insoluble particulate carbon)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "colour additive",
+    "secondary_categories": [
+      "food colouring"
+    ],
+    "mechanism": "Black particulate carbon provides colour through broad light absorption/scattering as a pigment.",
+    "common_food_categories": []
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "restricted",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA ANS re-evaluation reported insufficient data to assess safety; no numerical ADI identified from accessible EFSA material in this session."
+      },
+      "last_evaluation_year": 2012,
+      "key_finding": "EFSA ANS Panel reported available data were insufficient to assess safety of vegetable carbon (E153), citing lack of reliable exposure data and oral toxicology data."
+    },
+    "fda": {
+      "status": "banned",
+      "cfr_citation": "21 CFR 81.10(g); 21 CFR 74.2052; 21 CFR 74.3054",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO JECFA database record for VEGETABLE CARBON lists 'NO ADI ALLOCATED'."
+      },
+      "last_evaluation_year": 1987
+    },
+    "iarc_classification": "Group 2B",
+    "notable_bans": [
+      "United States: provisional listing of carbon black (impingement/channel process) for use in food, drugs, and cosmetics terminated in 21 CFR 81.10(g)."
+    ]
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "cardiovascular",
+        "summary": "Rat studies reported altered vasomotor/endothelial responses after repeated intragastric/oral exposure to food-grade vegetable carbon or carbon black particles.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID: 29482579",
+          "PMID: 22610611"
+        ]
+      },
+      {
+        "category": "genotoxic",
+        "summary": "Review literature reports oxidative DNA damage signals after gastrointestinal exposure to insoluble particles including carbon black, though causality and relevance at food exposures remain uncertain.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID: 22292440"
+        ]
+      },
+      {
+        "category": "carcinogenic",
+        "summary": "IARC classifies carbon black as Group 2B (possible carcinogenic hazard), and an older rat model reported co-carcinogenic signal under high-fat + chemical-carcinogen conditions.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "IARC LOC data feed",
+          "PMID: 3603592"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "A 2022 radiolabelled toxicokinetic rat study found near-complete fecal recovery after oral gavage and no quantifiable systemic translocation beyond GI/lung compartments under study conditions (PMID: 36242080)."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "No numerical EFSA or JECFA ADI available in the accessed records; exceedance cannot be quantitatively assessed."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.67,
+    "rationale": "Evidence is mixed: EFSA reported insufficient data to confirm safety, U.S. CFR history is non-supportive for food-use carbon black, and animal oral studies show vascular/oxidative signals; however, recent oral toxicokinetic work suggests minimal systemic uptake under test conditions.",
+    "key_factors": [
+      "EFSA 2012 re-evaluation concluded available data were insufficient to assess safety",
+      "WHO JECFA record: NO ADI ALLOCATED (evaluation year listed as 1987)",
+      "U.S. CFR 81.10(g) termination language for food-use provisional carbon black listing",
+      "Animal oral studies indicate vascular and oxidative-stress-related effects",
+      "Recent rat toxicokinetic study shows minimal oral systemic translocation"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal page: Scientific Opinion on the re-evaluation of vegetable carbon (E 153) as a food additive",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/2793",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA/Wiley DOI landing for E153 opinion (access blocked by Cloudflare in this VM)",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2012.2793",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR 81.10 Termination of provisional listings of color additives",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?section=81.10",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR 74.2052 D&C Black No. 2",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?section=74.2052",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR 74.3054 D&C Black No. 4",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?section=74.3054",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API search results for carbon black",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=carbon%20black&page=2",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA database chemical record: VEGETABLE CARBON",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2323",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API search by partial name: vegetable carbon",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/vegetable%20carbon",
+      "type": "database"
+    },
+    {
+      "title": "IARC list of classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications application data (contains carbon black Group 2B entry)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: Toxicokinetic study following intratracheal instillation or oral gavage of two 7Be-tagged carbon black samples (2022)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36242080/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Vasomotor function after intragastric exposure to food-grade titanium dioxide and vegetable carbon particles (2018)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29482579/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Endothelial dysfunction in rats after oral gavage to carbon black nanoparticles (2012)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22610611/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Oxidative stress generated damage to DNA by gastrointestinal exposure to insoluble particles (2012)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22292440/",
+      "type": "review"
+    },
+    {
+      "title": "PubMed: Co-carcinogenic effect of carbon black ingestion with dietary fat on development of colon tumors in rats (1987)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3603592/",
+      "type": "study"
+    }
+  ]
+}

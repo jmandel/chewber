@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T04:08:03Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E141",
+    "name": "Copper complexes of chlorophylls",
+    "cas_numbers": [
+      "65963-40-8"
+    ],
+    "synonyms": [
+      "Copper chlorophyll",
+      "Copper phaeophytin",
+      "C.I. Natural Green 3",
+      "Sodium copper chlorophyllin",
+      "Potassium copper chlorophyllin"
+    ],
+    "chemical_class": "Copper-substituted chlorophyll derivatives (porphyrin-type food colours)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "food colour",
+    "secondary_categories": [
+      "green pigment",
+      "chlorophyll-derived stabilised colorant"
+    ],
+    "mechanism": "Copper substitution in chlorophyll derivatives improves green colour stability during processing and storage compared with native chlorophyll.",
+    "common_food_categories": [
+      "Citrus-based dry beverage mixes (US-specific use in 21 CFR 73.125)",
+      "Other green-coloured foods where nationally authorised"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "restricted",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2015 re-evaluation states the previous ADI of 15 mg/kg bw/day (as copper chlorophylls) should be withdrawn due insufficient data."
+      },
+      "last_evaluation_year": 2015,
+      "key_finding": "EFSA could not adequately assess safety of E141(i)/(ii) with available data; unresolved composition/genotoxicity concerns and ADI withdrawal recommendation."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 73.125",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 15,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA lists ADI 0-15 mg/kg bw for chlorophylls, copper complexes (INS 141(i)); related INS 141(ii) entries also list 0-15 mg/kg bw."
+      },
+      "last_evaluation_year": 1987
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "genotoxic",
+        "summary": "EFSA reported that genotoxicity concerns for unidentified fractions of E141(i)/(ii) could not be ruled out under the available dataset.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "EFSA Journal 2015 re-evaluation (E140/E141)"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "EFSA identified uncertainty on composition and noted that maximum-level exposure scenarios exceeded the former ADI in younger groups; copper contribution could challenge upper intake limits in toddlers.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "EFSA Journal 2015 re-evaluation (E140/E141)"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "Recent preclinical GLP work reported high-dose tolerability and no clear acute/subacute toxicity signals in rodents.",
+      "A recent phase I human study reported tolerability up to high oral doses in healthy adult males in a therapeutic context.",
+      "An in vitro human blood study reported no cyto/genotoxic signal at tested concentrations."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "toddlers",
+        "children",
+        "adolescents",
+        "high-consuming adults"
+      ],
+      "notes": "EFSA maximum-level scenarios were reported above the previous ADI for multiple age groups (not elderly in that scenario)."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "high",
+    "confidence": 0.67,
+    "rationale": "Despite historical JECFA/FDA permissions, EFSA's latest re-evaluation could not confirm safety and recommended withdrawal of the previous ADI, with unresolved compositional/genotoxicity uncertainty and age-group exposure concerns.",
+    "key_factors": [
+      "EFSA inability to complete safety assessment",
+      "Withdrawal recommendation for previous ADI",
+      "Exposure concern in younger populations at maximum-level assumptions",
+      "No IARC listing and no major-jurisdiction outright ban identified",
+      "Recent positive tolerability studies are mostly therapeutic-context and not a full regulatory dietary re-evaluation"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal publication page: Re-evaluation of chlorophylls (E140(i)) and chlorophyllins (E140(ii)) and copper complexes (E141(i)/(ii)) as food additives",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4151",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Title 21 full XML (contains 21 CFR 73.125 text)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2025-01-01/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR versions index for Title 21",
+      "url": "https://www.ecfr.gov/api/versioner/v1/versions/title-21.json",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical entry 630: CHLOROPHYLLS, COPPER COMPLEXES",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/630",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical entry 953: CHLOROPHYLLINS, COPPER COMPLEXES, SODIUM and POTASSIUM salts",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/953",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs: List of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications app dataset",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed ESearch query for recent copper chlorophyllin safety/toxicity records",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=pub+date&term=(%22copper%20chlorophyllin%22%20OR%20%22sodium%20copper%20chlorophyllin%22)%20AND%20(toxicity%20OR%20safety%20OR%20genotoxicity%20OR%20carcinogenicity)",
+      "type": "database"
+    },
+    {
+      "title": "PubMed EFetch abstracts for selected recent records",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=41453293,40274623,40807405,32500189,31561900,32828967&rettype=abstract&retmode=text",
+      "type": "study"
+    }
+  ]
+}

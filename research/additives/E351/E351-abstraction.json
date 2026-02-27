@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T13:12:36+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E351",
+    "name": "Potassium malate",
+    "cas_numbers": [
+      "585-09-1"
+    ],
+    "synonyms": [
+      "Potassium salt of malic acid",
+      "Dipotassium malate",
+      "INS 351(i)",
+      "E 351"
+    ],
+    "chemical_class": "Potassium salt of malic acid (hydroxy-dicarboxylate salt)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "pH control agent",
+      "flavour enhancer"
+    ],
+    "mechanism": "Provides malate buffering/acidification and potassium counter-ion to adjust food pH and sourness profile.",
+    "common_food_categories": [
+      "nonalcoholic beverages",
+      "chewing gum",
+      "gelatins/puddings/fillings",
+      "hard candy",
+      "jams and jellies",
+      "processed fruits and fruit juices",
+      "soft candy"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "not_evaluated",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No accessible finalized EFSA additive ADI for E351 was retrieved; OpenEFSA shows a 2009 nutrient-source opinion record (ON-1088)."
+      },
+      "last_evaluation_year": 2009,
+      "key_finding": "Potassium malate appears in OpenEFSA with a published 2009 opinion record; additive re-evaluation call information is present in EFSA search snippets but the call page returned 404 in this environment."
+    },
+    "fda": {
+      "status": "not_evaluated",
+      "cfr_citation": "21 CFR 184.1069",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not specified (group ADI for DL-malic acid and sodium/potassium/calcium salts; INS 351(i), 1982)."
+      },
+      "last_evaluation_year": 1982
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "Theoretical concern for susceptible individuals with impaired potassium handling (e.g., advanced renal disease) due to cumulative potassium intake.",
+        "evidence_strength": "theoretical",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/17381878/",
+          "https://open.efsa.europa.eu/api/substance/get?termExtendedName=Potassium%20malate"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Direct modern potassium-malate-specific oral toxicology studies in food-additive context were sparse in retrieved PubMed results.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/?term=potassium+malate",
+          "https://pubmed.ncbi.nlm.nih.gov/11358110/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA lists ADI as not specified for the malic acid/malate salts group.",
+      "No IARC classification entry was found for potassium malate or malic acid in the current IARC classifications dataset checked."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "people with severe renal impairment",
+        "people on potassium-restricted medical diets"
+      ],
+      "notes": "Numeric ADI exceedance is not directly applicable to JECFA's 'ADI not specified' setting, but potassium load can still matter clinically in vulnerable groups."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.62,
+    "rationale": "Low intrinsic hazard signal (JECFA ADI not specified; endogenous malate biochemistry; no IARC listing) but with regulatory/access gaps and sparse modern potassium-malate-specific oral safety data.",
+    "key_factors": [
+      "JECFA ADI not specified for malate salts group",
+      "No IARC carcinogenic classification found",
+      "No explicit potassium malate listing identified in searched U.S. Title 21 CFR text",
+      "EFSA additive re-evaluation conclusion text not directly retrievable in this environment"
+    ]
+  },
+  "sources": [
+    {
+      "title": "OpenEFSA API: Substance - Potassium malate",
+      "url": "https://open.efsa.europa.eu/api/substance/get?termExtendedName=Potassium%20malate",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA API: Questions linked to Potassium malate",
+      "url": "https://open.efsa.europa.eu/api/substance/getQuestions?termExtendedName=Potassium%20malate",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA API: Question EFSA-Q-2008-025",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2008-025",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA calls page (call-data-additives-2024)",
+      "url": "https://www.efsa.europa.eu/en/calls/call-data-additives-2024",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA database Chemical 2287 (INS 351i)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2287",
+      "type": "database"
+    },
+    {
+      "title": "JECFA database Chemical 8728 (INS 351ii)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/8728",
+      "type": "database"
+    },
+    {
+      "title": "eCFR search (Title 21, malic acid)",
+      "url": "https://www.ecfr.gov/search?query=malic%20acid&title=21",
+      "type": "regulatory"
+    },
+    {
+      "title": "GovInfo CFR XML: 21 CFR 184.1069 Malic acid",
+      "url": "https://www.govinfo.gov/content/pkg/CFR-2024-title21-vol3/xml/CFR-2024-title21-vol3-sec184-1069.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications app payload",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search: potassium malate",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=potassium+malate",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 11358110",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11358110/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 17381878",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17381878/",
+      "type": "study"
+    }
+  ]
+}

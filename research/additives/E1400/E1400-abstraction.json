@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T03:39:29Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E1400",
+    "name": "Dextrin (roasted starch)",
+    "cas_numbers": [
+      "9004-53-9"
+    ],
+    "synonyms": [
+      "Dextrin",
+      "Pyrodextrin",
+      "Roasted starch",
+      "INS 1400"
+    ],
+    "chemical_class": "Partially hydrolyzed starch carbohydrates (starch degradation products)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "thickener",
+    "secondary_categories": [
+      "stabilizer",
+      "emulsifier",
+      "carrier",
+      "anticaking agent"
+    ],
+    "mechanism": "Low-molecular-weight starch fragments increase solids and viscosity and can stabilize/disperse formulations as carrier carbohydrates.",
+    "common_food_categories": [
+      "Powdered food systems",
+      "Formulated foods requiring bulking/texture control",
+      "Products using GMP-level starch-derived stabilizers"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "not_evaluated",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No E1400-specific EFSA ADI was identified in accessible EFSA sources during this run; E1400 was not found in the 18 Feb 2026 EC/EFSA re-evaluation summary table."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "No directly retrievable EFSA scientific opinion specific to E1400 was identified; a 2017 EFSA opinion covers modified starches E1404-E1452, not E1400."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1277",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA ADI is stated as 'Not limited' for dextrin."
+      },
+      "last_evaluation_year": 1980
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "Human resistant-dextrin studies report transient gas/bloating increases early in intake with adaptation over time; effects are generally mild and related to fermentable carbohydrate load.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/36364873/",
+          "https://pubmed.ncbi.nlm.nih.gov/34170392/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA states no safety concern at current intake levels when used according to GMP.",
+      "A randomized placebo-controlled trial of resistant maltodextrin reported no serious adverse events in abstract-level reporting.",
+      "No direct IARC carcinogenic classification was identified for dextrin (CAS 9004-53-9)."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "No specific population-level ADI exceedance identified"
+      ],
+      "notes": "JECFA uses a non-numeric ADI descriptor ('Not limited'); numeric exceedance calculation is not applicable from available data."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.66,
+    "rationale": "Regulatory profile is favorable (FDA GRAS; JECFA ADI 'Not limited' with no safety concern statement), and current evidence indicates mainly mild GI tolerance effects at higher intakes. Confidence is reduced because an E1400-specific EFSA opinion/ADI was not retrievable from accessible sources in this run.",
+    "key_factors": [
+      "FDA GRAS status with GMP-limited use conditions",
+      "JECFA ADI 'Not limited' and no-safety-concern language",
+      "No direct IARC classification for dextrin",
+      "Mostly mild, transient GI tolerance findings in human studies",
+      "EFSA E1400-specific data gap in accessible sources"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of food additives",
+      "url": "https://food.ec.europa.eu/safety/food-improvement-agents/additives/re-evaluation-food-additives_en",
+      "type": "regulatory"
+    },
+    {
+      "title": "Summary table of permitted food additives and status of their re-evaluation by EFSA (status as of 18 February 2026)",
+      "url": "https://food.ec.europa.eu/document/download/7471ebd9-5a9a-4f8a-ae85-b64502a15353_en?filename=fs_food-improvement-agents_reeval_summary-table.xls",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA search page for dextrin (server inaccessibility during run)",
+      "url": "https://www.efsa.europa.eu/en/search/site/dextrin",
+      "type": "database"
+    },
+    {
+      "title": "EFSA Journal 2017 modified starches opinion (E1404-E1452)",
+      "url": "https://onlinelibrary.wiley.com/doi/10.2903/j.efsa.2017.4911",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR 21 CFR 184.1277 Dextrins",
+      "url": "https://www.ecfr.gov/current/title-21/part-184/section-184.1277",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA chemical entry: Dextrin",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1778",
+      "type": "database"
+    },
+    {
+      "title": "IARC list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classification app dataset",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "The effect of resistant dextrin on glucose regulation markers in patients with type 2 diabetes: a systematic review and meta-analysis",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40346635/",
+      "type": "study"
+    },
+    {
+      "title": "Effect of Resistant Dextrin on Intestinal Gas Homeostasis and Microbiota",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36364873/",
+      "type": "study"
+    },
+    {
+      "title": "Impact of dietary supplementation with resistant dextrin (NUTRIOSE) on satiety, glycaemia, and related endpoints, in healthy adults",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34170392/",
+      "type": "study"
+    },
+    {
+      "title": "Visceral Fat-Reducing Effect and Safety of Continuous Consumption of Beverage Containing Resistant Maltodextrin",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33132344/",
+      "type": "study"
+    }
+  ]
+}

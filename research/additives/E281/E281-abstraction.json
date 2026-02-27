@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T10:06:10Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E281",
+    "name": "Sodium propionate",
+    "cas_numbers": [
+      "137-40-6"
+    ],
+    "synonyms": [
+      "Sodium propanoate",
+      "Propionic acid sodium salt",
+      "Propanoic acid, sodium salt"
+    ],
+    "chemical_class": "Sodium salt of propionic acid (short-chain fatty acid salt)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "antimicrobial",
+      "flavoring agent"
+    ],
+    "mechanism": "Weak-acid preservative salt that inhibits mold/spoilage growth, especially in bakery-type foods; also used as a flavoring agent under GMP conditions.",
+    "common_food_categories": [
+      "baked goods",
+      "nonalcoholic beverages",
+      "cheeses",
+      "confections and frostings",
+      "gelatins, puddings, and fillings",
+      "jams and jellies",
+      "meat products",
+      "soft candy"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA re-evaluation concluded no need for a numerical ADI for propionic acid and its salts (including E281)."
+      },
+      "last_evaluation_year": 2016,
+      "key_finding": "2014 re-evaluation found no need for a numerical ADI and no safety concern at reported uses/levels; 2016 E281 use-extension opinion found no safety concern at proposed uses/levels."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1784",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA ADI is NOT LIMITED (group ADI for propionic acid and calcium/potassium/sodium salts)."
+      },
+      "last_evaluation_year": 1997
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "endocrine",
+        "summary": "Human challenge studies and translational work reported propionate-associated increases in counter-regulatory hormones (e.g., glucagon/catecholamine-related signals) with insulin-resistance/hyperinsulinemia markers under study conditions.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/31019023/",
+          "https://pubmed.ncbi.nlm.nih.gov/34312159/"
+        ]
+      },
+      {
+        "category": "neurotoxic",
+        "summary": "Zebrafish embryo study reported altered behavior, circadian-gene disturbances, and glucose-metabolism/insulin-resistance-related developmental effects after sodium propionate exposure.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/35753272/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA re-evaluation did not identify safety concern at reported uses/levels and did not require a numerical ADI.",
+      "JECFA assigned group ADI as NOT LIMITED for propionic acid and calcium/potassium/sodium salts.",
+      "US FDA CFR affirms GRAS status under GMP conditions of use."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "toddlers",
+        "children"
+      ],
+      "notes": "EFSA reported relatively higher exposure estimates in toddlers/children, but EFSA and JECFA benchmarks are non-numerical (no numerical ADI / not limited), so classical ADI exceedance is not directly applicable."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.77,
+    "rationale": "Regulatory assessments remain permissive (EFSA no numerical ADI; JECFA not limited; FDA GRAS), but mechanistic and intervention studies show non-trivial metabolic signaling concerns under specific exposure conditions.",
+    "key_factors": [
+      "EFSA 2014 re-evaluation: no numerical ADI needed",
+      "EFSA 2016 opinion: no safety concern for proposed E281 extension uses",
+      "FDA GRAS affirmation in 21 CFR 184.1784 under GMP",
+      "JECFA ADI NOT LIMITED, maintained at 49th meeting",
+      "Human/animal mechanistic studies report metabolic-endocrine perturbation signals"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Scientific Opinion on the re-evaluation of propionic acid (E 280), sodium propionate (E 281), calcium propionate (E 282) and potassium propionate (E 283) as food additives",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/3779",
+      "type": "regulatory"
+    },
+    {
+      "title": "Safety of the extension of use of sodium propionate (E 281) as a food additive",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4546",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Title 21 full XML (current issue date context), includes 21 CFR 184.1784 Sodium propionate",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA chemical entry: SODIUM PROPIONATE (INS 281)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3999",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA SearchChemical API by partial name (sodium propionate)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/sodium%20propionate",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications data payload (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "The short-chain fatty acid propionate increases glucagon and FABP4 production, impairing insulin action in mice and humans",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31019023/",
+      "type": "study"
+    },
+    {
+      "title": "Acute effects of the food preservative propionic acid on glucose metabolism in humans",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34312159/",
+      "type": "study"
+    },
+    {
+      "title": "Exposure of zebrafish embryos to sodium propionate disrupts circadian behavior and glucose metabolism-related development",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35753272/",
+      "type": "study"
+    },
+    {
+      "title": "PubChem property record for sodium propionate",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/sodium%20propionate/property/Title,MolecularFormula,MolecularWeight,IUPACName,CanonicalSMILES/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem synonyms record for sodium propionate",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/sodium%20propionate/synonyms/JSON",
+      "type": "database"
+    }
+  ]
+}

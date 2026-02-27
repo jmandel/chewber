@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T08:03:12+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E217",
+    "name": "Sodium propyl p-hydroxybenzoate",
+    "cas_numbers": [
+      "35285-69-9",
+      "94-13-3"
+    ],
+    "synonyms": [
+      "Sodium propylparaben",
+      "Sodium propyl p-oxybenzoate",
+      "Sodium propyl para-hydroxybenzoate",
+      "E217"
+    ],
+    "chemical_class": "Paraben preservative (p-hydroxybenzoic acid ester sodium salt)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "antimicrobial agent"
+    ],
+    "mechanism": "Paraben-class antimicrobial preservative that suppresses spoilage microbes (notably molds and yeasts) and extends shelf life.",
+    "common_food_categories": [
+      "Direct food antimicrobial use context for related propylparaben under U.S. GMP (max 0.1%)",
+      "Synthetic flavoring substance lists (related propylparaben entry in CFR)",
+      "Food-packaging antimycotic migration context (prior-sanction list)",
+      "Historical EU proposed uses included supplements and snack-related categories"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "withdrawn",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2013 temporary ADI 0-10 applies only to methyl/ethyl parabens and sodium salts; E217 was not included due unresolved reproductive/developmental concerns and no clear NOAEL."
+      },
+      "last_evaluation_year": 2013,
+      "key_finding": "EFSA did not support inclusion of sodium propylparaben (E217) in the temporary paraben ADI group; subsequent EU regulation removed E217 authorization."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1670 (Propylparaben); see also 21 CFR 172.515",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI withdrawn in 2006 for propyl p-hydroxybenzoate; excluded from previous group ADI (0-10 mg/kg bw) due male-rat reproductive toxicity concern."
+      },
+      "last_evaluation_year": 2006
+    },
+    "iarc_classification": null,
+    "notable_bans": [
+      "European Union: E217 removed from authorized Union list by Commission Regulation (EU) No 358/2014 (effective 2014-04-17)."
+    ]
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "endocrine",
+        "summary": "EFSA and JECFA identified reproductive/developmental uncertainty for propyl/sodium propyl parabens, including concern for male reproductive effects and lack of an adequate NOAEL for E217 inclusion in group ADI.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://www.efsa.europa.eu/en/efsajournal/pub/302",
+          "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3045"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent zebrafish studies report immunotoxic and developmental toxicity signals (oxidative stress, microbiota-axis effects, craniofacial abnormalities) under experimental exposure conditions.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41275982/",
+          "https://pubmed.ncbi.nlm.nih.gov/41601030/"
+        ]
+      },
+      {
+        "category": "carcinogenic",
+        "summary": "Recent in vitro/network study suggests procarcinogenic signaling in ER-positive breast cancer cells, but this is mechanistic preclinical evidence and not a regulatory carcinogenic classification.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41344141/",
+          "https://monographs.iarc.who.int/list-of-classifications"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "No current IARC carcinogenicity group listing was found for propylparaben/sodium propylparaben in the classification dataset checked.",
+      "A Taiwan population study reported paraben hazard indices below 1 in its probabilistic assessment."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "Children (higher food intake per kg body weight)",
+        "Male developmental windows (reproductive-endpoint concern in regulatory toxicology)"
+      ],
+      "notes": "For E217 specifically, current EFSA/JECFA positions do not provide an active positive ADI; conventional ADI exceedance quantification is therefore not robustly defined for this additive."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "high",
+    "confidence": 0.83,
+    "rationale": "Major-regulator signals converge toward elevated concern: EFSA excluded E217 from temporary ADI support, JECFA withdrew ADI for propylparaben due reproductive toxicity concerns, and EU authorization for E217 was removed.",
+    "key_factors": [
+      "EFSA 2013: E217 not retained within temporary ADI framework",
+      "JECFA 2006: ADI withdrawn for propyl p-hydroxybenzoate",
+      "EU removal of E217 authorization (effective 2014-04-17)",
+      "Recent mechanistic/animal studies continue to show toxicity signals"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal: Re-evaluation of p-hydroxybenzoic acid esters (E214-219)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/302",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal: AFC opinion on p-hydroxybenzoates (E214-219)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/83",
+      "type": "regulatory"
+    },
+    {
+      "title": "FSAI: Food Additives (Parabens E216 and E217)",
+      "url": "https://www.fsai.ie/enforcement-and-legislation/legislation/food-legislation/food-additives-legislation/food-additives-parabens-e216-and-e217",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API title metadata",
+      "url": "https://www.ecfr.gov/api/versioner/v1/titles.json",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API full Title 21 XML (2026-02-25)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA chemical entry: PROPYL p-HYDROXYBENZOATE",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3045",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs: List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC LOC dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search: propylparaben food additive toxicity",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=propylparaben+food+additive+toxicity",
+      "type": "database"
+    },
+    {
+      "title": "PMID 41275982",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41275982/",
+      "type": "study"
+    },
+    {
+      "title": "PMID 41601030",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41601030/",
+      "type": "study"
+    },
+    {
+      "title": "PMID 41344141",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41344141/",
+      "type": "study"
+    },
+    {
+      "title": "PMID 41164939",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41164939/",
+      "type": "study"
+    },
+    {
+      "title": "PMID 41572664",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41572664/",
+      "type": "review"
+    },
+    {
+      "title": "USP E217 document",
+      "url": "https://www.usp.org/sites/default/files/usp/document/our-work/food-ingredients/e217.pdf",
+      "type": "database"
+    }
+  ]
+}

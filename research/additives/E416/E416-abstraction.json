@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T15:08:41Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E416",
+    "name": "Karaya gum",
+    "cas_numbers": [
+      "9000-36-6"
+    ],
+    "synonyms": [
+      "Gum karaya",
+      "Gum sterculia",
+      "Sterculia",
+      "Kadaya",
+      "Katilo",
+      "Kullo",
+      "Kuterra"
+    ],
+    "chemical_class": "Natural acidic polysaccharide hydrocolloid (plant exudate gum from Sterculia species)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "Thickener and stabilizer",
+    "secondary_categories": [
+      "emulsifier",
+      "formulation aid"
+    ],
+    "mechanism": "Swells in water to form a viscous hydrocolloid network that thickens/stabilizes foods; largely not digested and can act as a mechanical bulk laxative at high intake.",
+    "common_food_categories": [
+      "frozen dairy desserts and mixes",
+      "milk products",
+      "soft candy",
+      "other food categories"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA (2016 re-evaluation) concluded no need for a numerical ADI for E416 and no safety concern at refined exposure for reported uses/use levels."
+      },
+      "last_evaluation_year": 2016,
+      "key_finding": "No concern for genotoxicity; no adverse effects in carcinogenicity studies at highest tested doses; no safety concern for general population at refined exposure, while adults should avoid intakes above about 7000 mg/person/day due to abdominal discomfort."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1349",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA latest evaluation lists ADI as NOT SPECIFIED."
+      },
+      "last_evaluation_year": 1988
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "allergenic",
+        "summary": "Historical human reports in JECFA documentation describe inhalation/oral hypersensitivity to karaya gum (asthma, dermatitis, gastrointestinal symptoms) in susceptible individuals.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "http://www.inchem.org/documents/jecfa/jecmono/v024je06.htm"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Gastrointestinal intolerance can occur at high bolus intake; EFSA notes abdominal discomfort around 7000 mg/person/day in adults. Case reports describe esophageal bezoar with laxative granules and a non-food Sterculia-related liver injury case.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://www.efsa.europa.eu/en/efsajournal/pub/4598",
+          "https://pubmed.ncbi.nlm.nih.gov/28730320/",
+          "https://pubmed.ncbi.nlm.nih.gov/35965441/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA re-evaluation: no need for numerical ADI and no safety concern for general population at refined exposure",
+      "JECFA evaluation: ADI not specified",
+      "JECFA monograph: high dietary-level animal studies did not indicate meaningful toxicity",
+      "JECFA mutagenicity section: no consistent mutagenic signal in reviewed assays"
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "high-dose laxative users",
+        "individuals with gum hypersensitivity"
+      ],
+      "notes": "Numerical ADI exceedance is not directly applicable because EFSA uses a non-numerical ADI approach and JECFA ADI is not specified."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.83,
+    "rationale": "Major regulators converge on low concern at authorized food-use levels (EU approved with no numerical ADI, US CFR Part 184 GRAS framework, JECFA ADI not specified). Residual concern is mainly limited to high-dose gastrointestinal intolerance and historical hypersensitivity in susceptible individuals.",
+    "key_factors": [
+      "EFSA 2016: no need for numerical ADI and no safety concern at refined exposure",
+      "21 CFR 184.1349 provides GRAS-framework listing with explicit use limits",
+      "JECFA latest evaluation (1988): ADI not specified",
+      "No IARC monograph classification entry found for karaya gum",
+      "Case-level/older signals exist for allergy and high-dose GI effects"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal publication page: Re-evaluation of karaya gum (E 416) as a food additive",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4598",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Title 21 XML (official endpoint), Part 184 and section 184.1349 text",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2025-01-01/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR current page for 21 CFR 184.1349 (access challenge encountered)",
+      "url": "https://www.ecfr.gov/current/title-21/section-184.1349",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database: KARAYA GUM (ID 1)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA API search by partial name 'karaya'",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/karaya",
+      "type": "database"
+    },
+    {
+      "title": "INCHEM JECFA evaluation summary: KARAYA GUM (INS 416)",
+      "url": "http://www.inchem.org/documents/jecfa/jeceval/jec_1248.htm",
+      "type": "database"
+    },
+    {
+      "title": "INCHEM WHO Food Additives Series 24 monograph: Karaya gum",
+      "url": "http://www.inchem.org/documents/jecfa/jecmono/v024je06.htm",
+      "type": "review"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset script (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search (2015-2026): karaya gum safety/toxicity/adverse/allergy",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%28karaya+gum+OR+gum+karaya%29+AND+%28safety+OR+toxicity+OR+adverse+OR+allergy%29&filter=years.2015-2026",
+      "type": "database"
+    },
+    {
+      "title": "Drug-induced severe liver injury due to Sterculia versicolor: a case report (2022)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35965441/",
+      "type": "study"
+    },
+    {
+      "title": "Esophageal bezoar due to karaya gum granules used as a laxative (2017)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28730320/",
+      "type": "study"
+    }
+  ]
+}

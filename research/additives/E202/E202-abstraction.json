@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T07:22:12+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E202",
+    "name": "Potassium sorbate",
+    "cas_numbers": [
+      "24634-61-5",
+      "590-00-1"
+    ],
+    "synonyms": [
+      "Potassium salt of trans,trans-2,4-hexadienoic acid",
+      "Potassium (E,E)-2,4-hexadienoate",
+      "INS 202",
+      "Sorbic acid potassium salt"
+    ],
+    "chemical_class": "Potassium salt of sorbic acid (unsaturated fatty-acid preservative salt)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "antimicrobial"
+    ],
+    "mechanism": "Weak-acid preservative activity that is pH-dependent; antimicrobial efficacy is stronger at lower pH.",
+    "common_food_categories": [
+      "Sliced/cut cheeses and processed cheese products",
+      "Acidified beverages and juices",
+      "Yogurt and cultured dairy products"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 11,
+        "unit": "mg/kg bw/day",
+        "basis": "2019 EFSA follow-up group ADI for sorbic acid (E200) and potassium sorbate (E202), expressed as sorbic acid"
+      },
+      "last_evaluation_year": 2019,
+      "key_finding": "EFSA replaced the earlier temporary ADI and established a group ADI of 11 mg/kg bw/day after evaluating EOGRTS data (BMDL 1,110 mg/kg bw/day)."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.3640",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 25,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA group ADI reported as 0-25 mg/kg bw for sorbic acid and calcium/potassium/sodium sorbates (expressed as sorbic acid)"
+      },
+      "last_evaluation_year": 1973
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "Animal studies reported altered gut microbiota composition and inflammatory markers after sustained potassium sorbate exposure, with partial recovery after washout.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID: 38211766",
+          "PMID: 31596293"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent in vivo and in vitro studies reported reproductive, hepatic, oxidative stress, and apoptosis-related effects, often at experimental doses or in mixture settings.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID: 41031254",
+          "PMID: 40854970",
+          "PMID: 39336671"
+        ]
+      },
+      {
+        "category": "endocrine",
+        "summary": "A large observational cohort reported association between higher intake of several preservatives including potassium sorbate and higher type 2 diabetes incidence, without proving causality.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID: 41501013"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2015/2019 opinions reported no evidence of genotoxic activity for sorbic acid or potassium sorbate in assessed datasets."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "toddlers",
+        "children",
+        "high-consuming adolescents"
+      ],
+      "notes": "EFSA 2015 identified child-group exceedance concern under higher scenarios (temporary ADI context), and a 2024 regional exposure study reported P95 exceedance scenarios."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.73,
+    "rationale": "Regulatory consensus supports permitted use with ADI controls, but child/high-consumer exceedance scenarios and emerging non-human/mechanistic signals justify a cautionary moderate tier rather than limited.",
+    "key_factors": [
+      "EFSA and FDA authorization with explicit ADI/GMP framework",
+      "EFSA historical temporary ADI reduction and later revision to 11 mg/kg bw/day",
+      "Exposure exceedance risk in some high-consumption subgroups",
+      "Recent animal/mechanistic and observational human signals requiring continued monitoring",
+      "No IARC classification for potassium sorbate"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Opinion on the follow-up of the re-evaluation of sorbic acid (E200) and potassium sorbate (E202) as food additives",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5625",
+      "type": "regulatory"
+    },
+    {
+      "title": "DOI metadata: 10.2903/j.efsa.2019.5625",
+      "url": "https://doi.org/10.2903/j.efsa.2019.5625",
+      "type": "database"
+    },
+    {
+      "title": "Scientific Opinion on the re-evaluation of sorbic acid (E200), potassium sorbate (E202) and calcium sorbate (E203) as food additives",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4144",
+      "type": "regulatory"
+    },
+    {
+      "title": "DOI metadata: 10.2903/j.efsa.2015.4144",
+      "url": "https://doi.org/10.2903/j.efsa.2015.4144",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API full text, Title 21 (Food and Drugs)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR section page for 21 CFR 182.3640",
+      "url": "https://www.ecfr.gov/current/title-21/section-182.3640",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA chemical page: POTASSIUM SORBATE",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2724",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API search (ByPartialName)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/potassium%20sorbate",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC Agents Classified by the IARC Monographs",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list data bundle (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Effects of potassium sorbate on systemic inflammation and gut microbiota in normal mice",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38211766/",
+      "type": "study"
+    },
+    {
+      "title": "Toxicity Evaluation of Potassium Sorbate In Vivo with Drosophila Melanogaster",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39336671/",
+      "type": "study"
+    },
+    {
+      "title": "Sodium Benzoate, Potassium Sorbate, and Citric Acid Food Preservatives Trigger Apoptosis in the Male Reproductive System of Rats",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41031254/",
+      "type": "study"
+    },
+    {
+      "title": "Network toxicology and molecular docking elucidate the hepatotoxic and carcinogenic mechanisms of potassium sorbate",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40854970/",
+      "type": "study"
+    },
+    {
+      "title": "Estimation of Dietary Exposure to Sodium Benzoate (E211) and Potassium Sorbate (E202)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39682951/",
+      "type": "study"
+    },
+    {
+      "title": "Associations between preservative food additives and type 2 diabetes incidence in the NutriNet-Sante cohort",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41501013/",
+      "type": "study"
+    },
+    {
+      "title": "Cytogenotoxicity of food preservatives in mammalian cells: A systematic review",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41400292/",
+      "type": "review"
+    },
+    {
+      "title": "PubChem potassium sorbate synonyms",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/potassium%20sorbate/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem PUG-View record (use/manufacturing)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/23676745/JSON",
+      "type": "database"
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T08:26:37Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E218",
+    "name": "Methyl p-hydroxybenzoate (methylparaben)",
+    "cas_numbers": [
+      "99-76-3"
+    ],
+    "synonyms": [
+      "Methylparaben",
+      "Methyl p-hydroxybenzoate",
+      "Methyl p-oxybenzoate",
+      "Methyl ester of p-hydroxybenzoic acid"
+    ],
+    "chemical_class": "Paraben preservative (p-hydroxybenzoic acid ester)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "antimicrobial agent"
+    ],
+    "mechanism": "Inhibits growth of spoilage microorganisms (especially yeasts and moulds) as a paraben antimicrobial preservative.",
+    "common_food_categories": [
+      "processed foods where preservative use is permitted",
+      "surface-treated processed meat products",
+      "other foods under GMP limits"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 10,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA (2004) full group ADI 0-10 for the sum of methyl and ethyl p-hydroxybenzoate esters and sodium salts; propyl excluded."
+      },
+      "last_evaluation_year": 2004,
+      "key_finding": "EFSA retained a group ADI for methyl/ethyl parabens and concluded propyl paraben should not be included due to reproductive findings and lack of clear NOAEL."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1490",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 10,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA group ADI 0-10 mg/kg bw as the sum of ethyl, methyl, and propyl esters of p-hydroxybenzoic acid."
+      },
+      "last_evaluation_year": 1973
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "endocrine",
+        "summary": "Parabens show weak in-vitro estrogenic activity; EFSA reported no in-vivo uterotrophic activity for methyl paraben in reviewed classical assays, leaving mechanistic concern but limited in-vivo confirmation for E218.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "EFSA Journal 2004;83:1-26",
+          "PMID:41572664"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "A recent mouse study reported metabolic disorder and liver damage with a gut-microbiome-linked mechanism under experimental exposure conditions, with uncertain direct translation to typical dietary human exposure.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:41306310"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent aquatic and rodent models report reproductive or developmental perturbations under laboratory exposures, but human epidemiologic evidence remains limited and mixed.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:41461284",
+          "PMID:41488028"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2004 reported no developmental toxicity for methyl paraben in reviewed mouse, rat, hamster, and rabbit studies up to highest tested doses.",
+      "EFSA 2004 considered 1000 mg/kg bw/day a NOAEL for methyl paraben in juvenile-rat male reproductive endpoint studies reviewed by the panel."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "children with higher intake per body weight",
+        "high consumers with cumulative paraben exposure from multiple food categories"
+      ],
+      "notes": "EFSA (2004) indicated then-available conservative intake estimates were below ADI but also noted exposure characterization gaps; recent scoping review literature indicates possible cumulative exceedance scenarios."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.68,
+    "rationale": "Regulatory approval and ADI frameworks in EU/US/JECFA support continued permitted use, but mechanistic/endocrine and experimental toxicology signals plus exposure uncertainty argue against a lower-risk classification.",
+    "key_factors": [
+      "EFSA group ADI exists for methyl/ethyl parabens (0-10 mg/kg bw/day)",
+      "FDA lists methylparaben as GRAS in 21 CFR 184.1490 with GMP maximum 0.1% in food",
+      "No IARC carcinogenic classification identified for methylparaben",
+      "Recent studies suggest plausible mechanistic concerns and cumulative exposure uncertainty"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Opinion of the Scientific Panel on Food Additives, Flavourings, Processing Aids and Materials in Contact with Food on a request from the Commission related to para hydroxybenzoates (E214-219)",
+      "url": "https://web.archive.org/web/20150405091720/http://www.efsa.europa.eu/en/efsajournal/doc/83.pdf",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal DOI record for para hydroxybenzoates opinion (2004)",
+      "url": "https://doi.org/10.2903/j.efsa.2004.83",
+      "type": "database"
+    },
+    {
+      "title": "Crossref metadata for DOI 10.2903/j.efsa.2004.83",
+      "url": "https://api.crossref.org/works/10.2903/j.efsa.2004.83",
+      "type": "database"
+    },
+    {
+      "title": "Electronic Code of Federal Regulations, Title 21 XML snapshot (2026-02-19)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "METHYL p-HYDROXYBENZOATE - Summary of Evaluations Performed by JECFA",
+      "url": "https://www.inchem.org/documents/jecfa/jeceval/jec_1493.htm",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO Food Additives Series 5: p-Hydroxybenzoic acid, ethyl, methyl and propyl esters",
+      "url": "https://www.inchem.org/documents/jecfa/jecmono/v05je13.htm",
+      "type": "review"
+    },
+    {
+      "title": "IARC List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list-of-classifications application dataset (last_update 2026-02-25)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Worldwide systematic analysis of dietary paraben exposure. A scoping review of sources and food categories (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41172944/",
+      "type": "review"
+    },
+    {
+      "title": "Assessing systemic absorption and estrogenic potential of methylparaben and propylparaben in consumer use (2026)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41572664/",
+      "type": "review"
+    },
+    {
+      "title": "MeP Induces Metabolic Disorder and Liver Damage at Human-Relevant Exposure Levels: Role of the Gut Microbiota (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41306310/",
+      "type": "study"
+    },
+    {
+      "title": "Impairment of zebrafish oogenesis and F1 embryonic development by maternal methylparaben exposure (2026)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41461284/",
+      "type": "study"
+    },
+    {
+      "title": "Intrauterine Exposure to Endocrine-disrupting Chemicals and Risk of Hypospadias: A Pilot Study (2026)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41488028/",
+      "type": "study"
+    },
+    {
+      "title": "Commission Regulation (EU) No 1129/2011 (EU food additive Union list amendment)",
+      "url": "https://www.legislation.gov.uk/eur/2011/1129/data.xht?view=snippet&wrap=true",
+      "type": "regulatory"
+    },
+    {
+      "title": "Commission Regulation (EU) 2018/98 amending Annexes II and III to Regulation (EC) No 1333/2008",
+      "url": "https://www.legislation.gov.uk/eur/2018/98/data.xht?view=snippet&wrap=true",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubChem synonym list for methylparaben",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/methylparaben/synonyms/TXT",
+      "type": "database"
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T09:59:08Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E270",
+    "name": "Lactic acid",
+    "cas_numbers": [
+      "50-21-5",
+      "598-82-3",
+      "79-33-4",
+      "10326-41-7"
+    ],
+    "synonyms": [
+      "2-hydroxypropanoic acid",
+      "2-hydroxypropionic acid",
+      "DL-lactic acid"
+    ],
+    "chemical_class": "Organic acid (acidity regulator)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "pH control agent",
+      "antimicrobial agent",
+      "flavor enhancer",
+      "curing and pickling agent",
+      "solvent and vehicle"
+    ],
+    "mechanism": "Acidifies foods and lowers pH; undissociated acid fraction suppresses growth of susceptible microbes and contributes sourness/flavor balance.",
+    "common_food_categories": [
+      "acidified and fermented foods",
+      "processed foods requiring pH control",
+      "foods using antimicrobial acidulation under GMP (excluding infant foods/formulas in 21 CFR 184.1061)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No finalized EFSA numerical ADI identified for E270; EFSA re-evaluation record EFSA-Q-2011-00596 is ongoing/planned with no published output yet."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "OpenEFSA record (last modified 2026-01-19) states E270 is already authorised in the EU, re-evaluation has been delayed, and a new call for data is planned in 2026."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1061",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA page reports ADI as 'NOT LIMITED (1973)' (qualitative, non-numeric)."
+      },
+      "last_evaluation_year": 2001
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "Recent human literature links D-lactic acidosis mainly to vulnerable patients (short bowel syndrome/intestinal failure), where carbohydrate fermentation and D-lactate accumulation can cause neurologic symptoms and metabolic acidosis.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/38374557/",
+          "https://pubmed.ncbi.nlm.nih.gov/39740424/",
+          "https://pubmed.ncbi.nlm.nih.gov/40673340/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "A current EFSA final re-evaluation output specific to E270 was not identified (ongoing process), creating a data-gap for modern EU exposure refinement.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00596"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "FDA affirms lactic acid as GRAS for direct food use under GMP conditions (21 CFR 184.1061).",
+      "JECFA records ADI as NOT LIMITED (1973) and notes no safety concern at current flavouring-use intake."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "patients with short bowel syndrome",
+        "children with intestinal failure"
+      ],
+      "notes": "No numeric EFSA ADI and qualitative JECFA ADI limit direct exceedance calculation; risk discussion is population-specific rather than general-population ADI exceedance."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.78,
+    "rationale": "Regulatory evidence indicates low concern at normal use levels (FDA GRAS, JECFA not-limited ADI), but a finalized EFSA E270 re-evaluation is pending and vulnerable clinical subgroups can develop D-lactic acidosis under specific conditions.",
+    "key_factors": [
+      "E270 already authorised in EU per EFSA question comment but re-evaluation output pending",
+      "FDA GRAS with GMP conditions and infant-food/formula exclusion in 21 CFR 184.1061",
+      "JECFA ADI reported as NOT LIMITED (1973), evaluation year listed as 2001",
+      "No IARC classification entry found for lactic acid/CAS 50-21-5",
+      "Recent PubMed safety signals concentrated in short bowel/intestinal failure populations"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA OpenEFSA substance record: Lactic acid",
+      "url": "https://open.efsa.europa.eu/api/substance/get?termExtendedName=lactic%20acid",
+      "type": "database"
+    },
+    {
+      "title": "EFSA OpenEFSA question EFSA-Q-2011-00596 (Re-evaluation of E270)",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00596",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 Part 184 XML (includes 21 CFR 184.1 and 184.1061)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?subtitle=B&chapter=I&subchapter=B&part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API metadata for Title 21 versions",
+      "url": "https://www.ecfr.gov/api/versioner/v1/versions/title-21.json",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA SearchChemical endpoint for lactic acid",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/lactic%20acid",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA chemical page: LACTIC ACID (ID 3367)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3367",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC LOC data application bundle",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Factors associated with D-lactic acidosis in pediatric intestinal failure: A case-control study (2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38374557/",
+      "type": "study"
+    },
+    {
+      "title": "Metabolic acidosis due to d-lactate in a patient with intestinal resection (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39740424/",
+      "type": "study"
+    },
+    {
+      "title": "D-lactic acidosis in short bowel syndrome: are probiotics friend or foe? (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40673340/",
+      "type": "study"
+    },
+    {
+      "title": "EFSA Journal: Re-evaluation of acetic/lactic/citric/tartaric acid esters E472a-f (2020)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32874250/",
+      "type": "review"
+    }
+  ]
+}

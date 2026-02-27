@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T14:25:57Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E403",
+    "name": "Ammonium alginate",
+    "cas_numbers": [
+      "9005-34-9"
+    ],
+    "synonyms": [
+      "Ammonium alginate",
+      "Ammonium salt of alginic acid",
+      "INS 403",
+      "E403"
+    ],
+    "chemical_class": "Ammonium salt of alginic acid (alginate hydrocolloid polysaccharide)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "stabilizer",
+    "secondary_categories": [
+      "thickener",
+      "gelling agent",
+      "emulsifier",
+      "humectant"
+    ],
+    "mechanism": "Increases viscosity and water binding, stabilizes dispersed phases, and forms gel-like matrices in food systems.",
+    "common_food_categories": [
+      "Confections and frostings",
+      "Fats and oils",
+      "Gelatins and puddings",
+      "Gravies and sauces",
+      "Jams and jellies",
+      "Sweet sauces",
+      "Other foods at low-level use"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2017 re-evaluation concluded there was no need for a numerical ADI for E400-E404 and no safety concern at refined exposure for reported uses."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "No numerical ADI needed for general reported uses; insufficient data for adequate safety assessment in infants/young children consuming specific FSMP categories (13.1.5.1/13.1.5.2)."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1133",
+      "notes": "Affirmed in Part 184 (GRAS) with specific category/maximum use limits (e.g., 0.4-0.5% in listed categories; 0.1% in all other categories for specified functions)."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO JECFA database entry for ammonium alginate lists ADI as NOT SPECIFIED."
+      },
+      "last_evaluation_year": 1992
+    },
+    "iarc_classification": null,
+    "notable_bans": [
+      "EU suspended placing on market/import of jelly mini-cups containing specified gel-forming additives including E403 (Decision 2004/37/EC context cited in EFSA 2017 opinion)."
+    ]
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Gastrointestinal side effects have been reported at therapeutic-dose infant medicinal use levels (around 417-834 mg/kg bw/day as sodium alginate equivalents), and EFSA found data insufficient for specific infant FSMP categories.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "EFSA ANS Panel 2017 (E400-E404 re-evaluation)"
+        ]
+      },
+      {
+        "category": "allergenic",
+        "summary": "EFSA noted potential hypersensitivity issues related to protein impurities and recommended minimizing protein limits in specifications.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "EFSA ANS Panel 2017 (E400-E404 re-evaluation)"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA concluded no concern with respect to genotoxicity for alginic acid and its salts including E403.",
+      "EFSA considered alginic acid and its salts not of concern with respect to carcinogenicity in reviewed long-term studies."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "Infants and young children consuming special medical purpose foods"
+      ],
+      "notes": "A numerical ADI is not set (EFSA/JECFA non-numerical conclusion). Main risk-management caveat is vulnerable infant FSMP use rather than numeric ADI exceedance."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.8,
+    "rationale": "Major regulators maintain approval/GRAS status and EFSA/JECFA assign non-numerical ADI outcomes, with no clear genotoxic/carcinogenic signal at food-use levels; however, infant FSMP-specific data gaps and high-dose GI effects justify not classifying as risk_free.",
+    "key_factors": [
+      "EFSA 2017: no numerical ADI needed and no safety concern for reported uses",
+      "FDA: affirmed GRAS with specific use limits in 21 CFR 184.1133",
+      "JECFA: ADI NOT SPECIFIED (1992)",
+      "No IARC listing found for ammonium alginate/CAS 9005-34-9",
+      "Caveat: inadequate data for certain infant FSMP categories"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of alginic acid and its sodium, potassium, ammonium and calcium salts (E 400-E 404) as food additives",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5049",
+      "type": "regulatory"
+    },
+    {
+      "title": "Europe PMC full text XML for EFSA Journal 2017;15(11):5049",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7010146/fullTextXML",
+      "type": "database"
+    },
+    {
+      "title": "21 CFR 184.1133 Ammonium alginate",
+      "url": "https://www.ecfr.gov/current/title-21/section-184.1133",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 184.1 Substances added directly to human food affirmed as GRAS",
+      "url": "https://www.ecfr.gov/current/title-21/part-184/section-184.1",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database: AMMONIUM ALGINATE (Chemical 879)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/879",
+      "type": "database"
+    },
+    {
+      "title": "Agents classified by the IARC Monographs",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list-of-classifications data script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed query for ammonium alginate",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmax=20&sort=pub+date&retmode=json&term=%22ammonium+alginate%22%5BTitle%2FAbstract%5D",
+      "type": "database"
+    },
+    {
+      "title": "PubMed abstracts for selected ingestion/safety-related alginate papers (PMIDs 33851051, 31202207, 29973437)",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=33851051,31202207,29973437&retmode=text&rettype=abstract",
+      "type": "study"
+    }
+  ]
+}

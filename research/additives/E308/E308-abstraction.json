@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T11:00:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E308",
+    "name": "Gamma-tocopherol",
+    "cas_numbers": [
+      "54-28-4"
+    ],
+    "synonyms": [
+      "gamma-Tocopherol",
+      "(+)-gamma-Tocopherol",
+      "D-gamma-Tocopherol",
+      "o-Xylotocopherol"
+    ],
+    "chemical_class": "Tocopherol (vitamin E isomer; lipophilic phenolic antioxidant)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "antioxidant",
+    "secondary_categories": [
+      "nutrient source"
+    ],
+    "mechanism": "Chain-breaking lipid-phase antioxidant activity that limits propagation of lipid oxidation in foods.",
+    "common_food_categories": [
+      "fats and oils",
+      "lipid-containing processed foods",
+      "vitamin-fortified foods and supplements"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 2,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA re-evaluation of E306-E309 references a group ADI (expressed as all-rac-alpha-tocopheryl acetate) and concluded no safety concern for reported antioxidant uses/use levels, while noting exposure-data limitations for antioxidant-use estimation."
+      },
+      "last_evaluation_year": 2015,
+      "key_finding": "No safety concern at reported use levels as antioxidants; exposure estimates for antioxidant-use scenarios were limited by available data."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.3890",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 2,
+        "unit": "mg/kg bw/day",
+        "basis": "No direct standalone E308/gamma-tocopherol record found in WHO JECFA search; closest food-additive record is Mixed TOCOPHEROLS concentrate (INS 306), ADI 0-2 mg/kg bw (upper bound 2)."
+      },
+      "last_evaluation_year": 1973
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "A 2025 CKD cohort reported a reversed J-shaped association between dietary gamma-tocopherol and CKD progression risk, indicating possible non-linear intake-response in a vulnerable population.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/40053500/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Short-course pretreatment in asthmatics did not significantly mitigate ozone-induced airway inflammation, suggesting limited demonstrated protective efficacy in that model.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/32727225/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "Phase 0 perioperative supplementation with a gamma-tocopherol-rich vitamin E mixture reported no adverse events in the trial abstract.",
+      "No IARC carcinogenic classification entry identified for gamma-tocopherol in the current list-of-classifications dataset reviewed."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "people with chronic kidney disease",
+        "high-dose supplement users"
+      ],
+      "notes": "EFSA noted insufficient data to estimate exposure for antioxidant-use scenarios, so exceedance risk is uncertain rather than demonstrated."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.67,
+    "rationale": "Regulatory acceptance is established and no major carcinogenic or ban signal was identified, but exposure estimation gaps and a recent non-linear CKD association reduce certainty.",
+    "key_factors": [
+      "EFSA E306-E309 re-evaluation found no safety concern at reported antioxidant use levels",
+      "U.S. eCFR lists tocopherols under GRAS framework with GMP-based conditions",
+      "No standalone JECFA gamma-tocopherol entry identified; closest mixed tocopherols ADI is 0-2 mg/kg bw",
+      "No IARC listing identified for gamma-tocopherol",
+      "Recent observational CKD data suggest possible non-linear risk in a vulnerable subgroup"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal page for E306-E309 re-evaluation",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4247",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR 21 CFR 182.3890 Tocopherols",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-182/subpart-D/section-182.3890",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR 21 CFR 182.1 General conditions",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-182/section-182.1",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA chemical record: Mixed TOCOPHEROLS concentrate (INS 306)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3027",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API search: gamma tocopherol",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/gamma%20tocopherol",
+      "type": "database"
+    },
+    {
+      "title": "IARC list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubChem gamma-tocopherol synonyms",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/gamma-tocopherol/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "Short course gamma tocopherol did not mitigate effects of ozone on airway inflammation in asthmatics",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32727225/",
+      "type": "study"
+    },
+    {
+      "title": "Plasma, Prostate and Urine Levels of Tocopherols and Metabolites in Men after Supplementation with a gamma-Tocopherol-Rich Vitamin E Mixture",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33319628/",
+      "type": "study"
+    },
+    {
+      "title": "Dietary vitamin E and tocopherol isoform intake and the progression of chronic kidney disease",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40053500/",
+      "type": "study"
+    }
+  ]
+}

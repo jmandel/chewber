@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T14:11:45Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E392",
+    "name": "Rosemary extract",
+    "cas_numbers": [
+      "84604-14-8",
+      "3650-09-7",
+      "5957-80-2"
+    ],
+    "synonyms": [
+      "Extract of rosemary",
+      "Rosemary extract",
+      "Rosemary antioxidant extract",
+      "INS 392"
+    ],
+    "chemical_class": "Botanical antioxidant extract rich in phenolic diterpenes (carnosic acid and carnosol)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "antioxidant",
+    "secondary_categories": [
+      "flavouring"
+    ],
+    "mechanism": "Carnosic acid and carnosol inhibit lipid oxidation and scavenge reactive species, slowing rancidity in fat-containing foods.",
+    "common_food_categories": [
+      "fine bakery wares",
+      "processed nuts",
+      "soups and broths",
+      "sauces",
+      "meat products"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA opinions reported insufficient data to establish a numerical EFSA ADI; 2018 refined exposure compared intake against the JECFA temporary ADI of 0-0.3 mg/kg bw/day used at that time."
+      },
+      "last_evaluation_year": 2018,
+      "key_finding": "EFSA refined exposure assessment for E392 concluded exposure estimates were conservative and did not indicate a safety concern for reported uses."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.20; 21 CFR 182.10",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 0.6,
+        "unit": "mg/kg bw/day",
+        "basis": "Upper bound of JECFA ADI range 0-0.6 mg/kg bw/day (expressed as carnosic acid and carnosol), established after withdrawal of the previous temporary ADI 0-0.3."
+      },
+      "last_evaluation_year": 2025
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "endocrine",
+        "summary": "JECFA 2025 identified developmental thyroid-hormone effects in rat pups from maternal exposure studies; BMDL20 was 97 mg/kg bw/day (as carnosic acid plus carnosol), which informed ADI revision.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/6311",
+          "https://iris.who.int/server/api/core/bitstreams/e31f56ec-00c5-4f92-94e4-37fd0fb84471/content"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Mechanistic studies discussed by JECFA indicate CYP-related interaction potential for rosemary constituents; relevance at normal dietary additive exposure remains uncertain.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://iris.who.int/server/api/core/bitstreams/e31f56ec-00c5-4f92-94e4-37fd0fb84471/content"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA did not consider slight child exceedance of the ADI in conservative high-exposure scenarios to represent a safety concern.",
+      "EFSA refined exposure assessment reported no safety concern for current reported uses of E392.",
+      "Recent human rosemary-extract supplement trials reported generally good short-term tolerability."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "children (high consumers)"
+      ],
+      "notes": "JECFA 2025 reported high child exposure up to 0.84 mg/kg bw/day versus ADI upper bound 0.6 mg/kg bw/day; adults in cited scenario were up to 0.32 mg/kg bw/day."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.73,
+    "rationale": "E392 remains approved/GRAS but has meaningful caveats: child high-end intake can exceed ADI in conservative scenarios and developmental thyroid findings informed ADI setting. Regulators nevertheless judged current assessed uses not to pose a safety concern.",
+    "key_factors": [
+      "EU authorised status with EFSA exposure reassessment",
+      "JECFA ADI established at 0-0.6 mg/kg bw/day in 2025",
+      "High-end child exposure may exceed ADI in conservative scenarios",
+      "Credible developmental thyroid endpoint considered in risk assessment",
+      "No IARC carcinogenic classification identified"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal: Refined exposure assessment of extracts of rosemary (E 392) from its use as food additive",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5373",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal: Scientific opinion on safety of extension of use of rosemary extracts (E 392) in fat based spreads",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4090",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal: Use of rosemary extracts as a food additive",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/721",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full Title 21 XML",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA API search by partial name (rosemary)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/rosemary",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA Chemical page: ROSEMARY EXTRACT",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/6311",
+      "type": "database"
+    },
+    {
+      "title": "WHO TRS 1058 (JECFA 100) report",
+      "url": "https://iris.who.int/server/api/core/bitstreams/e31f56ec-00c5-4f92-94e4-37fd0fb84471/content",
+      "type": "regulatory"
+    },
+    {
+      "title": "FAO JECFA Monographs 19 (Rosemary extract specifications)",
+      "url": "http://www.fao.org/3/a-i6413e.pdf",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC agents classified by the IARC Monographs",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list of classifications app page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC LOC dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: Reproductive and developmental toxicity screening study of an acetone extract of rosemary",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33321148/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Safety and stress-reducing effects of rosemary extract",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41312013/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Randomized placebo-controlled trial of supplement containing rosemary extract",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40135175/",
+      "type": "study"
+    }
+  ]
+}

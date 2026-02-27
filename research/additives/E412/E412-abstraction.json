@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T14:56:11+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E412",
+    "name": "Guar gum",
+    "cas_numbers": [
+      "9000-30-0"
+    ],
+    "synonyms": [
+      "Guaran",
+      "Gum cyamopsis",
+      "Cluster bean gum"
+    ],
+    "chemical_class": "Galactomannan polysaccharide hydrocolloid",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "thickener/stabilizer",
+    "secondary_categories": [
+      "emulsifier",
+      "formulation aid",
+      "firming agent"
+    ],
+    "mechanism": "Hydrates and binds water to increase viscosity and stabilize/emulsify dispersed food systems.",
+    "common_food_categories": [
+      "baked goods and baking mixes",
+      "breakfast cereals",
+      "cheese",
+      "dairy product analogs",
+      "fats and oils",
+      "gravies and sauces",
+      "jams and jellies",
+      "milk products",
+      "processed vegetables and vegetable juices",
+      "soups and soup mixes",
+      "sweet sauces, toppings, and syrups"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "2017 EFSA re-evaluation concluded no need for a numerical ADI for the general population at refined exposure."
+      },
+      "last_evaluation_year": 2024,
+      "key_finding": "EFSA 2024 follow-up found submitted data insufficient to support safe use in infants/young children in FC 13.1.1, 13.1.5.1, and 13.1.5.2; 2017 finding of no general-population safety concern remains for reported uses."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1339",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not limited (WHO/JECFA database entry)."
+      },
+      "last_evaluation_year": 1975
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "EFSA 2024 concluded data were insufficient to demonstrate safe use for infants/young children in specific medical and formula categories (FC 13.1.1, 13.1.5.1, 13.1.5.2).",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/38711804/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11070944/"
+        ]
+      },
+      {
+        "category": "allergenic",
+        "summary": "Hypersensitivity risk is linked to residual proteinaceous material; EFSA discussed case-report context and recommended minimizing allergenic impurities.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7010168/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11070944/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Severe choking/esophageal obstruction has been reported in dry bolus hydrocolloid contexts (including guar gum), reflected in regulatory warning context for hydrophilic gums.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7010168/",
+          "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2017: no concern for genotoxicity.",
+      "EFSA 2017: no adverse effects reported in subchronic and carcinogenicity studies at highest tested doses in reviewed dataset.",
+      "EFSA 2017: no need for numerical ADI and no general-population safety concern at refined exposure.",
+      "Recent clinical studies/meta-analyses generally report tolerability in studied adult populations (e.g., PHGG enteral formula RCT; metabolic RCT/meta-analyses)."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "infants and young children consuming special medical foods"
+      ],
+      "notes": "Classical ADI exceedance is not applicable because EFSA/JECFA did not set a numerical ADI. Risk focus is on population-specific uncertainty (infants/young children in specific categories), not ADI exceedance."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.74,
+    "rationale": "General-population evidence supports low concern under approved uses, but EFSA's latest follow-up could not establish safety for specific infant/young-child categories and highlighted specification/impurity issues.",
+    "key_factors": [
+      "EFSA 2017 no numerical ADI and no general-population safety concern",
+      "EFSA 2024 insufficient data for infant/young-child special categories",
+      "FDA GRAS with defined CFR use conditions",
+      "JECFA ADI not limited",
+      "No IARC monograph classification for guar gum found"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of guar gum (E 412) as a food additive (EFSA Journal, 2017)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625396/",
+      "type": "regulatory"
+    },
+    {
+      "title": "Re-evaluation of guar gum (E 412) as a food additive (full text, PMCID PMC7010168)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7010168/",
+      "type": "regulatory"
+    },
+    {
+      "title": "Re-evaluation of guar gum (E 412) in foods for infants below 16 weeks and follow-up (EFSA Journal, 2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38711804/",
+      "type": "regulatory"
+    },
+    {
+      "title": "Re-evaluation of guar gum (E 412) in foods for infants below 16 weeks and follow-up (full text, PMCID PMC11070944)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11070944/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API title 21 full XML (issue date 2026-02-19)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA chemical record 863 (Guar gum)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/863",
+      "type": "database"
+    },
+    {
+      "title": "JECFA specification page for Guar gum",
+      "url": "https://www.fao.org/food/food-safety-quality/scientific-advice/jecfa/jecfa-additives/detail/en/c/1204/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications data script (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Tolerability and efficacy of an enteral formula containing partially hydrolyzed guar gum in patients following gastrointestinal surgery (2026)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41483486/",
+      "type": "study"
+    },
+    {
+      "title": "Investigating the effects of mycoprotein and guar gum on postprandial glucose in type 2 diabetes (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40410155/",
+      "type": "study"
+    },
+    {
+      "title": "Partially hydrolyzed guar gum attenuates non-alcoholic fatty liver disease in mice (2021)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34025071/",
+      "type": "study"
+    },
+    {
+      "title": "Meta-analysis: guar gum supplementation on lipid profile (2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35837742/",
+      "type": "review"
+    },
+    {
+      "title": "Meta-analysis: guar gum supplementation on glycemic control/body mass/BP (2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36958432/",
+      "type": "review"
+    }
+  ]
+}

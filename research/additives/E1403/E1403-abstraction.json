@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T03:57:55+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E1403",
+    "name": "Bleached starch",
+    "cas_numbers": [],
+    "synonyms": [
+      "INS No. 1403 Bleached starch",
+      "Food starch-modified"
+    ],
+    "chemical_class": "Chemically modified starch",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "thickener",
+    "secondary_categories": [
+      "stabilizer",
+      "emulsifier"
+    ],
+    "mechanism": "Starch is chemically treated (including bleaching routes in regulatory specifications) to alter functional properties used for texture and process performance; FDA controls this through reagent-specific limits in food starch-modified production.",
+    "common_food_categories": [
+      "processed foods using modified starch ingredients",
+      "batter systems for commercially processed foods (for specific chlorine/calcium hypochlorite treatment route)",
+      "general food applications where food starch-modified is used under GMP"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "not_evaluated",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No E1403-specific EFSA ADI was identified in retrieved EFSA sources; the 2017 EFSA modified-starches opinion covered other E-numbers (E1404-E1451 subset) with ADI not specified for that assessed group."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "No dedicated EFSA re-evaluation for E1403 was located in retrieved EFSA sources; the closest EFSA opinion (2017) on other modified starches concluded no safety concern and used an ADI of not specified for that group."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.892",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA database for Modified starches (including INS 1403 in synonyms) lists ADI as NOT SPECIFIED."
+      },
+      "last_evaluation_year": 2021
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "E1403-specific recent toxicology and exposure studies were not robustly identified in required-source searches; direct evidence granularity is limited.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/?term=bleached%20starch%20safety",
+          "https://pubmed.ncbi.nlm.nih.gov/?term=%22modified%20starch%22%20food%20additive%20toxicity"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "A retrieved modified-starch-related in vitro paper (PMID 23768322) examines cytotoxicity of nanoemulsions and is not an additive-specific E1403 dietary risk study.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/23768322/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA lists ADI as NOT SPECIFIED for modified starches including INS 1403.",
+      "FDA permits use under 21 CFR 172.892 with explicit processing and limit conditions.",
+      "No IARC classification entry was found for bleached starch/E1403/INS 1403 in the IARC list dataset checked."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "No numeric ADI exists in the retrieved JECFA entry (ADI not specified), so standard numerical ADI exceedance framing is limited; E1403-specific intake data were not found."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.66,
+    "rationale": "Current retrieved regulatory signals are low concern (FDA-approved use conditions; JECFA ADI not specified for the relevant modified-starch group; no IARC listing found), but E1403-specific modern toxicology and exposure data are limited.",
+    "key_factors": [
+      "JECFA ADI: NOT SPECIFIED for modified starches including INS 1403",
+      "FDA authorization and conditions under 21 CFR 172.892",
+      "No dedicated EFSA E1403 opinion located in retrieved EFSA sources",
+      "No IARC listing found for E1403 terms in checked classification dataset",
+      "Sparse additive-specific recent PubMed safety evidence"
+    ]
+  },
+  "sources": [
+    {
+      "title": "WHO/JECFA database chemical page: Modified starches (Chemical 398)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/398",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API section text: 21 CFR 172.892 (Food starch-modified)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?section=172.892",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API search results for 'bleached starch'",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=bleached%20starch&per_page=50",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA search URL attempt for E1403",
+      "url": "https://www.efsa.europa.eu/en/search?search_api_fulltext=E1403",
+      "type": "database"
+    },
+    {
+      "title": "EFSA search URL attempt for Bleached starch",
+      "url": "https://www.efsa.europa.eu/en/search?search_api_fulltext=Bleached%20starch",
+      "type": "database"
+    },
+    {
+      "title": "EFSA Journal 2017;15(10):4911 PDF",
+      "url": "https://www.efsa.europa.eu/sites/default/files/scientific_output/files/main_documents/4911.pdf",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list dataset script (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed query: bleached starch safety",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=bleached%20starch%20safety",
+      "type": "database"
+    },
+    {
+      "title": "PubMed query: \"modified starch\" food additive toxicity",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%22modified%20starch%22%20food%20additive%20toxicity",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 23768322",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23768322/",
+      "type": "study"
+    }
+  ]
+}

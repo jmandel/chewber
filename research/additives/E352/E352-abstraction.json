@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T13:13:47Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E352",
+    "name": "Calcium malates",
+    "cas_numbers": [],
+    "synonyms": [
+      "Calcium DL-malate",
+      "Monocalcium DL-malate",
+      "Hydroxybutanedioic acid calcium salt",
+      "Calcium-L-hydroxysuccinate"
+    ],
+    "chemical_class": "Calcium salts of malic acid (hydroxy-dicarboxylate salts)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "flavour enhancer"
+    ],
+    "mechanism": "Provides malate-based acidification/buffering and contributes sourness modulation in formulated foods.",
+    "common_food_categories": [
+      "acidified beverages",
+      "confectionery",
+      "processed fruit products",
+      "food supplements"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "not_evaluated",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No EFSA numeric ADI for E352 identified from accessible EFSA pages in this session; 2018 EFSA DCM opinion reported insufficient evidence to complete novel-food safety assessment."
+      },
+      "last_evaluation_year": 2018,
+      "key_finding": "EFSA ANS (2018) considered evidence insufficient to distinguish proposed di-calcium malate dossier from already authorised calcium malate sources and could not complete a full safety assessment for that novel-food submission."
+    },
+    "fda": {
+      "status": "not_evaluated",
+      "cfr_citation": "No direct calcium malate listing found in 21 CFR Title 21 full XML (issue date 2026-02-19); related section: 21 CFR 184.1069 (malic acid, GRAS)",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not specified (group ADI for DL-malic acid and sodium, potassium and calcium salts)."
+      },
+      "last_evaluation_year": 1979
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "A 2025 prospective cohort observed higher type 2 diabetes incidence for certain food additive mixtures that included malic acid among multiple co-exposures; this is mixture-level observational evidence and not calcium-malate-specific causality.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/40198579/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Evidence-quality gap: EFSA 2018 reported insufficient dossier characterization/exposure information for di-calcium malate novel-food evaluation.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/32625930/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA assigned ADI 'not specified' for DL-malic acid and sodium/potassium/calcium salts (1979).",
+      "No IARC monograph group classification for calcium malate/malic acid was identified in the checked IARC classification dataset."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "No numerical ADI was set by JECFA (ADI not specified) and no EFSA numeric ADI for E352 was identified; additive-specific exceedance quantification could not be calculated from accessible sources."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.62,
+    "rationale": "Regulatory baseline (JECFA ADI not specified) and lack of direct carcinogenic classification support low-to-limited concern at typical use levels, but evidence quality is constrained by sparse recent additive-specific toxicology and incomplete modern exposure characterization for E352.",
+    "key_factors": [
+      "JECFA ADI not specified (group assessment)",
+      "No IARC classification identified for calcium malate",
+      "No direct standalone calcium malate CFR listing found in current Title 21 XML",
+      "EFSA 2018 DCM dossier characterization/exposure limitations"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Evaluation of di-calcium malate, used as a novel food ingredient...",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625930/",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA call for technical and toxicological data on food additives E296, E350, E351 and E352",
+      "url": "https://www.efsa.europa.eu/en/calls/call-technical-and-toxicological-data-food-additives-e-296-e-350-e-351-and-e-352",
+      "type": "regulatory"
+    },
+    {
+      "title": "Public consultation on draft protocol for the re-evaluation of malic acid and its salts",
+      "url": "https://www.efsa.europa.eu/en/consultations/call/public-consultation-draft-protocol-re-evaluation-malic-acid-and",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API titles metadata",
+      "url": "https://www.ecfr.gov/api/versioner/v1/titles.json",
+      "type": "database"
+    },
+    {
+      "title": "eCFR full Title 21 XML (2026-02-19)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA Chemical record: CALCIUM DL-MALATE",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/90",
+      "type": "database"
+    },
+    {
+      "title": "JECFA Chemical record: MONOCALCIUM DL-MALATE",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3862",
+      "type": "database"
+    },
+    {
+      "title": "JECFA API SearchChemical ByPartialName malate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/malate",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC LOC app dataset bundle",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Food additive mixtures and type 2 diabetes incidence",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40198579/",
+      "type": "study"
+    },
+    {
+      "title": "Ultrasound-assisted preparation of calcium malate and its absorption",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34265023/",
+      "type": "study"
+    },
+    {
+      "title": "Recent advances in producing food additive L-malate",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36604311/",
+      "type": "review"
+    }
+  ]
+}

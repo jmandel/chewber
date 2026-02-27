@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T14:58:02+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E413",
+    "name": "Tragacanth gum",
+    "cas_numbers": [
+      "9000-65-1"
+    ],
+    "synonyms": [
+      "Tragacanth",
+      "Gum tragacanth",
+      "INS 413"
+    ],
+    "chemical_class": "Natural exudate acidic polysaccharide hydrocolloid (plant gum) from Astragalus species",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "Thickener and stabilizer",
+    "secondary_categories": [
+      "emulsifier"
+    ],
+    "mechanism": "Hydrocolloid that increases viscosity and stabilizes emulsions/suspensions; EFSA reports it is unlikely to be absorbed intact and is partially fermented by intestinal microbiota.",
+    "common_food_categories": [
+      "baked goods and baking mixes",
+      "condiments and relishes",
+      "fats and oils",
+      "gravies and sauces",
+      "meat products",
+      "processed fruits and fruit juices",
+      "other food categories"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA (2017) concluded there is no need for a numerical ADI and no safety concern for the general population at refined exposure and reported use levels."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "EFSA re-evaluation reported no genotoxicity concern, no adverse effects in carcinogenicity studies at highest tested doses, and no need for a numerical ADI for E413."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1351",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA database lists ADI as NOT SPECIFIED for tragacanth gum (INS 413)."
+      },
+      "last_evaluation_year": 1985
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "allergenic",
+        "summary": "Historical case reports and letters describe hypersensitivity/allergic reactions in some individuals where tragacanth was implicated; immunogenicity studies of exudate gums also support plausibility of sensitization in susceptible people.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/643027/",
+          "https://pubmed.ncbi.nlm.nih.gov/80627/",
+          "https://pubmed.ncbi.nlm.nih.gov/20296003/",
+          "https://pubmed.ncbi.nlm.nih.gov/3956793/"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "EFSA notes partial fermentation by intestinal microbiota; available evidence in the EFSA re-evaluation did not identify this as a general-population safety concern at refined exposures.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/32625506/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2017: no need for a numerical ADI and no safety concern for general population at refined exposure",
+      "EFSA 2017: no concern with respect to genotoxicity",
+      "Human volunteer study (1984): 9.9 g/day for 21 days was well tolerated without adverse toxicological findings",
+      "Rat ultrastructural study (1984): no detectable heart/liver pathological abnormalities at tested dietary levels"
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "ADI exceedance assessment is not directly applicable because EFSA concluded no numerical ADI is needed and JECFA ADI is not specified."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.79,
+    "rationale": "E413 is broadly accepted by major regulators (EU approved, US CFR Part 184 GRAS framework, JECFA ADI not specified) with no convincing evidence of broad-population toxicological harm at authorized uses. However, historical hypersensitivity evidence indicates non-zero risk in susceptible individuals, preventing a risk_free designation.",
+    "key_factors": [
+      "EFSA 2017 concluded no numerical ADI needed and no general-population safety concern",
+      "JECFA lists ADI as not specified with last toxicological evaluation year 1985",
+      "US eCFR lists gum tragacanth under 21 CFR 184.1351 within Part 184 GRAS framework with use limits",
+      "No IARC carcinogenic classification entry identified",
+      "Historical case reports indicate rare allergy/hypersensitivity potential"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA search page for E413/tragacanth",
+      "url": "https://www.efsa.europa.eu/en/search?search_api_fulltext=E413+tragacanth",
+      "type": "regulatory"
+    },
+    {
+      "title": "Re-evaluation of tragacanth (E 413) as a food additive (EFSA Journal, 2017; PubMed record)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625506/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Part 184 - Direct food substances affirmed as generally recognized as safe",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-184",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API text of 21 CFR 184.1351 (Gum tragacanth)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=184&section=184.1351",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA API search by partial name: tragacanth",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/tragacanth",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA database entry: TRAGACANTH GUM (ID 2211)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2211",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs - List of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset script (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed recent query for tragacanth safety/toxicity/adverse/allergy",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=(tragacanth%5BTitle%2FAbstract%5D)%20AND%20(toxicity%20OR%20safety%20OR%20adverse%20OR%20allergy)%20AND%20(%222015%2F01%2F01%22%5BDate%20-%20Publication%5D%20:%20%223000%22%5BDate%20-%20Publication%5D)&retmax=20&sort=pub+date&retmode=json",
+      "type": "database"
+    },
+    {
+      "title": "The effects of dietary gum tragacanth in man (1984)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/6372167/",
+      "type": "study"
+    },
+    {
+      "title": "Transmission electron microscopy of heart and liver tissues from rats fed with gums arabic and tragacanth (1984)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/6719489/",
+      "type": "study"
+    },
+    {
+      "title": "Immunogenicity, immunological cross-reactivity and non-specific irritant properties of exudate gums (1986)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3956793/",
+      "type": "study"
+    },
+    {
+      "title": "Big Mac attack (hypersensitivity case context, 1978)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/643027/",
+      "type": "study"
+    },
+    {
+      "title": "Hypersensitivity to tablet additives in transplant recipients on prednisone (1978)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/80627/",
+      "type": "study"
+    },
+    {
+      "title": "Allergy (asthma) to ingested gum tragacanth; a case report (1947)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20296003/",
+      "type": "study"
+    }
+  ]
+}

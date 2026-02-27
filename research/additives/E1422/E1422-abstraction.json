@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T04:30:48Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E1422",
+    "name": "Acetylated distarch adipate",
+    "cas_numbers": [
+      "68130-14-3"
+    ],
+    "synonyms": [
+      "INS 1422",
+      "Acetylated adipate crosslinked starch",
+      "Modified starch (acetylated distarch adipate)"
+    ],
+    "chemical_class": "Chemically modified starch (acetylated, cross-linked distarch derivative)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "thickener/stabilizer",
+    "secondary_categories": [
+      "emulsifier",
+      "texture modifier"
+    ],
+    "mechanism": "Cross-linking and acetylation increase process and freeze-thaw stability; in humans modified starches are hydrolyzed by intestinal enzymes and then fermented by microbiota rather than absorbed intact.",
+    "common_food_categories": [
+      "processed foods (broad quantum satis uses in EU modified starch group)",
+      "bakery and frozen dough applications",
+      "desserts and dairy-type products",
+      "sauces and other texture-stabilized foods"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2017 concluded no need for a numerical ADI for the modified starch group including E1422 (general population uses)."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "No safety concern at reported uses and use levels for the general population; no numerical ADI required."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.892",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not specified (WHO/JECFA entries for acetylated distarch adipate; later entries include specification-only updates)."
+      },
+      "last_evaluation_year": 2016
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "High-dose rat studies reported nephrocalcinosis/mineralization findings with modified starches including E1422-context diets; EFSA considered the effect related to dietary mineral imbalance in rat models and not directly relevant to human risk at current uses.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID:6890017",
+          "PMCID:PMC7009865"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "Modified starches are enzymatically hydrolyzed and fermented by intestinal microbiota; gastrointestinal tolerance uncertainties were noted in specific infant medical-formula contexts in the broader modified starch assessment.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMCID:PMC7009865"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent PubMed literature for 'acetylated distarch adipate' is mostly functionality/food-technology research rather than new chronic human safety outcome studies.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:40684562",
+          "PMID:34774379",
+          "PMID:32251753"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2017 found no safety concern for reported uses/use levels in general population and no need for numerical ADI.",
+      "JECFA maintained ADI not specified for this additive.",
+      "No IARC classification entry identified for acetylated distarch adipate/CAS 68130-14-3."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "general population"
+      ],
+      "notes": "A numeric ADI is not set (not specified/no numerical ADI), so conventional ADI exceedance cannot be calculated; EFSA did flag uncertainty for some infant FSMP contexts in the broader modified starch group."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.74,
+    "rationale": "Regulatory consensus (EFSA/JECFA/FDA framework) supports low concern under permitted uses, with no numerical ADI and no carcinogenic classification signal. Remaining uncertainty is mainly the age of core toxicology and limited modern E1422-specific human outcomes.",
+    "key_factors": [
+      "EFSA 2017 no-safety-concern conclusion and no numerical ADI",
+      "JECFA ADI not specified",
+      "U.S. CFR permits food starch-modified use under 21 CFR 172.892 with compositional limits",
+      "No IARC classification identified",
+      "Historical high-dose animal renal findings interpreted as diet-mineral-imbalance related"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal entry: Re-evaluation of modified starches (incl. E1422)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4911",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA opinion full text (PMCID: PMC7009865)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009865/",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed record for EFSA opinion (PMID: 32625282)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625282/",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API Title 21 full text (includes 21 CFR 172.892)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR section page 21 CFR 172.892",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-172/section-172.892",
+      "type": "regulatory"
+    },
+    {
+      "title": "govinfo CFR PDF: 21 CFR 172.892",
+      "url": "https://www.govinfo.gov/content/pkg/CFR-2015-title21-vol3/pdf/CFR-2015-title21-vol3-sec172-892.pdf",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA Chemical page: Acetylated distarch adipate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/379",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA search result for acetylated distarch adipate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Search?searchType=additives&name=acetylated%20distarch%20adipate",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA page: Modified starches (INS 1400-1451)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3409",
+      "type": "database"
+    },
+    {
+      "title": "FAO/JECFA additive details for INS 1422",
+      "url": "https://www.fao.org/food/food-safety-quality/scientific-advice/jecfa/jecfa-additives/details/en/c/379/",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search: acetylated distarch adipate",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=acetylated+distarch+adipate",
+      "type": "database"
+    },
+    {
+      "title": "Food Chem Toxicol 1982 (PMID: 6890017)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/6890017/",
+      "type": "study"
+    },
+    {
+      "title": "J Nutr 1985 digestibility study (PMID: 2578187)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/2578187/",
+      "type": "study"
+    },
+    {
+      "title": "Food Chem 2025 functionality study (PMID: 40684562)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40684562/",
+      "type": "study"
+    }
+  ]
+}

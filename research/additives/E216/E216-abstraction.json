@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T07:56:31+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E216",
+    "name": "Propyl p-hydroxybenzoate",
+    "cas_numbers": [
+      "94-13-3"
+    ],
+    "synonyms": [
+      "Propylparaben",
+      "n-propyl ester of p-hydroxybenzoic acid",
+      "Propyl p-oxybenzoate"
+    ],
+    "chemical_class": "Paraben (p-hydroxybenzoic acid ester)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "antimicrobial agent"
+    ],
+    "mechanism": "Used as an antimicrobial preservative to inhibit microbial growth in food systems.",
+    "common_food_categories": [
+      "General foods under GMP in the US (maximum current GMP level 0.1% in food)",
+      "Historically liquid dietary supplements in the EU before withdrawal"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "withdrawn",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA (2004) did not include propyl p-hydroxybenzoate in the paraben group ADI; group ADI 0-10 mg/kg bw/day applied to methyl/ethyl parabens and their sodium salts."
+      },
+      "last_evaluation_year": 2004,
+      "key_finding": "Propyl paraben should not be included in the group ADI due to concerns from reproductive-endpoint data in juvenile male rats."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1670",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA database lists ADI as WITHDRAWN (2006); historical group ADI context included 0-10 mg/kg bw/day."
+      },
+      "last_evaluation_year": 2006
+    },
+    "iarc_classification": null,
+    "notable_bans": [
+      "European Union: E216 withdrawn from authorized food additives framework via Directive 2006/52/EC."
+    ]
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "endocrine",
+        "summary": "EFSA/JECFA identified reproductive-endpoint concern for propyl paraben, including adverse effects in male rat reproductive tissues at doses within the historical paraben group ADI range.",
+        "evidence_strength": "strong",
+        "key_references": [
+          "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2004.83",
+          "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3045",
+          "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32006L0052"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent animal studies report developmental, reproductive, and immunotoxic effects (mouse prenatal ovarian reserve effects; zebrafish developmental and immune-axis effects) with oxidative stress and signaling-pathway involvement.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41529802/",
+          "https://pubmed.ncbi.nlm.nih.gov/41275982/",
+          "https://pubmed.ncbi.nlm.nih.gov/41601030/"
+        ]
+      },
+      {
+        "category": "carcinogenic",
+        "summary": "Mechanistic and cell-model studies suggest potential procarcinogenic pathway activation and enhanced invasion in specific cancer models, but these data are not sufficient alone for human carcinogenic classification.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41344141/",
+          "https://pubmed.ncbi.nlm.nih.gov/41223749/",
+          "https://webapi.iarc.who.int/loc/loc.app.js"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "A recent human cohort analysis reported sex-specific and mixed behavioral associations, not uniformly adverse for propylparaben across strata.",
+      "IARC classification list did not identify propylparaben as a classified carcinogenic agent."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "Children (historical EU high consumers, especially users of food supplements)",
+        "Users of products combining multiple paraben exposure sources"
+      ],
+      "notes": "EU recital text reported temporary ADI exceedance scenarios in children (including up to 16% above temporary ADI for one supplement scenario, and larger exceedance scenarios in high consumers)."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "high",
+    "confidence": 0.78,
+    "rationale": "Regulatory weight of evidence is cautionary: EFSA did not support propyl inclusion in the paraben group ADI, JECFA later withdrew ADI for propyl paraben, and the EU withdrew E216 authorization. FDA GRAS status remains, but does not outweigh the combined international regulatory concern profile.",
+    "key_factors": [
+      "EU withdrawal of E216 authorization",
+      "JECFA ADI withdrawn (2006)",
+      "EFSA 2004 conclusion against including propyl in group ADI",
+      "Historical child exceedance concerns in EU recitals",
+      "Recent mechanistic/animal studies indicating endocrine-reproductive and other toxicity pathways"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Opinion of the Scientific Panel on food additives, flavourings, processing aids and materials in contact with food related to p-hydroxybenzoates (E214-E219)",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2004.83",
+      "type": "regulatory"
+    },
+    {
+      "title": "Directive 2006/52/EC amending Directive 95/2/EC (E216/E217 withdrawal context)",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32006L0052",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: Title 21 metadata",
+      "url": "https://www.ecfr.gov/api/versioner/v1/titles.json",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API: Title 21 Part 184 full text",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database search API (propyl p-hydroxybenzoate)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/propyl%20p-hydroxybenzoate",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA Chemical record: PROPYL p-HYDROXYBENZOATE",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3045",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classified agents dataset script (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search: propylparaben toxicity",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=propylparaben+toxicity&sort=date",
+      "type": "database"
+    },
+    {
+      "title": "Assessing systemic absorption and estrogenic potential of methylparaben and propylparaben in consumer use",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41572664/",
+      "type": "review"
+    },
+    {
+      "title": "Guarding the ovarian reserve: Maternal methyl donor supplementation protects against propylparaben-induced ovarian aging in offspring",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41529802/",
+      "type": "study"
+    },
+    {
+      "title": "Propylparaben induces immunotoxicity in zebrafish via oxidative stress and gut microbiota-immune axis dysregulation",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41275982/",
+      "type": "study"
+    },
+    {
+      "title": "Exposure to propylparaben induces craniofacial bone developmental toxicity through ROS-induced oxidative stress and apoptosis in zebrafish embryos",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41601030/",
+      "type": "study"
+    },
+    {
+      "title": "A combined study of network-based prediction and in vitro experimental validation on the procarcinogenic mechanism of propylparaben in estrogen receptor-positive breast cancer cells",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41344141/",
+      "type": "study"
+    },
+    {
+      "title": "Methylparaben and propylparaben promote bladder cancer invasion via MMP2 and PPARG modulation",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41223749/",
+      "type": "study"
+    },
+    {
+      "title": "Prenatal phenol exposure and child behaviour: insights into the hypothalamic-pituitary-adrenal axis from two prospective mother-child cohorts",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41386271/",
+      "type": "study"
+    }
+  ]
+}

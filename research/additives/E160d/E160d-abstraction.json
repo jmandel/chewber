@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T06:18:02Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E160d",
+    "name": "Lycopene",
+    "cas_numbers": [
+      "502-65-8",
+      "101468-86-4"
+    ],
+    "synonyms": [
+      "all-trans-lycopene",
+      "psi,psi-carotene",
+      "tomato lycopene",
+      "lycopene from Blakeslea trispora"
+    ],
+    "chemical_class": "carotenoid (acyclic tetraterpene)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "food color",
+    "secondary_categories": [
+      "antioxidant (nutritional context)"
+    ],
+    "mechanism": "Conjugated polyene chromophore absorbs visible light (red/orange pigment), producing coloring effects in foods.",
+    "common_food_categories": [
+      "beverages",
+      "confectionery",
+      "bakery products",
+      "dairy and dairy analogues",
+      "sauces and seasonings"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 0.5,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI of 0.5 mg/kg bw/day established in EFSA 2008 opinion and retained in 2017 extension-of-use evaluation; refined scenarios did not indicate concern, but conservative high-intake scenarios could exceed ADI in some groups."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "E160d remained acceptable under refined exposure assumptions; potential ADI exceedance in conservative high-exposure scenarios, especially children/toddlers."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 73.585",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "Source-dependent records: tomato extract entry (2009) shows group ADI 'not specified'; Blakeslea trispora entry shows group ADI 0-0.5 mg/kg bw (2006, with 2023 specification-focused entry retaining this value)."
+      },
+      "last_evaluation_year": 2023
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "EFSA conservative exposure scenarios at proposed maximum use levels showed possible ADI exceedance in toddlers/children and some high-intake scenarios.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://open.efsa.europa.eu/publication/pub/e1745"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Source-dependent JECFA ADI entries (not specified vs 0-0.5 mg/kg bw) create interpretation complexity for mixed-source market use.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/5880",
+          "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/5573"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "In a 2024 phase I oncology study, synthetic lycopene co-administered with docetaxel modestly increased docetaxel exposure; one dose-limiting toxicity was reported at the top tested lycopene dose in that treatment context.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/38515274/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2008 reported no concern for genotoxicity/carcinogenicity in the evaluated dossier context.",
+      "A 90-day rat study of lycopene from Blakeslea trispora found no observed toxicity up to the highest tested dose (NOEL at top dose).",
+      "No IARC group classification for lycopene was identified in the current IARC list-of-classifications dataset checked (updated 2026-02-25)."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "toddlers (high consumers under conservative scenarios)",
+        "children (high consumers under conservative scenarios)",
+        "some high-intake adults in conservative combined-source assumptions"
+      ],
+      "notes": "EFSA refined scenarios indicated lower risk than conservative maximum-level scenarios."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.78,
+    "rationale": "Regulatory approvals and generally reassuring toxicology support use at regulated levels, but ADI exceedance is plausible in conservative child high-intake scenarios, which introduces a meaningful caveat.",
+    "key_factors": [
+      "EFSA ADI 0.5 mg/kg bw/day retained",
+      "EFSA conservative exposure scenarios can exceed ADI in children/toddlers",
+      "FDA CFR approval under 21 CFR 73.585 with GMP and exemption-from-certification conditions",
+      "JECFA entries show source-dependent ADI framing",
+      "No IARC classification found"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Open publication: Extension of use of lycopene (E 160d) as a food additive",
+      "url": "https://open.efsa.europa.eu/publication/pub/e1745",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Open publication: Lycopene as a food additive",
+      "url": "https://open.efsa.europa.eu/publication/pub/e53",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API-rendered text: 21 CFR Part 73",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-21?part=73",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API-rendered text: 21 CFR 73.585 Tomato lycopene extract; tomato lycopene concentrate",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-21?section=73.585",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API-rendered text: 21 CFR Part 182",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-21?part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API-rendered text: 21 CFR Part 184",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-21?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database: LYCOPENE EXTRACT from TOMATO (Chemical 5880)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/5880",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA database: LYCOPENE from BLAKESLEA TRISPORA (Chemical 5573)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/5573",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list-of-classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset script payload",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 12758219: Ninety-day oral toxicity study of lycopene from Blakeslea trispora in rats",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12758219/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 38515274: A phase I study of docetaxel plus synthetic lycopene in metastatic prostate cancer patients",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38515274/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 36606553: Systematic review and meta-analysis of tomato/lycopene intervention trials in UV-related skin outcomes",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36606553/",
+      "type": "review"
+    },
+    {
+      "title": "PubChem: Lycopene",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/Lycopene",
+      "type": "database"
+    },
+    {
+      "title": "PubChem PUG REST xrefs/RN for lycopene",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/lycopene/xrefs/RN/JSON",
+      "type": "database"
+    }
+  ]
+}

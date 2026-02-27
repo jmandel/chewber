@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T04:47:02Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E1450",
+    "name": "Starch sodium octenyl succinate",
+    "cas_numbers": [
+      "66829-29-0"
+    ],
+    "synonyms": [
+      "SSOS",
+      "Octenyl succinic acid (OSA)-modified starch",
+      "Starch, hydrogen octenylbutanedioate, sodium salt",
+      "INS 1450",
+      "E 1450"
+    ],
+    "chemical_class": "Chemically modified starch (starch ester; OSA-modified starch)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "emulsifier",
+    "secondary_categories": [
+      "stabilizer",
+      "thickener"
+    ],
+    "mechanism": "Esterification of starch with octenyl succinic groups creates an amphiphilic modified starch that stabilizes oil-water interfaces and improves emulsion stability/texture.",
+    "common_food_categories": [
+      "special infant medical formulas and related infant nutrition uses",
+      "beverages and beverage bases",
+      "processed foods using modified starch as emulsifier/stabilizer"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA FAF (2020) reiterated the ANS conclusion that there is no need for a numerical ADI for E1450/modified starch context."
+      },
+      "last_evaluation_year": 2020,
+      "key_finding": "EFSA concluded no indication for safety concern for infants below 16 weeks within the clinical-study exposure range (up to 2,725 mg/kg bw/day), while noting important data-quality limitations."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.892",
+      "notes": "Handled under food additive rules for modified starch (not as a standalone GRAS affirmation in retrieved CFR context); retrieved CFR text includes OSA treatment limits (e.g., up to 3% in specified modification pathway) and beverage-related use constraints including a retrieved additive-specific page showing up to 0.2% in finished beverages."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA INS 1450 record lists ADI as NOT SPECIFIED in toxicological evaluations; latest listed year (2018) is specification-only."
+      },
+      "last_evaluation_year": 2018
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "EFSA 2020 found infant clinical evidence had mostly high risk of bias and could not derive a formal reference point; uncertainty remained despite lack of clear adverse signal.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7425341/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "EFSA noted that some estimated infant exposures (especially high-end/MPL scenarios in FSMP) may exceed the upper clinical-study exposure range used for no-concern interpretation.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7425341/"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "EFSA discussed microbiome-related considerations in infants but concluded that microbiome composition shifts alone are difficult to interpret without specific health outcomes.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7425341/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2017 and 2020 opinions did not identify a clear safety concern at evaluated use levels and retained non-numerical ADI framing.",
+      "JECFA lists ADI as NOT SPECIFIED for INS 1450 and retained this across later evaluations.",
+      "A neonatal piglet dietary study (2014) reported no treatment-related adverse effects at tested concentrations."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "Infants below 16 weeks consuming foods for special medical purposes at high-end or maximum permitted use scenarios"
+      ],
+      "notes": "There is no numerical ADI; however EFSA indicated that modeled high exposures can exceed the upper clinical-study exposure range (about 2,725 mg/kg bw/day) used in its no-concern interpretation."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.72,
+    "rationale": "Regulatory consensus (EFSA/JECFA/FDA-CFR) remains permissive with no numerical ADI, no clear adverse-effect signal, and no IARC carcinogenic classification for this additive. The main caveat is uncertainty in infant datasets and potential high-end infant exposures above the clinical evidence range.",
+    "key_factors": [
+      "EFSA 2020 follow-up for infants found no indication for safety concern within studied exposure range",
+      "EFSA 2017 re-evaluation of modified starches found no safety concern at reported uses",
+      "JECFA ADI remains NOT SPECIFIED",
+      "FDA/eCFR places the substance under 21 CFR 172.892 food additive controls",
+      "Infant high-end exposure uncertainty remains the main residual risk driver"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal opinion on E1450 infants follow-up (2020; PMCID)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7425341/",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal re-evaluation of modified starches E1404-1452 (2017; PMCID)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009588/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR section page 21 CFR 172.892",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-172/subpart-I/section-172.892",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API XML snapshot for 21 CFR Part 172 (2026-02-19)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=172",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database: OCTENYL SUCCINIC ACID (OSA)-MODIFIED STARCH (INS 1450)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/6199",
+      "type": "database"
+    },
+    {
+      "title": "IARC agents classified by the IARC Monographs",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list-of-classifications application dataset (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: 3-week dietary safety study of OSA-modified starch in neonatal piglets (2014)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25019245/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: OSA modified starch emulsions and cytotoxicity assessment (2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38211926/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Replacing OSA starch study with cytotoxicity comparison (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41116570/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Digestibility of starch sodium octenyl succinate from high-amylose wheat (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40383572/",
+      "type": "study"
+    },
+    {
+      "title": "ECHA substance information: Starch, hydrogen octenylbutanedioate, sodium salt",
+      "url": "https://echa.europa.eu/substance-information/-/substanceinfo/100.013.648",
+      "type": "database"
+    },
+    {
+      "title": "EFSA publication URL for 2020 opinion (visited; access challenge in VM)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5874",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA publication URL for 2017 opinion (visited; access challenge in VM)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4911",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed search query used for recent safety screening",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%22octenyl+succinic+anhydride-modified+starch%22+AND+%28toxicity+OR+safety+OR+cytotoxicity%29",
+      "type": "database"
+    }
+  ]
+}

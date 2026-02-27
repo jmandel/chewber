@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T04:22:14Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E1413",
+    "name": "Phosphated distarch phosphate",
+    "cas_numbers": [
+      "11120-02-8",
+      "63055-37-8"
+    ],
+    "synonyms": [
+      "Phosphated distarch phosphate",
+      "Phosphated di-starch phosphate",
+      "INS 1413",
+      "E 1413"
+    ],
+    "chemical_class": "Chemically modified starch (phosphate-esterified and cross-linked distarch phosphate)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "stabilizer",
+    "secondary_categories": [
+      "thickener",
+      "texture modifier"
+    ],
+    "mechanism": "Produced by esterification/cross-linking of native starch with phosphorus-containing compounds; phosphorylation and chain cross-linking modify hydration, viscosity, and processing stability.",
+    "common_food_categories": [
+      "Foods using food starch-modified under GMP/technical need",
+      "Starch-thickened processed foods (e.g., sauces and texture-modified foods)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2017 modified-starch re-evaluation concluded no need for a numerical ADI and no safety concern at reported uses/use levels."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "Published re-evaluation for E1413 within modified starches found no safety concern at reported uses and no numerical ADI required."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.892",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not specified (INS 1413); 2018 entry was specification-only update."
+      },
+      "last_evaluation_year": 2016
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "Older rodent studies on related modified distarch phosphates reported mineral-metabolism and nephrocalcinosis-type findings under high dietary inclusion; relevance to current E1413 exposures is uncertain.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/6890017/",
+          "https://pubmed.ncbi.nlm.nih.gov/2430873/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2017 re-evaluation for modified starches reported no safety concern at reported uses/use levels.",
+      "Modified starches were considered not of genotoxic concern in EFSA's assessment.",
+      "No numerical ADI was considered necessary by EFSA, consistent with prior ADI 'not specified' positions."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "High consumers in the general population (group exposure assessed by EFSA)"
+      ],
+      "notes": "Classical ADI exceedance assessment is not applicable because EFSA/JECFA did not establish a numerical ADI for this modified-starch group."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.82,
+    "rationale": "Regulatory evaluations (EFSA/JECFA) are broadly reassuring and U.S. authorization exists, but evidence is largely group-based/read-across and recent E1413-specific toxicology is sparse.",
+    "key_factors": [
+      "EFSA published re-evaluation with no safety concern and no numerical ADI requirement",
+      "JECFA ADI not specified for INS 1413",
+      "Authorized under 21 CFR 172.892 as food starch-modified",
+      "No IARC carcinogenic group classification identified",
+      "Older animal findings on related modified starches introduce limited residual uncertainty"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal publication page: Re-evaluation of modified starches including E1413",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4911",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA question record EFSA-Q-2011-00492",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00492",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA substance record: Phosphated distarch phosphate",
+      "url": "https://open.efsa.europa.eu/api/substance/get?termExtendedName=phosphated%20distarch%20phosphate",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 32625282 (EFSA 2017 re-evaluation article)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625282/",
+      "type": "study"
+    },
+    {
+      "title": "eCFR API: 21 CFR 172.892 Food starch-modified",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?section=172.892",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR Part 172 heading",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=172",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database Chemical 1068 (PHOSPHATED DISTARCH PHOSPHATE)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1068",
+      "type": "database"
+    },
+    {
+      "title": "FAO JECFA Monographs 22 (2018) CA2330EN",
+      "url": "https://www.fao.org/3/ca2330en/CA2330EN.pdf",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC Agents Classified by the IARC Monographs, Volumes 1-140",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC search URL attempt for phosphated distarch phosphate",
+      "url": "https://monographs.iarc.who.int/?s=phosphated+distarch+phosphate",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 2430873 (1986 chronic feeding study)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/2430873/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 6890017 (1982 mineral metabolism study)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/6890017/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 41475739 (recent functionality paper)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41475739/",
+      "type": "study"
+    },
+    {
+      "title": "NCBI E-utilities targeted safety query for phosphated distarch phosphate",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%22phosphated%20distarch%20phosphate%22%5BTitle%2FAbstract%5D%20AND%20%28toxic*%20OR%20safety%20OR%20carcinogen*%20OR%20genotox*%20OR%20risk%29&retmax=20&sort=pub%2Bdate&retmode=json",
+      "type": "database"
+    }
+  ]
+}

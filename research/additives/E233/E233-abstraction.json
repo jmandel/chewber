@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T09:10:08Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E233",
+    "name": "Thiabendazole",
+    "cas_numbers": [
+      "148-79-8"
+    ],
+    "synonyms": [
+      "Tiabendazole",
+      "TBZ",
+      "2-(4-thiazolyl)-1H-benzimidazole",
+      "4-(2-benzimidazolyl)thiazole",
+      "Mintezol",
+      "Mertect"
+    ],
+    "chemical_class": "Benzimidazole fungicide/anthelmintic",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "post-harvest fungicide",
+      "antifungal"
+    ],
+    "mechanism": "Binds fungal/helminth tubulin and disrupts microtubule-dependent cellular processes; used to limit post-harvest fungal spoilage.",
+    "common_food_categories": [
+      "post-harvest treatment of citrus peel/surface",
+      "other produce surface treatment contexts"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "withdrawn",
+      "adi": {
+        "value": 0.1,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2022 opinion uses ADI 0.1 mg/kg bw/day (and ARfD 0.1 mg/kg bw) derived in EU pesticide peer review."
+      },
+      "last_evaluation_year": 2022,
+      "key_finding": "EFSA reported no consumer risk for assessed uses in the 2022 confirmatory-data review, but noted endocrine-disruption criteria for thyroid modality and remaining uncertainty for benzimidazole in some animal-commodity contexts; EU legal text states E233 is no longer permitted as a food additive."
+    },
+    "fda": {
+      "status": "not_evaluated",
+      "cfr_citation": "No direct food-additive/GRAS listing found in 21 CFR parts 172/173/180/181/182/184/186; current Title 21 hits are veterinary drug sections 21 CFR 520.2382 and 21 CFR 524.1484g.",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 0.1,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO JECFA database reports ADI range 0-0.1 mg/kg bw for thiabendazole/tiabendazole."
+      },
+      "last_evaluation_year": 2002
+    },
+    "iarc_classification": "Group 3",
+    "notable_bans": [
+      "European Union food-additive status: E233 no longer permitted (Commission Directive 2009/10/EC recital)."
+    ]
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "endocrine",
+        "summary": "EFSA referenced peer-review conclusions that thiabendazole meets endocrine-disruption criteria for humans for thyroid modality.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "EFSA Journal 2022 e07539 (PMCID: PMC9405511)"
+        ]
+      },
+      {
+        "category": "neurotoxic",
+        "summary": "Zebrafish developmental study reported apoptosis, oxidative stress, altered PI3K/Akt and MAPK pathways, and organ-level toxicity including neurodevelopment-related effects.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PubMed 37196567"
+        ]
+      },
+      {
+        "category": "genotoxic",
+        "summary": "A 2025 post-harvest fungicide study including thiabendazole reported mutagenicity and DNA-strand-break findings in Ames/comet assays.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PubMed 40238500"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "ABCG2 transporter study indicates enhanced secretion of a thiabendazole metabolite into milk in experimental models, relevant to residue exposure pathways.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PubMed 38493880"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2022 confirmatory-data review reported no consumer risk identified for assessed uses.",
+      "EFSA long-term dietary estimate reported up to 35% of ADI in highest modeled subgroup (NL toddler)."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "NL toddlers (highest modeled chronic intake in EFSA 2022 remained below ADI)",
+        "high consumers of certain produce for acute exposure scenarios"
+      ],
+      "notes": "EFSA did not report chronic ADI exceedance in assessed scenarios; it did report acute-margin concerns including papaya ARfD exceedance in model outputs and narrow margins for some commodities."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "high",
+    "confidence": 0.74,
+    "rationale": "For E233 as a food additive, EU regulatory withdrawal (no longer permitted) is the dominant factor. Additional concern signals include EFSA endocrine-disruption classification context and recent mechanistic/genotoxic studies, even though ADI-based residue frameworks still indicate controlled scenarios can remain below reference values.",
+    "key_factors": [
+      "EU legal withdrawal of E233 as a food additive",
+      "No Title 21 direct food-additive/GRAS listing found in key FDA CFR food-additive parts",
+      "EFSA 2022 endocrine-disruption criterion noted for thyroid modality",
+      "Recent experimental evidence indicating developmental/mechanistic and genotoxic concerns",
+      "JECFA and EFSA still provide ADI-based risk-management frameworks for residue contexts"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Evaluation of confirmatory data following the Article 12 MRL review for thiabendazole (EFSA Journal, 2022)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9405511/",
+      "type": "regulatory"
+    },
+    {
+      "title": "Europe PMC record for DOI 10.2903/j.efsa.2022.7539",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.2903/j.efsa.2022.7539&format=json",
+      "type": "database"
+    },
+    {
+      "title": "EFSA Journal landing page e07539 (direct access attempt)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/7539",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA search endpoint for thiabendazole (access attempt)",
+      "url": "https://www.efsa.europa.eu/en/search?search_api_fulltext=thiabendazole",
+      "type": "database"
+    },
+    {
+      "title": "Commission Directive 2009/10/EC",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32009L0010",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API search results for thiabendazole in Title 21",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=thiabendazole&per_page=500",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 520.2382 full text via eCFR API",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?section=520.2382",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 524.1484g full text via eCFR API",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?section=524.1484g",
+      "type": "regulatory"
+    },
+    {
+      "title": "Title 21 Part 172 full text via eCFR API (no thiabendazole hit in checked additive/GRAS parts)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=172",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA chemical entry THIABENDAZOLE",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2464",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API search by partial name (thiabendazole)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/thiabendazole",
+      "type": "database"
+    },
+    {
+      "title": "IARC summary page (Tiabendazole, Group 3)",
+      "url": "https://inchem.org/documents/iarc/suppl7/tiabendazole.html",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list-of-classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications app dataset",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Developmental defects induced by thiabendazole are mediated via apoptosis, oxidative stress and alteration in PI3K/Akt and MAPK pathways in zebrafish (2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37196567/",
+      "type": "study"
+    },
+    {
+      "title": "Possible Genotoxic Effects of Post-Harvest Fungicides Applied on Citrus Peels: Imazalil, Pyrimethanil, Thiabendazole and Their Mixtures (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40238500/",
+      "type": "study"
+    },
+    {
+      "title": "The ABCG2 protein in vitro transports the xenobiotic thiabendazole and increases the appearance of its residues in milk (2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38493880/",
+      "type": "study"
+    },
+    {
+      "title": "Network toxicological and molecular docking to investigate the mechanisms of toxicity of agricultural chemical Thiabendazole (2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38964723/",
+      "type": "study"
+    }
+  ]
+}

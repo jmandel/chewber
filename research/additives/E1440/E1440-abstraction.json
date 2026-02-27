@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T04:40:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E1440",
+    "name": "Hydroxypropyl starch",
+    "cas_numbers": [
+      "9049-76-7"
+    ],
+    "synonyms": [
+      "Hydroxy propyl starch",
+      "E 1440",
+      "INS 1440",
+      "Hydroxypropylated starch"
+    ],
+    "chemical_class": "Chemically modified starch (hydroxypropyl starch ether)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "thickener",
+    "secondary_categories": [
+      "stabilizer",
+      "emulsifier"
+    ],
+    "mechanism": "Hydroxypropyl substitution of starch modifies physicochemical behavior and supports thickening, stabilization, and emulsification functions in food systems.",
+    "common_food_categories": [
+      "processed foods using food starch-modified ingredients",
+      "texture-stabilized products",
+      "emulsified/stabilized food systems"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA re-evaluation of modified starches including E1440 concluded no need for a numerical ADI; historical SCF/JECFA ADI framing was not specified."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "No safety concern for modified starches (including E1440) at reported uses and use levels for the general population."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.892",
+      "notes": "Hydroxypropyl starch is handled under the food starch-modified food additive framework; no explicit hydroxypropyl starch listing was found in searched Part 182/184 GRAS XML endpoints."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA hydroxypropyl starch page lists ADI NOT SPECIFIED in toxicological entries; 2018 entry is specification-only."
+      },
+      "last_evaluation_year": 2018
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "EFSA indicates modified starches are hydrolyzed and then fermented by intestinal microbiota, implying GI physiological interaction but not a demonstrated safety signal at approved uses.",
+        "evidence_strength": "theoretical",
+        "key_references": [
+          "PMID: 32625282"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Rat studies on related hydroxypropyl-modified starches reported altered fecal bile acid excretion and lower Zn/Fe absorption under specific test conditions.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID: 9566992",
+          "PMID: 11160549"
+        ]
+      },
+      {
+        "category": "renal",
+        "summary": "A chronic mouse feeding study with hydroxypropyl distarch phosphate reported adaptive GI/renal findings at high dietary inclusion but no evidence of carcinogenicity for tested products.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID: 2430873"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2017 concluded no safety concern at reported uses/use levels for modified starches including E1440 and no need for a numerical ADI.",
+      "JECFA hydroxypropyl starch entries report ADI NOT SPECIFIED.",
+      "No direct IARC classification entry found for hydroxypropyl starch (E1440/CAS 9049-76-7) in the searched dataset."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "Numeric ADI exceedance cannot be computed because EFSA/JECFA use non-numerical ADI framing for this context. EFSA accessible abstract reports group-level modified starch exposure figures rather than E1440-only intake."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.76,
+    "rationale": "Current regulatory evidence is permissive (EFSA/JECFA non-numerical ADI framing and no-safety-concern conclusion; US approval under 21 CFR 172.892 with reagent/residual limits). Countervailing factors are limited additive-specific modern long-term human safety data and some high-dose findings in related modified-starch animal studies.",
+    "key_factors": [
+      "EFSA 2017 re-evaluation including E1440: no safety concern and no numerical ADI",
+      "JECFA hydroxypropyl starch ADI entries: NOT SPECIFIED",
+      "US regulatory coverage in 21 CFR 172.892 with explicit process/reagent limits",
+      "No direct IARC classification found for E1440",
+      "Limited recent E1440-specific chronic epidemiology/toxicology"
+    ]
+  },
+  "sources": [
+    {
+      "title": "OpenEFSA question metadata: EFSA-Q-2011-00496 (Re-evaluation of E1440 Hydroxypropyl starch)",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00496",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA substance metadata: Hydroxy propyl starch",
+      "url": "https://open.efsa.europa.eu/api/substance/get?termExtendedName=Hydroxy%20propyl%20starch",
+      "type": "database"
+    },
+    {
+      "title": "EFSA re-evaluation of modified starches including E1440 (PubMed PMID: 32625282)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625282/",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA chemical entry: HYDROXYPROPYL STARCH (ID 3694)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3694",
+      "type": "database"
+    },
+    {
+      "title": "eCFR Title 21 XML (contains 21 CFR 172.892 Food starch-modified)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Part 182 XML (searched for explicit hydroxypropyl starch GRAS entry)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Part 184 XML (searched for explicit hydroxypropyl starch GRAS entry)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset script (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed study: Hydroxypropyl-modified potato starch increases fecal bile acid excretion in rats (PMID: 9566992)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9566992/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed study: Hydroxypropyl-distarch phosphate reduces zinc and iron absorption in rats (PMID: 11160549)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11160549/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed study: Chronic feeding study with hydroxypropyl distarch phosphate in mice (PMID: 2430873)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/2430873/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed study: Human metabolic study with hydroxypropyl-distarch phosphate (PMID: 21338535)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21338535/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed search results for hydroxypropyl starch / hydroxypropyl distarch phosphate",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=((%22hydroxypropyl+starch%22%5BTitle%2FAbstract%5D)+OR+(%22hydroxypropyl+distarch+phosphate%22%5BTitle%2FAbstract%5D))",
+      "type": "database"
+    },
+    {
+      "title": "EFSA search page access attempt for E1440",
+      "url": "https://www.efsa.europa.eu/en/search?search_api_fulltext=E1440",
+      "type": "database"
+    },
+    {
+      "title": "EFSA publication page access attempt for 4911",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4911",
+      "type": "regulatory"
+    }
+  ]
+}

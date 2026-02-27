@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T10:25:37Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E296",
+    "name": "Malic acid",
+    "cas_numbers": [
+      "97-67-6",
+      "617-48-1",
+      "6915-15-7"
+    ],
+    "synonyms": [
+      "DL-malic acid",
+      "L-malic acid",
+      "hydroxybutanedioic acid",
+      "hydroxysuccinic acid",
+      "pomalous acid"
+    ],
+    "chemical_class": "alpha-hydroxy dicarboxylic acid",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "flavor enhancer",
+      "flavoring agent",
+      "pH control agent"
+    ],
+    "mechanism": "Lowers pH and contributes sour taste; supports flavor enhancement and pH control in processed foods.",
+    "common_food_categories": [
+      "nonalcoholic beverages",
+      "chewing gum",
+      "jams and jellies",
+      "processed fruits and fruit juices",
+      "hard and soft candy",
+      "gelatins, puddings, and fillings"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No finalized EFSA ADI value published yet because the food-additive re-evaluation for E296 is still ongoing (EFSA-Q-2011-00598)."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "EFSA Open EFSA record states E296 is already authorised in the EU and remains under ongoing re-evaluation after a call for data that closed on 31/12/2024."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1069",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not limited"
+      },
+      "last_evaluation_year": 1967
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "A 2025 prospective cohort study reported higher type 2 diabetes incidence with certain additive mixtures that included malic acid among many co-occurring additives; this is a mixture-level association and does not establish ingredient-specific causality for E296.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/40198579/"
+        ]
+      },
+      {
+        "category": "allergenic",
+        "summary": "Older safety review literature reports irritation/sensitivity findings in specific testing contexts, with low-concentration use considered acceptable for intended pH-adjuster use contexts.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/11358110/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA lists malic acid with ADI not limited.",
+      "FDA affirms malic acid as GRAS under 21 CFR Part 184 conditions.",
+      "No IARC monograph classification entry was identified for malic acid in the current IARC list dataset."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "infants (US CFR excludes baby food use)",
+        "high consumers of additive-rich ultra-processed diets (mixture context, non-causal evidence)"
+      ],
+      "notes": "Numeric ADI exceedance analysis is limited because JECFA uses 'not limited' and the EFSA re-evaluation has not yet published a finalized ADI value."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.72,
+    "rationale": "E296 remains authorised (EU) and GRAS (US), with JECFA ADI not limited and no strong ingredient-specific toxicity signal; however, EFSA's re-evaluation is still open and recent mixture-level epidemiology adds low-strength uncertainty.",
+    "key_factors": [
+      "EFSA re-evaluation ongoing; no finalized current EFSA ADI output yet",
+      "FDA GRAS affirmation with explicit conditions of use in 21 CFR 184.1069",
+      "JECFA ADI not limited",
+      "No IARC classification found for malic acid",
+      "Recent epidemiology signals concern for additive mixtures, not isolated E296"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA call for data to assess the safety of food additive E 296 - malic acid and all authorised uses",
+      "url": "https://www.efsa.europa.eu/en/consultations/call/call-data-assess-safety-food-additive-e-296-malic-acid-all",
+      "type": "regulatory"
+    },
+    {
+      "title": "Open EFSA API record for EFSA-Q-2011-00598",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00598",
+      "type": "database"
+    },
+    {
+      "title": "eCFR section 21 CFR 184.1069 Malic acid (renderer API)",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2025-06-25/title-21?chapter=I&subchapter=B&part=184&subpart=B&section=184.1069",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Part 184 direct food substances affirmed as GRAS (renderer API)",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2025-06-25/title-21?chapter=I&subchapter=B&part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database entry: MALIC ACID",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1870",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset script (last update embedded in script)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Final report on the safety assessment of Malic Acid and Sodium Malate (PMID: 11358110)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11358110/",
+      "type": "study"
+    },
+    {
+      "title": "Food additive mixtures and type 2 diabetes incidence (PMID: 40198579)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40198579/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed query for malic acid and food additive safety",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%28malic+acid%5BTitle%2FAbstract%5D%29+AND+%28food+additive%5BTitle%2FAbstract%5D+OR+E296%5BTitle%2FAbstract%5D%29",
+      "type": "database"
+    }
+  ]
+}

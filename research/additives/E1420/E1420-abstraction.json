@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T04:29:18Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E1420",
+    "name": "Acetylated starch",
+    "cas_numbers": [
+      "9045-28-7"
+    ],
+    "synonyms": [
+      "Starch acetate",
+      "INS 1420",
+      "Acetylated starch"
+    ],
+    "chemical_class": "Chemically modified starch (acetylated starch ester)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "thickener",
+    "secondary_categories": [
+      "stabilizer",
+      "emulsifier"
+    ],
+    "mechanism": "Acetyl substitution changes starch hydration and rheology, reducing retrogradation and improving processing stability in formulated foods.",
+    "common_food_categories": [
+      "processed foods requiring viscosity control",
+      "formulated foods requiring stabilization",
+      "emulsified food systems"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA re-evaluation of modified starches (including E1420) concluded there is no need for a numerical ADI (ADI not specified context)."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "EFSA concluded no safety concern for modified starches, including E1420, at reported uses and use levels in the general population."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 172.892",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA database lists ADI as NOT SPECIFIED for modified starches (including starch acetate)."
+      },
+      "last_evaluation_year": 2021
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "An 89-week mouse study including starch acetate at very high dietary levels reported some urinary/renal findings and GI enlargement, but no carcinogenicity signal for tested products.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID: 2430873"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent PubMed literature on acetylated starch is mostly functionality/technology focused, with limited new long-term human safety epidemiology specific to E1420.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID: 37544556",
+          "PubMed query: acetylated starch food additive safety"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "EFSA reports modified starches are hydrolyzed and fermented in the intestine; this indicates GI processing effects but did not translate into a regulatory safety concern at reported uses.",
+        "evidence_strength": "theoretical",
+        "key_references": [
+          "PMID: 32625282"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2017: no safety concern at reported uses; no need for a numerical ADI.",
+      "JECFA: ADI NOT SPECIFIED for modified starches including starch acetate.",
+      "No IARC monograph classification found for starch acetate/acetylated starch in the searched IARC resources."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "toddlers/high consumers (group-level modified starch exposure highest in EFSA scenarios)"
+      ],
+      "notes": "E1420-specific numeric ADI exceedance cannot be calculated because EFSA/JECFA use a non-numerical ADI framework (ADI not specified)."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.79,
+    "rationale": "Regulatory evaluations are consistently permissive with ADI-not-specified conclusions and no major carcinogenic classification, while residual uncertainty mainly comes from limited E1420-specific modern long-term human data.",
+    "key_factors": [
+      "EFSA 2017 no-safety-concern conclusion for modified starches including E1420",
+      "JECFA ADI NOT SPECIFIED with latest listed evaluation year 2021 (specification update)",
+      "U.S. CFR listing at 21 CFR 172.892 with explicit treatment/residual limits",
+      "FDA food substance entry indicates Direct Food Substances Affirmed as GRAS for food starch-modified",
+      "No IARC monograph classification found"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal publication page 4911",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4911",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA modified starches re-evaluation (PMID 32625282)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625282/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR 172.892 Food starch-modified",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?section=172.892",
+      "type": "regulatory"
+    },
+    {
+      "title": "FDA food substance record: FOOD_STARCH-MODIFIED",
+      "url": "https://www.accessdata.fda.gov/scripts/fdcc/?set=FoodSubstances&id=FOOD_STARCH-MODIFIED",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical entry: Modified starches (ID 398)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/398",
+      "type": "database"
+    },
+    {
+      "title": "IARC monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC site search endpoint query for starch acetate",
+      "url": "https://monographs.iarc.who.int/wp-json/wp/v2/search?search=starch%20acetate&per_page=20",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search: acetylated starch food additive safety",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=acetylated+starch+food+additive+safety",
+      "type": "database"
+    },
+    {
+      "title": "90-day oral toxicity study of cassava starch acetate (PMID 26451154)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26451154/",
+      "type": "study"
+    },
+    {
+      "title": "89-week chronic feeding study including starch acetate (PMID 2430873)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/2430873/",
+      "type": "study"
+    },
+    {
+      "title": "Updated review on acetylated starch functionalities (PMID 37544556)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37544556/",
+      "type": "review"
+    }
+  ]
+}

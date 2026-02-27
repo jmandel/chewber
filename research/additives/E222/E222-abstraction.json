@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T08:33:45Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E222",
+    "name": "Sodium hydrogen sulfite",
+    "cas_numbers": [
+      "7631-90-5"
+    ],
+    "synonyms": [
+      "Sodium bisulfite",
+      "Sodium hydrogensulfite",
+      "Monosodium sulfite",
+      "INS 222"
+    ],
+    "chemical_class": "Inorganic sulfite salt (sulfur dioxide-releasing)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "antioxidant",
+      "reducing_agent"
+    ],
+    "mechanism": "Bisulfite/sulfite species act as reducing agents and antimicrobial stressors, helping suppress oxidation/browning and microbial growth in preserved foods.",
+    "common_food_categories": [
+      "processed foods and beverages using sulfite preservation",
+      "products requiring sulfite declaration at detectable levels (>=10 ppm)",
+      "dried fruit products (e.g., sulfited raisins)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "restricted",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "Temporary group ADI of 0.7 mg/kg bw/day (as SO2 equivalents) was set in 2016 and withdrawn in 2022 follow-up due unresolved toxicological uncertainty."
+      },
+      "last_evaluation_year": 2022,
+      "key_finding": "EFSA follow-up withdrew the temporary group ADI and indicated potential concern for high consumers in later refined exposure work."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.3739",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 0.7,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI (0-0.7) expressed as sulfur dioxide for sulfites including sodium hydrogen sulfite."
+      },
+      "last_evaluation_year": 1998
+    },
+    "iarc_classification": "Group 3",
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Experimental study (2022) reported sodium bisulfite-associated biothiol imbalance, ROS/NF-kB activation, and intestinal inflammatory effects in cell/mouse models.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/35114314/"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "In vitro work found sulfites (including sodium bisulfite) inhibited several beneficial gut bacterial species at tested concentrations relevant to food preservative contexts.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/29045472/"
+        ]
+      },
+      {
+        "category": "allergenic",
+        "summary": "Recent dermatology literature reports sulfite-related sensitization/contact-allergy signals (primarily metabisulfite data), indicating class-level hypersensitivity concern in susceptible individuals.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41194600/",
+          "https://pubmed.ncbi.nlm.nih.gov/37590472/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "IARC list dataset classifies related entries \"Sulfites\" and \"Sulfur dioxide\" as Group 3 (not classifiable as to carcinogenicity to humans).",
+      "FDA lists sodium bisulfite as GRAS under specified GMP restrictions (21 CFR 182.3739)."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "toddlers",
+        "children",
+        "high consumers across multiple age groups"
+      ],
+      "notes": "EFSA 2016 reported temporary ADI exceedance in younger groups; EFSA 2025 refined assessment reported concern for high consumers via MOE/BMDL approach after ADI withdrawal."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.76,
+    "rationale": "Regulatory approval remains, but EFSA's temporary ADI was withdrawn and high-consumer concern persists in refined exposure assessment; mechanistic and hypersensitivity signals support caution without meeting high-tier criteria such as major bans or stronger carcinogenic classification.",
+    "key_factors": [
+      "EFSA temporary ADI withdrawal (2022)",
+      "EFSA high-consumer concern in refined exposure work (2025)",
+      "FDA GRAS status with explicit restrictions (21 CFR 182.3739)",
+      "JECFA group ADI 0-0.7 mg/kg bw (1998)",
+      "IARC related sulfite entries are Group 3"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA re-evaluation of sulfur dioxide and sulfites (publication 17658)",
+      "url": "https://open.efsa.europa.eu/publications/17658",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA follow-up of sulfites re-evaluation (publication 51831)",
+      "url": "https://open.efsa.europa.eu/publications/51831",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA refined exposure assessment for sulfites (publication 52573)",
+      "url": "https://open.efsa.europa.eu/publications/52573",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Title 21 full XML (includes 21 CFR 182.3739, 101.100, 130.9)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database chemical page: Sodium hydrogen sulfite",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2269",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list dataset script (agent/group entries)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search: sodium bisulfite toxicity",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%22sodium+bisulfite%22+toxicity",
+      "type": "database"
+    },
+    {
+      "title": "Food additive sodium bisulfite induces intestinal inflammation in mice (PMID: 35114314)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35114314/",
+      "type": "study"
+    },
+    {
+      "title": "Sulfites inhibit growth of beneficial gut bacteria (PMID: 29045472)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29045472/",
+      "type": "study"
+    },
+    {
+      "title": "Positive patch test reaction to sodium metabisulfite (PMID: 41194600)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41194600/",
+      "type": "study"
+    },
+    {
+      "title": "Sulfites: Allergen of the Year 2024 (PMID: 37590472)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37590472/",
+      "type": "review"
+    },
+    {
+      "title": "PubChem sodium bisulfite identifiers",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/sodium%20bisulfite/cids/JSON",
+      "type": "database"
+    }
+  ]
+}

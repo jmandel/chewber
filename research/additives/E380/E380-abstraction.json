@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T13:50:18Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E380",
+    "name": "Triammonium citrate",
+    "cas_numbers": [
+      "3458-72-8"
+    ],
+    "synonyms": [
+      "Citric acid triammonium salt",
+      "Ammonium citrate tribasic",
+      "Triammonium salt of 2-hydroxypropan-1,2,3-tricarboxylic acid"
+    ],
+    "chemical_class": "Citrate salt (ammonium salt of citric acid)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "pH control agent",
+      "flavor enhancer (related dibasic ammonium citrate entry in CFR)"
+    ],
+    "mechanism": "Acts as a citrate/ammonium buffer to adjust food pH; citrate anion also contributes weak metal-ion complexation.",
+    "common_food_categories": [
+      "nonalcoholic beverages",
+      "cheeses"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No EFSA ADI value identified in the current EFSA re-evaluation status table row for E380; no EFSA opinion link is populated there."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "E380 is listed as a permitted additive, but the EFSA re-evaluation status row indicates re-evaluation not completed and no adoption/publication date or EFSA opinion link (status table dated 18 Feb 2026)."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1140",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI = NOT LIMITED; included in the ADI for citric acid and bases."
+      },
+      "last_evaluation_year": 1979
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Evidence gap: no completed EFSA re-evaluation opinion entry was found for E380 in the latest published status table, and modern E380-specific toxicology literature is sparse.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://food.ec.europa.eu/document/download/7471ebd9-5a9a-4f8a-ae85-b64502a15353_en?filename=fs_food-improvement-agents_reeval_summary-table.xls",
+          "https://pubmed.ncbi.nlm.nih.gov/?term=%22triammonium%20citrate%22%5BTitle%2FAbstract%5D+AND+%22food+additive%22"
+        ]
+      },
+      {
+        "category": "renal",
+        "summary": "Theoretical concern only: as an ammonium salt, very high exposure could be less desirable in people with severe ammonia-handling impairment, but no direct E380 clinical risk dataset was identified.",
+        "evidence_strength": "theoretical",
+        "key_references": [
+          "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/504"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA lists ADI as NOT LIMITED (1979) and includes triammonium citrate within the citric acid and bases ADI framework.",
+      "No specific IARC Monographs classification entry was identified for triammonium citrate or CAS 3458-72-8 in the current IARC list dataset."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "JECFA ADI is not limited, so a numeric ADI exceedance calculation is not applicable from that source."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.64,
+    "rationale": "Current evidence supports low concern at intended use levels (JECFA ADI not limited; no IARC signal), but confidence is moderated by incomplete/unclear EFSA re-evaluation closure for E380 and sparse modern direct toxicology evidence.",
+    "key_factors": [
+      "JECFA ADI is NOT LIMITED (evaluation year 1979).",
+      "EU status table lists E380 as permitted but re-evaluation row is not marked completed and lacks opinion link/date entries.",
+      "FDA CFR has a GRAS entry for related ammonium citrate dibasic under cGMP conditions.",
+      "No specific IARC classification entry found for triammonium citrate."
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of approved food additives",
+      "url": "https://food.ec.europa.eu/food-safety/food-improvement-agents/additives/re-evaluation-approved-food-additives_en",
+      "type": "regulatory"
+    },
+    {
+      "title": "Summary table of permitted food additives and status of their re-evaluation by EFSA (status as of 18 February 2026)",
+      "url": "https://food.ec.europa.eu/document/download/7471ebd9-5a9a-4f8a-ae85-b64502a15353_en?filename=fs_food-improvement-agents_reeval_summary-table.xls",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 full text (part 184, date 2026-02-19)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 versions index",
+      "url": "https://www.ecfr.gov/api/versioner/v1/versions/title-21.json",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA search endpoint for triammonium citrate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/triammonium%20citrate",
+      "type": "database"
+    },
+    {
+      "title": "JECFA chemical record: Triammonium citrate (ID 504)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/504",
+      "type": "database"
+    },
+    {
+      "title": "IARC list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list dataset script (agents + last update)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search: triammonium citrate [Title/Abstract]",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%22triammonium%20citrate%22%5BTitle%2FAbstract%5D",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search: triammonium citrate [Title/Abstract] AND food additive",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%22triammonium%20citrate%22%5BTitle%2FAbstract%5D+AND+%22food+additive%22",
+      "type": "database"
+    },
+    {
+      "title": "PubMed record PMID 39034741 (example of non-toxicology context)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39034741/",
+      "type": "study"
+    }
+  ]
+}

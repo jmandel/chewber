@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T12:17:04Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E332",
+    "name": "Potassium citrates",
+    "cas_numbers": [
+      "921-53-9",
+      "866-84-2",
+      "6100-05-6"
+    ],
+    "synonyms": [
+      "Potassium citrate",
+      "Potassium dihydrogen citrate",
+      "Tripotassium citrate",
+      "INS 332(i)",
+      "INS 332(ii)"
+    ],
+    "chemical_class": "Potassium salts of citric acid (citrate salts)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "sequestrant",
+      "stabilizer",
+      "emulsifier"
+    ],
+    "mechanism": "Buffers food pH and chelates metal ions, improving stability and formulation performance.",
+    "common_food_categories": [
+      "acidified and buffered foods and beverages",
+      "processed foods requiring metal-ion sequestration",
+      "formulations requiring pH control under GMP"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EU food additives database entry for E332 reports ADI as 'Not specified' and cites EFSA/SCF evaluations."
+      },
+      "last_evaluation_year": 2018,
+      "key_finding": "Accessible EU/EFSA-linked records indicate non-numerical ADI (not specified) for E332 and continued authorization."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1625",
+      "notes": "Affirmed as GRAS for direct human food use; permitted under current good manufacturing practice as sequestrant, pH control agent, stabilizer, and emulsifier."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA lists ADI as 'Not limited' for potassium dihydrogen citrate (INS 332(i)) and potassium citrate (INS 332(ii))."
+      },
+      "last_evaluation_year": 1979
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "Randomized clinical evidence indicates oral potassium loading (including potassium citrate) can raise plasma potassium more in CKD and may increase hyperkalemia risk in susceptible patients.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID:41288308",
+          "PMID:37382933"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EU E332 entry reports ADI not specified",
+      "JECFA ADI is not limited for INS 332(i)/(ii)",
+      "FDA affirms potassium citrate as GRAS in 21 CFR 184.1625",
+      "No explicit IARC monograph classification entry identified for potassium citrate"
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "people with chronic kidney disease",
+        "people with impaired potassium excretion",
+        "users of potassium-raising medications"
+      ],
+      "notes": "A numerical ADI is not set (EFSA not specified; JECFA not limited), so risk management is driven more by potassium-handling vulnerability than ADI exceedance calculations."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.73,
+    "rationale": "Regulatory consensus indicates low concern at normal food-additive exposure (EU authorized, FDA GRAS, JECFA not limited). However, clinical evidence shows a credible renal/potassium-handling caveat in vulnerable populations (especially CKD) under higher oral potassium loads.",
+    "key_factors": [
+      "EU entry: ADI not specified for E332",
+      "FDA GRAS affirmation in 21 CFR 184.1625",
+      "JECFA ADI not limited for INS 332(i)/(ii)",
+      "CKD-focused RCT evidence of higher hyperkalemia susceptibility with oral potassium loading"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EU Food Additives Database - E332 Potassium citrates",
+      "url": "https://food.ec.europa.eu/food-safety/food-improvement-agents/additives/eu-food-additives-database_en?f%5B0%5D=additives_eu__main_category%3A818&f%5B1%5D=additives_eu__e_number%3A3150&f%5B2%5D=additives_eu__functional_class%3A801&f%5B3%5D=additives_eu__functional_class%3A804&f%5B4%5D=additives_eu__functional_class%3A859&f%5B5%5D=additives_eu__functional_class%3A865&f%5B6%5D=additives_eu__functional_class%3A867",
+      "type": "database"
+    },
+    {
+      "title": "EFSA Journal route cited by EU DB (pub/3640)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/3640",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Supporting Publication route cited by EU DB (en-1437)",
+      "url": "https://www.efsa.europa.eu/en/supporting/pub/en-1437",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 184.1625 Potassium citrate",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-184/subpart-B/section-184.1625",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA Chemical: Potassium dihydrogen citrate (INS 332(i))",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/chemical.aspx?chemID=959",
+      "type": "database"
+    },
+    {
+      "title": "JECFA Chemical: Potassium citrate (INS 332(ii))",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/chemical.aspx?chemID=1875",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs - List of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list data script (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Natriuretic response to an acute oral potassium load in healthy individuals and patients with chronic kidney disease: a randomized controlled trial (PMID 41288308)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41288308/",
+      "type": "study"
+    },
+    {
+      "title": "Kaliuresis and Intracellular Uptake of Potassium with Potassium Citrate and Potassium Chloride Supplements: A Randomized Controlled Trial (PMID 37382933)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37382933/",
+      "type": "study"
+    },
+    {
+      "title": "Impact of potassium citrate on urinary risk profile, glucose and lipid metabolism of kidney stone formers in Switzerland (PMID 33391747)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33391747/",
+      "type": "study"
+    },
+    {
+      "title": "EFSA call for data on citric acid and salts (E330-E333)",
+      "url": "https://www.efsa.europa.eu/en/call/call-technical-and-toxicological-data-citric-acid-and-its-salts-e-330-e-331-e-332-and-e",
+      "type": "regulatory"
+    }
+  ]
+}

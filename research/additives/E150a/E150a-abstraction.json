@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T05:05:55Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E150a",
+    "name": "Plain caramel",
+    "cas_numbers": [],
+    "synonyms": [
+      "Caramel colour, Class I",
+      "Plain caramel",
+      "Caustic caramel"
+    ],
+    "chemical_class": "Class I caramel colour; process-derived complex carbohydrate caramelization products",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "food color",
+    "secondary_categories": [
+      "color additive",
+      "brown colorant"
+    ],
+    "mechanism": "Controlled thermal treatment of carbohydrates forms brown chromophoric polymers that impart color to foods and beverages.",
+    "common_food_categories": [
+      "soft drinks",
+      "sauces and gravies",
+      "bakery products",
+      "confectionery",
+      "seasonings"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 300,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA group ADI for caramel colours E150a, E150b, E150c, and E150d (sum of four classes)."
+      },
+      "last_evaluation_year": 2012,
+      "key_finding": "EFSA set a group ADI of 300 mg/kg bw/day in 2011 and refined exposure in 2012 showed most population estimates below ADI, with upper-bound high toddler scenarios nearest to/slightly above ADI."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.1235; 21 CFR 73.85",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA INS 150a entry lists ADI as not specified."
+      },
+      "last_evaluation_year": 1974
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "carcinogenic",
+        "summary": "Carcinogenic concern in caramel-color discussions is mainly tied to 4-methylimidazole (4-MEI), which IARC classifies as Group 2B; this concern is more associated with ammonia caramel classes than plain caramel.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "IARC list-of-classifications (4-Methylimidazole, Group 2B)",
+          "PMID:34174380"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent rodent studies report reproductive endpoints for 4-MEI at experimental exposures, but these are not direct E150a-only dietary studies.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID:35460824",
+          "PMID:39083984",
+          "PMID:40412543"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA INS 150a entry reports ADI as not specified.",
+      "FDA Title 21 lists caramel as GRAS under GMP and as a permitted food color under GMP.",
+      "EFSA refined exposure (2012) generally remained below the group ADI for most population groups."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "toddlers (high consumers, conservative upper-bound scenarios)",
+        "children (high consumers in conservative scenarios)"
+      ],
+      "notes": "EFSA exceedance concern was modeled for grouped caramel colours (E150a-d), not specifically isolated to E150a."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.72,
+    "rationale": "Regulators continue to permit E150a with GMP/ADI controls, JECFA lists ADI not specified for INS 150a, and the main serious signals are driven by related contaminants (notably 4-MEI) rather than strong direct evidence against plain caramel itself.",
+    "key_factors": [
+      "EFSA group ADI 300 mg/kg bw/day for E150a-d",
+      "EFSA 2012 refined exposure mostly below ADI",
+      "FDA GRAS listing (21 CFR 182.1235) and food color listing (21 CFR 73.85)",
+      "JECFA INS 150a ADI not specified",
+      "No direct IARC classification found for E150a itself"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal 2011: Re-evaluation of caramel colours (E150a,b,c,d)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/2004",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal 2012: Refined exposure assessment of caramel colours (E150a,b,c,d)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/3092",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR versioner API full Title 21 XML (issue date 2026-02-25)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR versioner API titles metadata",
+      "url": "https://www.ecfr.gov/api/versioner/v1/titles.json",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA food additive entry: INS 150a (Plain caramel)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/FoodAdditive/21966",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical entry: CARAMEL COLOUR, CLASS I",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/496",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications (Group 2B view)",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/?classification_group=2B",
+      "type": "database"
+    },
+    {
+      "title": "IARC classification dataset script (contains 4-Methylimidazole Group 2B row)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 41542868 (2026 exposure assessment)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41542868/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 34174380 (2021 mechanistic MoA analysis)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34174380/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 40412543 (2025 reproductive/developmental risk assessment)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40412543/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 35460824 (2022 oocyte toxicity study)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35460824/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 39083984 (2024 sperm motility study)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39083984/",
+      "type": "study"
+    }
+  ]
+}

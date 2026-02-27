@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T04:57:08Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E1452",
+    "name": "Starch aluminium octenyl succinate",
+    "cas_numbers": [
+      "9087-61-0"
+    ],
+    "synonyms": [
+      "Starch aluminum octenyl succinate",
+      "Aluminum starch octenylsuccinate",
+      "Aluminium starch octenylsuccinate",
+      "E1452"
+    ],
+    "chemical_class": "Chemically modified starch (aluminum salt of octenyl-succinate modified starch)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "emulsifier",
+    "secondary_categories": [
+      "stabilizer",
+      "thickener"
+    ],
+    "mechanism": "Octenyl-succinate substitution gives starch amphiphilic behavior for emulsion stabilization; regulated modified-starch processing controls composition and residual reagents.",
+    "common_food_categories": [
+      "foods using food starch-modified under 21 CFR 172.892",
+      "food supplements",
+      "infant formula and formula for special medical purposes (related OSA-modified starch evaluations)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2017 re-evaluation (includes E1452) concluded no need for a numerical ADI and no safety concern at reported use levels."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "E1452 was included in EFSA's modified-starch group opinion; EFSA found no safety concern at reported uses/use levels and no need for a numerical ADI."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.892",
+      "notes": "Handled as food starch-modified; relevant condition includes 1-octenyl succinic anhydride not to exceed 2% and aluminum sulfate not to exceed 2%. No standalone CFR GRAS entry naming starch aluminium/octenyl succinate was identified in this run."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No standalone WHO/JECFA public entry found for INS/E1452 in this run; closest related WHO entry (INS 1450 / OSA-modified starch) reports ADI NOT SPECIFIED."
+      },
+      "last_evaluation_year": 2018
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "E1452 contains an aluminum moiety; broader dietary aluminum burden is a recognized toxicological consideration, although this is not an E1452-specific carcinogenic classification signal.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/37213837/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "WHO/JECFA public database did not show a dedicated INS 1452 record in this run, so international ADI interpretation partly relies on related OSA-modified starch records.",
+        "evidence_strength": "theoretical",
+        "key_references": [
+          "https://apps.who.int/food-additives-contaminants-jecfa-database/api/ChemicalData/GetBy/par/starch%20aluminium%20octenyl%20succinate",
+          "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/340"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2017 (including E1452) concluded no safety concern at reported use levels and no numerical ADI requirement.",
+      "3-week neonatal piglet dietary study reported no adverse effects for OSA-modified starch up to 20 g/L.",
+      "Recent CIR reassessment (2023) reaffirmed safety of aluminum starch octenylsuccinate in cosmetic-use context."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "high food-supplement consumers",
+        "infants consuming specialized formula products",
+        "people with high cumulative aluminum exposure from multiple sources"
+      ],
+      "notes": "EFSA/JECFA framing is non-numerical ADI ('no numerical ADI needed' / 'not specified'), so direct numeric ADI exceedance is not calculable from these evaluations."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.74,
+    "rationale": "Direct regulatory evidence is generally permissive: EFSA found no safety concern for E1452 at reported uses, U.S. CFR permits use under defined limits, and no IARC listing was found. Residual uncertainty is mainly about reliance on related OSA/JECFA entries and broader aluminum cumulative exposure context.",
+    "key_factors": [
+      "EFSA 2017 includes E1452 and concludes no safety concern with no numerical ADI",
+      "21 CFR 172.892 provides explicit conditions for octenyl succinic anhydride and aluminum sulfate treatment",
+      "WHO/JECFA public database did not return a standalone E1452 entry in this run",
+      "Closest WHO record (INS 1450) reports ADI NOT SPECIFIED",
+      "No IARC classification entry found for E1452 or aluminum starch octenylsuccinate"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal publication landing (EFSA 4911)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4911",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed: EFSA modified starches re-evaluation including E1452 (PMID 32625282)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625282/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR current page: 21 CFR 172.892",
+      "url": "https://www.ecfr.gov/current/title-21/section-172.892",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API XML: 21 CFR 172.892 (issue date 2024-06-03)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2024-06-03/title-21.xml?part=172&section=172.892",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database home",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API query for starch aluminium octenyl succinate (no result)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/ChemicalData/GetBy/par/starch%20aluminium%20octenyl%20succinate",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API query by octenyl",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/ChemicalData/GetBy/par/octenyl",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA chemical page: STARCH SODIUM OCTENYLSUCCINATE (INS 1450)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/340",
+      "type": "database"
+    },
+    {
+      "title": "IARC list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list-of-classifications data script (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: 3-week dietary safety study of OSA-modified starch in neonatal piglets (PMID 25019245)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25019245/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Aluminum Starch Octenylsuccinate CIR reassessment (PMID 37774506)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37774506/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Final report on safety assessment of aluminum starch octenylsuccinate (PMID 12042058)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12042058/",
+      "type": "review"
+    },
+    {
+      "title": "PubMed: EFSA safety of aluminium from dietary intake (PMID 37213837)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37213837/",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed search query: starch aluminium octenyl succinate",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%22starch+aluminium+octenyl+succinate%22",
+      "type": "database"
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T14:03:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E375",
+    "name": "Niacin (Vitamin B3)",
+    "cas_numbers": [
+      "59-67-6"
+    ],
+    "synonyms": [
+      "Niacin",
+      "Nicotinic acid",
+      "Vitamin B3",
+      "Pyridine-3-carboxylic acid"
+    ],
+    "chemical_class": "Water-soluble pyridinecarboxylic acid vitamin (B-complex)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "nutrient supplement",
+    "secondary_categories": [
+      "fortificant"
+    ],
+    "mechanism": "Acts as vitamin B3 source for NAD/NADP biosynthesis and energy/redox metabolism.",
+    "common_food_categories": [
+      "enriched grain products",
+      "fortified breakfast cereals",
+      "bread",
+      "infant formula"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "not_evaluated",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No EFSA food-additive ADI for E375 was identified from accessible OpenEFSA endpoints; E375 query returned no records."
+      },
+      "last_evaluation_year": 2023,
+      "key_finding": "OpenEFSA showed niacin opinions in Nutrition and Feed Additives (latest metadata hit: 2023 feed additive output), but no directly retrievable food-additive E375 re-evaluation record."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1530",
+      "notes": "Niacin is affirmed as GRAS as a direct human food ingredient for nutrient supplementation under GMP; may be used in infant formula under section 412 framework."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No niacin/nicotinic acid entry and no ADI were returned by queried WHO JECFA database API endpoints in this session."
+      },
+      "last_evaluation_year": null
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "cardiovascular",
+        "summary": "High-dose therapeutic niacin has shown increased adverse-event burden in modern clinical contexts without clear cardiovascular outcome benefit when added to statin-era management.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://ods.od.nih.gov/factsheets/Niacin-HealthProfessional/",
+          "https://pubmed.ncbi.nlm.nih.gov/26073389/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Dose-dependent adverse effects (notably flushing and hepatotoxicity risk at high prolonged doses) are consistently described for supplemental/pharmacologic niacin exposure.",
+        "evidence_strength": "strong",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/40999226/",
+          "https://pubmed.ncbi.nlm.nih.gov/28541582/",
+          "https://ods.od.nih.gov/factsheets/Niacin-HealthProfessional/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "FDA affirms niacin as GRAS for direct human food use under 21 CFR 184.1530 with GMP conditions.",
+      "No IARC monograph classification entry for niacin/nicotinic acid was identified in the checked IARC classification dataset."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "high-dose niacin supplement users",
+        "patients on therapeutic niacin regimens"
+      ],
+      "notes": "Typical dietary intake from foods is generally around or below low tens of mg/day in NIH NHANES summaries; exceedance concern is mainly supplement/pharmacologic exposure rather than ordinary fortification use."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.74,
+    "rationale": "Regulatory food-use status is permissive in FDA GRAS framework and no carcinogenic classification was identified; however, clear dose-related adverse effects occur at high supplemental/therapeutic doses, so classification is not risk_free.",
+    "key_factors": [
+      "FDA GRAS affirmation at 21 CFR 184.1530 with GMP conditions",
+      "No direct IARC classification for niacin found",
+      "High-dose adverse effects (flushing/hepatotoxicity and broader tolerability issues) documented in reviews and clinical literature",
+      "EFSA food-additive-specific E375 ADI/re-evaluation record not retrievable in accessed endpoints"
+    ]
+  },
+  "sources": [
+    {
+      "title": "OpenEFSA portal",
+      "url": "https://open.efsa.europa.eu/",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA API question suggestions: E375",
+      "url": "https://open.efsa.europa.eu/api/question/suggestions?searchText=E375",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA API question suggestions: niacin",
+      "url": "https://open.efsa.europa.eu/api/question/suggestions?searchText=niacin",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA API substance questions: niacin",
+      "url": "https://open.efsa.europa.eu/api/substance/getQuestions?termExtendedName=niacin",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA API question details: EFSA-Q-2011-01218",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-01218",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA API question details: EFSA-Q-2022-00477",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2022-00477",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR full Title 21 Part 184 XML (2026-02-25)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database home",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API search: niacin",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/niacin",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API search: nicotinic acid",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/nicotinic%20acid",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC LOC app dataset",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "The adverse effects of oral niacin/nicotinamide - an overview of reviews",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40999226/",
+      "type": "review"
+    },
+    {
+      "title": "Definition of a tolerable upper intake level of niacin: a systematic review and meta-analysis",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28541582/",
+      "type": "review"
+    },
+    {
+      "title": "Safety and tolerability of extended-release niacin-laropiprant",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26073389/",
+      "type": "study"
+    },
+    {
+      "title": "NIH ODS Niacin Fact Sheet for Health Professionals",
+      "url": "https://ods.od.nih.gov/factsheets/Niacin-HealthProfessional/",
+      "type": "review"
+    },
+    {
+      "title": "European Commission Food Additives page",
+      "url": "https://food.ec.europa.eu/food-safety/food-improvement-agents/additives_en",
+      "type": "regulatory"
+    },
+    {
+      "title": "Food and Feed Information Portal search screen",
+      "url": "https://ec.europa.eu/food/food-feed-portal/screen/food-additives/search",
+      "type": "database"
+    }
+  ]
+}

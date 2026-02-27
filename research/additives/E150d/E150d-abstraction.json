@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T05:34:10Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E150d",
+    "name": "Sulphite ammonia caramel (Caramel colour, Class IV)",
+    "cas_numbers": [
+      "8028-89-5"
+    ],
+    "synonyms": [
+      "Sulfite ammonia caramel",
+      "Ammonia sulfite process caramel",
+      "Sulfite ammonia process caramel",
+      "Acid-proof caramel",
+      "Beverage caramel",
+      "Soft-drink caramel",
+      "Caramel colour Class IV"
+    ],
+    "chemical_class": "Class IV caramel colour (process caramel)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "colour",
+    "secondary_categories": [
+      "appearance standardization"
+    ],
+    "mechanism": "Produced by controlled heat treatment of carbohydrates with ammonium- and sulfite-containing compounds to form brown colour bodies used to darken foods and beverages.",
+    "common_food_categories": [
+      "non-alcoholic flavoured beverages (including cola-type drinks)",
+      "confectionery",
+      "soups and seasonings",
+      "beer",
+      "prepared meals",
+      "breads and rolls",
+      "ice cream and frozen yogurt"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 300,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI for combined exposure to caramel colours E150a,b,c,d (2011 re-evaluation; refined 2012 exposure review kept combined exposure below group ADI)."
+      },
+      "last_evaluation_year": 2012,
+      "key_finding": "EFSA re-evaluation established a group ADI and later refined exposure estimates; combined exposure to E150a,b,c,d did not exceed the group ADI in the 2012 refinement."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 73.85; 21 CFR 182.1235",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 200,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA Class IV caramel colour ADI 0-200 mg/kg bw (comment notes 0-150 mg/kg bw on a solids basis)."
+      },
+      "last_evaluation_year": 1985
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "carcinogenic",
+        "summary": "A related process constituent, 4-methylimidazole (4-MEI), is classified by IARC as Group 2B and has mouse lung tumour findings at high experimental doses.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "IARC list of classifications (4-Methylimidazole, Group 2B)",
+          "PMID: 32745573"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "High-dose multigenerational rat data for 4-MEI reported reproductive/developmental effects with a LOAEL around 50-60 mg/kg bw/day in that study context.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID: 32229253"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "Historical long-term rodent studies of Caramel Colour IV reported no carcinogenicity at up to 10 g/kg bw/day in drinking-water studies (PMID: 1644385).",
+      "Weight-of-evidence assessment reported no clear in vivo genotoxicity for 4-MEI (PMID: 32745573)."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "toddlers/high consumers in earlier EFSA screening scenarios",
+        "high consumers for E150c in EFSA 2012 refined assessment"
+      ],
+      "notes": "EFSA 2012 refinement reported combined exposure to E150a,b,c,d below the group ADI, but subgroup/high-consumer caveats remained in class-specific assessments."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.77,
+    "rationale": "E150d is permitted by major regulators with ADI/GMP controls, but safety management depends on controlling process-related constituents (notably 4-MEI) and monitoring high-end subgroup exposure scenarios.",
+    "key_factors": [
+      "EFSA group ADI with refined exposure generally below the combined threshold",
+      "FDA CFR allows use under GMP and lists caramel as GRAS",
+      "JECFA numerical ADI for Class IV caramel",
+      "IARC Group 2B classification for related constituent 4-MEI",
+      "High-dose animal reproductive findings for 4-MEI"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Scientific Opinion on the re-evaluation of caramel colours (E 150 a,b,c,d) as food additives",
+      "url": "https://www.efsa.europa.eu/sites/default/files/scientific_output/files/main_documents/2004.pdf",
+      "type": "regulatory"
+    },
+    {
+      "title": "Open EFSA API - EFSA-Q-2008-240",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2008-240",
+      "type": "database"
+    },
+    {
+      "title": "Refined exposure assessment for caramel colours (E 150a, c, d)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/3030",
+      "type": "regulatory"
+    },
+    {
+      "title": "Open EFSA API - EFSA-Q-2012-00742",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2012-00742",
+      "type": "database"
+    },
+    {
+      "title": "EFSA reviews safety of caramel colours",
+      "url": "https://www.efsa.europa.eu/en/press/news/ans110308",
+      "type": "regulatory"
+    },
+    {
+      "title": "Caramel colours: consumer exposure lower than previously estimated",
+      "url": "https://www.efsa.europa.eu/en/press/news/121219",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API - Title 21 full XML",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA Database - CARAMEL COLOUR, Class IV",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1668",
+      "type": "database"
+    },
+    {
+      "title": "WHO Food Additives Series 20 - Caramel colours Classes I, II, III, and IV",
+      "url": "http://www.inchem.org/documents/jecfa/jecmono/v20je11.htm",
+      "type": "review"
+    },
+    {
+      "title": "IARC Monographs - List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classification data script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "An updated U.S. population dietary exposure assessment for 4-MEI",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41542868/",
+      "type": "study"
+    },
+    {
+      "title": "A weight of evidence assessment of the genotoxic potential of 4-methylimidazole",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32745573/",
+      "type": "review"
+    },
+    {
+      "title": "Multigenerational reproductive assessment of 4-methylimidazole in rats",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32229253/",
+      "type": "study"
+    },
+    {
+      "title": "A U.S. population dietary exposure assessment for 4-methylimidazole (2018)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30130454/",
+      "type": "study"
+    },
+    {
+      "title": "Toxicity and carcinogenicity studies of Caramel Colour IV",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/1644385/",
+      "type": "study"
+    },
+    {
+      "title": "Food additive mixtures and type 2 diabetes incidence",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40198579/",
+      "type": "study"
+    }
+  ]
+}

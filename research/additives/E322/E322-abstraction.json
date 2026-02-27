@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T11:40:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E322",
+    "name": "Lecithins",
+    "cas_numbers": [
+      "8002-43-5",
+      "85711-58-6"
+    ],
+    "synonyms": [
+      "Lecithin",
+      "Phosphatides",
+      "Phospholipids",
+      "Soy lecithin"
+    ],
+    "chemical_class": "Complex phospholipid/phosphatide mixture (mainly phosphatidylcholine, phosphatidylethanolamine, phosphatidylinositol)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "emulsifier",
+    "secondary_categories": [
+      "antioxidant",
+      "stabilizer",
+      "processing aid"
+    ],
+    "mechanism": "Amphiphilic phospholipids reduce oil-water interfacial tension and stabilize dispersed phases.",
+    "common_food_categories": [
+      "bakery products",
+      "confectionery and chocolate",
+      "fat-containing foods and spreads",
+      "instant mixes",
+      "infant formula and foods for special medical purposes"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA concluded there is no need for a numerical ADI for lecithins (E322)."
+      },
+      "last_evaluation_year": 2020,
+      "key_finding": "EFSA re-evaluation and follow-up concluded no safety concern at reported/refined uses, including infants below 16 weeks up to MPL in relevant formula categories."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1400",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA ADI is 'NOT LIMITED' (non-numeric)."
+      },
+      "last_evaluation_year": 1973
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "A 2025 randomized trial including soy lecithin reported changes in microbiome-related metabolites (e.g., reduced short-chain fatty acids) under emulsifier supplementation, without clear inflammation/metabolic harm over the intervention period.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID:40816342"
+        ]
+      },
+      {
+        "category": "allergenic",
+        "summary": "Soy-lecithin sensitivity can occur in some soy-allergic individuals, but pediatric randomized crossover data suggested most children with non-IgE-mediated soy allergy tolerated soy lecithin.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:31603281",
+          "PMID:34779572",
+          "PMID:39593333"
+        ]
+      },
+      {
+        "category": "cardiovascular",
+        "summary": "Mechanistic literature links phosphatidylcholine metabolism by gut microbiota to TMAO-associated cardiovascular risk signals, but this has not translated into EFSA/FDA/JECFA restriction of E322 at authorized uses.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:23614584",
+          "PMID:32625454"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA (2017) found no need for a numerical ADI and no safety concern at refined exposures for the general population >1 year.",
+      "EFSA (2020) found no safety concern for infant formula/FSMP uses up to MPL for infants below 16 weeks.",
+      "JECFA set ADI to NOT LIMITED.",
+      "21 CFR 184.1400 affirms lecithin as GRAS under cGMP conditions of use."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "toddlers",
+        "infants"
+      ],
+      "notes": "Classical ADI exceedance is not applicable because EFSA set no numerical ADI and JECFA ADI is not limited; EFSA still identified higher exposure estimates in some child/infant scenarios but concluded no safety concern at evaluated uses."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.78,
+    "rationale": "Regulatory consensus across EFSA, FDA, and JECFA supports safety at permitted uses, but minor unresolved mechanistic and subgroup-specific concerns (microbiome/TMAO/allergenicity edge cases) argue against classifying as fully risk_free.",
+    "key_factors": [
+      "EFSA no numerical ADI and no safety concern at refined exposure",
+      "EFSA 2020 infant follow-up found no concern up to MPL",
+      "FDA GRAS status in 21 CFR 184.1400 with cGMP condition",
+      "JECFA ADI NOT LIMITED",
+      "No IARC classification entry identified",
+      "Some mechanistic and subgroup-level concerns remain but are not strong enough for moderate/high tier"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal entry: Re-evaluation of lecithins (E 322)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4742",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal entry: Opinion on re-evaluation of lecithins (E 322) in foods for infants below 16 weeks",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/6266",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA 2017 full text via PMC (PMCID: PMC7010002)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7010002/",
+      "type": "review"
+    },
+    {
+      "title": "21 CFR Title 21 XML (contains §184.1400 Lecithin)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA Database: Lecithin (Chemical 1477)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1477",
+      "type": "database"
+    },
+    {
+      "title": "IARC Agents Classified by the IARC Monographs",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list app dataset script (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed abstract fetch: Effect of Five Dietary Emulsifiers... randomized trial (PMID: 40816342)",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=40816342&retmode=text&rettype=abstract",
+      "type": "study"
+    },
+    {
+      "title": "PubMed abstract fetch: Tolerance of soya lecithin in children (PMID: 31603281)",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=31603281&retmode=text&rettype=abstract",
+      "type": "study"
+    },
+    {
+      "title": "PubMed abstract fetch: Emulsifiers and intestinal tight junctions (PMID: 34779572)",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=34779572&retmode=text&rettype=abstract",
+      "type": "study"
+    },
+    {
+      "title": "PubMed abstract fetch: Influence of lecithin on beta-conglycinin immunoreactivity (PMID: 39593333)",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=39593333&retmode=text&rettype=abstract",
+      "type": "study"
+    },
+    {
+      "title": "PubMed abstract fetch: Intestinal microbial metabolism of phosphatidylcholine and cardiovascular risk (PMID: 23614584)",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=23614584&retmode=text&rettype=abstract",
+      "type": "study"
+    }
+  ]
+}

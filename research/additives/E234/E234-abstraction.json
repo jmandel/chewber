@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T09:18:02Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E234",
+    "name": "Nisin",
+    "cas_numbers": [
+      "1414-45-5"
+    ],
+    "synonyms": [
+      "Nisin A",
+      "INS 234",
+      "E 234"
+    ],
+    "chemical_class": "Lantibiotic antimicrobial peptide (bacteriocin)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "antimicrobial",
+      "biopreservative"
+    ],
+    "mechanism": "Antimicrobial peptide activity against susceptible Gram-positive bacteria (including inhibition of Clostridium botulinum outgrowth/toxin formation in authorized uses), involving membrane-targeting bacteriocin effects.",
+    "common_food_categories": [
+      "pasteurized cheese spread",
+      "pasteurized process cheese spread",
+      "pasteurized cheese spread with fruits/vegetables/meats",
+      "pasteurized process cheese spread with fruits/vegetables/meats",
+      "unripened cheese (EU opinion evaluated proposed extension)",
+      "heat-treated meat products (EU opinion evaluated proposed extension)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 1.0,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2017 opinion (ON-5063): ADI derived from 90-day rat NOAEL 225 mg/kg bw/day with uncertainty factor 200; exposure estimates reported below ADI for all population groups."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "No safety concern was concluded for current uses, and proposed extension to unripened cheese and heat-treated meat products was not considered of safety concern."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1538",
+      "notes": "Affirmed as GRAS direct food substance under Part 184 conditions; antimicrobial use in specified pasteurized cheese spread categories, current GMP corresponding to maximum 250 ppm nisin in finished product."
+    },
+    "jecfa": {
+      "adi": {
+        "value": 2.0,
+        "unit": "mg/kg bw/day",
+        "basis": "FAO JECFA additive detail lists ADI range 0-2 mg/kg bw (full ADI)."
+      },
+      "last_evaluation_year": 2025
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "Recent animal/preclinical literature reports nisin-related microbiome composition changes; a 2026 zebrafish diabetic model reported dysbiosis, intestinal barrier disruption, and inflammatory signaling associated with worsened vascular outcomes.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID: 41601065"
+        ]
+      },
+      {
+        "category": "cardiovascular",
+        "summary": "In a disease-specific zebrafish model, dietary nisin was associated with exacerbation of diabetic vascular complications via NF-kB-linked inflammatory pathways.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID: 41601065"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2017: No adverse effects in 90-day rat study at 225 mg/kg bw/day (NOAEL) and exposure estimates below ADI for all population groups.",
+      "FDA: GRAS affirmation with specific food-category and GMP limits in 21 CFR 184.1538.",
+      "JECFA: Full ADI established (0-2 mg/kg bw) in latest listed evaluation."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "EFSA 2017 abstract reports overall exposure below ADI across population groups for current and proposed uses."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.78,
+    "rationale": "Convergent regulatory acceptance (EFSA/FDA/JECFA) with defined ADIs and use limits supports low-to-limited risk at authorized exposures. New mechanistic animal findings suggest potential context-dependent effects (notably microbiome/inflammation in disease models), but current human evidence and regulatory actions do not support escalation to moderate or high.",
+    "key_factors": [
+      "EFSA-approved with ADI 1 mg/kg bw/day and no safety concern conclusion in 2017 opinion",
+      "FDA GRAS with explicit CFR conditions and 250 ppm GMP cap in specified foods",
+      "JECFA full ADI 0-2 mg/kg bw with latest evaluation listed as 2025",
+      "No IARC classification identified",
+      "Recent preclinical studies indicate possible microbiome-mediated context-specific adverse effects requiring continued monitoring"
+    ]
+  },
+  "sources": [
+    {
+      "title": "OpenEFSA question record EFSA-Q-2017-00097",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2017-00097",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA substance record: Nisin",
+      "url": "https://open.efsa.europa.eu/api/substance/get?termExtendedName=Nisin",
+      "type": "database"
+    },
+    {
+      "title": "EFSA Journal opinion indexed in PubMed (PMID 32625365)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625365/",
+      "type": "database"
+    },
+    {
+      "title": "EFSA Journal article URL for ON-5063 (access attempted)",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2017.5063",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API section text: 21 CFR 184.1538 Nisin preparation",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?chapter=I&part=184&section=184.1538",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API part text: 21 CFR Part 184",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "FAO JECFA additive detail: Nisin",
+      "url": "https://www.fao.org/food/food-safety-quality/scientific-advice/jecfa/jecfa-additives/detail/en/c/669/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC agents classified by IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC WordPress search API query for nisin",
+      "url": "https://monographs.iarc.who.int/wp-json/wp/v2/search?search=nisin&per_page=20",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA database home (legacy interface, attempted)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/",
+      "type": "database"
+    },
+    {
+      "title": "Dietary nisin exacerbates diabetic vascular complications (PMID 41601065)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41601065/",
+      "type": "study"
+    },
+    {
+      "title": "Nisin Z reduces intestinal tumorigenesis (PMID 41051239)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41051239/",
+      "type": "study"
+    },
+    {
+      "title": "Dietary nisin supplementation in rabbits (PMID 41459044)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41459044/",
+      "type": "study"
+    }
+  ]
+}

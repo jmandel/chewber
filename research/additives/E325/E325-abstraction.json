@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T11:55:29Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E325",
+    "name": "Sodium lactate",
+    "cas_numbers": [
+      "72-17-3"
+    ],
+    "synonyms": [
+      "Sodium 2-hydroxypropanoate",
+      "Sodium lactate solution",
+      "E 325"
+    ],
+    "chemical_class": "Lactate salt (sodium salt of lactic acid)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "Humectant and pH control agent",
+    "secondary_categories": [
+      "flavor enhancer",
+      "flavoring adjuvant",
+      "emulsifier",
+      "antimicrobial hurdle in processed foods"
+    ],
+    "mechanism": "Acts as an organic-acid salt to help control pH and water activity; in formulated foods it can suppress growth/survival of target microbes depending on matrix and dose.",
+    "common_food_categories": [
+      "processed meats",
+      "ready-to-eat refrigerated meat products",
+      "other processed foods under GMP where moisture/pH control is needed"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No finalized EFSA ADI found for E325 because EFSA re-evaluation question EFSA-Q-2011-00600 is still ongoing with no output posted."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "EFSA OpenEFSA record states E325 is already authorised in the EU and under delayed re-evaluation; phase is Ongoing Risk Assessment (updated 2026-01-19)."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1768",
+      "notes": "Permitted under current good manufacturing practice; regulation does not authorize use in infant foods and infant formulas."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not limited (JECFA database and WHO Food Additives Series 5 context)."
+      },
+      "last_evaluation_year": 1974
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Infant-specific concern is tied to historical D(-)/DL-lactic acid utilization limits; JECFA monograph cautions against D(-)/DL-lactic acid in infant foods, and US CFR separately excludes sodium lactate use in infant foods/formulas.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "http://www.inchem.org/documents/jecfa/jecmono/v05je86.htm",
+          "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=184"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "Recent food-microbiology work shows preservative-specific adaptation effects in Salmonella under subinhibitory exposure (including sodium lactate), but reported no antibiotic cross-resistance selection.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/38637079/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA lists ADI as not limited for sodium lactate solution.",
+      "EFSA re-evaluation record indicates additive remains authorised while reassessment is pending.",
+      "A 2024 preservative adaptation study did not find antibiotic cross-resistance selection after sodium-lactate-inclusive preservative exposure."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "infants (use-restricted population rather than ADI exceedance population)"
+      ],
+      "notes": "No numeric JECFA ADI cap (not limited). Current EFSA E325 reassessment is pending and does not yet provide a finalized updated exposure/ADI conclusion."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.74,
+    "rationale": "Longstanding approvals (US GRAS and JECFA ADI not limited), endogenous lactate metabolism, and lack of strong modern human-harm signals support low concern under authorized uses. The tier is kept at limited (not risk_free) due unfinished EFSA re-evaluation and infant-related caution context.",
+    "key_factors": [
+      "21 CFR 184.1768 GRAS with GMP conditions and infant-use exclusion",
+      "JECFA ADI not limited (evaluation year listed as 1974)",
+      "EFSA E325 re-evaluation ongoing with no final output yet",
+      "Recent studies are mainly food-system microbiology, with no clear chronic human toxicity signal specific to dietary E325"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA OpenEFSA question EFSA-Q-2011-00600",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00600",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA OpenEFSA timeline EFSA-Q-2011-00600",
+      "url": "https://open.efsa.europa.eu/api/question/getTimeline?questionNumber=EFSA-Q-2011-00600",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA OpenEFSA substance record: Sodium lactate",
+      "url": "https://open.efsa.europa.eu/api/substance/get?termExtendedName=Sodium%20lactate",
+      "type": "database"
+    },
+    {
+      "title": "FDA eCFR Title 21 Part 184 (includes 21 CFR 184.1768)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA chemical entry: Sodium lactate (solution), Chemical 1552",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1552",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API search by partial name: sodium lactate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/sodium%20lactate",
+      "type": "database"
+    },
+    {
+      "title": "WHO Food Additives Series 5: Lactic acid and its ammonium, calcium, potassium and sodium salts",
+      "url": "http://www.inchem.org/documents/jecfa/jecmono/v05je86.htm",
+      "type": "review"
+    },
+    {
+      "title": "IARC Monographs: Agents Classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 38637079: Common food preservatives impose distinct selective pressures on Salmonella Typhimurium planktonic and biofilm populations",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38637079/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 39675633: Development of antimicrobial biopolymer film with sodium lactate/diacetate",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39675633/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 35051217: Sodium lactate and Listeria/microbiome outcomes in frankfurters",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35051217/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed search query used for recent sodium lactate food additive safety literature",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=sodium+lactate+food+additive+safety",
+      "type": "database"
+    },
+    {
+      "title": "EFSA Journal landing page record for DOI 10.2903/j.efsa.2008.234r",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/234r",
+      "type": "regulatory"
+    },
+    {
+      "title": "Europe PMC DOI lookup for 10.2903/j.efsa.2008.234r",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.2903/j.efsa.2008.234r&format=json",
+      "type": "database"
+    }
+  ]
+}

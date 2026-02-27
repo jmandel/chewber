@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T12:48:51+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E339",
+    "name": "Sodium phosphates",
+    "cas_numbers": [
+      "7558-80-7",
+      "7558-79-4",
+      "7601-54-9"
+    ],
+    "synonyms": [
+      "sodium dihydrogen phosphate",
+      "monosodium phosphate",
+      "disodium phosphate",
+      "sodium phosphate",
+      "trisodium phosphate"
+    ],
+    "chemical_class": "Inorganic sodium salts of phosphoric acid (orthophosphates)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "sequestrant",
+      "emulsifier",
+      "stabilizer",
+      "texturizer",
+      "thickener"
+    ],
+    "mechanism": "Controls pH through phosphate buffering and supports formulation stability via ion sequestration and emulsification functions.",
+    "common_food_categories": [
+      "bread and rolls",
+      "fine bakery wares",
+      "processed cheese",
+      "meat products",
+      "infant formula and baby foods"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 40,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI for phosphates expressed as phosphorus (E338-341, E343, E450-452)."
+      },
+      "last_evaluation_year": 2019,
+      "key_finding": "EFSA re-evaluation set a group ADI of 40 mg/kg bw/day (as phosphorus) and reported ADI exceedance in infants/toddlers/children at mean exposure and in adolescents at high exposure."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.1778",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 70,
+        "unit": "mg/kg bw/day",
+        "basis": "Group MTDI for phosphorus from all sources, expressed as P."
+      },
+      "last_evaluation_year": 1982
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "EFSA reported ADI exceedance in several younger population groups and noted that the ADI does not apply to individuals with moderate-to-severe renal impairment.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009158/"
+        ]
+      },
+      {
+        "category": "cardiovascular",
+        "summary": "Prospective cohort evidence linked higher urinary phosphate (a potential marker of high processed-food phosphate intake) with higher cardiovascular disease incidence.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/37330983/",
+          "https://pubmed.ncbi.nlm.nih.gov/37630701/"
+        ]
+      },
+      {
+        "category": "neurotoxic",
+        "summary": "A mouse study reported anxiety-like behavior and neuroimmune changes after chronic high-phosphate diet exposure.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41050506/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA reported no concern for genotoxicity and carcinogenicity for the phosphate additive group.",
+      "EFSA reported no developmental toxicity concern in reviewed studies.",
+      "FDA lists sodium phosphate as GRAS under GMP conditions in 21 CFR 182.1778."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "infants",
+        "toddlers",
+        "children",
+        "adolescents (high consumers)",
+        "frequent food-supplement users",
+        "people with reduced renal function"
+      ],
+      "notes": "EFSA reported exceedance against its 40 mg/kg bw/day group ADI in multiple population groups in analytical-data scenarios and noted supplement-related exceedance."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.82,
+    "rationale": "E339 remains approved in major jurisdictions, but EFSA's current health-based guidance value is exceeded in several younger populations and high consumers, and additional human/epidemiologic literature supports concern at higher inorganic phosphate exposure patterns.",
+    "key_factors": [
+      "EFSA group ADI of 40 mg/kg bw/day (as phosphorus)",
+      "EFSA-reported ADI exceedance in infants/toddlers/children and high-consuming adolescents",
+      "FDA GRAS status under GMP (21 CFR 182.1778)",
+      "JECFA group MTDI of 70 mg/kg bw/day (as phosphorus)",
+      "No specific IARC classification identified for sodium phosphates"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal page: Re-evaluation of phosphates as food additives (E338-341, E343, E450-452)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5674",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed Central mirror of EFSA opinion (EFSA Journal 2019;17(6):5674)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009158/",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Open study inventory record EFSA-Q-2013-00286",
+      "url": "https://open.efsa.europa.eu/study-inventory/EFSA-Q-2013-00286",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API Title 21 Part 182 XML (contains 21 CFR 182.1778 sodium phosphate)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?chapter=I&subchapter=B&part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR human-readable 21 CFR 182.1778 page",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-182/section-182.1778",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database: Sodium dihydrogen phosphate (INS 339i)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2639",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA database: Disodium phosphate (INS 339ii)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4138",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA database: Sodium phosphate / trisodium phosphate (INS 339iii)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4668",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC cumulative cross-index PDF",
+      "url": "https://monographs.iarc.who.int/wp-content/uploads/2018/07/cumulative-cross-index.pdf",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications by cancer site PDF",
+      "url": "https://monographs.iarc.who.int/wp-content/uploads/2019/07/Classifications_by_cancer_site.pdf",
+      "type": "database"
+    },
+    {
+      "title": "Phosphate-based additives in processed foods: US packaged food supply (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40180501/",
+      "type": "study"
+    },
+    {
+      "title": "Inorganic phosphate additives and acute calcium homeostasis in healthy adults (2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39238566/",
+      "type": "study"
+    },
+    {
+      "title": "Urinary phosphate is associated with cardiovascular disease incidence (2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37330983/",
+      "type": "study"
+    },
+    {
+      "title": "High dietary phosphate intake induces anxiety in normal male mice (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41050506/",
+      "type": "study"
+    },
+    {
+      "title": "Industrial Use of Phosphate Food Additives and cardiorenal risk review (2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37630701/",
+      "type": "review"
+    }
+  ]
+}

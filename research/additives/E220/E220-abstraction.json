@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T08:19:44Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E220",
+    "name": "Sulfur dioxide",
+    "cas_numbers": [
+      "7446-09-5"
+    ],
+    "synonyms": [
+      "sulphur dioxide",
+      "sulfurous anhydride",
+      "SO2",
+      "INS 220",
+      "E220"
+    ],
+    "chemical_class": "Inorganic sulfur oxide (sulfiting/preserving agent)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "antioxidant",
+      "reducing agent",
+      "flour treatment agent"
+    ],
+    "mechanism": "In food, sulfur dioxide/sulfite species exert antimicrobial action and reduce oxidative/browning reactions by reacting with reactive carbonyl compounds and related substrates.",
+    "common_food_categories": [
+      "wine and cider",
+      "dried fruits",
+      "processed potato products",
+      "grape products",
+      "some crustacean products"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "restricted",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "Temporary group ADI of 0.7 mg SO2 eq/kg bw/day (2016) was withdrawn in 2022 follow-up; EFSA used an MOE approach instead."
+      },
+      "last_evaluation_year": 2022,
+      "key_finding": "EFSA follow-up concluded toxicity data gaps remained; temporary ADI was withdrawn and MOE analysis identified concern in high-exposure scenarios."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.3862",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 0.7,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA group ADI for sulfur dioxide/sulfites reported as 0-0.7 mg/kg bw."
+      },
+      "last_evaluation_year": 1998
+    },
+    "iarc_classification": "Group 3",
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "allergenic",
+        "summary": "Sulfite/metabisulfite can trigger bronchoconstriction in sulfite-sensitive asthmatic individuals in challenge/mechanistic studies.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID:1318295"
+        ]
+      },
+      {
+        "category": "genotoxic",
+        "summary": "Mouse studies report genotoxicity signals for sodium metabisulfite at high oral doses; relevance to typical dietary exposures remains uncertain.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:21185391"
+        ]
+      },
+      {
+        "category": "neurotoxic",
+        "summary": "A rat study reported hippocampal pyramidal neuron loss after chronic sulfite administration.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:21511899"
+        ]
+      },
+      {
+        "category": "carcinogenic",
+        "summary": "A large prospective cohort reported positive associations between higher preservative intake (including total sulfites/potassium metabisulfite) and some cancer endpoints, but causality is not established.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:41500678"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "In vitro work indicates apoptosis/ROS/autophagy effects of sodium metabisulfite in human fibroblasts, indicating potential cellular stress pathways at tested concentrations.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:33957602"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "IARC currently classifies sulfur dioxide in Group 3 (not classifiable as to carcinogenicity in humans).",
+      "A 7-day rat study did not reproduce older severe gastric lesion findings from historical sulfite studies (PMID:27401986)."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "children with high dietary sulfite intake",
+        "other high-percentile consumers",
+        "sulfite-sensitive asthmatics"
+      ],
+      "notes": "EFSA 2016 flagged ADI exceedance in high consumers; 2022 follow-up replaced ADI with MOE and identified concern in high-exposure scenarios."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.74,
+    "rationale": "E220 remains permitted in major jurisdictions but under significant caveats: EFSA withdrew the temporary ADI due unresolved toxicology uncertainties and high-exposure concern, while FDA/JECFA still allow controlled use. Overall pattern fits approved-with-caveats rather than clearly low-risk or clearly high-risk status.",
+    "key_factors": [
+      "EFSA 2022 withdrew temporary ADI and used MOE framework",
+      "High-end exposure concern in EFSA follow-up outputs",
+      "FDA GRAS with explicit use restrictions",
+      "JECFA numeric ADI remains 0-0.7 mg/kg bw",
+      "IARC Group 3 classification",
+      "Evidence of sensitivity in susceptible asthmatics"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA news: Sulphur dioxide and sulphites: EFSA updates safety assessment (2022)",
+      "url": "https://www.efsa.europa.eu/en/news/sulphur-dioxide-and-sulphites-efsa-updates-safety-assessment",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA supporting publication EN-7594 (2022)",
+      "url": "https://www.efsa.europa.eu/en/supporting/pub/en-7594",
+      "type": "regulatory"
+    },
+    {
+      "title": "Europe PMC: Follow-up of the re-evaluation of sulfur dioxide and sulfites (PMID 36440381)",
+      "url": "https://europepmc.org/article/MED/36440381",
+      "type": "regulatory"
+    },
+    {
+      "title": "GovInfo CFR XML: 21 CFR 182.3862 Sulfur dioxide",
+      "url": "https://www.govinfo.gov/content/pkg/CFR-2024-title21-vol3/xml/CFR-2024-title21-vol3-sec182-3862.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "GovInfo CFR XML: 21 CFR 101.100",
+      "url": "https://www.govinfo.gov/content/pkg/CFR-2024-title21-vol2/xml/CFR-2024-title21-vol2-sec101-100.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "FDA Substances Added to Food search: sulfur dioxide",
+      "url": "https://www.accessdata.fda.gov/scripts/fdcc/index.cfm?set=Substances&action=search.result&search=sulfur%20dioxide",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA database chemical entry: SULFUR DIOXIDE (ID 985)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/985",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA API search by partial name: sulfur",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/sulfur",
+      "type": "database"
+    },
+    {
+      "title": "IARC list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications data script (contains sulfur dioxide Group 3 entry)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubChem CID 1119 properties for sulfur dioxide",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/sulfur%20dioxide/property/Title,IUPACName,MolecularFormula,MolecularWeight/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem CID 1119 synonyms",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/1119/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubMed record PMID 33957602",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33957602/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed record PMID 27401986",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27401986/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed record PMID 21511899",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21511899/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed record PMID 21185391",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21185391/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed record PMID 41500678",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41500678/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed record PMID 1318295",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/1318295/",
+      "type": "study"
+    }
+  ]
+}

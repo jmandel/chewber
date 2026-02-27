@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T12:17:51+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E331",
+    "name": "Sodium citrates",
+    "cas_numbers": [
+      "68-04-2",
+      "144-33-2",
+      "18996-35-5"
+    ],
+    "synonyms": [
+      "sodium citrate",
+      "trisodium citrate",
+      "disodium citrate",
+      "monosodium citrate",
+      "sodium citrate monobasic"
+    ],
+    "chemical_class": "Sodium salts of citric acid (citrate salts)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "sequestrant",
+      "stabilizer",
+      "buffering agent"
+    ],
+    "mechanism": "Acts as a citrate buffer system to control pH and as a metal-ion complexing agent that can improve formulation stability.",
+    "common_food_categories": [
+      "foods requiring pH adjustment",
+      "processed foods requiring stabilization",
+      "beverages and formulations using citrate buffering"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "OpenEFSA records for E331(i)-(iii) show ongoing risk assessment with no published final output/ADI yet (last modified 2026-01-19)."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "E331 is already authorised in the EU; re-evaluation is ongoing and delayed, with a new call for data planned in 2026."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1751",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not limited / not specified."
+      },
+      "last_evaluation_year": 1979
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "A mouse postweaning exposure study reported long-lasting, sex-dependent social-behavior effects with associated biological changes after sodium citrate exposure in drinking water.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/38925482/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Human high-dose supplementation studies report gastrointestinal symptom burden in performance/supplement contexts; this is above typical food-additive exposure context.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41661559/"
+        ]
+      },
+      {
+        "category": "cardiovascular",
+        "summary": "Because E331 contributes sodium, high total sodium dietary patterns may be a contextual concern in sodium-restricted individuals, though additive-specific harm evidence was not strong in retrieved sources.",
+        "evidence_strength": "theoretical",
+        "key_references": [
+          "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA sodium citrate entries report ADI not limited/not specified and state no significant toxicological hazard for citric acid and its sodium salts in evaluated use contexts.",
+      "FDA affirms sodium citrate as GRAS in 21 CFR 184.1751 with GMP-based use conditions.",
+      "No IARC agent listing was found for sodium citrate in the current IARC classifications dataset reviewed."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "high-dose sodium citrate supplement users",
+        "individuals requiring sodium restriction"
+      ],
+      "notes": "No numeric EFSA or JECFA ADI value was available to compute exceedance; JECFA ADI is not specified/not limited."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.76,
+    "rationale": "Regulatory evidence remains permissive (FDA GRAS; JECFA ADI not specified/not limited; no IARC listing), while EFSA re-evaluation is still ongoing and some recent animal/high-dose human studies justify continued monitoring rather than a risk-free classification.",
+    "key_factors": [
+      "FDA 21 CFR 184.1751 GRAS with GMP use condition",
+      "JECFA ADI not limited/not specified for sodium citrate entries",
+      "No IARC classification found for sodium citrate",
+      "EFSA re-evaluation records are ongoing with no current final output",
+      "Recent animal and supplementation studies show context-specific effects"
+    ]
+  },
+  "sources": [
+    {
+      "title": "OpenEFSA question record: Re-evaluation of E331(i) monosodium citrate",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00604",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA question record: Re-evaluation of E331(ii) disodium citrate",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00605",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA question record: Re-evaluation of E331(iii) trisodium citrate",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00606",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Title 21 XML snapshot containing 21 CFR 184.1 and 21 CFR 184.1751",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA database chemical page: TRISODIUM CITRATE (ID 349)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/349",
+      "type": "database"
+    },
+    {
+      "title": "JECFA database chemical page: SODIUM CITRATE (ID 1649)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1649",
+      "type": "database"
+    },
+    {
+      "title": "JECFA database chemical page: MONOSODIUM CITRATE (ID 1811)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1811",
+      "type": "database"
+    },
+    {
+      "title": "JECFA API partial-name search for sodium citrate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/sodium%20citrate",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset script (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Postweaning sodium citrate exposure induces long-lasting and sex-dependent effects on social behaviours in mice (2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38925482/",
+      "type": "study"
+    },
+    {
+      "title": "Intra-individual reliability of blood bicarbonate responses and gastrointestinal symptoms following sodium citrate supplementation (2026)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41661559/",
+      "type": "study"
+    },
+    {
+      "title": "Citrate supplement facilitated muscle growth and renal maturation (2026)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41557646/",
+      "type": "study"
+    },
+    {
+      "title": "PubChem synonyms for monosodium citrate (CID 23666341)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/23666341/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem synonyms for disodium citrate (CID 8950)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/8950/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem synonyms for trisodium citrate (CID 6224)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/6224/synonyms/JSON",
+      "type": "database"
+    }
+  ]
+}

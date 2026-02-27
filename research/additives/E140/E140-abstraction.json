@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T03:39:15Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E140",
+    "name": "Chlorophylls",
+    "cas_numbers": [
+      "479-61-8",
+      "519-62-0"
+    ],
+    "synonyms": [
+      "Magnesium chlorophyll",
+      "Magnesium phaeophytin",
+      "C.I. Natural Green 3",
+      "INS 140"
+    ],
+    "chemical_class": "Natural magnesium-containing chlorin/porphyrin pigments (chlorophyll a and b)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "food colour",
+    "secondary_categories": [
+      "colour additive",
+      "green pigment"
+    ],
+    "mechanism": "Conjugated chlorin/porphyrin ring systems absorb visible light and impart green colour to foods.",
+    "common_food_categories": [
+      "EU-authorised food categories listed under Regulation (EC) No 1333/2008 Annex II/III",
+      "In U.S. CFR, chlorophyll-derived sodium copper chlorophyllin is limited to citrus-based dry beverage mixes"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2015 re-evaluation reported it was not able to derive an ADI for E140(i) from available data."
+      },
+      "last_evaluation_year": 2015,
+      "key_finding": "EFSA re-evaluated chlorophylls (E140(i)), found technical/toxicological data limitations, and did not derive an ADI."
+    },
+    "fda": {
+      "status": "not_evaluated",
+      "cfr_citation": "21 CFR 73.125 (sodium copper chlorophyllin; chlorophyll-derived color additive)",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA database lists ADI as NOT LIMITED for chlorophylls (INS 140)."
+      },
+      "last_evaluation_year": 1969
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "EFSA (2015) reported insufficient toxicological/technical data to derive an ADI for E140(i).",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://www.efsa.europa.eu/en/efsajournal/pub/4089"
+        ]
+      },
+      {
+        "category": "genotoxic",
+        "summary": "A 2021 rat study on tri-sodium copper chlorophyllins reported slight significant genotoxicity at high dose, with lower effects than deltamethrin comparator.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/34486328/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent PubMed safety literature is largely on chlorophyllin/copper-complex derivatives and non-food contexts, limiting direct applicability to E140 chlorophylls.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/40274623/",
+          "https://pubmed.ncbi.nlm.nih.gov/33380297/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA database lists ADI as NOT LIMITED for chlorophylls (INS 140).",
+      "A 2025 preclinical sodium copper chlorophyllin study reported no acute toxicity up to 5000 mg/kg bw and sub-acute NOAEL indication above 1000 mg/kg bw in tested models.",
+      "No chlorophyll/chlorophyllin entry was identified in the current IARC classified-agent dataset."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "toddlers",
+        "children"
+      ],
+      "notes": "EFSA reported highest estimated exposures in toddlers/children (mean up to 29.0 mg/kg bw/day; high-level up to 51.9 mg/kg bw/day), while ADI was not established."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.62,
+    "rationale": "Evidence is mixed: EFSA could not derive an ADI due to data gaps, but E140 remains in regulatory frameworks and JECFA lists ADI as NOT LIMITED. No major IARC or ban signal was identified in the requested sources.",
+    "key_factors": [
+      "EFSA 2015 re-evaluation did not derive an ADI",
+      "JECFA ADI listed as NOT LIMITED (INS 140)",
+      "U.S. CFR food entry is for chlorophyll-derived sodium copper chlorophyllin (21 CFR 73.125), not a direct E140 listing",
+      "Recent PubMed studies are mostly derivative-specific and context-limited"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Scientific Opinion on the re-evaluation of chlorophylls and chlorophyllins (E 140) as a food additive",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4089",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA Database: CHLOROPHYLLS (INS 140), Chemical ID 369",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/chemical.aspx?chemID=369",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API text endpoint for 21 CFR 73.125 Sodium copper chlorophyllin",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-21?section=73.125",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API endpoint for 21 CFR Part 182 (GRAS) queried for chlorophyll/chlorophyllin",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-21?part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API endpoint for 21 CFR Part 184 (GRAS) queried for chlorophyll/chlorophyllin",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-21?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR versioner API for Title 21 section names (chlorophyllin-related sections)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/versions/title-21.json",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC LOC application dataset bundle",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "IARC Agents Classified by the IARC Monographs",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "Preclinical evaluation of sodium copper chlorophyllin: safety, pharmacokinetics, and therapeutic potential... (PMID: 40274623)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40274623/",
+      "type": "study"
+    },
+    {
+      "title": "Comparative Toxicity Study of Novel Light-Activated Insecticide and Deltamethrin (PMID: 34486328)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34486328/",
+      "type": "study"
+    },
+    {
+      "title": "Phyto-chlorophyllin Prevents Food Additive Induced Genotoxicity and Mitochondrial Dysfunction... (PMID: 33380297)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33380297/",
+      "type": "study"
+    }
+  ]
+}

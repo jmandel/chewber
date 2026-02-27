@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T09:17:13+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E249",
+    "name": "Potassium nitrite",
+    "cas_numbers": [
+      "7758-09-0",
+      "92937-66-1"
+    ],
+    "synonyms": [
+      "Potassium nitrite",
+      "Nitrous acid, potassium salt",
+      "INS 249",
+      "E-249"
+    ],
+    "chemical_class": "Inorganic nitrite salt (alkali metal nitrite)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "preservative",
+    "secondary_categories": [
+      "colour retention agent"
+    ],
+    "mechanism": "Provides antimicrobial preservation and cured-meat colour fixation; nitrite chemistry also influences flavor and can participate in nitrosation reactions.",
+    "common_food_categories": [
+      "cured red meat products",
+      "cured poultry products",
+      "processed meats"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 0.07,
+        "unit": "mg/kg bw/day",
+        "basis": "Re-established as nitrite ion in EFSA 2017 re-evaluation of E249/E250."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "At permitted use levels, additive-related exposure is generally within ADI, but high-exposure children may slightly exceed ADI and total dietary nitrite can exceed ADI in multiple age groups."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 181.34",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 0.07,
+        "unit": "mg/kg bw/day",
+        "basis": "0-0.07 mg/kg bw, expressed as nitrite ion; JECFA 2002."
+      },
+      "last_evaluation_year": 2002
+    },
+    "iarc_classification": "Group 2A",
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "carcinogenic",
+        "summary": "IARC lists 'Nitrate or nitrite (ingested) under conditions that result in endogenous nitrosation' as Group 2A. Mechanistically, nitrite can contribute to nitrosamine formation in processed meat and digestion contexts.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "IARC list data (webapi.iarc.who.int/loc/loc.app.js)",
+          "PMID 41157123"
+        ]
+      },
+      {
+        "category": "cardiovascular",
+        "summary": "Source-specific effects are heterogeneous: vegetable-source nitrate/nitrite intake was associated with more favorable BP/CVD biomarkers, while higher processed-meat nitrate intake showed less favorable BP associations in a UK cross-sectional analysis.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID 41297631"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Potential methemoglobinemia and developmental concerns are highlighted in regulatory/scoping evidence, with infants and prenatal contexts considered more sensitive under some exposure scenarios.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "WHO JECFA potassium nitrite page",
+          "PMID 41248583"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA concluded authorized additive uses are generally protective at current levels.",
+      "Recent market studies (e.g., Turkey) reported measured levels below EU legal maxima in sampled products."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "high-exposure children",
+        "infants/toddlers when total dietary nitrite sources are considered",
+        "high consumers of processed meats"
+      ],
+      "notes": "EFSA identified possible exceedance in highly exposed children from additive use and broader exceedance potential when all dietary sources are included."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.81,
+    "rationale": "E249 remains authorized by major regulators with established ADIs, but multiple caveats persist: subgroup ADI exceedance risk, nitrosamine-related mechanistic concern, and IARC Group 2A classification for relevant nitrite/nitrate ingestion conditions.",
+    "key_factors": [
+      "EFSA/JECFA ADI framework with ongoing authorization",
+      "Exposure exceedance risk in children/high consumers",
+      "IARC Group 2A conditional classification",
+      "Mechanistic and analytical evidence of nitrosamine formation in meat/digestion contexts"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA confirms safe levels for nitrites and nitrates added to food",
+      "url": "https://www.efsa.europa.eu/en/press/news/170615",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal entry for re-evaluation of potassium nitrite (E 249)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4786",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API search results for potassium nitrite",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=potassium%20nitrite",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Title 21 Part 181 full text",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2023-03-30/title-21.xml?chapter=I&subchapter=B&part=181",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Title 21 Part 184 full text",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2023-03-30/title-21.xml?chapter=I&subchapter=B&part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA chemical page: POTASSIUM NITRITE",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2842",
+      "type": "database"
+    },
+    {
+      "title": "IARC agents classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list-of-classifications data script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Health risk assessment of nitrite and nitrate residues in processed meat products from the Turkish market",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41652726/",
+      "type": "study"
+    },
+    {
+      "title": "Nitrate and nitrite content in hot dogs and assessment of health risks to Polish consumers",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40707635/",
+      "type": "study"
+    },
+    {
+      "title": "Dietary Sources of Nitrate and Nitrite and Associations with Blood Pressure and Other Cardiovascular Disease Risk Factors in a Representative United Kingdom Population",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41297631/",
+      "type": "study"
+    },
+    {
+      "title": "Prenatal nitrate and nitrite intake in mammals: A scoping review",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41248583/",
+      "type": "review"
+    },
+    {
+      "title": "Comprehensive Assessment of Nitrosamine Formation in Meat Products Using UHPLC-HRMS",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41157123/",
+      "type": "study"
+    },
+    {
+      "title": "PubChem potassium nitrite properties",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/potassium%20nitrite/property/Title,MolecularFormula,CanonicalSMILES,IUPACName/JSON",
+      "type": "database"
+    },
+    {
+      "title": "eCFR browser route for 21 CFR 181.34 (returned Request Access in VM)",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-181/section-181.34?toc=1",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal DOI target (Wiley route blocked in VM challenge page)",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2017.4786",
+      "type": "regulatory"
+    }
+  ]
+}

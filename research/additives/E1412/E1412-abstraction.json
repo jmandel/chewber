@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T04:15:56Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E1412",
+    "name": "Distarch phosphate",
+    "cas_numbers": [
+      "55963-33-2",
+      "63055-37-8"
+    ],
+    "synonyms": [
+      "Modified starch",
+      "INS 1412",
+      "Distarch phosphate (esterified with sodium trimetaphosphate or phosphorus oxychloride)"
+    ],
+    "chemical_class": "Chemically modified cross-linked starch (phosphate cross-linked starch)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "thickener",
+    "secondary_categories": [
+      "stabilizer",
+      "binder",
+      "emulsifier"
+    ],
+    "mechanism": "Chemical cross-linking of food starch chains (e.g., via sodium trimetaphosphate or phosphorus oxychloride) improves process stability and controls viscosity/thickening behavior.",
+    "common_food_categories": [
+      "sauces and gravies",
+      "soups and dressings",
+      "processed meat and surimi systems",
+      "frozen dough/noodle systems",
+      "texture-modified and thickened foods"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA (2017) concluded no need for a numerical ADI for modified starches including E1412; earlier JECFA/SCF ADI was 'not specified'."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "EFSA re-evaluation of modified starches (including E1412) found no safety concern at reported uses and use levels for the general population."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.892",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA lists ADI as NOT SPECIFIED for distarch phosphate; 2018 entry was specification-only and retained this status."
+      },
+      "last_evaluation_year": 2018
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "An in vitro infant fecal fermentation study using maize hydroxypropylated distarch phosphate reported higher gas production, faster pH drop, and lower microbiota diversity versus locust bean gum in that model.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/29508870/"
+        ]
+      },
+      {
+        "category": "renal",
+        "summary": "A 1982 rat study with related modified starches (E1414/E1422, not E1412 directly) reported increased nephrocalcinosis-related findings under test diets, with diet mineral composition discussed as a confounder.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/6890017/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2017 re-evaluation found no safety concern for modified starches (including E1412) at reported use levels.",
+      "EFSA 2017 reported no genotoxic concern for the modified starch group in the assessment framework.",
+      "JECFA retained ADI as NOT SPECIFIED for distarch phosphate."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "No numeric ADI applicable (EFSA/JECFA non-numerical ADI framework)",
+        "Potential gastrointestinal tolerance attention for high-use infant thickened-food contexts"
+      ],
+      "notes": "EFSA reported high-percentile grouped exposure for E1404-E1451 up to 3,053 mg/kg bw/day while still concluding no safety concern and no need for a numerical ADI."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.79,
+    "rationale": "Major regulators (EFSA, JECFA, FDA framework) continue to permit use, with EFSA/JECFA non-numerical ADI conclusions and no identified IARC classification. Evidence suggesting harm is limited and mainly indirect (in vitro microbiota findings, historical related-modified-starch rat observations).",
+    "key_factors": [
+      "EFSA 2017: no safety concern for modified starches including E1412",
+      "JECFA: ADI NOT SPECIFIED retained (latest entry includes 2018 specification-only review)",
+      "U.S. use permitted under 21 CFR 172.892 with conditions",
+      "No IARC listing identified for distarch phosphate",
+      "Direct modern E1412-specific toxicology literature is limited"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal article page: Re-evaluation of modified starches including E1412 (Article 4911)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4911",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed record of EFSA 2017 opinion (PMID 32625282)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625282/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR section page §172.892 Food starch-modified",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-172/section-172.892",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API versions for Title 21",
+      "url": "https://www.ecfr.gov/api/versioner/v1/versions/title-21.json",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API full text for Title 21 Part 172",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2024-06-03/title-21.xml?part=172",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA Distarch phosphate chemical page (INS 1412)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3281",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA search endpoint for distarch phosphate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/distarch%20phosphate",
+      "type": "database"
+    },
+    {
+      "title": "FAO JECFA Monographs 19 (Distarch phosphate specifications)",
+      "url": "http://www.fao.org/3/a-i6413e.pdf",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC agents classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC list of classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classification data bundle (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: Effects of different thickening agents on infant gut microbiota (PMID 29508870)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29508870/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Comparison of lactose and chemically modified waxy maize starches in rats (PMID 6890017)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/6890017/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: The effect of modified starches on surimi gel properties (PMID 31286513)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31286513/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Effects of acetylated distarch phosphate on oyster sauce system (PMID 39183986)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39183986/",
+      "type": "study"
+    },
+    {
+      "title": "NCBI E-utilities query for distarch phosphate PubMed records",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=distarch%20phosphate&retmax=20&retmode=json",
+      "type": "database"
+    }
+  ]
+}

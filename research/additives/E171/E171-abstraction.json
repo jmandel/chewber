@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T06:42:57Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E171",
+    "name": "Titanium dioxide",
+    "cas_numbers": [
+      "13463-67-7"
+    ],
+    "synonyms": [
+      "C.I. Pigment White 6",
+      "Titania",
+      "Titanium(IV) oxide"
+    ],
+    "chemical_class": "Inorganic metal oxide pigment",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "color_additive",
+    "secondary_categories": [
+      "opacifier",
+      "whitener"
+    ],
+    "mechanism": "Insoluble TiO2 particles increase whiteness and opacity in foods through pigment/light-scattering effects.",
+    "common_food_categories": [
+      "Bakery products",
+      "Candy",
+      "Fine bakery wares",
+      "Soups, broths, sauces, and related savory categories"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "withdrawn",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA (2021) concluded a genotoxicity concern could not be ruled out and an ADI could not be established."
+      },
+      "last_evaluation_year": 2021,
+      "key_finding": "Titanium dioxide (E171) can no longer be considered safe when used as a food additive; this informed subsequent EU withdrawal of food authorization."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 73.575",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI NOT LIMITED (not specified), reaffirmed at the 97th meeting (2023)."
+      },
+      "last_evaluation_year": 2023
+    },
+    "iarc_classification": "Group 2B",
+    "notable_bans": [
+      "European Union: food-use authorization for E171 removed under Commission Regulation (EU) 2022/63, with transition tied to 7 February 2022 and 7 August 2022 market dates."
+    ]
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "genotoxic",
+        "summary": "EFSA could not rule out genotoxicity for TiO2 particles used as E171 and therefore did not establish an ADI.",
+        "evidence_strength": "strong",
+        "key_references": [
+          "https://www.efsa.europa.eu/en/news/titanium-dioxide-e171-no-longer-considered-safe-when-used-food-additive",
+          "https://eur-lex.europa.eu/eli/reg/2022/63/oj/eng"
+        ]
+      },
+      {
+        "category": "carcinogenic",
+        "summary": "IARC classifies titanium dioxide as Group 2B (possibly carcinogenic to humans), with monograph rationale noting inadequate human evidence and sufficient evidence in experimental animals.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://publications.iarc.who.int/_publications/media/download/2856/mono93.pdf",
+          "https://pubmed.ncbi.nlm.nih.gov/41708253/?format=pubmed"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "Recent experimental studies report altered gut microbial composition/metabolism and inflammatory signaling after E171 exposure in model systems.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41665880/?format=pubmed",
+          "https://pubmed.ncbi.nlm.nih.gov/41708253/?format=pubmed"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent organoid work shows ROS and DNA damage signals under in vitro exposure conditions, indicating unresolved mechanistic uncertainty.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/40651618/?format=pubmed"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA (2023) reaffirmed ADI not specified (not limited) for INS 171.",
+      "FDA continues to allow titanium dioxide as a color additive in foods under 21 CFR 73.575 with <=1% by weight condition.",
+      "A 2024 extended one-generation reproductive toxicity study in rats reported no reproductive/systemic/developmental neurotoxicity at tested levels."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "Children",
+        "High-consumption subgroups"
+      ],
+      "notes": "A classical ADI exceedance calculation is not possible under EFSA because no ADI was established; exposure meta-analysis reports up to 10.5 mg/kg bw/day and higher exposure in children."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "high",
+    "confidence": 0.84,
+    "rationale": "The additive is in the high tier because EFSA could not confirm safety and could not set an ADI, followed by EU withdrawal of food authorization, with continuing mechanistic concern signals in newer studies. FDA/JECFA disagreement lowers certainty but does not remove the high-risk regulatory signal.",
+    "key_factors": [
+      "EFSA 2021 concluded E171 can no longer be considered safe",
+      "EFSA could not establish an ADI due unresolved genotoxicity concern",
+      "EU food authorization withdrawn via Regulation (EU) 2022/63",
+      "IARC Group 2B classification for titanium dioxide",
+      "Recent studies show microbiome, inflammatory, ROS/DNA-damage signals",
+      "Regulatory disagreement persists (FDA/JECFA remain permissive)"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Titanium dioxide: E171 no longer considered safe when used as a food additive",
+      "url": "https://www.efsa.europa.eu/en/news/titanium-dioxide-e171-no-longer-considered-safe-when-used-food-additive",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal publication page 6585 (access attempt blocked in environment)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/6585",
+      "type": "regulatory"
+    },
+    {
+      "title": "Titanium Dioxide as a Color Additive in Foods",
+      "url": "https://www.fda.gov/industry/color-additives/titanium-dioxide-color-additive-foods",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 73.575 page on ecfr.gov (access attempt, blocked in environment)",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-73/section-73.575",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 73.575 Titanium dioxide (mirror text)",
+      "url": "https://www.ecfr.io/Title-21/Section-73.575",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database: Titanium dioxide (Chemical ID 5576)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/5576",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs Volume 93 page",
+      "url": "http://monographs.iarc.who.int/ENG/Monographs/vol93/index.php",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs Volume 93 PDF",
+      "url": "https://publications.iarc.who.int/_publications/media/download/2856/mono93.pdf",
+      "type": "regulatory"
+    },
+    {
+      "title": "Commission Regulation (EU) 2022/63",
+      "url": "https://eur-lex.europa.eu/eli/reg/2022/63/oj/eng",
+      "type": "regulatory"
+    },
+    {
+      "title": "Food-grade titanium dioxide exposure between age groups and in global regions: a systematic review and meta-analysis (PMID 39980420)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39980420/?format=pubmed",
+      "type": "review"
+    },
+    {
+      "title": "Extended one-generation reproductive toxicity study of food-grade titanium dioxide E171 (PMID 39173974)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39173974/?format=pubmed",
+      "type": "study"
+    },
+    {
+      "title": "Dietary titanium dioxide particles (E171) promote colitis-associated colorectal cancer development in mice (PMID 41708253)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41708253/?format=pubmed",
+      "type": "study"
+    },
+    {
+      "title": "E171-induced toxicity in human iPSC-derived colon organoids (PMID 40651618)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40651618/?format=pubmed",
+      "type": "study"
+    },
+    {
+      "title": "Food Additive Titanium Dioxide (E171) Alters Gut Microbial Metabolic Activity and Butyrate Production (PMID 41665880)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41665880/?format=pubmed",
+      "type": "study"
+    }
+  ]
+}

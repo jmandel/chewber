@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T03:48:29Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E1401",
+    "name": "Acid-treated starch",
+    "cas_numbers": [
+      "9005-84-9"
+    ],
+    "synonyms": [
+      "Starch, acid-treated",
+      "Starch, soluble",
+      "Food starch-modified (acid-modified)"
+    ],
+    "chemical_class": "Modified starch (acid-hydrolyzed polysaccharide)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "thickener",
+    "secondary_categories": [
+      "stabilizer",
+      "emulsifier",
+      "texture modifier"
+    ],
+    "mechanism": "Partial acid hydrolysis reduces starch molecular size and viscosity, altering thickening/gel behavior and process performance.",
+    "common_food_categories": [
+      "flavoured fermented milk products",
+      "cream and cream analogues",
+      "confectionery",
+      "bakery wares",
+      "processed meat and fish products",
+      "soups, sauces and seasonings",
+      "flavoured drinks and beverage systems"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "not_evaluated",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No EFSA numerical ADI identified for E1401 in retrieved EFSA materials; E1401 appears in EFSA's 2012 call for data for re-evaluation support."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "Accessible EFSA source found was a call for technical/toxicological data including E1401; no dedicated EFSA scientific opinion for E1401 was identified in this run."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.892",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI NOT SPECIFIED (toxicological evaluation listed in 2016; 2018 entry was specifications-focused)."
+      },
+      "last_evaluation_year": 2018
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Main concern is evidence recency/specificity: limited modern E1401-targeted human and long-term toxicology data were identified.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://www.efsa.europa.eu/en/calls-data/miscellaneous-food-additives",
+          "https://pubmed.ncbi.nlm.nih.gov/?term=%22acid-treated+starch%22+safety"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA toxicological monograph concluded ADI not specified and described acid-treated starches as normal food constituents.",
+      "21 CFR 172.892 permits food starch-modified for direct addition to food with defined conditions.",
+      "No IARC classification entry found for acid-treated starch/CAS 9005-84-9 in current IARC classification dataset checked."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "No numeric ADI is set by JECFA (ADI not specified), and no EFSA numeric ADI was identified; quantitative exceedance assessment was not possible from retrieved data."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.74,
+    "rationale": "Regulatory authorizations (EU/FDA), JECFA ADI not specified, and absence of IARC listing support low concern; limited modern E1401-specific toxicology prevents risk_free classification.",
+    "key_factors": [
+      "JECFA ADI not specified",
+      "EU authorization across many categories (often quantum satis)",
+      "FDA permission under 21 CFR 172.892 with conditions",
+      "No IARC classification found",
+      "Sparse modern E1401-specific safety studies"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Calls for technical and toxicological data on miscellaneous food additives",
+      "url": "https://www.efsa.europa.eu/en/calls-data/miscellaneous-food-additives",
+      "type": "regulatory"
+    },
+    {
+      "title": "Food additives database: Acid-treated starch (E 1401)",
+      "url": "https://food.ec.europa.eu/food-safety/food-improvement-agents/additives-database/acid-treated-starch-e-1401_en",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API titles.json (Title 21 metadata)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/titles.json",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API versions/title-21.json",
+      "url": "https://www.ecfr.gov/api/versioner/v1/versions/title-21.json",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API full title-21.xml (issue date 2024-06-03)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2024-06-03/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA food additives database: Acid-treated starch (chemID 2036)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/chemical.aspx?chemID=2036",
+      "type": "database"
+    },
+    {
+      "title": "WHO Food Additives Series 17: Acid-treated starches",
+      "url": "http://www.inchem.org/documents/jecfa/jecmono/v17je15.htm",
+      "type": "review"
+    },
+    {
+      "title": "IARC Monographs: List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC classification dataset payload (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed query: \"acid-treated starch\" safety",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%22acid-treated+starch%22+safety",
+      "type": "database"
+    },
+    {
+      "title": "PubMed query: \"acid-treated starch\" toxicity",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%22acid-treated+starch%22+toxicity",
+      "type": "database"
+    },
+    {
+      "title": "PubMed query: \"modified starch\" food additive safety",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%22modified+starch%22+food+additive+safety",
+      "type": "database"
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T06:59:26Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E175",
+    "name": "Gold (metallic)",
+    "cas_numbers": [
+      "7440-57-5"
+    ],
+    "synonyms": [
+      "gold",
+      "metallic gold",
+      "gold leaf",
+      "aurum",
+      "CI 77480"
+    ],
+    "chemical_class": "elemental metal color additive",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "surface decorative color additive",
+    "secondary_categories": [
+      "metallic coating",
+      "visual decoration"
+    ],
+    "mechanism": "Inert metallic particles/leaf remain largely unreactive and provide reflective metallic appearance when applied as surface coating.",
+    "common_food_categories": [
+      "confections",
+      "chocolate decorations",
+      "liqueurs"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA re-evaluation (2016) did not set a numerical ADI; opinion characterized gold as of minimal toxicological concern with low estimated exposure but acknowledged data uncertainty."
+      },
+      "last_evaluation_year": 2016,
+      "key_finding": "Authorized in EU for limited decorative uses; no numerical ADI set; low exposure estimates and uncertainty due limited data."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 73.129",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA entry states 'NO ADI ALLOCATED' (1977) with comment 'Very limited use. Not considered to present a hazard'; 2018 note says not re-evaluated and Codex provisions withdrawn at CCFA50."
+      },
+      "last_evaluation_year": 2018
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "A 90-day mouse study with food-grade gold reported sex-dependent shifts in gut microbiota and local immune markers at human-relevant dose framing.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/37443115/"
+        ]
+      },
+      {
+        "category": "renal",
+        "summary": "Oral rat nanoparticle study reported dose/size-related accumulation and renal histopathology at higher exposures, while many routine clinical markers remained unchanged.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/29915988/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Nanoparticle-focused reviews raise theoretical concern that nanoscale fractions may alter uptake and toxicity relative to bulk inert metal assumptions.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/29570809/",
+          "https://pubmed.ncbi.nlm.nih.gov/33068655/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA (2016) and JECFA historical conclusions did not identify a clear hazard at reported uses and did not assign a restrictive numerical ADI.",
+      "US FDA permits gold as a color additive exempt from certification with specific use constraints under 21 CFR 73.129."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "No numeric ADI is established (EFSA non-numeric; JECFA no ADI allocated), so formal ADI exceedance cannot be computed; EFSA-reported exposure estimates were low but uncertain due sparse use data."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.62,
+    "rationale": "Regulatory approvals and low estimated exposure support low-to-limited concern, but unresolved nanoparticle characterization and recent animal evidence of microbiome/immune and organ-level effects prevent classifying E175 as risk_free or simply limited with high confidence.",
+    "key_factors": [
+      "EFSA 2016 non-numeric ADI with low exposure estimates and acknowledged uncertainty",
+      "FDA approval as color additive exempt from certification with strict conditions in 21 CFR 73.129",
+      "JECFA historical 'NO ADI ALLOCATED' with 2018 note of no re-evaluation/Codex provision withdrawal",
+      "Recent animal data indicating biologic effects at oral exposure"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Scientific Opinion on the re-evaluation of gold (E 175) as a food additive",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4362",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 73.129 Gold",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-73/section-73.129",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR Part 184 (Direct food substances affirmed as GRAS)",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-184",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA API search result for gold",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/gold",
+      "type": "database"
+    },
+    {
+      "title": "JECFA Chemical record: GOLD (metallic)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1287",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list data app bundle",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "A 90-day oral exposure to food-grade gold at relevant human doses impacts the gut microbiota and the local immune system in a sex-dependent manner in mice",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37443115/",
+      "type": "study"
+    },
+    {
+      "title": "Oral administration of gold nanoparticles: Toxicological effects in rats of 20 nm, 10 nm, and 50 nm nanoparticles",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29915988/",
+      "type": "study"
+    },
+    {
+      "title": "Nanotechnology in the agri-food industry: applications, opportunities and challenges",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29570809/",
+      "type": "review"
+    },
+    {
+      "title": "Food additives containing nanoparticles induce gastrotoxicity, hepatotoxicity and alterations in animal behavior: The unknown role of oxidative stress",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33068655/",
+      "type": "review"
+    }
+  ]
+}
