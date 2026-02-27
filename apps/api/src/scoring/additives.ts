@@ -21,12 +21,17 @@ export type AdditiveScoreBreakdown = {
 
 /**
  * Map risk levels to point deductions (from a 30-point starting budget).
- * NOTE: This is a scaffold; tune these penalties to match your chosen policy.
+ *
+ * Tuned in Phase 2: limited halved (6→3) because most products have 1-3
+ * limited additives that are genuinely GRAS (lecithin, xanthan gum).
+ * Moderate reduced (15→10) because common fortification minerals (calcium
+ * phosphate) and bread preservatives shouldn't dominate the score.
+ * High unchanged — these are genuinely concerning (BHA, nitrites, banned dyes).
  */
 export const RISK_PENALTY: Record<RiskLevel, number> = {
   risk_free: 0,
-  limited: 6,
-  moderate: 15,
+  limited: 3,
+  moderate: 10,
   high: 30
 };
 

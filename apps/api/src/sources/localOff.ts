@@ -14,6 +14,7 @@ export interface LocalOffProduct {
   nutriments: Record<string, number> | null;
   ingredients_text: string | null;
   additives: string[] | null;
+  labels: string[] | null;
 }
 
 // ---------------------------------------------------------------------------
@@ -48,6 +49,7 @@ function getIndex(): Database {
 let _instance: DuckDBInstance | null = null;
 let _conn: DuckDBConnection | null = null;
 let _initPromise: Promise<DuckDBConnection> | null = null;
+let _hasLabelsColumn = false;
 
 async function getConn(): Promise<DuckDBConnection> {
   if (_conn) return _conn;
@@ -57,10 +59,16 @@ async function getConn(): Promise<DuckDBConnection> {
     _conn = await _instance.connect();
     await _conn.run("SET memory_limit='256MB'");
     await _conn.run("SET threads=2");
-    // Warm parquet metadata
+    // Warm parquet metadata and detect available columns
     await _conn.runAndReadAll(
       `SELECT 1 FROM '${PARQUET_PATH}' LIMIT 1`
     );
+    try {
+      await _conn.runAndReadAll(`SELECT labels_tags FROM '${PARQUET_PATH}' LIMIT 1`);
+      _hasLabelsColumn = true;
+    } catch {
+      _hasLabelsColumn = false; // Parquet was built without labels_tags; rebuild to enable
+    }
     return _conn;
   })();
   return _initPromise;
@@ -70,21 +78,27 @@ async function getConn(): Promise<DuckDBConnection> {
 // DuckDB full-record fetch
 // ---------------------------------------------------------------------------
 
-const SELECT_PRODUCT = `
-  code AS barcode,
-  product_name[1]."text" AS product_name,
-  brands,
-  categories,
-  CASE WHEN len(ingredients_text) > 0 THEN ingredients_text[1]."text" ELSE NULL END AS ingredients_text,
-  CASE WHEN len(additives_tags) > 0 THEN array_to_string(additives_tags, ',') ELSE NULL END AS additives,
-  CASE WHEN len(nutriments) > 0
-    THEN '{' || array_to_string(
-      [concat('"', n.name, '_100g":', CAST(n."100g" AS VARCHAR))
-       FOR n IN nutriments IF n."100g" IS NOT NULL], ','
-    ) || '}'
-    ELSE NULL
-  END AS nutriments_json
-`;
+function buildSelectProduct(): string {
+  const labelsExpr = _hasLabelsColumn
+    ? `CASE WHEN len(labels_tags) > 0 THEN array_to_string(labels_tags, ',') ELSE NULL END`
+    : `NULL`;
+  return `
+    code AS barcode,
+    product_name[1]."text" AS product_name,
+    brands,
+    categories,
+    CASE WHEN len(ingredients_text) > 0 THEN ingredients_text[1]."text" ELSE NULL END AS ingredients_text,
+    CASE WHEN len(additives_tags) > 0 THEN array_to_string(additives_tags, ',') ELSE NULL END AS additives,
+    ${labelsExpr} AS labels,
+    CASE WHEN len(nutriments) > 0
+      THEN '{' || array_to_string(
+        [concat('"', n.name, '_100g":', CAST(n."100g" AS VARCHAR))
+         FOR n IN nutriments IF n."100g" IS NOT NULL], ','
+      ) || '}'
+      ELSE NULL
+    END AS nutriments_json
+  `;
+}
 
 function rowToProduct(row: any): LocalOffProduct {
   return {
@@ -95,6 +109,7 @@ function rowToProduct(row: any): LocalOffProduct {
     nutriments: row.nutriments_json ? JSON.parse(row.nutriments_json) : null,
     ingredients_text: row.ingredients_text ?? null,
     additives: row.additives ? row.additives.split(",").filter(Boolean) : null,
+    labels: row.labels ? row.labels.split(",").filter(Boolean) : null,
   };
 }
 
@@ -102,7 +117,7 @@ function rowToProduct(row: any): LocalOffProduct {
 async function fetchFullRecord(code: string): Promise<LocalOffProduct | null> {
   const conn = await getConn();
   const result = await conn.runAndReadAll(`
-    SELECT ${SELECT_PRODUCT}
+    SELECT ${buildSelectProduct()}
     FROM '${PARQUET_PATH}'
     WHERE code = '${code.replace(/'/g, "''")}'
     LIMIT 1
@@ -117,7 +132,7 @@ async function fetchFullRecords(codes: string[]): Promise<LocalOffProduct[]> {
   const conn = await getConn();
   const inList = codes.map((c) => `'${c.replace(/'/g, "''")}'`).join(",");
   const result = await conn.runAndReadAll(`
-    SELECT ${SELECT_PRODUCT}
+    SELECT ${buildSelectProduct()}
     FROM '${PARQUET_PATH}'
     WHERE code IN (${inList})
   `);

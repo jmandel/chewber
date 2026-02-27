@@ -6,7 +6,7 @@ const PROVIDER = "usda";
 // USDA nutrient ID → our field name
 const NUTRIENT_MAP: Record<number, string> = {
   1008: "energy_kcal",
-  2047: "energy_kj",
+  2047: "energy_kcal",          // Atwater General Factors – also kcal
   2000: "sugars_g",
   1258: "saturated_fat_g",
   1004: "total_fat_g",
@@ -23,6 +23,10 @@ function extractNutrients(raw: any[]): Record<string, number | null> {
     if (field) {
       out[field] = n.value ?? n.amount ?? null;
     }
+  }
+  // Derive energy_kj from energy_kcal when the API only gives kcal
+  if (out.energy_kcal != null && out.energy_kj == null) {
+    out.energy_kj = Math.round((out.energy_kcal as number) * 4.184);
   }
   return out;
 }

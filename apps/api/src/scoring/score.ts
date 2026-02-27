@@ -27,61 +27,27 @@ export type ChewberScoreBreakdown = {
 
 /**
  * Map Nutri-Score points → nutrition score (0–100).
- * Piecewise lookup tables with separate curves for solid foods vs beverages.
+ * Smooth linear formulas (no lookup tables) so a 1-point Nutri-Score error
+ * never causes more than a 4–6 point swing in the mapped score.
+ *
+ * Solid foods:  score = clamp(0, 100, round(80 − 4 × NS))
+ *   NS ≤ -5 → 100,  NS 0 → 80,  NS 10 → 40,  NS 20 → 0
+ *   Max adjacent Δ = 4  (after ×0.6 weight = 2.4 Chewber points per NS point)
+ *
+ * Beverages:    score = clamp(0, 80, round(60 − 6 × NS))
+ *   NS ≤ -4 → 80 (cap; drinks inherently score lower),
+ *   NS 0 → 60,  NS 6 → 24,  NS 10 → 0
+ *   Max adjacent Δ = 6  (after ×0.6 weight = 3.6 Chewber points per NS point)
  */
 function nutritionScoreFromNutriScore(points: number, isBeverage: boolean): number {
-  const p = Math.round(points);
-
-  if (!isBeverage) {
-    // Solid foods
-    if (p <= -3) return 100;
-    const map: Record<number, number> = {
-      [-3]: 100,
-      [-2]: 100,
-      [-1]: 90,
-      0: 80,
-      1: 75,
-      2: 70,
-      3: 65,
-      4: 60,
-      5: 55,
-      6: 50,
-      7: 45,
-      8: 40,
-      9: 35,
-      10: 30,
-      11: 15,
-      12: 13,
-      13: 11,
-      14: 9,
-      15: 7,
-      16: 5,
-      17: 3,
-      18: 1
-    };
-    if (p >= 19) return 0;
-    return map[p] ?? 0;
+  if (isBeverage) {
+    // Beverages: linear, capped at 80 (drinks inherently score lower)
+    // NS=-4→80, NS=0→60, NS=6→24, NS=10→0
+    return Math.max(0, Math.min(80, Math.round(60 - 6 * points)));
   }
-
-  // Beverages
-  if (p <= -4) return 80;
-  const map: Record<number, number> = {
-    [-3]: 77,
-    [-2]: 74,
-    [-1]: 71,
-    0: 68,
-    1: 65,
-    2: 57,
-    3: 49,
-    4: 41,
-    5: 33,
-    6: 15,
-    7: 11,
-    8: 7,
-    9: 3
-  };
-  if (p >= 10) return 0;
-  return map[p] ?? 0;
+  // Solid foods: linear, smooth (max 4-point step between adjacent NS values)
+  // NS=-5→100, NS=0→80, NS=10→40, NS=20→0
+  return Math.max(0, Math.min(100, Math.round(80 - 4 * points)));
 }
 
 /** Round half-up: 0.5 rounds away from zero. */
@@ -169,7 +135,7 @@ export function scoreFood(opts: {
     market_country: opts.market_country
   });
 
-  const organicPoints = opts.is_certified_organic === "yes" ? 10 : 0;
+  const organicEligible = opts.is_certified_organic === "yes";
 
   const missingReq = requiredNutritionMissing({ nutri_category: opts.nutri_category, nutrition: opts.nutrition });
 
@@ -183,7 +149,7 @@ export function scoreFood(opts: {
         weighted_points: 0
       },
       additives: { ...additive, weighted_points: additive.total_points },
-      organic: { is_certified_organic: opts.is_certified_organic, points: organicPoints },
+      organic: { is_certified_organic: opts.is_certified_organic, points: 0 },
       caps: { high_risk_additive_cap_applied: false, max_score_if_applied: 49 },
       total_before_caps: null,
       total_final: null,
@@ -202,6 +168,11 @@ export function scoreFood(opts: {
   const isBeverage = opts.nutri_category === "beverage";
   const nutritionScore = nutritionScoreFromNutriScore(nutri.score, isBeverage);
   const nutritionWeighted = nutritionScore * 0.6;
+
+  // Organic bonus: 10 points if certified organic AND nutrition score >= 40.
+  // An organic avocado gets the full 10; an organic Oreo (poor nutrition) gets 0.
+  // This prevents the organic label from meaningfully boosting junk food.
+  const organicPoints = organicEligible ? (nutritionScore >= 40 ? 10 : 0) : 0;
 
   const totalBeforeCaps = nutritionWeighted + additive.total_points + organicPoints;
 

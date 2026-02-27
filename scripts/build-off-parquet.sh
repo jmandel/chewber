@@ -82,6 +82,7 @@ COPY (
     categories,
     ingredients_text,
     additives_tags,
+    labels_tags,
     allergens_tags,
     nutriscore_grade,
     serving_size,
