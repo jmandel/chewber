@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T15:13:19Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E417",
+    "name": "Tara gum",
+    "cas_numbers": [
+      "39300-88-4"
+    ],
+    "synonyms": [
+      "Tara gum",
+      "Peruvian carob",
+      "INS 417"
+    ],
+    "chemical_class": "Galactomannan polysaccharide hydrocolloid",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "thickener",
+    "secondary_categories": [
+      "stabilizer",
+      "texture modifier"
+    ],
+    "mechanism": "Hydrates to increase viscosity and stabilize dispersed food systems as a high-molecular-weight galactomannan.",
+    "common_food_categories": [
+      "processed foods requiring thickening/stabilization",
+      "confectionery and dessert systems",
+      "sauces and similar hydrocolloid-structured foods"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2017 re-evaluation concluded there is no need for a numerical ADI and no safety concern at refined exposure for reported uses."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "Authorised in EU uses; EFSA found no genotoxicity concern, no carcinogenicity concern in assessed data, and no safety concern for the general population at refined exposure."
+    },
+    "fda": {
+      "status": "not_evaluated",
+      "cfr_citation": "No tara gum listing identified in searched 21 CFR Parts 172, 182, or 184 (related tara botanical mention in 21 CFR 184.1097 for tannic acid source).",
+      "notes": "FDA GRAS Notice Inventory search for exact term 'tara gum' returned 0 records on the visited result page."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO JECFA Chemical 4115 (TARA GUM) lists ADI as NOT SPECIFIED."
+      },
+      "last_evaluation_year": 1986
+    },
+    "iarc_classification": null,
+    "notable_bans": [
+      "EU historical restriction context: gel-forming additives including tara gum were not authorised for jelly mini-cups due choking risk context (product-format restriction, not broad additive ban)."
+    ]
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Recent literature discusses potential accidental hazards associated with tara seed germ flour by-product, which is related to tara processing but not direct proof of harm from purified food additive-grade tara gum.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/38448102/"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "Tara gum is expected to be fermented by intestinal microbiota to SCFAs; EFSA did not consider this a safety concern at reported uses.",
+        "evidence_strength": "theoretical",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009841/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2017: no need for a numerical ADI; no safety concern at refined exposure for reported uses.",
+      "EFSA 2017: no concern for genotoxicity and no carcinogenicity concern in evaluated chronic datasets.",
+      "JECFA: ADI NOT SPECIFIED for tara gum (Evaluation year 1986).",
+      "NTP-associated chronic/carcinogenicity studies reported no treatment-related carcinogenic signal attributable to tara gum in tested rodent models."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "children with higher per-body-weight intake",
+        "food supplement consumers"
+      ],
+      "notes": "EFSA refined exposure estimates reached up to 70 mg/kg bw/day in children and up to 51 mg/kg bw/day for child supplement consumers, but EFSA and JECFA use non-numerical ADI conclusions for tara gum."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.74,
+    "rationale": "The additive has favorable core regulatory toxicology conclusions (EFSA/JECFA non-numerical ADI, no genotoxicity/carcinogenicity concern at assessed uses), but evidence is weighted to older datasets, and some regulatory/specification caveats and tara-derived by-product hazard discussions justify a conservative limited tier rather than risk_free.",
+    "key_factors": [
+      "EFSA 2017 no-numerical-ADI and no-safety-concern conclusion",
+      "JECFA ADI NOT SPECIFIED (1986)",
+      "No IARC classification identified",
+      "No direct tara gum listing identified in searched 21 CFR 172/182/184 and no exact tara gum GRAS notice hit in visited inventory search",
+      "Recent hazard discourse involves tara seed germ flour by-product, not definitive toxicity evidence for purified E417"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA search page (E417/tara gum query)",
+      "url": "https://www.efsa.europa.eu/en/search?search_api_fulltext=E417%20tara%20gum",
+      "type": "database"
+    },
+    {
+      "title": "EFSA Journal page: Re-evaluation of tara gum (E 417) as a food additive (2017)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4863",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed: Re-evaluation of tara gum (E 417) as a food additive (PMID 32625525)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625525/",
+      "type": "regulatory"
+    },
+    {
+      "title": "PMC full text: Re-evaluation of tara gum (E 417) as a food additive (PMC7009841)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009841/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 Part 172",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2025-01-02/title-21?part=172",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API Title 21 Part 182",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2025-01-02/title-21?part=182",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API Title 21 Part 184",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2025-01-02/title-21?part=184",
+      "type": "database"
+    },
+    {
+      "title": "eCFR search page for tara gum (request-access challenge encountered)",
+      "url": "https://www.ecfr.gov/search?query=tara%20gum&search%5Btitle%5D=21",
+      "type": "database"
+    },
+    {
+      "title": "FDA GRAS Notices inventory",
+      "url": "https://hfpappexternal.fda.gov/scripts/fdcc/index.cfm?set=GRASNotices",
+      "type": "database"
+    },
+    {
+      "title": "FDA GRAS Notices search for tara gum",
+      "url": "https://hfpappexternal.fda.gov/scripts/fdcc/index.cfm?set=GRASNotices&sort=GRN_No&order=DESC&type=basic&search=tara%20gum",
+      "type": "database"
+    },
+    {
+      "title": "FDA Substances Added to Food search for tara gum",
+      "url": "https://hfpappexternal.fda.gov/scripts/fdcc/index.cfm?set=FoodSubstances&sort=Sortterm&order=ASC&type=basic&search=tara%20gum",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API search by partial name: tara",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/tara",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA Chemical 4115: TARA GUM",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4115",
+      "type": "database"
+    },
+    {
+      "title": "IARC Agents classified by the IARC Monographs",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications app dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: Carcinogenesis Bioassay of Tara Gum (PMID 12778212)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12778212/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Chronic effects of agar, guar gum, gum arabic, locust-bean gum, or tara gum (PMID 6683227)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/6683227/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Comprehensive molecular level characterization ... accidental hazards (PMID 38448102)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38448102/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed search query: tara gum food additive safety",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=tara+gum+food+additive+safety",
+      "type": "database"
+    }
+  ]
+}
