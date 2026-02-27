@@ -12,9 +12,14 @@ import { jobsRoutes } from "./routes/jobs";
 import { uploadRoutes } from "./routes/upload";
 import { queryRoutes } from "./routes/query";
 import { resolveRoutes } from "./routes/resolve";
+import { additivesRoutes } from "./routes/additives";
+import { loadAdditiveResearch } from "./sources/additiveResearch";
 
 const env = getEnv();
 const db = getDb();
+
+// Pre-load additive research reports into memory
+loadAdditiveResearch();
 
 const app = new Hono();
 
@@ -53,6 +58,7 @@ app.route("/api", jobsRoutes);
 app.route("/api", uploadRoutes);
 app.route("/api", queryRoutes);
 app.route("/api", resolveRoutes);
+app.route("/api", additivesRoutes);
 
 // ---------- static / web ----------
 const WEB_DIR = resolve(import.meta.dir, "../../web");
