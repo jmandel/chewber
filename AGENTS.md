@@ -24,6 +24,12 @@
 ### Stale / empty files to ignore
 - `data/chewber.sqlite` — empty 0-byte file, not used by anything
 
+## Worker concurrency
+- Default: 3 parallel research jobs (`CHEWBER_WORKER_CONCURRENCY=3`)
+- Each job takes ~30-60s (LLM calls), so throughput is ~4-6 foods/min at concurrency 3
+- Safe to increase — `dequeueJob` uses a SQLite transaction to prevent double-claiming
+- Set in `apps/api/.env` or as an environment variable
+
 ## Key file paths
 - Server entry: `apps/api/src/index.ts`
 - Server .env: `apps/api/.env`

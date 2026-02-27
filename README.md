@@ -79,6 +79,8 @@ In another terminal, run the worker:
 bun run worker
 ```
 
+The worker processes up to 3 research jobs concurrently (configurable via `CHEWBER_WORKER_CONCURRENCY`).
+
 Open the app at http://localhost:8000.
 The single server handles both the API (`/api/*`) and the frontend (static files + SPA fallback).
 
@@ -99,6 +101,7 @@ Key vars:
 - `OFF_INDEX_PATH` (default: `data/off-index.sqlite`) — OFF search index
 - `CHEWBER_UPLOAD_DIR` (default: `./uploads`)
 - `CHEWBER_LLM_PROVIDER` (`stub` by default)
+- `CHEWBER_WORKER_CONCURRENCY` (default: `3`) — max parallel research jobs per worker
 - `OPENAI_API_KEY` (optional; required if you enable OpenAI provider)
 
 > Note: the LLM provider is intentionally pluggable. The default stub lets the project compile/run without keys.
