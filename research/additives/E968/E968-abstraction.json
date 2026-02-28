@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2025-07-18",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E968",
+    "name": "Erythritol",
+    "cas_numbers": ["149-32-6"],
+    "synonyms": ["meso-Erythritol", "1,2,3,4-Butanetetrol", "(2R,3S)-butane-1,2,3,4-tetrol", "Zerose", "Swerve"],
+    "chemical_class": "Sugar alcohol (polyol)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "sweetener",
+    "secondary_categories": ["humectant", "flavor enhancer", "formulation aid", "stabilizer", "texturizer", "carrier solvent", "sequestrant"],
+    "mechanism": "Provides bulk sweetness at 60-70% the intensity of sucrose with essentially zero calories. Rapidly absorbed in the small intestine (>90%) and excreted unchanged in urine, avoiding colonic fermentation and the associated GI side effects typical of other polyols.",
+    "common_food_categories": ["sugar-free beverages", "chewing gum", "baked goods", "frozen dairy desserts", "hard and soft candies", "tabletop sweeteners", "dairy products", "jams and jellies", "snack foods", "condiments", "breakfast cereals"]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 500,
+        "unit": "mg/kg bw/day",
+        "basis": "Lower bound of NOAELs for diarrhoea in human studies. First numerical ADI ever set for erythritol (SCF 2003 had not set one). Also first ADI for any food additive based on an immediate adverse effect."
+      },
+      "last_evaluation_year": 2023,
+      "key_finding": "Re-evaluation confirmed erythritol is not genotoxic. Established ADI of 0.5 g/kg bw/day based on laxative threshold. Exposure modelling suggested ADI exceedance in all population groups (considered overestimates). Concluded no causal link to cardiovascular disease demonstrated. Rejected application for laxative warning exemption."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR §101.9(c)(1)(i)(F) (0 cal/g); 21 CFR §101.80(c)(2)(ii)(A) (noncariogenic health claim). GRAS via notification: GRN 76, 208, 382, 401, 789.",
+      "notes": "Five independent GRAS notices all received 'FDA has no questions' responses (2001-2019). No dedicated 21 CFR §172 food additive listing. Permitted in baked goods, beverages, cereals, chewing gum, candies, dairy, snacks, sugar substitutes at 3-99% concentration."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI 'not specified' — JECFA's most favorable classification, indicating very low toxicity. No numerical limit deemed necessary."
+      },
+      "last_evaluation_year": 1999
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "cardiovascular",
+        "summary": "A 2023 Nature Medicine study (Witkowski et al.) found circulating erythritol levels associated with incident 3-year risk for major adverse cardiovascular events (MACE) in three independent cohorts (total n>4,000). Fourth vs first quartile adjusted HR: 1.80 (US) and 2.21 (EU). Erythritol enhanced platelet reactivity in vitro and thrombosis in vivo (mice). A 2024 follow-up interventional study confirmed that dietary erythritol (30g) enhanced platelet aggregation in all healthy volunteers tested, while glucose did not. However, a 2023 narrative review (Mazi & Stanhope) noted that patients with chronically elevated endogenous erythritol (inborn errors of metabolism) do not show elevated thrombosis risk, and most long-term animal feeding studies do not support a role in thrombosis. EFSA (2023) reviewed the evidence and concluded no causal link to CVD was demonstrated.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "Witkowski et al., Nat Med 2023;29(3):710-718, PMID:36849732",
+          "Witkowski et al., ATVB 2024;44(9):2136-2141, PMID:39114916",
+          "Mazi & Stanhope, Nutrients 2023;15(18):4011, PMID:37764794"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Osmotic diarrhoea at high doses (≥0.5-1 g/kg bw). EFSA 2023 classified this as an adverse effect (not mere nuisance) due to risk of clinically significant electrolyte and water imbalance, particularly in children. This formed the basis for the newly established ADI.",
+        "evidence_strength": "strong",
+        "key_references": [
+          "EFSA FAF Panel, EFSA J 2023;21(12):e8430, PMID:38125972"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "Not genotoxic (negative across all standard battery tests — EFSA 2023, JECFA 1999)",
+      "Not carcinogenic (long-term animal studies — JECFA 1999, confirmed EFSA 2023)",
+      "No reproductive or developmental toxicity (JECFA 1999)",
+      "No effect on glucose or insulin homeostasis — safe for diabetics (JECFA 1999, EFSA 2023)",
+      "Noncariogenic — may have anti-cariogenic properties (FDA 21 CFR §101.80)"
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": ["children", "heavy consumers of sugar-free products", "individuals using erythritol as primary sugar substitute in cooking/baking"],
+      "notes": "EFSA 2023 exposure modelling suggested ADI (0.5 g/kg bw/day) exceedance across all population groups, though these were acknowledged as overestimates due to conservative assumptions. A 70 kg adult's ADI = 35 g/day; a single 30g dose (as used in the Witkowski 2024 study) approaches this limit."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.65,
+    "rationale": "Erythritol has a strong traditional safety profile — naturally occurring, endogenously produced, JECFA ADI 'not specified', FDA GRAS, decades of safe commercial use. However, the 2023 EFSA re-evaluation marked a shift by establishing a numerical ADI (0.5 g/kg bw/day) for the first time, and the Witkowski et al. findings (2023-2024) represent a credible new cardiovascular safety signal supported by epidemiological association, in vitro data, animal models, and a human interventional study. EFSA reviewed this evidence and concluded no causal link to CVD was demonstrated, but the mechanistic plausibility (platelet activation, enhanced thrombosis) warrants caution. The moderate tier reflects: (a) EFSA's new numerical ADI indicating the substance is not risk-free, (b) credible cardiovascular signal with mechanistic backing, (c) ADI exceedance plausible in some populations, (d) actively evolving evidence base. Falls short of 'high' because no jurisdiction has restricted erythritol and the cardiovascular link remains debated.",
+    "key_factors": [
+      "EFSA 2023 established first numerical ADI (0.5 g/kg bw/day)",
+      "Credible cardiovascular/thrombosis signal from Nature Medicine 2023 and ATVB 2024",
+      "EFSA concluded no causal CVD link demonstrated — evidence debated",
+      "ADI exceedance modelled in all population groups (conservative estimates)",
+      "JECFA ADI 'not specified' (most favorable) from 1999 — predates cardiovascular findings",
+      "No bans, no IARC classification, no genotoxicity or carcinogenicity concerns"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Re-evaluation of erythritol (E 968) as a food additive — Plain Language Summary",
+      "url": "https://www.efsa.europa.eu/en/plain-language-summary/re-evaluation-erythritol-e-968-food-additive",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Re-evaluation of erythritol (E 968) — Full Opinion (PubMed)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38125972/",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Sweeteners Topic Page",
+      "url": "https://www.efsa.europa.eu/en/topics/topic/sweeteners",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA Database — Erythritol (Chemical 961)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/961",
+      "type": "database"
+    },
+    {
+      "title": "JECFA Toxicological Monograph — Erythritol (FAS 44)",
+      "url": "https://www.inchem.org/documents/jecfa/jecmono/v44jec03.htm",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC Monographs — List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "eCFR 21 CFR §101.9 — Nutrition labeling (erythritol 0 cal/g)",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-101/subpart-A/section-101.9",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR 21 CFR §101.80 — Noncariogenic carbohydrate sweeteners",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-101/subpart-E/section-101.80",
+      "type": "regulatory"
+    },
+    {
+      "title": "FDA GRAS Notices Database — Erythritol search results",
+      "url": "https://www.cfsanappsexternal.fda.gov/scripts/fdcc/?set=GRASNotices&sort=GRN_No&order=DESC&startrow=1&type=basic&search=erythritol",
+      "type": "database"
+    },
+    {
+      "title": "Witkowski et al. — The artificial sweetener erythritol and cardiovascular event risk (Nature Medicine 2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36849732/",
+      "type": "study"
+    },
+    {
+      "title": "Witkowski et al. — Erythritol enhances platelet reactivity in healthy volunteers (ATVB 2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39114916/",
+      "type": "study"
+    },
+    {
+      "title": "Mazi & Stanhope — Elevated Erythritol: Marker or Contributor to Cardiometabolic Disease? (Nutrients 2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37764794/",
+      "type": "review"
+    },
+    {
+      "title": "Witkowski & Hazen — Erythritol and xylitol and cardiovascular disease risk: a growing concern (Eur Heart J 2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39565321/",
+      "type": "review"
+    }
+  ]
+}
