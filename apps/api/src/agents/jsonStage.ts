@@ -1,13 +1,15 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { zodToJsonSchema } from "zod-to-json-schema";
 import { getLlm } from "./llm/client";
 import { getDb } from "../db";
-
-const prompt = readFileSync(resolve(import.meta.dir, "./prompts/report_to_json.md"), "utf-8");
-const absSchema = JSON.parse(readFileSync(resolve(import.meta.dir, "../schemas/food_abstraction.schema.json"), "utf-8"));
-
+import { FoodAbstractionSchema } from "../scoring/abstraction";
 import { toGeminiSchema } from "./llm/schemaTransform";
 
+const prompt = readFileSync(resolve(import.meta.dir, "./prompts/report_to_json.md"), "utf-8");
+
+// Single source of truth: derive JSON Schema from the Zod schema used for validation.
+const absSchema = zodToJsonSchema(FoodAbstractionSchema, { target: "jsonSchema7" });
 const cleanSchema = toGeminiSchema(absSchema);
 
 const MAX_RETRIES = 2;
