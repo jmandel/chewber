@@ -1346,28 +1346,11 @@ const ADDITIVE_RISK_STYLES: Record<string, { bg: string; fg: string; border: str
   high:      { bg: "rgba(220,60,60,0.18)",   fg: "#dc3c3c", border: "rgba(220,60,60,0.40)",   marker: "✕", order: 0, penalty: 30 },
 };
 
+/** Normalize E-code for linking (e.g. "e322" → "E322") */
 function normalizeCode(raw: string): string {
   let c = raw.trim();
   if (c.startsWith("en:")) c = c.slice(3).split("-")[0];
   return c.toUpperCase().replace(/[^A-Z0-9]/g, "");
-}
-
-function getAdditiveRisk(additive: any, breakdown: any): string {
-  if (!breakdown?.additives?.deductions) return "risk_free";
-  const code = additive.code ? normalizeCode(additive.code) : null;
-  const name = (additive.name ?? "").toLowerCase();
-  for (const d of breakdown.additives.deductions) {
-    const dCode = d.code ? normalizeCode(d.code) : null;
-    if (code && dCode && code === dCode) return d.risk_level;
-    // Also match by base code (E150D matches E150A etc.)
-    if (code && dCode) {
-      const baseA = code.replace(/[A-Z]+$/, "");
-      const baseB = dCode.replace(/[A-Z]+$/, "");
-      if (baseA === baseB && baseA.length > 1) return d.risk_level;
-    }
-    if (name && d.name && d.name.toLowerCase() === name) return d.risk_level;
-  }
-  return "risk_free";
 }
 
 function SummaryDetails({ food }: { food: FoodDetail }) {
@@ -1400,12 +1383,10 @@ function SummaryDetails({ food }: { food: FoodDetail }) {
           <div style={{ fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--fog)", marginBottom: 6 }}>Additives ({abs.additives.length})</div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
             {[...abs.additives].sort((a: any, b: any) => {
-              const ra = getAdditiveRisk(a, food.score_breakdown);
-              const rb = getAdditiveRisk(b, food.score_breakdown);
-              return (ADDITIVE_RISK_STYLES[ra]?.order ?? 9) - (ADDITIVE_RISK_STYLES[rb]?.order ?? 9);
+              return (ADDITIVE_RISK_STYLES[a.risk_level]?.order ?? 9) - (ADDITIVE_RISK_STYLES[b.risk_level]?.order ?? 9);
             }).map((a: any, i: number) => {
-              const risk = getAdditiveRisk(a, food.score_breakdown);
-              const style = ADDITIVE_RISK_STYLES[risk];
+              const risk = a.risk_level ?? "risk_free";
+              const style = ADDITIVE_RISK_STYLES[risk] ?? ADDITIVE_RISK_STYLES.risk_free;
               const code = a.code ? normalizeCode(a.code) : null;
               const badge = (
                 <span className="badge" title={`${risk.replace("_", " ")}${style.penalty ? ` (−${style.penalty} pts)` : ""}`} style={{

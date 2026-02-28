@@ -1,5 +1,6 @@
 import { Hono } from "hono";
 import { z } from "zod";
+import { lookupAdditiveRisk } from "../scoring/additives";
 
 export const foodsRoutes = new Hono();
 
@@ -17,6 +18,37 @@ function extractOrganic(abstractionJson: string): string | null {
     const abs = JSON.parse(abstractionJson);
     return abs?.organic?.is_certified_organic ?? null;
   } catch { return null; }
+}
+
+/**
+ * Build the food detail JSON, enriching additives with authoritative risk_level
+ * from the reference DB. This is the single source of truth — the frontend
+ * never derives risk levels.
+ */
+function buildFoodDetail(row: any, abs: any) {
+  const abstraction = abs?.abstraction_json ? JSON.parse(abs.abstraction_json) : null;
+
+  if (abstraction?.additives && Array.isArray(abstraction.additives)) {
+    for (const a of abstraction.additives) {
+      const { risk_level } = a.code ? lookupAdditiveRisk(a.code) : { risk_level: "risk_free" };
+      a.risk_level = risk_level;
+    }
+  }
+
+  return {
+    id: row.id,
+    slug: row.slug ?? row.id,
+    barcode: row.barcode,
+    canonical_name: row.canonical_name,
+    brand: row.brand,
+    category_path: row.category_path,
+    tags: parseTags(row.tags_json),
+    score: abs?.score ?? null,
+    abstraction,
+    report_md: abs?.report_md ?? null,
+    score_breakdown: abs?.score_breakdown_json ? JSON.parse(abs.score_breakdown_json) : null,
+    updated_at: row.updated_at
+  };
 }
 
 function parseTags(tagsJson: string | null): string[] {
@@ -223,20 +255,7 @@ foodsRoutes.get("/foods/by-barcode/:barcode", (c) => {
     )
     .get(row.id) as any;
 
-  return c.json({
-    id: row.id,
-    slug: row.slug ?? row.id,
-    barcode: row.barcode,
-    canonical_name: row.canonical_name,
-    brand: row.brand,
-    category_path: row.category_path,
-    tags: parseTags(row.tags_json),
-    score: abs?.score ?? null,
-    abstraction: abs?.abstraction_json ? JSON.parse(abs.abstraction_json) : null,
-    report_md: abs?.report_md ?? null,
-    score_breakdown: abs?.score_breakdown_json ? JSON.parse(abs.score_breakdown_json) : null,
-    updated_at: row.updated_at
-  });
+  return c.json(buildFoodDetail(row, abs));
 });
 
 foodsRoutes.delete("/foods/:idOrSlug", (c) => {
@@ -293,20 +312,7 @@ foodsRoutes.get("/foods/:idOrSlug", (c) => {
     )
     .get(row.id) as any;
 
-  return c.json({
-    id: row.id,
-    slug: row.slug ?? row.id,
-    barcode: row.barcode,
-    canonical_name: row.canonical_name,
-    brand: row.brand,
-    category_path: row.category_path,
-    tags: parseTags(row.tags_json),
-    score: abs?.score ?? null,
-    abstraction: abs?.abstraction_json ? JSON.parse(abs.abstraction_json) : null,
-    report_md: abs?.report_md ?? null,
-    score_breakdown: abs?.score_breakdown_json ? JSON.parse(abs.score_breakdown_json) : null,
-    updated_at: row.updated_at
-  });
+  return c.json(buildFoodDetail(row, abs));
 });
 
 foodsRoutes.get("/categories", (c) => {
