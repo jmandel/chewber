@@ -194,6 +194,12 @@ export const api = {
   getJobByFood: (foodId: string) => http<{ job: any; events: JobEvent[] }>("/api/jobs/by-food/" + encodeURIComponent(foodId)),
   getRelatedFoods: (idOrSlug: string, limit = 8) => http<{ related: RelatedFood[] }>(`/api/foods/${encodeURIComponent(idOrSlug)}/related?limit=${limit}`),
 
+  retryJob: (id: string, adminKey: string) =>
+    fetch(`${API_BASE}/api/jobs/${encodeURIComponent(id)}/retry`, {
+      method: "POST",
+      headers: { "X-Admin-Key": adminKey },
+    }).then(r => { if (!r.ok) throw new Error(`${r.status}`); return r.json(); }),
+
   deleteFood: (idOrSlug: string, adminKey: string) =>
     fetch(`${API_BASE}/api/foods/${encodeURIComponent(idOrSlug)}`, {
       method: "DELETE",

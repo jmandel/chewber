@@ -947,6 +947,7 @@ function ShareButton({ food }: { food: FoodDetail }) {
 function QueuePage() {
   const [jobs, setJobs] = useState<QueueJob[]>([]);
   const [loading, setLoading] = useState(true);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
     let cancelled = false;
@@ -961,7 +962,9 @@ function QueuePage() {
     }
     poll();
     return () => { cancelled = true; };
-  }, []);
+  }, [refreshKey]);
+
+  const refresh = useCallback(() => setRefreshKey(k => k + 1), []);
 
   const active = jobs.filter(j => j.status === "running" || j.status === "queued");
   const completed = jobs.filter(j => j.status === "succeeded");
@@ -988,7 +991,7 @@ function QueuePage() {
       {failed.length > 0 && (
         <div style={{ marginBottom: 16 }}>
           <div className="muted" style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 6 }}>Failed</div>
-          {failed.map(j => <QueueJobRow key={j.id} job={j} />)}
+          {failed.map(j => <QueueJobRow key={j.id} job={j} onRetried={refresh} />)}
         </div>
       )}
 
@@ -1009,7 +1012,7 @@ const STATUS_BADGE: Record<string, { bg: string; fg: string; label: string }> = 
   failed:    { bg: "color-mix(in srgb, var(--coral) 20%, transparent)", fg: "var(--coral)", label: "Failed" },
 };
 
-function QueueJobRow({ job }: { job: QueueJob }) {
+function QueueJobRow({ job, onRetried }: { job: QueueJob; onRetried?: () => void }) {
   const badge = STATUS_BADGE[job.status] ?? STATUS_BADGE.queued;
   const isActive = job.status === "running" || job.status === "queued";
   const linkTo = isActive
@@ -1019,6 +1022,7 @@ function QueueJobRow({ job }: { job: QueueJob }) {
       : job.result_food_id
         ? `/food/${encodeURIComponent(job.result_food_id)}`
         : null;
+  const [retrying, setRetrying] = useState(false);
 
   const timeAgo = (iso: string) => {
     const s = Math.floor((Date.now() - new Date(iso).getTime()) / 1000);
@@ -1027,6 +1031,22 @@ function QueueJobRow({ job }: { job: QueueJob }) {
     if (s < 86400) return `${Math.floor(s / 3600)}h ago`;
     return `${Math.floor(s / 86400)}d ago`;
   };
+
+  async function handleRetry(e: React.MouseEvent) {
+    e.preventDefault();
+    e.stopPropagation();
+    const key = getAdminKey();
+    if (!key) return;
+    setRetrying(true);
+    try {
+      await api.retryJob(job.id, key);
+      onRetried?.();
+    } catch (err: any) {
+      alert(`Retry failed: ${err.message}`);
+    } finally {
+      setRetrying(false);
+    }
+  }
 
   const inner = (
     <div className="card" style={{ padding: "12px 14px", marginBottom: 6, cursor: linkTo ? "pointer" : "default" }}>
@@ -1049,8 +1069,17 @@ function QueueJobRow({ job }: { job: QueueJob }) {
           <div style={{ height: "100%", width: `${Math.round(job.progress)}%`, background: "var(--sky)", borderRadius: 2, transition: "width 0.3s" }} />
         </div>
       )}
-      {job.status === "failed" && job.error && (
-        <div className="muted" style={{ fontSize: 11, marginTop: 4, color: "var(--coral)" }}>{job.error}</div>
+      {job.status === "failed" && (
+        <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 4 }}>
+          {job.error && <div className="muted" style={{ fontSize: 11, color: "var(--coral)", flex: 1 }}>{job.error}</div>}
+          {isAdmin() && (
+            <button onClick={handleRetry} disabled={retrying} style={{
+              fontSize: 11, padding: "3px 10px", borderRadius: 4, cursor: "pointer",
+              background: "none", border: "1px solid var(--fog)", color: "var(--fog)",
+              fontWeight: 600, flexShrink: 0, opacity: retrying ? 0.5 : 1
+            }}>{retrying ? "…" : "Retry"}</button>
+          )}
+        </div>
       )}
     </div>
   );

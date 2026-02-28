@@ -1,6 +1,7 @@
 import { Hono } from "hono";
-import { getJob } from "../jobs/queue";
+import { getJob, updateJob } from "../jobs/queue";
 import { sseHeaders, formatSseEvent } from "../utils/sse";
+import { nowIso } from "../utils/id";
 
 export const jobsRoutes = new Hono();
 
@@ -196,4 +197,33 @@ jobsRoutes.get("/jobs/:id/stream", (c) => {
   });
 
   return new Response(stream, { headers: sseHeaders() });
+});
+
+jobsRoutes.post("/jobs/:id/retry", (c) => {
+  const env = c.get("env");
+  const adminKey = env.CHEWBER_ADMIN_KEY;
+  const headerKey = c.req.header("X-Admin-Key");
+  if (!adminKey || headerKey !== adminKey) {
+    return c.json({ error: "Forbidden" }, 403);
+  }
+
+  const id = c.req.param("id");
+  const job = getJob(id);
+  if (!job) return c.json({ error: "Not found" }, 404);
+  if (job.status !== "failed") return c.json({ error: "Only failed jobs can be retried" }, 400);
+
+  // Reset to queued so the worker picks it up again
+  updateJob(id, {
+    status: "queued",
+    progress: 0,
+    error: null,
+    started_at: null,
+    finished_at: null
+  });
+
+  // Clear old events
+  const db = c.get("db");
+  db.query("DELETE FROM job_events WHERE job_id = ?").run(id);
+
+  return c.json({ ok: true, id });
 });
