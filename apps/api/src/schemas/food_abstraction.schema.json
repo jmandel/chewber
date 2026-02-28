@@ -28,7 +28,7 @@
       "type": "string",
       "minLength": 20,
       "maxLength": 140,
-      "description": "REQUIRED. A single Zagat-style summary sentence (20-140 chars). Vivid, opinionated, concise — describes taste, quality, and health profile. Always generate one even if the report omits it. Example: 'This crispy, salty classic delivers bold crunch but sky-high sodium and a laundry list of additives dock it hard.'"
+      "description": "REQUIRED. A single Zagat-style summary sentence (20-140 chars). Vivid, opinionated, concise \u2014 describes taste, quality, and health profile. Always generate one even if the report omits it. Example: 'This crispy, salty classic delivers bold crunch but sky-high sodium and a laundry list of additives dock it hard.'"
     },
     "identification": {
       "type": "object",
@@ -182,6 +182,13 @@
           ],
           "minimum": 0
         },
+        "carbohydrates_g": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
         "sodium_mg": {
           "type": [
             "number",
@@ -320,7 +327,7 @@
         "type": "string",
         "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
       },
-      "description": "Semantic category slugs describing WHAT this food IS. 2-12 lowercase kebab-case slugs. Reuse existing categories from the provided list when they fit. Invent new ones only when nothing existing applies. Focus on food category, cuisine, use-case, and dietary identity. Do NOT include nutrition-level tags (high-protein, low-sugar) — those are computed separately."
+      "description": "Semantic category slugs describing WHAT this food IS. 2-12 lowercase kebab-case slugs. Reuse existing categories from the provided list when they fit. Invent new ones only when nothing existing applies. Focus on food category, cuisine, use-case, and dietary identity. Do NOT include nutrition-level tags (high-protein, low-sugar) \u2014 those are computed separately."
     },
     "sources": {
       "type": "array",
@@ -375,14 +382,23 @@
     "eligibility": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["scoring_track", "not_rated_reason"],
+      "required": [
+        "scoring_track",
+        "not_rated_reason"
+      ],
       "properties": {
         "scoring_track": {
           "type": "string",
-          "enum": ["standard", "not_rated"]
+          "enum": [
+            "standard",
+            "not_rated"
+          ]
         },
         "not_rated_reason": {
-          "type": ["string", "null"]
+          "type": [
+            "string",
+            "null"
+          ]
         }
       }
     }

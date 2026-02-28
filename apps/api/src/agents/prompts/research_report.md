@@ -311,6 +311,7 @@ If you converted from per-serving, show: `[value] per [serving_size] → [conver
 - sugars_g:
 - saturated_fat_g:
 - total_fat_g:
+- carbohydrates_g:
 - sodium_mg:
 - salt_g (optional, if label provides salt):
 - protein_g:

@@ -1403,6 +1403,7 @@ function SummaryDetails({ food }: { food: FoodDetail }) {
             {nutr.sodium_mg != null && <KV label="Sodium" value={`${nutr.sodium_mg} mg`} />}
             {nutr.fiber_g != null && <KV label="Fiber" value={`${nutr.fiber_g} g`} />}
             {nutr.protein_g != null && <KV label="Protein" value={`${nutr.protein_g} g`} />}
+            {nutr.carbohydrates_g != null && <KV label="Carbs" value={`${nutr.carbohydrates_g} g`} />}
           </div>
         </div>
       )}
@@ -2442,6 +2443,7 @@ function ComparePage() {
     { key: "sugars_g", label: "Sugars", unit: "g" },
     { key: "saturated_fat_g", label: "Sat. Fat", unit: "g" },
     { key: "total_fat_g", label: "Total Fat", unit: "g" },
+    { key: "carbohydrates_g", label: "Carbs", unit: "g" },
     { key: "sodium_mg", label: "Sodium", unit: "mg" },
   ];
 

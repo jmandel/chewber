@@ -27,6 +27,7 @@ export const FoodAbstractionSchema = z.object({
     sugars_g: z.number().min(0).nullable(),
     saturated_fat_g: z.number().min(0).nullable(),
     total_fat_g: z.number().min(0).nullable(),
+    carbohydrates_g: z.number().min(0).nullable().optional(),
     sodium_mg: z.number().min(0).nullable(),
     salt_g: z.number().min(0).nullable(),
     protein_g: z.number().min(0).nullable(),
