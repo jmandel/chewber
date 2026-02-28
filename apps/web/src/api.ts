@@ -84,12 +84,27 @@ export type FoodDetail = FoodSummary & {
   updated_at?: string;
 };
 
+export type QueueJob = {
+  id: string;
+  status: "queued" | "running" | "succeeded" | "failed" | "canceled";
+  progress: number;
+  error?: string | null;
+  created_at: string;
+  finished_at?: string | null;
+  label?: string;
+  result_food_id?: string | null;
+  food_name?: string | null;
+  food_brand?: string | null;
+  food_slug?: string | null;
+};
+
 export type JobStatus = {
   id: string;
   status: "queued" | "running" | "succeeded" | "failed" | "canceled";
   progress: number;
   result_food_id?: string | null;
   error?: string | null;
+  label?: string;
 };
 
 export type JobEvent = {
@@ -174,6 +189,8 @@ export const api = {
   getTags: () => http<{ tags: TagInfo[] }>("/api/tags"),
 
   getJob: (id: string) => http<JobStatus>("/api/jobs/" + encodeURIComponent(id)),
+  getQueueStatus: () => http<{ queued: number; running: number }>("/api/jobs/queue/status"),
+  getQueueRecent: () => http<{ jobs: QueueJob[] }>("/api/jobs/queue/recent"),
   getJobByFood: (foodId: string) => http<{ job: any; events: JobEvent[] }>("/api/jobs/by-food/" + encodeURIComponent(foodId)),
   getRelatedFoods: (idOrSlug: string, limit = 8) => http<{ related: RelatedFood[] }>(`/api/foods/${encodeURIComponent(idOrSlug)}/related?limit=${limit}`),
 

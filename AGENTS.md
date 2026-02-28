@@ -27,6 +27,13 @@
 - Safe to increase — `dequeueJob` uses a SQLite transaction to prevent double-claiming
 - Set in `apps/api/.env` or as an environment variable
 
+## Architecture
+
+- **Single server process** on port 8000 serves both the API (`/api/*`) and the SPA (with Bun.build bundling on the fly)
+- Entry: `apps/api/src/index.ts` — Hono app with SPA fallback
+- **Worker process** polls the `jobs` table and runs research pipelines
+- Both use the same DB; `dequeueJob` uses a SQLite transaction to prevent double-claiming
+
 ## Key file paths
 - Server entry: `apps/api/src/index.ts`
 - Server .env: `apps/api/.env`

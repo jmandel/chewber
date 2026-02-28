@@ -12,6 +12,7 @@ import {
   type StructuredFoodQuery,
   type AdditiveListItem,
   type AdditiveDetail,
+  type QueueJob,
 } from "./api";
 import { JobStatusView } from "./components/JobStatusView";
 
@@ -21,7 +22,6 @@ type FlowStep =
   | { kind: "thinking"; label: string }
   | { kind: "clarify"; assist: AssistResponse; rawText: string; priorAnswers: PriorAnswer[] }
   | { kind: "resolving"; query: StructuredFoodQuery }
-  | { kind: "researching"; jobId: string; label?: string }
   | { kind: "error"; message: string };
 
 // Shared flow state so input screens can trigger lookups that
@@ -57,7 +57,8 @@ function useFlowState() {
       if (r.kind === "found") {
         nav(`/food/${encodeURIComponent(r.food.id)}`, { replace: true });
       } else {
-        setFlow({ kind: "researching", jobId: r.job_id, label: `Barcode ${barcode}` });
+        nav(`/job/${encodeURIComponent(r.job_id)}`, { replace: true });
+        setFlow({ kind: "idle" });
       }
     } catch (e: any) {
       setFlow({ kind: "error", message: `Barcode lookup failed: ${e?.message ?? e}` });
@@ -94,23 +95,13 @@ function useFlowState() {
       } else if (r.kind === "found") {
         nav(`/food/${encodeURIComponent(r.food.id)}`, { replace: true });
       } else {
-        const name = query.name + (query.brand ? ` by ${query.brand}` : "");
-        setFlow({ kind: "researching", jobId: r.job_id, label: name });
+        nav(`/job/${encodeURIComponent(r.job_id)}`, { replace: true });
+        setFlow({ kind: "idle" });
       }
     } catch (e: any) {
       setFlow({ kind: "error", message: String(e?.message ?? e) });
     }
   }
-
-  const onJobCompleted = useCallback(async (foodId: string) => {
-    try {
-      const f = await api.getFood(foodId);
-      setFlow({ kind: "idle" });
-      nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`, { replace: true });
-    } catch (e: any) {
-      setFlow({ kind: "error", message: String(e?.message ?? e) });
-    }
-  }, [nav]);
 
   function skipClarification() {
     if (flow.kind === "clarify") {
@@ -118,14 +109,13 @@ function useFlowState() {
     }
   }
 
-  return { flow, setFlow, imageIds, setImageIds, search, lookupBarcode, submitClarification, skipClarification, resolve, onJobCompleted, nav };
+  return { flow, setFlow, imageIds, setImageIds, search, lookupBarcode, submitClarification, skipClarification, resolve, nav };
 }
 
 // ── Flow overlay — renders transient states on top of route content ──
-function FlowOverlay({ flow, setFlow, onJobCompleted }: {
+function FlowOverlay({ flow, setFlow }: {
   flow: FlowStep;
   setFlow: (f: FlowStep) => void;
-  onJobCompleted: (foodId: string) => Promise<void>;
 }) {
   const nav = useNavigate();
   if (flow.kind === "idle") return null;
@@ -148,16 +138,6 @@ function FlowOverlay({ flow, setFlow, onJobCompleted }: {
             {flow.query.barcode || `${flow.query.name}${flow.query.brand ? ` by ${flow.query.brand}` : ""}`}
           </div>
         </FocusCard>
-      )}
-
-      {flow.kind === "researching" && (
-        <div style={{ maxWidth: 480, margin: "0 auto" }}>
-          <div className="card" style={{ textAlign: "center", padding: "16px 20px", marginBottom: 0, borderBottom: "none", borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }}>
-            <div style={{ fontWeight: 700, fontSize: 16 }}>Researching…</div>
-            <div className="muted" style={{ fontSize: 13, marginTop: 2 }}>{flow.label ?? "Gathering nutrition data"}</div>
-          </div>
-          <JobStatusView jobId={flow.jobId} onCompleted={onJobCompleted} />
-        </div>
       )}
 
       {flow.kind === "error" && (
@@ -195,7 +175,10 @@ export function App() {
           <Route path="/text" element={<TextStep fs={fs} />} />
           <Route path="/barcode" element={<BarcodeStep fs={fs} />} />
           <Route path="/photo" element={<PhotoStep fs={fs} />} />
+          <Route path="/queue" element={<QueuePage />} />
+          <Route path="/job/:jobId" element={<JobPage />} />
           <Route path="/food/:slug" element={<FoodPage />} />
+          <Route path="/categories" element={<CategoriesPage />} />
           <Route path="/category/:slug" element={<CategoryPage />} />
           <Route path="/compare" element={<ComparePage />} />
           <Route path="/additives" element={<AdditivesListPage />} />
@@ -220,7 +203,7 @@ function FlowOverlayConnected({ fs }: { fs: ReturnType<typeof useFlowState> }) {
       />
     );
   }
-  return <FlowOverlay flow={fs.flow} setFlow={fs.setFlow} onJobCompleted={fs.onJobCompleted} />;
+  return <FlowOverlay flow={fs.flow} setFlow={fs.setFlow} />;
 }
 
 // ── Admin mode ──────────────────────────────────────────────
@@ -354,28 +337,126 @@ function AboutOverlay({ onClose }: { onClose: () => void }) {
 }
 
 // ── Header ──────────────────────────────────────────────────
+function QueueIndicator() {
+  const [q, setQ] = useState<{ queued: number; running: number } | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    async function poll() {
+      while (!cancelled) {
+        try {
+          const s = await api.getQueueStatus();
+          if (!cancelled) setQ(s);
+        } catch {}
+        await new Promise(r => setTimeout(r, 5000));
+      }
+    }
+    poll();
+    return () => { cancelled = true; };
+  }, []);
+
+  const total = (q?.queued ?? 0) + (q?.running ?? 0);
+  if (!total) return null;
+
+  const label = q!.running
+    ? `${q!.running} researching${q!.queued ? `, ${q!.queued} queued` : ""}`
+    : `${q!.queued} queued`;
+
+  return (
+    <span title={label} style={{
+      display: "inline-flex", alignItems: "center", gap: 5,
+      fontSize: 11, color: "var(--fog)", padding: "3px 8px",
+      background: "color-mix(in srgb, var(--sky) 15%, transparent)",
+      borderRadius: 12, whiteSpace: "nowrap"
+    }}>
+      <span style={{ width: 6, height: 6, borderRadius: "50%", background: q!.running ? "var(--sky)" : "var(--fog)", animation: q!.running ? "pulse 1.5s infinite" : "none" }} />
+      {label}
+    </span>
+  );
+}
+
 function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // Close menu on outside click
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handler = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) setMenuOpen(false);
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [menuOpen]);
+
   return (
     <>
-      <div style={{ marginBottom: 16 }}>
+      <div style={{ marginBottom: 8 }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <Link to="/" style={{ display: "flex", alignItems: "center", gap: 7, textDecoration: "none", color: "inherit" }}>
             <img src="/tuber-header.png" alt="" height={36} style={{ display: 'block', marginTop: -6 }} />
             <span style={{ fontSize: 21, fontWeight: 900, letterSpacing: "-0.5px", lineHeight: 1 }}>Chewber</span>
           </Link>
-          <button
-            onClick={() => setShowAbout(true)}
-            aria-label="About Chewber"
-            style={{
-              background: "none", border: "none", padding: "6px 2px",
-              cursor: "pointer", color: "var(--fog)", fontSize: 13,
-              flexShrink: 0
-            }}
-          >About</button>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <QueueIndicator />
+            <div ref={menuRef} style={{ position: "relative" }}>
+              <button
+                onClick={() => setMenuOpen(o => !o)}
+                aria-label="Menu"
+                style={{
+                  background: "none", border: "none", padding: "6px 4px",
+                  cursor: "pointer", color: "var(--fog)", fontSize: 20,
+                  lineHeight: 1, flexShrink: 0
+                }}
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                  <line x1="3" y1="6" x2="21" y2="6"/>
+                  <line x1="3" y1="12" x2="21" y2="12"/>
+                  <line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+              </button>
+              {menuOpen && (
+                <div style={{
+                  position: "absolute", right: 0, top: "100%", marginTop: 6,
+                  background: "var(--charcoal)", border: "1px solid var(--slate)",
+                  borderRadius: "var(--radius-sm)", minWidth: 180, padding: "6px 0",
+                  boxShadow: "0 8px 24px rgba(0,0,0,0.4)", zIndex: 100
+                }}>
+                  <Link to="/categories" onClick={() => setMenuOpen(false)} className="menu-item" style={{
+                    display: "flex", alignItems: "center", gap: 10, padding: "10px 16px",
+                    color: "var(--cream)", textDecoration: "none", fontSize: 14
+                  }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--fog)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                    Categories
+                  </Link>
+                  <Link to="/additives" onClick={() => setMenuOpen(false)} className="menu-item" style={{
+                    display: "flex", alignItems: "center", gap: 10, padding: "10px 16px",
+                    color: "var(--cream)", textDecoration: "none", fontSize: 14
+                  }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--fog)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 5H2v7l6.29 6.29c.94.94 2.48.94 3.42 0l4.58-4.58c.94-.94.94-2.48 0-3.42L9 5z"/><circle cx="6" cy="9" r="1"/></svg>
+                    Food additives
+                  </Link>
+                  <Link to="/queue" onClick={() => setMenuOpen(false)} className="menu-item" style={{
+                    display: "flex", alignItems: "center", gap: 10, padding: "10px 16px",
+                    color: "var(--cream)", textDecoration: "none", fontSize: 14
+                  }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--fog)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                    Research queue
+                  </Link>
+                  <button onClick={() => { setMenuOpen(false); setShowAbout(true); }} className="menu-item" style={{
+                    display: "flex", alignItems: "center", gap: 10, padding: "10px 16px",
+                    color: "var(--cream)", background: "none", border: "none",
+                    fontSize: 14, cursor: "pointer", width: "100%", textAlign: "left"
+                  }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--fog)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    About Chewber
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
-        <Link to="/" style={{ textDecoration: "none" }}>
-        </Link>
       </div>
       {showAbout && <AboutOverlay onClose={() => setShowAbout(false)} />}
     </>
@@ -415,14 +496,8 @@ function PickScreen() {
         </Link>
       </div>
 
-      <Link to="/additives" style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 16, padding: "10px 14px", fontSize: 13, color: "var(--fog)", textDecoration: "none", borderRadius: "var(--radius-sm)" }}>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--fog)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 5H2v7l6.29 6.29c.94.94 2.48.94 3.42 0l4.58-4.58c.94-.94.94-2.48 0-3.42L9 5z"/><circle cx="6" cy="9" r="1"/></svg>
-        Food additive database
-        <span style={{ marginLeft: "auto", fontSize: 11 }}>243 additives →</span>
-      </Link>
-
       {recent.length > 0 && (
-        <div className="card" style={{ marginTop: 8 }}>
+        <div className="card" style={{ marginTop: 12 }}>
           <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 10 }}>Recent</div>
           {recent.map(f => (
             <FoodListItem key={f.id} food={f} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} />
@@ -868,6 +943,166 @@ function ShareButton({ food }: { food: FoodDetail }) {
 }
 
 // ── Food detail page ────────────────────────────────────────
+// ── Queue page ──────────────────────────────────────────────
+function QueuePage() {
+  const [jobs, setJobs] = useState<QueueJob[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+    async function poll() {
+      while (!cancelled) {
+        try {
+          const r = await api.getQueueRecent();
+          if (!cancelled) { setJobs(r.jobs); setLoading(false); }
+        } catch { if (!cancelled) setLoading(false); }
+        await new Promise(r => setTimeout(r, 3000));
+      }
+    }
+    poll();
+    return () => { cancelled = true; };
+  }, []);
+
+  const active = jobs.filter(j => j.status === "running" || j.status === "queued");
+  const completed = jobs.filter(j => j.status === "succeeded");
+  const failed = jobs.filter(j => j.status === "failed");
+
+  return (
+    <div style={{ maxWidth: 480, margin: "0 auto" }}>
+      <BackLink />
+      <h2 style={{ fontSize: 18, fontWeight: 800, marginBottom: 12 }}>Research Queue</h2>
+
+      {loading && <div className="muted" style={{ textAlign: "center", padding: 20 }}><div className="spinner" /></div>}
+
+      {!loading && active.length === 0 && completed.length === 0 && failed.length === 0 && (
+        <div className="card muted" style={{ textAlign: "center" }}>No research jobs yet.</div>
+      )}
+
+      {active.length > 0 && (
+        <div style={{ marginBottom: 16 }}>
+          <div className="muted" style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 6 }}>Active</div>
+          {active.map(j => <QueueJobRow key={j.id} job={j} />)}
+        </div>
+      )}
+
+      {failed.length > 0 && (
+        <div style={{ marginBottom: 16 }}>
+          <div className="muted" style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 6 }}>Failed</div>
+          {failed.map(j => <QueueJobRow key={j.id} job={j} />)}
+        </div>
+      )}
+
+      {completed.length > 0 && (
+        <div style={{ marginBottom: 16 }}>
+          <div className="muted" style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 6 }}>Completed</div>
+          {completed.map(j => <QueueJobRow key={j.id} job={j} />)}
+        </div>
+      )}
+    </div>
+  );
+}
+
+const STATUS_BADGE: Record<string, { bg: string; fg: string; label: string }> = {
+  queued:    { bg: "color-mix(in srgb, var(--fog) 20%, transparent)", fg: "var(--fog)", label: "Queued" },
+  running:   { bg: "color-mix(in srgb, var(--sky) 20%, transparent)", fg: "var(--sky)", label: "Running" },
+  succeeded: { bg: "color-mix(in srgb, var(--kale) 20%, transparent)", fg: "var(--kale)", label: "Done" },
+  failed:    { bg: "color-mix(in srgb, var(--coral) 20%, transparent)", fg: "var(--coral)", label: "Failed" },
+};
+
+function QueueJobRow({ job }: { job: QueueJob }) {
+  const badge = STATUS_BADGE[job.status] ?? STATUS_BADGE.queued;
+  const isActive = job.status === "running" || job.status === "queued";
+  const linkTo = isActive
+    ? `/job/${encodeURIComponent(job.id)}`
+    : job.food_slug
+      ? `/food/${encodeURIComponent(job.food_slug)}`
+      : job.result_food_id
+        ? `/food/${encodeURIComponent(job.result_food_id)}`
+        : null;
+
+  const timeAgo = (iso: string) => {
+    const s = Math.floor((Date.now() - new Date(iso).getTime()) / 1000);
+    if (s < 60) return "just now";
+    if (s < 3600) return `${Math.floor(s / 60)}m ago`;
+    if (s < 86400) return `${Math.floor(s / 3600)}h ago`;
+    return `${Math.floor(s / 86400)}d ago`;
+  };
+
+  const inner = (
+    <div className="card" style={{ padding: "12px 14px", marginBottom: 6, cursor: linkTo ? "pointer" : "default" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ fontWeight: 600, fontSize: 14, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+            {job.food_name ?? job.label ?? job.id}
+          </div>
+          {job.food_brand && <div className="muted" style={{ fontSize: 12 }}>{job.food_brand}</div>}
+        </div>
+        <span style={{
+          fontSize: 10, fontWeight: 700, textTransform: "uppercase",
+          padding: "2px 8px", borderRadius: 8,
+          background: badge.bg, color: badge.fg, whiteSpace: "nowrap"
+        }}>{badge.label}</span>
+        <span className="muted" style={{ fontSize: 11, flexShrink: 0 }}>{timeAgo(job.created_at)}</span>
+      </div>
+      {isActive && job.progress > 0 && (
+        <div style={{ height: 3, background: "var(--slate)", borderRadius: 2, marginTop: 8, overflow: "hidden" }}>
+          <div style={{ height: "100%", width: `${Math.round(job.progress)}%`, background: "var(--sky)", borderRadius: 2, transition: "width 0.3s" }} />
+        </div>
+      )}
+      {job.status === "failed" && job.error && (
+        <div className="muted" style={{ fontSize: 11, marginTop: 4, color: "var(--coral)" }}>{job.error}</div>
+      )}
+    </div>
+  );
+
+  return linkTo ? <Link to={linkTo} style={{ textDecoration: "none", color: "inherit" }}>{inner}</Link> : inner;
+}
+
+// ── Job page — permalink for in-progress research ──────────
+function JobPage() {
+  const { jobId } = useParams<{ jobId: string }>();
+  const nav = useNavigate();
+  const [label, setLabel] = useState<string>("Gathering nutrition data");
+  const [notFound, setNotFound] = useState(false);
+
+  useEffect(() => {
+    if (!jobId) return;
+    api.getJob(jobId).then(job => {
+      if (job.label) setLabel(job.label);
+      // If already succeeded, redirect immediately
+      if (job.status === "succeeded" && job.result_food_id) {
+        api.getFood(job.result_food_id).then(f => {
+          nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`, { replace: true });
+        }).catch(() => {
+          nav(`/food/${encodeURIComponent(job.result_food_id!)}`, { replace: true });
+        });
+      }
+    }).catch(() => setNotFound(true));
+  }, [jobId]);
+
+  const onCompleted = useCallback(async (foodId: string) => {
+    try {
+      const f = await api.getFood(foodId);
+      nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`, { replace: true });
+    } catch {
+      nav(`/food/${encodeURIComponent(foodId)}`, { replace: true });
+    }
+  }, [nav]);
+
+  if (!jobId || notFound) return <FocusCard><div>Job not found</div><Link to="/">← Home</Link></FocusCard>;
+
+  return (
+    <div style={{ maxWidth: 480, margin: "0 auto" }}>
+      <BackLink />
+      <div className="card" style={{ textAlign: "center", padding: "16px 20px", marginBottom: 0, borderBottom: "none", borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }}>
+        <div style={{ fontWeight: 700, fontSize: 16 }}>Researching…</div>
+        <div className="muted" style={{ fontSize: 13, marginTop: 2 }}>{label}</div>
+      </div>
+      <JobStatusView jobId={jobId} onCompleted={onCompleted} />
+    </div>
+  );
+}
+
 function FoodPage() {
   const { slug } = useParams<{ slug: string }>();
   const nav = useNavigate();
@@ -1009,7 +1244,7 @@ function ScoreHero({ food }: { food: FoodDetail }) {
           padding: "10px 14px", marginBottom: 16, fontSize: 13, color: "var(--tangerine)", textAlign: "left"
         }}>
           ⚠️ <strong>DEMO MODE</strong> — No LLM is configured. This is placeholder data, not a real food analysis.
-          Set <code>CHEWBER_LLM_PROVIDER</code> to <code>openai</code> or <code>openrouter</code> for real results.
+          Set <code>CHEWBER_LLM_PROVIDER</code> to <code>openrouter</code> for real results.
         </div>
       )}
       {incomplete && !stub && (
@@ -1985,6 +2220,50 @@ function LogRow({ ev, bg, fg }: { ev: any; bg: string; fg: string }) {
 }
 
 // ── Category browse page ────────────────────────────────────
+// ── Categories landing page ─────────────────────────────────
+function CategoriesPage() {
+  const nav = useNavigate();
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [filter, setFilter] = useState("");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    api.getCategories().then(r => {
+      setCategories(r.categories.filter(c => c.food_count > 0));
+      setLoading(false);
+    }).catch(() => setLoading(false));
+  }, []);
+
+  const filtered = filter
+    ? categories.filter(c => c.display_name.toLowerCase().includes(filter.toLowerCase()) || c.slug.includes(filter.toLowerCase()))
+    : categories;
+
+  return (
+    <div style={{ maxWidth: 480, margin: "0 auto" }}>
+      <BackLink />
+      <h2 style={{ fontSize: 18, fontWeight: 800, marginBottom: 12 }}>Categories</h2>
+      {categories.length > 8 && (
+        <input placeholder="Filter categories…" value={filter} onChange={e => setFilter(e.target.value)}
+          style={{ width: "100%", marginBottom: 12, fontSize: 14, padding: "10px 14px" }} />
+      )}
+      {loading && <div className="muted" style={{ textAlign: "center", padding: 20 }}><div className="spinner" /></div>}
+      {!loading && filtered.length === 0 && <div className="card muted" style={{ textAlign: "center" }}>No categories found.</div>}
+      {filtered.map(c => (
+        <div key={c.slug} onClick={() => nav(`/category/${encodeURIComponent(c.slug)}`)} className="card" style={{
+          padding: "12px 14px", marginBottom: 6, cursor: "pointer",
+          display: "flex", alignItems: "center", justifyContent: "space-between"
+        }}>
+          <div>
+            <div style={{ fontWeight: 600, fontSize: 14 }}>{c.display_name}</div>
+            {c.description && <div className="muted" style={{ fontSize: 12, marginTop: 2 }}>{c.description}</div>}
+          </div>
+          <span className="muted" style={{ fontSize: 13, flexShrink: 0, marginLeft: 12 }}>{c.food_count}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function CategoryPage() {
   const { slug } = useParams<{ slug: string }>();
   const nav = useNavigate();

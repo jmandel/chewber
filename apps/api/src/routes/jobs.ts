@@ -4,17 +4,80 @@ import { sseHeaders, formatSseEvent } from "../utils/sse";
 
 export const jobsRoutes = new Hono();
 
+jobsRoutes.get("/jobs/queue/recent", (c) => {
+  const db = c.get("db");
+  const rows = db
+    .query(
+      `SELECT j.id, j.type, j.status, j.progress, j.payload_json, j.error, j.created_at, j.finished_at, j.result_food_id,
+              f.canonical_name, f.brand, f.slug as food_slug
+       FROM jobs j
+       LEFT JOIN foods f ON f.id = j.result_food_id
+       WHERE j.status IN ('queued','running')
+          OR j.created_at >= datetime('now','-7 days')
+       ORDER BY
+         CASE WHEN j.status IN ('queued','running') THEN 0 ELSE 1 END,
+         j.created_at DESC
+       LIMIT 500`
+    )
+    .all() as any[];
+
+  return c.json({
+    jobs: rows.map((r: any) => {
+      let label: string | undefined;
+      try {
+        const p = JSON.parse(r.payload_json);
+        const sq = p.structured_query;
+        if (sq?.name) label = sq.name + (sq.brand ? ` by ${sq.brand}` : "");
+      } catch {}
+      return {
+        id: r.id, status: r.status, progress: r.progress, error: r.error,
+        created_at: r.created_at, finished_at: r.finished_at,
+        label,
+        result_food_id: r.result_food_id,
+        food_name: r.canonical_name,
+        food_brand: r.brand,
+        food_slug: r.food_slug
+      };
+    })
+  });
+});
+
+jobsRoutes.get("/jobs/queue/status", (c) => {
+  const db = c.get("db");
+  const rows = db
+    .query(
+      `SELECT status, COUNT(*) as count FROM jobs WHERE status IN ('queued', 'running') GROUP BY status`
+    )
+    .all() as { status: string; count: number }[];
+
+  const result: Record<string, number> = { queued: 0, running: 0 };
+  for (const row of rows) {
+    result[row.status] = row.count;
+  }
+
+  return c.json(result);
+});
+
 jobsRoutes.get("/jobs/:id", (c) => {
   const id = c.req.param("id");
   const job = getJob(id);
   if (!job) return c.json({ error: "Not found" }, 404);
+
+  // Extract a human-readable label from the payload
+  let label: string | undefined;
+  try {
+    const payload = JSON.parse(job.payload_json);
+    const sq = payload.structured_query;
+    if (sq?.name) label = sq.name + (sq.brand ? ` by ${sq.brand}` : "");
+  } catch {}
 
   return c.json({
     id: job.id,
     status: job.status,
     progress: job.progress,
     result_food_id: job.result_food_id,
-    error: job.error
+    error: job.error,
+    label
   });
 });
 
