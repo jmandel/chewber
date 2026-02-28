@@ -1,152 +1,149 @@
-# E967 — Xylitol
+# E967 — Xylitol: Research Report
 
-**Research Date:** 2026-02-26  
-**Prompt Version:** 2.0
+**Date:** 2025-02-28  
+**Prompt version:** 2.0
 
 ---
 
 ## Identity
 
-**E-number:** E967  
-**Name:** Xylitol  
-**CAS Number:** 87-99-0  
-**Chemical Formula:** C5H12O5  
-**Molecular Weight:** 152.15 g/mol  
-**IUPAC Name:** (2R,4S)-pentane-1,2,3,4,5-pentol  
-**Chemical Class:** Sugar alcohol (polyol)  
-**Synonyms:** Xylite, pentane-1,2,3,4,5-pentol, meso-xylitol, wood sugar alcohol  
-**Origin:** Natural and synthetic — occurs naturally in small amounts in fruits and vegetables (strawberries, raspberries, plums, cauliflower, spinach); commercially produced by hydrogenation of xylose derived from hardwood or corn cobs
+| Field | Value |
+|---|---|
+| **E-number** | E967 |
+| **CAS number** | 87-99-0 |
+| **Chemical class** | Sugar alcohol (polyol) |
+| **Molecular formula** | C₅H₁₂O₅ |
+| **Common synonyms** | Xylitol, birch sugar, wood sugar, xylit |
+| **Natural vs. synthetic** | Semi-synthetic — xylitol occurs naturally in small amounts in fruits, berries, vegetables, mushrooms, and hardwood fibres (birch, beech). It is also produced endogenously in the human body as an intermediate of carbohydrate metabolism (~5–15 g/day). Industrial production is semi-synthetic: xylan from birch/beech wood or corn cobs is hydrolysed to xylose and then catalytically hydrogenated to xylitol. |
 
 ---
 
 ## Function in Food
 
-**Primary Category:** Sweetener, humectant  
-**Secondary Categories:** Bulking agent, texturizer  
-**Mechanism of Action:** Provides sweetness similar to sucrose (approximately 1:1 sweetness ratio) without promoting tooth decay; non-cariogenic and anticariogenic properties through inhibition of Streptococcus mutans; incompletely absorbed in the small intestine, leading to lower caloric value (~2.4 kcal/g vs. 4 kcal/g for sucrose)
+**Mechanism of action:** Xylitol is a five-carbon sugar alcohol with sweetness approximately equal to sucrose but ~40% fewer calories (~2.4 kcal/g). It is incompletely absorbed in the small intestine; the absorbed portion is metabolised via the pentose phosphate pathway. In the oral cavity, it is not fermentable by cariogenic bacteria (*Streptococcus mutans*), thereby reducing acid production, plaque formation, and dental caries risk. It also produces a characteristic cooling sensation upon dissolution (endothermic).
 
-**Common Food Categories:**
-- Sugar-free chewing gum
-- Sugar-free candies and mints
-- Diabetic and low-calorie foods
-- Toothpaste and oral care products
-- Pharmaceuticals (syrups, lozenges)
-- Baked goods
+**Functional classes (Codex/EU):** Sweetener, humectant, stabiliser
+
+**Common food categories:**
+- Sugar-free chewing gum and mints
+- Confectionery (candy, chocolate)
+- Baked goods and desserts
+- Sugar-free beverages
+- Diabetic/dietetic products
+- Ice cream and frozen desserts
+- Jams and preserves
+- Toothpaste and oral care products (non-food)
 
 ---
 
 ## Regulatory Status
 
-### EFSA (European Food Safety Authority)
+### EFSA (European Union)
 
-**Status:** Approved  
-**ADI:** Not specified (acceptable for quantum satis use)  
-**Last Evaluation:** Re-evaluated under EU Regulation 1333/2008; xylitol (E967) is authorized in the EU for use in various food categories at quantum satis levels  
-**Key Finding:** EFSA considers xylitol safe for use as a sweetener. The Scientific Committee on Food (SCF) concluded that polyols including xylitol do not require a numerical ADI due to their low toxicity. However, excessive consumption may cause laxative effects.  
-**Source:** EU Regulation No 1333/2008 on food additives  
-**URL:** https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32008R1333
+- **Status:** Approved sweetener under Regulation (EC) No 1333/2008 at *quantum satis* (no maximum use level; good manufacturing practice applies)
+- **ADI:** Not yet formally established by EFSA's current re-evaluation. The ANS/FAF Panel has not set a numerical ADI for xylitol. EFSA adopted JECFA's "ADI not specified" in the pre-2009 approval.
+- **Re-evaluation:** Ongoing (as of February 2026). The EFSA sweeteners re-evaluation programme lists E967 as "re-evaluation ongoing" — it has not yet been completed.
+- **Health claims:** EFSA's NDA Panel issued two positive opinions in 2011:
+  - EFSA Journal 2011;9(6):2266 — substantiated the health claim that xylitol chewing gum reduces the risk of caries in children
+  - EFSA Journal 2011;9(4):2076 — substantiated that sugar-free chewing gum (including xylitol) helps maintain tooth mineralisation
+- **Labelling:** EU Regulation 1169/2011 requires foods with >10% added polyols to carry the warning: "excessive consumption may produce laxative effects"
+- **Source:** https://www.efsa.europa.eu/en/topics/topic/sweeteners
 
-### FDA (U.S. Food and Drug Administration)
+### FDA (United States)
 
-**Status:** GRAS (Generally Recognized as Safe)  
-**CFR Citation:** 21 CFR 172.395  
-**Approval Basis:** May be safely used in foods for special dietary uses, provided the amount used is not greater than that required to produce its intended effect  
-**Notes:** Approved for use in special dietary foods without specific quantity limitations beyond technological necessity  
-**Source:** Code of Federal Regulations, Title 21, Section 172.395 — Xylitol (2024)  
-**URL:** https://www.ecfr.gov/current/title-21/section-172.395
+- **Status:** Approved food additive (not GRAS by regulation, but approved under 21 CFR §172.395)
+- **CFR citation:** 21 CFR §172.395 — "Xylitol may be safely used in foods for special dietary uses, provided the amount used is not greater than that required to produce its intended effect."
+- **Health claim:** FDA authorised a qualified health claim linking sugar alcohols including xylitol to reduced dental caries risk (21 CFR §101.80)
+- **Conditions:** Use limited to foods for special dietary uses; amount must not exceed what is needed for intended effect
+- **Source:** https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-172/subpart-D/section-172.395
 
-### JECFA (Joint FAO/WHO Expert Committee on Food Additives)
+### JECFA (WHO/FAO)
 
-**Status:** Evaluated and approved  
-**ADI:** No safety concern at current levels of intake when used as a flavouring agent  
-**Last Evaluation:** 2024 (most recent), previously evaluated in 1999  
-**Specification:** JECFA has established identity and purity specifications for xylitol  
-**Source:** WHO/FAO JECFA Database, Chemical ID 3619  
-**URL:** https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3619
+- **ADI:** "Not specified" — this is the most favourable JECFA designation, indicating that based on available data the total dietary intake arising from use at levels necessary to achieve the desired technological effect does not represent a hazard to health
+- **Last evaluation:** 1983 (Meeting 27; specifications revised at Meeting 46)
+- **Functional class:** Sweetener, humectant
+- **Source:** https://apps.who.int/food-additives-contaminants-jecfa-database/chemical.aspx?chemID=2620
 
-### IARC (International Agency for Research on Cancer)
+### IARC
 
-**Classification:** Not classified  
-**Status:** Xylitol has not been evaluated or classified by IARC  
-**URL:** https://monographs.iarc.who.int/agents-classified-by-the-iarc/
+- **Classification:** None. Xylitol does not appear in the IARC Monographs database (searched Volumes 1–140). No sugar alcohols have been evaluated by IARC.
+- **Source:** https://monographs.iarc.who.int/list-of-classifications (searched "xylitol" and "sugar alcohol" — 0 results)
 
 ### Notable Bans or Restrictions
 
-- **None in major jurisdictions for human consumption**
-- **Pet Safety Warning:** Xylitol is highly toxic to dogs (and some other animals), causing rapid insulin release, hypoglycemia, and potentially liver failure. Doses >0.1 g/kg can cause hypoglycemia in dogs; >0.5 g/kg may cause liver toxicity.
+- No country bans xylitol for human consumption.
+- Xylitol is **highly toxic to dogs** (causes rapid insulin release and liver failure); this is a veterinary concern, not a human food safety issue.
+- Some countries require laxative-effect warnings on polyol-containing products.
 
 ---
 
 ## Key Safety Evidence
 
-### Positive Effects
+### Established Safety Profile (Pre-2024)
 
-1. **Dental Health:** Extensive evidence shows xylitol reduces dental caries by inhibiting Streptococcus mutans growth and acid production. Used widely in dental products.
+- Xylitol has been used as a sweetener for over 50 years.
+- Extensive toxicological evaluations by JECFA (1977, 1978, 1983) established safety, leading to the "ADI not specified" designation.
+- No evidence of carcinogenicity, genotoxicity, or reproductive toxicity in animal studies.
+- Approved in the EU, US, Canada, Japan, and most other jurisdictions globally.
+- Well-established anti-cariogenic benefits supported by decades of clinical evidence.
 
-2. **Low Glycemic Impact:** Does not significantly raise blood glucose or insulin levels, making it suitable for diabetic diets.
+### Gastrointestinal Effects
 
-3. **Generally Well Tolerated:** Decades of use in foods and oral care products with good safety profile in humans at typical consumption levels.
+- Xylitol is incompletely absorbed in the small intestine; unabsorbed portions are fermented by colonic bacteria.
+- Doses above ~30–50 g/day commonly cause osmotic diarrhoea, bloating, flatulence, and abdominal discomfort.
+- Tolerance increases with regular consumption (adaptive response of gut microbiota).
+- These effects are well-characterised and dose-dependent; they are the basis for EU labelling requirements.
 
-### Safety Concerns
+### Cardiovascular / Thrombotic Concerns (2024 — New Signal)
 
-#### 1. Cardiovascular Risk (Emerging Concern)
+**Key study:** Witkowski M, Nemet I, Li XS, et al. "Xylitol is prothrombotic and associated with cardiovascular risk." *European Heart Journal*. 2024;45(27):2439–2452. PMID: 38842092.
 
-**Category:** Cardiovascular  
-**Evidence Strength:** Moderate  
-**Summary:** A 2024 study published in *European Heart Journal* found that elevated plasma xylitol levels were associated with increased risk of major adverse cardiovascular events (MACE) over 3 years. The study involved:
-- Discovery cohort (n=1,157) and validation cohort (n=2,149)
-- Third vs. first tertile adjusted hazard ratio: 1.57 (95% CI: 1.12-2.21, P<0.01)
-- Mechanistic studies showed xylitol enhanced platelet reactivity and thrombosis formation in vitro and in vivo
-- Intervention study (n=10): consumption of xylitol-sweetened drink markedly raised plasma levels and enhanced platelet responsiveness in all subjects
+**Findings:**
+- Discovery cohort (n=1,157): untargeted metabolomics identified circulating xylitol levels associated with incident 3-year MACE
+- Validation cohort (n=2,149): confirmed association — 3rd vs 1st tertile adjusted HR 1.57 (95% CI 1.12–2.21, P<0.01)
+- Mechanistic studies: xylitol enhanced multiple indices of platelet reactivity and in vivo thrombosis formation at levels observed in fasting plasma
+- Intervention study (n=10 healthy volunteers): consuming a xylitol-sweetened drink markedly raised plasma levels and enhanced platelet responsiveness in all subjects
+- Published in *European Heart Journal* alongside editorial: "Xylitol: bitter cardiovascular data for a successful sweetener" (Beer & Allemann, 2024, PMID: 38842099)
 
-**Key References:**
-- Witkowski M, Nemet I, Li XS, et al. "Xylitol is prothrombotic and associated with cardiovascular risk." *European Heart Journal.* 2024 Jul 12;45(27):2439-2452. doi: 10.1093/eurheartj/ehae244. PMID: 38842092
+**Context — related erythritol findings:**
+- The same group (Witkowski, Hazen et al.) published similar findings for erythritol in *Nature Medicine* 2023 (PMID: 36849732), showing erythritol associated with MACE and enhanced platelet reactivity.
+- Follow-up intervention study confirmed erythritol (but not glucose) enhanced platelet aggregation in all subjects (PMID: 39114916).
 
-**Interpretation:** This is a recent and concerning finding that requires further investigation. The study suggests xylitol may enhance platelet function and clotting risk, particularly at levels achieved through consumption of xylitol-sweetened products. However, this is based on observational and mechanistic studies; causality is not definitively established. Regulatory agencies have not yet responded with updated guidance.
+**Rebuttals and criticisms (2025):**
 
-#### 2. Gastrointestinal Effects
+1. **Valentine GC, Söderling E, Milgrom P.** "Oral health benefits and safety of xylitol and potential cardiovascular risk: questioning the validity of the model of Witkowski et al." *European Heart Journal*. 2025;46(27):2705–2706. PMID: 40067657.
+   - Questions validity of the Witkowski model; emphasises xylitol's established oral health benefits.
 
-**Category:** Gastrointestinal  
-**Evidence Strength:** Strong (well-documented dose-dependent effect)  
-**Summary:** Like all sugar alcohols, xylitol can cause osmotic diarrhea, bloating, gas, and abdominal discomfort when consumed in excess. The laxative threshold varies by individual but is generally around 20-30 g/day for adults. Children have lower tolerance.
+2. **Bonomini M, Masola V, Gronda E.** "Elevated serum xylitol levels and cardiovascular risk: an active component or an innocent bystander?" *European Heart Journal*. 2025;46(3):326–327. PMID: 39565320.
+   - Raises the possibility that elevated xylitol levels are a biomarker rather than a causal agent.
 
-**Mechanism:** Incomplete absorption in the small intestine leads to osmotic water retention in the colon and fermentation by gut bacteria.
+3. **Wölnerhanssen BK, Meyer-Gerspach AC, Arduini A.** "Xylitol exposure and cardiovascular risk." *European Heart Journal*. 2025;46(3):328. PMID: 39565331.
+   - Critical letter questioning the cardiovascular risk claims.
 
-**Key References:**
-- Multiple reviews and safety assessments note this well-established effect
-- Commonly reported in clinical trials at doses >40-50 g/day
+4. **Wölnerhanssen BK, Meyer-Gerspach AC, Arduini A, et al.** "Sweeteners: erythritol, xylitol and cardiovascular risk — friend or foe?" *Cardiovascular Research*. 2025;121(9):1319–1329. PMID: 40444390.
+   - Comprehensive review noting:
+     - Polyols used >50 years with minimal metabolic effects
+     - Platelet effects appear **temporary**
+     - Studies on critically ill patients receiving large IV doses do NOT link sugar alcohols to cardiovascular risk
+     - Mendelian randomisation analyses do NOT support a causal link
+     - Sugar alcohols are endogenously produced; elevated levels may reflect metabolic disturbance rather than causing it
 
-#### 3. Hypoglycemia in Dogs (Not Applicable to Humans)
+### Other Safety Data
 
-**Category:** Species-specific toxicity (canine)  
-**Evidence Strength:** Strong  
-**Summary:** Xylitol is highly toxic to dogs, causing rapid insulin secretion, severe hypoglycemia within 30-60 minutes, and potential acute hepatic necrosis. Ingestion of even small amounts (>0.1 g/kg) can be life-threatening.
-
-**Key References:**
-- Piscitelli CM, Dunayer EK, Aumann M. "Xylitol toxicity in dogs." *Compend Contin Educ Vet.* 2010 Feb;32(2):E1-4. PMID: 20473849
-- Campbell A, Bates N. "Xylitol toxicity in dogs." *Vet Rec.* 2008 Feb 23;162(8):254. PMID: 18296672
-
-**Interpretation:** This is well-established but not relevant to human safety. Important public health messaging for pet owners.
+- **Cosmetic safety:** Expert Panel concluded xylitol is safe in cosmetics at current use concentrations (Cherian et al., 2024, PMID: 39555956)
+- **Peritoneal dialysis:** XyloCore (xylitol-based dialysis solution) undergoing RCT for safety and efficacy (ELIXIR trial, PMID: 39205396), suggesting confidence in xylitol's systemic safety profile
 
 ---
 
 ## Exposure Assessment
 
-**Typical Dietary Intake:**
-- Background exposure from natural sources: negligible (fruits/vegetables contain trace amounts)
-- Consumers of sugar-free products: highly variable, can range from 5-20 g/day in regular gum chewers or users of sugar-free products
-- Single serving of xylitol-sweetened gum: 1-2 g
-- Intervention studies have used 30-50 g/day without serious adverse effects (aside from GI symptoms)
-
-**ADI Exceedance Risk:**
-- No numerical ADI established due to low toxicity profile
-- EFSA/JECFA: "No safety concern at current levels of intake"
-- Main limiting factor is gastrointestinal tolerance, not systemic toxicity
-
-**Vulnerable Populations:**
-- **Children:** Lower body weight means higher dose per kg; more prone to GI effects
-- **Individuals with cardiovascular disease:** The 2024 Witkowski study raises questions about safety in this population, though regulatory guidance is pending
-- **Dog owners:** Must be educated about keeping xylitol products away from pets
+- **Typical dietary intake:** Highly variable. Xylitol from chewing gum: ~5–10 g/day. From sugar-free products generally: may reach 20–30 g/day in regular consumers. As a tabletop sweetener: potentially higher.
+- **Endogenous production:** The human body produces ~5–15 g xylitol/day via the glucuronate–xylulose pathway.
+- **ADI exceedance risk:** No numerical ADI exists (JECFA: "not specified"; EFSA: not yet set). GI tolerance is the practical limiting factor (~30–50 g/day for unacclimated individuals).
+- **Vulnerable populations:**
+  - Children: may reach higher intake relative to body weight from sugar-free confectionery; also the population most studied for dental benefits
+  - Individuals with IBS or other GI conditions: lower tolerance threshold
+  - Patients with pre-existing cardiovascular disease: theoretical concern based on Witkowski et al. 2024 findings (not yet confirmed by regulatory bodies)
 
 ---
 
@@ -154,140 +151,100 @@
 
 ### Tier-by-Tier Analysis
 
-#### Risk-Free Tier
-**Arguments FOR:**
-- Naturally occurring compound found in fruits and vegetables
-- Decades of widespread use in foods and oral care products
-- EFSA, FDA, and JECFA all approve without numerical ADI restrictions
-- Extensive toxicology data showing very low acute and chronic toxicity in humans
-- Well-established health benefits for dental health
+#### risk_free
+**Evidence supporting this tier:**
+- JECFA ADI is "not specified" — the most favourable safety designation, assigned to substances where available evidence indicates no hazard at levels needed for technological effect
+- No IARC classification
+- No evidence of carcinogenicity, genotoxicity, mutagenicity, or reproductive/developmental toxicity
+- Naturally occurring in many foods and endogenously produced by the human body
+- Over 50 years of widespread use with no regulatory action against it
+- Approved globally (*quantum satis* in EU)
+- Mendelian randomisation does not support a causal cardiovascular link
 
-**Arguments AGAINST:**
-- Recent 2024 cardiovascular study suggests potential prothrombotic effects
-- Known to cause GI distress at moderate-to-high doses
-- Not truly "endogenous" at the levels achieved through dietary supplementation (endogenous levels are >1000-fold lower)
+**Evidence against this tier:**
+- The 2024 Witkowski et al. study in *European Heart Journal* represents a credible new safety signal (prothrombotic effects, association with MACE)
+- GI effects at moderate doses, while not dangerous, indicate the substance is not without any physiological impact
+- EFSA re-evaluation is still ongoing — the modern safety standard has not yet been formally confirmed
 
-#### Limited Risk Tier
-**Arguments FOR:**
-- GRAS/approved status with established regulatory acceptance
-- Main adverse effect (GI symptoms) is self-limiting, dose-dependent, and well-characterized
-- Serious safety concerns are primarily in animal models (dogs), not humans
-- Cardiovascular finding is from a single study (2024) and has not been replicated or confirmed by regulatory review
+#### limited
+**Evidence supporting this tier:**
+- Approved with long safety history and the most permissive ADI category ("not specified")
+- The cardiovascular signal is from a single research group with small intervention sample (n=10) and observational design (cohort study); not yet reproduced independently
+- Multiple expert rebuttals question the Witkowski findings' validity and point to confounding (endogenous xylitol as a biomarker of metabolic disease rather than a cause)
+- GI effects are well-characterised, dose-dependent, and manageable
+- No regulatory body has taken action based on the cardiovascular findings
 
-**Arguments AGAINST:**
-- The cardiovascular study is concerning and mechanistically plausible (platelet activation)
-- No established ADI means no clear "safe upper limit" beyond GI tolerance
+**Evidence against this tier:**
+- The "limited" tier expects "no serious safety signals" — the Witkowski study, while debated, is published in a top-tier journal and represents a non-trivial signal
+- Being cautious may warrant acknowledging the emerging concern
 
-#### Moderate Risk Tier
-**Arguments FOR:**
-- Emerging cardiovascular evidence is concerning, particularly the mechanistic demonstration of enhanced platelet reactivity and thrombosis
-- The hazard ratio (1.57) in the validation cohort is statistically significant and clinically meaningful
-- Intervention study showed acute platelet activation in all subjects after xylitol consumption
-- Vulnerable populations (those with cardiovascular disease or risk factors) may be at higher risk
-- Regulatory agencies have not yet responded to the 2024 findings
+#### moderate
+**Evidence supporting this tier:**
+- There is a credible (though contested) safety signal from a well-designed observational study published in a top-tier cardiology journal
+- The platelet activation / prothrombotic mechanism has been demonstrated both in vitro and in vivo
+- EFSA re-evaluation is ongoing and may result in changes
+- GI effects at moderate consumption levels
 
-**Arguments AGAINST:**
-- Single observational study, not yet replicated
-- Regulatory bodies (EFSA, FDA, JECFA) have not issued warnings or restrictions
-- Decades of use without clear epidemiological signals of cardiovascular harm
+**Evidence against this tier:**
+- The "moderate" tier expects EFSA-reduced ADI, ADI exceedance in populations, or similar regulatory concern — none of this has occurred
+- No regulatory body has restricted xylitol in any way
+- The cardiovascular findings are actively disputed by multiple research groups
+- Mendelian randomisation and IV-dose studies do not support a causal link
+- The observational HR of 1.57 is modest and may reflect reverse causation
 
-#### High Risk Tier
-**Arguments FOR:**
-- None; xylitol is not banned, has no IARC classification, and toxicological data do not support high risk classification
+#### high
+**Evidence supporting this tier:**
+- None. Xylitol is not banned anywhere, has no IARC classification, and no regulatory body has flagged safety concerns.
 
-**Arguments AGAINST:**
-- Approved by all major regulatory bodies
-- No epidemiological evidence of serious harm in human populations over decades of use
-- Cardiovascular study is preliminary and requires confirmation
+**Evidence against this tier:**
+- Every criterion for "high" is unmet: no bans, no IARC 2A/2B, no EFSA safety concern, no bioaccumulation/TWI issue.
 
 ### Rationale
 
-Xylitol presents a complex risk profile. Historically, it has been considered very safe with well-established benefits (dental health, low glycemic impact) and minor, self-limiting adverse effects (GI symptoms). The 2024 Witkowski study introduces a new and significant concern about cardiovascular risk through platelet activation and thrombosis. This finding is mechanistically plausible, supported by both observational cohorts and intervention studies, and shows a clinically relevant effect size.
+Xylitol has one of the longest and most thoroughly established safety records among food additives. JECFA assigned the most favourable designation ("ADI not specified") in 1983, it is approved *quantum satis* in the EU, and no regulatory body worldwide has restricted it. The 2024 Witkowski et al. cardiovascular/thrombotic signal is noteworthy and published in a premier journal, but: (1) it is from a single research group, (2) the intervention arm had only 10 subjects, (3) the observational association (HR 1.57) may reflect endogenous xylitol as a disease biomarker rather than a cause, (4) multiple expert rebuttals and a comprehensive 2025 review in *Cardiovascular Research* cast significant doubt on causality, and (5) Mendelian randomisation does not support the link. No regulatory body has taken any action. The GI effects are well-known but not a safety concern at normal consumption.
 
-However, this is a single, recent study that has not yet been:
-1. Replicated by independent researchers
-2. Reviewed or acted upon by regulatory agencies (EFSA, FDA, JECFA)
-3. Confirmed through long-term prospective clinical trials
+The balance of evidence places xylitol firmly in the **limited** tier — an approved additive with an excellent long-term safety record and minor emerging concerns that have not been validated by regulatory authorities or independent replication.
 
-Given that:
-- Xylitol is approved by all major regulatory bodies without restrictions (beyond GI tolerance)
-- The cardiovascular concern is based on one high-quality study but lacks regulatory confirmation or widespread replication
-- The compound has been used for decades without clear epidemiological signals of cardiovascular harm
-- Main adverse effects (GI) are well-characterized and self-limiting
-
-The evidence points to **moderate risk** rather than limited risk. The cardiovascular finding is too significant to dismiss (especially the mechanistic data showing acute platelet activation), but not yet conclusive enough—or acted upon by regulators—to warrant a high-risk classification. This is a "yellow flag" situation that warrants caution, especially for individuals with cardiovascular risk factors, pending further research and regulatory review.
-
-### Recommended Tier
-
-**moderate**
-
-### Confidence
-
-**0.70** (Moderate-high confidence)  
-*Confidence is reduced due to the preliminary nature of the cardiovascular findings and lack of regulatory response, but elevated due to the quality of the Witkowski study and mechanistic plausibility.*
-
-### Key Factors Driving the Tier Choice
-
-1. **Emerging cardiovascular evidence:** The 2024 Witkowski study provides compelling mechanistic and observational evidence of prothrombotic effects
-2. **Lack of regulatory action:** EFSA, FDA, and JECFA have not responded to the 2024 findings with warnings or restrictions
-3. **Single study limitation:** Cardiovascular concern is based on one study; replication is needed
-4. **Decades of use:** Long history of widespread use without clear epidemiological harm signals
-5. **Well-characterized GI effects:** Dose-dependent laxative effect is predictable and self-limiting
-6. **Vulnerable populations:** Potential concern for individuals with cardiovascular disease or risk factors
+### Recommended Tier: **limited**
 
 ---
 
 ## Sources
 
-1. **EU Regulation No 1333/2008 on food additives**  
-   *European Commission* (2008)  
-   Type: Regulatory  
-   URL: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32008R1333
+1. **EFSA Sweeteners Topic Page** (2026). European Food Safety Authority. https://www.efsa.europa.eu/en/topics/topic/sweeteners — Confirmed E967 re-evaluation status as "ongoing"
 
-2. **21 CFR 172.395 — Xylitol**  
-   *U.S. Food and Drug Administration* (2024)  
-   Type: Regulatory  
-   URL: https://www.ecfr.gov/current/title-21/section-172.395
+2. **EFSA NDA Panel — Scientific Opinion on xylitol chewing gum and dental caries** (2011). EFSA Journal 2011;9(6):2266. https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2011.2266
 
-3. **JECFA Database: Xylitol (Chemical ID 3619)**  
-   *WHO/FAO Joint Expert Committee on Food Additives* (2024, 1999)  
-   Type: Regulatory/Database  
-   URL: https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3619
+3. **EFSA NDA Panel — Scientific Opinion on sugar-free chewing gum and tooth mineralisation** (2011). EFSA Journal 2011;9(4):2076. https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2011.2076
 
-4. **IARC Monographs: Agents Classified by IARC**  
-   *International Agency for Research on Cancer*  
-   Type: Database  
-   URL: https://monographs.iarc.who.int/agents-classified-by-the-iarc/
+4. **21 CFR §172.395 — Xylitol** (2026). Electronic Code of Federal Regulations. https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-172/subpart-D/section-172.395
 
-5. **Witkowski M, Nemet I, Li XS, Wilcox J, Ferrell M, Alamri H, Gupta N, Wang Z, Tang WHW, Hazen SL. "Xylitol is prothrombotic and associated with cardiovascular risk."**  
-   *European Heart Journal* 2024 Jul 12;45(27):2439-2452.  
-   doi: 10.1093/eurheartj/ehae244  
-   PMID: 38842092, PMCID: PMC11492277  
-   Type: Study  
-   URL: https://pubmed.ncbi.nlm.nih.gov/38842092/
+5. **JECFA Database — Xylitol (Chemical 2620)** (2021). WHO/FAO. https://apps.who.int/food-additives-contaminants-jecfa-database/chemical.aspx?chemID=2620
 
-6. **Piscitelli CM, Dunayer EK, Aumann M. "Xylitol toxicity in dogs."**  
-   *Compend Contin Educ Vet* 2010 Feb;32(2):E1-4.  
-   PMID: 20473849  
-   Type: Review  
-   URL: https://pubmed.ncbi.nlm.nih.gov/20473849/
+6. **IARC Monographs — List of Classifications, Volumes 1–140** (2026). https://monographs.iarc.who.int/list-of-classifications — Searched "xylitol": 0 results
 
-7. **Campbell A, Bates N. "Xylitol toxicity in dogs."**  
-   *Vet Rec* 2008 Feb 23;162(8):254.  
-   PMID: 18296672  
-   Type: Study  
-   URL: https://pubmed.ncbi.nlm.nih.gov/18296672/
+7. **Witkowski M, Nemet I, Li XS, et al.** "Xylitol is prothrombotic and associated with cardiovascular risk." *European Heart Journal*. 2024;45(27):2439–2452. PMID: 38842092. https://pubmed.ncbi.nlm.nih.gov/38842092/
 
-8. **PubChem Compound Summary: Xylitol (CID 6912)**  
-   *National Center for Biotechnology Information*  
-   Type: Database  
-   URL: https://pubchem.ncbi.nlm.nih.gov/compound/6912
+8. **Beer JH, Allemann M.** "Xylitol: bitter cardiovascular data for a successful sweetener." *European Heart Journal*. 2024;45(27):2453–2455. PMID: 38842099. https://pubmed.ncbi.nlm.nih.gov/38842099/
 
-9. **PubMed searches: "xylitol safety", "xylitol cardiovascular OR thrombosis", "xylitol gastrointestinal OR laxative OR diarrhea"**  
-   *National Library of Medicine*  
-   Type: Database  
-   URLs: https://pubmed.ncbi.nlm.nih.gov/
+9. **Witkowski M, Hazen SL.** "Erythritol and xylitol and cardiovascular disease risk: a growing concern." *European Heart Journal*. 2025;46(29):2931–2932. PMID: 39565321. https://pubmed.ncbi.nlm.nih.gov/39565321/
 
----
+10. **Valentine GC, Söderling E, Milgrom P.** "Oral health benefits and safety of xylitol and potential cardiovascular risk: questioning the validity of the model of Witkowski et al." *European Heart Journal*. 2025;46(27):2705–2706. PMID: 40067657. https://pubmed.ncbi.nlm.nih.gov/40067657/
 
-**End of Report**
+11. **Bonomini M, Masola V, Gronda E.** "Elevated serum xylitol levels and cardiovascular risk: an active component or an innocent bystander?" *European Heart Journal*. 2025;46(3):326–327. PMID: 39565320. https://pubmed.ncbi.nlm.nih.gov/39565320/
+
+12. **Wölnerhanssen BK, Meyer-Gerspach AC, Arduini A.** "Xylitol exposure and cardiovascular risk." *European Heart Journal*. 2025;46(3):328. PMID: 39565331. https://pubmed.ncbi.nlm.nih.gov/39565331/
+
+13. **Wölnerhanssen BK, Meyer-Gerspach AC, Arduini A, et al.** "Sweeteners: erythritol, xylitol and cardiovascular risk — friend or foe?" *Cardiovascular Research*. 2025;121(9):1319–1329. PMID: 40444390. https://pubmed.ncbi.nlm.nih.gov/40444390/
+
+14. **Witkowski M, Nemet I, Alamri H, et al.** "The artificial sweetener erythritol and cardiovascular event risk." *Nature Medicine*. 2023;29(3):710–718. PMID: 36849732. https://pubmed.ncbi.nlm.nih.gov/36849732/ — Related erythritol study by same group
+
+15. **Cherian P, Bergfeld WF, et al.** "Safety Assessment of Mannitol, Sorbitol, and Xylitol as Used in Cosmetics." *International Journal of Toxicology*. 2025;44(1_suppl):22S–43S. PMID: 39555956. https://pubmed.ncbi.nlm.nih.gov/39555956/
+
+16. **Huang L, et al.** "Sugar-Free but Not Risk-Free? Exploring Artificial Sweeteners and Cardiovascular Disease." *Cardiology in Review*. 2025. PMID: 39969176. https://pubmed.ncbi.nlm.nih.gov/39969176/
+
+17. **UK Food Standards Agency — Approved Additives and E Numbers** (2026). https://www.food.gov.uk/business-guidance/approved-additives-and-e-numbers
+
+18. **proE.info — E967 Xylitol** (2026). https://proe.info/en/additives/e967 — Regulatory summary and general information
+
+19. **FAO — JECFA Xylitol Monograph** (Additive-491). https://www.fao.org/fileadmin/user_upload/jecfa_additives/docs/Monograph1/Additive-491.pdf

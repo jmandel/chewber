@@ -1,28 +1,30 @@
 {
   "schema_version": 1,
   "research_metadata": {
-    "date": "2026-02-26T00:00:00Z",
+    "date": "2025-02-28",
     "prompt_version": "2.0"
   },
   "identity": {
     "e_number": "E967",
     "name": "Xylitol",
     "cas_numbers": ["87-99-0"],
-    "synonyms": ["Xylite", "pentane-1,2,3,4,5-pentol", "meso-xylitol", "wood sugar alcohol"],
+    "synonyms": ["Xylitol", "birch sugar", "wood sugar", "xylit"],
     "chemical_class": "Sugar alcohol (polyol)",
-    "origin": "natural"
+    "origin": "semi-synthetic"
   },
   "function": {
     "primary_category": "Sweetener",
-    "secondary_categories": ["Humectant", "Bulking agent", "Texturizer"],
-    "mechanism": "Provides sweetness similar to sucrose without promoting tooth decay; non-cariogenic through inhibition of Streptococcus mutans; incompletely absorbed in small intestine, resulting in lower caloric value",
+    "secondary_categories": ["Humectant", "Stabiliser"],
+    "mechanism": "Five-carbon sugar alcohol with sweetness equal to sucrose but ~40% fewer calories (~2.4 kcal/g). Incompletely absorbed in the small intestine. Not fermentable by cariogenic bacteria (S. mutans), reducing acid production, plaque formation, and dental caries risk. Produces a cooling sensation upon dissolution.",
     "common_food_categories": [
-      "Sugar-free chewing gum",
-      "Sugar-free candies and mints",
-      "Diabetic and low-calorie foods",
-      "Toothpaste and oral care products",
-      "Pharmaceuticals",
-      "Baked goods"
+      "Sugar-free chewing gum and mints",
+      "Confectionery",
+      "Baked goods and desserts",
+      "Sugar-free beverages",
+      "Diabetic and dietetic products",
+      "Ice cream and frozen desserts",
+      "Jams and preserves",
+      "Oral care products"
     ]
   },
   "regulatory": {
@@ -31,23 +33,23 @@
       "adi": {
         "value": null,
         "unit": "mg/kg bw/day",
-        "basis": "Not specified - acceptable for quantum satis use; SCF concluded polyols do not require numerical ADI due to low toxicity"
+        "basis": "No numerical ADI established; approved quantum satis under EU Regulation 1333/2008. EFSA re-evaluation ongoing as of 2026."
       },
-      "last_evaluation_year": 2008,
-      "key_finding": "EFSA considers xylitol safe for use as a sweetener at quantum satis levels. Excessive consumption may cause laxative effects."
+      "last_evaluation_year": 2011,
+      "key_finding": "Approved as sweetener at quantum satis. EFSA NDA Panel substantiated health claims for xylitol chewing gum reducing dental caries risk (2011). Full safety re-evaluation is ongoing under the sweeteners re-evaluation programme."
     },
     "fda": {
-      "status": "gras",
-      "cfr_citation": "21 CFR 172.395",
-      "notes": "May be safely used in foods for special dietary uses, provided the amount used is not greater than that required to produce its intended effect"
+      "status": "approved",
+      "cfr_citation": "21 CFR §172.395",
+      "notes": "Approved for use in foods for special dietary uses; amount must not exceed what is required to produce intended effect. FDA also authorised qualified health claim linking xylitol to reduced dental caries risk (21 CFR §101.80)."
     },
     "jecfa": {
       "adi": {
         "value": null,
         "unit": "mg/kg bw/day",
-        "basis": "No safety concern at current levels of intake when used as a flavouring agent"
+        "basis": "ADI 'not specified' — the most favourable JECFA designation, indicating no hazard at levels needed for technological effect"
       },
-      "last_evaluation_year": 2024
+      "last_evaluation_year": 1983
     },
     "iarc_classification": null,
     "notable_bans": []
@@ -56,89 +58,147 @@
     "concerns": [
       {
         "category": "cardiovascular",
-        "summary": "2024 study found elevated plasma xylitol associated with increased MACE risk (HR 1.57, 95% CI 1.12-2.21). Mechanistic studies showed xylitol enhanced platelet reactivity and thrombosis formation. Intervention study demonstrated acute platelet activation after xylitol consumption.",
+        "summary": "A 2024 study by Witkowski et al. (European Heart Journal) found circulating xylitol levels associated with incident 3-year MACE (HR 1.57, 95% CI 1.12–2.21) in a validation cohort of 2,149 subjects. Mechanistic studies showed xylitol enhanced platelet reactivity and in vivo thrombosis formation. An intervention study (n=10) confirmed plasma xylitol elevation and enhanced platelet responsiveness after consuming a xylitol-sweetened drink. However, multiple rebuttals (Valentine et al., Bonomini et al., Wölnerhanssen et al.) question causality, noting Mendelian randomisation does not support the link and elevated endogenous xylitol may be a biomarker of metabolic disease rather than a causal agent. A comprehensive 2025 review in Cardiovascular Research concluded platelet effects appear temporary and large IV-dose studies in ICU patients show no cardiovascular signal.",
         "evidence_strength": "moderate",
         "key_references": [
-          "Witkowski et al., Eur Heart J 2024; 45(27):2439-2452 (PMID: 38842092)"
+          "Witkowski et al. Eur Heart J. 2024;45(27):2439-2452. PMID: 38842092",
+          "Wölnerhanssen et al. Cardiovasc Res. 2025;121(9):1319-1329. PMID: 40444390",
+          "Valentine et al. Eur Heart J. 2025;46(27):2705-2706. PMID: 40067657"
         ]
       },
       {
         "category": "gut_microbiome",
-        "summary": "Osmotic diarrhea, bloating, gas, and abdominal discomfort when consumed in excess (generally >20-30 g/day for adults). Well-documented dose-dependent laxative effect due to incomplete absorption and fermentation by gut bacteria.",
+        "summary": "Xylitol is incompletely absorbed in the small intestine; unabsorbed portions undergo colonic fermentation causing osmotic diarrhoea, bloating, flatulence, and abdominal discomfort at doses above ~30–50 g/day. Effects are dose-dependent and tolerance increases with habitual consumption. This is well-characterised and the basis for EU mandatory laxative-effect labelling on polyol-containing products.",
         "evidence_strength": "strong",
         "key_references": [
-          "Multiple safety assessments and clinical trials"
-        ]
-      },
-      {
-        "category": "other",
-        "summary": "Highly toxic to dogs (hypoglycemia and hepatic necrosis at >0.1 g/kg). Not relevant to human safety but important for pet owners.",
-        "evidence_strength": "strong",
-        "key_references": [
-          "Piscitelli et al., Compend Contin Educ Vet 2010 (PMID: 20473849)",
-          "Campbell & Bates, Vet Rec 2008 (PMID: 18296672)"
+          "EU Regulation 1169/2011 (laxative warning requirement)",
+          "JECFA toxicological monograph FAS 18-JECFA 27/161"
         ]
       }
     ],
     "no_concern_confirmed": [
-      "Carcinogenicity (not classified by IARC)",
-      "Genotoxicity (no evidence in regulatory assessments)",
-      "Acute toxicity in humans (very low toxicity profile)"
+      "Carcinogenicity: No evidence in animal studies; no IARC classification",
+      "Genotoxicity: No evidence of genotoxic or mutagenic potential",
+      "Reproductive/developmental toxicity: No evidence in animal studies",
+      "Endocrine disruption: No evidence; minimal effect on blood glucose and insulin",
+      "Allergenicity: Not a known allergen"
     ],
     "adi_exceedance": {
       "at_risk": false,
       "populations": [],
-      "notes": "No numerical ADI established. Main limiting factor is GI tolerance (~20-30 g/day), not systemic toxicity. However, cardiovascular concerns from 2024 study suggest potential risk at typical consumption levels for susceptible individuals."
+      "notes": "No numerical ADI exists (JECFA: 'not specified'). GI tolerance (~30–50 g/day) serves as the practical limiting factor. Endogenous production is ~5–15 g/day. No ADI exceedance risk can be calculated."
     }
   },
   "risk_assessment": {
-    "recommended_level": "moderate",
-    "confidence": 0.70,
-    "rationale": "Xylitol has been widely used for decades with regulatory approval from EFSA, FDA, and JECFA, showing low toxicity and well-characterized GI effects. However, a high-quality 2024 study revealed significant cardiovascular concerns through platelet activation and thrombosis risk. While this finding is mechanistically plausible and supported by intervention data, it represents a single study that has not been replicated or acted upon by regulators. The tier is elevated to moderate due to the clinical significance of the cardiovascular findings and their mechanistic support, but not to high given the lack of regulatory response, replication, or long-term epidemiological confirmation.",
+    "recommended_level": "limited",
+    "confidence": 0.82,
+    "rationale": "Xylitol has a 50+ year safety record, JECFA 'ADI not specified' (most favourable designation), EU approval at quantum satis, FDA approval under 21 CFR §172.395, and no IARC classification. The 2024 Witkowski et al. cardiovascular/prothrombotic signal is published in a top-tier journal but is from a single research group with a small intervention arm (n=10), is actively disputed by multiple expert groups, and is not supported by Mendelian randomisation or IV-dosing studies. No regulatory body has taken any restrictive action. GI effects are well-characterised, dose-dependent, and non-dangerous. The emerging cardiovascular signal prevents a 'risk_free' rating but falls well short of 'moderate' given the weight of contrary evidence and regulatory consensus.",
     "key_factors": [
-      "Emerging cardiovascular evidence from 2024 Witkowski study (prothrombotic effects)",
-      "Mechanistic demonstration of platelet activation in intervention studies",
-      "Lack of regulatory warnings or restrictions despite new findings",
-      "Decades of widespread use without clear epidemiological harm signals",
-      "Well-characterized dose-dependent GI effects (self-limiting)",
-      "Potential vulnerability for individuals with cardiovascular risk factors"
+      "JECFA ADI 'not specified' — most favourable safety designation",
+      "Approved quantum satis in EU and under 21 CFR §172.395 in US",
+      "No IARC classification; no carcinogenicity, genotoxicity, or reproductive concerns",
+      "Naturally occurring and endogenously produced in humans",
+      "2024 Witkowski et al. prothrombotic/MACE signal is credible but contested and not replicated",
+      "Multiple expert rebuttals and 2025 Cardiovascular Research review question causality",
+      "Mendelian randomisation does not support causal cardiovascular link",
+      "GI effects (laxative) at high doses are the main practical limitation"
     ]
   },
   "sources": [
     {
-      "title": "EU Regulation No 1333/2008 on food additives",
-      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32008R1333",
+      "title": "EFSA Sweeteners Topic Page",
+      "url": "https://www.efsa.europa.eu/en/topics/topic/sweeteners",
       "type": "regulatory"
     },
     {
-      "title": "21 CFR 172.395 - Xylitol",
-      "url": "https://www.ecfr.gov/current/title-21/section-172.395",
+      "title": "EFSA NDA Panel — Scientific Opinion on xylitol chewing gum and dental caries (2011)",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2011.2266",
       "type": "regulatory"
     },
     {
-      "title": "JECFA Database: Xylitol (Chemical ID 3619)",
-      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3619",
+      "title": "EFSA NDA Panel — Scientific Opinion on sugar-free chewing gum and tooth mineralisation (2011)",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2011.2076",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR §172.395 — Xylitol",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-172/subpart-D/section-172.395",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA Database — Xylitol (Chemical 2620)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/chemical.aspx?chemID=2620",
       "type": "database"
     },
     {
-      "title": "IARC Monographs: Agents Classified by IARC",
-      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "title": "IARC Monographs — List of Classifications, Volumes 1–140",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
       "type": "database"
     },
     {
-      "title": "Witkowski et al. - Xylitol is prothrombotic and associated with cardiovascular risk",
+      "title": "Witkowski et al. — Xylitol is prothrombotic and associated with cardiovascular risk (2024)",
       "url": "https://pubmed.ncbi.nlm.nih.gov/38842092/",
       "type": "study"
     },
     {
-      "title": "Piscitelli et al. - Xylitol toxicity in dogs",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/20473849/",
+      "title": "Beer & Allemann — Xylitol: bitter cardiovascular data for a successful sweetener (2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38842099/",
       "type": "review"
     },
     {
-      "title": "PubChem Compound Summary: Xylitol",
-      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/6912",
+      "title": "Witkowski & Hazen — Erythritol and xylitol and cardiovascular disease risk: a growing concern (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39565321/",
+      "type": "review"
+    },
+    {
+      "title": "Valentine et al. — Oral health benefits and safety of xylitol: questioning the validity of Witkowski et al. (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40067657/",
+      "type": "review"
+    },
+    {
+      "title": "Bonomini et al. — Elevated serum xylitol levels and cardiovascular risk: active component or innocent bystander? (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39565320/",
+      "type": "review"
+    },
+    {
+      "title": "Wölnerhanssen et al. — Xylitol exposure and cardiovascular risk (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39565331/",
+      "type": "review"
+    },
+    {
+      "title": "Wölnerhanssen et al. — Sweeteners: erythritol, xylitol and cardiovascular risk — friend or foe? (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40444390/",
+      "type": "review"
+    },
+    {
+      "title": "Witkowski et al. — The artificial sweetener erythritol and cardiovascular event risk (2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36849732/",
+      "type": "study"
+    },
+    {
+      "title": "Cherian et al. — Safety Assessment of Mannitol, Sorbitol, and Xylitol as Used in Cosmetics (2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39555956/",
+      "type": "study"
+    },
+    {
+      "title": "Huang et al. — Sugar-Free but Not Risk-Free? Exploring Artificial Sweeteners and Cardiovascular Disease (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39969176/",
+      "type": "review"
+    },
+    {
+      "title": "UK Food Standards Agency — Approved Additives and E Numbers",
+      "url": "https://www.food.gov.uk/business-guidance/approved-additives-and-e-numbers",
+      "type": "regulatory"
+    },
+    {
+      "title": "proE.info — E967 Xylitol",
+      "url": "https://proe.info/en/additives/e967",
       "type": "database"
+    },
+    {
+      "title": "FAO — JECFA Xylitol Monograph (Additive-491)",
+      "url": "https://www.fao.org/fileadmin/user_upload/jecfa_additives/docs/Monograph1/Additive-491.pdf",
+      "type": "regulatory"
     }
   ]
 }
