@@ -1229,12 +1229,70 @@ function SummaryDetails({ food }: { food: FoodDetail }) {
 }
 
 // ── Additives List Page ───────────────────────────────────
+// ── Category normalization for additives list ──────────────
+const FUNC_CATEGORY_MAP: Record<string, string> = {
+  // Colors
+  "food colour": "Color", "food color": "Color", "colour": "Color", "color additive": "Color",
+  "food color additive": "Color", "food colour additive": "Color", "colour additive": "Color",
+  "color_additive": "Color", "color (surface decoration)": "Color",
+  "color (decorative surface coating)": "Color", "surface decorative color additive": "Color",
+  // Preservatives
+  "preservative": "Preservative", "preservative (antimicrobial)": "Preservative",
+  "acidity regulator/preservative": "Preservative", "antioxidant preservative": "Antioxidant",
+  // Acidity regulators
+  "acidity regulator": "Acidity Regulator", "acidity regulator / ph control agent": "Acidity Regulator",
+  "acidulant/ph control agent": "Acidity Regulator", "humectant and ph control agent": "Acidity Regulator",
+  "acidity regulator / sequestrant / emulsifier": "Acidity Regulator",
+  // Emulsifiers
+  "emulsifier": "Emulsifier",
+  // Thickeners & Stabilizers
+  "thickener": "Thickener", "stabilizer": "Thickener", "thickener/stabilizer": "Thickener",
+  "thickener and stabilizer": "Thickener", "stabilizer/thickener": "Thickener",
+  "stabilizer/thickener and formulation aid": "Thickener", "gelling agent": "Thickener",
+  // Sweeteners
+  "sweetener": "Sweetener", "high-intensity sweetener": "Sweetener",
+  // Antioxidants
+  "antioxidant": "Antioxidant",
+  // Flavor enhancers
+  "flavour enhancer": "Flavor", "flavoring agent and adjuvant": "Flavor",
+  // Anti-caking
+  "anti-caking agent": "Anti-caking", "anticaking_agent": "Anti-caking",
+  // Glazing
+  "glazing agent": "Glazing", "glazing_agent": "Glazing",
+  // Gases
+  "packaging gas": "Gas", "propellant gas": "Gas", "propellant/packaging gas": "Gas",
+  // Other
+  "sequestrant": "Other", "firming agent": "Other", "carrier solvent": "Other",
+  "carrier/solvent": "Other", "enzyme (processing aid)": "Other", "bulking agent": "Other",
+  "nutrient supplement": "Other", "humectant": "Other", "raising agent": "Other",
+  "antifoaming agent": "Other", "flour treatment agent": "Other",
+};
+
+const FUNC_CATEGORY_ORDER = ["Color", "Preservative", "Acidity Regulator", "Emulsifier", "Thickener", "Sweetener", "Antioxidant", "Flavor", "Anti-caking", "Glazing", "Gas", "Other"];
+
+const FUNC_CATEGORY_ICONS: Record<string, string> = {
+  "Color": "🎨", "Preservative": "🛡️", "Acidity Regulator": "⚗️", "Emulsifier": "🔗",
+  "Thickener": "🧪", "Sweetener": "🍬", "Antioxidant": "🍊", "Flavor": "👅",
+  "Anti-caking": "🧂", "Glazing": "✨", "Gas": "💨", "Other": "📦",
+};
+
+function normalizeFuncCategory(raw: string | null): string {
+  if (!raw) return "Other";
+  return FUNC_CATEGORY_MAP[raw.toLowerCase().trim()] || "Other";
+}
+
+const PAGE_SIZE = 40;
+
 function AdditivesListPage() {
   const [data, setData] = useState<{ count: number; additives: AdditiveListItem[] } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [searchText, setSearchText] = useState("");
   const [riskFilter, setRiskFilter] = useState<string>("all");
+  const [funcFilter, setFuncFilter] = useState<string>("all");
+  const [sortBy, setSortBy] = useState<"risk" | "name" | "code">("risk");
+  const [showCount, setShowCount] = useState(PAGE_SIZE);
   const nav = useNavigate();
+  const catScrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     api.getAdditives()
@@ -1242,138 +1300,214 @@ function AdditivesListPage() {
       .catch(e => setError(String(e?.message ?? e)));
   }, []);
 
+  // Reset visible count when filters change
+  useEffect(() => { setShowCount(PAGE_SIZE); }, [searchText, riskFilter, funcFilter, sortBy]);
+
+  // Auto-scroll active category chip into view on mobile
+  useEffect(() => {
+    const el = catScrollRef.current;
+    if (!el) return;
+    const active = el.querySelector('.al-cat-chip.active') as HTMLElement;
+    if (active) active.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+  }, [funcFilter]);
+
   if (error) return <div className="muted" style={{ textAlign: "center", padding: 40 }}>Failed to load additives: {error}</div>;
   if (!data) return <div style={{ textAlign: "center", padding: 40 }}><div className="spinner" /></div>;
 
-  // Filter by search text
-  let filtered = data.additives.filter(a => {
-    const search = searchText.toLowerCase();
-    if (!search) return true;
-    return (
-      a.code.toLowerCase().includes(search) ||
-      (a.name && a.name.toLowerCase().includes(search))
-    );
-  });
-
-  // Filter by risk level
-  if (riskFilter !== "all") {
-    filtered = filtered.filter(a => a.risk_level === riskFilter);
+  // Compute category counts from full data
+  const catCounts: Record<string, number> = {};
+  for (const a of data.additives) {
+    const cat = normalizeFuncCategory(a.function_category);
+    catCounts[cat] = (catCounts[cat] || 0) + 1;
   }
 
-  // Sort: high risk first, then by code
-  const sorted = [...filtered].sort((a, b) => {
-    const orderA = ADDITIVE_RISK_STYLES[a.risk_level]?.order ?? 9;
-    const orderB = ADDITIVE_RISK_STYLES[b.risk_level]?.order ?? 9;
-    if (orderA !== orderB) return orderA - orderB;
-    return a.code.localeCompare(b.code);
+  // Risk counts from full data
+  const riskCounts: Record<string, number> = { risk_free: 0, limited: 0, moderate: 0, high: 0 };
+  for (const a of data.additives) riskCounts[a.risk_level] = (riskCounts[a.risk_level] || 0) + 1;
+  const total = data.additives.length;
+
+  // Filter
+  let filtered = data.additives.filter(a => {
+    const search = searchText.toLowerCase();
+    if (search && !a.code.toLowerCase().includes(search) && !(a.name && a.name.toLowerCase().includes(search)) && !(a.description && a.description.toLowerCase().includes(search))) return false;
+    if (riskFilter !== "all" && a.risk_level !== riskFilter) return false;
+    if (funcFilter !== "all" && normalizeFuncCategory(a.function_category) !== funcFilter) return false;
+    return true;
   });
 
-  const withResearch = filtered.filter(a => a.has_research).length;
+  // Sort
+  const sorted = [...filtered].sort((a, b) => {
+    if (sortBy === "risk") {
+      const orderA = ADDITIVE_RISK_STYLES[a.risk_level]?.order ?? 9;
+      const orderB = ADDITIVE_RISK_STYLES[b.risk_level]?.order ?? 9;
+      if (orderA !== orderB) return orderA - orderB;
+      return a.code.localeCompare(b.code);
+    } else if (sortBy === "name") {
+      return (a.name ?? a.code).localeCompare(b.name ?? b.code);
+    } else {
+      // By E-number (numeric part)
+      const numA = parseInt(a.code.replace(/[^0-9]/g, "")) || 9999;
+      const numB = parseInt(b.code.replace(/[^0-9]/g, "")) || 9999;
+      return numA - numB;
+    }
+  });
+
+  const visible = sorted.slice(0, showCount);
+  const hasMore = showCount < sorted.length;
 
   return (
-    <div>
+    <div className="additives-list-page">
       <BackLink />
-      <div style={{ marginBottom: 16 }}>
-        <h1 style={{ fontSize: 24, fontWeight: 700, marginBottom: 8 }}>Food Additives</h1>
-        <div className="muted" style={{ fontSize: 13 }}>Comprehensive database of E-numbers and food additives</div>
+
+      {/* Header */}
+      <div className="al-header">
+        <h1 className="al-title">Food Additives</h1>
+        <div className="al-subtitle">243 E-numbers · researched &amp; risk-rated</div>
       </div>
 
-      {/* Search bar */}
-      <input
-        type="text"
-        placeholder="Search by code or name..."
-        value={searchText}
-        onChange={e => setSearchText(e.target.value)}
-        style={{
-          width: "100%",
-          padding: "10px 12px",
-          fontSize: 14,
-          borderRadius: "var(--radius-sm)",
-          border: "1px solid var(--slate)",
-          background: "var(--charcoal)",
-          color: "var(--cream)",
-          marginBottom: 12,
-        }}
-      />
-
-      {/* Risk filter pills */}
-      <div style={{ display: "flex", gap: 6, marginBottom: 12, flexWrap: "wrap" }}>
-        {["all", "risk_free", "limited", "moderate", "high"].map(level => {
-          const style = level === "all" ? { bg: "var(--slate)", fg: "var(--cream)", border: "var(--fog)" } : ADDITIVE_RISK_STYLES[level];
+      {/* Risk distribution bar */}
+      <div className="al-risk-bar">
+        {(["high", "moderate", "limited", "risk_free"] as const).map(level => {
+          const count = riskCounts[level] || 0;
+          const pct = (count / total) * 100;
+          const s = ADDITIVE_RISK_STYLES[level];
+          if (!pct) return null;
+          return (
+            <div
+              key={level}
+              className={`al-risk-segment${riskFilter === level ? " active" : ""}`}
+              style={{ width: `${pct}%`, background: s.bg, borderBottom: `3px solid ${s.fg}` }}
+              onClick={() => setRiskFilter(riskFilter === level ? "all" : level)}
+              title={`${level.replace("_", " ")}: ${count}`}
+            />
+          );
+        })}
+      </div>
+      <div className="al-risk-legend">
+        {(["high", "moderate", "limited", "risk_free"] as const).map(level => {
+          const s = ADDITIVE_RISK_STYLES[level];
+          const count = riskCounts[level] || 0;
           const active = riskFilter === level;
           return (
             <button
               key={level}
-              onClick={() => setRiskFilter(level)}
-              style={{
-                padding: "6px 12px",
-                fontSize: 12,
-                borderRadius: "var(--radius-sm)",
-                border: `1px solid ${active ? style.fg : style.border}`,
-                background: active ? style.bg : "transparent",
-                color: active ? style.fg : "var(--fog)",
-                cursor: "pointer",
-                fontWeight: active ? 600 : 400,
-              }}
+              className={`al-risk-legend-item${active ? " active" : ""}`}
+              onClick={() => setRiskFilter(riskFilter === level ? "all" : level)}
             >
-              {level === "all" ? "All" : level.replace("_", " ")}
+              <span className="al-risk-dot" style={{ background: s.fg }} />
+              <span className="al-risk-label">{s.marker} {count}</span>
             </button>
           );
         })}
       </div>
 
-      {/* Count display */}
-      <div className="muted" style={{ fontSize: 12, marginBottom: 16 }}>
-        Showing {sorted.length} of {data.count} additives ({withResearch} with research)
+      {/* Sticky filters area */}
+      <div className="al-filters">
+        {/* Search */}
+        <div className="al-search-wrap">
+          <span className="al-search-icon">🔍</span>
+          <input
+            type="text"
+            placeholder="Search additives..."
+            value={searchText}
+            onChange={e => setSearchText(e.target.value)}
+            className="al-search"
+          />
+          {searchText && (
+            <button className="al-search-clear" onClick={() => setSearchText("")}>✕</button>
+          )}
+        </div>
+
+        {/* Function category chips - horizontal scroll */}
+        <div className="al-cat-scroll" ref={catScrollRef}>
+          <button
+            className={`al-cat-chip${funcFilter === "all" ? " active" : ""}`}
+            onClick={() => setFuncFilter("all")}
+          >
+            All
+          </button>
+          {FUNC_CATEGORY_ORDER.filter(cat => catCounts[cat]).map(cat => (
+            <button
+              key={cat}
+              className={`al-cat-chip${funcFilter === cat ? " active" : ""}`}
+              onClick={() => setFuncFilter(funcFilter === cat ? "all" : cat)}
+            >
+              {FUNC_CATEGORY_ICONS[cat]} {cat}
+              <span className="al-cat-count">{catCounts[cat]}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* Sort + count row */}
+        <div className="al-toolbar">
+          <div className="al-count">{sorted.length} result{sorted.length !== 1 ? "s" : ""}</div>
+          <div className="al-sort">
+            <label className="al-sort-label">Sort:</label>
+            <select
+              value={sortBy}
+              onChange={e => setSortBy(e.target.value as "risk" | "name" | "code")}
+              className="al-sort-select"
+            >
+              <option value="risk">Risk level</option>
+              <option value="name">Name A–Z</option>
+              <option value="code">E-number</option>
+            </select>
+          </div>
+        </div>
       </div>
 
       {/* Cards */}
-      <div style={{ display: "grid", gap: 10 }}>
-        {sorted.map(add => {
-          const style = ADDITIVE_RISK_STYLES[add.risk_level] || ADDITIVE_RISK_STYLES.limited;
-          const hasResearch = add.has_research;
+      <div className="al-grid">
+        {visible.map(add => {
+          const rs = ADDITIVE_RISK_STYLES[add.risk_level] || ADDITIVE_RISK_STYLES.limited;
+          const cat = normalizeFuncCategory(add.function_category);
           return (
             <div
               key={add.code}
-              className="card"
+              className="al-card"
               onClick={() => nav(`/additive/${encodeURIComponent(add.code)}`)}
-              style={{
-                cursor: "pointer",
-                opacity: hasResearch ? 1 : 0.65,
-                transition: "opacity 0.2s",
-                padding: 14,
-              }}
+              style={{ borderLeftColor: rs.fg }}
             >
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 6 }}>
-                <div style={{ minWidth: 0, flex: 1 }}>
-                  <div style={{ fontWeight: 700, fontSize: 15, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{add.name ?? add.code}</div>
-                  <div className="muted" style={{ fontSize: 11, marginTop: 2 }}>{add.code}</div>
+              <div className="al-card-top">
+                <div className="al-card-info">
+                  <div className="al-card-name">{add.name ?? add.code}</div>
+                  <div className="al-card-meta">
+                    <span className="al-card-code">{add.code}</span>
+                    <span className="al-card-func">{FUNC_CATEGORY_ICONS[cat]} {cat}</span>
+                  </div>
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                  <span
-                    className="badge"
-                    style={{
-                      fontSize: 11,
-                      padding: "3px 8px",
-                      background: style.bg,
-                      color: style.fg,
-                      border: `1px solid ${style.border}`,
-                    }}
-                  >
-                    {style.marker} {add.risk_level.replace("_", " ")}
-                  </span>
-
-                </div>
+                <span
+                  className="al-card-badge"
+                  style={{ background: rs.bg, color: rs.fg, borderColor: rs.border }}
+                >
+                  {rs.marker} {add.risk_level.replace("_", " ")}
+                </span>
               </div>
-              {add.function_category && (
-                <div className="muted" style={{ fontSize: 12, marginTop: 4 }}>
-                  {add.function_category}
-                </div>
+              {add.description && (
+                <div className="al-card-desc">{add.description.length > 120 ? add.description.slice(0, 120) + "…" : add.description}</div>
               )}
             </div>
           );
         })}
       </div>
+
+      {/* Load more */}
+      {hasMore && (
+        <button
+          className="al-load-more"
+          onClick={() => setShowCount(c => c + PAGE_SIZE)}
+        >
+          Show more ({sorted.length - showCount} remaining)
+        </button>
+      )}
+
+      {sorted.length === 0 && (
+        <div className="al-empty">
+          <div style={{ fontSize: 32, marginBottom: 8 }}>🔬</div>
+          <div>No additives match your filters</div>
+          <button className="al-empty-reset" onClick={() => { setSearchText(""); setRiskFilter("all"); setFuncFilter("all"); }}>Reset filters</button>
+        </div>
+      )}
     </div>
   );
 }
