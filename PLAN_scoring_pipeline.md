@@ -16,7 +16,7 @@ score = (nutrition_score × 0.6) + additive_points + organic_bonus
          0–60                    0–30              0 or 10
 ```
 
-This matches industry benchmarks published 60/30/10 allocation exactly.
+This uses a 60/30/10 allocation for nutrition/additives/organic.
 
 - `nutrition_score`: Nutri-Score points → 0–100 via smooth linear formula → ×0.6 = 0–60
 - `additive_points`: 30 minus penalties (limited: −3, moderate: −10, high: −30)
@@ -63,7 +63,7 @@ Replaced lookup table with smooth linear formulas:
 
 ### P2: Organic Bonus Calibration — ✅ DONE (kept at 10, added gate)
 
-Kept at 10 points to match industry benchmarks 60/30/10 split. Added nutrition ≥ 40 gate (stricter than industry benchmarks, which gives organic bonus unconditionally).
+Kept at 10 points for the 60/30/10 split. Added nutrition ≥ 40 gate (organic bonus requires decent nutrition baseline).
 
 ### P2: Organic Evidence from OFF — ✅ DONE
 
@@ -98,15 +98,15 @@ Phase 2 — Tune penalties and mapping (P1) ✅
 Phase 3 — Polish (P2/P3) ✅
   10. ✅ OFF organic labels surfaced via labels_tags
   11. ✅ USDA energy unit bug fixed
-  12. ✅ Organic bonus: kept 10pts + nutrition≥40 gate (matches industry benchmarks)
+  12. ✅ Organic bonus: kept 10pts + nutrition≥40 gate
   13. ✅ Score label thresholds: 85/65/40/0
 ```
 
 ## Validation Approach
 
-When the product database grows to a meaningful size, compare Chewber scores against industry benchmarks for:
+When the product database grows to a meaningful size, validate Chewber scores against:
 - Products with known additive profiles (BHT, caramel color, etc.)
 - Products spanning the full Nutri-Score range (A through E)
 - Organic vs. conventional variants of the same product
 
-Target: Chewber scores within ±10 points of industry benchmarks for mainstream products.
+Target: scores should be intuitive and consistent across comparable products.

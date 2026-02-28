@@ -357,7 +357,7 @@ Justified. NTP clear evidence of carcinogenicity, Prop 65 listing, and the fact 
   - The blood-brain barrier actively regulates glutamate entry
   - Plasma glutamate levels rise only modestly after oral intake
 - **EFSA's 2017 ADI of 30 mg/kg bw/day**: Based on a NOAEL from developmental neurotoxicity studies in rodents, applying a 100× safety factor. EFSA acknowledged this was "a conservative approach" and noted that "the effects observed in animals occurred at doses considerably higher than the estimated dietary exposure."
-- **Note on E621 (MSG) vs. E620-E625**: E621 (MSG itself) is currently classified as **high** in the seed data (from the original seed data), while E620 and E622-E625 are moderate. This is inconsistent. MSG is the sodium salt of glutamic acid; E622-E625 are potassium, calcium, ammonium, and magnesium salts. They are toxicologically equivalent. The high classification for E621 is a candidate for reclassification.
+- **Note on E621 (MSG) vs. E620-E625**: E621 (MSG itself) is currently classified as **high** in the seed data, while E620 and E622-E625 are moderate. This is inconsistent. MSG is the sodium salt of glutamic acid; E622-E625 are potassium, calcium, ammonium, and magnesium salts. They are toxicologically equivalent. E621 is a candidate for reclassification.
 
 ### Assessment
 The evidence is overwhelming: glutamic acid and its salts are safe at food-additive levels. JECFA gave them the strongest possible safety designation ("not specified" ADI). EFSA's 2017 numerical ADI was precautionary and conservative, and exposure is generally within it. The "Chinese Restaurant Syndrome" narrative has been debunked in controlled trials. Glutamate is a normal and abundant component of the human diet.
