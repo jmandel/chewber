@@ -8,10 +8,11 @@ import { toGeminiSchema } from "./llm/schemaTransform";
 
 const prompt = readFileSync(resolve(import.meta.dir, "./prompts/report_to_json.md"), "utf-8");
 
-// The annotated Zod source doubles as LLM documentation — comments teach
-// the extractor how to populate each field.
-const schemaSourcePath = resolve(import.meta.dir, "../scoring/abstraction.ts");
-const schemaSourceText = readFileSync(schemaSourcePath, "utf-8");
+// The annotated schema source doubles as LLM documentation — comments
+// teach the extractor how to populate each field.
+const schemaSourceText = readFileSync(
+  resolve(import.meta.dir, "../scoring/abstraction.schema.ts"), "utf-8"
+);
 
 // Derive JSON Schema from Zod for structured output constraint.
 const absSchema = zodToJsonSchema(FoodAbstractionSchema, { target: "jsonSchema7" });
