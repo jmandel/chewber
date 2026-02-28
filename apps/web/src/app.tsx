@@ -1281,7 +1281,7 @@ function normalizeFuncCategory(raw: string | null): string {
   return FUNC_CATEGORY_MAP[raw.toLowerCase().trim()] || "Other";
 }
 
-const PAGE_SIZE = 40;
+
 
 function AdditivesListPage() {
   const [data, setData] = useState<{ count: number; additives: AdditiveListItem[] } | null>(null);
@@ -1290,7 +1290,7 @@ function AdditivesListPage() {
   const [riskFilter, setRiskFilter] = useState<string>("all");
   const [funcFilter, setFuncFilter] = useState<string>("all");
   const [sortBy, setSortBy] = useState<"risk" | "name" | "code">("risk");
-  const [showCount, setShowCount] = useState(PAGE_SIZE);
+
   const nav = useNavigate();
   const catScrollRef = useRef<HTMLDivElement>(null);
 
@@ -1300,8 +1300,7 @@ function AdditivesListPage() {
       .catch(e => setError(String(e?.message ?? e)));
   }, []);
 
-  // Reset visible count when filters change
-  useEffect(() => { setShowCount(PAGE_SIZE); }, [searchText, riskFilter, funcFilter, sortBy]);
+
 
   // Auto-scroll active category chip into view on mobile
   useEffect(() => {
@@ -1352,8 +1351,6 @@ function AdditivesListPage() {
     }
   });
 
-  const visible = sorted.slice(0, showCount);
-  const hasMore = showCount < sorted.length;
 
   return (
     <div className="additives-list-page">
@@ -1458,7 +1455,7 @@ function AdditivesListPage() {
 
       {/* Cards */}
       <div className="al-grid">
-        {visible.map(add => {
+        {sorted.map(add => {
           const rs = ADDITIVE_RISK_STYLES[add.risk_level] || ADDITIVE_RISK_STYLES.limited;
           const cat = normalizeFuncCategory(add.function_category);
           return (
@@ -1490,16 +1487,6 @@ function AdditivesListPage() {
           );
         })}
       </div>
-
-      {/* Load more */}
-      {hasMore && (
-        <button
-          className="al-load-more"
-          onClick={() => setShowCount(c => c + PAGE_SIZE)}
-        >
-          Show more ({sorted.length - showCount} remaining)
-        </button>
-      )}
 
       {sorted.length === 0 && (
         <div className="al-empty">
@@ -1688,7 +1675,7 @@ function AdditiveOverview({ abstraction }: { abstraction: Record<string, any> })
   const safety = abstraction.safety_evidence || {};
   const risk = abstraction.risk_assessment || {};
   const sources = abstraction.sources || [];
-  const [sourcesOpen, setSourcesOpen] = useState(false);
+  const [sourcesOpen, setSourcesOpen] = useState(true);
 
   // Group sources by type
   const sourcesByType: Record<string, any[]> = {};
@@ -1870,7 +1857,7 @@ function AdditiveOverview({ abstraction }: { abstraction: Record<string, any> })
         </AdditiveSection>
       )}
 
-      {/* Sources — collapsible */}
+      {/* Sources */}
       {sources.length > 0 && (
         <div className="additive-section">
           <button className="additive-sources-toggle" onClick={() => setSourcesOpen(!sourcesOpen)}>
@@ -1879,21 +1866,31 @@ function AdditiveOverview({ abstraction }: { abstraction: Record<string, any> })
             <span className="additive-sources-chevron" style={{ transform: sourcesOpen ? "rotate(180deg)" : "none" }}>▾</span>
           </button>
           {sourcesOpen && (
-            <div className="card additive-section-body additive-sources-list">
-              {Object.entries(sourcesByType).map(([type, items]) => (
-                <div key={type} className="additive-source-group">
-                  <div className="additive-source-type">{type}</div>
-                  {items.map((s: any, i: number) => (
-                    <div key={i} className="additive-source-item">
-                      {s.url ? (
-                        <a href={s.url} target="_blank" rel="noopener">{s.title || s.url}</a>
-                      ) : (
-                        <span className="muted">{s.title}</span>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              ))}
+            <div className="additive-sources-list">
+              {Object.entries(sourcesByType).map(([type, items]) => {
+                const typeIcon = type === "regulatory" ? "🏛" : type === "study" ? "🔬" : type === "database" ? "🗄" : "📄";
+                return (
+                  <div key={type} className="additive-source-group">
+                    <div className="additive-source-type">{typeIcon} {type}</div>
+                    {items.map((s: any, i: number) => {
+                      let domain = "";
+                      try { domain = new URL(s.url).hostname.replace(/^www\./, ""); } catch {}
+                      return (
+                        <div key={i} className="additive-source-card">
+                          {s.url ? (
+                            <a href={s.url} target="_blank" rel="noopener" className="additive-source-link">
+                              <span className="additive-source-title">{s.title || s.url}</span>
+                              {domain && <span className="additive-source-domain">{domain} ↗</span>}
+                            </a>
+                          ) : (
+                            <span className="additive-source-title muted">{s.title}</span>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              })}
             </div>
           )}
         </div>
