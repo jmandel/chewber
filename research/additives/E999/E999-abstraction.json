@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2025-06-28",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E999",
+    "name": "Quillaia extract",
+    "cas_numbers": ["68990-67-0"],
+    "synonyms": ["Quillaja extract", "Soapbark extract", "Quillay bark extract", "Bois de Panama", "Panama bark extract", "Quillai extract"],
+    "chemical_class": "Triterpenoid saponins (glycosides of quillaic acid)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "Emulsifier",
+    "secondary_categories": ["Foaming agent"],
+    "mechanism": "Amphiphilic triterpenoid saponins adsorb at oil-water and air-water interfaces, stabilising emulsions and generating persistent foams due to their hydrophobic aglycone (quillaic acid) linked to hydrophilic sugar chains.",
+    "common_food_categories": [
+      "Water-based flavoured drinks (ginger beer, root beer, cream soda)",
+      "Cider and perry",
+      "Alcoholic beverages",
+      "Confections and frostings",
+      "Frozen dairy desserts",
+      "Chewing gum",
+      "Dietary/food supplements"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 3,
+        "unit": "mg/kg bw/day",
+        "basis": "NOAEL of 1500 mg quillaia extract/kg bw/day from 2-year rat study, assuming 20% saponins content (=300 mg saponins/kg bw/day), with uncertainty factor of 100. Expressed as mg saponins/kg bw/day."
+      },
+      "last_evaluation_year": 2024,
+      "key_finding": "2019 re-evaluation established ADI of 3 mg saponins/kg bw/day. No genotoxicity concern, no carcinogenicity. Refined brand-loyal exposure did not exceed ADI for any population group. 2024 follow-up recommended revised specifications (lower heavy metal limits, calcium oxalate limit). 2024 extension opinion confirmed no ADI exceedance for food supplements at typical use levels."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR §170.30 (GRAS notification); GRN 165 (Type 1, 2005) and GRN 903 (Type 2, 2021)",
+      "notes": "FDA issued 'no questions' letters for both GRAS notifications. Type 1 for use as foaming agent in beverages at up to 500 mg/kg. Type 2 as emulsifier in beverages, confections, dairy products, supplements at 30-185 mg/100g."
+    },
+    "jecfa": {
+      "adi": {
+        "value": 1,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI of 0-1 mg quillaia saponins/kg bw for Type 1 and Type 2 extracts combined, established at 65th JECFA meeting (2005)."
+      },
+      "last_evaluation_year": 2014
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "Quillaia saponins affect gut permeability in vitro, reducing transmural potential difference in rat jejunal mucosa and potentially increasing uptake of passively permeable compounds. Changes in GI organ weights observed in several studies, though not accompanied by consistent histopathological changes.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "Gee et al. (1989) - Effects of purified saponins on transmural potential difference in mammalian small intestine",
+          "EFSA FAF Panel (2019) - Re-evaluation of E 999"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Quillaia saponins are haemolytic in vitro (crude extract at ~20 µg/mL). In vivo haemolytic activity is much weaker due to low oral absorption. Individual saponin fractions (QH-B most toxic) differ widely in potency. Severe toxicity reported only at high doses via gavage or parenteral routes.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "Rönnberg et al. (1995) - Adjuvant activity of non-toxic Quillaja saponaria components",
+          "JECFA FAS 48 Toxicological Monograph - Quillaia Extracts"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "Genotoxicity: EFSA 2019 concluded available data did not indicate a concern",
+      "Carcinogenicity: No indication in 84-week mouse study or 2-year rat study",
+      "Chronic toxicity: NOAEL at highest dose tested (1500 mg/kg bw/day) in 2-year rat study"
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "Children (toddlers 1.5-4 years) at high consumption of flavoured beverages",
+        "High-percentile consumers of flavoured drinks under worst-case GSFA level assumptions (500 mg/kg)"
+      ],
+      "notes": "ADI exceedance is possible only under conservative/worst-case assumptions (all flavoured drinks contain quillaia at maximum permitted levels, GSFA 500 mg/kg). At actual manufacturer use levels (95-100 mg/kg), EFSA refined brand-loyal assessments showed no exceedance for any population group. JECFA's lower ADI (0-1 mg/kg bw) makes exceedance more likely in theoretical scenarios than EFSA's ADI (3 mg/kg bw)."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.85,
+    "rationale": "Quillaia extract is approved by all major regulatory bodies (EFSA, FDA, JECFA, FSANZ) with established ADIs. Chronic animal studies show no carcinogenicity, no genotoxicity, and no compound-related histopathology at tested doses with very high NOAELs. FDA accepted GRAS status without questions. The main concern is saponin-related biological activity (in vitro haemolysis, gut permeability effects) which manifests primarily at high doses or parenteral administration. At typical dietary use levels, exposure does not exceed the EFSA ADI for any population group. The JECFA ADI is more conservative, and theoretical worst-case scenarios show possible exceedance for children, but actual use levels are well below these scenarios. The lack of reproductive/developmental toxicity studies is a data gap but not a safety signal.",
+    "key_factors": [
+      "Approved with established ADI by EFSA (3 mg saponins/kg bw/day) and JECFA (0-1 mg saponins/kg bw)",
+      "FDA GRAS with no questions for both Type 1 and Type 2",
+      "No genotoxicity, no carcinogenicity in chronic studies",
+      "NOAEL at highest dose tested in 2-year rat study (1500 mg/kg bw/day)",
+      "Low oral absorption of intact saponins",
+      "Not classified by IARC, not banned in any jurisdiction",
+      "Minor concerns: in vitro haemolysis, gut permeability effects at high doses",
+      "Potential ADI exceedance only in worst-case theoretical scenarios for children",
+      "No reproductive/developmental toxicity studies (data gap)"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA FAF Panel (2019) - Re-evaluation of Quillaia extract (E 999) as a food additive",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009130/",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA FAF Panel (2024) - Scientific opinion on the extension of uses of quillaia extract (E 999)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11638680/",
+      "type": "regulatory"
+    },
+    {
+      "title": "FDA GRAS Notice GRN 165 - Quillaia extract Type 1 (2005)",
+      "url": "https://hfpappexternal.fda.gov/scripts/fdcc/index.cfm?set=GRASNotices&id=165",
+      "type": "regulatory"
+    },
+    {
+      "title": "FDA GRAS Notice GRN 903 - Quillaia extract Type 2 (2021)",
+      "url": "https://hfpappexternal.fda.gov/scripts/fdcc/index.cfm?set=GRASNotices&id=903",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA Database - Quillaia Extract Type 1 (INS 999i)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4831",
+      "type": "database"
+    },
+    {
+      "title": "JECFA Database - Quillaia Extract Type 2 (INS 999ii)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4832",
+      "type": "database"
+    },
+    {
+      "title": "JECFA Toxicological Monograph (FAS 48) - Quillaia Extracts",
+      "url": "https://inchem.org/documents/jecfa/jecmono/v48je03.htm",
+      "type": "review"
+    },
+    {
+      "title": "FAO JECFA Monograph 16 - Quillaia Extract Type 2 specifications (2014)",
+      "url": "https://www.fao.org/fileadmin/user_upload/jecfa_additives/docs/monograph16/additive-368-m16.pdf",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC Monographs - Agents Classified by the IARC, Volumes 1-140",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search - quillaja saponin safety food",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=quillaja+saponin+safety+food&sort=date",
+      "type": "database"
+    }
+  ]
+}
