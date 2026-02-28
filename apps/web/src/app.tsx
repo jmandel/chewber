@@ -1398,7 +1398,11 @@ function SummaryDetails({ food }: { food: FoodDetail }) {
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px 16px" }}>
             {nutr.energy_kcal != null && <KV label="Calories" value={`${nutr.energy_kcal} kcal`} />}
             {nutr.sugars_g != null && <KV label="Sugars" value={`${nutr.sugars_g} g`} />}
-            {nutr.saturated_fat_g != null && <KV label="Sat. fat" value={`${nutr.saturated_fat_g} g`} />}
+            {nutr.total_fat_g != null ? (
+              <KV label="Fat" value={`${nutr.total_fat_g} g${nutr.saturated_fat_g != null ? ` · ${nutr.saturated_fat_g} sat` : ""}`} />
+            ) : nutr.saturated_fat_g != null ? (
+              <KV label="Sat. fat" value={`${nutr.saturated_fat_g} g`} />
+            ) : null}
             {nutr.sodium_mg != null && <KV label="Sodium" value={`${nutr.sodium_mg} mg`} />}
             {nutr.fiber_g != null && <KV label="Fiber" value={`${nutr.fiber_g} g`} />}
             {nutr.protein_g != null && <KV label="Protein" value={`${nutr.protein_g} g`} />}
@@ -2609,6 +2613,8 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 function KV({ label, value }: { label: string; value: string }) {
   return <div style={{ display: "flex", justifyContent: "space-between", padding: "6px 0", borderBottom: "1px solid var(--slate)", fontSize: 13 }}><span className="muted">{label}</span><span>{value}</span></div>;
 }
+
+
 const TRAIT_PATTERNS = /^(high|low|good|no|many|contains|calorie)-/;
 function isCategory(tag: string) { return !TRAIT_PATTERNS.test(tag); }
 
