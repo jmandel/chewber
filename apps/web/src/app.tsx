@@ -1397,13 +1397,13 @@ function SummaryDetails({ food }: { food: FoodDetail }) {
           <div style={{ fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--fog)", marginBottom: 6 }}>Nutrition per 100{nutr.unit_basis === "per_100ml" ? " mL" : " g"}</div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px 16px" }}>
             {nutr.energy_kcal != null && <KV label="Calories" value={`${nutr.energy_kcal} kcal`} />}
-            {nutr.sugars_g != null && <KV label="Sugars" value={`${nutr.sugars_g} g`} />}
+            {nutr.sodium_mg != null && <KV label="Sodium" value={`${nutr.sodium_mg} mg`} />}
             {nutr.total_fat_g != null && <KV label="Fat" value={`${nutr.total_fat_g} g`} />}
             {nutr.saturated_fat_g != null && <KV label="Sat. fat" value={`${nutr.saturated_fat_g} g`} />}
-            {nutr.sodium_mg != null && <KV label="Sodium" value={`${nutr.sodium_mg} mg`} />}
-            {nutr.fiber_g != null && <KV label="Fiber" value={`${nutr.fiber_g} g`} />}
-            {nutr.protein_g != null && <KV label="Protein" value={`${nutr.protein_g} g`} />}
             {nutr.carbohydrates_g != null && <KV label="Carbs" value={`${nutr.carbohydrates_g} g`} />}
+            {nutr.sugars_g != null && <KV label="Sugars" value={`${nutr.sugars_g} g`} />}
+            {nutr.protein_g != null && <KV label="Protein" value={`${nutr.protein_g} g`} />}
+            {nutr.fiber_g != null && <KV label="Fiber" value={`${nutr.fiber_g} g`} />}
           </div>
         </div>
       )}
