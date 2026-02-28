@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
-import { Routes, Route, useNavigate, useNavigationType, useParams, useLocation, Link } from "react-router-dom";
+import { Routes, Route, useNavigate, useNavigationType, useParams, useLocation, useSearchParams, Link } from "react-router-dom";
 import { marked } from "marked";
 import {
   api,
@@ -1281,26 +1281,53 @@ function normalizeFuncCategory(raw: string | null): string {
   return FUNC_CATEGORY_MAP[raw.toLowerCase().trim()] || "Other";
 }
 
-
+let _additivesCache: { count: number; additives: AdditiveListItem[] } | null = null;
 
 function AdditivesListPage() {
-  const [data, setData] = useState<{ count: number; additives: AdditiveListItem[] } | null>(null);
+  const [data, setData] = useState<{ count: number; additives: AdditiveListItem[] } | null>(_additivesCache);
   const [error, setError] = useState<string | null>(null);
-  const [searchText, setSearchText] = useState("");
-  const [riskFilter, setRiskFilter] = useState<string>("all");
-  const [funcFilter, setFuncFilter] = useState<string>("all");
-  const [sortBy, setSortBy] = useState<"risk" | "name" | "code">("risk");
+  const [sp, setSp] = useSearchParams();
+
+  const searchText = sp.get("q") || "";
+  const riskFilter = sp.get("risk") || "all";
+  const funcFilter = sp.get("func") || "all";
+  const sortBy = (sp.get("sort") || "risk") as "risk" | "name" | "code";
+
+  const setFilter = useCallback((key: string, value: string, defaultVal: string) => {
+    setSp(prev => {
+      const next = new URLSearchParams(prev);
+      if (value === defaultVal) next.delete(key);
+      else next.set(key, value);
+      return next;
+    }, { replace: true });
+  }, [setSp]);
+
+  const setSearchText = useCallback((v: string) => setFilter("q", v, ""), [setFilter]);
+  const setRiskFilter = useCallback((v: string) => setFilter("risk", v, "all"), [setFilter]);
+  const setFuncFilter = useCallback((v: string) => setFilter("func", v, "all"), [setFilter]);
+  const setSortBy = useCallback((v: string) => setFilter("sort", v, "risk"), [setFilter]);
 
   const nav = useNavigate();
+  const navType = useNavigationType();
   const catScrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (_additivesCache) return;
     api.getAdditives()
-      .then(setData)
+      .then(d => { _additivesCache = d; setData(d); })
       .catch(e => setError(String(e?.message ?? e)));
   }, []);
 
-
+  // Restore scroll position on back navigation
+  useEffect(() => {
+    if (navType === "POP" && data) {
+      const saved = sessionStorage.getItem('al-scroll');
+      if (saved) {
+        requestAnimationFrame(() => window.scrollTo(0, parseInt(saved, 10)));
+        sessionStorage.removeItem('al-scroll');
+      }
+    }
+  }, [navType, data]);
 
   // Auto-scroll active category chip into view on mobile
   useEffect(() => {
@@ -1462,7 +1489,7 @@ function AdditivesListPage() {
             <div
               key={add.code}
               className="al-card"
-              onClick={() => nav(`/additive/${encodeURIComponent(add.code)}`)}
+              onClick={() => { sessionStorage.setItem('al-scroll', String(window.scrollY)); nav(`/additive/${encodeURIComponent(add.code)}`); }}
               style={{ borderLeftColor: rs.fg }}
             >
               <div className="al-card-top">
