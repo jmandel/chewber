@@ -1,7 +1,6 @@
 import type { Env } from "../../env";
 import { getEnv } from "../../env";
 import { StubLLM } from "./stub";
-import { OpenAiLLM } from "./openai";
 import { OpenRouterLLM } from "./openrouter";
 
 export type ChatMessage = { role: "system" | "user" | "assistant"; content: string };
@@ -46,10 +45,7 @@ export function getLlm(purposeOrEnv?: AgentPurpose | Env, env?: Env): LlmClient 
   const provider = resolvedEnv.CHEWBER_LLM_PROVIDER;
 
   if (provider === "openrouter") {
-    // Future: map purpose -> model override
-    // e.g. const modelForPurpose = PURPOSE_MODELS[purpose] ?? resolvedEnv.OPENROUTER_MODEL;
     return new OpenRouterLLM(resolvedEnv);
   }
-  if (provider === "openai") return new OpenAiLLM(resolvedEnv);
   return new StubLLM(resolvedEnv);
 }

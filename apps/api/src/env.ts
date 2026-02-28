@@ -51,11 +51,9 @@ const EnvSchema = z.object({
   CHEWBER_DB_PATH: z.string().default("../../data/chewber.sqlite"),
   CHEWBER_UPLOAD_DIR: z.string().default("./uploads"),
 
-  CHEWBER_LLM_PROVIDER: z.enum(["stub", "openai", "openrouter"]).default("stub"),
+  CHEWBER_LLM_PROVIDER: z.enum(["stub", "openrouter"]).default("stub"),
 
-  OPENAI_API_KEY: z.string().optional(),
-  OPENAI_BASE_URL: z.string().default("https://api.openai.com/v1"),
-  OPENAI_MODEL: z.string().default("gpt-4.1-mini"),
+
 
   OPENROUTER_API_KEY: z.string().optional(),
   OPENROUTER_BASE_URL: z.string().default("https://openrouter.ai/api/v1"),
@@ -79,9 +77,7 @@ export function getEnv(): Env {
 
     CHEWBER_LLM_PROVIDER: process.env.CHEWBER_LLM_PROVIDER as any,
 
-    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
-    OPENAI_BASE_URL: process.env.OPENAI_BASE_URL,
-    OPENAI_MODEL: process.env.OPENAI_MODEL,
+
 
     OPENROUTER_API_KEY: process.env.OPENROUTER_API_KEY,
     OPENROUTER_BASE_URL: process.env.OPENROUTER_BASE_URL,

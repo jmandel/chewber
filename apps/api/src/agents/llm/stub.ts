@@ -65,7 +65,7 @@ export class StubLLM implements LlmClient {
     return `# \u26a0\ufe0f DEMO MODE \u2014 Stub Report (No LLM Configured)
 
 > **This is placeholder data.** No real research was performed.
-> Configure a real LLM provider (set CHEWBER_LLM_PROVIDER=openai or openrouter) for actual food analysis.
+> Configure a real LLM provider (set CHEWBER_LLM_PROVIDER=openrouter) for actual food analysis.
 
 ## 1) Identification
 - Canonical name: Unknown (\u26a0\ufe0f stub)
@@ -97,7 +97,7 @@ All values: null (no data gathered)
 
 ## 7) Uncertainties & follow-ups
 - Missing fields: ALL (this is a stub, not real data)
-- To get real results, set CHEWBER_LLM_PROVIDER to openai or openrouter
+- To get real results, set CHEWBER_LLM_PROVIDER to openrouter
 `;
   }
 

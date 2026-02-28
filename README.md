@@ -122,14 +122,11 @@ These default to `../../data/` relative to `apps/api/`, so they work without bei
 | `OFF_INDEX_PATH` | `data/off-index.sqlite` | OFF FTS5 search index |
 | `CHEWBER_RESEARCH_PATH` | `research/additives` | Additive research output directory |
 
-### LLM providers
+### LLM provider
 
 | Variable | Default | Description |
 |---|---|---|
-| `CHEWBER_LLM_PROVIDER` | `stub` | `stub`, `openai`, or `openrouter` |
-| `OPENAI_API_KEY` | | Required when provider is `openai` |
-| `OPENAI_BASE_URL` | `https://api.openai.com/v1` | OpenAI-compatible base URL |
-| `OPENAI_MODEL` | `gpt-4.1-mini` | Model name for OpenAI provider |
+| `CHEWBER_LLM_PROVIDER` | `stub` | `stub` or `openrouter` |
 | `OPENROUTER_API_KEY` | | Required when provider is `openrouter` |
 | `OPENROUTER_BASE_URL` | `https://openrouter.ai/api/v1` | OpenRouter base URL |
 | `OPENROUTER_MODEL` | `google/gemini-3-flash-preview` | Model name for OpenRouter provider |
@@ -147,7 +144,7 @@ These default to `../../data/` relative to `apps/api/`, so they work without bei
 |---|---|---|
 | `CHEWBER_WORKER_CONCURRENCY` | `3` | Max parallel research jobs per worker |
 
-> Note: the LLM provider is intentionally pluggable. The default `stub` lets the project compile and run without any API keys.
+> Note: the default `stub` provider lets the project compile and run without any API keys.
 
 ---
 
