@@ -8,7 +8,12 @@ import { toGeminiSchema } from "./llm/schemaTransform";
 
 const prompt = readFileSync(resolve(import.meta.dir, "./prompts/report_to_json.md"), "utf-8");
 
-// Single source of truth: derive JSON Schema from the Zod schema used for validation.
+// The annotated Zod source doubles as LLM documentation — comments teach
+// the extractor how to populate each field.
+const schemaSourcePath = resolve(import.meta.dir, "../scoring/abstraction.ts");
+const schemaSourceText = readFileSync(schemaSourcePath, "utf-8");
+
+// Derive JSON Schema from Zod for structured output constraint.
 const absSchema = zodToJsonSchema(FoodAbstractionSchema, { target: "jsonSchema7" });
 const cleanSchema = toGeminiSchema(absSchema);
 
@@ -122,14 +127,15 @@ export async function reportToJson(reportMd: string): Promise<any> {
     { role: "system", content: fullPrompt },
     {
       role: "user",
-      content: JSON.stringify(
-        {
-          json_schema: absSchema,
-          report_markdown: reportMd
-        },
-        null,
-        2
-      )
+      content: [
+        "## Schema definition (annotated TypeScript — read comments for field instructions)",
+        "```typescript",
+        schemaSourceText,
+        "```",
+        "",
+        "## Report to extract",
+        reportMd
+      ].join("\n")
     }
   ];
 
