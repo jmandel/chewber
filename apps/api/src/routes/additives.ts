@@ -49,7 +49,7 @@ additivesRoutes.get("/additives", (c) => {
 
   const researchCodes = new Set(getResearchCodes());
 
-  return c.json({
+  const body = {
     count: rows.length,
     additives: rows.map((r) => ({
       code: r.code,
@@ -60,7 +60,15 @@ additivesRoutes.get("/additives", (c) => {
       has_research: researchCodes.has(r.code.toUpperCase()),
       updated_at: r.updated_at,
     })),
-  });
+  };
+
+  const etag = `"${Bun.hash(JSON.stringify(body)).toString(36)}"`;
+  if (c.req.header("If-None-Match") === etag) {
+    return c.body(null, 304);
+  }
+  c.header("ETag", etag);
+  c.header("Cache-Control", "no-cache");
+  return c.json(body);
 });
 
 /**

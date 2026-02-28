@@ -1281,10 +1281,8 @@ function normalizeFuncCategory(raw: string | null): string {
   return FUNC_CATEGORY_MAP[raw.toLowerCase().trim()] || "Other";
 }
 
-let _additivesCache: { count: number; additives: AdditiveListItem[] } | null = null;
-
 function AdditivesListPage() {
-  const [data, setData] = useState<{ count: number; additives: AdditiveListItem[] } | null>(_additivesCache);
+  const [data, setData] = useState<{ count: number; additives: AdditiveListItem[] } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [sp, setSp] = useSearchParams();
 
@@ -1312,9 +1310,8 @@ function AdditivesListPage() {
   const catScrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (_additivesCache) return;
     api.getAdditives()
-      .then(d => { _additivesCache = d; setData(d); })
+      .then(setData)
       .catch(e => setError(String(e?.message ?? e)));
   }, []);
 
