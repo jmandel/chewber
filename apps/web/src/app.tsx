@@ -2586,7 +2586,9 @@ function ComparePage() {
                         const isWorst = worstIds.has(f.id);
                         return (
                           <td key={f.id} style={{
-                            padding: "6px", textAlign: "center", fontWeight: isBest ? 700 : 400, fontSize: 12,
+                            padding: "6px", textAlign: "center", fontSize: 12,
+                            fontWeight: isWorst ? 700 : 400,
+                            fontStyle: isBest ? "italic" : "normal",
                             color: isBest ? "var(--kale)" : isWorst ? "var(--coral)" : "var(--cream)"
                           }}>
                             {v != null ? `${v} ${unit}` : "\u2014"}
