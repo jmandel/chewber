@@ -35,6 +35,12 @@ function buildFoodDetail(row: any, abs: any) {
     }
   }
 
+  // Infer missing nutrition values where logically certain
+  if (abstraction?.nutrition_per_100) {
+    const n = abstraction.nutrition_per_100;
+    if (n.saturated_fat_g == null && n.total_fat_g === 0) n.saturated_fat_g = 0;
+  }
+
   return {
     id: row.id,
     slug: row.slug ?? row.id,
