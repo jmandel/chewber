@@ -2543,7 +2543,7 @@ function ComparePage() {
                 <th style={{ padding: "6px 8px", minWidth: 80 }} />
                 {foods.map(f => (
                   <th key={f.id} style={{ padding: "6px 8px 0", textAlign: "center", minWidth: 100, verticalAlign: "top" }}>
-                    <div style={{ fontWeight: 700, fontSize: 14, lineHeight: 1.2 }}>{truncName(f.canonical_name)}</div>
+                    <Link to={`/food/${f.slug ?? f.id}`} style={{ fontWeight: 700, fontSize: 14, lineHeight: 1.2, color: "var(--cream)", textDecoration: "none" }}>{truncName(f.canonical_name)}</Link>
                   </th>
                 ))}
               </tr>
