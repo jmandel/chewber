@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
-import { Routes, Route, useNavigate, useNavigationType, useParams, useLocation, useSearchParams, Link } from "react-router-dom";
+import { Routes, Route, useNavigate, useNavigationType, useParams, useLocation, useSearchParams, Link, type LinkProps } from "react-router-dom";
 import { marked } from "marked";
 import {
   api,
@@ -15,131 +15,54 @@ import {
   type QueueJob,
 } from "./api";
 import { JobStatusView } from "./components/JobStatusView";
+import {
+  useFoodStore,
+  useCategoryStore,
+  useAdditiveStore,
+  useQueueStore,
+  useFlowStore,
+  useUIStore,
+  useSearchStore,
+  useCompareStore,
+  type FlowStep,
+  type CategorySort,
+} from "./stores";
+import { usePrefetch } from "./hooks/usePrefetch";
+import {
+  useFoodDetail, useRecentFoods, useTopRated, useAlternatives, useRelatedFoods,
+  useCategories, useCatCounts, useCategoryFoods, useCategoryAllFoods,
+  useAdditivesList, useAdditiveDetail, useAdditiveFoods,
+  useQueueJobs, useResearchLog,
+} from "./hooks/useStoreData";
 
-// ── Transient step types (within a route, not URL-driven) ───
-type FlowStep =
-  | { kind: "idle" }
-  | { kind: "thinking"; label: string }
-  | { kind: "clarify"; assist: AssistResponse; rawText: string; priorAnswers: PriorAnswer[] }
-  | { kind: "resolving"; query: StructuredFoodQuery }
-  | { kind: "error"; message: string };
-
-// Shared flow state so input screens can trigger lookups that
-// transition through thinking → resolving → researching → done
-function useFlowState() {
-  const [flow, setFlow] = useState<FlowStep>({ kind: "idle" });
-  const [imageIds, setImageIds] = useState<string[]>([]);
-  const nav = useNavigate();
-
-  async function search(rawText: string) {
-    setFlow({ kind: "thinking", label: rawText });
-    try {
-      const res = await api.assist(rawText, imageIds);
-      if (res.rejected) {
-        setFlow({ kind: "error", message: res.rejection_reason || "That doesn\u2019t appear to be a food or beverage." });
-        return;
-      }
-      if (res.needs_followup && res.questions.length > 0) {
-        setFlow({ kind: "clarify", assist: res, rawText, priorAnswers: [] });
-      } else {
-        await resolve(res.structured_query, rawText);
-      }
-    } catch (e: any) {
-      setFlow({ kind: "error", message: String(e?.message ?? e) });
-    }
-  }
-
-  async function lookupBarcode(barcode: string) {
-    setFlow({ kind: "resolving", query: { name: `Barcode ${barcode}`, barcode } });
-    try {
-      const query = { name: barcode, barcode, kind: "unknown" as const };
-      const r = await api.resolve({ structured_query: query, rawText: `barcode: ${barcode}`, imageIds });
-      if (r.kind === "found") {
-        nav(`/food/${encodeURIComponent(r.food.id)}`, { replace: true });
-      } else {
-        nav(`/job/${encodeURIComponent(r.job_id)}`, { replace: true });
-        setFlow({ kind: "idle" });
-      }
-    } catch (e: any) {
-      setFlow({ kind: "error", message: `Barcode lookup failed: ${e?.message ?? e}` });
-    }
-  }
-
-  async function submitClarification(answers: PriorAnswer[], rawText: string, allPriorAnswers: PriorAnswer[]) {
-    const accumulated = [...allPriorAnswers, ...answers];
-    setFlow({ kind: "thinking", label: rawText });
-    try {
-      const res = await api.assist(rawText, imageIds, undefined, accumulated);
-      if (res.rejected) {
-        setFlow({ kind: "error", message: res.rejection_reason || "That doesn\u2019t appear to be a food or beverage." });
-        return;
-      }
-      if (res.needs_followup && res.questions.length > 0) {
-        // Another round needed
-        setFlow({ kind: "clarify", assist: res, rawText, priorAnswers: accumulated });
-      } else {
-        // Done clarifying — resolve
-        await resolve(res.structured_query, rawText);
-      }
-    } catch (e: any) {
-      setFlow({ kind: "error", message: String(e?.message ?? e) });
-    }
-  }
-
-  async function resolve(query: StructuredFoodQuery, rawText?: string) {
-    setFlow({ kind: "resolving", query });
-    try {
-      const r = await api.resolve({ structured_query: query, rawText, imageIds });
-      if (r.kind === "rejected") {
-        setFlow({ kind: "error", message: r.reason || "That doesn\u2019t appear to be a food or beverage." });
-      } else if (r.kind === "found") {
-        nav(`/food/${encodeURIComponent(r.food.id)}`, { replace: true });
-      } else {
-        nav(`/job/${encodeURIComponent(r.job_id)}`, { replace: true });
-        setFlow({ kind: "idle" });
-      }
-    } catch (e: any) {
-      setFlow({ kind: "error", message: String(e?.message ?? e) });
-    }
-  }
-
-  function skipClarification() {
-    if (flow.kind === "clarify") {
-      resolve(flow.assist.structured_query, flow.rawText);
-    }
-  }
-
-  return { flow, setFlow, imageIds, setImageIds, search, lookupBarcode, submitClarification, skipClarification, resolve, nav };
+// ── PrefetchLink — Link that prefetches store data on hover ──
+function PrefetchLink({ to, children, ...rest }: LinkProps & { to: string }) {
+  const prefetch = usePrefetch();
+  return (
+    <Link to={to} onMouseEnter={() => prefetch(to)} onTouchStart={() => prefetch(to)} {...rest}>
+      {children}
+    </Link>
+  );
 }
 
-// ── Flow overlay — renders transient states on top of route content ──
-function FlowOverlay({ flow, setFlow }: {
-  flow: FlowStep;
-  setFlow: (f: FlowStep) => void;
-}) {
+// ── Flow overlay ──
+function FlowOverlay() {
+  const flow = useFlowStore(s => s.flow);
+  const setFlow = useFlowStore(s => s.setFlow);
   const nav = useNavigate();
   if (flow.kind === "idle") return null;
-
   return (
     <>
       {flow.kind === "thinking" && (
-        <FocusCard>
-          <div className="spinner" />
-          <div style={{ fontWeight: 700, marginTop: 16, fontSize: 18 }}>Analyzing…</div>
-          <div className="muted" style={{ marginTop: 4 }}>{flow.label}</div>
-        </FocusCard>
+        <FocusCard><div className="spinner" /><div style={{ fontWeight: 700, marginTop: 16, fontSize: 18 }}>Analyzing…</div><div className="muted" style={{ marginTop: 4 }}>{flow.label}</div></FocusCard>
       )}
-
       {flow.kind === "resolving" && (
-        <FocusCard>
-          <div className="spinner" />
-          <div style={{ fontWeight: 700, marginTop: 16 }}>Looking up…</div>
+        <FocusCard><div className="spinner" /><div style={{ fontWeight: 700, marginTop: 16 }}>Looking up…</div>
           <div className="muted" style={{ marginTop: 4, fontFamily: flow.query.barcode ? "monospace" : undefined }}>
             {flow.query.barcode || `${flow.query.name}${flow.query.brand ? ` by ${flow.query.brand}` : ""}`}
           </div>
         </FocusCard>
       )}
-
       {flow.kind === "error" && (
         <div className="card" style={{ borderColor: "var(--coral)" }}>
           <div style={{ fontWeight: 700, color: "var(--coral)" }}>Something went wrong</div>
@@ -151,35 +74,39 @@ function FlowOverlay({ flow, setFlow }: {
   );
 }
 
-// ── App shell ───────────────────────────────────────────────
+// ── App shell ──
 export function App() {
-  const fs = useFlowState();
+  const flow = useFlowStore(s => s.flow);
+  const setFlow = useFlowStore(s => s.setFlow);
+  const setNavigate = useFlowStore(s => s.setNavigate);
+  const submitClarification = useFlowStore(s => s.submitClarification);
+  const skipClarification = useFlowStore(s => s.skipClarification);
   const location = useLocation();
   const navType = useNavigationType();
+  const nav = useNavigate();
 
-  // Reset flow state on browser back/forward (POP navigation)
-  useEffect(() => {
-    if (navType === "POP" && fs.flow.kind !== "idle") {
-      fs.setFlow({ kind: "idle" });
-    }
-  }, [location.pathname]);
-
-  // Scroll to top on route change
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
+  // Wire navigator for flowStore (only dependency on useEffect left — wiring)
+  useEffect(() => { setNavigate(nav); }, [nav, setNavigate]);
+  useEffect(() => { if (navType === "POP" && flow.kind !== "idle") setFlow({ kind: "idle" }); }, [location.pathname]);
+  useEffect(() => { window.scrollTo(0, 0); }, [location.pathname]);
 
   return (
     <div className="container">
       <Header />
-      {fs.flow.kind !== "idle" ? (
-        <FlowOverlayConnected fs={fs} />
+      {flow.kind !== "idle" ? (
+        flow.kind === "clarify" ? (
+          <ClarifyStep
+            assist={flow.assist} rawText={flow.rawText} priorAnswers={flow.priorAnswers}
+            onSubmit={(answers) => submitClarification(answers, flow.rawText, flow.priorAnswers)}
+            onSkip={skipClarification} onBack={() => setFlow({ kind: "idle" })}
+          />
+        ) : <FlowOverlay />
       ) : (
         <Routes>
           <Route path="/" element={<PickScreen />} />
-          <Route path="/text" element={<TextStep fs={fs} />} />
-          <Route path="/barcode" element={<BarcodeStep fs={fs} />} />
-          <Route path="/photo" element={<PhotoStep fs={fs} />} />
+          <Route path="/text" element={<TextStep />} />
+          <Route path="/barcode" element={<BarcodeStep />} />
+          <Route path="/photo" element={<PhotoStep />} />
           <Route path="/queue" element={<QueuePage />} />
           <Route path="/job/:jobId" element={<JobPage />} />
           <Route path="/food/:slug" element={<FoodPage />} />
@@ -194,36 +121,15 @@ export function App() {
   );
 }
 
-// Connected flow overlay that wires up clarify callbacks
-function FlowOverlayConnected({ fs }: { fs: ReturnType<typeof useFlowState> }) {
-  if (fs.flow.kind === "clarify") {
-    return (
-      <ClarifyStep
-        assist={fs.flow.assist}
-        rawText={fs.flow.rawText}
-        priorAnswers={fs.flow.priorAnswers}
-        onSubmit={(answers) => fs.submitClarification(answers, fs.flow.kind === "clarify" ? fs.flow.rawText : "", fs.flow.kind === "clarify" ? fs.flow.priorAnswers : [])}
-        onSkip={fs.skipClarification}
-        onBack={() => fs.setFlow({ kind: "idle" })}
-      />
-    );
-  }
-  return <FlowOverlay flow={fs.flow} setFlow={fs.setFlow} />;
-}
-
-// ── Admin mode ──────────────────────────────────────────────
-const ADMIN_LS_KEY = "chewber_admin";
-function getAdminKey(): string | null { return localStorage.getItem(ADMIN_LS_KEY); }
-function setAdminKey(key: string) { localStorage.setItem(ADMIN_LS_KEY, key); }
-function clearAdminKey() { localStorage.removeItem(ADMIN_LS_KEY); }
-function isAdmin(): boolean { return !!getAdminKey(); }
-
 // ── About overlay ───────────────────────────────────────────
 function AboutOverlay({ onClose }: { onClose: () => void }) {
   const [taps, setTaps] = useState(0);
   const [showKeyInput, setShowKeyInput] = useState(false);
   const [keyVal, setKeyVal] = useState("");
-  const [adminActive, setAdminActive] = useState(isAdmin());
+  const adminKey = useUIStore(s => s.adminKey);
+  const setAdminKey = useUIStore(s => s.setAdminKey);
+  const clearAdmin = useUIStore(s => s.clearAdmin);
+  const adminActive = !!adminKey;
   const tapTimer = useRef<any>(null);
 
   function handleTap() {
@@ -233,13 +139,8 @@ function AboutOverlay({ onClose }: { onClose: () => void }) {
       tapTimer.current = setTimeout(() => setTaps(0), 1500);
       if (next >= 5) {
         setTaps(0);
-        if (adminActive) {
-          clearAdminKey();
-          setAdminActive(false);
-          setShowKeyInput(false);
-        } else {
-          setShowKeyInput(true);
-        }
+        if (adminActive) { clearAdmin(); setShowKeyInput(false); }
+        else setShowKeyInput(true);
       }
       return next;
     });
@@ -247,49 +148,19 @@ function AboutOverlay({ onClose }: { onClose: () => void }) {
 
   function handleKeySubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (keyVal.trim()) {
-      setAdminKey(keyVal.trim());
-      setAdminActive(true);
-      setShowKeyInput(false);
-      setKeyVal("");
-    }
+    if (keyVal.trim()) { setAdminKey(keyVal.trim()); setShowKeyInput(false); setKeyVal(""); }
   }
 
   return (
-    <div
-      onClick={onClose}
-      style={{
-        position: "fixed", inset: 0, zIndex: 1000,
-        background: "var(--overlay-bg)", backdropFilter: "blur(4px)",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        padding: 20
-      }}
-    >
-      <div
-        onClick={(e) => e.stopPropagation()}
-        style={{
-          background: "var(--charcoal)", borderRadius: "var(--radius)",
-          border: "1px solid var(--slate)", maxWidth: 440, width: "100%",
-          maxHeight: "80vh", display: "flex", flexDirection: "column",
-          fontSize: 14, lineHeight: 1.6, color: "var(--cream)"
-        }}
-      >
-        <div style={{
-          display: "flex", alignItems: "center", gap: 10, padding: "16px 24px",
-          borderBottom: "1px solid var(--slate)", flexShrink: 0
-        }}>
+    <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 1000, background: "var(--overlay-bg)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
+      <div onClick={(e) => e.stopPropagation()} style={{ background: "var(--charcoal)", borderRadius: "var(--radius)", border: "1px solid var(--slate)", maxWidth: 440, width: "100%", maxHeight: "80vh", display: "flex", flexDirection: "column", fontSize: 14, lineHeight: 1.6, color: "var(--cream)" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "16px 24px", borderBottom: "1px solid var(--slate)", flexShrink: 0 }}>
           <img src="/tuber-header.png" alt="" height={32} style={{ display: "block" }} />
           <span style={{ flex: 1, fontSize: 20, fontWeight: 900, letterSpacing: "-0.5px" }}>Chewber</span>
-          <button onClick={onClose} aria-label="Close" style={{
-            background: "none", border: "none", color: "var(--fog)", cursor: "pointer",
-            fontSize: 22, lineHeight: 1, padding: "4px 8px", borderRadius: "var(--radius-sm)"
-          }}>✕</button>
+          <button onClick={onClose} aria-label="Close" style={{ background: "none", border: "none", color: "var(--fog)", cursor: "pointer", fontSize: 22, lineHeight: 1, padding: "4px 8px", borderRadius: "var(--radius-sm)" }}>✕</button>
         </div>
         <div style={{ padding: "20px 24px", overflowY: "auto" }}>
-          <p style={{ marginBottom: 12 }}>
-            Scan a barcode, search by name, or snap a photo — Chewber gives every food
-            a <strong>0–100 health score</strong> so you can compare at a glance.
-          </p>
+          <p style={{ marginBottom: 12 }}>Scan a barcode, search by name, or snap a photo — Chewber gives every food a <strong>0–100 health score</strong> so you can compare at a glance.</p>
           <h4 style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--fog)", marginBottom: 6 }}>How scoring works</h4>
           <p style={{ marginBottom: 8 }}>Each score combines three factors:</p>
           <ul style={{ paddingLeft: 18, marginBottom: 12 }}>
@@ -305,34 +176,13 @@ function AboutOverlay({ onClose }: { onClose: () => void }) {
             <span style={{ padding: "2px 10px", borderRadius: 6, background: "#C44D3E", color: "#fff", fontWeight: 700 }}>0–39 Poor</span>
           </div>
           <h4 style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--fog)", marginBottom: 6 }}>Data sources</h4>
-          <p style={{ marginBottom: 16, fontSize: 13 }}>
-            Chewber cross-references Open Food Facts, USDA FoodData Central, and
-            manufacturer labels. When data is missing, an AI research agent gathers
-            and verifies it.
-          </p>
-          <button onClick={onClose} style={{
-            width: "100%", padding: "10px 0", borderRadius: "var(--radius-sm)",
-            border: "1px solid var(--slate)", background: "transparent", color: "var(--cream)",
-            fontWeight: 600, fontSize: 14, cursor: "pointer"
-          }}>Close</button>
-          {/* Hidden admin activation: tap version text 5x */}
-          <div onClick={handleTap} style={{
-            marginTop: 16, textAlign: "center", fontSize: 11, color: "var(--fog)",
-            opacity: 0.4, cursor: "default", userSelect: "none",
-          }}>
-            v1.0 {adminActive ? "✓" : ""}
-          </div>
+          <p style={{ marginBottom: 16, fontSize: 13 }}>Chewber cross-references Open Food Facts, USDA FoodData Central, and manufacturer labels. When data is missing, an AI research agent gathers and verifies it.</p>
+          <button onClick={onClose} style={{ width: "100%", padding: "10px 0", borderRadius: "var(--radius-sm)", border: "1px solid var(--slate)", background: "transparent", color: "var(--cream)", fontWeight: 600, fontSize: 14, cursor: "pointer" }}>Close</button>
+          <div onClick={handleTap} style={{ marginTop: 16, textAlign: "center", fontSize: 11, color: "var(--fog)", opacity: 0.4, cursor: "default", userSelect: "none" }}>v1.0 {adminActive ? "✓" : ""}</div>
           {showKeyInput && (
             <form onSubmit={handleKeySubmit} style={{ marginTop: 8, display: "flex", gap: 6 }}>
-              <input
-                type="password" value={keyVal} onChange={e => setKeyVal(e.target.value)}
-                placeholder="Key" autoFocus
-                style={{ flex: 1, fontSize: 12, padding: "6px 8px", background: "var(--slate)", border: "1px solid var(--fog)", borderRadius: 4, color: "var(--cream)" }}
-              />
-              <button type="submit" style={{
-                fontSize: 12, padding: "6px 12px", background: "var(--kale)", border: "none",
-                borderRadius: 4, color: "#fff", cursor: "pointer", fontWeight: 600
-              }}>Set</button>
+              <input type="password" value={keyVal} onChange={e => setKeyVal(e.target.value)} placeholder="Key" autoFocus style={{ flex: 1, fontSize: 12, padding: "6px 8px", background: "var(--slate)", border: "1px solid var(--fog)", borderRadius: 4, color: "var(--cream)" }} />
+              <button type="submit" style={{ fontSize: 12, padding: "6px 12px", background: "var(--kale)", border: "none", borderRadius: 4, color: "#fff", cursor: "pointer", fontWeight: 600 }}>Set</button>
             </form>
           )}
         </div>
@@ -343,57 +193,38 @@ function AboutOverlay({ onClose }: { onClose: () => void }) {
 
 // ── Header ──────────────────────────────────────────────────
 function QueueIndicator() {
-  const [q, setQ] = useState<{ queued: number; running: number } | null>(null);
+  const queueStatus = useQueueStore(s => s.queueStatus);
+  const startPolling = useQueueStore(s => s.startStatusPolling);
+  useEffect(() => { const stop = startPolling(); return stop; }, [startPolling]);
 
-  useEffect(() => {
-    let cancelled = false;
-    async function poll() {
-      while (!cancelled) {
-        try {
-          const s = await api.getQueueStatus();
-          if (!cancelled) setQ(s);
-        } catch {}
-        await new Promise(r => setTimeout(r, 5000));
-      }
-    }
-    poll();
-    return () => { cancelled = true; };
-  }, []);
-
-  const total = (q?.queued ?? 0) + (q?.running ?? 0);
+  const total = (queueStatus?.queued ?? 0) + (queueStatus?.running ?? 0);
   if (!total) return null;
-
-  const label = q!.running
-    ? `${q!.running} researching${q!.queued ? `, ${q!.queued} queued` : ""}`
-    : `${q!.queued} queued`;
-
+  const label = queueStatus!.running
+    ? `${queueStatus!.running} researching${queueStatus!.queued ? `, ${queueStatus!.queued} queued` : ""}`
+    : `${queueStatus!.queued} queued`;
   return (
-    <span title={label} style={{
-      display: "inline-flex", alignItems: "center", gap: 5,
-      fontSize: 11, color: "var(--fog)", padding: "3px 8px",
-      background: "color-mix(in srgb, var(--sky) 15%, transparent)",
-      borderRadius: 12, whiteSpace: "nowrap"
-    }}>
-      <span style={{ width: 6, height: 6, borderRadius: "50%", background: q!.running ? "var(--sky)" : "var(--fog)", animation: q!.running ? "pulse 1.5s infinite" : "none" }} />
+    <span title={label} style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 11, color: "var(--fog)", padding: "3px 8px", background: "color-mix(in srgb, var(--sky) 15%, transparent)", borderRadius: 12, whiteSpace: "nowrap" }}>
+      <span style={{ width: 6, height: 6, borderRadius: "50%", background: queueStatus!.running ? "var(--sky)" : "var(--fog)", animation: queueStatus!.running ? "pulse 1.5s infinite" : "none" }} />
       {label}
     </span>
   );
 }
 
 function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [showAbout, setShowAbout] = useState(false);
+  const menuOpen = useUIStore(s => s.menuOpen);
+  const toggleMenu = useUIStore(s => s.toggleMenu);
+  const closeMenu = useUIStore(s => s.closeMenu);
+  const showAbout = useUIStore(s => s.showAbout);
+  const openAbout = useUIStore(s => s.openAbout);
+  const closeAbout = useUIStore(s => s.closeAbout);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // Close menu on outside click
   useEffect(() => {
     if (!menuOpen) return;
-    const handler = (e: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) setMenuOpen(false);
-    };
+    const handler = (e: MouseEvent) => { if (menuRef.current && !menuRef.current.contains(e.target as Node)) closeMenu(); };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
-  }, [menuOpen]);
+  }, [menuOpen, closeMenu]);
 
   return (
     <>
@@ -406,54 +237,24 @@ function Header() {
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <QueueIndicator />
             <div ref={menuRef} style={{ position: "relative" }}>
-              <button
-                onClick={() => setMenuOpen(o => !o)}
-                aria-label="Menu"
-                style={{
-                  background: "none", border: "none", padding: "6px 4px",
-                  cursor: "pointer", color: "var(--fog)", fontSize: 20,
-                  lineHeight: 1, flexShrink: 0
-                }}
-              >
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                  <line x1="3" y1="6" x2="21" y2="6"/>
-                  <line x1="3" y1="12" x2="21" y2="12"/>
-                  <line x1="3" y1="18" x2="21" y2="18"/>
-                </svg>
+              <button onClick={toggleMenu} aria-label="Menu" style={{ background: "none", border: "none", padding: "6px 4px", cursor: "pointer", color: "var(--fog)", fontSize: 20, lineHeight: 1, flexShrink: 0 }}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
               </button>
               {menuOpen && (
-                <div style={{
-                  position: "absolute", right: 0, top: "100%", marginTop: 6,
-                  background: "var(--charcoal)", border: "1px solid var(--slate)",
-                  borderRadius: "var(--radius-sm)", minWidth: 180, padding: "6px 0",
-                  boxShadow: "0 8px 24px rgba(0,0,0,0.4)", zIndex: 100
-                }}>
-                  <Link to="/categories" onClick={() => setMenuOpen(false)} className="menu-item" style={{
-                    display: "flex", alignItems: "center", gap: 10, padding: "10px 16px",
-                    color: "var(--cream)", textDecoration: "none", fontSize: 14
-                  }}>
+                <div style={{ position: "absolute", right: 0, top: "100%", marginTop: 6, background: "var(--charcoal)", border: "1px solid var(--slate)", borderRadius: "var(--radius-sm)", minWidth: 180, padding: "6px 0", boxShadow: "0 8px 24px rgba(0,0,0,0.4)", zIndex: 100 }}>
+                  <Link to="/categories" onClick={closeMenu} className="menu-item" style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 16px", color: "var(--cream)", textDecoration: "none", fontSize: 14 }}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--fog)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
                     Categories
                   </Link>
-                  <Link to="/additives" onClick={() => setMenuOpen(false)} className="menu-item" style={{
-                    display: "flex", alignItems: "center", gap: 10, padding: "10px 16px",
-                    color: "var(--cream)", textDecoration: "none", fontSize: 14
-                  }}>
+                  <Link to="/additives" onClick={closeMenu} className="menu-item" style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 16px", color: "var(--cream)", textDecoration: "none", fontSize: 14 }}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--fog)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 5H2v7l6.29 6.29c.94.94 2.48.94 3.42 0l4.58-4.58c.94-.94.94-2.48 0-3.42L9 5z"/><circle cx="6" cy="9" r="1"/></svg>
                     Food additives
                   </Link>
-                  <Link to="/queue" onClick={() => setMenuOpen(false)} className="menu-item" style={{
-                    display: "flex", alignItems: "center", gap: 10, padding: "10px 16px",
-                    color: "var(--cream)", textDecoration: "none", fontSize: 14
-                  }}>
+                  <Link to="/queue" onClick={closeMenu} className="menu-item" style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 16px", color: "var(--cream)", textDecoration: "none", fontSize: 14 }}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--fog)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
                     Research queue
                   </Link>
-                  <button onClick={() => { setMenuOpen(false); setShowAbout(true); }} className="menu-item" style={{
-                    display: "flex", alignItems: "center", gap: 10, padding: "10px 16px",
-                    color: "var(--cream)", background: "none", border: "none",
-                    fontSize: 14, cursor: "pointer", width: "100%", textAlign: "left"
-                  }}>
+                  <button onClick={() => { closeMenu(); openAbout(); }} className="menu-item" style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 16px", color: "var(--cream)", background: "none", border: "none", fontSize: 14, cursor: "pointer", width: "100%", textAlign: "left" }}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--fog)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
                     About Chewber
                   </button>
@@ -463,7 +264,7 @@ function Header() {
           </div>
         </div>
       </div>
-      {showAbout && <AboutOverlay onClose={() => setShowAbout(false)} />}
+      {showAbout && <AboutOverlay onClose={closeAbout} />}
     </>
   );
 }
@@ -471,16 +272,11 @@ function Header() {
 // ── Pick screen ─────────────────────────────────────────────
 function PickScreen() {
   const nav = useNavigate();
-  const [recent, setRecent] = useState<FoodSummary[]>([]);
-  const [topRated, setTopRated] = useState<FoodSummary[]>([]);
-  const [categories, setCategories] = useState<Category[]>([]);
+  const prefetch = usePrefetch();
+  const recent = useRecentFoods();
+  const topRated = useTopRated();
+  const { categories } = useCategories();
   const [catFilter, setCatFilter] = useState("");
-
-  useEffect(() => {
-    api.getRecentFoods(10).then(r => setRecent(r.foods)).catch(() => {});
-    api.getTopRatedFoods(6).then(r => setTopRated(r.foods)).catch(() => {});
-    api.getCategories().then(r => setCategories(r.categories.filter(c => c.food_count > 0))).catch(() => {});
-  }, []);
 
   const filteredCats = catFilter
     ? categories.filter(c => c.display_name.toLowerCase().includes(catFilter.toLowerCase()) || c.slug.includes(catFilter.toLowerCase()))
@@ -507,7 +303,7 @@ function PickScreen() {
         <div className="card" style={{ marginTop: 12 }}>
           <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 10 }}>Recent</div>
           {recent.map(f => (
-            <FoodListItem key={f.id} food={f} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} />
+            <FoodListItem key={f.id} food={f} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} onHover={() => prefetch(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} />
           ))}
         </div>
       )}
@@ -519,7 +315,7 @@ function PickScreen() {
             <span style={{ fontWeight: 700, fontSize: 15 }}>Top Rated</span>
           </div>
           {topRated.map(f => (
-            <FoodListItem key={f.id} food={f} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} />
+            <FoodListItem key={f.id} food={f} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} onHover={() => prefetch(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} />
           ))}
         </div>
       )}
@@ -545,37 +341,20 @@ function PickScreen() {
 
 // ── Score pill ──────────────────────────────────────────────
 function ScorePill({ score, size = 20 }: { score: number | null; size?: number }) {
-  const color =
-    score == null ? "var(--fog)"
-    : score >= 75 ? "var(--kale)" : score >= 50 ? "var(--amber)"
-    : score >= 25 ? "var(--tangerine)" : "var(--coral)";
-  return (
-    <div style={{ fontSize: size, fontWeight: 900, color, flexShrink: 0, minWidth: 36, textAlign: "right" }}>
-      {score ?? "—"}
-    </div>
-  );
+  const color = score == null ? "var(--fog)" : score >= 75 ? "var(--kale)" : score >= 50 ? "var(--amber)" : score >= 25 ? "var(--tangerine)" : "var(--coral)";
+  return <div style={{ fontSize: size, fontWeight: 900, color, flexShrink: 0, minWidth: 36, textAlign: "right" }}>{score ?? "—"}</div>;
 }
 
-// ── Shared food list item ───────────────────────────────────
-function FoodListItem({ food, onClick, noBorder }: { food: FoodSummary; onClick: () => void; noBorder?: boolean }) {
+function FoodListItem({ food, onClick, noBorder, onHover }: { food: FoodSummary; onClick: () => void; noBorder?: boolean; onHover?: () => void }) {
   const organic = food.organic;
   return (
-    <div onClick={onClick} style={{
-      display: "flex", justifyContent: "space-between", alignItems: "center",
-      padding: "10px 0", borderBottom: noBorder ? "none" : "1px solid var(--slate)", cursor: "pointer", gap: 12
-    }}>
+    <div onClick={onClick} onMouseEnter={onHover} onTouchStart={onHover} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 0", borderBottom: noBorder ? "none" : "1px solid var(--slate)", cursor: "pointer", gap: 12 }}>
       <div style={{ minWidth: 0, flex: 1 }}>
         <div style={{ fontWeight: 600, fontSize: 14, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{food.canonical_name}</div>
         <div style={{ display: "flex", alignItems: "center", gap: 5, marginTop: 1 }}>
           {food.brand && <span className="muted" style={{ fontSize: 12 }}>{food.brand}</span>}
           {organic && organic !== "unknown" && (
-            <span style={{
-              fontSize: 9, fontWeight: 700, padding: "1px 5px", borderRadius: 3, lineHeight: 1.3,
-              background: organic === "yes" ? "color-mix(in srgb, var(--kale) 18%, transparent)" : "color-mix(in srgb, var(--fog) 10%, transparent)",
-              color: organic === "yes" ? "var(--kale)" : "var(--fog)",
-              border: `1px solid ${organic === "yes" ? "var(--kale)" : "var(--fog)"}`,
-              opacity: organic === "yes" ? 1 : 0.5
-            }}>{organic === "yes" ? "Organic" : "Conventional"}</span>
+            <span style={{ fontSize: 9, fontWeight: 700, padding: "1px 5px", borderRadius: 3, lineHeight: 1.3, background: organic === "yes" ? "color-mix(in srgb, var(--kale) 18%, transparent)" : "color-mix(in srgb, var(--fog) 10%, transparent)", color: organic === "yes" ? "var(--kale)" : "var(--fog)", border: `1px solid ${organic === "yes" ? "var(--kale)" : "var(--fog)"}`, opacity: organic === "yes" ? 1 : 0.5 }}>{organic === "yes" ? "Organic" : "Conventional"}</span>
           )}
         </div>
       </div>
@@ -584,42 +363,34 @@ function FoodListItem({ food, onClick, noBorder }: { food: FoodSummary; onClick:
   );
 }
 
-// ── Text search ─────────────────────────────────────────────
-function TextStep({ fs }: { fs: ReturnType<typeof useFlowState> }) {
+// ── Text search (store-driven) ──────────────────────────────
+function TextStep() {
   const nav = useNavigate();
-  const [q, setQ] = useState("");
-  const [hits, setHits] = useState<FoodSummary[]>([]);
-  const timerRef = useRef<any>(null);
-
-  function onChange(val: string) {
-    setQ(val);
-    clearTimeout(timerRef.current);
-    const trimmed = val.trim();
-    if (trimmed.length < 2) { setHits([]); return; }
-    timerRef.current = setTimeout(() => {
-      api.searchFoods(trimmed).then(r => setHits(r.foods.slice(0, 6))).catch(() => {});
-    }, 200);
-  }
+  const prefetch = usePrefetch();
+  const search = useFlowStore(s => s.search);
+  const query = useSearchStore(s => s.query);
+  const hits = useSearchStore(s => s.hits);
+  const setQuery = useSearchStore(s => s.setQuery);
+  const clearSearch = useSearchStore(s => s.clearSearch);
+  useEffect(() => () => { clearSearch(); }, [clearSearch]);
 
   return (
     <div style={{ maxWidth: 480, margin: "0 auto" }}>
       <BackLink />
       <div className="card">
         <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 12 }}>What food are you looking for?</div>
-        <input autoFocus value={q} onChange={e => onChange(e.target.value)}
-          onKeyDown={e => { if (e.key === "Enter" && q.trim()) fs.search(q.trim()); }}
+        <input autoFocus value={query} onChange={e => setQuery(e.target.value)}
+          onKeyDown={e => { if (e.key === "Enter" && query.trim()) search(query.trim()); }}
           placeholder="e.g. Cheerios, red onion, Kerrygold butter"
           style={{ width: "100%", fontSize: 16, padding: "12px 14px", marginBottom: 0 }} />
-
-        <button disabled={!q.trim()} onClick={() => fs.search(q.trim())} className="btn-primary btn-full" style={{ marginTop: 12 }}>
+        <button disabled={!query.trim()} onClick={() => search(query.trim())} className="btn-primary btn-full" style={{ marginTop: 12 }}>
           {hits.length > 0 ? "🔍 New analysis →" : "Search"}
         </button>
-
         {hits.length > 0 && (
           <div style={{ borderTop: "1px solid var(--slate)", marginTop: 12, paddingTop: 8 }}>
             <div className="muted" style={{ fontSize: 11, marginBottom: 6 }}>Already analyzed</div>
             {hits.map(f => (
-              <FoodListItem key={f.id} food={f} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} />
+              <FoodListItem key={f.id} food={f} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} onHover={() => prefetch(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} />
             ))}
           </div>
         )}
@@ -627,9 +398,7 @@ function TextStep({ fs }: { fs: ReturnType<typeof useFlowState> }) {
     </div>
   );
 }
-
-// ── Barcode step ────────────────────────────────────────────
-function BarcodeStep({ fs }: { fs: ReturnType<typeof useFlowState> }) {
+function BarcodeStep() {
   const [manual, setManual] = useState("");
   const [scanning, setScanning] = useState(false);
   const [detected, setDetected] = useState<string | null>(null);
@@ -679,7 +448,7 @@ function BarcodeStep({ fs }: { fs: ReturnType<typeof useFlowState> }) {
             await new Promise(r => setTimeout(r, 400));
             if (!alive()) return;
             stopScan();
-            fs.lookupBarcode(codes[0].rawValue);
+            useFlowStore.getState().lookupBarcode(codes[0].rawValue);
             return;
           }
         } catch {}
@@ -742,10 +511,10 @@ function BarcodeStep({ fs }: { fs: ReturnType<typeof useFlowState> }) {
             <div style={{ fontWeight: 600, fontSize: 13, marginBottom: 8 }} className="muted">Or type barcode</div>
             <div style={{ display: "flex", gap: 8 }}>
               <input value={manual} onChange={e => setManual(e.target.value)}
-                onKeyDown={e => { if (e.key === "Enter" && manual.trim()) fs.lookupBarcode(manual.trim()); }}
+                onKeyDown={e => { if (e.key === "Enter" && manual.trim()) useFlowStore.getState().lookupBarcode(manual.trim()); }}
                 placeholder="EAN / UPC number" inputMode="numeric"
                 style={{ flex: 1, fontSize: 16, padding: "12px 14px" }} />
-              <button disabled={!manual.trim()} onClick={() => fs.lookupBarcode(manual.trim())}>Look up</button>
+              <button disabled={!manual.trim()} onClick={() => useFlowStore.getState().lookupBarcode(manual.trim())}>Look up</button>
             </div>
           </>
         )}
@@ -754,8 +523,7 @@ function BarcodeStep({ fs }: { fs: ReturnType<typeof useFlowState> }) {
   );
 }
 
-// ── Photo step ──────────────────────────────────────────────
-function PhotoStep({ fs }: { fs: ReturnType<typeof useFlowState> }) {
+function PhotoStep() {
   const [uploading, setUploading] = useState(false);
   const submitted = useRef(false);
 
@@ -770,8 +538,8 @@ function PhotoStep({ fs }: { fs: ReturnType<typeof useFlowState> }) {
       const ids: string[] = json.image_ids ?? [];
       if (ids.length && !submitted.current) {
         submitted.current = true;
-        fs.setImageIds(ids);
-        fs.search("Identify this food from the uploaded photo");
+        useFlowStore.getState().setImageIds(ids);
+        useFlowStore.getState().search("Identify this food from the uploaded photo");
       }
     } catch (e: any) { alert("Upload failed: " + String(e?.message ?? e)); }
     finally { setUploading(false); }
@@ -863,7 +631,7 @@ function ClarifyStep(props: {
           <div key={q.id} style={{ marginBottom: 20 }}>
             <div style={{ fontWeight: 600, marginBottom: 6 }}>{q.question}</div>
             {q.reason && <div className="muted" style={{ fontSize: 12, marginBottom: 8 }}>{q.reason}</div>}
-            {q.type === "select" && (
+            {q.type === "select" && q.options && (
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                 {q.options.map(o => (
                   <button key={o.value} onClick={() => setAnswer(q.id, o.value)}
@@ -871,7 +639,7 @@ function ClarifyStep(props: {
                 ))}
               </div>
             )}
-            {q.type === "multiselect" && (
+            {q.type === "multiselect" && q.options && (
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                 {q.options.map(o => {
                   const selected = (answers[q.id] ?? "").split(",").filter(Boolean);
@@ -961,29 +729,13 @@ function ShareButton({ food }: { food: FoodDetail }) {
   );
 }
 
-// ── Food detail page ────────────────────────────────────────
-// ── Queue page ──────────────────────────────────────────────
+
+// ── Queue page (store-driven) ───────────────────────────────
 function QueuePage() {
-  const [jobs, setJobs] = useState<QueueJob[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [refreshKey, setRefreshKey] = useState(0);
-
-  useEffect(() => {
-    let cancelled = false;
-    async function poll() {
-      while (!cancelled) {
-        try {
-          const r = await api.getQueueRecent();
-          if (!cancelled) { setJobs(r.jobs); setLoading(false); }
-        } catch { if (!cancelled) setLoading(false); }
-        await new Promise(r => setTimeout(r, 3000));
-      }
-    }
-    poll();
-    return () => { cancelled = true; };
-  }, [refreshKey]);
-
-  const refresh = useCallback(() => setRefreshKey(k => k + 1), []);
+  const { jobs, loaded } = useQueueJobs();
+  // Poll for updates while on this page
+  const fetchJobs = useQueueStore(s => s.fetchJobs);
+  useEffect(() => { const iv = setInterval(fetchJobs, 3000); return () => clearInterval(iv); }, [fetchJobs]);
 
   const active = jobs.filter(j => j.status === "running" || j.status === "queued");
   const completed = jobs.filter(j => j.status === "succeeded");
@@ -993,27 +745,22 @@ function QueuePage() {
     <div style={{ maxWidth: 480, margin: "0 auto" }}>
       <BackLink />
       <h2 style={{ fontSize: 18, fontWeight: 800, marginBottom: 12 }}>Research Queue</h2>
-
-      {loading && <div className="muted" style={{ textAlign: "center", padding: 20 }}><div className="spinner" /></div>}
-
-      {!loading && active.length === 0 && completed.length === 0 && failed.length === 0 && (
+      {!loaded && <div className="muted" style={{ textAlign: "center", padding: 20 }}><div className="spinner" /></div>}
+      {loaded && active.length === 0 && completed.length === 0 && failed.length === 0 && (
         <div className="card muted" style={{ textAlign: "center" }}>No research jobs yet.</div>
       )}
-
       {active.length > 0 && (
         <div style={{ marginBottom: 16 }}>
           <div className="muted" style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 6 }}>Active</div>
           {active.map(j => <QueueJobRow key={j.id} job={j} />)}
         </div>
       )}
-
       {failed.length > 0 && (
         <div style={{ marginBottom: 16 }}>
           <div className="muted" style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 6 }}>Failed</div>
-          {failed.map(j => <QueueJobRow key={j.id} job={j} onRetried={refresh} />)}
+          {failed.map(j => <QueueJobRow key={j.id} job={j} />)}
         </div>
       )}
-
       {completed.length > 0 && (
         <div style={{ marginBottom: 16 }}>
           <div className="muted" style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 6 }}>Completed</div>
@@ -1031,56 +778,32 @@ const STATUS_BADGE: Record<string, { bg: string; fg: string; label: string }> = 
   failed:    { bg: "color-mix(in srgb, var(--coral) 20%, transparent)", fg: "var(--coral)", label: "Failed" },
 };
 
-function QueueJobRow({ job, onRetried }: { job: QueueJob; onRetried?: () => void }) {
+function QueueJobRow({ job }: { job: QueueJob }) {
   const badge = STATUS_BADGE[job.status] ?? STATUS_BADGE.queued;
   const isActive = job.status === "running" || job.status === "queued";
-  const linkTo = isActive
-    ? `/job/${encodeURIComponent(job.id)}`
-    : job.food_slug
-      ? `/food/${encodeURIComponent(job.food_slug)}`
-      : job.result_food_id
-        ? `/food/${encodeURIComponent(job.result_food_id)}`
-        : null;
+  const adminKey = useUIStore(s => s.adminKey);
+  const retryJob = useQueueStore(s => s.retryJob);
+  const linkTo = isActive ? `/job/${encodeURIComponent(job.id)}`
+    : job.food_slug ? `/food/${encodeURIComponent(job.food_slug)}`
+    : job.result_food_id ? `/food/${encodeURIComponent(job.result_food_id)}` : null;
   const [retrying, setRetrying] = useState(false);
-
-  const timeAgo = (iso: string) => {
-    const s = Math.floor((Date.now() - new Date(iso).getTime()) / 1000);
-    if (s < 60) return "just now";
-    if (s < 3600) return `${Math.floor(s / 60)}m ago`;
-    if (s < 86400) return `${Math.floor(s / 3600)}h ago`;
-    return `${Math.floor(s / 86400)}d ago`;
-  };
+  const timeAgo = (iso: string) => { const s = Math.floor((Date.now() - new Date(iso).getTime()) / 1000); if (s < 60) return "just now"; if (s < 3600) return `${Math.floor(s / 60)}m ago`; if (s < 86400) return `${Math.floor(s / 3600)}h ago`; return `${Math.floor(s / 86400)}d ago`; };
 
   async function handleRetry(e: React.MouseEvent) {
-    e.preventDefault();
-    e.stopPropagation();
-    const key = getAdminKey();
-    if (!key) return;
+    e.preventDefault(); e.stopPropagation();
+    if (!adminKey) return;
     setRetrying(true);
-    try {
-      await api.retryJob(job.id, key);
-      onRetried?.();
-    } catch (err: any) {
-      alert(`Retry failed: ${err.message}`);
-    } finally {
-      setRetrying(false);
-    }
+    try { await retryJob(job.id, adminKey); } catch (err: any) { alert(`Retry failed: ${err.message}`); } finally { setRetrying(false); }
   }
 
   const inner = (
     <div className="card" style={{ padding: "12px 14px", marginBottom: 6, cursor: linkTo ? "pointer" : "default" }}>
       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontWeight: 600, fontSize: 14, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-            {job.food_name ?? job.label ?? job.id}
-          </div>
+          <div style={{ fontWeight: 600, fontSize: 14, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{job.food_name ?? job.label ?? job.id}</div>
           {job.food_brand && <div className="muted" style={{ fontSize: 12 }}>{job.food_brand}</div>}
         </div>
-        <span style={{
-          fontSize: 10, fontWeight: 700, textTransform: "uppercase",
-          padding: "2px 8px", borderRadius: 8,
-          background: badge.bg, color: badge.fg, whiteSpace: "nowrap"
-        }}>{badge.label}</span>
+        <span style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", padding: "2px 8px", borderRadius: 8, background: badge.bg, color: badge.fg, whiteSpace: "nowrap" }}>{badge.label}</span>
         <span className="muted" style={{ fontSize: 11, flexShrink: 0 }}>{timeAgo(job.created_at)}</span>
       </div>
       {isActive && job.progress > 0 && (
@@ -1091,51 +814,40 @@ function QueueJobRow({ job, onRetried }: { job: QueueJob; onRetried?: () => void
       {job.status === "failed" && (
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 4 }}>
           {job.error && <div className="muted" style={{ fontSize: 11, color: "var(--coral)", flex: 1 }}>{job.error}</div>}
-          {isAdmin() && (
-            <button onClick={handleRetry} disabled={retrying} style={{
-              fontSize: 11, padding: "3px 10px", borderRadius: 4, cursor: "pointer",
-              background: "none", border: "1px solid var(--fog)", color: "var(--fog)",
-              fontWeight: 600, flexShrink: 0, opacity: retrying ? 0.5 : 1
-            }}>{retrying ? "…" : "Retry"}</button>
-          )}
+          {!!adminKey && <button onClick={handleRetry} disabled={retrying} style={{ fontSize: 11, padding: "3px 10px", borderRadius: 4, cursor: "pointer", background: "none", border: "1px solid var(--fog)", color: "var(--fog)", fontWeight: 600, flexShrink: 0, opacity: retrying ? 0.5 : 1 }}>{retrying ? "…" : "Retry"}</button>}
         </div>
       )}
     </div>
   );
-
-  return linkTo ? <Link to={linkTo} style={{ textDecoration: "none", color: "inherit" }}>{inner}</Link> : inner;
+  return linkTo ? <PrefetchLink to={linkTo} style={{ textDecoration: "none", color: "inherit" }}>{inner}</PrefetchLink> : inner;
 }
 
-// ── Job page — permalink for in-progress research ──────────
+// ── Job page ────────────────────────────────────────────────
 function JobPage() {
   const { jobId } = useParams<{ jobId: string }>();
   const nav = useNavigate();
+  const fetchFood = useFoodStore(s => s.fetchFood);
   const [label, setLabel] = useState<string>("Gathering nutrition data");
   const [notFound, setNotFound] = useState(false);
 
-  useEffect(() => {
-    if (!jobId) return;
+  // One-time: check if job already completed → redirect
+  const checkedRef = useRef(false);
+  if (jobId && !checkedRef.current) {
+    checkedRef.current = true;
     api.getJob(jobId).then(job => {
       if (job.label) setLabel(job.label);
-      // If already succeeded, redirect immediately
       if (job.status === "succeeded" && job.result_food_id) {
-        api.getFood(job.result_food_id).then(f => {
-          nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`, { replace: true });
-        }).catch(() => {
-          nav(`/food/${encodeURIComponent(job.result_food_id!)}`, { replace: true });
+        fetchFood(job.result_food_id).then(f => {
+          nav(`/food/${encodeURIComponent(f?.slug ?? f?.id ?? job.result_food_id!)}`, { replace: true });
         });
       }
     }).catch(() => setNotFound(true));
-  }, [jobId]);
+  }
 
   const onCompleted = useCallback(async (foodId: string) => {
-    try {
-      const f = await api.getFood(foodId);
-      nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`, { replace: true });
-    } catch {
-      nav(`/food/${encodeURIComponent(foodId)}`, { replace: true });
-    }
-  }, [nav]);
+    const f = await fetchFood(foodId);
+    nav(`/food/${encodeURIComponent(f?.slug ?? f?.id ?? foodId)}`, { replace: true });
+  }, [nav, fetchFood]);
 
   if (!jobId || notFound) return <FocusCard><div>Job not found</div><Link to="/">← Home</Link></FocusCard>;
 
@@ -1151,33 +863,14 @@ function JobPage() {
   );
 }
 
+// ── Food page (instant from store, no flicker) ──────────────
 function FoodPage() {
   const { slug } = useParams<{ slug: string }>();
   const nav = useNavigate();
-  const [food, setFood] = useState<FoodDetail | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const decoded = slug ? decodeURIComponent(slug) : undefined;
+  const { food } = useFoodDetail(decoded);
 
-  useEffect(() => {
-    if (!slug) return;
-    api.getFood(decodeURIComponent(slug))
-      .then(f => setFood(f))
-      .catch(e => setError(String(e?.message ?? e)));
-  }, [slug]);
-
-  if (error) return (
-    <div className="card" style={{ borderColor: "var(--coral)" }}>
-      <div style={{ fontWeight: 700, color: "var(--coral)" }}>Something went wrong</div>
-      <div style={{ marginTop: 8, fontSize: 13, wordBreak: "break-word" }}>{error}</div>
-      <button onClick={() => nav("/")} style={{ marginTop: 12, width: "100%" }}>Start over</button>
-    </div>
-  );
-
-  if (!food) return (
-    <FocusCard>
-      <div className="spinner" />
-      <div style={{ fontWeight: 700, marginTop: 16 }}>Loading…</div>
-    </FocusCard>
-  );
+  if (!food) return <FocusCard><div className="spinner" /><div style={{ fontWeight: 700, marginTop: 16 }}>Loading…</div></FocusCard>;
 
   return (
     <>
@@ -1193,8 +886,6 @@ function FoodPage() {
     </>
   );
 }
-
-// ── Score hero ──────────────────────────────────────────────
 function isStubData(food: FoodDetail): boolean {
   const abs = food.abstraction;
   if (!abs) return false;
@@ -1220,63 +911,31 @@ function isIncompleteReport(food: FoodDetail): boolean {
 
 function AdminDeleteButton({ food }: { food: FoodDetail }) {
   const nav = useNavigate();
+  const adminKey = useUIStore(s => s.adminKey);
   const [confirming, setConfirming] = useState(false);
-  if (!isAdmin()) return null;
+  if (!adminKey) return null;
 
   async function handleDelete() {
-    const key = getAdminKey();
-    if (!key) return;
-    try {
-      await api.deleteFood(food.id, key);
-      nav("/", { replace: true });
-    } catch (e: any) {
-      alert(`Delete failed: ${e.message}`);
-      setConfirming(false);
-    }
+    try { await api.deleteFood(food.id, adminKey!); nav("/", { replace: true }); }
+    catch (e: any) { alert(`Delete failed: ${e.message}`); setConfirming(false); }
   }
 
   if (confirming) {
     return (
-      <div style={{
-        position: "absolute", top: 12, left: 12, display: "flex", alignItems: "center", gap: 4,
-        background: "var(--charcoal)", border: "1px solid var(--coral)", borderRadius: 8,
-        padding: "4px 8px", zIndex: 2,
-      }}>
+      <div style={{ position: "absolute", top: 12, left: 12, display: "flex", alignItems: "center", gap: 4, background: "var(--charcoal)", border: "1px solid var(--coral)", borderRadius: 8, padding: "4px 8px", zIndex: 2 }}>
         <span style={{ fontSize: 11, color: "var(--coral)", fontWeight: 600 }}>Delete?</span>
-        <button onClick={handleDelete} style={{
-          fontSize: 11, padding: "2px 8px", background: "var(--coral)", color: "#fff",
-          border: "none", borderRadius: 4, cursor: "pointer", fontWeight: 600
-        }}>Yes</button>
-        <button onClick={() => setConfirming(false)} style={{
-          fontSize: 11, padding: "2px 8px", background: "transparent", color: "var(--fog)",
-          border: "1px solid var(--fog)", borderRadius: 4, cursor: "pointer"
-        }}>No</button>
+        <button onClick={handleDelete} style={{ fontSize: 11, padding: "2px 8px", background: "var(--coral)", color: "#fff", border: "none", borderRadius: 4, cursor: "pointer", fontWeight: 600 }}>Yes</button>
+        <button onClick={() => setConfirming(false)} style={{ fontSize: 11, padding: "2px 8px", background: "transparent", color: "var(--fog)", border: "1px solid var(--fog)", borderRadius: 4, cursor: "pointer" }}>No</button>
       </div>
     );
   }
-
   return (
-    <button
-      onClick={() => setConfirming(true)}
-      aria-label="Delete"
-      style={{
-        position: "absolute", top: 12, left: 12,
-        display: "flex", alignItems: "center", justifyContent: "center",
-        width: 36, height: 36, padding: 0,
-        background: "transparent", border: "none", borderRadius: "50%",
-        color: "var(--fog)", cursor: "pointer", opacity: 0.5,
-        transition: "opacity 0.2s",
-      }}
-      onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
-      onMouseLeave={e => (e.currentTarget.style.opacity = "0.5")}
-    >
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-      </svg>
+    <button onClick={() => setConfirming(true)} aria-label="Delete" style={{ position: "absolute", top: 12, left: 12, display: "flex", alignItems: "center", justifyContent: "center", width: 36, height: 36, padding: 0, background: "transparent", border: "none", borderRadius: "50%", color: "var(--fog)", cursor: "pointer", opacity: 0.5, transition: "opacity 0.2s" }}
+      onMouseEnter={e => (e.currentTarget.style.opacity = "1")} onMouseLeave={e => (e.currentTarget.style.opacity = "0.5")}>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
     </button>
   );
 }
-
 function ScoreHero({ food }: { food: FoodDetail }) {
   const score = food.score;
   const stub = isStubData(food);
@@ -1473,7 +1132,7 @@ function SummaryDetails({ food }: { food: FoodDetail }) {
                           }}>{a.name ?? a.code ?? "unknown"}</span>
                         );
                         return code ? (
-                          <Link key={i} to={`/additive/${code}`} style={{ textDecoration: "none" }}>{badge}</Link>
+                          <PrefetchLink key={i} to={`/additive/${code}`} style={{ textDecoration: "none" }}>{badge}</PrefetchLink>
                         ) : (
                           <span key={i}>{badge}</span>
                         );
@@ -1517,8 +1176,6 @@ function SummaryDetails({ food }: { food: FoodDetail }) {
   );
 }
 
-// ── Additives List Page ───────────────────────────────────
-// ── Category normalization for additives list ──────────────
 const FUNC_CATEGORY_MAP: Record<string, string> = {
   // Colors
   "food colour": "Color", "food color": "Color", "colour": "Color", "color additive": "Color",
@@ -1571,99 +1228,49 @@ function normalizeFuncCategory(raw: string | null): string {
 }
 
 function AdditivesListPage() {
-  const [data, setData] = useState<{ count: number; additives: AdditiveListItem[] } | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const { additives: data, loaded } = useAdditivesList();
+  const prefetch = usePrefetch();
   const [sp, setSp] = useSearchParams();
-
   const searchText = sp.get("q") || "";
   const riskFilter = sp.get("risk") || "all";
   const funcFilter = sp.get("func") || "all";
   const sortBy = (sp.get("sort") || "risk") as "risk" | "name" | "code";
-
   const setFilter = useCallback((key: string, value: string, defaultVal: string) => {
-    setSp(prev => {
-      const next = new URLSearchParams(prev);
-      if (value === defaultVal) next.delete(key);
-      else next.set(key, value);
-      return next;
-    }, { replace: true });
+    setSp(prev => { const next = new URLSearchParams(prev); if (value === defaultVal) next.delete(key); else next.set(key, value); return next; }, { replace: true });
   }, [setSp]);
-
   const setSearchText = useCallback((v: string) => setFilter("q", v, ""), [setFilter]);
   const setRiskFilter = useCallback((v: string) => setFilter("risk", v, "all"), [setFilter]);
   const setFuncFilter = useCallback((v: string) => setFilter("func", v, "all"), [setFilter]);
   const setSortBy = useCallback((v: string) => setFilter("sort", v, "risk"), [setFilter]);
-
   const nav = useNavigate();
   const navType = useNavigationType();
   const catScrollRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    api.getAdditives()
-      .then(setData)
-      .catch(e => setError(String(e?.message ?? e)));
-  }, []);
+  // Restore scroll on back
+  useEffect(() => { if (navType === "POP" && data) { const saved = sessionStorage.getItem('al-scroll'); if (saved) { requestAnimationFrame(() => window.scrollTo(0, parseInt(saved, 10))); sessionStorage.removeItem('al-scroll'); } } }, [navType, data]);
+  useEffect(() => { const el = catScrollRef.current; if (!el) return; const active = el.querySelector('.al-cat-chip.active') as HTMLElement; if (active) active.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' }); }, [funcFilter]);
 
-  // Restore scroll position on back navigation
-  useEffect(() => {
-    if (navType === "POP" && data) {
-      const saved = sessionStorage.getItem('al-scroll');
-      if (saved) {
-        requestAnimationFrame(() => window.scrollTo(0, parseInt(saved, 10)));
-        sessionStorage.removeItem('al-scroll');
-      }
-    }
-  }, [navType, data]);
+  if (!loaded) return <div style={{ textAlign: "center", padding: 40 }}><div className="spinner" /></div>;
+  if (!data) return <div className="muted" style={{ textAlign: "center", padding: 40 }}>Failed to load additives</div>;
 
-  // Auto-scroll active category chip into view on mobile
-  useEffect(() => {
-    const el = catScrollRef.current;
-    if (!el) return;
-    const active = el.querySelector('.al-cat-chip.active') as HTMLElement;
-    if (active) active.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
-  }, [funcFilter]);
-
-  if (error) return <div className="muted" style={{ textAlign: "center", padding: 40 }}>Failed to load additives: {error}</div>;
-  if (!data) return <div style={{ textAlign: "center", padding: 40 }}><div className="spinner" /></div>;
-
-  // Compute category counts from full data
+  const total = data.length;
   const catCounts: Record<string, number> = {};
-  for (const a of data.additives) {
-    const cat = normalizeFuncCategory(a.function_category);
-    catCounts[cat] = (catCounts[cat] || 0) + 1;
-  }
-
-  // Risk counts from full data
+  for (const a of data) { const cat = normalizeFuncCategory(a.function_category); catCounts[cat] = (catCounts[cat] || 0) + 1; }
   const riskCounts: Record<string, number> = { risk_free: 0, limited: 0, moderate: 0, high: 0 };
-  for (const a of data.additives) riskCounts[a.risk_level] = (riskCounts[a.risk_level] || 0) + 1;
-  const total = data.additives.length;
+  for (const a of data) riskCounts[a.risk_level] = (riskCounts[a.risk_level] || 0) + 1;
 
-  // Filter
-  let filtered = data.additives.filter(a => {
+  let filtered = data.filter(a => {
     const search = searchText.toLowerCase();
     if (search && !a.code.toLowerCase().includes(search) && !(a.name && a.name.toLowerCase().includes(search)) && !(a.description && a.description.toLowerCase().includes(search))) return false;
     if (riskFilter !== "all" && a.risk_level !== riskFilter) return false;
     if (funcFilter !== "all" && normalizeFuncCategory(a.function_category) !== funcFilter) return false;
     return true;
   });
-
-  // Sort
   const sorted = [...filtered].sort((a, b) => {
-    if (sortBy === "risk") {
-      const orderA = ADDITIVE_RISK_STYLES[a.risk_level]?.order ?? 9;
-      const orderB = ADDITIVE_RISK_STYLES[b.risk_level]?.order ?? 9;
-      if (orderA !== orderB) return orderA - orderB;
-      return a.code.localeCompare(b.code);
-    } else if (sortBy === "name") {
-      return (a.name ?? a.code).localeCompare(b.name ?? b.code);
-    } else {
-      // By E-number (numeric part)
-      const numA = parseInt(a.code.replace(/[^0-9]/g, "")) || 9999;
-      const numB = parseInt(b.code.replace(/[^0-9]/g, "")) || 9999;
-      return numA - numB;
-    }
+    if (sortBy === "risk") { const oA = ADDITIVE_RISK_STYLES[a.risk_level]?.order ?? 9, oB = ADDITIVE_RISK_STYLES[b.risk_level]?.order ?? 9; if (oA !== oB) return oA - oB; return a.code.localeCompare(b.code); }
+    if (sortBy === "name") return (a.name ?? a.code).localeCompare(b.name ?? b.code);
+    return (parseInt(a.code.replace(/[^0-9]/g, "")) || 9999) - (parseInt(b.code.replace(/[^0-9]/g, "")) || 9999);
   });
-
 
   return (
     <div className="additives-list-page">
@@ -1775,7 +1382,7 @@ function AdditivesListPage() {
             <div
               key={add.code}
               className="al-card"
-              onClick={() => { sessionStorage.setItem('al-scroll', String(window.scrollY)); nav(`/additive/${encodeURIComponent(add.code)}`); }}
+              onClick={() => { sessionStorage.setItem('al-scroll', String(window.scrollY)); nav(`/additive/${encodeURIComponent(add.code)}`); }} onMouseEnter={() => prefetch(`/additive/${encodeURIComponent(add.code)}`)}
               style={{ borderLeftColor: rs.fg }}
             >
               <div className="al-card-top">
@@ -1813,21 +1420,13 @@ function AdditivesListPage() {
 }
 
 // ── Additive Detail Page ──────────────────────────────────
+
+// ── Additive detail page (store-driven) ─────────────────────
 function AdditivePage() {
   const { code } = useParams<{ code: string }>();
-  const [data, setData] = useState<AdditiveDetail | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const { detail: data } = useAdditiveDetail(code);
   const [tab, setTab] = useState<"overview" | "report">("overview");
-  const nav = useNavigate();
 
-  useEffect(() => {
-    if (!code) return;
-    api.getAdditive(code)
-      .then(setData)
-      .catch(e => setError(String(e?.message ?? e)));
-  }, [code]);
-
-  if (error) return <div className="muted" style={{ textAlign: "center", padding: 40 }}>Failed to load additive: {error}</div>;
   if (!data) return <div style={{ textAlign: "center", padding: 40 }}><div className="spinner" /></div>;
 
   const riskLevel = data.risk_level || "limited";
@@ -1838,10 +1437,7 @@ function AdditivePage() {
 
   return (
     <div className="additive-page">
-      {/* Breadcrumb */}
-      <Link to="/additives" className="additive-breadcrumb">← All additives</Link>
-
-      {/* Hero header */}
+      <PrefetchLink to="/additives" className="additive-breadcrumb">← All additives</PrefetchLink>
       <div className="additive-hero">
         <div className="additive-hero-top">
           <div style={{ flex: 1, minWidth: 0 }}>
@@ -1851,86 +1447,48 @@ function AdditivePage() {
               {funcCategory && <span className="additive-hero-func">{funcCategory}</span>}
             </div>
           </div>
-          <span
-            className="additive-risk-badge"
-            style={{ background: rstyle.bg, color: rstyle.fg, borderColor: rstyle.border }}
-          >
-            <span className="additive-risk-marker">{rstyle.marker}</span>
-            {riskLevel.replace("_", " ")}
+          <span className="additive-risk-badge" style={{ background: rstyle.bg, color: rstyle.fg, borderColor: rstyle.border }}>
+            <span className="additive-risk-marker">{rstyle.marker}</span>{riskLevel.replace("_", " ")}
           </span>
         </div>
-        {data.justification && (
-          <p className="additive-hero-summary">{data.justification}</p>
-        )}
+        {data.justification && <p className="additive-hero-summary">{data.justification}</p>}
       </div>
-
-      {/* Tabs */}
       {hasResearch && (
         <div className="additive-tabs">
-          <button
-            className={`additive-tab${tab === "overview" ? " active" : ""}`}
-            onClick={() => setTab("overview")}
-          >Overview</button>
-          <button
-            className={`additive-tab${tab === "report" ? " active" : ""}`}
-            onClick={() => setTab("report")}
-          >Full Report</button>
+          <button className={`additive-tab${tab === "overview" ? " active" : ""}`} onClick={() => setTab("overview")}>Overview</button>
+          <button className={`additive-tab${tab === "report" ? " active" : ""}`} onClick={() => setTab("report")}>Full Report</button>
         </div>
       )}
-
-      {/* Content */}
       {!hasResearch ? (
         <div className="card" style={{ padding: 16 }}>
           <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 8 }}>Basic Information</div>
           <div className="muted" style={{ fontSize: 12, marginBottom: 12 }}>Detailed research pending for this additive.</div>
-          {data.description && (
-            <div style={{ marginBottom: 12 }}>
-              <div style={{ fontWeight: 600, fontSize: 12, color: "var(--fog)", marginBottom: 4 }}>Description</div>
-              <div style={{ fontSize: 13 }}>{data.description}</div>
-            </div>
-          )}
+          {data.description && <div style={{ marginBottom: 12 }}><div style={{ fontWeight: 600, fontSize: 12, color: "var(--fog)", marginBottom: 4 }}>Description</div><div style={{ fontSize: 13 }}>{data.description}</div></div>}
         </div>
       ) : tab === "overview" && abstraction ? (
         <AdditiveOverview abstraction={abstraction} />
       ) : tab === "report" && data.research?.report_md ? (
-        <div className="card" style={{ padding: 20 }}>
-          <div className="md-body" dangerouslySetInnerHTML={{ __html: renderMarkdown(data.research.report_md) }} />
-        </div>
+        <div className="card" style={{ padding: 20 }}><div className="md-body" dangerouslySetInnerHTML={{ __html: renderMarkdown(data.research.report_md) }} /></div>
       ) : null}
-
-      {/* Foods containing this additive */}
-      <AdditiveFoods code={data.code} />
+      <AdditiveFoodsSection code={data.code} />
     </div>
   );
 }
 
-function AdditiveFoods({ code }: { code: string }) {
-  const [foods, setFoods] = useState<FoodSummary[] | null>(null);
+function AdditiveFoodsSection({ code }: { code: string }) {
+  const foods = useAdditiveFoods(code);
   const nav = useNavigate();
-
-  useEffect(() => {
-    api.getAdditiveFoods(code)
-      .then(r => setFoods(r.foods))
-      .catch(() => setFoods([]));
-  }, [code]);
-
-  if (foods === null || foods.length === 0) return null;
-
+  const prefetch = usePrefetch();
+  if (!foods || foods.length === 0) return null;
   return (
     <div className="additive-section">
       <div className="additive-section-head">Found in</div>
       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
         {foods.map(f => (
-          <div
-            key={f.id}
-            className="card additive-food-row"
-            onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)}
-          >
+          <div key={f.id} className="card additive-food-row" onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} onMouseEnter={() => prefetch(`/food/${encodeURIComponent(f.slug ?? f.id)}`)}>
             {f.score != null && <ScorePill score={f.score} size={18} />}
             <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ fontWeight: 600, fontSize: 14, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                {f.canonical_name}
-              </div>
+              <div style={{ fontWeight: 600, fontSize: 14, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{f.canonical_name}</div>
               {f.brand && <div className="muted" style={{ fontSize: 11 }}>{f.brand}</div>}
             </div>
             <span className="muted" style={{ fontSize: 14 }}>›</span>
@@ -1940,9 +1498,6 @@ function AdditiveFoods({ code }: { code: string }) {
     </div>
   );
 }
-
-// ── Additive Overview (structured abstraction) ────────────
-
 function AdditiveSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="additive-section">
@@ -2212,30 +1767,19 @@ function AdditiveOverview({ abstraction }: { abstraction: Record<string, any> })
   );
 }
 
+// ── Research log (store-driven) ─────────────────────────────
 function ResearchLog({ foodId }: { foodId: string }) {
-  const [events, setEvents] = useState<any[] | null>(null);
-  const [job, setJob] = useState<any>(null);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    api.getJobByFood(foodId).then(r => {
-      setJob(r.job);
-      setEvents(r.events);
-    }).catch(e => setError(String(e?.message ?? e)));
-  }, [foodId]);
-
-  if (error) return <div className="muted" style={{ textAlign: "center", padding: 20 }}>Failed to load log: {error}</div>;
-  if (events === null) return <div className="muted" style={{ textAlign: "center", padding: 20 }}>Loading…</div>;
+  const log = useResearchLog(foodId);
+  if (!log) return <div className="muted" style={{ textAlign: "center", padding: 20 }}>Loading…</div>;
+  const { job, events } = log;
   if (!job) return <div className="muted" style={{ textAlign: "center", padding: 20 }}>No research job found for this food.</div>;
-
   const LEVEL_COLORS: Record<string, { bg: string; fg: string }> = {
-    info:  { bg: "color-mix(in srgb, var(--blue) 10%, var(--charcoal))", fg: "var(--fog)" },
-    tool:  { bg: "color-mix(in srgb, var(--kale) 10%, var(--charcoal))", fg: "var(--kale)" },
-    warn:  { bg: "color-mix(in srgb, var(--amber) 10%, var(--charcoal))", fg: "var(--amber)" },
+    info: { bg: "color-mix(in srgb, var(--blue) 10%, var(--charcoal))", fg: "var(--fog)" },
+    tool: { bg: "color-mix(in srgb, var(--kale) 10%, var(--charcoal))", fg: "var(--kale)" },
+    warn: { bg: "color-mix(in srgb, var(--amber) 10%, var(--charcoal))", fg: "var(--amber)" },
     error: { bg: "color-mix(in srgb, var(--coral) 10%, var(--charcoal))", fg: "var(--coral)" },
     debug: { bg: "var(--charcoal)", fg: "var(--fog)" },
   };
-
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "space-between", fontSize: 12, marginBottom: 12 }}>
@@ -2243,15 +1787,11 @@ function ResearchLog({ foodId }: { foodId: string }) {
         <span className="muted">{job.status} • {job.finished_at ? new Date(job.finished_at).toLocaleString() : ""}</span>
       </div>
       <div style={{ maxHeight: 500, overflowY: "auto" }}>
-        {events.map((ev: any) => {
-          const c = LEVEL_COLORS[ev.level] ?? LEVEL_COLORS.info;
-          return <LogRow key={ev.id} ev={ev} bg={c.bg} fg={c.fg} />;
-        })}
+        {events.map((ev: any) => { const c = LEVEL_COLORS[ev.level] ?? LEVEL_COLORS.info; return <LogRow key={ev.id} ev={ev} bg={c.bg} fg={c.fg} />; })}
       </div>
     </div>
   );
 }
-
 function LogRow({ ev, bg, fg }: { ev: any; bg: string; fg: string }) {
   const [open, setOpen] = useState(false);
   const hasData = ev.data && Object.keys(ev.data).length > 0;
@@ -2274,51 +1814,29 @@ function LogRow({ ev, bg, fg }: { ev: any; bg: string; fg: string }) {
 }
 
 // ── Category browse page ────────────────────────────────────
-// ── Categories landing page ─────────────────────────────────
+
+// ── Categories page (store-driven) ──────────────────────────
 function CategoriesPage() {
   const nav = useNavigate();
-  const [categories, setCategories] = useState<Category[]>([]);
+  const { categories, loaded } = useCategories();
   const [filter, setFilter] = useState("");
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    api.getCategories().then(r => {
-      setCategories(r.categories.filter(c => c.food_count > 0));
-      setLoading(false);
-    }).catch(() => setLoading(false));
-  }, []);
-
-  const filtered = filter
-    ? categories.filter(c => c.display_name.toLowerCase().includes(filter.toLowerCase()) || c.slug.includes(filter.toLowerCase()))
-    : categories;
-
+  const filtered = filter ? categories.filter(c => c.display_name.toLowerCase().includes(filter.toLowerCase()) || c.slug.includes(filter.toLowerCase())) : categories;
   return (
     <div style={{ maxWidth: 480, margin: "0 auto" }}>
       <BackLink />
       <h2 style={{ fontSize: 18, fontWeight: 800, marginBottom: 12 }}>Categories</h2>
-      {categories.length > 8 && (
-        <input placeholder="Filter categories…" value={filter} onChange={e => setFilter(e.target.value)}
-          style={{ width: "100%", marginBottom: 12, fontSize: 14, padding: "10px 14px" }} />
-      )}
-      {loading && <div className="muted" style={{ textAlign: "center", padding: 20 }}><div className="spinner" /></div>}
-      {!loading && filtered.length === 0 && <div className="card muted" style={{ textAlign: "center" }}>No categories found.</div>}
+      {categories.length > 8 && <input placeholder="Filter categories…" value={filter} onChange={e => setFilter(e.target.value)} style={{ width: "100%", marginBottom: 12, fontSize: 14, padding: "10px 14px" }} />}
+      {!loaded && <div className="muted" style={{ textAlign: "center", padding: 20 }}><div className="spinner" /></div>}
+      {loaded && filtered.length === 0 && <div className="card muted" style={{ textAlign: "center" }}>No categories found.</div>}
       {filtered.map(c => (
-        <div key={c.slug} onClick={() => nav(`/category/${encodeURIComponent(c.slug)}`)} className="card" style={{
-          padding: "12px 14px", marginBottom: 6, cursor: "pointer",
-          display: "flex", alignItems: "center", justifyContent: "space-between"
-        }}>
-          <div>
-            <div style={{ fontWeight: 600, fontSize: 14 }}>{c.display_name}</div>
-            {c.description && <div className="muted" style={{ fontSize: 12, marginTop: 2 }}>{c.description}</div>}
-          </div>
+        <div key={c.slug} onClick={() => nav(`/category/${encodeURIComponent(c.slug)}`)} className="card" style={{ padding: "12px 14px", marginBottom: 6, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div><div style={{ fontWeight: 600, fontSize: 14 }}>{c.display_name}</div>{c.description && <div className="muted" style={{ fontSize: 12, marginTop: 2 }}>{c.description}</div>}</div>
           <span className="muted" style={{ fontSize: 13, flexShrink: 0, marginLeft: 12 }}>{c.food_count}</span>
         </div>
       ))}
     </div>
   );
 }
-
-type CategorySort = "recent" | "score_desc" | "score_asc";
 
 function CategoryScoreBar({ foods }: { foods: FoodSummary[] }) {
   const scored = foods.filter(f => f.score != null);
@@ -2391,45 +1909,24 @@ function CategoryTopFoods({ foods, onClickFood }: { foods: FoodSummary[]; onClic
   );
 }
 
+
 function CategoryPage() {
   const { slug } = useParams<{ slug: string }>();
   const nav = useNavigate();
-  const [foods, setFoods] = useState<FoodSummary[]>([]);
-  const [allFoods, setAllFoods] = useState<FoodSummary[]>([]); // unsorted full list for distribution
-  const [catName, setCatName] = useState(
-    slug ? slug.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") : ""
-  );
-  const [catDesc, setCatDesc] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const prefetch = usePrefetch();
+  const { categories } = useCategories();
   const [sort, setSort] = useState<CategorySort>("recent");
 
-  // Fetch category metadata once
-  useEffect(() => {
-    if (!slug) return;
-    api.getCategories().then(r => {
-      const cat = r.categories.find(c => c.slug === slug);
-      if (cat) { setCatName(cat.display_name); setCatDesc(cat.description ?? null); }
-    }).catch(() => {});
-    // Always fetch unsorted full list for the score distribution bar
-    api.searchFoodsByTag(slug).then(r => setAllFoods(r.foods)).catch(() => {});
-  }, [slug]);
-
-  // Fetch foods with current sort
-  useEffect(() => {
-    if (!slug) return;
-    setLoading(true);
-    api.searchFoodsByTag(slug, sort).then(r => {
-      setFoods(r.foods);
-      setLoading(false);
-    }).catch(() => setLoading(false));
-  }, [slug, sort]);
+  const cat = categories.find(c => c.slug === slug);
+  const catName = cat?.display_name ?? (slug ? slug.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") : "");
+  const catDesc = cat?.description ?? null;
+  const foods = useCategoryFoods(slug, sort);
+  const allFoods = useCategoryAllFoods(slug);
+  const loading = foods === null;
 
   const sortOptions: { value: CategorySort; label: string }[] = [
-    { value: "recent", label: "Recent" },
-    { value: "score_desc", label: "Best Score" },
-    { value: "score_asc", label: "Worst Score" },
+    { value: "recent", label: "Recent" }, { value: "score_desc", label: "Best Score" }, { value: "score_asc", label: "Worst Score" },
   ];
-
   const goFood = (f: FoodSummary) => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`);
 
   return (
@@ -2438,125 +1935,52 @@ function CategoryPage() {
       <div className="card">
         <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 4 }}>{catName}</div>
         {catDesc && <div className="muted" style={{ fontSize: 13, marginBottom: 4 }}>{catDesc}</div>}
-        <div className="muted" style={{ fontSize: 13, marginBottom: 12 }}>{foods.length} food{foods.length !== 1 ? "s" : ""}</div>
+        <div className="muted" style={{ fontSize: 13, marginBottom: 12 }}>{foods?.length ?? 0} food{(foods?.length ?? 0) !== 1 ? "s" : ""}</div>
       </div>
-
-      {/* Score distribution bar */}
-      {!loading && allFoods.length > 0 && <div className="card" style={{ marginTop: 8 }}>
-        <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 10 }}>Score Distribution</div>
-        <CategoryScoreBar foods={allFoods} />
-      </div>}
-
-      {/* Best in category highlight */}
-      {!loading && allFoods.length > 0 && (
-        <div style={{ marginTop: 8 }}>
-          <CategoryTopFoods foods={allFoods} onClickFood={goFood} />
-        </div>
-      )}
-
-      {/* Sort toggle */}
+      {!loading && allFoods && allFoods.length > 0 && <div className="card" style={{ marginTop: 8 }}><div style={{ fontWeight: 700, fontSize: 14, marginBottom: 10 }}>Score Distribution</div><CategoryScoreBar foods={allFoods} /></div>}
+      {!loading && allFoods && allFoods.length > 0 && <div style={{ marginTop: 8 }}><CategoryTopFoods foods={allFoods} onClickFood={goFood} /></div>}
       <div className="card" style={{ marginTop: 8 }}>
-        <div className="cat-sort-bar">
-          {sortOptions.map(opt => (
-            <button
-              key={opt.value}
-              className={`cat-sort-btn${sort === opt.value ? " active" : ""}`}
-              onClick={() => setSort(opt.value)}
-            >{opt.label}</button>
-          ))}
-        </div>
-
+        <div className="cat-sort-bar">{sortOptions.map(opt => (<button key={opt.value} className={`cat-sort-btn${sort === opt.value ? " active" : ""}`} onClick={() => setSort(opt.value)}>{opt.label}</button>))}</div>
         {loading && <div className="muted" style={{ textAlign: "center", padding: 20 }}>Loading…</div>}
-        {!loading && foods.length === 0 && <div className="muted" style={{ textAlign: "center", padding: 20 }}>No foods in this category yet.</div>}
-        {foods.map(f => (
-          <FoodListItem key={f.id} food={f} onClick={() => goFood(f)} />
-        ))}
+        {!loading && foods!.length === 0 && <div className="muted" style={{ textAlign: "center", padding: 20 }}>No foods in this category yet.</div>}
+        {foods && foods.map(f => <FoodListItem key={f.id} food={f} onClick={() => goFood(f)} onHover={() => prefetch(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} />)}
       </div>
     </div>
   );
 }
 
-// ── Related foods section ───────────────────────────────────
+// ── Healthier alternatives & related (store-driven) ─────────
 function HealthierAlternatives({ food }: { food: FoodDetail }) {
   const nav = useNavigate();
-  const [alternatives, setAlternatives] = useState<FoodSummary[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (food.score == null || food.score >= 75) { setLoading(false); return; }
-    api.getBetterAlternatives(food.slug ?? food.id, 5).then(r => {
-      setAlternatives(r.alternatives);
-      setLoading(false);
-    }).catch(() => setLoading(false));
-  }, [food.id, food.score]);
-
-  if (loading || alternatives.length === 0 || food.score == null || food.score >= 75) return null;
-
+  const prefetch = usePrefetch();
+  const alternatives = useAlternatives(food);
+  if (alternatives.length === 0 || food.score == null || food.score >= 75) return null;
   return (
     <div className="card" style={{ marginTop: 8, borderLeft: "3px solid var(--kale)" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 10 }}>
-        <span style={{ fontSize: 18 }}>🔄</span>
-        <span style={{ fontWeight: 700, fontSize: 15, color: "var(--kale)" }}>Healthier Alternatives</span>
-      </div>
+      <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 10 }}><span style={{ fontSize: 18 }}>🔄</span><span style={{ fontWeight: 700, fontSize: 15, color: "var(--kale)" }}>Healthier Alternatives</span></div>
       <div style={{ fontSize: 12, color: "var(--fog)", marginBottom: 10 }}>Similar foods with a higher health score</div>
-      {alternatives.map((f, i) => {
-        const diff = (f.score ?? 0) - (food.score ?? 0);
-        return (
-          <div key={f.id}>
-            <div
-              onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)}
-              style={{
-                display: "flex", justifyContent: "space-between", alignItems: "center",
-                padding: "10px 0", cursor: "pointer", gap: 12,
-                borderBottom: i < alternatives.length - 1 ? "1px solid var(--slate)" : "none"
-              }}
-            >
-              <div style={{ minWidth: 0, flex: 1 }}>
-                <div style={{ fontWeight: 600, fontSize: 14, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{f.canonical_name}</div>
-                {f.brand && <div className="muted" style={{ fontSize: 12 }}>{f.brand}</div>}
-              </div>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
-                <span style={{
-                  fontSize: 11, fontWeight: 700, color: "var(--kale)",
-                  background: "color-mix(in srgb, var(--kale) 15%, transparent)",
-                  padding: "2px 7px", borderRadius: 6
-                }}>+{diff}</span>
-                <ScorePill score={f.score ?? null} />
-              </div>
-            </div>
-          </div>
-        );
-      })}
+      {alternatives.map((f, i) => { const diff = (f.score ?? 0) - (food.score ?? 0); return (
+        <div key={f.id}><div onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} onMouseEnter={() => prefetch(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 0", cursor: "pointer", gap: 12, borderBottom: i < alternatives.length - 1 ? "1px solid var(--slate)" : "none" }}>
+          <div style={{ minWidth: 0, flex: 1 }}><div style={{ fontWeight: 600, fontSize: 14, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{f.canonical_name}</div>{f.brand && <div className="muted" style={{ fontSize: 12 }}>{f.brand}</div>}</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}><span style={{ fontSize: 11, fontWeight: 700, color: "var(--kale)", background: "color-mix(in srgb, var(--kale) 15%, transparent)", padding: "2px 7px", borderRadius: 6 }}>+{diff}</span><ScorePill score={f.score ?? null} /></div>
+        </div></div>); })}
     </div>
   );
 }
 
 function RelatedFoods({ foodId }: { foodId: string }) {
   const nav = useNavigate();
-  const [related, setRelated] = useState<RelatedFood[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    api.getRelatedFoods(foodId, 6).then(r => {
-      setRelated(r.related);
-      setLoading(false);
-    }).catch(() => setLoading(false));
-  }, [foodId]);
-
-  if (loading || related.length === 0) return null;
-
+  const prefetch = usePrefetch();
+  const related = useRelatedFoods(foodId);
+  if (related.length === 0) return null;
   return (
     <div className="card" style={{ marginTop: 8 }}>
       <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 10 }}>Related Foods</div>
       {related.map((f, i) => (
         <div key={f.id}>
-          <FoodListItem food={f} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} noBorder />
+          <FoodListItem food={f} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} onHover={() => prefetch(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} noBorder />
           <div style={{ display: "flex", flexWrap: "wrap", gap: 4, paddingLeft: 2, paddingBottom: 8 }}>
-            {f.shared_tags.filter(isCategory).map(t => (
-              <span key={t} className="badge" style={{ fontSize: 9, padding: "1px 6px", opacity: 0.7 }}>
-                {t.split("-").map(w => w[0].toUpperCase() + w.slice(1)).join(" ")}
-              </span>
-            ))}
+            {f.shared_tags.filter(isCategory).map(t => <span key={t} className="badge" style={{ fontSize: 9, padding: "1px 6px", opacity: 0.7 }}>{t.split("-").map(w => w[0].toUpperCase() + w.slice(1)).join(" ")}</span>)}
           </div>
           {i < related.length - 1 && <div style={{ borderBottom: "1px solid var(--slate)" }} />}
         </div>
@@ -2564,9 +1988,6 @@ function RelatedFoods({ foodId }: { foodId: string }) {
     </div>
   );
 }
-
-// ── Compare page ──────────────────────────────────────
-/** Round nutrition value to at most 1 decimal place. */
 function fmtN(v: number): string {
   if (Number.isInteger(v)) return String(v);
   const r = Math.round(v * 10) / 10;
@@ -2578,152 +1999,51 @@ function truncName(name: string, maxWords = 4): string {
   return words.length > maxWords ? words.slice(0, maxWords).join(" ") + "…" : name;
 }
 
+
 function ComparePage() {
   const nav = useNavigate();
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const initialIds = (params.get("ids") ?? "").split(",").filter(Boolean);
+  const foods = useCompareStore(s => s.foods);
+  const suggestions = useCompareStore(s => s.suggestions);
+  const searchQ = useCompareStore(s => s.searchQ);
+  const searchHits = useCompareStore(s => s.searchHits);
+  const loadInitialFoods = useCompareStore(s => s.loadInitialFoods);
+  const addFood = useCompareStore(s => s.addFood);
+  const removeFood = useCompareStore(s => s.removeFood);
+  const setSearchQ = useCompareStore(s => s.setSearchQ);
 
-  const [foods, setFoods] = useState<FoodDetail[]>([]);
-  const [searchQ, setSearchQ] = useState("");
-  const [hits, setHits] = useState<FoodSummary[]>([]);
-  const [suggestions, setSuggestions] = useState<FoodSummary[]>([]);
-  const timerRef = useRef<any>(null);
+  const loadedRef = useRef(false);
+  if (!loadedRef.current && initialIds.length > 0) { loadedRef.current = true; loadInitialFoods(initialIds); }
 
-  // Load initial foods
-  useEffect(() => {
-    for (const id of initialIds) {
-      api.getFood(id).then(f => setFoods(prev => prev.some(p => p.id === f.id) ? prev : [...prev, f])).catch(() => {});
-    }
-  }, []);
+  // Keep URL in sync
+  useEffect(() => { const slugs = foods.map(f => f.slug ?? f.id).join(","); window.history.replaceState(null, "", slugs ? `/compare?ids=${encodeURIComponent(slugs)}` : "/compare"); }, [foods]);
 
-  // Keep URL in sync with selected foods (use slugs for clean URLs)
-  useEffect(() => {
-    const slugs = foods.map(f => f.slug ?? f.id).join(",");
-    const url = slugs ? `/compare?ids=${encodeURIComponent(slugs)}` : "/compare";
-    window.history.replaceState(null, "", url);
-  }, [foods]);
-
-  // Fetch suggestions based on the first food's categories, fallback to recent
-  useEffect(() => {
-    if (foods.length === 0) { setSuggestions([]); return; }
-    const loadedIds = new Set(foods.map(f => f.id));
-    const cats = (foods[0]?.tags ?? []).filter(isCategory);
-
-    const tagFetches = cats.slice(0, 4).map(slug =>
-      api.searchFoodsByTag(slug).then(r => r.foods).catch(() => [] as FoodSummary[])
-    );
-
-    Promise.all(tagFetches).then(async groups => {
-      const seen = new Set<string>();
-      const all: FoodSummary[] = [];
-      for (const g of groups) {
-        for (const f of g) {
-          if (!loadedIds.has(f.id) && !seen.has(f.id)) { seen.add(f.id); all.push(f); }
-        }
-      }
-      // Fallback: if no category matches, show recent foods
-      if (all.length === 0) {
-        try {
-          const recent = await api.getRecentFoods(10);
-          for (const f of recent.foods) {
-            if (!loadedIds.has(f.id) && !seen.has(f.id)) { seen.add(f.id); all.push(f); }
-          }
-        } catch {}
-      }
-      setSuggestions(all);
-    });
-  }, [foods.map(f => f.id).join(",")]);
-
-  function onSearch(val: string) {
-    setSearchQ(val);
-    clearTimeout(timerRef.current);
-    if (val.trim().length < 2) { setHits([]); return; }
-    timerRef.current = setTimeout(() => {
-      api.searchFoods(val.trim()).then(r => setHits(r.foods.filter(f => !foods.some(e => e.id === f.id)).slice(0, 5))).catch(() => {});
-    }, 200);
-  }
-
-  function addFood(id: string) {
-    api.getFood(id).then(f => {
-      setFoods(prev => prev.some(p => p.id === f.id) ? prev : [...prev, f]);
-      // Re-run search to remove the just-added item from hits
-      setHits(prev => prev.filter(h => h.id !== f.id));
-    }).catch(() => {});
-  }
-
-  function removeFood(id: string) {
-    setFoods(prev => prev.filter(f => f.id !== id));
-  }
-
-  const nutrKeys: { key: string; label: string; unit: string }[] = [
-    { key: "energy_kcal", label: "Calories", unit: "kcal" },
-    { key: "protein_g", label: "Protein", unit: "g" },
-    { key: "fiber_g", label: "Fiber", unit: "g" },
-    { key: "sugars_g", label: "Sugars", unit: "g" },
-    { key: "saturated_fat_g", label: "Sat. Fat", unit: "g" },
-    { key: "total_fat_g", label: "Total Fat", unit: "g" },
-    { key: "carbohydrates_g", label: "Carbs", unit: "g" },
-    { key: "sodium_mg", label: "Sodium", unit: "mg" },
+  const nutrKeys = [
+    { key: "energy_kcal", label: "Calories", unit: "kcal" }, { key: "protein_g", label: "Protein", unit: "g" },
+    { key: "fiber_g", label: "Fiber", unit: "g" }, { key: "sugars_g", label: "Sugars", unit: "g" },
+    { key: "saturated_fat_g", label: "Sat. Fat", unit: "g" }, { key: "total_fat_g", label: "Total Fat", unit: "g" },
+    { key: "carbohydrates_g", label: "Carbs", unit: "g" }, { key: "sodium_mg", label: "Sodium", unit: "mg" },
   ];
-
-  // For coloring: lower is better for sugar/fat/sodium, higher is better for protein/fiber
   const higherBetter = new Set(["energy_kcal", "protein_g", "fiber_g"]);
-
-  function getNutr(food: FoodDetail, key: string): number | null {
-    return food.abstraction?.nutrition_per_100?.[key] ?? null;
-  }
-
-  function bestWorst(key: string): { bestIds: Set<string>; worstIds: Set<string> } {
+  function getNutr(food: FoodDetail, key: string): number | null { return food.abstraction?.nutrition_per_100?.[key] ?? null; }
+  function bestWorst(key: string) {
     const vals = foods.map(f => ({ id: f.id, v: getNutr(f, key) })).filter(x => x.v != null);
     const empty = { bestIds: new Set<string>(), worstIds: new Set<string>() };
     if (vals.length < 2) return empty;
     vals.sort((a, b) => a.v! - b.v!);
     const lo = vals[0].v!, hi = vals[vals.length - 1].v!;
-    if (lo === hi) return empty; // all tied — no coloring
+    if (lo === hi) return empty;
     const hb = higherBetter.has(key);
-    const bestVal = hb ? hi : lo;
-    const worstVal = hb ? lo : hi;
-    return {
-      bestIds: new Set(vals.filter(x => x.v === bestVal).map(x => x.id)),
-      worstIds: new Set(vals.filter(x => x.v === worstVal).map(x => x.id)),
-    };
+    return { bestIds: new Set(vals.filter(x => x.v === (hb ? hi : lo)).map(x => x.id)), worstIds: new Set(vals.filter(x => x.v === (hb ? lo : hi)).map(x => x.id)) };
   }
 
   const searchWidget = (
     <div className="card" style={{ marginBottom: 8 }}>
-      <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-        <input value={searchQ} onChange={e => onSearch(e.target.value)}
-          placeholder={foods.length === 0 ? "Search a food to start comparing…" : "Add another food…"}
-          style={{ flex: 1, fontSize: 14, padding: "10px 12px" }} />
-      </div>
-      {hits.length > 0 && (
-        <div style={{ borderTop: "1px solid var(--slate)", marginTop: 8, paddingTop: 4 }}>
-          {hits.map(f => (
-            <div key={f.id} onClick={() => addFood(f.id)} style={{
-              display: "flex", justifyContent: "space-between", alignItems: "center",
-              padding: "8px 0", borderBottom: "1px solid var(--slate)", cursor: "pointer", fontSize: 13
-            }}>
-              <span>{f.canonical_name}{f.brand ? ` — ${f.brand}` : ""}</span>
-              <ScorePill score={f.score ?? null} size={16} />
-            </div>
-          ))}
-        </div>
-      )}
-      {hits.length === 0 && !searchQ && suggestions.length > 0 && (
-        <div style={{ borderTop: "1px solid var(--slate)", marginTop: 8, paddingTop: 6 }}>
-          <div className="muted" style={{ fontSize: 11, marginBottom: 4 }}>Suggestions</div>
-          {suggestions.slice(0, 5).map(f => (
-            <div key={f.id} onClick={() => addFood(f.id)} style={{
-              display: "flex", justifyContent: "space-between", alignItems: "center",
-              padding: "7px 0", borderBottom: "1px solid var(--slate)", cursor: "pointer", fontSize: 13,
-            }}>
-              <span>{f.canonical_name}{f.brand ? ` — ${f.brand}` : ""}</span>
-              <ScorePill score={f.score ?? null} size={16} />
-            </div>
-          ))}
-        </div>
-      )}
+      <input value={searchQ} onChange={e => setSearchQ(e.target.value)} placeholder={foods.length === 0 ? "Search a food to start comparing…" : "Add another food…"} style={{ width: "100%", fontSize: 14, padding: "10px 12px" }} />
+      {searchHits.length > 0 && <div style={{ borderTop: "1px solid var(--slate)", marginTop: 8, paddingTop: 4 }}>{searchHits.map(f => <div key={f.id} onClick={() => addFood(f.id)} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px 0", borderBottom: "1px solid var(--slate)", cursor: "pointer", fontSize: 13 }}><span>{f.canonical_name}{f.brand ? ` — ${f.brand}` : ""}</span><ScorePill score={f.score ?? null} size={16} /></div>)}</div>}
+      {searchHits.length === 0 && !searchQ && suggestions.length > 0 && <div style={{ borderTop: "1px solid var(--slate)", marginTop: 8, paddingTop: 6 }}><div className="muted" style={{ fontSize: 11, marginBottom: 4 }}>Suggestions</div>{suggestions.slice(0, 5).map(f => <div key={f.id} onClick={() => addFood(f.id)} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "7px 0", borderBottom: "1px solid var(--slate)", cursor: "pointer", fontSize: 13 }}><span>{f.canonical_name}{f.brand ? ` — ${f.brand}` : ""}</span><ScorePill score={f.score ?? null} size={16} /></div>)}</div>}
     </div>
   );
 
@@ -2843,9 +2163,9 @@ function ComparePage() {
                   <th style={{ padding: "8px", minWidth: 70 }} />
                   {foods.map(f => (
                     <th key={f.id} style={{ padding: "8px 6px 2px", textAlign: "center", verticalAlign: "top" }}>
-                      <Link to={`/food/${f.slug ?? f.id}`} style={{ fontWeight: 700, fontSize: 13, lineHeight: 1.2, color: "var(--cream)", textDecoration: "none" }}>
+                      <PrefetchLink to={`/food/${f.slug ?? f.id}`} style={{ fontWeight: 700, fontSize: 13, lineHeight: 1.2, color: "var(--cream)", textDecoration: "none" }}>
                         {truncName(f.canonical_name)}
-                      </Link>
+                      </PrefetchLink>
                       {f.brand && <div className="muted" style={{ fontSize: 10, marginTop: 1 }}>{f.brand}</div>}
                     </th>
                   ))}
@@ -2932,34 +2252,12 @@ function KV({ label, value }: { label: string; value: string }) {
 const TRAIT_PATTERNS = /^(high|low|good|no|many|contains|calorie)-/;
 function isCategory(tag: string) { return !TRAIT_PATTERNS.test(tag); }
 
-// Cache category counts so we don't re-fetch on every render
-let _catCountCache: Record<string, number> | null = null;
-let _catCountPromise: Promise<Record<string, number>> | null = null;
-function getCatCounts(): Promise<Record<string, number>> {
-  if (_catCountCache) return Promise.resolve(_catCountCache);
-  if (!_catCountPromise) {
-    _catCountPromise = api.getCategories().then(r => {
-      const m: Record<string, number> = {};
-      for (const c of r.categories) m[c.slug] = c.food_count;
-      _catCountCache = m;
-      return m;
-    }).catch(() => ({}));
-  }
-  return _catCountPromise;
-}
-
 function FoodCategories({ tags }: { tags?: string[] }) {
   const nav = useNavigate();
-  const [counts, setCounts] = useState<Record<string, number> | null>(_catCountCache);
+  const counts = useCatCounts();
   const allCats = (tags ?? []).filter(isCategory);
-
-  useEffect(() => {
-    if (!counts) getCatCounts().then(setCounts);
-  }, []);
-
   if (allCats.length === 0) return null;
-
-  const sorted = counts
+  const sorted = Object.keys(counts).length > 0
     ? [...allCats].sort((a, b) => (counts[b] ?? 0) - (counts[a] ?? 0))
     : allCats;
 

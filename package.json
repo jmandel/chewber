@@ -12,6 +12,10 @@
   "dependencies": {
     "@duckdb/node-api": "^1.4.4-r.1",
     "@duckdb/node-bindings": "^1.4.4-r.1",
-    "@duckdb/node-bindings-linux-x64": "^1.4.4-r.1"
+    "@duckdb/node-bindings-linux-x64": "^1.4.4-r.1",
+    "zustand": "^5.0.11"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
   }
 }
