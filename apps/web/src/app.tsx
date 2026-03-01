@@ -2594,20 +2594,7 @@ function ComparePage() {
                   </td>
                 ))}
               </tr>
-              <tr>
-                <td style={{ padding: "8px", fontWeight: 600, color: "var(--fog)" }}>Categories</td>
-                {foods.map(f => (
-                  <td key={f.id} style={{ padding: "8px", textAlign: "center" }}>
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: 3, justifyContent: "center" }}>
-                      {(f.tags ?? []).filter(isCategory).map(t => (
-                        <span key={t} className="badge" style={{ fontSize: 9, padding: "1px 5px" }}>
-                          {t.split("-").map(w => w[0].toUpperCase() + w.slice(1)).join(" ")}
-                        </span>
-                      ))}
-                    </div>
-                  </td>
-                ))}
-              </tr>
+
             </tbody>
           </table>
         </div>
