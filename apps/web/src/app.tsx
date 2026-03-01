@@ -2450,7 +2450,8 @@ function ComparePage() {
   function addFood(id: string) {
     api.getFood(id).then(f => {
       setFoods(prev => prev.some(p => p.id === f.id) ? prev : [...prev, f]);
-      setSearchQ(""); setHits([]);
+      // Re-run search to remove the just-added item from hits
+      setHits(prev => prev.filter(h => h.id !== f.id));
     }).catch(() => {});
   }
 
