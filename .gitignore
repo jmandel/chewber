@@ -12,3 +12,8 @@ apps/api/.env
 
 # builds
 dist
+
+# scratch / temp
+tmp_*/
+*.sqlite-shm
+*.sqlite-wal

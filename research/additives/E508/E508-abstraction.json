@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T00:00:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E508",
+    "name": "Potassium chloride",
+    "cas_numbers": [
+      "7447-40-7"
+    ],
+    "synonyms": [
+      "Potassium chloride",
+      "Sylvine",
+      "Sylvite"
+    ],
+    "chemical_class": "Inorganic chloride salt (alkali metal chloride)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "flavour enhancer",
+    "secondary_categories": [
+      "flavouring agent",
+      "nutrient supplement",
+      "pH control agent",
+      "stabilizer/thickener",
+      "gelling agent",
+      "yeast food"
+    ],
+    "mechanism": "Provides potassium ions and chloride ions for salty taste/sodium replacement, ionic strength effects, and technological functions including flavor enhancement, pH control, and stabilization.",
+    "common_food_categories": [
+      "sodium-reduced table salts and seasonings",
+      "processed foods using sodium replacement",
+      "foods requiring flavor enhancement or pH control",
+      "infant formula (where legally compliant)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 40,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2019 used 40 mg chloride/kg bw/day as a reference value for risk characterization; formal ADI remained not specified historically"
+      },
+      "last_evaluation_year": 2019,
+      "key_finding": "EFSA found no safety concern at reported uses/levels, while noting conservative high-percentile exposure scenarios could exceed the chloride reference value in younger groups."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1622",
+      "notes": "Affirmed as GRAS for direct food use under GMP; includes listed technical functions and allowance for infant formula under section 412 framework."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not limited (group ADI for hydrochloric acid and its magnesium, potassium and ammonium salts)"
+      },
+      "last_evaluation_year": 1979
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "Hyperkalemia risk is a clinically relevant concern in susceptible groups (e.g., kidney disease, reduced potassium excretion, or RAAS-blocking therapy), though not clearly elevated at population level in major salt-substitution trials.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID:41183166",
+          "PMID:41578335",
+          "PMID:39908026"
+        ]
+      },
+      {
+        "category": "cardiovascular",
+        "summary": "Potassium-enriched salt substitution studies generally show cardiovascular benefit (lower BP and fewer stroke/death outcomes) rather than harm, but subgroup safety assessment remains important.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID:39908026",
+          "PMID:41578335",
+          "PMID:41571229"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2019 re-evaluation concluded no safety concern at reported use levels for E508.",
+      "Large randomized stroke trial (PMID 39908026) found no significant hyperkalemia increase with salt substitution."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "toddlers",
+        "children",
+        "adolescents",
+        "people with impaired renal potassium handling",
+        "patients on RAAS-blocking therapy"
+      ],
+      "notes": "EFSA reported high-percentile chloride exposures above its 40 mg/kg bw/day reference value in some younger groups, though considered likely conservative and not indicating a safety concern at reported use levels."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.78,
+    "rationale": "Regulatory consensus (EFSA/FDA/JECFA) supports use, with no IARC classification signal. Main caveat is clinically meaningful hyperkalemia risk in vulnerable subgroups rather than broad-population toxicity at typical use.",
+    "key_factors": [
+      "EFSA 2019: no safety concern at reported uses; chloride reference-value approach",
+      "FDA GRAS status under 21 CFR 184.1622 with GMP conditions",
+      "JECFA ADI not limited (group ADI)",
+      "No IARC listing found for potassium chloride/CAS 7447-40-7",
+      "Recent trials/meta-analyses show BP/cardiovascular benefit and generally reassuring population-level safety",
+      "Subgroup caution for CKD/hyperkalemia risk and RAAS-blocked patients"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal page metadata: Re-evaluation of potassium chloride (E 508) as a food additive (2019)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5751",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed: Re-evaluation of potassium chloride (E 508) as a food additive (2019)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31969879/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR section page: 21 CFR 184.1622 Potassium chloride",
+      "url": "https://www.ecfr.gov/current/title-21/section-184.1622",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full XML (Title 21 Part 184)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2025-01-01/title-21.xml?chapter=I&subchapter=B&part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database: POTASSIUM CHLORIDE (INS 508)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1874",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs - List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications data script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Salt Substitution and Recurrent Stroke and Death: A Randomized Clinical Trial (JAMA Cardiol, 2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39908026/",
+      "type": "study"
+    },
+    {
+      "title": "Potassium-enriched salt substitute in resistant hypertension: randomized pilot trial (2026)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41571229/",
+      "type": "study"
+    },
+    {
+      "title": "Comparative effects of salt substitutes: systematic review and network meta-analysis (2026)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41578335/",
+      "type": "review"
+    },
+    {
+      "title": "Risks of Hyperkalemia With Potassium-Enriched Salt Substitute Among Patients Using Concomitant RAAS Blockade (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41183166/",
+      "type": "study"
+    }
+  ]
+}

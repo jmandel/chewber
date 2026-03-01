@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T16:56:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E472c",
+    "name": "Citric acid esters of mono- and diglycerides of fatty acids",
+    "cas_numbers": [],
+    "synonyms": [
+      "CITREM",
+      "Citroglycerides",
+      "INS 472c",
+      "Citric acid esters of mono- and diglycerides"
+    ],
+    "chemical_class": "Mixed glycerol-fatty acid-citric acid esters (emulsifier class)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "emulsifier",
+    "secondary_categories": [
+      "stabilizer",
+      "texture modifier",
+      "fat-structuring agent"
+    ],
+    "mechanism": "Amphiphilic citrate-glyceride esters reduce interfacial tension and stabilize fat-water systems; in some systems CITREM self-assembly contributes to fat-network structuring.",
+    "common_food_categories": [
+      "Fine bakery wares",
+      "Fat and oil emulsions",
+      "Infant formulae (FC 13.1.1)",
+      "Foods for special medical purposes for infants (FC 13.1.5.1)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2020 concluded no need for a numerical ADI for E472a,b,c; EFSA 2025 follow-up for infants below 16 weeks concluded no safety concern at reported use levels and MPLs for E472c."
+      },
+      "last_evaluation_year": 2025,
+      "key_finding": "Latest EFSA follow-up (2025) found no safety concern for E472c use in infant categories assessed (FC 13.1.1 and 13.1.5.1) and supported updating EU specifications."
+    },
+    "fda": {
+      "status": "not_evaluated",
+      "cfr_citation": "No exact Title 21 CFR match found for \"citric acid esters of mono- and diglycerides\"; related entries: 21 CFR 172.832 and 21 CFR 184.1505",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA database lists ADI as NOT SPECIFIED (latest entry year 2019); historical JECFA monograph reported ADI as Not limited."
+      },
+      "last_evaluation_year": 2019
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "EFSA follow-up highlighted impurity/specification control issues (toxic elements, 3-MCPD/glycidyl esters, undesirable fatty-acid profile constraints) and recommended specification updates.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11733587/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7448088/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "In vitro infant-formula digestion work found substantial lipase hydrolysis but also reported some water-soluble glycerol-citric compounds not fully hydrolyzed in the model.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/24777447/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2020 concluded no need for a numerical ADI for E472a,b,c and no safety concern at reported uses/use levels.",
+      "EFSA 2025 follow-up concluded no safety concern for E472c use in infants below 16 weeks at reported levels and MPLs in FC 13.1.1 and 13.1.5.1.",
+      "JECFA record lists ADI as NOT SPECIFIED and historical evaluation reported ADI Not limited.",
+      "No IARC classification entry was identified for E472c/CITREM in the current IARC classification dataset."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "Formula-fed infants below 16 weeks",
+        "Toddlers with high emulsifier-containing food intake"
+      ],
+      "notes": "Exposure can be high in mg/kg bw/day in infant/toddler scenarios, but EFSA and JECFA do not currently set a numerical ADI for E472c, so classical ADI exceedance is not directly applicable."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.79,
+    "rationale": "Current regulatory evidence is consistently reassuring for authorized uses (EFSA 2020 and 2025, JECFA), with no carcinogenic classification signal identified. Residual uncertainty is mainly specification quality control and limited standalone long-term human endpoint studies.",
+    "key_factors": [
+      "EFSA 2025 infant follow-up: no safety concern at reported levels/MPLs",
+      "EFSA 2020: no numerical ADI needed for E472a,b,c",
+      "JECFA: ADI NOT SPECIFIED (latest entry 2019), historical ADI Not limited",
+      "No IARC listing found for E472c/CITREM",
+      "US CFR search found no exact E472c-named section; only related sections"
+    ]
+  },
+  "sources": [
+    {
+      "title": "PubMed record: EFSA 2025 follow-up on E472c in infants (PMID 39816965)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39816965/",
+      "type": "database"
+    },
+    {
+      "title": "PMCID PMC11733587 full text: EFSA 2025 E472c follow-up",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11733587/",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed record: EFSA 2020 E472a-f re-evaluation (PMID 32874250)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32874250/",
+      "type": "database"
+    },
+    {
+      "title": "PMCID PMC7448088 full text: EFSA 2020 E472a-f re-evaluation",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7448088/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API search for exact additive name phrase (no direct results)",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=%22citric+acid+esters+of+mono-+and+diglycerides%22&per_page=20&page=1",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full text for Part 172 (includes 21 CFR 172.832 Monoglyceride citrate)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?chapter=I&part=172",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full text for Part 184 (includes 21 CFR 184.1505 Mono- and diglycerides, GRAS)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?chapter=I&part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA chemical record ID 2701: CITRIC ACID ESTERS OF MONO- AND DIGLYCERIDES",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2701",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA API search endpoint for citric acid esters",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/citric%20acid%20esters%20of%20mono-%20and%20diglycerides",
+      "type": "database"
+    },
+    {
+      "title": "WHO Food Additives Series 5 (1974): Citric and fatty acid esters of glycerol",
+      "url": "http://www.inchem.org/documents/jecfa/jecmono/v05je37.htm",
+      "type": "review"
+    },
+    {
+      "title": "IARC List of Classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset script used by list page (last updated 2026-02-25 in script)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: In vitro digestion of CITREM (PMID 24777447)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24777447/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed query: \"citric acid esters of mono- and diglycerides\"",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%22citric+acid+esters+of+mono-+and+diglycerides%22",
+      "type": "database"
+    },
+    {
+      "title": "EFSA Journal landing URL for 2025 opinion (redirect target observed)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/9202",
+      "type": "regulatory"
+    }
+  ]
+}

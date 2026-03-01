@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T19:07:23Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E622",
+    "name": "Monopotassium glutamate",
+    "cas_numbers": [
+      "19473-49-5"
+    ],
+    "synonyms": [
+      "Monopotassium L-glutamate",
+      "Potassium glutamate",
+      "L-glutamic acid, monopotassium salt (1:1), monohydrate"
+    ],
+    "chemical_class": "Potassium salt of L-glutamic acid (glutamate flavour-enhancer salt)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "flavour enhancer",
+    "secondary_categories": [
+      "umami enhancer"
+    ],
+    "mechanism": "Supplies free glutamate ions that enhance umami/savoury taste intensity.",
+    "common_food_categories": [
+      "seasonings",
+      "soups and broths",
+      "sauces",
+      "savoury snacks",
+      "processed savoury foods"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 30,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI for glutamic acid (E620) and glutamates (E621-E625), expressed as glutamic acid."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "EFSA found no genotoxicity concern but concluded that dietary exposure may exceed the group ADI in high consumers (and in toddlers/children at mean exposure in some scenarios)."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.1516",
+      "notes": "Potassium glutamate and monopotassium glutamate are GRAS when used as flavour enhancers per 21 CFR 170.3(o)(11) and GMP."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not specified (group context for L-glutamic acid and its ammonium, calcium, monosodium and potassium salts)."
+      },
+      "last_evaluation_year": 1987
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "genotoxic",
+        "summary": "An in vitro human-lymphocyte study reported concentration-dependent chromosomal and DNA-damage signals for monopotassium glutamate, with statistical significance mainly at higher test concentrations.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/31978514/"
+        ]
+      },
+      {
+        "category": "renal",
+        "summary": "A rat study with high MSG intake reported increased serum TMAO, reduced urinary TMAO excretion, and kidney-injury biomarker changes that improved after withdrawal.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/36155062/"
+        ]
+      },
+      {
+        "category": "cardiovascular",
+        "summary": "A 2025 rat overconsumption study (0.8-3 g/kg/day) reported dose-related hepatic, renal, and cardiac toxicity markers associated with oxidative stress and inflammation.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/40407528/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2017 re-evaluation reported no genotoxicity concern for glutamic acid and glutamates (E620-E625).",
+      "A 2025 publication of GLP-style 28-day and 90-day rat dietary studies reported no toxicologically significant findings at tested doses (NOAEL up to approximately 3,170-3,620 mg/kg bw/day in the 90-day study).",
+      "A 2024 study reported no toxicity/genotoxicity at ADI-equivalent concentration in a Drosophila model."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "high consumers across age groups",
+        "toddlers",
+        "children"
+      ],
+      "notes": "EFSA reported potential exceedance of the group ADI for glutamates in high consumers, and in some mean-intake scenarios for toddlers and children."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.74,
+    "rationale": "E622 is approved/GRAS with established international evaluations, but EFSA identified plausible ADI exceedance in key subpopulations and recent experimental studies show mixed high-dose hazard signals; this supports a moderate-caution tier rather than limited or high.",
+    "key_factors": [
+      "EFSA group ADI of 30 mg/kg bw/day with exceedance concerns in high consumers",
+      "FDA GRAS status under 21 CFR 182.1516",
+      "JECFA ADI not specified for glutamate-salt group",
+      "Mixed recent evidence: high-dose adverse findings vs GLP no-adverse-effect studies",
+      "No IARC classification and no major-jurisdiction ban identified"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Safety of glutamate from use as food additive re-evaluated (EFSA, 2017)",
+      "url": "https://www.efsa.europa.eu/en/press/news/170712",
+      "type": "regulatory"
+    },
+    {
+      "title": "Re-evaluation of glutamic acid (E620), sodium glutamate (E621), potassium glutamate (E622), calcium glutamate (E623), ammonium glutamate (E624) and magnesium glutamate (E625) as food additives (EFSA Journal, 2017)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4910",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal full-text endpoint for article 4910 (accessed; 403 in session)",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/epdf/10.2903/j.efsa.2017.4910",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 182.1516 Potassium glutamate and monopotassium glutamate",
+      "url": "https://www.ecfr.gov/current/title-21/section-182.1516",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA Chemical Record 4073: MONOPOTASSIUM L-GLUTAMATE",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4073",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classification dataset bundle used by list page",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search for monopotassium glutamate",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=monopotassium+glutamate",
+      "type": "database"
+    },
+    {
+      "title": "In vitro genotoxicity assessment of monopotassium glutamate and magnesium diglutamate (Toxicol In Vitro, 2020)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31978514/",
+      "type": "study"
+    },
+    {
+      "title": "Monosodium glutamate consumption reduces the renal excretion of trimethylamine N-oxide and the abundance of Akkermansia muciniphila in the gut (BBRC, 2022)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36155062/",
+      "type": "study"
+    },
+    {
+      "title": "Evaluation of the Effects of Monosodium Glutamate Overconsumption on the Functions of the Liver, Kidney, and Heart of Male Rats (J Xenobiot, 2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40407528/",
+      "type": "study"
+    },
+    {
+      "title": "The safety of monosodium glutamate demonstrated in 28-day and 90-day dietary toxicity studies with Sprague-Dawley rats (Regul Toxicol Pharmacol, 2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40571242/",
+      "type": "study"
+    },
+    {
+      "title": "In Vivo and In Vitro Studies Assessing the Safety of Monosodium Glutamate (Foods, 2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39683053/",
+      "type": "study"
+    },
+    {
+      "title": "Monosodium Glutamate in the Diet Does Not Raise Brain Glutamate Concentrations or Disrupt Brain Functions (Ann Nutr Metab, 2018)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30508818/",
+      "type": "review"
+    },
+    {
+      "title": "Review of Glutamate Intake from Both Food Additive and Non-Additive Sources in the EU (Ann Nutr Metab, 2018)",
+      "url": "https://karger.com/anm/article/73/5/265/42249/Review-of-Glutamate-Intake-from-Both-Food-Additive",
+      "type": "review"
+    },
+    {
+      "title": "Safety and efficacy of l-glutamic acid, N,N-diacetic acid as a feed additive... (EFSA FEEDAP, 2015)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4272",
+      "type": "regulatory"
+    }
+  ]
+}

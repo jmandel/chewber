@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T20:52:39Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E954",
+    "name": "Saccharin",
+    "cas_numbers": [
+      "81-07-2"
+    ],
+    "synonyms": [
+      "Saccharin",
+      "Benzoic sulfimide",
+      "1,2-benzisothiazol-3(2H)-one-1,1-dioxide",
+      "o-Benzoic sulfimide",
+      "INS 954"
+    ],
+    "chemical_class": "Benzoisothiazolone dioxide non-nutritive sweetener (saccharin and salts)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "high-intensity sweetener",
+    "secondary_categories": [
+      "non-nutritive sweetener",
+      "sweetening agent"
+    ],
+    "mechanism": "Provides strong sweetness with negligible calories by replacing nutritive sweeteners at low concentrations.",
+    "common_food_categories": [
+      "diet beverages and fruit drinks",
+      "tabletop sweeteners",
+      "processed foods",
+      "chewable vitamin/mineral tablets",
+      "chewing gum"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 9,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA FAF Panel 2024 re-evaluation (E 954), expressed as free imide."
+      },
+      "last_evaluation_year": 2024,
+      "key_finding": "EFSA set ADI at 9 mg/kg bw/day; no genotoxicity concern for Remsen-Fahlberg-derived saccharins, but concern for potential Maumee-process impurities; refined brand-loyal P95 exposure was below ADI."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 180.37",
+      "notes": "Not listed as GRAS in Part 182/184 checks; regulated as a food additive with explicit concentration limits (12 mg/fl oz beverages, 20 mg per teaspoon-equivalent table use, 30 mg/serving processed foods) and labeling requirements."
+    },
+    "jecfa": {
+      "adi": {
+        "value": 5,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA group ADI for saccharin and calcium/potassium/sodium salts is 0-5 mg/kg bw (Meeting 41)."
+      },
+      "last_evaluation_year": 1993
+    },
+    "iarc_classification": "Group 3",
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "genotoxic",
+        "summary": "EFSA identified a concern for genotoxicity for potential impurities linked to the Maumee manufacturing route, while not identifying this concern for Remsen-Fahlberg-derived material.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://www.efsa.europa.eu/en/efsajournal/pub/9044"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "A randomized controlled trial reported that short-term saccharin exposure (below ADI) altered microbiome-related profiles and was associated with impaired glycemic responses in healthy adults.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/35987213/"
+        ]
+      },
+      {
+        "category": "carcinogenic",
+        "summary": "Recent reviews report no consistent cancer association for saccharin, but historical rat bladder findings remain part of the mechanistic discussion and reviews include notable industry conflicts.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41197905/",
+          "https://pubmed.ncbi.nlm.nih.gov/41038346/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "IARC currently lists saccharin and its salts as Group 3.",
+      "EFSA and JECFA retain ADI-based approvals.",
+      "EFSA refined brand-loyal P95 estimates were below ADI in the re-evaluation."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "toddlers",
+        "adolescents",
+        "high consumers using products at MPLs"
+      ],
+      "notes": "EFSA supporting exposure assessment reported potential P95 exceedance in some scenarios (up to about 2-fold in toddlers and 1.2-fold in adolescents), while refined brand-loyal estimates in the main re-evaluation were below ADI."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.67,
+    "rationale": "Saccharin remains approved by EFSA/FDA/JECFA and is IARC Group 3, but EFSA documented process-dependent impurity concerns and scenario-based ADI exceedance in young high consumers; recent human evidence also suggests possible microbiome-linked glycemic effects. This supports a caveated moderate tier rather than limited or high.",
+    "key_factors": [
+      "EFSA ADI is 9 mg/kg bw/day with refined P95 below ADI.",
+      "EFSA supporting exposure report found potential P95 exceedance in toddlers/adolescents under MPL-plus-supplement scenarios.",
+      "US regulation is approval under 21 CFR 180.37 rather than GRAS listing.",
+      "JECFA group ADI is 0-5 mg/kg bw and remains in force.",
+      "IARC classification is Group 3 for saccharin and its salts."
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal page: Re-evaluation of saccharin and its sodium, potassium and calcium salts (E 954)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/9044",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA supporting publication: Scientific report on the refined exposure assessment of saccharins (E 954)",
+      "url": "https://www.efsa.europa.eu/en/supporting/pub/en-9024",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API search results for saccharin",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=saccharin&per_page=10&page=1",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API Title 21 Part 180 XML (contains 21 CFR 180.37)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=180",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 Part 182 XML",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 Part 184 XML",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database entry: Saccharin (Chemical 3164)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3164",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list dataset script (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: Personalized microbiome-driven effects of non-nutritive sweeteners on human glucose tolerance",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35987213/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Glycemic Impact of Non-Nutritive Sweeteners in Health and Type 2 Diabetes",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41706019/",
+      "type": "review"
+    },
+    {
+      "title": "PubMed: Lack of Genotoxic and Carcinogenic Potential for Nonsugar Sweeteners",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41197905/",
+      "type": "review"
+    },
+    {
+      "title": "PubMed: A Systematic Review of Nonsugar Sweeteners and Cancer Epidemiology Studies",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41038346/",
+      "type": "review"
+    }
+  ]
+}

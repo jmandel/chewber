@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T18:52:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E509",
+    "name": "Calcium chloride",
+    "cas_numbers": [
+      "10043-52-4",
+      "10035-04-8"
+    ],
+    "synonyms": [
+      "Calcium dichloride",
+      "Calcium chloride anhydrous",
+      "INS 509",
+      "E509",
+      "CaCl2"
+    ],
+    "chemical_class": "Inorganic chloride salt (alkaline-earth metal chloride)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "firming agent",
+    "secondary_categories": [
+      "pH control agent",
+      "anticaking agent",
+      "stabilizer",
+      "nutrient supplement",
+      "texturizer"
+    ],
+    "mechanism": "Dissociates into calcium and chloride ions that modify ionic strength and pH behavior, support firming/textural effects, and influence thermal reaction pathways in some processed foods.",
+    "common_food_categories": [
+      "baked goods",
+      "nonalcoholic beverages",
+      "cheese",
+      "processed fruit and fruit juices",
+      "processed vegetables and vegetable juices",
+      "gravies and sauces",
+      "jams and jellies",
+      "meat products",
+      "plant protein products"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 40,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA FAF 2019 identified a human reference value of 40 mg chloride/kg bw/day for risk assessment; this is a reference value rather than an explicitly labeled ADI in the opinion abstract."
+      },
+      "last_evaluation_year": 2019,
+      "key_finding": "EFSA concluded exposure to chloride from E507/E508/E509/E511 does not raise a safety concern at reported use levels; high-percentile exposure in some child groups was slightly above the 40 mg/kg bw/day reference value."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1193",
+      "notes": "Listed under 21 CFR Part 184 GRAS framework; use limited by current good manufacturing practice with category-specific maximum as-served levels."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA entry reports ADI as NOT LIMITED (non-numeric)."
+      },
+      "last_evaluation_year": 1973
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "cardiovascular",
+        "summary": "EFSA reported some animal data suggesting chloride may contribute to increased blood pressure, and therefore used human data to derive a chloride reference value for safety assessment.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/32626371/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "A 2022 zebrafish food-safety toxicology study found developmental/cardiac/neural toxicity above 0.4% CaCl2 and complete embryo mortality at 0.8%-1.6% in acute exposure, indicating concentration-dependent toxicity in experimental models.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/36123048/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent heating-model studies reported CaCl2 can reduce acrylamide but may increase HMF/furan-related process contaminants in some matrices, indicating a process-chemistry tradeoff.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/37049974/",
+          "https://pubmed.ncbi.nlm.nih.gov/36608554/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2019 concluded chloride exposure from E507/E508/E509/E511 does not raise a safety concern at reported uses.",
+      "EFSA summary states no concern for genotoxicity and carcinogenicity in the assessed chloride group.",
+      "FDA affirms calcium chloride as GRAS in 21 CFR Part 184 with CGMP conditions.",
+      "JECFA lists calcium chloride ADI as NOT LIMITED.",
+      "No IARC monograph classification entry for calcium chloride was identified."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "toddlers",
+        "children",
+        "adolescents"
+      ],
+      "notes": "EFSA reported mean exposure estimates at/below the 40 mg chloride/kg bw/day reference value, while 95th-percentile exposure was slightly above this value in some younger age groups."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.84,
+    "rationale": "Regulatory convergence indicates low risk at authorized use levels (EFSA no-safety-concern conclusion, FDA GRAS, JECFA not-limited ADI). Remaining uncertainty comes from high-percentile child exposure relative to EFSA's chloride reference value and concentration-dependent effects in experimental studies.",
+    "key_factors": [
+      "EFSA 2019 conclusion of no safety concern at reported use/use levels",
+      "EFSA reference value of 40 mg chloride/kg bw/day with slight 95th-percentile exceedance in some child groups",
+      "FDA GRAS status with explicit 21 CFR 184.1193 use conditions and maximum levels",
+      "JECFA ADI of NOT LIMITED",
+      "No IARC Group 1/2A/2B listing for calcium chloride"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal publication page: Re-evaluation of hydrochloric acid (E507), potassium chloride (E508), calcium chloride (E509) and magnesium chloride (E511)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5751",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA search results page for E509/5751 entry",
+      "url": "https://www.efsa.europa.eu/en/search?f%5B0%5D=efsatext%3AE509",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API Title 21 Part 184 XML (includes 21 CFR 184.1193 and 184.1)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?subtitle=B&chapter=I&subchapter=B&part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA chemical page: CALCIUM CHLORIDE (ID 458)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/458",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA API SearchChemical by partial name: calcium chloride",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/calcium%20chloride",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API ChemicalData/GetBy partial query: calcium chloride",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/ChemicalData/GetBy/par/calcium%20chloride",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 32626371: EFSA chloride re-evaluation abstract",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32626371/",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubChem properties: calcium chloride (formula, IUPAC)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/calcium%20chloride/property/Title,MolecularFormula,IUPACName/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem synonyms: calcium chloride",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/calcium%20chloride/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 36123048: Calcium Chloride Toxicology for Food Safety Assessment Using Zebrafish Embryos",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36123048/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 37049974: Acrylamide and 5-Hydroxymethylfurfural in Synthetic Sugar Cane Syrup: Mitigation by Additives",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37049974/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 36608554: Effect of salts on acrylamide/HMF/flavour compounds during heating",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36608554/",
+      "type": "study"
+    },
+    {
+      "title": "IARC List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC LOC app dataset bundle",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    }
+  ]
+}

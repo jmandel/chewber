@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T20:20:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E939",
+    "name": "Helium",
+    "cas_numbers": [
+      "7440-59-7"
+    ],
+    "synonyms": [
+      "He",
+      "Helium gas",
+      "INS 939"
+    ],
+    "chemical_class": "Noble gas (inert monoatomic gas)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "packaging gas",
+    "secondary_categories": [
+      "processing aid",
+      "inert atmosphere agent"
+    ],
+    "mechanism": "Displaces oxygen/air and provides an inert atmosphere; helium is chemically inert and has low solubility, limiting residual levels in food.",
+    "common_food_categories": [
+      "Packaged foods using inert-gas atmospheres",
+      "Processing contexts where inert gas is used to limit oxidation or microbial growth"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No numerical ADI was established in EFSA's 2024 re-evaluation; the panel concluded no safety concern based on low toxicological concern/inertness and low expected dietary exposure."
+      },
+      "last_evaluation_year": 2024,
+      "key_finding": "EFSA concluded that use of argon (E938) and helium (E939) as food additives does not raise a safety concern, while noting data gaps on use levels and manufacturing impurity characterization."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1355",
+      "notes": "Affirmed as GRAS direct human food ingredient when used as a processing aid at levels not exceeding current good manufacturing practice; purity must be suitable for intended use."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO JECFA database entry for HELIUM (INS 939) lists no numeric ADI; record links to 53rd meeting (1999) report/specification materials."
+      },
+      "last_evaluation_year": 1999
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "High-concentration inhalation of inert gases can displace oxygen and cause asphyxiation, but this is primarily an occupational/accidental inhalation hazard rather than a dietary additive hazard.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11515913/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "EFSA identified uncertainty about potential manufacturing impurities and real-world use-level data due limited submissions during re-evaluation.",
+        "evidence_strength": "theoretical",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11515913/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2024 concluded no safety concern for E939 food-additive use.",
+      "Helium is chemically inert (noble gas) with low toxicological concern in food-use context.",
+      "US FDA lists helium as GRAS under 21 CFR 184.1355 with GMP conditions."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "A numeric ADI is not established; EFSA did not estimate quantitative dietary exposure due insufficient use-level data, but considered expected dietary exposure low when used as an inert packaging gas."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "risk_free",
+    "confidence": 0.78,
+    "rationale": "Current regulatory evidence indicates very low dietary risk: inert chemistry, low expected food carryover, EFSA no-safety-concern conclusion (2024), and FDA GRAS status. Remaining uncertainty is driven by limited exposure/manufacturing data rather than demonstrated toxicity.",
+    "key_factors": [
+      "EFSA 2024 no-safety-concern conclusion",
+      "No numeric ADI set and no clear dietary toxicity signal",
+      "FDA GRAS affirmation with GMP conditions",
+      "JECFA record exists without numeric ADI",
+      "Residual uncertainty on impurities and actual use-level data"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of argon (E 938) and helium (E 939) as food additives (EFSA Journal full text via PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11515913/",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal publication landing page for opinion e9048",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/9048",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed record: Re-evaluation of argon (E 938) and helium (E 939) as food additives (PMID: 39469433)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39469433/",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API Title 21 Part 184 (includes 21 CFR 184.1355 Helium)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA chemical page: HELIUM (INS 939)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1880",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API search by partial name (helium)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/helium",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs: Agents classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications app dataset (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed E-utilities query: helium with food/additive/processing aid terms",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&term=(helium%5BTitle%2FAbstract%5D)%20AND%20(food%5BTitle%2FAbstract%5D%20OR%20additive%5BTitle%2FAbstract%5D%20OR%20processing%20aid%5BTitle%2FAbstract%5D)&sort=pub+date&retmax=20",
+      "type": "database"
+    }
+  ]
+}

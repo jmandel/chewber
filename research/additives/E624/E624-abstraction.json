@@ -1,0 +1,204 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T19:18:23Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E624",
+    "name": "Monoammonium glutamate",
+    "cas_numbers": [
+      "7558-63-6"
+    ],
+    "synonyms": [
+      "Monoammonium L-glutamate monohydrate",
+      "Ammonium glutamate",
+      "Monoammonium L-glutamate"
+    ],
+    "chemical_class": "ammonium salt of L-glutamic acid (amino-acid salt)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "flavour enhancer",
+    "secondary_categories": [
+      "umami taste enhancer",
+      "salt substitute"
+    ],
+    "mechanism": "Provides glutamate taste signaling (umami/savoury) and can intensify salty perception in reduced-sodium formulations.",
+    "common_food_categories": [
+      "seasonings and condiments",
+      "soups and broths",
+      "sauces",
+      "meat and meat products",
+      "fine bakery wares",
+      "food supplements",
+      "sodium-reduced savory foods"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 30,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2017 group ADI for glutamic acid and glutamates (E620-E625)."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "EFSA set a group ADI and concluded dietary exposure may exceed the ADI (and, for highly exposed younger groups, doses linked to some adverse human effects), recommending review of maximum permitted levels."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.1500",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA lists ADI NOT SPECIFIED for monoammonium L-glutamate within the L-glutamate salt group."
+      },
+      "last_evaluation_year": 1987
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "neurotoxic",
+        "summary": "Recent rat neurotoxicity models reported biochemical and histological brain changes under high-dose MSG exposure paradigms.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/38869783/"
+        ]
+      },
+      {
+        "category": "endocrine",
+        "summary": "Rodent studies reported reproductive hormone suppression and sperm/testicular effects in high-dose or combined inflammatory exposure models.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/40751218/",
+          "https://pubmed.ncbi.nlm.nih.gov/41612778/"
+        ]
+      },
+      {
+        "category": "allergenic",
+        "summary": "Allergy-focused reviews report sporadic intolerance-like reactions but little consistent evidence for true IgE-mediated MSG allergy at realistic intakes.",
+        "evidence_strength": "theoretical",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41289354/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA and FDA continue to allow glutamate additive use under defined conditions.",
+      "JECFA maintains an ADI 'not specified' group position for L-glutamate salts.",
+      "A major review found many reported hazards rely on high-dose or methodologically limited studies with weak direct relevance to typical dietary exposure."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "infants (high exposure)",
+        "toddlers",
+        "children",
+        "adolescents",
+        "high consumers across age groups"
+      ],
+      "notes": "EFSA refined exposure assessment for glutamate additives reported potential exceedance of the 30 mg/kg bw/day group ADI in several populations."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.78,
+    "rationale": "E624 is still permitted by major authorities, but EFSA established a finite group ADI and identified exceedance risks in younger/high-intake populations. Recent rodent studies suggest hazard signals at elevated doses, while human evidence at realistic intake remains mixed and often methodologically limited.",
+    "key_factors": [
+      "EFSA group ADI of 30 mg/kg bw/day with exceedance concerns",
+      "FDA GRAS listing in 21 CFR 182.1500 with GMP condition",
+      "JECFA ADI 'not specified' group assessment",
+      "Recent high-dose animal toxicity signals",
+      "No IARC monograph classification found"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA reviews safety of glutamates added to food",
+      "url": "https://www.efsa.europa.eu/en/press/news/170712",
+      "type": "regulatory"
+    },
+    {
+      "title": "Re-evaluation of glutamic acid and glutamates (E620-E625) (EFSA Journal page)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4910",
+      "type": "regulatory"
+    },
+    {
+      "title": "DOI page for EFSA opinion 10.2903/j.efsa.2017.4910",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2017.4910",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API content for 21 CFR 182.1500",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2026-02-25/title-21?part=182&section=182.1500",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA Chemical 468 (MONOAMMONIUM L-GLUTAMATE)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/468",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA Chemical 2267 (SODIUM GLUTAMATE group context)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2267",
+      "type": "database"
+    },
+    {
+      "title": "IARC Agents Classified by the IARC Monographs",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC cumulative cross-index",
+      "url": "https://monographs.iarc.who.int/wp-content/uploads/2018/07/cumulative-cross-index.pdf",
+      "type": "database"
+    },
+    {
+      "title": "Temporal profile of flavor enhancers MAG, MSG, GMP, and IMP (PMID 32282071)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32282071/",
+      "type": "study"
+    },
+    {
+      "title": "Effect of food matrix on flavor enhancers including MAG (PMID 33615480)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33615480/",
+      "type": "study"
+    },
+    {
+      "title": "In Vivo and In Vitro Studies Assessing the Safety of MSG (PMID 39683053)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39683053/",
+      "type": "study"
+    },
+    {
+      "title": "Camellia sinensis mitigating MSG-induced neurotoxicity in rats (PMID 38869783)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38869783/",
+      "type": "study"
+    },
+    {
+      "title": "MSG exacerbated LPS-induced reproductive toxicity in rats (PMID 40751218)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40751218/",
+      "type": "study"
+    },
+    {
+      "title": "Chronic MSG toxicity and IL-10/IL-17 in rats (PMID 41612778)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41612778/",
+      "type": "study"
+    },
+    {
+      "title": "A review of the alleged health hazards of MSG (PMID 31920467)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31920467/",
+      "type": "review"
+    },
+    {
+      "title": "The Role of MSG in Food Allergies and Its Health Implications (PMID 41289354)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41289354/",
+      "type": "review"
+    }
+  ]
+}

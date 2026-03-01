@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T00:00:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E470b",
+    "name": "Magnesium salts of fatty acids",
+    "cas_numbers": [
+      "557-04-0",
+      "91031-63-9",
+      "2601-98-1",
+      "4086-70-8"
+    ],
+    "synonyms": [
+      "Magnesium stearate",
+      "Magnesium octadecanoate",
+      "Magnesium distearate",
+      "Dibasic magnesium stearate",
+      "Fatty acids C16-C18 magnesium salts"
+    ],
+    "chemical_class": "Magnesium salts of long-chain fatty acids (fatty-acid carboxylates; soap-like emulsifier/anticaking agents)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "emulsifier",
+    "secondary_categories": [
+      "anticaking agent",
+      "binder",
+      "lubricant",
+      "processing aid"
+    ],
+    "mechanism": "Amphiphilic magnesium fatty-acid salts reduce particle-particle friction and interfacial tension, improving powder flow/anticaking and emulsification behavior.",
+    "common_food_categories": [
+      "Fine bakery wares",
+      "Confectionery and chewing gum",
+      "Decorations, coatings and fillings",
+      "Powdered/mixed dry foods"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA (2018) concluded there is no need for a numerical ADI for E470a/E470b and no safety concern at reported uses/use levels."
+      },
+      "last_evaluation_year": 2018,
+      "key_finding": "E470b is authorised in the EU; EFSA found no safety concern at reported uses/use levels, including dedicated infant (>12 weeks) considerations in the re-evaluation."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1440; 21 CFR 172.863",
+      "notes": "21 CFR 184.1440 affirms magnesium stearate as GRAS with GMP-limited use; 21 CFR 172.863 permits magnesium salts of fatty acids as binder/emulsifier/anticaking agent under GMP."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA magnesium stearate record lists ADI NOT SPECIFIED (latest evaluation year 2020; 2015 entry reaffirmed ADI not specified for magnesium salts of stearic/palmitic acids)."
+      },
+      "last_evaluation_year": 2020
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "EFSA noted limited dedicated subchronic/chronic/reproductive/developmental toxicity datasets for salts of fatty acids and relied on available supporting toxicology/read-across.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "EFSA Journal 2018;16(3):5180 (PMID 32625824)"
+        ]
+      },
+      {
+        "category": "allergenic",
+        "summary": "A single case report described urticarial allergic reaction attributed to magnesium stearate, indicating possible rare hypersensitivity.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "J Biol Regul Homeost Agents. 2012;26(4):783-4 (PMID 23241129)"
+        ]
+      },
+      {
+        "category": "genotoxic",
+        "summary": "A 2017 test battery (Ames, chromosome aberration, micronucleus) reported no genotoxic signal for magnesium stearate at tested conditions.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "Toxicol Rep. 2017;4:554-559 (PMID 29090120)"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "A pharmacoepidemiologic study reported worse outcomes for magnesium-stearate-containing aspirin formulations, suggesting formulation interaction concerns outside direct food-additive toxicity context.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "Pharmacoepidemiol Drug Saf. 2020;29(12):1570-1578 (PMID 32954579)"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2018: no need for numerical ADI and no safety concern at reported uses/use levels for E470a/E470b.",
+      "JECFA: ADI NOT SPECIFIED for magnesium stearate / magnesium salts context.",
+      "US CFR: magnesium stearate affirmed GRAS (21 CFR 184.1440) with GMP conditions."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "No numerical ADI is set by EFSA or JECFA for this additive; EFSA re-evaluation did not identify a safety concern at reported use levels."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.83,
+    "rationale": "Regulatory consensus supports low concern at permitted food-use levels (EFSA no numerical ADI needed, JECFA ADI not specified, US CFR GRAS/GMP framework), but data gaps and rare hypersensitivity signals argue against categorizing as fully risk_free.",
+    "key_factors": [
+      "EFSA 2018 no-safety-concern conclusion with no numerical ADI",
+      "JECFA ADI not specified and latest 2020 evaluation entry",
+      "US CFR GRAS status and GMP-limited conditions (21 CFR 184.1440; 172.863)",
+      "No IARC classification entry found for magnesium stearate/E470b",
+      "Sparse dedicated long-term human safety data and isolated allergy report"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal landing page: Re-evaluation of E470a and E470b (2018)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5180",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA scientific output PDF: Re-evaluation of E470a and E470b (2018)",
+      "url": "https://www.efsa.europa.eu/sites/default/files/scientific_output/files/main_documents/5180.pdf",
+      "type": "regulatory"
+    },
+    {
+      "title": "Wiley PDF of EFSA opinion (2018)",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/pdf/10.2903/j.efsa.2018.5180",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed: EFSA 2018 re-evaluation record (PMID 32625824)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625824/",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API: 21 CFR 184.1440 Magnesium stearate",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=184&section=184.1440",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR 172.863 Salts of fatty acids",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=172&section=172.863",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: Title 21 versions index",
+      "url": "https://www.ecfr.gov/api/versioner/v1/versions/title-21.json",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical page: MAGNESIUM STEARATE (ID 4275)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4275",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA API search by partial name: magnesium stearate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/magnesium%20stearate",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs: List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list dataset script (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: Magnesium stearate lacks in vitro/in vivo genotoxic potential (PMID 29090120)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29090120/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Magnesium stearate an underestimated allergen (PMID 23241129)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23241129/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Aspirin with magnesium stearate less effective in secondary stroke prevention (PMID 32954579)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32954579/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed query used for recent safety search",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%28%22magnesium+stearate%22%5BTitle%2FAbstract%5D%29+AND+%28toxicity+OR+safety+OR+genotoxicity+OR+allergy+OR+adverse%29",
+      "type": "database"
+    },
+    {
+      "title": "PubChem synonyms/CAS API: magnesium stearate",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/magnesium%20stearate/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem synonyms/CAS API: magnesium palmitate",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/magnesium%20palmitate/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem synonyms/CAS API: magnesium myristate",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/magnesium%20myristate/synonyms/JSON",
+      "type": "database"
+    }
+  ]
+}

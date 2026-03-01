@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T18:28:54+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E515",
+    "name": "Potassium sulfates (potassium sulfate; potassium hydrogen sulfate)",
+    "cas_numbers": [
+      "7778-80-5",
+      "7646-93-7"
+    ],
+    "synonyms": [
+      "Potassium sulfate",
+      "Dipotassium sulfate",
+      "Sulfate of potash",
+      "Potassium bisulfate",
+      "Potassium hydrogen sulfate"
+    ],
+    "chemical_class": "Inorganic sulfate salts (potassium salts of sulfuric acid)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "flavoring agent and adjuvant",
+    "secondary_categories": [
+      "salt substitute",
+      "flavour enhancer",
+      "acidity regulator"
+    ],
+    "mechanism": "E515 salts dissociate into potassium and sulfate ions (and hydrogen ion for E515(ii)), affecting ionic strength, flavor profile, and acidification where used.",
+    "common_food_categories": [
+      "Bread and rolls",
+      "Fine bakery wares",
+      "Meat products (conservative EFSA scenario contribution)",
+      "Nonalcoholic beverages (FDA GMP maximum as-served level described in 21 CFR 184.1643)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA FAF (2019) concluded there is no need for a numerical ADI for sulfuric acid and sodium/potassium/calcium/ammonium sulfates at reported uses and use levels."
+      },
+      "last_evaluation_year": 2019,
+      "key_finding": "EFSA concluded that exposure to E515 within the sulfate additive group does not raise a safety concern at reported uses/use levels; no concern was identified for genotoxicity or carcinogenicity."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1643",
+      "notes": "Part 184 is the direct food substances affirmed as GRAS framework; potassium sulfate is specified as a flavoring agent and adjuvant at GMP, with a listed maximum as-served level of 0.015% for nonalcoholic beverages."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO JECFA database entry for POTASSIUM SULFATE (INS 515) reports ADI NOT SPECIFIED."
+      },
+      "last_evaluation_year": 1985
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "High sulfate oral doses can cause osmotic GI effects (laxative/diarrheal effects); EFSA cites laxative effects at 300 mg sodium sulfate/kg bw (about 207 mg sulfate/kg bw).",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "EFSA Journal 2019;17(10):e05868 (PMCID: PMC7008880)"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "EFSA identified data gaps in reproductive/developmental studies meeting current OECD guideline standards for the sulfate additive group.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "EFSA Journal 2019;17(10):e05868 (PMCID: PMC7008880)"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "EFSA recommended lowering arsenic/lead/mercury limits in specifications to reduce impurity-driven exposure from sulfate additives.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "EFSA Journal 2019;17(10):e05868 (PMCID: PMC7008880)"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA concluded no concern for genotoxicity and carcinogenicity for the assessed sulfate additive group including E515.",
+      "EFSA and JECFA both concluded no numerical ADI is needed / ADI not specified for the sulfate additive context.",
+      "A 2025 randomized trial of oral sulfate solution (medical bowel prep context) reported no severe adverse events, supporting low acute systemic hazard in controlled short-term use."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "Toddlers and children (highest modeled dietary intakes in EFSA scenarios)",
+        "People sensitive to osmotic GI effects at high sulfate bolus intake"
+      ],
+      "notes": "No numeric ADI exists for E515. EFSA refined non-brand-loyal estimates (mean 0.4-35; p95 3-68 mg sulfate/kg bw/day) are below the cited laxative threshold; conservative maximum-level scenarios can approach/overlap that effect range and are considered overestimates by EFSA."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.84,
+    "rationale": "Convergent regulatory assessments (EFSA no numerical ADI and no safety concern at reported uses, JECFA ADI not specified, FDA GRAS codification in 21 CFR 184.1643) support low concern at typical food additive exposure. Residual uncertainty is mainly related to high-dose GI effects and standard data gaps, not strong evidence of harm at authorized use levels.",
+    "key_factors": [
+      "EFSA 2019 re-evaluation includes E515(i)/(ii) and concludes no safety concern at reported uses/use levels",
+      "JECFA lists POTASSIUM SULFATE with ADI NOT SPECIFIED (evaluation year 1985)",
+      "FDA codifies potassium sulfate in direct-food GRAS framework at 21 CFR 184.1643 with GMP conditions",
+      "No IARC carcinogenic group listing identified for potassium sulfate",
+      "High oral sulfate doses can produce laxative effects, but refined dietary exposure estimates are substantially lower"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA publication page: Re-evaluation of sulphuric acid and its sodium, potassium, calcium and ammonium salts as food additive",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5868",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Wiley DOI page for EFSA Journal 2019.5868",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2019.5868",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed: Re-evaluation of sulphuric acid and its sodium, potassium, calcium and ammonium salts as food additive (PMID 32626147)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32626147/",
+      "type": "database"
+    },
+    {
+      "title": "PMCID full text of EFSA Journal opinion (PMC7008880)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7008880/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR current text: 21 CFR 184.1643 Potassium sulfate",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-184/section-184.1643",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full text: 21 CFR Part 184",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2020-04-01/title-21.xml?subtitle=B&chapter=I&subchapter=B&part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full text: 21 CFR 184.1643",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2020-04-01/title-21.xml?subtitle=B&chapter=I&subchapter=B&part=184&section=184.1643",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA search endpoint for potassium sulfate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/potassium%20sulfate",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA chemical entry: POTASSIUM SULFATE (ID 2482)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2482",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs: Agents Classified by the IARC Monographs",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs: List of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classification dataset app bundle (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: randomized trial of oral sulfate solution vs PEG (PMID 40269724)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40269724/",
+      "type": "study"
+    },
+    {
+      "title": "PubChem PUG REST synonyms for potassium sulfate (CAS confirmation)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/potassium%20sulfate/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem PUG REST synonyms for potassium bisulfate (CAS confirmation)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/potassium%20bisulfate/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubMed E-utilities search query used for recent screening",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%22potassium+sulfate%22+AND+%28food+additive+OR+safety+OR+toxicity%29&retmax=10&sort=pub_date&retmode=json",
+      "type": "database"
+    }
+  ]
+}

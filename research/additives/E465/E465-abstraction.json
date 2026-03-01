@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T16:26:12Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E465",
+    "name": "Ethyl methyl cellulose",
+    "cas_numbers": [
+      "9004-69-7"
+    ],
+    "synonyms": [
+      "Methyl ethyl cellulose",
+      "Ethyl methyl ether of cellulose",
+      "MEC",
+      "INS 465"
+    ],
+    "chemical_class": "Modified cellulose ether (mixed alkyl cellulose ether)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "stabilizer",
+    "secondary_categories": [
+      "emulsifier",
+      "thickening_agent",
+      "foaming_agent"
+    ],
+    "mechanism": "Partially etherified cellulose polymer that hydrates to increase viscosity and helps stabilize emulsions/foams by altering bulk and interfacial behavior.",
+    "common_food_categories": [
+      "general processed foods (EU group-I quantum satis authorization context)",
+      "products requiring emulsification or foam stability",
+      "viscosity-modified formulations"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2018 re-evaluation concluded no need for a numerical ADI for unmodified/modified celluloses including E465; historical SCF/JECFA basis is ADI not specified."
+      },
+      "last_evaluation_year": 2018,
+      "key_finding": "No safety concern at reported uses/use levels for the cellulose group; no genotoxic concern and no carcinogenic properties identified in the group assessment."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.872",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA database lists ADI as NOT SPECIFIED for methyl ethyl cellulose in the modified celluloses group."
+      },
+      "last_evaluation_year": 1989
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "High-dose dietary studies reported reduced body-weight gain at top doses, interpreted as bulk/nutritional effects rather than specific organ toxicity; GI intolerance effects are possible at high intake.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:4308482",
+          "JECFA FAS 26 / v26je08"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "EFSA discussed microbiome/inflammation concerns mainly for E466 literature; this is not direct evidence of E465 harm but indicates class-level mechanistic discussion.",
+        "evidence_strength": "theoretical",
+        "key_references": [
+          "EFSA Journal 2018;16(1):5047 (PMCID: PMC7009359)"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA re-evaluation (2018) found no safety concern at reported uses/use levels for the cellulose group including E465.",
+      "JECFA lists ADI as NOT SPECIFIED for methyl ethyl cellulose in the modified celluloses group.",
+      "No IARC carcinogenic classification listing was found for methyl ethyl cellulose/CAS 9004-69-7.",
+      "Targeted PubMed title/abstract searches found no post-2015 E465-specific toxicology studies beyond the EFSA 2018 re-evaluation record."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "Exposure figures are generally reported for the combined cellulose group rather than E465 alone. EFSA's highest refined 95th percentile estimate (506 mg/kg bw/day) was below its indicative total exposure range (660-900 mg/kg bw/day); infant FSMP concern discussed in EFSA was tied to E466 data limitations."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.82,
+    "rationale": "E465 is approved in major jurisdictions with defined specifications and favorable EFSA/JECFA conclusions, but the evidence base is largely historical/group-based and high-intake GI bulk effects remain plausible.",
+    "key_factors": [
+      "EFSA 2018: no numerical ADI needed; no safety concern at reported uses/use levels (group assessment including E465)",
+      "JECFA: ADI NOT SPECIFIED for methyl ethyl cellulose in modified celluloses group",
+      "FDA: approved direct food additive under 21 CFR 172.872 with identity/specification/use conditions",
+      "No IARC listing/classification found for methyl ethyl cellulose",
+      "No major jurisdictional bans identified"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal page - Re-evaluation of celluloses E460(i)-E469 as food additives",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5047",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA search page for E465",
+      "url": "https://www.efsa.europa.eu/en/search/site/E465",
+      "type": "database"
+    },
+    {
+      "title": "PubMed Central mirror - Re-evaluation of celluloses E460(i)-E469 as food additives (2018)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009359/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Versioner API - Title 21 full text (used to extract 21 CFR 172.872)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR search endpoint (HTML access blocked in environment)",
+      "url": "https://www.ecfr.gov/search?query=ethyl+methyl+cellulose",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA chemical lookup API by partial name",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/methyl%20ethyl%20cellulose",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA chemical page - Methyl ethyl cellulose (Chemical 2161)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2161",
+      "type": "database"
+    },
+    {
+      "title": "FAO JECFA additive detail page - Methyl Ethyl Cellulose (c/135)",
+      "url": "https://www.fao.org/food/food-safety-quality/scientific-advice/jecfa/jecfa-additives/detail/en/c/135/",
+      "type": "database"
+    },
+    {
+      "title": "FAO JECFA Monograph 1 Additive-278 PDF - Methyl Ethyl Cellulose",
+      "url": "https://www.fao.org/fileadmin/user_upload/jecfa_additives/docs/Monograph1/Additive-278.pdf",
+      "type": "regulatory"
+    },
+    {
+      "title": "INCHEM WHO Food Additives Series 26 monograph - Modified celluloses",
+      "url": "http://www.inchem.org/documents/jecfa/jecmono/v26je08.htm",
+      "type": "review"
+    },
+    {
+      "title": "IARC Monographs - List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications app dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed record - Re-evaluation of celluloses E460(i)-E469 (PMID 32625652)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625652/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed record - Long-term feeding studies of methyl ethyl cellulose (PMID 4308482)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/4308482/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed E-utilities query - methyl ethyl cellulose [Title/Abstract], 2016+ date filter",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%22methyl+ethyl+cellulose%22%5BTitle%2FAbstract%5D&retmax=20&datetype=pdat&mindate=2016&maxdate=3000",
+      "type": "database"
+    },
+    {
+      "title": "PubMed E-utilities query - ethyl methyl cellulose [Title/Abstract], 2010+ date filter",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%22ethyl+methyl+cellulose%22%5BTitle%2FAbstract%5D&retmax=20&mindate=2010&maxdate=3000&datetype=pdat",
+      "type": "database"
+    }
+  ]
+}

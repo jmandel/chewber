@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T19:28:59Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E631",
+    "name": "Disodium inosinate",
+    "cas_numbers": [
+      "4691-65-0"
+    ],
+    "synonyms": [
+      "Disodium 5'-inosinate",
+      "Disodium inosine-5'-monophosphate",
+      "Sodium 5'-inosinate",
+      "Sodium inosinate",
+      "IMP",
+      "INS 631"
+    ],
+    "chemical_class": "Purine nucleotide salt (disodium salt of inosinic acid)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "flavour enhancer",
+    "secondary_categories": [
+      "flavoring adjuvant",
+      "umami enhancer",
+      "sodium-reduction support"
+    ],
+    "mechanism": "Enhances umami signaling and synergizes with glutamate systems, increasing savory intensity and perceived saltiness at comparable sodium levels.",
+    "common_food_categories": [
+      "Savory seasonings",
+      "Soup stocks and broths",
+      "Instant savory formulations",
+      "Processed savory snacks",
+      "Reduced-sodium savory products"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 2.7,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2025 established a group ADI of 2.7 mg inosinic acid/kg bw/day for E630 and E631 (converted from 5 mg inosinic + guanylic acids/kg bw/day by molecular-weight adjustment)."
+      },
+      "last_evaluation_year": 2025,
+      "key_finding": "EFSA concluded exposure estimates did not exceed group ADIs in any assessed population group and scenario at reported use levels."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.535",
+      "notes": "Direct food additive permitted as flavoring adjuvant with compositional conditions; no explicit disodium inosinate entry found in retrieved 21 CFR parts 182 or 184 GRAS text."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA database lists ADI as NOT SPECIFIED for disodium 5'-inosinate in a group context with inosinic acid and salts."
+      },
+      "last_evaluation_year": 1993
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "IMP is a purine nucleotide; clinical dosing studies show it can raise serum uric acid, indicating a plausible risk pathway for hyperuricemia-prone individuals at high exposures.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/33064299/",
+          "https://pubmed.ncbi.nlm.nih.gov/29652211/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "In feed-additive assessments, EFSA FEEDAP initially flagged unresolved production-strain safety uncertainties (2022) that were later resolved with supplementary data (2023).",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/35281652/",
+          "https://pubmed.ncbi.nlm.nih.gov/37064054/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2025 re-evaluation reported no group-ADI exceedance in assessed populations/scenarios at reported use levels.",
+      "JECFA entry reports ADI not specified for disodium 5'-inosinate group context.",
+      "EFSA FEEDAP 2023 concluded IMP from C. stationis KCCM 80235 was safe for target species, consumers, users and the environment in assessed feed context."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "EFSA 2025 reported no exceedance of established group ADIs across assessed population groups and scenarios."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.81,
+    "rationale": "E631 is authorized in major jurisdictions reviewed, has explicit U.S. use conditions, and EFSA's 2025 re-evaluation found no group-ADI exceedance at reported uses. Available concern signals are mainly mechanistic/high-dose purine-uric-acid considerations rather than demonstrated population-level harm at current additive exposures.",
+    "key_factors": [
+      "EFSA 2025 established group ADIs and reported no exceedance in assessed populations",
+      "21 CFR 172.535 permits disodium inosinate with defined conditions",
+      "JECFA lists ADI as not specified in group context",
+      "No IARC classification entry found for disodium inosinate",
+      "Clinical IMP data show uric-acid elevation potential at therapeutic dosing"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal: Safety of inosinic acid and guanylic acid and their salts used as food additives (2025)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/9615",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR 21 CFR 172.535 Disodium inosinate (current)",
+      "url": "https://www.ecfr.gov/current/title-21/section-172.535",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API renderer Part 172 (includes section 172.535)",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-21?chapter=I&subchapter=B&part=172",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API renderer Part 182 (GRAS substances)",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-21?chapter=I&subchapter=B&part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API renderer Part 184 (affirmed GRAS direct human food ingredients)",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-21?chapter=I&subchapter=B&part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API renderer Part 170 (section 170.60 nitrites/nitrates in curing premixes)",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-21?chapter=I&subchapter=B&part=170",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database: DISODIUM 5'-INOSINATE (Chemical ID 2512)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2512",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA SearchChemical API: ByPartialName/inosinate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/inosinate",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset script (checked for inosinate/CAS 4691-65-0)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 37064054 (EFSA FEEDAP safety opinion, 2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37064054/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 35281652 (EFSA FEEDAP safety/efficacy opinion, 2022)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35281652/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 37649505 (EFSA FEEDAP safety/efficacy opinion, 2020)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37649505/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 33064299 (IMPROVE-MSA trial, 2021)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33064299/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 38876587 (umami synergy and saltiness, 2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38876587/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 29652211 (purines in umami soup stock and metabolism, 2018)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29652211/",
+      "type": "study"
+    }
+  ]
+}

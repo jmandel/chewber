@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T18:33:33Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E516",
+    "name": "Calcium sulfate",
+    "cas_numbers": [
+      "7778-18-9",
+      "10101-41-4"
+    ],
+    "synonyms": [
+      "Gypsum",
+      "Anhydrite",
+      "Plaster of Paris",
+      "INS 516",
+      "Calcium sulphate"
+    ],
+    "chemical_class": "Inorganic sulfate salt",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "firming agent",
+    "secondary_categories": [
+      "anticaking agent",
+      "flour treatment agent",
+      "sequestrant",
+      "yeast food",
+      "texturizer",
+      "nutrient supplement"
+    ],
+    "mechanism": "Dissociates into calcium and sulfate ions; calcium promotes structure-setting in protein/polysaccharide matrices and sulfate contributes ionic strength.",
+    "common_food_categories": [
+      "baked goods",
+      "confections and frostings",
+      "frozen dairy desserts and mixes",
+      "gelatins and puddings",
+      "grain products and pastas",
+      "processed vegetables",
+      "tofu and soy curd coagulant systems"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA (2019) concluded there is no need for a numerical ADI for sulfuric acid and sulfate salts including E516 at reported uses and use levels."
+      },
+      "last_evaluation_year": 2019,
+      "key_finding": "Exposure to E513/E514/E515/E516/E517 at reported uses did not raise a safety concern; estimated sulfate exposure was far below the human dose associated with laxative effects."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1230",
+      "notes": "Direct-food GRAS affirmation with GMP/category limits in 21 CFR 184.1230; animal-feed GRAS listing also present at 21 CFR 582.5230."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO JECFA database lists ADI as NOT LIMITED for calcium sulfate."
+      },
+      "last_evaluation_year": 1973
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "At sufficiently high sulfate doses, osmotic/laxative gastrointestinal effects can occur in humans; EFSA used a human laxative-effect reference point well above modeled additive exposure.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7008880/",
+          "https://pubmed.ncbi.nlm.nih.gov/7264905/",
+          "https://pubmed.ncbi.nlm.nih.gov/37655723/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Impurity management is a regulatory caveat: EFSA recommended lowering arsenic, lead, and mercury limits in EU specifications for sulfate additives including E516.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7008880/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2019 concluded no safety concern for reported uses and use levels of sulfate additives including E516.",
+      "EFSA reported no concern for genotoxicity and carcinogenicity in the evaluated sulfate dataset.",
+      "JECFA ADI status is NOT LIMITED for calcium sulfate.",
+      "U.S. direct-food use is affirmed as GRAS in 21 CFR 184.1230."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "toddlers (highest modeled sulfate exposure in EFSA scenarios)",
+        "individuals with unusually high therapeutic/supplemental sulfate intake"
+      ],
+      "notes": "No numerical ADI is set by EFSA/JECFA for this group; EFSA exposure estimates for sulfate from food additive use were far below the cited human laxative-effect dose."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "risk_free",
+    "confidence": 0.84,
+    "rationale": "Current regulatory evidence is consistently permissive (EFSA approved/no numerical ADI needed, FDA GRAS, JECFA NOT LIMITED), with no identified IARC carcinogenic classification for calcium sulfate. Observed concerns are mainly high-dose GI effects and impurity-specification management rather than demonstrated harm at modeled dietary additive exposure.",
+    "key_factors": [
+      "EFSA 2019 no-safety-concern conclusion at reported uses and use levels",
+      "EFSA and JECFA non-numerical ADI positioning",
+      "FDA GRAS status with defined CFR conditions of use",
+      "No calcium sulfate entry found in current IARC classified-agent dataset",
+      "Modeled dietary exposure substantially below human laxative-effect reference dose"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal publication page: Re-evaluation of sulphuric acid and its sodium, potassium, calcium and ammonium salts (E 513, 514 (i), 514 (ii), 515 (i), 515 (ii), 516 and 517)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5868",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA opinion full text on PubMed Central (2019)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7008880/",
+      "type": "regulatory"
+    },
+    {
+      "title": "Wiley DOI landing page for EFSA opinion (access challenge encountered)",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2019.5868",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API full Title 21 XML (includes 21 CFR 184.1230 and 21 CFR 582.5230)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA API search endpoint for calcium sulfate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/calcium%20sulfate",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA chemical page: CALCIUM SULFATE (ID 1360)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1360",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC Agents classified by the IARC Monographs",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC LOC classifications dataset bundle (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search query used for calcium sulfate + food/additive terms",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%22calcium+sulfate%22%5BTitle%2FAbstract%5D+AND+%28food%5BTitle%2FAbstract%5D+OR+%22food+additive%22%5BTitle%2FAbstract%5D+OR+E516%5BTitle%2FAbstract%5D%29",
+      "type": "database"
+    },
+    {
+      "title": "Compound Salt-Based Coagulants for Tofu Gel Production: Balancing Quality and Protein Digestibility (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40710686/",
+      "type": "study"
+    },
+    {
+      "title": "Gel properties of grass carp surimi treated by different calcium salts as sodium chloride substitutes (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40737753/",
+      "type": "study"
+    },
+    {
+      "title": "Efficacy and safety of oral sodium sulfate tablet compared with 1-L polyethylene glycol plus ascorbate (2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37655723/",
+      "type": "study"
+    },
+    {
+      "title": "Efficacy and safety of a novel sodium picosulfate oral tablet in a randomized controlled trial (2026)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41695285/",
+      "type": "study"
+    },
+    {
+      "title": "Absorption of orally administered sodium sulfate in humans (1981)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/7264905/",
+      "type": "study"
+    },
+    {
+      "title": "eCFR section URL visited for 21 CFR 184.1230 (access-gated in VM)",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-184/section-184.1230",
+      "type": "regulatory"
+    }
+  ]
+}

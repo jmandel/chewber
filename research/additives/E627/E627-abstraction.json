@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T19:30:17+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E627",
+    "name": "Disodium 5'-guanylate",
+    "cas_numbers": [
+      "5550-12-9"
+    ],
+    "synonyms": [
+      "Disodium guanosine 5'-monophosphate",
+      "Sodium 5'-guanylate",
+      "Sodium guanylate",
+      "GMP"
+    ],
+    "chemical_class": "Purine nucleotide salt (flavour enhancer)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "flavour enhancer",
+    "secondary_categories": [
+      "umami enhancement",
+      "saltiness enhancement"
+    ],
+    "mechanism": "5'-Ribonucleotides such as GMP potentiate savoury/umami perception and can intensify salty taste in combination systems.",
+    "common_food_categories": [
+      "General foods requiring flavour enhancement",
+      "Savoury snacks and potato products",
+      "Cheese spreads",
+      "Processed meat products"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "Latest accessible Open EFSA re-evaluation record for E627 is ongoing (no adopted output/ADI published in that record)."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "Open EFSA question EFSA-Q-2011-00692 is in Ongoing Risk Assessment status (last modified 2026-01-19) with no published output yet."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.530",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA entry for DISODIUM 5'-GUANYLATE states ADI NOT SPECIFIED (group ADI context for guanylic acid and salts)."
+      },
+      "last_evaluation_year": 1993
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "Indirect human challenge-meal evidence shows uric-acid physiology relevance when GMP/IMP are included in high-purine loads; this is a cautionary signal for hyperuricemia-prone individuals rather than direct proof of harm at typical additive intake.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/39408358/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Direct modern human safety datasets specific to E627 at normal dietary exposure are limited; uncertainty remains while EFSA food-additive re-evaluation is still ongoing.",
+        "evidence_strength": "theoretical",
+        "key_references": [
+          "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00692"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA chemical record lists ADI as NOT SPECIFIED for disodium 5'-guanylate.",
+      "eCFR permits use as a flavour enhancer at levels not exceeding what is reasonably required for intended effect.",
+      "No IARC monograph classification entry identified for disodium guanylate/CAS 5550-12-9 in the accessed IARC list dataset."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "People with hyperuricemia or gout (non-ADI caution context)"
+      ],
+      "notes": "Because JECFA uses ADI not specified, risk management is less about numeric ADI exceedance and more about susceptible-population context and total dietary purine load."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.73,
+    "rationale": "Regulatory evidence is broadly permissive (JECFA ADI not specified; FDA CFR allowance), with no IARC classification found. The main uncertainty is absence of a finalized modern EFSA food-additive output in the current re-evaluation record and sparse direct human long-term safety studies specific to E627.",
+    "key_factors": [
+      "JECFA ADI not specified",
+      "FDA CFR 21 section 172.530 permits use",
+      "No identified IARC listing",
+      "EFSA re-evaluation record still ongoing",
+      "Limited modern direct human safety studies"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA site search URL for E627 (access attempt)",
+      "url": "https://www.efsa.europa.eu/en/search?text=E627",
+      "type": "database"
+    },
+    {
+      "title": "Open EFSA question record EFSA-Q-2011-00692",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00692",
+      "type": "regulatory"
+    },
+    {
+      "title": "Open EFSA related ribonucleotide question EFSA-Q-2011-00699",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00699",
+      "type": "regulatory"
+    },
+    {
+      "title": "Open EFSA related ribonucleotide question EFSA-Q-2011-00700",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00700",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full Title 21 XML (2026-02-25)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR search API result for disodium guanylate",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=disodium+guanylate&per_page=5&page=1",
+      "type": "database"
+    },
+    {
+      "title": "eCFR human section URL (access attempt)",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-172/subpart-F/section-172.530",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA search API by partial name (guanylate)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/guanylate",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical page DISODIUM 5'-GUANYLATE (ID 822)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/822",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC classifications landing page",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list data script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search: disodium guanylate safety",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=disodium+guanylate+safety",
+      "type": "database"
+    },
+    {
+      "title": "Effects of Acute and One-Week Supplementation with Montmorency Tart Cherry Powder on Food-Induced Uremic Response",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39408358/",
+      "type": "study"
+    },
+    {
+      "title": "Safety and efficacy of a feed additive consisting of disodium 5'-guanylate (EFSA FEEDAP)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34135998/",
+      "type": "study"
+    },
+    {
+      "title": "Safety evaluation of disodium 5'-inosinate, disodium 5'-guanylate and disodium 5'-ribonucleotide",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/4601956/",
+      "type": "study"
+    },
+    {
+      "title": "Temporal profile of flavor enhancers MAG, MSG, GMP, and IMP",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32282071/",
+      "type": "study"
+    },
+    {
+      "title": "Effect of the food matrix on flavor enhancers intensifying salty taste",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33615480/",
+      "type": "study"
+    }
+  ]
+}

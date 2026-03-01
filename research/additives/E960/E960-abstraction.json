@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T21:01:23+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E960",
+    "name": "Steviol glycosides",
+    "cas_numbers": [
+      "57817-89-7",
+      "58543-16-1",
+      "471-80-7"
+    ],
+    "synonyms": [
+      "stevia glycosides",
+      "stevioside",
+      "rebaudioside A",
+      "rebaudioside D",
+      "rebaudioside M",
+      "glucosylated steviol glycosides",
+      "enzymatically produced steviol glycosides"
+    ],
+    "chemical_class": "Steviol-based diterpene glycosides",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "high-intensity sweetener",
+    "secondary_categories": [
+      "table-top sweetener",
+      "sugar substitute"
+    ],
+    "mechanism": "Steviol glycosides activate sweet-taste signaling and deliver high sweetness intensity with minimal caloric contribution; commercial forms include leaf-derived and bioconverted glycosides.",
+    "common_food_categories": [
+      "table-top sweeteners",
+      "flavored drinks",
+      "fine bakery products",
+      "general-purpose sweetened foods"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 4,
+        "unit": "mg/kg bw/day",
+        "basis": "Expressed as steviol equivalents; EFSA 2024 concluded evidence was insufficient to raise ADI above 4 mg/kg bw/day."
+      },
+      "last_evaluation_year": 2026,
+      "key_finding": "EFSA 2026 found no safety concern for the modified E960c production process; EFSA 2024 retained the ADI at 4 mg/kg bw/day and flagged increased conservative exceedance risk in toddlers under proposed expanded uses."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 170.30; 21 CFR 170.203",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 4,
+        "unit": "mg/kg bw/day",
+        "basis": "0-4 mg/kg bw, expressed as steviol."
+      },
+      "last_evaluation_year": 2023
+    },
+    "iarc_classification": null,
+    "notable_bans": [
+      "U.S. restriction: whole-leaf and crude stevia extracts are not permitted for use as sweeteners (distinct from high-purity steviol glycosides)."
+    ]
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Conservative dietary exposure scenarios indicate possible ADI exceedance in high-consuming toddlers/young children in some modeled conditions.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/39502654/",
+          "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/267"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "Broader non-nutritive sweetener literature continues to evaluate gut-related mechanisms; a recent in vitro study reported no epithelial barrier disruption for stevia in tested conditions.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41462549/",
+          "https://pubmed.ncbi.nlm.nih.gov/41428417/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2026 concluded no safety concern for E960c process modification (including use of new GM production strains) under proposed specifications.",
+      "JECFA continues to list ADI 0-4 mg/kg bw (as steviol), with latest listed evaluation year 2023.",
+      "Recent review-level evidence did not identify consistent genotoxic or carcinogenic potential for steviol glycosides within nonsugar sweeteners."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "toddlers (95th percentile, conservative EU scenario under proposed expanded uses)",
+        "young children with high modeled intake"
+      ],
+      "notes": "EFSA 2024 and JECFA historical exposure summaries both indicate that high-end child intake can approach or exceed the ADI in conservative models."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.79,
+    "rationale": "Steviol glycosides are broadly approved and repeatedly judged acceptable under current specifications, but finite ADI and modeled exceedance risk in high-consuming children prevent a lower-risk tier.",
+    "key_factors": [
+      "EFSA retained ADI at 4 mg/kg bw/day rather than increasing it",
+      "Modeled toddler/young-child exceedance risk in conservative scenarios",
+      "No IARC listing found for steviol glycosides",
+      "FDA GRAS no-questions responses for multiple high-purity steviol glycoside preparations"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal: Scientific opinion on extension of authorization and ADI modification for steviol glycosides (E960a-d)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/9045",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed record for EFSA 2024 steviol glycosides opinion (PMID 39502654)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39502654/",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed: EFSA 2026 E960c process-modification safety opinion (PMID 41523320)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41523320/",
+      "type": "regulatory"
+    },
+    {
+      "title": "FDA: Aspartame and Other Sweeteners in Food",
+      "url": "https://www.fda.gov/food/food-additives-petitions/aspartame-and-other-sweeteners-food",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR 170.30",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?section=170.30",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR 170.203",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?section=170.203",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API search for steviol in Title 21",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=steviol&per_page=20&page=1",
+      "type": "database"
+    },
+    {
+      "title": "FDA GRAS Notice Inventory entry GRN 619",
+      "url": "https://hfpappexternal.fda.gov/scripts/fdcc/index.cfm?id=619&set=GRASNotices",
+      "type": "regulatory"
+    },
+    {
+      "title": "FDA GRAS Notice Inventory entry GRN 790",
+      "url": "https://hfpappexternal.fda.gov/scripts/fdcc/index.cfm?id=790&set=GRASNotices",
+      "type": "regulatory"
+    },
+    {
+      "title": "FDA GRAS Notice Inventory entry GRN 858",
+      "url": "https://hfpappexternal.fda.gov/scripts/fdcc/index.cfm?id=858&set=GRASNotices",
+      "type": "regulatory"
+    },
+    {
+      "title": "FDA GRAS Notice Inventory entry GRN 970",
+      "url": "https://hfpappexternal.fda.gov/scripts/fdcc/index.cfm?id=970&set=GRASNotices",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA chemical page: STEVIOL GLYCOSIDES",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/267",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA search API by partial name steviol",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/steviol",
+      "type": "database"
+    },
+    {
+      "title": "IARC Agents Classified by the IARC Monographs",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list dataset script (LOC app)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: Lack of Genotoxic and Carcinogenic Potential for Nonsugar Sweeteners (PMID 41197905)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41197905/",
+      "type": "review"
+    },
+    {
+      "title": "PubMed: Non-synthetic sweeteners and intestinal barrier function (PMID 41462549)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41462549/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Umbrella review of low/no-calorie sweeteners and cardiometabolic outcomes (PMID 41428417)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41428417/",
+      "type": "review"
+    },
+    {
+      "title": "PubMed: Randomized crossover beverage trial including sucrose/stevia arm (PMID 41016269)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41016269/",
+      "type": "study"
+    },
+    {
+      "title": "PubChem PUG-View: Stevioside CAS",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/442089/JSON?heading=CAS",
+      "type": "database"
+    },
+    {
+      "title": "PubChem PUG-View: Rebaudioside A CAS",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/6918840/JSON?heading=CAS",
+      "type": "database"
+    },
+    {
+      "title": "PubChem PUG-View: Steviol CAS",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/452967/JSON?heading=CAS",
+      "type": "database"
+    }
+  ]
+}

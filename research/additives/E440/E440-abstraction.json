@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T15:50:10+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E440",
+    "name": "Pectin (including amidated pectin)",
+    "cas_numbers": [
+      "9000-69-5",
+      "9000-59-8"
+    ],
+    "synonyms": [
+      "Pectins",
+      "Amidated pectin",
+      "E440i",
+      "E440ii",
+      "INS 440",
+      "Pectinic acids",
+      "Pectinates"
+    ],
+    "chemical_class": "Plant-derived complex polysaccharides (partially methylated polygalacturonic acids and related salts/amides)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "gelling agent",
+    "secondary_categories": [
+      "thickener",
+      "stabilizer",
+      "emulsifier"
+    ],
+    "mechanism": "Hydrated pectin chains increase viscosity and form gel networks, stabilizing dispersed food systems.",
+    "common_food_categories": [
+      "Jams and jellies",
+      "Fruit preparations",
+      "Acidified dairy and fruit beverages",
+      "Confectionery gels",
+      "Infant anti-regurgitation formulas"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not specified; EFSA concluded no numerical ADI needed for the general population (2017), with infant-specific caveats in 2021 follow-up."
+      },
+      "last_evaluation_year": 2021,
+      "key_finding": "EFSA found no safety concern for general population use, but for infants below 16 weeks some scenarios had margin of safety <1 at MPLs and methanol-related concern, leading to recommendation to reduce MPLs in infant categories."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1588",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not specified (group ADI for pectins and amidated pectins)."
+      },
+      "last_evaluation_year": 2016
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Infant-specific high exposure scenarios are the main concern: EFSA (2021) reported margin of safety below 1 in some infant scenarios at MPLs and possible adverse methanol internal dose; JECFA (2014) considered 0.5% use in infant formula of concern.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/33537069/",
+          "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3043"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Dose-response effects were seen in neonatal pigs at 1% pectin (reduced growth/feed intake/digestibility), while 0.2% was reported safe and well tolerated.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/32360443/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2017 concluded no safety concern for general population and no need for a numerical ADI.",
+      "JECFA record lists ADI as not specified and 2016 infant-related reassessment concluded low risk at 0.2% use in formula.",
+      "No IARC Monographs classification entry for pectin/pectins was found in the current agent list data."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "Infants below 16 weeks consuming formula at high/additive-maximum permitted levels"
+      ],
+      "notes": "Classical ADI exceedance is less applicable because ADI is not specified; concern is scenario-specific margin of safety and methanol exposure in young infants."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.76,
+    "rationale": "General-population evidence supports safety at regulated uses, but repeated regulatory caveats for infant formula high-exposure scenarios prevent a lower-risk classification.",
+    "key_factors": [
+      "EFSA 2017: no safety concern for general population; no numerical ADI needed",
+      "EFSA 2021: infant <16 weeks scenarios with margin of safety <1 and methanol concern at MPLs",
+      "JECFA 2014/2016 infant assessments show concern at higher level and low risk at 0.2%",
+      "FDA CFR: GRAS with GMP-limited use conditions",
+      "No IARC classification entry identified"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA search page for E440 (access-block page captured)",
+      "url": "https://www.efsa.europa.eu/en/search?search_api_fulltext=E440",
+      "type": "database"
+    },
+    {
+      "title": "EFSA Journal page URL: Re-evaluation of pectin and amidated pectin (2017)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4866",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal page URL: Infant follow-up opinion (2021)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/6387",
+      "type": "regulatory"
+    },
+    {
+      "title": "Re-evaluation of pectin (E 440i) and amidated pectin (E 440ii) as food additives (EFSA J, 2017; PubMed)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625540/",
+      "type": "regulatory"
+    },
+    {
+      "title": "Opinion on re-evaluation in infants below 16 weeks and follow-up (EFSA J, 2021; PubMed)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33537069/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR 21 CFR 184.1588 URL (access-gated in this environment)",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-184/section-184.1588",
+      "type": "regulatory"
+    },
+    {
+      "title": "CFR-2025 Title 21 Vol 3 Sec 184.1588 XML (GovInfo)",
+      "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title21-vol3/xml/CFR-2025-title21-vol3-sec184-1588.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA Chemical record: PECTINS",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3043",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list data script (contains current agent table data)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Dietary pectin at 0.2% in milk replacer did not inhibit growth... (Regul Toxicol Pharmacol, 2020)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32360443/",
+      "type": "study"
+    },
+    {
+      "title": "Different thickening complexes with pectin in infant anti-regurgitation formula (Acta Paediatr, 2020)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31529540/",
+      "type": "study"
+    },
+    {
+      "title": "Safety evaluation of pectin-derived acidic oligosaccharides (Regul Toxicol Pharmacol, 2010)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20026148/",
+      "type": "study"
+    },
+    {
+      "title": "Safety of a New Amino Acid Formula in Infants Allergic to Cow's Milk... (J Pediatr Gastroenterol Nutr, 2015)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25844709/",
+      "type": "study"
+    }
+  ]
+}

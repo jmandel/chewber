@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T17:30:06Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E479b",
+    "name": "Thermally oxidized soya bean oil interacted with mono- and diglycerides of fatty acids",
+    "cas_numbers": [
+      "884318-13-2"
+    ],
+    "synonyms": [
+      "TOSOM",
+      "Oxidised soya bean oil interacted with mono- and diglycerides of fatty acids",
+      "INS 479 (JECFA nomenclature)"
+    ],
+    "chemical_class": "Complex mixture of glycerol esters and fatty-acid-derived components from thermally oxidized soybean oil and mono-/diglycerides",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "emulsifier",
+    "secondary_categories": [
+      "fat emulsion stabilizer",
+      "fat phase/crystallization modifier"
+    ],
+    "mechanism": "Amphiphilic glyceride/oxidized lipid ester mixture that helps stabilize fat-containing emulsions and modifies fat physical behavior in high-fat systems.",
+    "common_food_categories": [
+      "Other fat and oil emulsions including spreads and liquid emulsions (EU FC 02.2.2)",
+      "Frying fat emulsions (restricted use context in EU authorization)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "restricted",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA FAF (2018) stated available toxicological data were insufficient to support the current ADI; historical SCF/JECFA ADIs (25/30) were noted but not retained by EFSA as supported values."
+      },
+      "last_evaluation_year": 2018,
+      "key_finding": "EFSA concluded use of E479b is of no safety concern at current limited uses (MoS about 540), but identified major data gaps (ADME, developmental toxicity, and no direct genotoxicity dataset)."
+    },
+    "fda": {
+      "status": "not_evaluated",
+      "cfr_citation": "No direct listing found in Title 21 CFR for E479b/TOSOM/CAS 884318-13-2 via eCFR search (accessed 2026-02-27). Related but non-identical substance: 21 CFR 172.818 (Oxystearin).",
+      "notes": "eCFR search for the additive name, synonyms, and CAS returned zero direct Title 21 hits; 21 CFR 172.818 allows oxystearin as crystallization inhibitor/release agent up to 0.125% in oils/shortenings."
+    },
+    "jecfa": {
+      "adi": {
+        "value": 30,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA database entry for TOSOM (Chemical 2334, INS 479) lists ADI as 0-30 mg/kg bw."
+      },
+      "last_evaluation_year": 1992
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "genotoxic",
+        "summary": "EFSA reported no direct genotoxicity dataset for TOSOM; potential reactive manufacturing by-products (e.g., epoxides) were discussed as a theoretical concern.",
+        "evidence_strength": "theoretical",
+        "key_references": [
+          "EFSA Journal 2018;16(10):e05420 (PMCID: PMC7009384)"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Core toxicology package was incomplete (insufficient ADME data and no reliable developmental toxicity studies), limiting confidence in a formal ADI-based assessment.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "EFSA Journal 2018;16(10):e05420 (PMCID: PMC7009384)"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "2.5-year rat chronic/carcinogenicity study (PubMed 8258411) did not show treatment-related carcinogenicity.",
+      "EFSA identified NOAEL 5,400 mg/kg bw/day (males; highest tested) and concluded no safety concern for current limited EU uses based on MoS.",
+      "Subchronic pig study cited by EFSA reported no adverse effects up to 4,000 mg/kg bw/day (limited study design)."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "Toddlers (highest modeled exposure group)"
+      ],
+      "notes": "EFSA maximum-scenario exposure reached 10.1 mg/kg bw/day (P95) in toddlers, below historical SCF/JECFA ADIs; however EFSA considered available data insufficient to support retaining a formal ADI."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.62,
+    "rationale": "Current authorized-use exposure appears low relative to observed NOAELs, but the toxicology package has material gaps (ADME/developmental/genotoxicity data limitations), so confidence is moderate rather than high.",
+    "key_factors": [
+      "EFSA 2018: no safety concern at current limited use with MoS about 540",
+      "EFSA 2018: toxicological data insufficient to support current ADI",
+      "No IARC classification identified for this additive",
+      "No direct U.S. Title 21 listing identified for this specific substance",
+      "Direct PubMed literature on E479b/TOSOM is sparse and largely legacy"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal landing page for E479b re-evaluation (pub 5420)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5420",
+      "type": "regulatory"
+    },
+    {
+      "title": "Re-evaluation of oxidised soya bean oil interacted with mono- and diglycerides of fatty acids (E 479b) as a food additive (PubMed record)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625705/",
+      "type": "study"
+    },
+    {
+      "title": "EFSA Journal full text (PMC): E479b re-evaluation",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009384/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API search (exact phrase query for thermally oxidized soya bean oil)",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=%22thermally%20oxidized%20soya%20bean%20oil%22&per_page=20&page=1",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 172.818 Oxystearin (eCFR full section endpoint)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2025-12-31/title-21.xml?part=172&section=172.818",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database Chemical 2334 (TOSOM, INS 479)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2334",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA database Chemical 3528 (historical/renamed entry)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3528",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications data script endpoint used by list page",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed targeted search (E479b/TOSOM terms in title/abstract; no post-2018 direct hits)",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmax=20&term=%28%22E%20479b%22%5BTitle%2FAbstract%5D%20OR%20%22TOSOM%22%5BTitle%2FAbstract%5D%20OR%20%22oxidised%20soya%20bean%20oil%20interacted%20with%20mono-%20and%20diglycerides%22%5BTitle%2FAbstract%5D%29%20AND%20%282019%3A3000%5Bpdat%5D%29",
+      "type": "database"
+    },
+    {
+      "title": "Carcinogenicity study of the emulsifier TOSOM and the release agent TOS in Wistar rats (1993)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/8258411/",
+      "type": "study"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T20:04:21+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E904",
+    "name": "Shellac",
+    "cas_numbers": [
+      "9000-59-3"
+    ],
+    "synonyms": [
+      "Bleached shellac",
+      "White shellac",
+      "Confectioner's glaze",
+      "Resinous glaze",
+      "Pure food glaze",
+      "Natural glaze"
+    ],
+    "chemical_class": "Natural low-molecular-weight polyester resin (mixture of mono- and polyesters of hydroxyaliphatic and sesquiterpenoid acids)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "glazing agent",
+    "secondary_categories": [
+      "coating agent",
+      "surface-finishing agent"
+    ],
+    "mechanism": "Applied as a thin external coating; after solvent evaporation it forms a protective glossy film and can further self-esterify/polymerize.",
+    "common_food_categories": [
+      "cocoa and chocolate products",
+      "other confectionery",
+      "coated fruits/vegetables/nuts",
+      "food supplements and coated tablets"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 4,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2024 derived ADI from NOAEL 400 mg/kg bw/day (UF 100) for wax-free shellac produced by physical decolouring; temporary for chemically bleached wax-free shellac pending impurity data."
+      },
+      "last_evaluation_year": 2024,
+      "key_finding": "P95 exposure exceedances were observed in several age groups, but EFSA concluded low exceedance under conservative assumptions did not indicate a safety concern."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 175.300 (also 21 CFR 175.105, 175.380, 175.390)",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA database entry for SHELLAC, BLEACHED (INS 904) reports ADI as NOT SPECIFIED."
+      },
+      "last_evaluation_year": 1992
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "For chemically bleached shellac, EFSA identified unresolved organochlorine impurity characterization and recommended specification tightening (including chloroform/lead controls).",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11292212/"
+        ]
+      },
+      {
+        "category": "allergenic",
+        "summary": "Human dermatology evidence indicates contact allergy potential (e.g., 3.77% positivity among patch-tested suspected dermatitis cases), mainly relevant to dermal/cosmetic/occupational exposure.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/36828274/",
+          "https://pubmed.ncbi.nlm.nih.gov/35194808/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA reported no genotoxicity concern for shellac materials evaluated.",
+      "EFSA subchronic and chronic studies did not indicate major systemic toxicity at tested dose ranges used for ADI derivation.",
+      "JECFA comment: present external coating/glazing uses were not of toxicological concern."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "toddlers",
+        "children",
+        "adolescents",
+        "high-percentile adults in conservative scenarios"
+      ],
+      "notes": "EFSA 2024 reported 95th percentile exceedances in non-brand-loyal and maximum-level scenarios, but concluded low exceedance under conservative assumptions did not indicate a safety concern."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.78,
+    "rationale": "Shellac remains authorized with generally reassuring toxicology, but EFSA's temporary ADI status for chemically bleached material, unresolved organochlorine impurity identity/levels, and high-percentile ADI exceedances in some groups justify a moderate tier rather than limited/risk_free.",
+    "key_factors": [
+      "EFSA 2024 ADI = 4 mg/kg bw/day with temporary caveat for chemically bleached wax-free shellac",
+      "P95 ADI exceedance in several age groups under conservative exposure scenarios",
+      "No IARC listing for shellac and no major jurisdictional ban identified",
+      "JECFA ADI not specified with historical conclusion of no toxicological concern at present uses"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal page: Re-evaluation of shellac (E 904)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/8897",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed record: Re-evaluation of shellac (E 904)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39099614/",
+      "type": "database"
+    },
+    {
+      "title": "PMC full text: Re-evaluation of shellac (E 904)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11292212/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR 21 CFR 175.300 - Resinous and polymeric coatings",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-175/subpart-C/section-175.300",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR 21 CFR 175.105 - Adhesives",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-175/subpart-B/section-175.105",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR 21 CFR 175.380",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-175/subpart-C/section-175.380",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA chemical entry: SHELLAC, BLEACHED (INS 904)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1749",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA API search by partial name: shellac",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/shellac",
+      "type": "database"
+    },
+    {
+      "title": "IARC list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC LOC app dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed study: Contact Allergy to Shellac (REIDAC)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36828274/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed study: Occupational allergic contact dermatitis caused by shellac",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35194808/",
+      "type": "study"
+    }
+  ]
+}

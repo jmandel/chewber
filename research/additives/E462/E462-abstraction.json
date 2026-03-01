@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T16:29:29+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E462",
+    "name": "Ethyl cellulose",
+    "cas_numbers": [
+      "9004-57-3"
+    ],
+    "synonyms": [
+      "Ethyl ether of cellulose",
+      "Cellulose ethyl ether"
+    ],
+    "chemical_class": "Modified cellulose ether (ethylated cellulose polymer)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "stabilizer/thickener and formulation aid",
+    "secondary_categories": [
+      "binder",
+      "tablet coating component",
+      "flavor fixative",
+      "carrier"
+    ],
+    "mechanism": "Technological polymer that provides binding, film-forming/coating, and stabilization effects; largely unabsorbed as part of the modified-cellulose group assessed by EFSA.",
+    "common_food_categories": [
+      "dry vitamin preparations",
+      "vitamin and mineral tablet coatings",
+      "flavoring compounds",
+      "paper/paperboard-packaged foods (migration context)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA (2018 re-evaluation of celluloses including E462) concluded there is no need for a numerical ADI; consistent with JECFA/SCF ADI not specified approach."
+      },
+      "last_evaluation_year": 2018,
+      "key_finding": "No safety concern at reported uses/use levels; no genotoxic concern and no carcinogenic signal in reviewed datasets for celluloses group including E462."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.868 (direct food additive); 21 CFR 182.90 (GRAS list for paper/paperboard migration)",
+      "notes": "Direct food uses are specified in 21 CFR 172.868; separate GRAS context exists for migration from paper/paperboard under 21 CFR 182.90."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA database lists ETHYL CELLULOSE with ADI NOT SPECIFIED as part of group ADI for modified celluloses."
+      },
+      "last_evaluation_year": 1989
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Evidence base is stronger at grouped-cellulose level than highly additive-specific modern toxicology datasets for E462 alone.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/32625652/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Feed-additive EFSA opinions (2020, 2024) note insufficient data to conclude on user/handler safety, though consumer/environment conclusions were favorable.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/32760466/",
+          "https://pubmed.ncbi.nlm.nih.gov/38425416/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA re-evaluation reported no genotoxic concern for celluloses including E462",
+      "EFSA re-evaluation reported no carcinogenic properties detected in the evaluated celluloses datasets",
+      "JECFA database lists ADI as not specified for modified celluloses including ethyl cellulose"
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "ADI is not specified (no numerical ADI), so classic ADI exceedance is not the primary risk metric; EFSA still concluded no safety concern at reported uses/use levels."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.83,
+    "rationale": "Authoritative evaluations (EFSA/JECFA/FDA context) are consistently permissive for food uses at regulated conditions, with no strong genotoxic/carcinogenic signal. Remaining uncertainty is mainly the relative scarcity of modern E462-specific epidemiology/toxicology outside grouped-cellulose assessments.",
+    "key_factors": [
+      "EFSA 2018 concluded no need for numerical ADI and no safety concern at reported uses",
+      "JECFA lists ADI as NOT SPECIFIED for modified celluloses including ethyl cellulose",
+      "US CFR explicitly permits direct uses in 21 CFR 172.868",
+      "No IARC classification entry identified for ethyl cellulose",
+      "Recent PubMed safety-oriented items are mostly regulatory updates rather than new harm signals"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of celluloses E 460(i), E 460(ii), E 461, E 462, E 463, E 464, E 465, E 466, E 468 and E 469 as food additives",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625652/",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal publication page 5047",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5047",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA Food Additives Database - ETHYL CELLULOSE (Chemical ID 3196)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3196",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API renderer - 21 CFR Part 172 (includes 21 CFR 172.868 Ethyl cellulose)",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2026-02-25/title-21?chapter=I&subchapter=B&part=172",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API renderer - 21 CFR Part 182 (includes 21 CFR 182.90 paper/paperboard migration GRAS list)",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2026-02-25/title-21?chapter=I&subchapter=B&part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "FDA EAFUS search results for ethyl cellulose",
+      "url": "https://www.cfsanappsexternal.fda.gov/scripts/fdcc/index.cfm?set=FoodSubstances&sort=Sortterm_ID&order=ASC&startrow=1&type=basic&search=ethyl%20cellulose",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs - List of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list data script (agents dataset)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Safety of a feed additive consisting of ethyl cellulose for all animal species",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38425416/",
+      "type": "study"
+    },
+    {
+      "title": "Safety and efficacy of ethyl cellulose for all animal species",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32760466/",
+      "type": "study"
+    },
+    {
+      "title": "EUR-Lex Commission Regulation (EU) 2025/666",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32025R0666",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed search query used for recent safety scan",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=ethyl+cellulose+toxicity+safety",
+      "type": "database"
+    }
+  ]
+}

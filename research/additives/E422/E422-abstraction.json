@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T15:31:48Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E422",
+    "name": "Glycerol",
+    "cas_numbers": [
+      "56-81-5"
+    ],
+    "synonyms": [
+      "Glycerin",
+      "Glycerine",
+      "1,2,3-Propanetriol",
+      "Trihydroxypropane"
+    ],
+    "chemical_class": "Trihydric alcohol (polyol)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "humectant",
+    "secondary_categories": [
+      "solvent",
+      "nutritive sweetener",
+      "stabilizer/thickener"
+    ],
+    "mechanism": "Hygroscopic polyol that retains water in foods, helps maintain softness/texture, and acts as a solvent carrier for flavors and colors.",
+    "common_food_categories": [
+      "confectionery and soft sweets",
+      "baked goods",
+      "frozen or moisture-sensitive foods",
+      "flavor/color carrier systems"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA re-evaluation (2017) concluded no need for a numerical ADI (ADI not specified); 2022 follow-up maintained no general safety concern under assessed uses."
+      },
+      "last_evaluation_year": 2022,
+      "key_finding": "EFSA 2017 found no concern for genotoxicity/carcinogenicity and no need for a numerical ADI; EFSA 2022 follow-up found no safety concern for most groups but could not fully exclude concern for high-percentile toddlers/children due to uncertainties."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.1320",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "NOT SPECIFIED (listed as ADI not specified (1976) in the JECFA database entry)."
+      },
+      "last_evaluation_year": 2002
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "Recent human volunteer data indicate gut microbiota can convert dietary glycerol to acrolein, with higher urinary acrolein biomarkers after high-glycerol meals.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID:41159664"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "EFSA follow-up identified uncertainty for toddlers/children at high-percentile exposure estimates under conservative assumptions.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "EFSA Journal 2022;20(3):7204"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2017 reported no concern for genotoxicity and carcinogenicity and no need for a numerical ADI.",
+      "JECFA lists ADI as not specified.",
+      "FDA/eCFR lists glycerin as GRAS when used in accordance with GMP."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "toddlers",
+        "children"
+      ],
+      "notes": "No numeric ADI exists, but EFSA 2022 noted that no concern could not be fully excluded for toddlers and children at high-percentile refined exposure because of residual uncertainty."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.82,
+    "rationale": "Regulatory bodies (EFSA, FDA, JECFA) remain broadly permissive, and glycerol is an endogenous/naturally occurring metabolite. However, EFSA highlighted uncertainty for high-end child exposure scenarios and recent mechanistic human data suggest potential microbiome-mediated acrolein formation after high-glycerol intake.",
+    "key_factors": [
+      "EFSA 2017: no need for numerical ADI",
+      "EFSA 2022 follow-up: no concern for most groups; uncertainty for high-end toddlers/children",
+      "FDA GRAS status under 21 CFR 182.1320 with GMP condition",
+      "JECFA ADI not specified",
+      "No specific IARC classification entry identified for glycerol"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal 2017;15(3):4720 - Re-evaluation of glycerol (E 422) as a food additive",
+      "url": "https://www.efsa.europa.eu/sites/default/files/scientific_output/files/main_documents/4720.pdf",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal 2022;20(3):7204 - Follow-up re-evaluation of glycerol (E 422) as a food additive",
+      "url": "https://www.efsa.europa.eu/sites/default/files/scientific_output/files/main_documents/7204.pdf",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR current page - 21 CFR 182.1320 Glycerin",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-182/subpart-B/section-182.1320",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API XML for Title 21 Part 182 (queried dated version)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-20/title-21.xml?part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA chemical entry: Glycerol (ID 669)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/669",
+      "type": "database"
+    },
+    {
+      "title": "IARC - Agents Classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classification dataset script (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "IARC list-of-classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search results for glycerol oral exposure/supplementation",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%28glycerol%5BTitle%2FAbstract%5D+OR+glycerin%5BTitle%2FAbstract%5D%29+AND+%28oral+administration+OR+oral+supplementation+OR+hyperhydration%29",
+      "type": "database"
+    },
+    {
+      "title": "Microbial Transformation of Dietary Glycerol Contributes to Intestinal Acrolein Formation and Urinary Excretion (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41159664/",
+      "type": "study"
+    },
+    {
+      "title": "A randomized trial modeling the effects of solutions with low to moderate glycerol and sodium concentrations on fluid balance in healthy, active adults (2026)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41138915/",
+      "type": "study"
+    },
+    {
+      "title": "Effects of glycerol hyperhidration on the running economy of long-distance runners (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40880737/",
+      "type": "study"
+    },
+    {
+      "title": "PubChem compound property API (CID 753)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/753/property/MolecularFormula,MolecularWeight,IUPACName/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem PUG View record (CID 753)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/753/JSON/?response_type=display",
+      "type": "database"
+    }
+  ]
+}

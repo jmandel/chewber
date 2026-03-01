@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T20:12:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E920",
+    "name": "L-cysteine (and L-cysteine hydrochloride forms)",
+    "cas_numbers": [
+      "52-90-4",
+      "52-89-1",
+      "7048-04-6"
+    ],
+    "synonyms": [
+      "L-cysteine",
+      "L-cysteine monohydrochloride",
+      "L-cysteine hydrochloride monohydrate",
+      "INS 920"
+    ],
+    "chemical_class": "Sulfur-containing amino acid and hydrochloride derivatives used as flour-treatment/dough-conditioning additives",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "flour treatment agent",
+    "secondary_categories": [
+      "dough conditioner",
+      "processing aid"
+    ],
+    "mechanism": "Used in dough processing; in US CFR it is defined for dough-strengthener use in yeast-leavened baked goods and baking mixes under specified limits.",
+    "common_food_categories": [
+      "yeast-leavened baked goods",
+      "baking mixes"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EU additive details for E920 report ADI as 'not specified'."
+      },
+      "last_evaluation_year": 2006,
+      "key_finding": "E920 remains authorised in the EU additive database; OpenEFSA file EFSA-Q-2011-00710 shows re-evaluation is still ongoing (comment updated 2026-01-19; delayed, new data call planned 2026-2027)."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1271; 21 CFR 184.1272",
+      "notes": "Use is limited to supplying up to 0.009 part total L-cysteine per 100 parts of flour in dough, for yeast-leavened baked goods and baking mixes."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA L-CYSTEINE entry expresses a non-numeric conclusion: 'No safety concern at current levels of intake when used as a flavouring agent'."
+      },
+      "last_evaluation_year": 2004
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Recent EFSA FEEDAP assessments report user-handling hazards for hydrochloride forms (eye/respiratory corrosivity/irritancy), indicating concentrated-form occupational risk rather than clear dietary consumer risk at authorised use levels.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID 41158676",
+          "PMID 41404629"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "EU food-additive re-evaluation file remains ongoing, creating uncertainty on updated modern exposure reassessment timelines.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "OpenEFSA EFSA-Q-2011-00710"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "E920 is still authorised in EU additive records with ADI listed as not specified.",
+      "FDA GRAS-affirmed CFR sections 184.1271/184.1272 maintain specific, narrow bakery-use conditions.",
+      "No IARC carcinogenic group classification entry was found for E920/L-cysteine in searched IARC classification lists."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "No numeric ADI is provided in the EU entry (ADI not specified), so standard ADI exceedance quantification is not directly applicable from that dataset."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.74,
+    "rationale": "Regulatory status is broadly permissive with explicit use constraints and no strong consumer-harm signal at authorised food-use levels in the sources reviewed. Uncertainty remains because EFSA re-evaluation is still ongoing and concentrated hydrochloride forms show handling hazards.",
+    "key_factors": [
+      "EU authorised status with ADI listed as not specified",
+      "US CFR GRAS status with explicit low bakery-use limit",
+      "No IARC listing found",
+      "Ongoing EFSA re-evaluation and occupational handling concerns for concentrated hydrochloride forms"
+    ]
+  },
+  "sources": [
+    {
+      "title": "European Commission Food Additives Database (E920 details accessed via Food additive details page)",
+      "url": "https://food.ec.europa.eu/food-safety/food-improvement-agents/additives-database_en",
+      "type": "database"
+    },
+    {
+      "title": "EFSA Journal URL linked from EU additive record (archived/not found in this environment)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/422",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA API question record: EFSA-Q-2011-00710 (Re-evaluation of E920 L-Cysteine)",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00710",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA API question record: EFSA-Q-2023-00437 (CAS entries for L-cysteine and hydrochlorides)",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2023-00437",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API Title 21 full text (sections 184.1271 and 184.1272)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API titles index (Title 21 up-to-date date)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/titles.json",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA search API (l-cysteine)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/l-cysteine",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical entry: L-CYSTEINE",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4381",
+      "type": "database"
+    },
+    {
+      "title": "IARC agents classified by IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "PubMed E-utilities efetch XML for key recent L-cysteine records",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=41158676,41404629,32874303,32874218,37552922&retmode=xml",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 41158676",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41158676/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 41404629",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41404629/",
+      "type": "study"
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T16:09:34+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E460",
+    "name": "Microcrystalline cellulose",
+    "cas_numbers": [
+      "9004-34-6"
+    ],
+    "synonyms": [
+      "Cellulose",
+      "Cellulose gel",
+      "MCC",
+      "INS 460",
+      "E460(i)",
+      "Powdered cellulose (E460(ii))"
+    ],
+    "chemical_class": "Purified cellulose polysaccharide (insoluble dietary fiber)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "Stabilizer",
+    "secondary_categories": [
+      "anticaking agent",
+      "emulsifier",
+      "bulking agent",
+      "texturizer"
+    ],
+    "mechanism": "Provides physical bulking and texture by water-binding and particle-network effects; can reduce caking and help stabilize dispersed systems.",
+    "common_food_categories": [
+      "bakery products",
+      "confectionery",
+      "beverage suspensions",
+      "processed/reduced-fat foods",
+      "dietary supplement tablets"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "2018 EFSA re-evaluation concluded no need for a numerical ADI (equivalent to ADI not specified for celluloses group use conditions)."
+      },
+      "last_evaluation_year": 2018,
+      "key_finding": "No safety concern at reported uses and use levels for unmodified and modified celluloses including E460(i) and E460(ii)."
+    },
+    "fda": {
+      "status": "not_evaluated",
+      "cfr_citation": "No direct Title 21 CFR listing identified for 'microcrystalline cellulose' in eCFR search; related GRAS cellulose derivatives are 21 CFR 182.1480 and 21 CFR 182.1745 (GMP conditions).",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not specified for microcrystalline cellulose (JECFA summary; latest toxicological evaluation 1997)."
+      },
+      "last_evaluation_year": 1997
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Historical concern about persorption of very fine particles led JECFA to retain particle-size related specification controls as a precaution.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "WHO Food Additives Series 40 (JECFA microcrystalline cellulose monograph)",
+          "JECFA evaluation summary (INS 460)"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "Some human studies reported gastrointestinal-function changes at high intakes, but JECFA did not interpret these as systemic toxic effects under GMP food use.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "WHO Food Additives Series 40 (JECFA microcrystalline cellulose monograph)",
+          "EFSA 2018 re-evaluation of celluloses"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2018: no genotoxic concern for celluloses group under evaluated uses.",
+      "EFSA 2018: no carcinogenic properties detected for microcrystalline and modified celluloses in reviewed data.",
+      "JECFA evaluation: no evidence ingestion causes toxic effects in humans when used according to GMP.",
+      "Recent EFSA FEEDAP opinions (2020, 2024): safety supported for animals/consumer/environment when meeting food-additive specifications."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "Numeric ADI not established (ADI not specified / no numerical ADI required), so classic ADI exceedance framing is not directly applicable."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.82,
+    "rationale": "Convergent EFSA and JECFA conclusions indicate low toxicological concern at authorized/GMP uses, but residual uncertainties (particle-size precaution history and user-handling data gaps in feed contexts) argue against a strict risk_free label.",
+    "key_factors": [
+      "EFSA 2018: no numerical ADI needed; no safety concern at reported uses.",
+      "JECFA: ADI not specified retained; no evidence of toxic effects under GMP use.",
+      "No IARC classification signal found for microcrystalline cellulose.",
+      "No direct standalone Title 21 CFR listing identified for this exact additive name in eCFR query results."
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of celluloses E 460(i), E 460(ii), E 461, E 462, E 463, E 464, E 465, E 466, E 468 and E 469 as food additives (PubMed record)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625652/",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA portal entry for EFSA Journal article 5047",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5047",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API search results for query 'microcrystalline cellulose'",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=microcrystalline%20cellulose&per_page=200",
+      "type": "database"
+    },
+    {
+      "title": "21 CFR 182.1480 Methylcellulose (eCFR API content)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=182&section=182.1480&subpart=B",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 182.1745 Sodium carboxymethylcellulose (eCFR API content)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=182&section=182.1745&subpart=B",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database chemical entry: MICROCRYSTALLINE CELLULOSE (ID 281)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/281",
+      "type": "database"
+    },
+    {
+      "title": "JECFA Summary of Evaluations: MICROCRYSTALLINE CELLULOSE",
+      "url": "http://www.inchem.org/documents/jecfa/jeceval/jec_1653.htm",
+      "type": "database"
+    },
+    {
+      "title": "WHO Food Additives Series 40: Microcrystalline cellulose",
+      "url": "http://www.inchem.org/documents/jecfa/jecmono/v040je03.htm",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classification dataset app bundle",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Safety and efficacy of microcrystalline cellulose for all animal species (EFSA FEEDAP 2020)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32760465/",
+      "type": "study"
+    },
+    {
+      "title": "Safety of feed additives consisting of microcrystalline cellulose and carboxymethyl cellulose for all animal species (EFSA FEEDAP 2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38435092/",
+      "type": "study"
+    },
+    {
+      "title": "Pulmonary Arterial Hypertension Due to Talc Granulomatosis Following Intravenous Use of Oral Medications (Cureus 2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40881529/",
+      "type": "study"
+    }
+  ]
+}

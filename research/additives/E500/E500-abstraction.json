@@ -1,0 +1,235 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T17:44:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E500",
+    "name": "Sodium carbonates (sodium carbonate, sodium hydrogen carbonate, sodium sesquicarbonate)",
+    "cas_numbers": [
+      "497-19-8",
+      "144-55-8",
+      "533-96-0"
+    ],
+    "synonyms": [
+      "Soda ash",
+      "Sodium bicarbonate",
+      "Sodium hydrogen carbonate",
+      "Baking soda",
+      "Sodium sesquicarbonate"
+    ],
+    "chemical_class": "Inorganic alkali carbonates / buffering salts",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "raising agent",
+      "anti-caking agent",
+      "processing aid",
+      "pH control agent"
+    ],
+    "mechanism": "Carbonate/bicarbonate buffering neutralizes acids and controls pH; bicarbonate-containing forms can release CO2 in acid/heat conditions, supporting leavening.",
+    "common_food_categories": [
+      "Bakery products",
+      "Butter/cream processing",
+      "Coffee and coffee products",
+      "Processed foods requiring pH control"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No numeric EFSA ADI published in current ongoing E500(i)-E500(iii) re-evaluation records (EFSA-Q-2011-00648/00649/00650)."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "Open EFSA records show E500(i), E500(ii), and E500(iii) in ongoing risk assessment (last updated 2026-01-19); comments state these additives are already authorised in the EU and re-evaluation is delayed, with a new data call expected in 2026/2027."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1736; 21 CFR 184.1742; 21 CFR 184.1792",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA descriptor ADIs: NOT LIMITED (sodium carbonate; sodium bicarbonate) and NOT SPECIFIED (sodium sesquicarbonate)."
+      },
+      "last_evaluation_year": 1981
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "cardiovascular",
+        "summary": "Some clinical meta-analytic data in CKD populations report increased diastolic pressure and higher risk of worsening hypertension/edema with oral sodium bicarbonate supplementation.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/39253380/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "High supplemental doses can cause gastrointestinal intolerance (e.g., in sports dosing studies).",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41416636/",
+          "https://pubmed.ncbi.nlm.nih.gov/41097107/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Excessive non-food-pattern ingestion can cause severe metabolic alkalosis and hypernatremia; review identified multiple toxicity cases tied to misuse.",
+        "evidence_strength": "strong",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41650758/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "FDA CFR sections affirm sodium carbonate, sodium bicarbonate, and sodium sesquicarbonate as GRAS for direct food use under current good manufacturing practice.",
+      "JECFA evaluations report low-concern descriptor ADIs (NOT LIMITED / NOT SPECIFIED) rather than a restrictive numeric ADI.",
+      "IARC monograph search did not identify a classification entry for sodium carbonate, sodium bicarbonate, or sodium sesquicarbonate."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "No numeric EFSA or JECFA mg/kg bw/day ADI was identified for E500 components in current records; exceedance cannot be calculated in the usual numeric way. Risk signals are dose-pattern dependent and mainly associated with high supplemental/misuse exposure."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.84,
+    "rationale": "Regulatory evidence supports low concern under normal food-use conditions (FDA GRAS; JECFA not limited/not specified descriptors), while adverse findings are mainly linked to high supplemental or misuse exposure patterns. EFSA re-evaluation remains ongoing, which adds uncertainty but does not currently indicate withdrawal.",
+    "key_factors": [
+      "FDA GRAS status with GMP-based use conditions in 21 CFR 184.1736, 184.1742, and 184.1792",
+      "JECFA descriptor ADIs (NOT LIMITED / NOT SPECIFIED) for E500 components",
+      "No IARC monograph classification entry found for these compounds",
+      "Adverse effects observed primarily in high-dose supplementation or misuse contexts"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA search page for E500 (access attempt)",
+      "url": "https://www.efsa.europa.eu/en/search?text=E500",
+      "type": "database"
+    },
+    {
+      "title": "Open EFSA question record EFSA-Q-2011-00648 (Re-evaluation of E500(i) Sodium carbonate)",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00648",
+      "type": "regulatory"
+    },
+    {
+      "title": "Open EFSA question record EFSA-Q-2011-00649 (Re-evaluation of E500(ii) Sodium hydrogen carbonate)",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00649",
+      "type": "regulatory"
+    },
+    {
+      "title": "Open EFSA question record EFSA-Q-2011-00650 (Re-evaluation of E500(iii) Sodium sesquicarbonate)",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00650",
+      "type": "regulatory"
+    },
+    {
+      "title": "Open EFSA substance record: Sodium carbonates",
+      "url": "https://open.efsa.europa.eu/api/substance/get?termExtendedName=sodium%20carbonates",
+      "type": "database"
+    },
+    {
+      "title": "Open EFSA substance record: Sodium bicarbonate",
+      "url": "https://open.efsa.europa.eu/api/substance/get?termExtendedName=sodium%20bicarbonate",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API section 21 CFR 184.1736 Sodium bicarbonate",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?section=184.1736",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API section 21 CFR 184.1742 Sodium carbonate",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?section=184.1742",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API section 21 CFR 184.1792 Sodium sesquicarbonate",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?section=184.1792",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA chemical page: SODIUM CARBONATE (INS 500i)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3252",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical page: SODIUM BICARBONATE (INS 500ii)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1099",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical page: SODIUM SESQUICARBONATE (INS 500iii)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4004",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs search page",
+      "url": "https://monographs.iarc.who.int/search",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs search-data API endpoint",
+      "url": "https://monographs.iarc.who.int/wp-json/tile/v1/search-data/?language=en",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs backend search endpoint (queried terms returned zero hits)",
+      "url": "https://f5spbhgv4xkqlj5vgs5nbvhfyi0aisga.lambda-url.eu-central-1.on.aws/",
+      "type": "database"
+    },
+    {
+      "title": "Codex GSFA additive index: Sodium hydrogen carbonate INS 500(ii)",
+      "url": "https://codex.sitefinity.cloud/codex-text/dbs/general-standard-for-food-additives-%28gsfa%29/food-additives-index/d/200",
+      "type": "database"
+    },
+    {
+      "title": "Codex GSFA additive index: Sodium sesquicarbonate INS 500(iii)",
+      "url": "https://codex.sitefinity.cloud/codex-text/dbs/general-standard-for-food-additives-%28gsfa%29/food-additives-index/d/201",
+      "type": "database"
+    },
+    {
+      "title": "Miller et al. 2025. Negligible benefit of oral single-dose sodium bicarbonate on continuous running performance: systematic review/meta-analysis",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41416636/",
+      "type": "review"
+    },
+    {
+      "title": "Nguyen et al. 2024. Efficacy and safety of oral sodium bicarbonate in CKD: systematic review and meta-analysis",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39253380/",
+      "type": "review"
+    },
+    {
+      "title": "Hamza et al. 2025. Safety and efficacy of sodium bicarbonate for metabolic acidosis in CKD: systematic review and meta-analysis",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40134641/",
+      "type": "review"
+    },
+    {
+      "title": "Inokuchi et al. 2026. Severe metabolic alkalosis and hypernatremia induced by excessive sodium bicarbonate intake",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41650758/",
+      "type": "study"
+    },
+    {
+      "title": "FDA: Sodium in Your Diet",
+      "url": "https://www.fda.gov/food/nutrition-education-resources-materials/sodium-your-diet",
+      "type": "regulatory"
+    },
+    {
+      "title": "CDC: About Salt and Sodium",
+      "url": "https://www.cdc.gov/salt/about/index.html",
+      "type": "database"
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T16:40:57Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E471",
+    "name": "Mono- and diglycerides of fatty acids",
+    "cas_numbers": [
+      "68953-43-5"
+    ],
+    "synonyms": [
+      "Mixed mono- and diglycerides",
+      "Mono- and diglycerides of edible fatty acids",
+      "Glyceryl monostearate",
+      "Glyceryl monooleate",
+      "Monostearin",
+      "Monoolein"
+    ],
+    "chemical_class": "Mixture of glycerol mono- and di-esters of long-chain fatty acids",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "emulsifier",
+    "secondary_categories": [
+      "dough strengthener",
+      "stabilizer",
+      "texturizer",
+      "surface-active agent",
+      "release agent"
+    ],
+    "mechanism": "Amphiphilic glycerides reduce oil-water interfacial tension and stabilize emulsions; they also modify texture and processing behavior.",
+    "common_food_categories": [
+      "bakery products",
+      "confectionery and desserts",
+      "fat-containing processed foods",
+      "infant formula and specialized infant formula",
+      "miscellaneous processed foods using emulsifier systems"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2017 concluded no need for a numerical ADI; 2021 follow-up maintained no safety concern for authorized uses including infant categories with specification updates."
+      },
+      "last_evaluation_year": 2021,
+      "key_finding": "EFSA found no safety concern for E471 at reported/authorized uses, but recommended tighter impurity limits (toxic elements, 3-MCPD, glycidyl esters, erucic acid)."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1505",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA ADI: NOT LIMITED (1973)."
+      },
+      "last_evaluation_year": 1973
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "Recent mouse studies reported metabolic and microbiota effects for dietary emulsifiers including mono-/diglyceride-related systems, but evidence is heterogeneous and not directly equivalent to full E471 regulatory datasets.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/38902371/",
+          "https://pubmed.ncbi.nlm.nih.gov/29131494/",
+          "https://pubmed.ncbi.nlm.nih.gov/35924399/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "EFSA follow-up identified impurity-specification concerns (toxic elements, 3-MCPD, glycidyl esters, erucic acid), indicating risk management focus on contaminant limits rather than core E471 toxicity at authorized use levels.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC8573540/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2017: no numerical ADI needed and no safety concern at reported uses/use levels.",
+      "EFSA 2021: no reason for a safety concern for authorized infant uses.",
+      "JECFA: ADI not limited."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "High consumers",
+        "Formula-fed infants (for contaminant-specification context)"
+      ],
+      "notes": "Numerical ADI is not set (EFSA) and JECFA ADI is not limited; classical ADI exceedance is not the primary concern. Risk focus is on impurity control."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.75,
+    "rationale": "Major regulators continue to approve E471/INS471 with no numerical ADI and no core toxicological safety concern at authorized uses, but impurity-control recommendations and mixed animal microbiome findings support a limited (not risk_free) classification.",
+    "key_factors": [
+      "EFSA 2017 no numerical ADI and no safety concern",
+      "EFSA 2021 infant follow-up no safety concern but tighter impurity limits requested",
+      "FDA GRAS status under 21 CFR 184.1505 with cGMP conditions",
+      "JECFA ADI not limited (1973)",
+      "No IARC listing identified for E471",
+      "Recent animal microbiome findings are mixed and indirect for E471"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of mono- and di-glycerides of fatty acids (E 471) as food additives (EFSA Journal 2017)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7010209/",
+      "type": "regulatory"
+    },
+    {
+      "title": "Opinion on the re-evaluation of mono- and diglycerides of fatty acids (E 471) for infants below 16 weeks (EFSA Journal 2021)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8573540/",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal record page: E471 re-evaluation (2017)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5045",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal record page: E471 infant follow-up (2021)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/6885",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA Chemical Record 917 (INS 471)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/917",
+      "type": "database"
+    },
+    {
+      "title": "21 CFR § 184.1505 Mono- and diglycerides (e-CFR mirror)",
+      "url": "https://www.law.cornell.edu/cfr/text/21/184.1505",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR section page access attempt (blocked by anti-bot challenge)",
+      "url": "https://www.ecfr.gov/current/title-21/section-184.1505",
+      "type": "regulatory"
+    },
+    {
+      "title": "FDA Inventory of Food Contact Substances / Food Substances: MONO- AND DIGLYCERIDES",
+      "url": "https://hfpappexternal.fda.gov/scripts/fdcc/index.cfm?id=MONOANDDIGLYCERIDES&set=FoodSubstances",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of Classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC machine-readable agent list script (used by list-of-classifications)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Common dietary emulsifiers promote metabolic disorders and intestinal microbiota dysbiosis in mice (2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38902371/",
+      "type": "study"
+    },
+    {
+      "title": "Antimicrobial Emulsifier-Glycerol Monolaurate Induces Metabolic Syndrome... (2018)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29131494/",
+      "type": "study"
+    },
+    {
+      "title": "Dietary emulsifier glycerol monodecanoate affects the gut microbiota... (2022)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35924399/",
+      "type": "study"
+    },
+    {
+      "title": "Dietary exposures for the safety assessment of seven emulsifiers... (2017)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28346062/",
+      "type": "study"
+    }
+  ]
+}

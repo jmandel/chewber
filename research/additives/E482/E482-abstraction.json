@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T17:40:22Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E482",
+    "name": "Calcium stearoyl-2-lactylate",
+    "cas_numbers": [
+      "5793-94-2"
+    ],
+    "synonyms": [
+      "Calcium stearoyl lactylate",
+      "Calcium stearoyl lactate",
+      "Calcium stearyl-2-lactylate",
+      "INS 482(i)",
+      "Calcium salt of stearoyl-lactylic acids"
+    ],
+    "chemical_class": "Lactylated fatty-acid salt emulsifier",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "emulsifier",
+    "secondary_categories": [
+      "dough conditioner",
+      "whipping agent",
+      "stabilizer"
+    ],
+    "mechanism": "Amphiphilic calcium stearoyl-lactylates reduce oil-water interfacial tension and improve dough/foam structure by interacting with lipids and proteins.",
+    "common_food_categories": [
+      "Yeast-leavened bakery products and mixes",
+      "Liquid/frozen/dried egg white",
+      "Whipped vegetable oil toppings",
+      "Dehydrated potatoes"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 20,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2013 temporary group ADI for calcium, sodium and stearyl lactylates, expressed as lactic acid."
+      },
+      "last_evaluation_year": 2013,
+      "key_finding": "EFSA re-evaluation supported continued authorization but reported that high-level exposure could exceed the temporary ADI in most age groups and requested tighter impurity/specification controls."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.844",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 20,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO JECFA record for calcium stearoyl-2-lactylate lists ADI 0-20 mg/kg bw."
+      },
+      "last_evaluation_year": 1996
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "In vitro fecal-community work with sodium stearoyl lactylate (related stearoyl-lactylate) showed shifts in microbial composition, lower butyrate, and higher pro-inflammatory markers at tested concentrations.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/32499766/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Exposure modeling indicates ADI exceedance risk for high consumers, especially children, under conservative assumptions; refined estimates reduce this substantially but do not eliminate child exceedance entirely.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/29448899/",
+          "https://www.bohrium.com/paper-details/scientific-opinion-on-the-re-evaluation-of-stearoyl-2-lactylates-e-481-and-e-482-as-food-additives/813086432859389952-7056"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "A one-year oral rat study of sodium stearoyl lactylate reported no treatment-related adverse effects, with NOAEL at the highest tested dietary level.",
+      "No IARC monograph classification entry was found for calcium stearoyl-2-lactylate/stearoyl-lactylates in the current IARC classification dataset checked.",
+      "Regulatory frameworks (EFSA/FDA/JECFA) continue to permit use with ADI-based management and use restrictions."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "Children",
+        "High consumers of bakery/emulsifier-containing processed foods"
+      ],
+      "notes": "EFSA and Belgian exposure analyses indicate that high-percentile consumers can exceed ADI in some scenarios, while average consumers are generally below ADI."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.74,
+    "rationale": "E482 is approved across major frameworks with established intake limits, but recurring caveats include high-percentile ADI exceedance (especially in children) and plausible microbiome-related mechanistic concerns from related stearoyl-lactylate evidence. These factors exceed a simple low-concern profile but do not meet high-risk criteria such as bans or strong carcinogenic classification.",
+    "key_factors": [
+      "EFSA temporary group ADI and 2013 high-exposure exceedance caveat",
+      "FDA approval with strict use limits in 21 CFR 172.844",
+      "JECFA group ADI and continued listing",
+      "Population-exposure exceedance signal in children under conservative scenarios",
+      "In vitro gut-microbiome perturbation signal for related stearoyl-lactylate"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal 2013: Re-evaluation of stearoyl-2-lactylates (E 481 and E 482)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/3144",
+      "type": "regulatory"
+    },
+    {
+      "title": "Indexed abstract mirror of EFSA 2013 E481/E482 opinion",
+      "url": "https://www.bohrium.com/paper-details/scientific-opinion-on-the-re-evaluation-of-stearoyl-2-lactylates-e-481-and-e-482-as-food-additives/813086432859389952-7056",
+      "type": "review"
+    },
+    {
+      "title": "eCFR API renderer: 21 CFR 172.844 Calcium stearoyl-2-lactylate",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-21?part=172&section=172.844",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API versioner: Title 21 section inventory",
+      "url": "https://www.ecfr.gov/api/versioner/v1/versions/title-21.json",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA database: CALCIUM STEAROYL-2-LACTYLATE",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3053",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classification dataset script (last_update metadata and agent list)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Dietary exposure of the Belgian population to emulsifiers E481 and E482 (2018)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29448899/",
+      "type": "study"
+    },
+    {
+      "title": "Dietary Emulsifier Sodium Stearoyl Lactylate Alters Gut Microbiota in vitro (2020)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32499766/",
+      "type": "study"
+    },
+    {
+      "title": "A one-year oral toxicity study of sodium stearoyl lactylate in rats (2010)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20600527/",
+      "type": "study"
+    },
+    {
+      "title": "PubChem CID lookup for calcium stearoyl-2-lactylate",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/calcium%20stearoyl-2-lactylate/cids/TXT",
+      "type": "database"
+    },
+    {
+      "title": "PubChem synonyms for CID 22037",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/22037/synonyms/JSON",
+      "type": "database"
+    }
+  ]
+}

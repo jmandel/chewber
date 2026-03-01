@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T16:05:38Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E452",
+    "name": "Polyphosphates",
+    "cas_numbers": [
+      "50813-16-6",
+      "7790-53-6",
+      "77226-95-6"
+    ],
+    "synonyms": [
+      "sodium polyphosphates (glassy)",
+      "sodium tetrapolyphosphate",
+      "sodium hexametaphosphate",
+      "potassium metaphosphate",
+      "potassium polymetaphosphate",
+      "sodium calcium polyphosphate",
+      "calcium polyphosphate",
+      "Graham's salt"
+    ],
+    "chemical_class": "Inorganic condensed phosphates (polyphosphates; linear/cyclic oligomers and polymers of orthophosphate)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "sequestrant",
+    "secondary_categories": [
+      "emulsifier",
+      "texturizer",
+      "thickener",
+      "humectant",
+      "stabilizer",
+      "raising agent"
+    ],
+    "mechanism": "Polyphosphates chelate metal ions and alter ionic balance, supporting emulsification, water binding, texture control, and formulation stability.",
+    "common_food_categories": [
+      "processed packaged foods",
+      "processed meat products",
+      "bakery/leavened products",
+      "processed dairy/cheese-type formulations",
+      "food supplements"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 40,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2019 group ADI for phosphates (E338-341, E343, E450-452), expressed as phosphorus."
+      },
+      "last_evaluation_year": 2019,
+      "key_finding": "EFSA concluded no genotoxicity/carcinogenicity concern in the phosphate group but found modeled ADI exceedance in younger and high-intake populations, including supplement scenarios."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.6203; 21 CFR 182.6760; 21 CFR 182.6810",
+      "notes": "In cited sections, substances are GRAS when used in accordance with good manufacturing practice (GMP); current eCFR HTML pages were bot-protected, so official eCFR API text was used."
+    },
+    "jecfa": {
+      "adi": {
+        "value": 70,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA group MTDI for phosphorus from all sources, expressed as P; E452 entries list MTDI 70 mg/kg bw (as P)."
+      },
+      "last_evaluation_year": 2001
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "EFSA exposure modeling showed ADI exceedance in several younger/high-intake groups, and recent literature highlights potential risk from high inorganic phosphate additive exposure in phosphate-sensitive populations.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/32626329/",
+          "https://pubmed.ncbi.nlm.nih.gov/40180501/"
+        ]
+      },
+      {
+        "category": "cardiovascular",
+        "summary": "Mechanistic review literature proposes cardiorenal pathways (vascular calcification and mineral-hormone dysregulation) linking high inorganic phosphate additive exposure to adverse outcomes.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/37630701/"
+        ]
+      },
+      {
+        "category": "neurotoxic",
+        "summary": "A 2025 animal study reported anxiety-like behavior with high dietary phosphate intake; relevance to typical human E452 exposure remains uncertain.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41050506/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA reported no concern for genotoxicity and carcinogenicity in the phosphate additive group dataset.",
+      "EFSA reported no developmental toxicity effects in studies reviewed for the phosphate group.",
+      "No IARC monograph classification entry was identified for E452-related names in the checked IARC classification resources."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "infants",
+        "toddlers",
+        "children",
+        "adolescents (high consumers)",
+        "regular food-supplement users"
+      ],
+      "notes": "EFSA 2019 reported modeled exceedance of the group ADI (40 mg/kg bw/day as P) in multiple younger and high-intake scenarios."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.81,
+    "rationale": "E452 remains authorized in EU/U.S./JECFA frameworks, but EFSA established a finite group ADI and reported exceedance in several younger/high-intake groups; human and mechanistic studies support caution at elevated inorganic phosphate additive exposure.",
+    "key_factors": [
+      "EFSA group ADI 40 mg/kg bw/day (as phosphorus)",
+      "EFSA-reported ADI exceedance in infants/toddlers/children and high-consuming adolescents",
+      "FDA GRAS status for related condensed phosphate ingredients under GMP in 21 CFR Part 182",
+      "JECFA MTDI 70 mg/kg bw/day (as P) for phosphate group",
+      "No IARC Group 1/2A/2B classification found for E452-related names in checked IARC resources"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of phosphoric acid-phosphates - di-, tri- and polyphosphates (E 338-341, E 343, E 450-452) as food additives (EFSA, 2019; PubMed record)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32626329/",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA issues new advice on phosphates (2019)",
+      "url": "https://www.efsa.europa.eu/en/press/news/190612",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal page 5674 (visited; redirects to Wiley)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5674",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA opinion full-text mirror (PMC7009158)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009158/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full Title 21 XML (Food and Drugs)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-20/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR current section URL attempted (bot challenge in VM)",
+      "url": "https://www.ecfr.gov/current/title-21/section-182.6760",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database API search by partial name: polyphosphate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/polyphosphate",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical record: Sodium polyphosphates, glassy (INS 452i; ID 4669)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4669",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical record: Potassium polyphosphates (INS 452ii; ID 2400)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2400",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical record: Sodium calcium polyphosphate (INS 452iii; ID 984)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/984",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical record: Calcium polyphosphate (INS 452iv; ID 2162)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2162",
+      "type": "database"
+    },
+    {
+      "title": "WHO/IPFS JECFA page: Calcium polyphosphate",
+      "url": "https://ipfs.who.int/ipfs/QmXoypizjW3WknFiJnKLwHCnL72vedxjQkDDP1mXWo6uco/wiki/Calcium_polyphosphate.html",
+      "type": "database"
+    },
+    {
+      "title": "WHO INchem JECFA evaluations summary: Phosphates",
+      "url": "http://www.inchem.org/documents/jecfa/jeceval/jec_1777.htm",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset script checked for additive-name matches",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Industrial Use of Phosphate Food Additives: A Mechanism Linking Ultra-Processed Food Intake to Cardiorenal Disease Risk? (2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37630701/",
+      "type": "review"
+    },
+    {
+      "title": "Inorganic phosphate additives in meals and adaptations to 5-days of dietary loading alter acute calcium homeostasis (2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39238566/",
+      "type": "study"
+    },
+    {
+      "title": "Phosphate-based additives in processed foods: cross-sectional US packaged food supply study (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40180501/",
+      "type": "study"
+    },
+    {
+      "title": "High dietary phosphate intake induces anxiety in normal male mice (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41050506/",
+      "type": "study"
+    }
+  ]
+}

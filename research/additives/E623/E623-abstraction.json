@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T19:12:02Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E623",
+    "name": "Calcium diglutamate",
+    "cas_numbers": [
+      "19238-49-4"
+    ],
+    "synonyms": [
+      "Calcium di-L-glutamate",
+      "Monocalcium di-L-glutamate",
+      "Calcium glutamate"
+    ],
+    "chemical_class": "Calcium salt of L-glutamic acid (glutamate flavour-enhancer salt)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "flavour enhancer",
+    "secondary_categories": [
+      "umami enhancer",
+      "salt substitute"
+    ],
+    "mechanism": "Provides free glutamate ions that enhance umami taste perception and can maintain palatability in lower-sodium formulations.",
+    "common_food_categories": [
+      "seasonings and condiments",
+      "soups and broths",
+      "sauces",
+      "processed savoury foods",
+      "fine bakery wares"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 30,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI for glutamic acid and glutamates (E620-E625), expressed as glutamic acid (EFSA 2017 re-evaluation)."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "EFSA found no genotoxicity concern for E620-E625, derived a group ADI of 30 mg/kg bw/day, and concluded exposure could exceed the ADI in some population groups."
+    },
+    "fda": {
+      "status": "not_evaluated",
+      "cfr_citation": "No explicit calcium diglutamate listing identified in Title 21 eCFR searches; related glutamate entries include 21 CFR 182.1500 and 21 CFR 182.1516.",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not specified (group ADI context for L-glutamic acid and its ammonium, calcium, magnesium, monosodium, and potassium salts)."
+      },
+      "last_evaluation_year": 1987
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "genotoxic",
+        "summary": "A 2013 Allium cepa assay including calcium diglutamate reported chromosome abnormalities and reduced mitotic index, but this is a non-mammalian model with limited direct relevance to human dietary risk.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/23377115/"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "Recent MSG-focused literature suggests possible links to gut microbiota changes and metabolic dysbiosis, but evidence is heterogeneous and not specific to E623.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/39139924/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "A 2025 systematic review of MSG literature reported potential toxicity with high/repeated exposure; another 2025 appraisal found many toxicity studies had low relevance/reliability for human safety inference.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/39435965/",
+          "https://pubmed.ncbi.nlm.nih.gov/41030520/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2017 re-evaluation of E620-E625 reported no genotoxicity concern and set a health-based group ADI.",
+      "JECFA database entry for calcium di-L-glutamate reports ADI not specified in group context."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "infants",
+        "toddlers",
+        "children",
+        "high consumers"
+      ],
+      "notes": "EFSA exposure scenarios reported exceedance of the 30 mg/kg bw/day group ADI in several groups, with highest estimates in younger populations."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.78,
+    "rationale": "E623 is approved in the EU and has a JECFA group ADI not specified history, but EFSA's latest re-evaluation established a finite group ADI and showed likely exceedance in several populations, especially younger groups/high consumers. Direct E623-specific long-term human evidence is limited, so a moderate tier best matches current evidence.",
+    "key_factors": [
+      "EFSA group ADI of 30 mg/kg bw/day for E620-E625",
+      "EFSA exposure estimates exceeding ADI in multiple populations",
+      "No IARC carcinogenic classification identified",
+      "No explicit U.S. Title 21 listing found for calcium diglutamate in eCFR search",
+      "Mixed modern literature with many indirect (MSG-based) or low-relevance high-dose findings"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of glutamic acid (E620), sodium glutamate (E621), potassium glutamate (E622), calcium glutamate (E623), ammonium glutamate (E624) and magnesium glutamate (E625) as food additives (EFSA Journal, 2017)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4910",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed entry for EFSA E620-E625 opinion (PMID 32625571)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625571/",
+      "type": "database"
+    },
+    {
+      "title": "PubMed Central full text for EFSA E620-E625 opinion (PMCID PMC7009848)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009848/",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API search results for calcium diglutamate (Title 21)",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=calcium%20diglutamate&per_page=10&page=1",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API search results for glutamate (Title 21)",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=glutamate&per_page=20&page=1",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA database: CALCIUM DI-L-GLUTAMATE (INS 623)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3790",
+      "type": "database"
+    },
+    {
+      "title": "JECFA API partial-name search used to locate calcium di-L-glutamate record",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/calcium%20di-l-glutamate",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications page",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list-of-classifications app page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC list dataset bundle (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Evaluation of genotoxic effects of five flavour enhancers (glutamates) on the root meristem cells of Allium cepa (Toxicol Ind Health, 2013)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23377115/",
+      "type": "study"
+    },
+    {
+      "title": "Calcium diglutamate improves taste characteristics of lower-salt soup (Eur J Clin Nutr, 2002)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12032651/",
+      "type": "study"
+    },
+    {
+      "title": "Modelling of salt intake reduction by incorporation of umami substances into Japanese foods (BMC Public Health, 2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36935509/",
+      "type": "study"
+    },
+    {
+      "title": "Unraveling the MSG-Headache Controversy: an Updated Literature Review (Curr Pain Headache Rep, 2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38079074/",
+      "type": "review"
+    },
+    {
+      "title": "Association between monosodium glutamate consumption with changes in gut microbiota and related metabolic dysbiosis - A systematic review (Food Sci Nutr, 2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39139924/",
+      "type": "review"
+    },
+    {
+      "title": "Reconsideration of the health effects of monosodium glutamate: from bench to bedside evidence (J Environ Sci Health C Toxicol Carcinog, 2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39435965/",
+      "type": "review"
+    },
+    {
+      "title": "Approach for systematically assessing study reliability and relevance in evaluations of monosodium glutamate safety (Curr Res Toxicol, 2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41030520/",
+      "type": "review"
+    }
+  ]
+}

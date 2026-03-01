@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T19:54:11Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E901",
+    "name": "Beeswax (white and yellow)",
+    "cas_numbers": [
+      "8012-89-3"
+    ],
+    "synonyms": [
+      "White wax",
+      "Yellow wax",
+      "INS 901",
+      "Cera alba",
+      "Cera flava"
+    ],
+    "chemical_class": "Natural wax mixture (long-chain esters, hydrocarbons, fatty acids/alcohols)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "glazing agent",
+    "secondary_categories": [
+      "surface-finishing agent",
+      "lubricant",
+      "flavoring adjuvant",
+      "carrier"
+    ],
+    "mechanism": "Forms a hydrophobic surface film that provides shine and a protective coating; this mechanism is inferred from regulatory use definitions for glazing/surface finishing.",
+    "common_food_categories": [
+      "fruit surface treatment",
+      "nuts",
+      "confectionery and frostings",
+      "hard and soft candy",
+      "chewing gum",
+      "coffee beans"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "OpenEFSA confirms a published 2007 EFSA opinion (ON-615) for beeswax and a later re-evaluation workflow withdrawn in 2012; a numeric ADI could not be retrieved from accessible official EFSA opinion text in this VM due publisher access challenge."
+      },
+      "last_evaluation_year": 2007,
+      "key_finding": "EFSA has a published opinion record for beeswax as food additive (EFSA-Q-2006-021, ON-615, published 2007-12-20); the later re-evaluation track (EFSA-Q-2011-00756) is marked application withdrawn."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1973",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA database lists ADI as NOT SPECIFIED (evaluation year 2005), with comment of no safety concern at predicted exposure below 650 mg/person/day."
+      },
+      "last_evaluation_year": 2005
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Recent human-food-facing concerns in the literature are mainly about contaminants that can accumulate in beeswax matrices (for example pesticide or trace-element residues in hive products), rather than strong evidence of intrinsic toxicity of purified food-grade beeswax.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID 37121430",
+          "PMID 37474035",
+          "PMID 31780165"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA (2005) ADI not specified with no safety concern at predicted exposure below 650 mg/person/day.",
+      "FDA 21 CFR 184.1973 affirms beeswax as GRAS direct food substance with cGMP-based use limits by category.",
+      "No beeswax-specific IARC monograph classification was identified in the current IARC list dataset."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "high consumers of comb honey where residue burdens in wax may be elevated"
+      ],
+      "notes": "No numeric JECFA ADI is set (ADI not specified). EFSA numeric ADI could not be retrieved from accessible official pages in this environment. Residue-related concerns are context-specific and distinct from intrinsic E901 hazard."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.67,
+    "rationale": "Regulatory status is favorable (FDA GRAS with defined limits; JECFA ADI not specified/no safety concern), and no IARC classification or major bans were found. Main uncertainty is limited direct modern toxicology evidence on purified E901 plus contamination-driven risk scenarios in some wax-containing hive products.",
+    "key_factors": [
+      "21 CFR 184.1973 provides explicit GRAS use conditions and maxima",
+      "JECFA 2005 ADI not specified with no safety concern at predicted exposure",
+      "OpenEFSA confirms 2007 published opinion record and withdrawn later re-evaluation workflow",
+      "Recent PubMed evidence highlights contaminant residue concerns in wax matrices rather than clear intrinsic E901 toxicity",
+      "No IARC classification identified for beeswax"
+    ]
+  },
+  "sources": [
+    {
+      "title": "OpenEFSA question record EFSA-Q-2006-021 (Beeswax as food additive)",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2006-021",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA question record EFSA-Q-2011-00756 (Re-evaluation of E901)",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00756",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA timeline for EFSA-Q-2011-00756",
+      "url": "https://open.efsa.europa.eu/api/question/getTimeline?questionNumber=EFSA-Q-2011-00756",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA substance record (Beeswax, white and yellow)",
+      "url": "https://open.efsa.europa.eu/api/substance/get?termExtendedName=Beeswax,%20white%20and%20yellow",
+      "type": "database"
+    },
+    {
+      "title": "EFSA Journal publisher page for DOI 10.2903/j.efsa.2007.615",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2007.615",
+      "type": "regulatory"
+    },
+    {
+      "title": "Regulation (EC) No 1333/2008 consolidated text",
+      "url": "https://eur-lex.europa.eu/eli/reg/2008/1333/2023-10-31/eng",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 full XML (issue date 2026-02-19)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA BEESWAX chemical page (ID 168)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/168",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA search API for beeswax",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/beeswax",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of Classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset script (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search: beeswax food additive safety",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=beeswax+food+additive+safety",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 37121430 (pesticide residues review)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37121430/",
+      "type": "review"
+    },
+    {
+      "title": "PubMed PMID 37474035 (trace elements review)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37474035/",
+      "type": "review"
+    },
+    {
+      "title": "PubMed PMID 31780165 (glyphosate residues in beebread, wax, honey)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31780165/",
+      "type": "study"
+    }
+  ]
+}

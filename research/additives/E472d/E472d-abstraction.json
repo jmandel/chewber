@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T16:54:53Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E472d",
+    "name": "Tartaric acid esters of mono- and diglycerides of fatty acids",
+    "cas_numbers": [],
+    "synonyms": [
+      "Tartaric acid esters of mono- and diglycerides",
+      "INS 472d"
+    ],
+    "chemical_class": "Tartaric acid esterified mono- and diglycerides of fatty acids (glycerol ester emulsifier mixture)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "emulsifier",
+    "secondary_categories": [
+      "stabilizer",
+      "texture modifier"
+    ],
+    "mechanism": "Amphiphilic glyceride esters reduce oil-water interfacial tension and improve stability of fat-water dispersions.",
+    "common_food_categories": [
+      "processed foods using emulsifier systems",
+      "bakery-related applications in E472 exposure/use datasets",
+      "fat-containing formulated foods"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 240,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2020 group ADI for E472d/e/f expressed as tartaric acid; EFSA 2025 notes this corresponds to 480 mg/kg bw/day for E472d on an additive basis."
+      },
+      "last_evaluation_year": 2025,
+      "key_finding": "EFSA reported no safety concern at reported uses/use levels in the re-evaluation and no safety concern for proposed revised specifications in 2025."
+    },
+    "fda": {
+      "status": "not_evaluated",
+      "cfr_citation": "21 CFR 184.1101 (related DATEM/E472e); no explicit current Title 21 listing found for E472d by name",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA entry for TARTARIC ACID ESTERS OF MONO- AND DIGLYCERIDES (ID 3715) shows ADI WITHDRAWN; specification marked WITHDRAWN (1998)."
+      },
+      "last_evaluation_year": 2001
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "Recent mouse evidence on common dietary emulsifiers reports microbiome and metabolic disruption signals for mono-/diglyceride emulsifier exposure, but not E472d-specific causal testing.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:38902371"
+        ]
+      },
+      {
+        "category": "cardiovascular",
+        "summary": "A large prospective cohort reported associations between higher intake of some emulsifier groups including E471/E472 and cardiovascular outcomes; observational design limits causal inference for E472d.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:37673430"
+        ]
+      },
+      {
+        "category": "carcinogenic",
+        "summary": "A prospective cohort reported cancer-risk associations for selected emulsifiers, especially E471; findings are not E472d-specific.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:38349899"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Regulatory inconsistency exists across jurisdictions: EFSA maintains an ADI-based approval context while the dedicated JECFA E472d entry is marked withdrawn.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "EFSA 6032/9602",
+          "JECFA Chemical 3715"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2020 found no adverse effects relevant for humans in the available E472a-f toxicology database and no safety concern at reported uses/use levels.",
+      "EFSA 2025 concluded no safety concern for proposed revised impurity specifications for E472a,b,d,e,f.",
+      "No IARC monograph classification entry was identified for E472d in searched IARC resources."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "toddlers",
+        "children with high per-kg intake"
+      ],
+      "notes": "EFSA-reported E472d exposure estimates (up to 30 mg/kg bw/day mean and 89 mg/kg bw/day high percentile in toddlers) were below EFSA's tartaric-acid-based ADI framework."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.69,
+    "rationale": "The strongest additive-specific evidence remains EFSA's evaluations, which are reassuring at reported uses and updated specifications. Uncertainty remains because JECFA's dedicated E472d entry is withdrawn and modern human studies are mostly indirect emulsifier-class evidence rather than E472d-specific causality.",
+    "key_factors": [
+      "EFSA group ADI established (240 mg/kg bw/day as tartaric acid; 2025 additive-basis expression for E472d)",
+      "EFSA 2025 found no safety concern for revised specs",
+      "Current Title 21 eCFR search in full XML did not identify an explicit E472d listing by name",
+      "JECFA dedicated E472d entry marked ADI WITHDRAWN (evaluation year 2001)",
+      "No IARC monograph classification found",
+      "Recent concern signals are mostly indirect (broader emulsifier literature)"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal: Re-evaluation of E472a-f (2020)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/6032",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal: Specifications opinion for E472a,b,d,e,f (2025)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/9602",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API titles metadata",
+      "url": "https://www.ecfr.gov/api/versioner/v1/titles.json",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API full Title 21 XML (2026-02-19)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA chemical entry 3715: TARTARIC ACID ESTERS OF MONO- AND DIGLYCERIDES",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3715",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA API partial-name search for tartaric acid esters",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/tartaric%20acid%20esters%20of%20mono-%20and%20diglycerides",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC site search query for additive name",
+      "url": "https://monographs.iarc.who.int/?s=tartaric+acid+esters+of+mono-+and+diglycerides",
+      "type": "database"
+    },
+    {
+      "title": "PubMed study PMID 38902371 (mouse emulsifier study)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38902371/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed study PMID 37673430 (CVD cohort)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37673430/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed study PMID 38349899 (cancer cohort)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38349899/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed query for tartaric acid esters of mono- and diglycerides",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%22tartaric+acid+esters+of+mono-+and+diglycerides%22",
+      "type": "database"
+    },
+    {
+      "title": "EU Food Additives Database entry for E472d",
+      "url": "https://food.ec.europa.eu/food-safety/food-improvement-agents/additives-database/food-additives_en?field_eu_food_additive_target_id=333",
+      "type": "database"
+    }
+  ]
+}

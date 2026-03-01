@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T16:46:51+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E472b",
+    "name": "Lactic acid esters of mono- and diglycerides",
+    "cas_numbers": [
+      "31566-31-1"
+    ],
+    "synonyms": [
+      "Lactic and fatty acid esters of glycerol",
+      "Lactoglycerides",
+      "INS 472b"
+    ],
+    "chemical_class": "Esterified mono- and diglycerides (lactic acid/fatty acid esters of glycerol); food emulsifier",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "emulsifier",
+    "secondary_categories": [
+      "stabilizer",
+      "texture modifier"
+    ],
+    "mechanism": "Amphiphilic ester mixture that lowers oil-water interfacial tension and stabilizes fat/water dispersions.",
+    "common_food_categories": [
+      "Foods where standards of identity permit emulsifiers (broad CFR allowance)",
+      "Baked and processed fat-containing foods",
+      "Cream-like dairy formulations"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2020 concluded no need for a numerical ADI for E472a,b,c,e,f and no safety concern for E472b at reported uses/use levels."
+      },
+      "last_evaluation_year": 2020,
+      "key_finding": "EFSA re-evaluation found no concern for genotoxicity and no safety concern for E472b at reported uses and use levels."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.852",
+      "notes": "Permitted direct food additive; produced by esterification of glycerides with lactic acid and used under GMP at levels not exceeding technical effect requirements."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA ADI: NOT LIMITED (no numerical mg/kg bw/day value specified)."
+      },
+      "last_evaluation_year": 1973
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "A mouse cream-formulation study including lactic acid esters of mono-/diglycerides reported intestinal mucus/ER-stress gene modulation, though without overt metabolic/liver toxicity over 4 weeks.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/30316592/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2020 concluded no safety concern for E472b at reported use levels and no need for a numerical ADI.",
+      "EFSA reported no concern for genotoxicity in the E472a-f re-evaluation.",
+      "JECFA lists ADI as NOT LIMITED (evaluation year shown as 1973).",
+      "No IARC classification listing was identified for this additive in the checked IARC classification page."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "Toddlers and other high per-kg consumers"
+      ],
+      "notes": "EFSA reported highest E472b exposure estimates in toddlers (including high-percentile estimates), but no numerical ADI was considered necessary for E472b; classical ADI exceedance determination is therefore not directly applicable."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.78,
+    "rationale": "Current regulatory evaluations (EFSA/JECFA/FDA framework) are reassuring and do not indicate major safety signals at permitted uses, while direct modern human E472b-specific evidence remains limited and some mechanistic uncertainty persists.",
+    "key_factors": [
+      "EFSA 2020: no numerical ADI needed for E472b and no safety concern at reported uses",
+      "FDA permits use under 21 CFR 172.852 with GMP and manufacturing conditions",
+      "JECFA ADI listed as NOT LIMITED (1973 record)",
+      "No IARC classification found",
+      "Sparse direct human E472b epidemiological evidence"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal page for E472a-f re-evaluation",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/6032",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed record PMID 32874250 (EFSA 2020 E472a-f opinion)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32874250/",
+      "type": "database"
+    },
+    {
+      "title": "PubMed Central full text PMCID: PMC7082052",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7082052/",
+      "type": "database"
+    },
+    {
+      "title": "eCFR 21 CFR 172.852 Lactic acid esters of mono- and diglycerides",
+      "url": "https://www.ecfr.gov/current/title-21/section-172.852",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA Chemical page: LACTIC ACID ESTERS OF MONO- AND DIGLYCERIDES (ID 733)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/733",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA API search endpoint used to resolve additive record",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/lactic%20acid%20esters",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "PubMed query for \"lactic acid esters of mono- and diglycerides\"",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%22lactic+acid+esters+of+mono-+and+diglycerides%22",
+      "type": "database"
+    },
+    {
+      "title": "Metabolic effects in mice of cream formulation (J Dairy Sci, 2018; PMID: 30316592)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30316592/",
+      "type": "study"
+    },
+    {
+      "title": "NCBI E-utilities esearch output for additive phrase",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%22lactic+acid+esters+of+mono-+and+diglycerides%22&retmax=20&retmode=json",
+      "type": "database"
+    }
+  ]
+}

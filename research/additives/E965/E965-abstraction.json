@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T21:10:29Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E965",
+    "name": "Maltitol",
+    "cas_numbers": [
+      "585-88-6"
+    ],
+    "synonyms": [
+      "Maltitol syrup",
+      "Hydrogenated maltose",
+      "E965(i)",
+      "E965(ii)",
+      "Hydrogenated starch hydrolysate products"
+    ],
+    "chemical_class": "Sugar alcohol (polyol)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "sweetener",
+    "secondary_categories": [
+      "humectant",
+      "texturizer",
+      "formulation aid"
+    ],
+    "mechanism": "Provides sweetness with partial intestinal absorption; unabsorbed fraction is fermented/osmotically active in the gut, which can cause laxative effects at high intake.",
+    "common_food_categories": [
+      "sugar-free confectionery",
+      "chewing gum",
+      "chocolate and sweets",
+      "bakery products",
+      "dairy products"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "SCF allocation referenced by EFSA: ADI not specified for maltitol and maltitol syrup."
+      },
+      "last_evaluation_year": 2006,
+      "key_finding": "EFSA 2006 found no safety concern for the proposed amendment of maltitol syrup specifications; EFSA 2023 call states available data were insufficient to assess potential genotoxicity in re-evaluation context and requested new data."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1924; 21 CFR 172.841",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not limited (JECFA)."
+      },
+      "last_evaluation_year": 1985
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Dose-related gastrointestinal intolerance (osmotic diarrhea) is the most consistent human adverse effect at higher bolus intakes.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/18797153/",
+          "https://pubmed.ncbi.nlm.nih.gov/32698373/"
+        ]
+      },
+      {
+        "category": "genotoxic",
+        "summary": "Older in vitro data reported weak genotoxic potential signals, while EFSA's current re-evaluation workflow identifies insufficient data to fully resolve potential genotoxicity concerns.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/16777705/",
+          "https://www.efsa.europa.eu/en/call/call-technical-and-toxicological-data-maltitol-e-965i-and-maltitol-syrup-e-965ii"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "High-dose rat developmental study reported reduced fetal weight/growth retardation at the highest tested dose despite no teratogenic classification in that study.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/22585934/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2006 opinion concluded no safety concern for proposed maltitol syrup specification amendment.",
+      "JECFA lists ADI as not limited for maltitol.",
+      "FDA CFR 21 CFR 184.1924 affirms maltitol syrup as generally recognized as safe when used under GMP conditions."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "high consumers of sugar-free polyol products",
+        "children with high bolus intakes",
+        "individuals with gastrointestinal sensitivity"
+      ],
+      "notes": "Regulatory ADIs are non-numeric (not specified/not limited), so numeric ADI exceedance is not directly computed; practical risk is mainly high-intake GI intolerance."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.74,
+    "rationale": "Maltitol is broadly authorized (EU/FDA/JECFA) with no major carcinogenic classification identified, and the main well-established adverse effect is high-dose gastrointestinal intolerance. EFSA's ongoing data call on genotoxicity uncertainty supports caution but does not currently justify a higher-risk tier.",
+    "key_factors": [
+      "EFSA 2006 no-safety-concern conclusion for specification amendment",
+      "EFSA 2023 call noting insufficient genotoxicity-relevant data for re-evaluation",
+      "FDA GRAS affirmation in 21 CFR 184.1924 under GMP",
+      "JECFA ADI not limited (1985)",
+      "Human evidence of osmotic diarrhea at higher bolus doses"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal (2006): Safety of the proposed amendment of the specifications for maltitol syrup (E965ii) as a food additive",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/354",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA call (2023): Call for technical and toxicological data on maltitol (E 965i) and maltitol syrup (E 965ii)",
+      "url": "https://www.efsa.europa.eu/en/call/call-technical-and-toxicological-data-maltitol-e-965i-and-maltitol-syrup-e-965ii",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA call (2017): Call for data on 3 food additives including maltitol and maltitol syrup",
+      "url": "https://www.efsa.europa.eu/en/call/call-data-3-food-additives-maltitol-e-965i-and-maltitol-syrup-e-965ii",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Title 21: 21 CFR 184.1924 (Maltitol syrup)",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-184/subpart-B/section-184.1924",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Title 21: 21 CFR 172.841 (Food starch-hydrolyzate products)",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-172/subpart-I/section-172.841",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database entry for maltitol (evaluation year and ADI)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/search.aspx?fc=32&cyn=&cyn2=&sc=&so=&kc=&CurCode=32&id=3384",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs: Agents Classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC search API query for maltitol",
+      "url": "https://monographs.iarc.who.int/wp-json/wp/v2/search?search=maltitol&per_page=20",
+      "type": "database"
+    },
+    {
+      "title": "IARC list-of-classifications dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 32698373: Maltitol review (applications, metabolism, health impacts)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32698373/",
+      "type": "review"
+    },
+    {
+      "title": "PubMed PMID 22585934: Genotoxic and teratogenic effects of maltitol in rats",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22585934/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 16777705: Cytogenetic effects in human peripheral lymphocytes",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16777705/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 18797153: Osmotic diarrhea threshold study in healthy women",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18797153/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 37537786: Low/no-calorie sweeteners and ex vivo human gut microbiota",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37537786/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 26061453: Maltitol in high-fat diet mouse model",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26061453/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 27687609: Rat glucose absorption and uptake study",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27687609/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 31641701: Pediatric double-blind RCT with maltitol snacks",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31641701/",
+      "type": "study"
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T18:55:32Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E570",
+    "name": "Stearic acid (fatty acids, E570)",
+    "cas_numbers": [
+      "57-11-4"
+    ],
+    "synonyms": [
+      "Octadecanoic acid",
+      "Stearic acid",
+      "Fatty acids (E570)"
+    ],
+    "chemical_class": "Long-chain fatty acid (saturated C18 fatty acid)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "flavoring agent and adjuvant",
+    "secondary_categories": [
+      "flavouring agent",
+      "lipid-phase processing aid"
+    ],
+    "mechanism": "Used as a long-chain fatty acid ingredient in foods under GMP; acts within lipid phases and supports flavour/adjuvant technological functions.",
+    "common_food_categories": [
+      "Foods where flavouring/adjuvant use is technologically justified under GMP",
+      "Fat-containing processed foods"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA (2017, E570 re-evaluation) concluded no safety concern at reported uses/use levels and no need for a numerical ADI in its risk assessment framework."
+      },
+      "last_evaluation_year": 2017,
+      "key_finding": "E570 fatty acids were considered of no safety concern at reported uses/use levels; additive contribution to saturated fat intake was estimated around 1% of total dietary saturated fatty acids."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1090",
+      "notes": "Affirmed as GRAS direct human food ingredient; used as a flavoring agent and adjuvant at levels not exceeding current good manufacturing practice."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO JECFA database (stearic acid, ID 690) states: 'No safety concern at current levels of intake when used as a flavouring agent.'"
+      },
+      "last_evaluation_year": 1997
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "cardiovascular",
+        "summary": "Recent pooled human evidence includes mixed findings: a 2024 meta-analysis reported modest association of higher stearic-acid intake with coronary events, while controlled trials often show neutral or comparatively favorable lipid effects versus palmitic acid.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID 37632423",
+          "PMID 40975239",
+          "PMID 32900520",
+          "PMID 32111040"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "EFSA identified limited chronic, reproductive, and developmental toxicity datasets for E570-specific assessment, though available evidence did not indicate a safety concern at reported uses.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID 32625490"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2017: no safety concern at reported uses and use levels for E570.",
+      "FDA: stearic acid affirmed GRAS under 21 CFR 184.1090.",
+      "IARC: no standalone Group classification identified for stearic acid (CAS 57-11-4) in current IARC classification dataset reviewed."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "No numerical ADI was set in EFSA's E570 re-evaluation framework, and JECFA stearic-acid entry uses a no-safety-concern statement for flavouring-agent intake levels."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.81,
+    "rationale": "Current regulatory consensus supports low concern at authorised/GMP use levels, but dataset limitations for some long-term endpoints and mixed cardiometabolic literature argue against a stricter 'risk_free' designation.",
+    "key_factors": [
+      "EFSA 2017 no-safety-concern conclusion for E570 at reported uses",
+      "FDA GRAS status with explicit GMP conditions in 21 CFR 184.1090",
+      "WHO JECFA stearic-acid entry reports no safety concern at current flavouring intake levels",
+      "No IARC Group classification identified for stearic acid itself",
+      "Some recent human evidence shows mixed cardiometabolic associations"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal page: Re-evaluation of fatty acids (E570)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4785",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed record: Re-evaluation of fatty acids (E570) as a food additive (PMID 32625490)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625490/",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed plain-text view for PMID 32625490",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625490/?format=pubmed",
+      "type": "database"
+    },
+    {
+      "title": "eCFR section page: 21 CFR 184.1090 (Stearic acid)",
+      "url": "https://www.ecfr.gov/current/title-21/section-184.1090",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API versions index (Title 21)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/versions/title-21.json",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API full XML (part 184) used to extract 21 CFR 184.1090 text",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA API query: stearic",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/ChemicalData/GetBy/par/stearic",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA chemical page: STEARIC ACID (ID 690)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/690",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classification dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search query for recent stearic-acid cardiometabolic studies",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%28%22stearic+acid%22%5BTitle%2FAbstract%5D%29+AND+%28cardiovascular+OR+cardiometabolic+OR+inflammation%29+AND+%28trial+OR+cohort+OR+meta-analysis+OR+systematic+review%29",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: palmitic vs stearic IE fats RCT (PMID 40975239)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40975239/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: stearic vs palmitic ABCA1 RCT (PMID 32900520)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32900520/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: fatty acids and coronary events meta-analysis (PMID 37632423)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37632423/",
+      "type": "review"
+    },
+    {
+      "title": "PubMed: Palmitic Acid Versus Stearic Acid systematic review (PMID 32111040)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32111040/",
+      "type": "review"
+    }
+  ]
+}

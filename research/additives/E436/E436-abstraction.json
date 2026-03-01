@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T15:47:33+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E436",
+    "name": "Polysorbate 65 (polyoxyethylene (20) sorbitan tristearate)",
+    "cas_numbers": [
+      "9005-71-4"
+    ],
+    "synonyms": [
+      "Polysorbate 65",
+      "Polyoxyethylene (20) sorbitan tristearate",
+      "INS 436"
+    ],
+    "chemical_class": "Non-ionic polyoxyethylene sorbitan fatty acid ester emulsifier",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "emulsifier",
+    "secondary_categories": [
+      "surfactant",
+      "stabilizer"
+    ],
+    "mechanism": "Acts as a non-ionic surfactant, lowering oil-water interfacial tension and stabilizing dispersed fat/water systems.",
+    "common_food_categories": [
+      "frozen desserts (ice cream, ice milk, sherbet)",
+      "cakes and cake mixes",
+      "whipped edible oil toppings",
+      "coffee whitener-type fat-water emulsions",
+      "cake icings and fillings"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 10,
+        "unit": "mg/kg bw/day",
+        "basis": "Temporary group ADI for E432-E436 from EFSA re-evaluation; reproductive toxicity database considered incomplete."
+      },
+      "last_evaluation_year": 2015,
+      "key_finding": "EFSA found no concern for genotoxicity and no concern from chronic/carcinogenicity or developmental toxicity data, but set a temporary group ADI due to reproductive-toxicity data limitations."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.838",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 25,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI 0-25 mg/kg bw as total polyoxyethylene (20) sorbitan esters."
+      },
+      "last_evaluation_year": 1973
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "Recent studies on related emulsifiers (especially polysorbate 80, not E436-specific) report microbiome composition shifts and epithelial/barrier effects; direct evidence for polysorbate 65 remains sparse.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/40816342/",
+          "https://pubmed.ncbi.nlm.nih.gov/39778648/",
+          "https://pubmed.ncbi.nlm.nih.gov/33476678/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "EFSA identified an incomplete reproductive-toxicity dataset for polysorbates and therefore set a temporary group ADI with added uncertainty.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://www.efsa.europa.eu/en/efsajournal/pub/4152"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "No EFSA concern for genotoxicity in the re-evaluation dataset.",
+      "No EFSA concern from chronic/carcinogenicity and developmental toxicity datasets."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "Toddlers (high consumers in EFSA scenarios)"
+      ],
+      "notes": "EFSA high-consumption estimates in toddlers were around the temporary group ADI (~10 mg/kg bw/day)."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.64,
+    "rationale": "Regulatory approvals remain in place, but EFSA's temporary ADI, child high-end exposure proximity to ADI, and class-based mechanistic concerns from related emulsifiers support a moderate tier rather than limited/risk_free.",
+    "key_factors": [
+      "EFSA temporary group ADI of 10 mg/kg bw/day",
+      "High-end toddler exposure near/at ADI",
+      "Direct E436-specific recent toxicology data are limited",
+      "Class evidence from related emulsifiers suggests potential gut barrier/microbiome effects"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Scientific Opinion on the re-evaluation of polyoxyethylene sorbitan ... (E432-E436)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4152",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA supporting publication listing (includes 2018 correction note reference)",
+      "url": "https://www.efsa.europa.eu/en/supporting/pub/en-1896",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API - 21 CFR 172.838 Polysorbate 65",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?section=172.838",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA chemical record: POLYSORBATE 65",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2528",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications data payload (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed query: polysorbate 65 with toxicity/safety terms",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=20&sort=pub+date&term=%28%22polysorbate%2065%22%5BTitle%2FAbstract%5D%20OR%20%22polyoxyethylene%20sorbitan%20tristearate%22%5BTitle%2FAbstract%5D%20OR%20%229005-71-4%22%5BTitle%2FAbstract%5D%29%20AND%20%28toxicity%5BTitle%2FAbstract%5D%20OR%20safety%5BTitle%2FAbstract%5D%29",
+      "type": "database"
+    },
+    {
+      "title": "Effect of Five Dietary Emulsifiers on Inflammation, Permeability, and the Gut Microbiome: A Placebo-controlled Randomized Trial",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40816342/",
+      "type": "study"
+    },
+    {
+      "title": "Polysorbate 80 and carboxymethylcellulose: A different impact on epithelial integrity when interacting with the microbiome",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39778648/",
+      "type": "study"
+    },
+    {
+      "title": "Food emulsifier polysorbate 80 promotes the intestinal absorption of mono-2-ethylhexyl phthalate by disturbing intestinal barrier",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33476678/",
+      "type": "study"
+    }
+  ]
+}

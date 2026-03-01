@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T15:57:13+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E450",
+    "name": "Diphosphates (Pyrophosphates)",
+    "cas_numbers": [
+      "7758-16-9",
+      "7722-88-5",
+      "7320-34-5",
+      "35405-51-7"
+    ],
+    "synonyms": [
+      "diphosphates",
+      "pyrophosphates",
+      "disodium dihydrogen diphosphate",
+      "acid sodium pyrophosphate",
+      "trisodium diphosphate",
+      "tetrasodium diphosphate",
+      "tetrapotassium diphosphate",
+      "dicalcium diphosphate"
+    ],
+    "chemical_class": "inorganic phosphate salts (di-/pyrophosphates)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator / sequestrant / emulsifier",
+    "secondary_categories": [
+      "raising agent",
+      "stabilizer",
+      "thickener",
+      "humectant",
+      "colour retention agent"
+    ],
+    "mechanism": "Provides buffering and mineral chelation (sequestration), supports leavening systems, and helps stabilize texture/water-binding in processed foods.",
+    "common_food_categories": [
+      "processed bakery products",
+      "processed meats",
+      "processed/packaged mixed foods",
+      "canned fish (specific US standard allows sodium acid pyrophosphate)",
+      "other ultra-processed packaged foods"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 40,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI for phosphates expressed as phosphorus (EFSA FAF 2019 re-evaluation)."
+      },
+      "last_evaluation_year": 2019,
+      "key_finding": "EFSA considered the ADI protective but estimated exposures exceeded ADI in some child groups and in supplement scenarios."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.1087; 21 CFR 182.6787; 21 CFR 182.6789; 21 CFR 182.8223; see also 21 CFR 161.190 for a specific canned tuna limit",
+      "notes": "GRAS when used in accordance with GMP in cited sections; sodium acid pyrophosphate may be used up to 0.5% by weight in canned tuna under 21 CFR 161.190."
+    },
+    "jecfa": {
+      "adi": {
+        "value": 70,
+        "unit": "mg/kg bw/day",
+        "basis": "Group MTDI for phosphorus from all sources, expressed as P, applied across phosphate/diphosphate evaluations."
+      },
+      "last_evaluation_year": 2001
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "EFSA reported modeled ADI exceedance for some younger age groups and supplement scenarios, indicating potential risk where exposure is high.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/32626329/"
+        ]
+      },
+      {
+        "category": "cardiovascular",
+        "summary": "Recent reviews propose that highly absorbable inorganic phosphate additives may contribute to cardiorenal risk pathways (e.g., vascular calcification, mineral-hormone dysregulation), especially at high cumulative exposure.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/37630701/",
+          "https://pubmed.ncbi.nlm.nih.gov/40180501/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "US packaged-food analyses show widespread phosphate additive presence, increasing likelihood of cumulative dietary exposure from processed foods.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/36731685/",
+          "https://pubmed.ncbi.nlm.nih.gov/40180501/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA re-evaluation reported no concern for genotoxicity and carcinogenicity for the phosphate group assessed.",
+      "EFSA reported no developmental toxicity effects in the dataset reviewed."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "infants",
+        "toddlers",
+        "children",
+        "adolescents",
+        "food supplement users"
+      ],
+      "notes": "EFSA 2019 reported exceedance of the group ADI in modeled scenarios for multiple younger populations (mean and/or 95th percentile) and for supplement exposure."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.79,
+    "rationale": "E450 compounds are approved by EFSA/FDA/JECFA with defined intake guidance, but EFSA identified ADI exceedance in several younger populations and recent literature indicates plausible cardiorenal concerns at high cumulative phosphate-additive exposure.",
+    "key_factors": [
+      "EFSA group ADI exists (40 mg/kg bw/day as phosphorus) and additive remains authorized",
+      "EFSA modeled ADI exceedance in child groups and supplement scenarios",
+      "JECFA group MTDI framework (70 mg/kg bw as P) supports controlled-use acceptability",
+      "Recent US market data show broad phosphate additive prevalence in packaged foods",
+      "No IARC monograph classification identified for E450-related pyrophosphate entries"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal publication page: Re-evaluation of phosphates (E 338-341, E 343, E 450-452)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5674",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed: Re-evaluation of phosphoric acid-phosphates - di-, tri- and polyphosphates (E 338-341, E 343, E 450-452) as food additives and the safety of proposed extension of use",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32626329/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 XML (Food and Drugs)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA chemical record: DISODIUM DIHYDROGEN DIPHOSPHATE; DISODIUM DIHYDROGEN PYROPHOSPHATE (INS 450i)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4139",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical record: TETRASODIUM PYROPHOSPHATE; TETRASODIUM DIPHOSPHATE (INS 450iii)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4482",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical record: TETRAPOTASSIUM DIPHOSPHATE; TETRAPOTASSIUM PYROPHOSPHATE (INS 450v)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4480",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical record: DICALCIUM DIPHOSPHATE; DICALCIUM PYROPHOSPHATE (INS 450vi)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2171",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical record: Trisodium monohydrogen diphosphate (INS 450(ii))",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3616",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical record: Monocalcium dihydrogen diphosphate (INS 450(vii))",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3791",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset script (agents list)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Phosphorus Additives and Their Impact on Phosphorus Content in Foods-An Analysis of the USDA's Branded Foods Product Database",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36731685/",
+      "type": "study"
+    },
+    {
+      "title": "Industrial Use of Phosphate Food Additives: A Mechanism Linking Ultra-Processed Food Intake to Cardiorenal Disease Risk?",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37630701/",
+      "type": "review"
+    },
+    {
+      "title": "Phosphate-based additives in processed foods: is excess exposure a cause for concern?",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40180501/",
+      "type": "study"
+    }
+  ]
+}

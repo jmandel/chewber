@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T20:52:17Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E953",
+    "name": "Isomalt",
+    "cas_numbers": [
+      "64519-82-0"
+    ],
+    "synonyms": [
+      "Hydrogenated isomaltulose",
+      "Isomaltitol",
+      "Palatinit",
+      "INS 953"
+    ],
+    "chemical_class": "Polyol sweetener (hydrogenated disaccharide alcohol mixture)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "sweetener",
+    "secondary_categories": [
+      "bulking agent",
+      "glazing agent",
+      "anticaking agent"
+    ],
+    "mechanism": "Partially digested sugar alcohol that provides sweetness and bulk with lower glycemic impact and lower caloric value than sucrose.",
+    "common_food_categories": [
+      "Sugar-free confectionery",
+      "Chewing gum",
+      "Reduced-sugar baked goods",
+      "Low-sugar processed foods"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No finalized EFSA ADI identified in the current re-evaluation record (EFSA-Q-2011-00723, ongoing)."
+      },
+      "last_evaluation_year": 2026,
+      "key_finding": "OpenEFSA shows E953 re-evaluation is ongoing; EFSA notes the additive is already authorised in the EU and scientific output preparation is ongoing."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 101.9(c)(1)(i)(F); 21 CFR 101.80(c)(2)(ii)(A); 21 CFR 101.80(c)(2)(iii)",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO JECFA database lists ADI as NOT SPECIFIED for ISOMALT (evaluation year 1985)."
+      },
+      "last_evaluation_year": 1985
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "Dose-dependent gastrointestinal intolerance (including laxative effects) is the primary recurring adverse effect, including pediatric sensitivity at confectionery-level intakes.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://www.inchem.org/documents/jecfa/jecmono/v20je14.htm",
+          "https://pubmed.ncbi.nlm.nih.gov/12064338/",
+          "https://pubmed.ncbi.nlm.nih.gov/12122552/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Current EFSA re-evaluation remains unfinished, so the most recent EU scientific reassessment output is still pending.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00723"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA monograph reports no demonstrated carcinogenicity in lifetime rodent studies at tested dietary levels.",
+      "No Isomalt listing was found in the IARC Monographs live classification dataset checked.",
+      "Adult controlled trial data did not show major adverse metabolic effects at 30 g/day over 4 weeks, though stool frequency increased modestly."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "children",
+        "high consumers of sugar-free confectionery",
+        "individuals with GI sensitivity"
+      ],
+      "notes": "ADI exceedance is not quantifiable because JECFA ADI is 'not specified' and EFSA has not finalized a numerical ADI in the ongoing re-evaluation record; practical risk is driven by dose-related GI effects."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.79,
+    "rationale": "Overall regulatory and toxicology evidence does not show severe systemic toxicity at normal use levels, but consistent dose-related GI/laxative effects make a risk-free classification too strong.",
+    "key_factors": [
+      "EFSA re-evaluation still ongoing (no finalized EFSA output/ADI in current record)",
+      "JECFA ADI not specified",
+      "Primary adverse pattern is gastrointestinal and dose-dependent",
+      "No IARC classification found",
+      "No major jurisdiction-wide ban identified"
+    ]
+  },
+  "sources": [
+    {
+      "title": "OpenEFSA question record: Re-evaluation of E953 Isomalt (EFSA-Q-2011-00723)",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00723",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA substance record: Isomalt",
+      "url": "https://open.efsa.europa.eu/api/substance/get?termExtendedName=Isomalt",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA substance-question mapping: Isomalt",
+      "url": "https://open.efsa.europa.eu/api/substance/getQuestions?termExtendedName=Isomalt",
+      "type": "database"
+    },
+    {
+      "title": "eCFR search API for isomalt in Title 21",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=isomalt&per_page=200",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR full Title 21 XML snapshot (2026-02-25)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA chemical page: ISOMALT (ID 1289)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1289",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API search: isomalt",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/isomalt",
+      "type": "database"
+    },
+    {
+      "title": "JECFA toxicological monograph: Isomalt",
+      "url": "https://www.inchem.org/documents/jecfa/jecmono/v20je14.htm",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC live classification dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: Suitability of sugar alcohols as antidiabetic supplements: A review (2021)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35696228/",
+      "type": "review"
+    },
+    {
+      "title": "PubMed: Comparative gastrointestinal response of young children to sucrose or isomalt sweets (2002)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12064338/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Comparative GI responses of children and adults to sucrose/isomalt/lycasin sweets (2002)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12122552/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Effects of isomalt consumption on GI and metabolic parameters in healthy volunteers (2005)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16197583/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Effect of isomalt consumption on faecal microflora and colonic metabolism in healthy volunteers (2006)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16441915/",
+      "type": "study"
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T18:55:58Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E553b",
+    "name": "Talc",
+    "cas_numbers": [
+      "14807-96-6"
+    ],
+    "synonyms": [
+      "Talcum",
+      "Magnesium silicate",
+      "INS 553iii",
+      "Talcum powder"
+    ],
+    "chemical_class": "Hydrous magnesium silicate (naturally occurring layered silicate mineral)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "anti-caking agent",
+    "secondary_categories": [
+      "bulking agent",
+      "glazing agent",
+      "filtering aid",
+      "chewing gum base compound",
+      "thickener"
+    ],
+    "mechanism": "Reduces caking and improves flow of powders by moisture adsorption and particle-separation effects.",
+    "common_food_categories": [
+      "table salt",
+      "powdered/particulate foods requiring free-flow behavior",
+      "applications listed in EU additive categories under quantum satis"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2018 did not derive a numerical ADI for talc/silicates and considered the old SCF group ADI 'not specified' obsolete; EFSA concluded safety could not be assessed with the available toxicology package."
+      },
+      "last_evaluation_year": 2018,
+      "key_finding": "EFSA re-evaluation concluded that safety of talc (E553b) as a food additive could not be assessed because reliable subchronic/chronic/carcinogenicity/reproductive data were lacking."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.2437",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA database lists ADI as NOT SPECIFIED for talc (INS 553iii)."
+      },
+      "last_evaluation_year": 1986
+    },
+    "iarc_classification": "Group 2A",
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "carcinogenic",
+        "summary": "IARC Monographs classify talc as Group 2A (probably carcinogenic to humans), based on limited human evidence (ovarian cancer), sufficient animal evidence, and strong mechanistic evidence.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://www.iarc.who.int/wp-content/uploads/2024/07/pr352_E.pdf",
+          "https://webapi.iarc.who.int/loc/loc.app.js",
+          "https://pubmed.ncbi.nlm.nih.gov/38976996/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "EFSA concluded the oral-food-additive toxicology database for talc/silicates was insufficient for a full safety assessment (notably missing reliable subchronic/chronic/carcinogenicity/reproductive datasets).",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009349/",
+          "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.2903/j.efsa.2018.5375&format=json&pageSize=1&resultType=core"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA reported very low absorption of silicates/talc in available data.",
+      "EFSA did not identify an indication for genotoxicity or developmental toxicity for talc in the reviewed dataset.",
+      "No major jurisdiction-wide ban on food-additive talc was identified in the reviewed regulatory sources."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "not quantifiable via classic ADI exceedance because no current numerical ADI is set"
+      ],
+      "notes": "EFSA used a supplement scenario and reported exposure below a 4 g/person/day magnesium trisilicate antacid benchmark, but still considered overall toxicology data insufficient to confirm safety."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "high",
+    "confidence": 0.63,
+    "rationale": "Under the requested tier framework, EFSA's inability to confirm safety for E553b and IARC Group 2A classification together support a high tier, despite countervailing points (low oral absorption, no strong genotoxic/developmental signal, and no broad food-use bans).",
+    "key_factors": [
+      "EFSA 2018: safety for talc/silicates as food additives cannot be assessed",
+      "No current numerical EFSA ADI; old group ADI not specified deemed obsolete",
+      "IARC Group 2A classification for talc",
+      "U.S. CFR includes GRAS use condition for magnesium silicate in table salt (21 CFR 182.2437)",
+      "JECFA ADI listed as NOT SPECIFIED (1986 entry)"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal page for re-evaluation of E552/E553a/E553b (blocked in this environment)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5375",
+      "type": "regulatory"
+    },
+    {
+      "title": "Re-evaluation of calcium silicate, magnesium silicate, magnesium trisilicate and talc as food additives (PMCID: PMC7009349)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009349/",
+      "type": "review"
+    },
+    {
+      "title": "Europe PMC API record for DOI 10.2903/j.efsa.2018.5375",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.2903/j.efsa.2018.5375&format=json&pageSize=1&resultType=core",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API full text snapshot for Title 21 (used to extract 21 CFR 182.2437)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA chemical record: TALC (Chemical ID 2965)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2965",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs evaluate the carcinogenicity of talc and acrylonitrile (news page)",
+      "url": "https://www.iarc.who.int/news-events/iarc-monographs-evaluate-the-carcinogenicity-of-talc-and-acrylonitrile-iarc-monographs-volume-136/",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC Press Release 352 (PDF)",
+      "url": "https://www.iarc.who.int/wp-content/uploads/2024/07/pr352_E.pdf",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC list-of-classifications data script (contains Talc Group 2A entry)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Consolidated Regulation (EC) No 1333/2008 (E553b listed as Talc)",
+      "url": "https://eur-lex.europa.eu/eli/reg/2008/1333/2024-12-16/eng",
+      "type": "regulatory"
+    },
+    {
+      "title": "Carcinogenicity of talc and acrylonitrile (Lancet Oncol, PMID 38976996)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38976996/",
+      "type": "study"
+    },
+    {
+      "title": "Intimate Care Products and Incidence of Hormone-Related Cancers: A Quantitative Bias Analysis (PMID 38748950)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38748950/",
+      "type": "study"
+    },
+    {
+      "title": "A systematic review of the epidemiology evidence on talc and cancer (PMID 38868996)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38868996/",
+      "type": "review"
+    },
+    {
+      "title": "Carcinogenicity of asbestos-free talc and talcum powder: systematic review (PMID 38995135)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38995135/",
+      "type": "review"
+    },
+    {
+      "title": "Pheochromocytoma in rats: a weak link in the assessment of talc carcinogenicity? (PMID 41361119)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41361119/",
+      "type": "study"
+    },
+    {
+      "title": "PubChem talc identifier lookup",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/talc/cids/JSON",
+      "type": "database"
+    }
+  ]
+}

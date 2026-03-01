@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T19:44:08Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E635",
+    "name": "Disodium 5'-ribonucleotides",
+    "cas_numbers": [
+      "4691-65-0",
+      "5550-12-9"
+    ],
+    "synonyms": [
+      "Sodium 5'-ribonucleotides",
+      "Sodium ribonucleotides",
+      "Disodium ribonucleotides",
+      "Mixture of disodium inosine-5'-monophosphate and disodium guanosine-5'-monophosphate"
+    ],
+    "chemical_class": "Mixture of purine nucleotide salts (IMP/GMP sodium salts)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "flavour enhancer",
+    "secondary_categories": [
+      "umami enhancer",
+      "saltiness enhancer in glutamate systems"
+    ],
+    "mechanism": "The IMP/GMP components synergistically enhance umami (glutamate) perception and can increase perceived saltiness in formulated foods.",
+    "common_food_categories": [
+      "savory seasonings and soup stocks",
+      "instant noodles and snack seasonings",
+      "processed savory foods",
+      "canned vegetable products"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA-accessible text cites SCF (1990) group ADI as 'not specified' for ribonucleotides (E626-E635); dedicated EFSA re-evaluation page was unavailable in this run."
+      },
+      "last_evaluation_year": 1990,
+      "key_finding": "E635 is listed among authorized ribonucleotides in EU context; historical SCF ADI-not-specified basis is cited, and re-evaluation context is described as ongoing in EFSA text."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.530 and 21 CFR 172.535",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not specified (WHO/JECFA entry for DISODIUM 5'-RIBONUCLEOTIDES; Food Additives Series 6)."
+      },
+      "last_evaluation_year": 1974
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "JECFA monograph notes that high intakes can increase serum and urinary uric acid, with specific caution for gout-prone individuals and those taking uric-acid-retaining diuretics.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "http://www.inchem.org/documents/jecfa/jecmono/v06je02.htm"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent PubMed literature is mostly sensory/food formulation work (umami/saltiness modulation), with limited modern chronic toxicity studies specific to E635 as consumed in foods.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/38197318/",
+          "https://pubmed.ncbi.nlm.nih.gov/38876587/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA historical long-term rat and dog studies reported no significant treatment-related abnormalities at tested dietary concentrations.",
+      "JECFA reproduction and teratogenicity studies in rats/mice/monkeys reported no significant fetal effects at tested doses.",
+      "JECFA retained ADI as 'not specified' for disodium 5'-ribonucleotides."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "People with gout or hyperuricemia",
+        "People taking uric-acid-retaining diuretics"
+      ],
+      "notes": "No numeric ADI was set (ADI 'not specified'), so classical ADI exceedance quantification is not available; concern is subgroup sensitivity to purine load at high intake."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.74,
+    "rationale": "Core regulatory signals remain permissive (JECFA ADI not specified; U.S. CFR approvals of component salts), and no IARC listing was found. Main caveat is uric-acid sensitivity at high purine intake and sparse modern additive-specific chronic toxicity literature.",
+    "key_factors": [
+      "JECFA ADI not specified with historical toxicology package",
+      "U.S. CFR permits disodium guanylate and disodium inosinate under intended-use conditions",
+      "No IARC classification entry identified",
+      "JECFA notes uric-acid increase concern for susceptible subgroups",
+      "Dedicated EFSA E635 re-evaluation page was inaccessible in this run"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA call page URL for ribonucleotide re-evaluation (currently unavailable/archived notice)",
+      "url": "https://www.efsa.europa.eu/en/calls/call/input-data-support-re-evaluation-ribonucleotides-e-626-e-635-food-additives",
+      "type": "regulatory"
+    },
+    {
+      "title": "Mirror fetch of EFSA call URL showing page-not-found/archived notice",
+      "url": "https://r.jina.ai/http://www.efsa.europa.eu/en/calls/call/input-data-support-re-evaluation-ribonucleotides-e-626-e-635-food-additives",
+      "type": "database"
+    },
+    {
+      "title": "EFSA Journal 2023 full text mirror (contains E626-E635 authorization and SCF ADI context)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10722326/",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA chemical database: DISODIUM 5'-RIBONUCLEOTIDES (ID 4140)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4140",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA toxicological monograph: Calcium and sodium 5'-ribonucleotides (Food Additives Series 6)",
+      "url": "http://www.inchem.org/documents/jecfa/jecmono/v06je02.htm",
+      "type": "review"
+    },
+    {
+      "title": "eCFR search API result for disodium guanylate",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=disodium%20guanylate",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR search API result for disodium inosinate",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=disodium%20inosinate",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR full Title 21 XML used to extract 21 CFR 172.530 and 172.535 text",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC classifications page",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list dataset script (checked for additive/component names)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed 38197318: Ribonucleotides modulate glutamate thresholds (2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38197318/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed 38876587: Umami substance combination and saltiness perception (2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38876587/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed 4601956: Safety evaluation of disodium inosinate/guanylate/ribonucleotide (1974)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/4601956/",
+      "type": "study"
+    },
+    {
+      "title": "PubChem synonyms for Disodium 5'-inosinate (includes CAS 4691-65-0)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/135414245/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem synonyms for Disodium 5'-guanylate (includes CAS 5550-12-9)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/135414246/synonyms/JSON",
+      "type": "database"
+    }
+  ]
+}

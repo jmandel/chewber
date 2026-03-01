@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T19:37:19Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E900",
+    "name": "Dimethylpolysiloxane",
+    "cas_numbers": [
+      "9016-00-6",
+      "9006-65-9",
+      "63148-62-9"
+    ],
+    "synonyms": [
+      "Dimethyl polysiloxane",
+      "Polydimethylsiloxane",
+      "Poly(methylsiloxane)",
+      "Dimethyl silicone",
+      "INS 900"
+    ],
+    "chemical_class": "Organosilicon polymer (silicone; polysiloxane)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "antifoaming agent",
+    "secondary_categories": [
+      "defoaming agent",
+      "surface-active processing aid"
+    ],
+    "mechanism": "Reduces surface tension and destabilizes foam films, suppressing persistent foam during food processing.",
+    "common_food_categories": [
+      "Processed foods with controlled defoaming during manufacture",
+      "Dry gelatin dessert mixes (with ready-to-serve limit)",
+      "Salt labeled for cooking purposes (with cooked-food limit)",
+      "Fruit juice processing contexts referenced in CFR standards"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 17,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA FAF Panel re-evaluation (2020) established ADI 17 mg/kg bw/day from a rat NOAEL (1,742 mg/kg bw/day) with uncertainty factor 100; prior ADI 1.5 mg/kg bw/day withdrawn."
+      },
+      "last_evaluation_year": 2020,
+      "key_finding": "EFSA concluded no safety concern at reported uses and use levels; estimated dietary exposures did not exceed the ADI."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 173.340",
+      "notes": "Listed for use in defoaming agents with a general maximum of 10 ppm in food (and specified exceptions/ready-to-consume limits)."
+    },
+    "jecfa": {
+      "adi": {
+        "value": 17,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA records reviewed show an ADI range of 0-17 mg/kg bw/day (74th meeting context)."
+      },
+      "last_evaluation_year": 2011
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Corneal effects were reported in rat studies but interpreted by EFSA as local contact effects from feed/feces rather than systemic toxicity.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/37649521/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent PubMed-indexed literature is sparse for additive-specific human dietary safety, creating uncertainty driven by data gaps rather than a strong harm signal.",
+        "evidence_strength": "theoretical",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/?term=%28dimethylpolysiloxane%5BTitle%2FAbstract%5D+OR+polydimethylsiloxane%5BTitle%2FAbstract%5D%29+AND+%28toxicity%5BTitle%2FAbstract%5D+OR+safety%5BTitle%2FAbstract%5D+OR+oral%5BTitle%2FAbstract%5D%29&sort=date",
+          "https://pubmed.ncbi.nlm.nih.gov/?term=%22dimethyl+polysiloxane%22%5BTitle%5D"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA reported very limited gastrointestinal absorption and predominantly unchanged fecal excretion.",
+      "EFSA reported no genotoxicity concern for E900.",
+      "EFSA concluded estimated dietary exposures across evaluated scenarios did not exceed ADI 17 mg/kg bw/day.",
+      "JECFA records reviewed are consistent with an ADI range up to 17 mg/kg bw/day."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "none identified in EFSA exposure scenarios"
+      ],
+      "notes": "EFSA reported that exposure estimates for evaluated population groups/scenarios did not exceed the ADI of 17 mg/kg bw/day."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.82,
+    "rationale": "E900 is approved by major regulators with an established ADI and clear conditions of use; EFSA's re-evaluation found no safety concern at reported use levels and exposure estimates below ADI. Residual uncertainty is mainly due to limited newer additive-specific human evidence, not strong demonstrated harm.",
+    "key_factors": [
+      "EFSA 2020 ADI establishment at 17 mg/kg bw/day and no safety concern conclusion",
+      "FDA/eCFR explicit use conditions under 21 CFR 173.340",
+      "JECFA listing indicates ADI 0-17 mg/kg bw/day (2011 context)",
+      "No specific IARC classification found for dimethylpolysiloxane in checked agents-classified resources",
+      "PubMed search indicates sparse modern additive-specific oral safety studies"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal page: Re-evaluation of dimethyl polysiloxane (E 900) (2020)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/6107",
+      "type": "regulatory"
+    },
+    {
+      "title": "Wiley DOI landing page for EFSA 2020 article (access challenge in VM)",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2020.6107",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed record: Re-evaluation of dimethyl polysiloxane (E 900) as a food additive (2020)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37649521/",
+      "type": "study"
+    },
+    {
+      "title": "NCBI E-utilities abstract text for PMID 37649521",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=37649521&retmode=text&rettype=abstract",
+      "type": "database"
+    },
+    {
+      "title": "FDA Substances Added to Food: DIMETHYLPOLYSILOXANE",
+      "url": "https://www.cfsanappsexternal.fda.gov/scripts/fdcc/?set=FoodSubstances&id=DIMETHYLPOLYSILOXANE&sort=Sortterm&order=ASC&showAll=true&type=basic&search=",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API title metadata (Title 21 latest issue date)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/titles.json",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API full Title 21 XML (2026-02-19)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR current section page: 21 CFR 173.340",
+      "url": "https://www.ecfr.gov/current/title-21/section-173.340",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database lookup result for Dimethyl polysiloxane",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2557",
+      "type": "database"
+    },
+    {
+      "title": "FAO/JECFA additive detail (c/1100)",
+      "url": "https://www.fao.org/food/food-safety-quality/scientific-advice/jecfa/jecfa-additives/detail/en/c/1100/",
+      "type": "database"
+    },
+    {
+      "title": "FAO/JECFA toxicological summary page (id=975)",
+      "url": "https://www.fao.org/food/food-safety-quality/scientific-advice/jecfa/jecfa-additives/detail.html?id=975",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs: Agents Classified by the IARC Monographs",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "PubMed broad PDMS toxicity/safety query",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%28dimethylpolysiloxane%5BTitle%2FAbstract%5D+OR+polydimethylsiloxane%5BTitle%2FAbstract%5D%29+AND+%28toxicity%5BTitle%2FAbstract%5D+OR+safety%5BTitle%2FAbstract%5D+OR+oral%5BTitle%2FAbstract%5D%29&sort=date",
+      "type": "database"
+    },
+    {
+      "title": "PubMed targeted title query for dimethyl polysiloxane",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%22dimethyl+polysiloxane%22%5BTitle%5D",
+      "type": "database"
+    }
+  ]
+}

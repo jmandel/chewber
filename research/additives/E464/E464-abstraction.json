@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T16:21:53+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E464",
+    "name": "Hydroxypropyl methyl cellulose",
+    "cas_numbers": [
+      "9004-65-3"
+    ],
+    "synonyms": [
+      "Hydroxypropyl methylcellulose",
+      "Hypromellose",
+      "HPMC"
+    ],
+    "chemical_class": "Modified cellulose ether (non-ionic cellulose derivative)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "thickener",
+    "secondary_categories": [
+      "stabilizer",
+      "emulsifier",
+      "film former",
+      "suspending agent",
+      "protective colloid"
+    ],
+    "mechanism": "Hydrates to form viscous colloidal systems and films that increase viscosity and stabilize dispersed phases.",
+    "common_food_categories": [
+      "sauces and dressings",
+      "bakery products",
+      "desserts and fillings",
+      "processed foods using texture stabilizers"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA ANS Panel (2018) concluded there is no need for a numerical ADI for celluloses including E464."
+      },
+      "last_evaluation_year": 2018,
+      "key_finding": "No safety concern for reported uses and exposure; no numerical ADI needed, with specification-related contaminant caveats."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.874",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA records indicate ADI not specified/not limited for hydroxypropyl methyl cellulose in early evaluations."
+      },
+      "last_evaluation_year": 1985
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "Recent review literature raises mechanistic concern that some cellulose-based food thickeners may affect gut microbiota and related physiology, but direct high-quality causal harm evidence specific to E464 remains limited.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/40248397/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Regulatory concern focuses on material specifications (possible toxic element and microbiological impurity limits), not intrinsic toxicity at authorized use levels.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/28719429/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2018 found no safety concern at reported uses/exposure and no need for a numerical ADI.",
+      "Longstanding FDA authorization under 21 CFR 172.874 with GMP-based conditions of use.",
+      "No IARC monograph classification identified for hydroxypropyl methyl cellulose."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "children (highest estimated exposure on a bodyweight basis)",
+        "infants and toddlers (elevated bodyweight-normalized intake compared with adults)"
+      ],
+      "notes": "EFSA/JECFA did not set a numerical ADI for E464; EFSA high-percentile exposure estimates in children were not interpreted as indicating a safety concern."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.82,
+    "rationale": "Evidence from EFSA/JECFA/FDA supports continued approval with no strong direct hazard signal for normal food uses; residual uncertainty is mainly specification quality control and indirect microbiome hypotheses rather than robust demonstrated harm for E464.",
+    "key_factors": [
+      "EFSA 2018: no numerical ADI needed; no safety concern at reported uses/exposure",
+      "FDA listing as permitted direct food additive under 21 CFR 172.874 with GMP conditions",
+      "JECFA historical ADI not specified/not limited with older data-gap caveat for some high-substitution products",
+      "No IARC carcinogenic classification found",
+      "Recent mechanistic concern literature exists but is indirect/low-specificity for E464"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal: Re-evaluation of celluloses (E460-E466) as food additives (record page)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5047",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed record for EFSA re-evaluation abstract (PMID: 28719429)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28719429/",
+      "type": "database"
+    },
+    {
+      "title": "eCFR section URL visited for 21 CFR 172.874 (bot-protected in this environment)",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-172/subpart-I/section-172.874",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR section URL visited for Part 182 check (bot-protected in this environment)",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-182/subpart-B/section-182.1480",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 172.874 text mirror (LII, sourced from e-CFR)",
+      "url": "https://www.law.cornell.edu/cfr/text/21/172.874",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database entry URL visited for Hydroxypropyl methyl cellulose",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4476",
+      "type": "database"
+    },
+    {
+      "title": "FAO/JECFA additive details: Hydroxypropyl methyl cellulose",
+      "url": "https://www.fao.org/food/food-safety-quality/scientific-advice/jecfa/jecfa-additives/details/en/c/295/",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC agents classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC WP API search query for hydroxypropyl methylcellulose",
+      "url": "https://monographs.iarc.who.int/wp-json/wp/v2/search?search=hydroxypropyl%20methylcellulose&per_page=20",
+      "type": "database"
+    },
+    {
+      "title": "PubMed review: Safety and physiological impact of cellulose-based food thickeners (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40248397/",
+      "type": "review"
+    },
+    {
+      "title": "PubMed: Three-month repeated oral administration study of low-viscosity HPMC in rats (1999)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10073335/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Single-dose toxicity study of hydrophobically modified HPMC in rats (1992)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/1593658/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Teratological studies of HPMCAS in rats (1985)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3841674/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: HPMC effect in diet-induced obesity mouse model (2011)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21599870/",
+      "type": "study"
+    }
+  ]
+}

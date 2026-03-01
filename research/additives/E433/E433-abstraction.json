@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T15:41:43+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E433",
+    "name": "Polysorbate 80",
+    "cas_numbers": [
+      "9005-65-6"
+    ],
+    "synonyms": [
+      "Polyoxyethylene (20) sorbitan monooleate",
+      "Polyoxyethylene sorbitan monooleate",
+      "INS 433"
+    ],
+    "chemical_class": "Non-ionic surfactant (polyoxyethylene sorbitan fatty-acid ester)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "emulsifier",
+    "secondary_categories": [
+      "solubilizing agent",
+      "dispersing agent",
+      "surfactant",
+      "defoaming agent"
+    ],
+    "mechanism": "Amphiphilic surfactant that lowers oil-water interfacial tension and stabilizes emulsions/dispersions.",
+    "common_food_categories": [
+      "Ice cream and frozen desserts",
+      "Pickles and pickle products",
+      "Vitamin/mineral preparations",
+      "Shortenings and edible oils",
+      "Whipped edible oil toppings",
+      "Gelatin desserts"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 25,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA group ADI for polyoxyethylene sorbitan esters E432-E436 in re-evaluation opinion."
+      },
+      "last_evaluation_year": 2015,
+      "key_finding": "EFSA re-evaluation set a group ADI of 25 mg/kg bw/day and reported refined dietary exposure estimates below the ADI at reported use levels."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.840",
+      "notes": "Regulated as a permitted direct food additive with specific compositional and use limits; not identified in Part 182/184 GRAS part checks in the 2025-01-01 eCFR title-21 API snapshot."
+    },
+    "jecfa": {
+      "adi": {
+        "value": 25,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA ADI 0-25 mg/kg bw, as total polyoxyethylene (20) sorbitan esters."
+      },
+      "last_evaluation_year": 1973
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "Multiple mouse and in vitro studies report microbiome shifts, mucus/barrier disruption, and inflammatory signaling with polysorbate 80 exposure.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/25731162/",
+          "https://pubmed.ncbi.nlm.nih.gov/37530764/",
+          "https://pubmed.ncbi.nlm.nih.gov/39778648/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent preclinical studies report metabolic and senescence-related effects (including maternal-offspring metabolic outcomes) associated with polysorbate 80 exposure.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/37979881/",
+          "https://pubmed.ncbi.nlm.nih.gov/40253120/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "No IARC classification was identified for polysorbate 80 in the IARC classified-agents listings checked.",
+      "EFSA refined exposure assessment summary reported intake estimates below the ADI at reported use levels."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "EFSA re-evaluation summary indicates refined mean and high-level exposures did not exceed the 25 mg/kg bw/day group ADI under reported use levels; uncertainty remains for cumulative emulsifier effects and non-standard high-exposure patterns."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.68,
+    "rationale": "Regulators continue to permit E433 with ADI/conditions, but converging preclinical mechanistic evidence on gut barrier, microbiome, and metabolic effects supports a cautionary classification above 'limited'.",
+    "key_factors": [
+      "EFSA/JECFA ADIs established and EFSA refined exposure below ADI",
+      "FDA permits use under 21 CFR 172.840 with explicit limits",
+      "No IARC carcinogenic classification found",
+      "Repeated mechanistic and animal safety signals in recent literature",
+      "Human causal evidence remains limited"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal re-evaluation landing page for E432-E436",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4152",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA record EFSA-Q-2011-00579",
+      "url": "https://open.efsa.europa.eu/study-inventory/EFSA-Q-2011-00579",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API title 21 XML (snapshot used for 21 CFR 172.840 extraction)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2025-01-01/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA chemical page POLYSORBATE 80 (ID 3735)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3735",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA API search endpoint for polysorbate 80",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/polysorbate%2080",
+      "type": "database"
+    },
+    {
+      "title": "IARC agents classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC site search for polysorbate 80",
+      "url": "https://monographs.iarc.who.int/?s=polysorbate+80",
+      "type": "database"
+    },
+    {
+      "title": "Dietary emulsifiers impact the mouse gut microbiota promoting colitis and metabolic syndrome (Nature, 2015)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25731162/",
+      "type": "study"
+    },
+    {
+      "title": "Mechanisms of gut epithelial barrier impairment caused by food emulsifiers polysorbate 20 and polysorbate 80 (Allergy, 2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37530764/",
+      "type": "study"
+    },
+    {
+      "title": "Maternal polysorbate 80 intake promotes offspring metabolic syndrome through vertical microbial transmission in mice (Sci Total Environ, 2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37979881/",
+      "type": "study"
+    },
+    {
+      "title": "Dietary Emulsifier Exposure in People With Inflammatory Bowel Disease Compared With Healthy Controls (Inflamm Bowel Dis, 2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38244236/",
+      "type": "study"
+    },
+    {
+      "title": "Polysorbate 80 and carboxymethylcellulose: impact on epithelial integrity with microbiome interaction (Food Chem Toxicol, 2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39778648/",
+      "type": "study"
+    },
+    {
+      "title": "Dietary emulsifier Polysorbate 80-induced lipotoxicity promotes intestinal senescence (Food Res Int, 2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40253120/",
+      "type": "study"
+    }
+  ]
+}

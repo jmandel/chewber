@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T15:56:18Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E451",
+    "name": "Triphosphates",
+    "cas_numbers": [
+      "7758-29-4",
+      "13845-36-8"
+    ],
+    "synonyms": [
+      "pentasodium triphosphate",
+      "sodium tripolyphosphate",
+      "sodium triphosphate",
+      "pentapotassium triphosphate",
+      "potassium tripolyphosphate",
+      "potassium triphosphate"
+    ],
+    "chemical_class": "Inorganic condensed phosphates (triphosphates)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "sequestrant",
+    "secondary_categories": [
+      "texturizer",
+      "thickener",
+      "acidity regulator",
+      "stabilizer"
+    ],
+    "mechanism": "Triphosphates chelate metal ions and modify ionic balance/pH, supporting texture, water retention, and formulation stability in processed foods.",
+    "common_food_categories": [
+      "processed foods with phosphate additives",
+      "modified food starch applications",
+      "processed meats and fish products",
+      "food supplements"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 40,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2019 group ADI for phosphates (E338-341, E343, E450-452), expressed as phosphorus."
+      },
+      "last_evaluation_year": 2019,
+      "key_finding": "EFSA set a group ADI of 40 mg/kg bw/day (as phosphorus); exposure exceeded ADI in several child/high-intake scenarios, and supplement exposure may exceed ADI."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.1810",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 70,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA group MTDI for phosphorus from all sources, expressed as P (latest E451(i) entry shows same MTDI)."
+      },
+      "last_evaluation_year": 2023
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "EFSA identified kidney calcification/tubular nephropathy as the critical effect for phosphate risk characterization and noted ADI non-applicability to moderate-severe renal impairment.",
+        "evidence_strength": "strong",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009158/"
+        ]
+      },
+      {
+        "category": "cardiovascular",
+        "summary": "Recent reviews describe plausible cardiorenal pathways from high inorganic phosphate additive intake, including vascular calcification and mineral-hormone dysregulation.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/37630701/"
+        ]
+      },
+      {
+        "category": "neurotoxic",
+        "summary": "A 2025 mouse study found anxiety-like behavior and neuroimmune changes under chronic high-phosphate diet conditions.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41050506/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA found no concern regarding genotoxicity and carcinogenicity for the phosphate additive group.",
+      "EFSA reported no developmental toxicity signal in the phosphate group dataset.",
+      "No IARC classification entry was identified for E451 names in the reviewed IARC classification dataset."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "infants",
+        "toddlers",
+        "children",
+        "adolescents (high consumers)",
+        "regular food-supplement users",
+        "people with reduced renal function"
+      ],
+      "notes": "EFSA reported ADI exceedance in analytical-data scenarios for younger groups and noted supplement-related exceedance."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.82,
+    "rationale": "E451 remains authorized in major frameworks, but EFSA set a finite group ADI and identified exceedance in multiple population scenarios, especially younger/high consumers; mechanistic and emerging animal evidence supports caution at high exposure.",
+    "key_factors": [
+      "EFSA group ADI 40 mg/kg bw/day (as phosphorus)",
+      "EFSA-reported ADI exceedance in infants/toddlers/children and high-consuming adolescents",
+      "FDA GRAS status for sodium tripolyphosphate (21 CFR 182.1810) under GMP",
+      "JECFA group MTDI 70 mg/kg bw/day (as P)",
+      "No IARC listing for triphosphate additive names in the reviewed classification dataset"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of phosphoric acid-phosphates - di-, tri- and polyphosphates (E338-341, E343, E450-452) as food additives and the safety of proposed extension of use (EFSA Journal, 2019, PMC mirror)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009158/",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA issues new advice on phosphates (2019)",
+      "url": "https://www.efsa.europa.eu/en/press/news/190612",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal publication page 5674 (visited; anti-bot redirect in this environment)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5674",
+      "type": "regulatory"
+    },
+    {
+      "title": "Wiley EFSA article DOI 10.2903/j.efsa.2019.5674 (visited; anti-bot protected in this environment)",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2019.5674",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API title metadata (Title 21)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/titles.json",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full Title 21 XML (issue date 2026-02-19)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR current section 21 CFR 182.1810 (attempted; blocked by access challenge in this VM)",
+      "url": "https://www.ecfr.gov/current/title-21/section-182.1810",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database: PENTASODIUM TRIPHOSPHATE (INS 451i, ID 2181)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2181",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA database: PENTAPOTASSIUM TRIPHOSPHATE (INS 451ii, ID 2834)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2834",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA search API used to identify triphosphate records",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/triphosphate",
+      "type": "database"
+    },
+    {
+      "title": "WHO Food Additives Series 17: Phosphoric acid and phosphate salts",
+      "url": "http://www.inchem.org/documents/jecfa/jecmono/v17je22.htm",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Phosphate-based additives in processed foods: cross-sectional examination of US packaged food supply (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40180501/",
+      "type": "study"
+    },
+    {
+      "title": "Industrial Use of Phosphate Food Additives: A Mechanism Linking Ultra-Processed Food Intake to Cardiorenal Disease Risk? (2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37630701/",
+      "type": "review"
+    },
+    {
+      "title": "Phosphorus Additives and Their Impact on Phosphorus Content in Foods (2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36731685/",
+      "type": "study"
+    },
+    {
+      "title": "High dietary phosphate intake induces anxiety in normal male mice (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41050506/",
+      "type": "study"
+    },
+    {
+      "title": "Pilot randomized controlled trial of standard versus modified low-phosphorus diet in hemodialysis patients (2020)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33163715/",
+      "type": "study"
+    }
+  ]
+}

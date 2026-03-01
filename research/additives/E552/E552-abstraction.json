@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T18:44:27Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E552",
+    "name": "Calcium silicate",
+    "cas_numbers": [
+      "1344-95-2",
+      "13983-17-0"
+    ],
+    "synonyms": [
+      "INS 552",
+      "E-552",
+      "Calcium monosilicate",
+      "Silicic acid, calcium salt",
+      "Calcium silicate, synthetic nonfibrous"
+    ],
+    "chemical_class": "Inorganic alkaline-earth metal silicate",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "anti-caking agent",
+    "secondary_categories": [
+      "flow aid"
+    ],
+    "mechanism": "Reduces powder caking and improves flow in dry foods by moisture adsorption and particle separation.",
+    "common_food_categories": [
+      "Table salt",
+      "Baking powder",
+      "Dry powdered food mixes"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "restricted",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2018 reported the former SCF temporary group ADI of 0-50 mg/kg bw/day (1990) as obsolete and stated safety could not be assessed for calcium silicate with available data."
+      },
+      "last_evaluation_year": 2018,
+      "key_finding": "EFSA could not assess safety of calcium silicate due limitations in the toxicological database and absence of an adequate study."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.2227; 21 CFR 172.410",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA database lists ADI as NOT SPECIFIED (group ADI context); historical 1973 JECFA monograph reported ADI as not limited."
+      },
+      "last_evaluation_year": 1990
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "EFSA re-evaluation identified major data gaps and could not complete a safety assessment for calcium silicate.",
+        "evidence_strength": "strong",
+        "key_references": [
+          "https://www.efsa.europa.eu/en/efsajournal/pub/5088",
+          "https://onlinelibrary.wiley.com/doi/10.2903/j.efsa.2018.5088"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent oral safety findings are mostly read-across from silicon dioxide (E551), with mixed results at high nanoparticle doses and limited direct applicability to E552.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41116870/",
+          "https://pubmed.ncbi.nlm.nih.gov/35409381/",
+          "https://pubmed.ncbi.nlm.nih.gov/36626031/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA historical studies reported no adverse effects in long-term feeding studies in rats and dogs at tested dietary concentrations.",
+      "US regulations continue to permit calcium silicate with explicit concentration limits in table salt and baking powder.",
+      "WHO/JECFA currently lists ADI as not specified for calcium silicate in group context."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "A numerical ADI for E552 is not currently provided by EFSA/JECFA, so standard ADI exceedance calculations are not directly available."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.61,
+    "rationale": "Regulatory permission remains in place, but EFSA's latest scientific opinion could not confirm safety due missing toxicological data. This supports a cautionary moderate tier rather than risk_free/limited, while absence of major bans or strong direct harm evidence argues against high.",
+    "key_factors": [
+      "EFSA 2018 could not assess safety for calcium silicate",
+      "SCF temporary ADI (0-50 mg/kg bw/day) considered obsolete by EFSA",
+      "FDA GRAS and food-additive permissions with use limits",
+      "WHO/JECFA ADI listed as NOT SPECIFIED and latest evaluation shown as 1990",
+      "Recent PubMed direct E552 oral safety evidence is sparse"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal (2018) Re-evaluation of calcium silicate (E 552), magnesium silicate (E 553a(i)), magnesium trisilicate (E 553a(ii)) and talc (E 553b) as food additives",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5088",
+      "type": "regulatory"
+    },
+    {
+      "title": "Wiley EFSA Journal full text for 2018 re-evaluation",
+      "url": "https://onlinelibrary.wiley.com/doi/10.2903/j.efsa.2018.5088",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR 21 CFR 172.410 Calcium silicate",
+      "url": "https://www.ecfr.gov/current/title-21/section-172.410",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR 21 CFR 182.2227 Calcium silicate",
+      "url": "https://www.ecfr.gov/current/title-21/section-182.2227",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database entry CALCIUM SILICATE (Chemical ID 1559)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1559",
+      "type": "database"
+    },
+    {
+      "title": "INCHEM JECFA monograph: Calcium silicate",
+      "url": "https://inchem.org/documents/jecfa/jecmono/v00je31.htm",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list data script (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 32626019 Re-evaluation of calcium silicate (E 552)...",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32626019/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 41116870 Oral Toxicity Study of Silicon Dioxide Nanoparticles on Fertility and Early Embryonic Development in Mice",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41116870/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 35409381 Oral Toxicokinetics, Tissue Distribution, and 28-Day Oral Toxicity of Two Differently Manufactured Food Additive Silicon Dioxides",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35409381/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 36626031 In Vivo Toxicity of Oral Administrated Nano-SiO2",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36626031/",
+      "type": "study"
+    },
+    {
+      "title": "PubChem synonyms for calcium silicate (CID 73415800)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/73415800/synonyms/JSON",
+      "type": "database"
+    }
+  ]
+}

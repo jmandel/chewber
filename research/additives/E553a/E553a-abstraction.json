@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T18:46:05Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E553a",
+    "name": "Magnesium silicate",
+    "cas_numbers": [
+      "1343-90-4",
+      "1343-88-0",
+      "14987-04-3"
+    ],
+    "synonyms": [
+      "Magnesium silicate",
+      "Magnesium silicate hydrate",
+      "Magnesium trisilicate",
+      "INS 553i",
+      "E553a(i)",
+      "E553a(ii)"
+    ],
+    "chemical_class": "Inorganic magnesium silicates (anti-caking/filtering aid class)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "anti-caking agent",
+    "secondary_categories": [
+      "filtering aid",
+      "flow aid"
+    ],
+    "mechanism": "Particulate silicates adsorb moisture and reduce interparticle adhesion, improving powder flow; also used as a filtration aid.",
+    "common_food_categories": [
+      "Table salt",
+      "Powdered dry food mixes",
+      "Other dry formulations requiring anti-caking performance"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "restricted",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2018 re-evaluation concluded safety of E553a(i)/(ii) could not be assessed with available data and stated the old SCF group ADI 'not specified' for silicates/silicon dioxide is obsolete."
+      },
+      "last_evaluation_year": 2018,
+      "key_finding": "EFSA reported major toxicology data gaps and could not conclude on safety for E553a(i) and E553a(ii) as food additives."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.2437",
+      "notes": "GRAS in table salt under GMP with a 2% tolerance."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA chemical page for MAGNESIUM SILICATE (synthetic, INS 553i) lists ADI as NOT SPECIFIED (1982 toxicological entry); 2011 entry indicates specifications revision only."
+      },
+      "last_evaluation_year": 2011
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "Case-report literature links silicate urinary stones to magnesium trisilicate exposure history in some patients, although cases without clear exposure source are also reported.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/35962642/",
+          "https://pubmed.ncbi.nlm.nih.gov/27709297/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "EFSA identified substantial uncertainty due to missing reliable chronic toxicity, carcinogenicity, and reproductive toxicity datasets for the E553a evaluation scope.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009349/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA reported very low absorption and no indication for genotoxicity or developmental toxicity in the evaluated silicate/talc data set.",
+      "JECFA lists ADI as not specified for synthetic magnesium silicate.",
+      "FDA keeps magnesium silicate in GRAS listing for table salt with a 2% tolerance and GMP conditions."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "high-frequency users of silicate-containing products",
+        "individuals susceptible to renal stone formation"
+      ],
+      "notes": "Classical ADI exceedance cannot be calculated because EFSA considered the legacy group ADI obsolete and JECFA uses 'not specified'; uncertainty is driven by data gaps rather than a numeric threshold."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "high",
+    "confidence": 0.58,
+    "rationale": "Under the provided tier rules, EFSA's inability to confirm safety in the latest re-evaluation is the decisive factor for a high tier despite continued FDA/JECFA acceptance and limited direct modern harm evidence.",
+    "key_factors": [
+      "EFSA 2018 concluded safety of E553a(i)/(ii) could not be assessed",
+      "EFSA considered historical group ADI not specified obsolete",
+      "FDA GRAS status persists with strict use condition in table salt (2%)",
+      "JECFA ADI listed as not specified with later specifications-only update",
+      "Human safety evidence is sparse and mostly case reports (silicate urolithiasis context)"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal 2018 re-evaluation of E552, E553a, E553b (PMC full text)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009349/",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA publication page 5375",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5375",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR 21 CFR 182.2437 Magnesium silicate",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-182/subpart-C/section-182.2437",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Part 182 text",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-21?chapter=I&subchapter=B&part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA MAGNESIUM SILICATE (synthetic) Chemical ID 4274",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4274",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA search API by partial name magnesium silicate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/magnesium%20silicate",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA ChemicalData API query result for MAGNESIUM SILICATE (synthetic)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/ChemicalData/GetBy/par/MAGNESIUM%20SILICATE%20(synthetic)",
+      "type": "database"
+    },
+    {
+      "title": "IARC agents classified overview",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed 2022 Silica urinary stones case report",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35962642/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed 2017 pediatric silicate calculi case series",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27709297/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed 2003 safety assessment of silicates",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12851164/",
+      "type": "review"
+    },
+    {
+      "title": "PubMed search for magnesium silicate oral toxicity",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=magnesium+silicate+oral+toxicity",
+      "type": "database"
+    },
+    {
+      "title": "PubChem synonyms for magnesium silicate (CID 72941442)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/72941442/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem synonyms for magnesium trisilicate (CID 5311266)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5311266/synonyms/JSON",
+      "type": "database"
+    }
+  ]
+}

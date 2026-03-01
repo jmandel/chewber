@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T19:03:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E575",
+    "name": "Glucono-delta-lactone",
+    "cas_numbers": [
+      "90-80-2"
+    ],
+    "synonyms": [
+      "Gluconolactone",
+      "delta-Gluconolactone",
+      "GDL",
+      "D-Glucono-1,5-lactone",
+      "D-Gluconic acid delta-lactone",
+      "Glucono-delta-lactone"
+    ],
+    "chemical_class": "Lactone (cyclic ester) of D-gluconic acid",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "raising agent",
+      "sequestrant",
+      "pH control agent",
+      "curing and pickling agent"
+    ],
+    "mechanism": "In aqueous food systems, glucono-delta-lactone hydrolyzes gradually to gluconic acid, causing controlled acidification and pH reduction.",
+    "common_food_categories": [
+      "Bakery and leavened products",
+      "Cured and pickled foods",
+      "Soy coagulation applications (e.g., tofu)",
+      "Processed foods requiring gradual acidification"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No accessible EFSA final E575 re-evaluation with a numerical ADI was retrieved in this run; checked EFSA call URLs were unavailable (404/page-not-found) on 2026-02-27."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "E575 is present in EU additive legislation (Union list/specifications), but no retrievable final EFSA E575 re-evaluation output was identified from accessible EFSA pages in this run."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1318",
+      "notes": "Affirmed as GRAS direct human food ingredient; used with no limitation other than current good manufacturing practice; functions include curing/pickling, leavening, pH control, and sequestration."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI NOT SPECIFIED (group ADI including glucono-delta-lactone and selected gluconate salts)."
+      },
+      "last_evaluation_year": 1998
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "neurotoxic",
+        "summary": "A 21-day young-rat high-dose study with additive combinations (including gluconolactone) reported neurobehavioral and neurotransmitter changes, strongest in combination/high-dose groups.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/33389968/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Modern oral-human long-term safety data specific to E575 as a standalone food additive are limited in the retrieved literature.",
+        "evidence_strength": "theoretical",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/?term=glucono-delta-lactone+toxicity"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "FDA affirms glucono-delta-lactone as GRAS for direct human food use under GMP conditions (21 CFR 184.1318).",
+      "JECFA lists ADI as not specified for a group including glucono-delta-lactone.",
+      "EU legislation continues to list E575 in additive and specification texts reviewed."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "No numerical ADI is set by JECFA for this group additive context; an EFSA numerical ADI for E575 was not identified in accessible EFSA pages in this run."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.74,
+    "rationale": "Regulatory evidence indicates low concern at authorized/GMP use levels (FDA GRAS and JECFA ADI not specified), with no identified IARC classification or major bans. However, modern additive-specific oral safety evidence in humans is limited and a retrievable final EFSA E575 re-evaluation was not identified in the checked EFSA pages.",
+    "key_factors": [
+      "21 CFR 184.1318 affirms GRAS direct food use under GMP",
+      "JECFA ADI is not specified for glucono-delta-lactone group",
+      "No IARC monograph classification found for glucono-delta-lactone",
+      "EU regulatory texts include E575 entries",
+      "Recent toxicity signal is limited to high-dose/combination animal context"
+    ]
+  },
+  "sources": [
+    {
+      "title": "eCFR 21 CFR 184.1318 Glucono delta-lactone",
+      "url": "https://www.ecfr.gov/current/title-21/section-184.1318",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API 21 CFR Part 184 enhanced text",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-21?chapter=I&subchapter=B&part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database entry GLUCONO delta-LACTONE (Chemical ID 1370)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1370",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA API SearchChemical ByPartialName glucono",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/glucono",
+      "type": "database"
+    },
+    {
+      "title": "IARC Agents Classified by the IARC Monographs",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC search query for glucono-delta-lactone",
+      "url": "https://monographs.iarc.who.int/?s=glucono-delta-lactone",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: Evaluation of the Neurobehavioural Toxic Effects of Taurine, Glucuronolactone, and Gluconolactone Used in Energy Drinks in Young Rats (2020)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33389968/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Investigation on the Biological Safety and Activity of a Gluconolactone-Based Lotion for Dermocosmetic Application (2023)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37242438/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Gluconolactone restores immune regulation and alleviates skin inflammation in lupus-prone mice and in patients with cutaneous lupus (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39970231/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed search results for glucono-delta-lactone toxicity",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=glucono-delta-lactone+toxicity",
+      "type": "database"
+    },
+    {
+      "title": "EUR-Lex CELEX 32011R1129 (Union list entries including E575)",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32011R1129",
+      "type": "regulatory"
+    },
+    {
+      "title": "EUR-Lex CELEX 32012R0231 (specifications for E575)",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32012R0231",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubChem PUG REST properties for glucono-delta-lactone",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/glucono-delta-lactone/property/Title,CanonicalSMILES,MolecularFormula/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem PUG REST synonyms for glucono-delta-lactone",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/glucono-delta-lactone/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "EFSA call URL checked: public call for data on food additives permitted before 2009 (currently unavailable)",
+      "url": "https://www.efsa.europa.eu/en/calls/public-call-data-food-additives-permitted-use-european-union-2009",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA call URL checked: usage levels in infant/young child foods (currently unavailable)",
+      "url": "https://www.efsa.europa.eu/en/call/public-call-data-food-additives-usage-levels-foods-intended-infants-below",
+      "type": "regulatory"
+    }
+  ]
+}

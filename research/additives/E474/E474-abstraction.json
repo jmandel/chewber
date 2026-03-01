@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T17:12:45Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E474",
+    "name": "Sucroglycerides",
+    "cas_numbers": [],
+    "synonyms": [
+      "Sucrose glycerides",
+      "INS 474",
+      "Sucrose esters/glycerides mixtures"
+    ],
+    "chemical_class": "Mixed sucrose-fatty acid ester/glyceride emulsifier system",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "emulsifier",
+    "secondary_categories": [
+      "stabilizer",
+      "texturizer"
+    ],
+    "mechanism": "Amphiphilic sucrose-derived fatty esters lower interfacial tension and stabilize oil-water dispersions; formulation-dependent effects include texture modification.",
+    "common_food_categories": [
+      "Baked goods and baking mixes",
+      "Chewing gum",
+      "Confections and frostings",
+      "Dairy analogues and frozen dairy desserts",
+      "Coffee/tea beverages with dairy ingredients",
+      "Protective fruit coatings"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 40,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI for sucrose esters of fatty acids (E473) and sucroglycerides (E474), established by EFSA in 2004 and referenced in EFSA 2018 exposure assessment."
+      },
+      "last_evaluation_year": 2004,
+      "key_finding": "EFSA 2018 exposure assessment (group context E473/E474) reported modeled exceedance of the 40 mg/kg bw/day group ADI in many population groups, especially toddlers and children, with likely overestimation in some scenarios."
+    },
+    "fda": {
+      "status": "not_evaluated",
+      "cfr_citation": "21 CFR 172.859",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 30,
+        "unit": "mg/kg bw/day",
+        "basis": "Group ADI for sucrose esters of fatty acids and sucroglycerides (latest JECFA evaluation entry)."
+      },
+      "last_evaluation_year": 1997
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Regulatory exposure modeling for the E473/E474 group has reported ADI exceedance in high consumers, particularly children and toddlers.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/32625657/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Human tolerance data reviewed by JECFA left uncertainty about upper-dose gastrointestinal/laxative effects, contributing to a conservative group ADI setting.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "http://www.inchem.org/documents/jecfa/jecmono/v040je04.htm",
+          "http://www.inchem.org/documents/jecfa/jeceval/jec_2207.htm"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "Long-term rat studies on related sucrose ester preparations did not show treatment-related carcinogenicity at tested dietary levels.",
+      "No IARC monograph classification entry was identified for sucroglycerides in the current IARC classification dataset reviewed."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "Toddlers",
+        "Children",
+        "High consumers"
+      ],
+      "notes": "Exceedance evidence is primarily from group-level EFSA exposure assessments (E473/E474 context), not clearly isolated for E474-only use."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.66,
+    "rationale": "E474 is internationally regulated with established group ADIs and without strong carcinogenic classification signals, but repeated group-level ADI exceedance scenarios in children/toddlers and residual GI-tolerance uncertainty at higher intakes support a moderate tier rather than limited.",
+    "key_factors": [
+      "EFSA group ADI context (40 mg/kg bw/day for E473/E474) with exceedance scenarios in young populations",
+      "JECFA group ADI 0-30 mg/kg bw and historical GI-tolerance caution",
+      "No IARC classification found for sucroglycerides",
+      "No major bans identified in reviewed sources"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal page for sucroglycerides opinion (pub/106)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/106",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Wiley-hosted DOI target for 10.2903/j.efsa.2004.106",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2004.106",
+      "type": "regulatory"
+    },
+    {
+      "title": "Refined exposure assessment of sucrose esters of fatty acids (E473) (EFSA J 2018; PMID 32625657)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625657/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Title 21 search URL queried for sucrose fatty acid esters",
+      "url": "https://www.ecfr.gov/search?search%5Bquery%5D=sucrose+fatty+acid+esters&search%5Bhierarchy%5D%5Btitle%5D=21",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR section URL queried for 21 CFR 172.859",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-172/subpart-I/section-172.859",
+      "type": "regulatory"
+    },
+    {
+      "title": "US GovInfo CFR XML for 21 CFR 172.859 (Sucrose fatty acid esters)",
+      "url": "https://www.govinfo.gov/content/pkg/CFR-2024-title21-vol3/xml/CFR-2024-title21-vol3-sec172-859.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA database entry for SUCROGLYCERIDES (INS 474)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2341",
+      "type": "database"
+    },
+    {
+      "title": "JECFA evaluation summary page for SUCROGLYCERIDES",
+      "url": "http://www.inchem.org/documents/jecfa/jeceval/jec_2207.htm",
+      "type": "database"
+    },
+    {
+      "title": "WHO Food Additives Series 40: sucrose esters of fatty acids and sucroglycerides",
+      "url": "http://www.inchem.org/documents/jecfa/jecmono/v040je04.htm",
+      "type": "review"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list data script containing classified agents payload",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Lack of toxicity or carcinogenicity of S-170 in F344 rats (PMID 15019192)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/15019192/",
+      "type": "study"
+    },
+    {
+      "title": "Chronic toxicity and carcinogenicity of sucrose fatty acid esters in rats (PMID 12052001)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12052001/",
+      "type": "study"
+    },
+    {
+      "title": "Subchronic sucroacetoglyceride rat feeding study (PMID 1787849)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/1787849/",
+      "type": "study"
+    }
+  ]
+}

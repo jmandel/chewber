@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T20:25:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E941",
+    "name": "Nitrogen",
+    "cas_numbers": [
+      "7727-37-9"
+    ],
+    "synonyms": [
+      "nitrogen gas",
+      "dinitrogen",
+      "N2",
+      "INS 941"
+    ],
+    "chemical_class": "Inorganic diatomic inert gas",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "propellant gas",
+    "secondary_categories": [
+      "aerating agent",
+      "freezing agent",
+      "packaging gas"
+    ],
+    "mechanism": "Displaces oxygen/air because of inert gas behavior, limiting oxidation and enabling propellant/aeration and cryogenic freezing applications.",
+    "common_food_categories": [
+      "foods using gas-propellant/aeration systems",
+      "foods processed with cryogenic freezing",
+      "emulsified dressings packed in nitrogen/carbon dioxide atmospheres"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No finalized EFSA ADI found; Open EFSA lists E941 re-evaluation as ongoing with no output adopted yet."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "Open EFSA question EFSA-Q-2011-00714 (updated 2026-01-19) states E941 is already authorized in the EU and scientific output preparation is ongoing after the 31/03/2024 data-call closure."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1540",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA entry for Nitrogen (INS 941) states: NO ADI NECESSARY."
+      },
+      "last_evaluation_year": 1980
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Recent human literature includes acute gastric perforation case reports after ingestion of liquid-nitrogen beverages; this reflects misuse/handling hazard rather than a chronic toxicological signal for normal E941 additive exposure.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:40416212",
+          "PMID:32740636"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA evaluated nitrogen (INS 941) with ADI outcome 'NO ADI NECESSARY' (1980).",
+      "No elemental nitrogen entry (name 'Nitrogen' or CAS 7727-37-9) was identified in the current IARC classifications dataset checked.",
+      "FDA affirms nitrogen as GRAS under 21 CFR 184.1540 with cGMP conditions."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "No numeric ADI is set by JECFA (NO ADI NECESSARY), and no finalized EFSA ADI was found because EFSA re-evaluation remains ongoing."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "risk_free",
+    "confidence": 0.72,
+    "rationale": "Regulatory evidence indicates low toxicological concern for normal food-additive use (JECFA: NO ADI NECESSARY; FDA GRAS). Main identified harms are acute misuse/handling events involving liquid nitrogen preparations, not chronic hazard from typical E941 exposure.",
+    "key_factors": [
+      "JECFA ADI outcome: NO ADI NECESSARY",
+      "FDA GRAS affirmation in 21 CFR 184.1540",
+      "No elemental-nitrogen IARC carcinogenic classification identified",
+      "EFSA re-evaluation still ongoing without final scientific output",
+      "Recent PubMed evidence centers on acute misuse injuries"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Open EFSA API suggestions for E941",
+      "url": "https://open.efsa.europa.eu/api/question/suggestions?searchText=E941",
+      "type": "database"
+    },
+    {
+      "title": "Open EFSA API question detail EFSA-Q-2011-00714",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00714",
+      "type": "regulatory"
+    },
+    {
+      "title": "Open EFSA API timeline EFSA-Q-2011-00714",
+      "url": "https://open.efsa.europa.eu/api/question/getTimeline?questionNumber=EFSA-Q-2011-00714",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API titles metadata",
+      "url": "https://www.ecfr.gov/api/versioner/v1/titles.json",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API full Title 21 XML (contains 21 CFR 184.1540)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR web section URL (access blocked in this environment)",
+      "url": "https://www.ecfr.gov/current/title-21/section-184.1540",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database entry for Nitrogen (INS 941)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1040",
+      "type": "database"
+    },
+    {
+      "title": "IARC list of classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset script (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: Gastric Perforation After Liquid Nitrogen Cocktail Ingestion (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40416212/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Liquid Nitrogen Applied at Point of Sale - Gastric Perforation in Children (2022)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32740636/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed search query used for recent liquid-nitrogen injury literature",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=liquid+nitrogen+gastric+perforation",
+      "type": "database"
+    }
+  ]
+}

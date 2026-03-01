@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T15:22:24Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E420",
+    "name": "Sorbitol (D-sorbitol; E420(i), with sorbitol syrup E420(ii))",
+    "cas_numbers": [
+      "50-70-4",
+      "68425-17-2"
+    ],
+    "synonyms": [
+      "D-Glucitol",
+      "D-Sorbitol",
+      "Sorbol",
+      "Sorbit"
+    ],
+    "chemical_class": "Sugar alcohol (polyol, hexitol)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "sweetener",
+    "secondary_categories": [
+      "humectant",
+      "bulking agent",
+      "texturizer",
+      "stabilizer",
+      "thickener",
+      "sequestrant"
+    ],
+    "mechanism": "Polyol that provides sweetness and bulk, binds water as a humectant, and exerts osmotic effects at high intake.",
+    "common_food_categories": [
+      "candies",
+      "chocolates",
+      "biscuits",
+      "jams",
+      "reduced-sugar foods"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No final EFSA ADI identified on reviewed EFSA pages; E420 re-evaluation is ongoing."
+      },
+      "last_evaluation_year": 2023,
+      "key_finding": "EFSA sweeteners topic lists E420 as authorised with re-evaluation ongoing; 2023 EFSA call requested additional toxicological/genotoxicity data."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1835",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO JECFA database for D-sorbitol (INS 420(i)) lists ADI as NOT SPECIFIED."
+      },
+      "last_evaluation_year": 1982
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "Mouse work (Cell, 2024) found prolonged sorbitol intolerance and diarrhea after antibiotic plus high-fat context due to reduced microbial sorbitol catabolism (Clostridia depletion).",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID 38366592"
+        ]
+      },
+      {
+        "category": "renal",
+        "summary": "A 2025 rat study reported dose-dependent nephrotoxicity biomarkers and histopathology after sub-chronic sorbitol exposure.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID 40180304"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "A zebrafish model study (Science Signaling, 2025) linked microbiome depletion and high sorbitol exposure to steatotic liver phenotypes, indicating a context-dependent metabolic risk signal.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID 41150823"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA lists ADI as not specified for D-sorbitol (INS 420(i)).",
+      "Sorbitol is not listed as an IARC-classified agent in current IARC list data (update shown 2026-02-25).",
+      "FDA allows use under GRAS provisions in 21 CFR 184.1835 with GMP conditions."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "A numeric ADI exceedance calculation is not possible from reviewed data because JECFA ADI is 'not specified' and EFSA has no final published ADI while re-evaluation is ongoing."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.68,
+    "rationale": "Major regulators continue to permit sorbitol, with no IARC carcinogenic classification for sorbitol itself, but recent animal/mechanistic studies indicate dose- and context-dependent GI/metabolic concerns in susceptible settings.",
+    "key_factors": [
+      "EU authorised and FDA GRAS status",
+      "JECFA ADI not specified",
+      "EFSA re-evaluation ongoing with additional data requests",
+      "Emerging mechanistic and animal risk signals at high or specific exposure contexts"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Topic: Sweeteners",
+      "url": "https://www.efsa.europa.eu/en/topics/topic/sweeteners",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Call for technical and toxicological data on sorbitol E420(i)/E420(ii)",
+      "url": "https://www.efsa.europa.eu/en/call/call-technical-and-toxicological-data-sorbitol-e-420-i-and-sorbitol-syrup-e-420-ii",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR 21 CFR 184.1835 Sorbitol",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-184/subpart-B/section-184.1835",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database entry: D-SORBITOL (Chemical 829)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/829",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API search endpoint (partial name: sorbitol)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/sorbitol",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC LOC data script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Sorbitol induces sub-chronic nephrotoxicity via escalating JAK1/STAT3, oxidative stress and inflammation in Sprague Dawley rats",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40180304/",
+      "type": "study"
+    },
+    {
+      "title": "High fat intake sustains sorbitol intolerance after antibiotic-mediated Clostridia depletion from the gut microbiota",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38366592/",
+      "type": "study"
+    },
+    {
+      "title": "Intestine-derived sorbitol drives steatotic liver disease in the absence of gut bacteria",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41150823/",
+      "type": "study"
+    },
+    {
+      "title": "Gut microbiome and body composition with sorbitol intake during early lifespan",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39571194/",
+      "type": "study"
+    },
+    {
+      "title": "Prospective, Observational Study of the Efficacy, and Tolerability of a Same-Day, Low-Volume D-Sorbitol, Ascorbic Acid, and Sodium Picosulfate Regimen for Colonoscopy Bowel Preparation",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41198989/",
+      "type": "study"
+    },
+    {
+      "title": "Efficacy and safety of a New D-sorbitol, Ascorbic Acid, and Picosulfate Bowel Cleansing Solution for colonoscopy: A prospective, multicenter, randomized study",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41188168/",
+      "type": "study"
+    }
+  ]
+}

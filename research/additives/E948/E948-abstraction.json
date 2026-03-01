@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T20:34:34Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E948",
+    "name": "Oxygen",
+    "cas_numbers": [
+      "7782-44-7"
+    ],
+    "synonyms": [
+      "Oxygen",
+      "Dioxygen",
+      "Molecular oxygen",
+      "O2",
+      "INS 948"
+    ],
+    "chemical_class": "Inorganic diatomic gas (elemental oxygen)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "packaging gas",
+    "secondary_categories": [
+      "propellant"
+    ],
+    "mechanism": "Used to control package headspace atmosphere and, in propellant uses, to expel product; EFSA describes packaging-gas and propellant technological functions.",
+    "common_food_categories": [
+      "flavoured water",
+      "fresh cheese and cream cheese",
+      "foods packaged in protective atmosphere"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2025 re-evaluation concluded no safety concern and cites historical SCF position that ADI establishment for these atmospheric packaging gases/propellants is unnecessary."
+      },
+      "last_evaluation_year": 2025,
+      "key_finding": "EFSA FAF concluded that use of oxygen (E948) as a food additive does not raise a safety concern; expected dietary exposure from additive use is very low."
+    },
+    "fda": {
+      "status": "not_evaluated",
+      "cfr_citation": "21 CFR Part 184 (queried eCFR output showed no dedicated Oxygen food-additive section; oxygen matches in Title 21 query were non-food sections such as 21 CFR 868.5580)",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA oxygen entry queried did not provide a numerical ADI; EFSA reports JECFA set oxygen specifications at the 53rd meeting (1999) without a toxicological monograph."
+      },
+      "last_evaluation_year": 1999
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "High-concentration inhalation oxygen toxicity (especially neonatal/high-FiO2 medical contexts) is biologically plausible, but EFSA indicates this is not representative of realistic food-additive exposure.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC12329423/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "EFSA identified data gaps on manufacturing-process details and impurity coverage for E948 submissions, creating residual specification uncertainty.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC12329423/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2025 concluded E948 food-additive use does not raise a safety concern.",
+      "EFSA characterized E948 as low toxicological concern at intended food-additive use and very low expected dietary exposure.",
+      "No IARC classification entry was identified for oxygen/CAS 7782-44-7 in the current IARC classification dataset checked."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "No numerical ADI is set; EFSA considered quantitative exposure estimation unnecessary for E948 in the 2025 re-evaluation because expected dietary exposure from additive use is low."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "risk_free",
+    "confidence": 0.78,
+    "rationale": "Current regulatory evidence is strongly favorable for intended food-additive use: EFSA's 2025 review found no safety concern and very low dietary exposure relevance. Remaining uncertainty is primarily about manufacturing/impurity data completeness rather than demonstrated hazard at normal food-use exposure.",
+    "key_factors": [
+      "EFSA 2025 no-safety-concern conclusion for E948",
+      "No numerical ADI needed in EFSA/legacy SCF context",
+      "Very low expected dietary exposure from food-additive uses",
+      "No IARC listing found for oxygen",
+      "Residual impurity/manufacturing data gaps noted by EFSA"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal (PMCID full text): Re-evaluation of oxygen (E 948) and hydrogen (E 949) as food additives",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12329423/",
+      "type": "regulatory"
+    },
+    {
+      "title": "Wiley EFSA Journal DOI page: Re-evaluation of oxygen (E 948) and hydrogen (E 949) as food additives",
+      "url": "https://onlinelibrary.wiley.com/doi/10.2903/j.efsa.2025.9595",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed: Re-evaluation of oxygen (E 948) and hydrogen (E 949) as food additives (PMID 40777209)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40777209/",
+      "type": "study"
+    },
+    {
+      "title": "eCFR API search results for oxygen in Title 21 query output",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=oxygen&per_page=200&page=1",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Versioner API: Title 21 section inventory",
+      "url": "https://www.ecfr.gov/api/versioner/v1/versions/title-21.json",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR full XML: Title 21 Part 184",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR full XML: 21 CFR 184.1540 Nitrogen (adjacent food-gas example)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=184&section=184.1540",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database chemical page: OXYGEN (INS 948)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2739",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API: SearchChemical/ByPartialName/oxygen",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/oxygen",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs: List of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset bundle (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed systematic review: Health effects of alkaline, oxygenated, and demineralized water compared to mineral water among healthy population (PMID 36571558)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36571558/",
+      "type": "review"
+    }
+  ]
+}

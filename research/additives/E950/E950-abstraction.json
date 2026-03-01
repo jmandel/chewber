@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T20:35:50Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E950",
+    "name": "Acesulfame potassium",
+    "cas_numbers": [
+      "55589-62-3"
+    ],
+    "synonyms": [
+      "Acesulfame K",
+      "Potassium acesulfame",
+      "Acesulfame potassium",
+      "E 950",
+      "INS 950"
+    ],
+    "chemical_class": "Potassium salt of 6-methyl-1,2,3-oxathiazin-4(3H)-one-2,2-dioxide (high-intensity sulfamate sweetener)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "high-intensity sweetener",
+    "secondary_categories": [
+      "non-nutritive sweetener",
+      "flavor enhancer"
+    ],
+    "mechanism": "Provides intense sweetness at low use levels and is used as a general-purpose sweetener/flavor enhancer in formulated foods.",
+    "common_food_categories": [
+      "diet and sugar-free beverages",
+      "tabletop sweeteners",
+      "processed foods and desserts",
+      "sugar-reduced confectionery"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 15,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA FAF Panel 2025 re-evaluation; ADI of 15 mg/kg bw/day replaced the SCF 2000 ADI of 9 mg/kg bw/day."
+      },
+      "last_evaluation_year": 2025,
+      "key_finding": "EFSA reported highest EU exposure estimates generally below ADI across population groups (no safety concern) and recommended tighter impurity specifications."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.800",
+      "notes": "Regulated as an approved food additive (not GRAS listing in Part 184 search); allowed as a general-purpose sweetener and flavor enhancer except in meat and poultry under cGMP, with identity/specification conditions including >=99% purity."
+    },
+    "jecfa": {
+      "adi": {
+        "value": 15,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA database entry shows ADI range 0-15 mg/kg bw (Meeting 46; TRS 806)."
+      },
+      "last_evaluation_year": 1990
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "endocrine",
+        "summary": "A 2024 study reported higher central precocious puberty risk with higher acesulfame potassium intake in girls, supported by experimental neuroendocrine findings; causality remains uncertain due observational design limits.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/37738850/"
+        ]
+      },
+      {
+        "category": "endocrine",
+        "summary": "A 2022 study reported associations with preterm-risk/uterine contractility and supporting experimental signaling data, primarily under high-dose and mixed-method settings.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/35986687/"
+        ]
+      },
+      {
+        "category": "renal",
+        "summary": "A 2026 mechanistic study found synergistic nephrotoxicity signals for benzoic-acid and acesulfame-K co-exposure in vitro (CTNNB1/STAT3 axis).",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41655687/"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "Recent reviews describe preclinical microbiome and metabolic pathway perturbation signals, often at supraphysiologic or context-specific exposure levels.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41337931/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2025 set ADI at 15 mg/kg bw/day and reported highest exposure estimates generally below ADI with no population-level safety concern in its assessment.",
+      "Recent reviews of nonsugar sweeteners reported no consistent human-relevant carcinogenic signal for acesulfame potassium."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "EFSA 2025 reported highest EU exposure estimates for E950 were generally below the ADI in all population groups."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.78,
+    "rationale": "Regulatory evidence remains dominant: EFSA, FDA (CFR), and JECFA maintain approval with defined ADI/GMP constraints, and EFSA's 2025 exposure assessment did not indicate ADI exceedance. Newer endocrine/reproductive and co-exposure mechanistic findings are important but not yet sufficient to shift risk to moderate/high under current regulatory interpretation.",
+    "key_factors": [
+      "EFSA 2025 ADI is 15 mg/kg bw/day with highest modeled exposure generally below ADI.",
+      "US status is approved under 21 CFR 172.800 with use and specification conditions.",
+      "JECFA ADI remains 0-15 mg/kg bw in database entry.",
+      "No acesulfame entry identified in current IARC classification dataset.",
+      "Recent studies suggest potential endocrine/reproductive and mixture-toxicity concerns that warrant monitoring."
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA plain-language summary: Re-evaluation of acesulfame K (E 950) as food additive",
+      "url": "https://www.efsa.europa.eu/en/plain-language-summary/re-evaluation-acesulfame-k-e-950-food-additive",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal DOI page for re-evaluation of acesulfame K (E 950)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/9317",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 Part 172 XML (contains 21 CFR 172.800)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=172",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 Part 184 XML (GRAS part searched for acesulfame)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR human-readable section page (request-access block encountered)",
+      "url": "https://www.ecfr.gov/current/title-21/section-172.800",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database chemical entry: ACESULFAME POTASSIUM",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/926",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA API search for acesulfame",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/acesulfame",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list dataset script used by list app (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubChem compound properties: Acesulfame Potassium",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/acesulfame%20potassium/property/Title,IUPACName,MolecularFormula/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem synonyms: Acesulfame Potassium",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/acesulfame%20potassium/synonyms/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search results for acesulfame potassium safety",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=acesulfame+potassium+safety",
+      "type": "database"
+    },
+    {
+      "title": "Beyond sweetness: A review of the health and safety of acesulfame-K",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41337931/",
+      "type": "review"
+    },
+    {
+      "title": "Co-exposure to benzoic acid and acesulfame K synergistically induces nephrotoxicity through the CTNNB1/STAT3 axis",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41655687/",
+      "type": "study"
+    },
+    {
+      "title": "Consumption of the nonnutritive sweetener acesulfame potassium increases central precocious puberty risk",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37738850/",
+      "type": "study"
+    },
+    {
+      "title": "Consumption of Artificial Sweetener Acesulfame Potassium Increases Preterm Risk and Uterine Contraction...",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35986687/",
+      "type": "study"
+    },
+    {
+      "title": "A Systematic Review of Nonsugar Sweeteners and Cancer Epidemiology Studies",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41038346/",
+      "type": "review"
+    },
+    {
+      "title": "Lack of potential carcinogenicity for acesulfame potassium - Systematic evaluation and integration of mechanistic data",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32360221/",
+      "type": "review"
+    }
+  ]
+}

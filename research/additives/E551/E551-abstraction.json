@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T18:39:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E551",
+    "name": "Silicon dioxide",
+    "cas_numbers": [
+      "7631-86-9",
+      "112945-52-5"
+    ],
+    "synonyms": [
+      "Silica",
+      "Synthetic amorphous silica",
+      "Colloidal silicon dioxide",
+      "INS 551",
+      "E551"
+    ],
+    "chemical_class": "Inorganic silicon oxide (synthetic amorphous silica used as anti-caking additive)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "anti-caking agent",
+    "secondary_categories": [
+      "flow aid",
+      "carrier"
+    ],
+    "mechanism": "Adsorbs moisture/oils and reduces interparticle adhesion in powders, improving flowability and limiting caking.",
+    "common_food_categories": [
+      "Powdered seasonings",
+      "Powdered drink/dessert mixes",
+      "Powdered sweeteners",
+      "Dietary supplement powders/tablets",
+      "Other dry free-flow food formulations"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2018 concluded no need for a numerical ADI for E551 at reported uses/use levels; EFSA 2024 particle-focused follow-up reported significant concern in some scenarios and did not identify safe levels from available data for assessed endpoints."
+      },
+      "last_evaluation_year": 2024,
+      "key_finding": "E551 remains authorized, but EFSA 2024 identified concern for some population/intake scenarios involving nano-sized particles from E551."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.480 (direct food additive, max 2% by weight); 21 CFR 182.90 (GRAS context for migration from paper/paperboard)",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA database lists ADI as NOT SPECIFIED; comments indicate ADI established at the 29th JECFA (1985) for silicon dioxide and certain silicates; entry shows last evaluated in 2017 (specification context)."
+      },
+      "last_evaluation_year": 2017
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "Chronic oral mouse work reported disrupted oral tolerance and aggravated gluten-related intestinal immunopathology after exposure to food-grade silicon dioxide.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/38380914/",
+          "https://pubmed.ncbi.nlm.nih.gov/38814861/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent in vitro digestive-cell studies report no acute cytotoxicity but indicate sub-cytotoxic morphological and cytokine-response alterations with food-grade E551 preparations.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41710558/",
+          "https://pubmed.ncbi.nlm.nih.gov/39967070/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2018 re-evaluation concluded E551 was not of safety concern at reported uses/use levels and that a numerical ADI was not needed.",
+      "JECFA maintains ADI as not specified for silicon dioxide/certain silicates.",
+      "A 2025 oral fertility/early embryonic development mouse study found no significant adverse effects up to 1000 mg/kg/day."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "infants",
+        "toddlers",
+        "children",
+        "high consumers in adolescents/adults/elderly for some categories"
+      ],
+      "notes": "Because EFSA/JECFA do not use a numerical ADI here, risk is framed via EFSA 2024 concern scenarios (including MOE context) rather than classic ADI exceedance."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.72,
+    "rationale": "Regulatory approval remains in place, but EFSA 2024 identified significant concern for some particle-related exposure scenarios and recent animal/mechanistic studies provide plausible gastrointestinal-immune concern signals. Evidence is mixed and does not support a high-risk designation, but uncertainty is stronger than a limited-risk profile.",
+    "key_factors": [
+      "EFSA 2018 no safety concern at reported uses/use levels",
+      "EFSA 2024 concern in specific population/intake scenarios with no safe levels identified from available data for assessed endpoints",
+      "U.S. direct-use limit (21 CFR 172.480) and separate GRAS migration context (21 CFR 182.90)",
+      "JECFA ADI not specified",
+      "Recent mixed literature: immune-tolerance concern in mice vs no reproductive toxicity at high oral dose in another mouse study"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal (2018) Re-evaluation of silicon dioxide (E 551) as food additive",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5088",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal (2024) Follow-up on the re-evaluation of silicon dioxide (E 551) as a food additive",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/8880",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA PLH bites: Assessing the safety of silicon dioxide (E 551) used as food additive",
+      "url": "https://www.efsa.europa.eu/en/plh/plh-bites-assessing-safety-silicon-dioxide-e-551-used-food-additive",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR 21 CFR 172.480 Silicon dioxide",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-172/subpart-E/section-172.480",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API 21 CFR Part 182",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-21?chapter=I&subchapter=B&part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API 21 CFR Part 184",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-21?chapter=I&subchapter=B&part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database entry: Silicon dioxide (Chemical ID 2461)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2461",
+      "type": "database"
+    },
+    {
+      "title": "IARC agents classified by the IARC monographs",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: Evaluating the Effects of Chronic Oral Exposure to the Food Additive Silicon Dioxide on Oral Tolerance Induction and Food Sensitivities in Mice (2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38380914/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Nanosized Additives: Silicon Dioxide's Potential Role in Development of Food Sensitivities in Mice (2024)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38814861/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: In vitro gastrointestinal stability and Caco-2 cell cytotoxicity of TiO2 and SiO2 (nano)particles from confectionary products (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39967070/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: In vitro toxicity evaluation of food-grade silica nanoparticles (E551) in human digestive tract cells (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41710558/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Oral Toxicity Study of Silicon Dioxide Nanoparticles on Fertility and Early Embryonic Development in Mice (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41116870/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Human health risk assessment of nanoparticles through food consumption (2026)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41500139/",
+      "type": "review"
+    },
+    {
+      "title": "PubMed: Presence of nanosilica (E551) in commercial food products (2014)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24526451/",
+      "type": "study"
+    },
+    {
+      "title": "PubChem PUG REST synonyms for CID 24261",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/24261/synonyms/JSON",
+      "type": "database"
+    }
+  ]
+}

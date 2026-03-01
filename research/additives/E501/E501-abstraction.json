@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T17:53:21Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E501",
+    "name": "Potassium carbonates",
+    "cas_numbers": [
+      "584-08-7",
+      "298-14-6"
+    ],
+    "synonyms": [
+      "Potassium carbonate",
+      "Dipotassium carbonate",
+      "Potassium hydrogen carbonate",
+      "Potassium bicarbonate",
+      "Acid potassium carbonate"
+    ],
+    "chemical_class": "Inorganic alkaline potassium salts of carbonic acid",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "leavening agent",
+      "pH control agent",
+      "processing aid",
+      "nutrient supplement"
+    ],
+    "mechanism": "Carbonate and bicarbonate neutralize acids and buffer pH; bicarbonate can release carbon dioxide under acidic/thermal conditions, supporting leavening.",
+    "common_food_categories": [
+      "bakery and leavened products",
+      "foods requiring pH adjustment",
+      "processed foods using formulation aids"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "not_evaluated",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No dedicated EFSA E501 food-additive ADI was identified in accessible EFSA sources during this research run."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "EFSA call-for-data documentation lists E501(i) and E501(ii) among permitted EU additives in re-evaluation preparation, but no dedicated published EFSA E501 food-additive opinion was identified in the accessible sources searched here."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1619; 21 CFR 184.1613",
+      "notes": "Both sections state use in food with no limitation other than current good manufacturing practice and list functional use conditions."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI not limited for potassium carbonate (INS 501(i)) and potassium hydrogen carbonate (INS 501(ii))."
+      },
+      "last_evaluation_year": 1965
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "Physiologic potassium-load risk can increase in people with impaired potassium excretion (e.g., chronic kidney disease) or with medications that reduce potassium excretion; hyperkalemia risk is context-dependent rather than specific to a low additive ADI threshold.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://ods.od.nih.gov/factsheets/Potassium-HealthProfessional/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent PubMed results contain limited direct E501 food-additive safety studies; available newer studies are mostly supplementation or experimental-model studies (including a mouse acidosis model with potassium bicarbonate).",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/39674389/",
+          "https://pubmed.ncbi.nlm.nih.gov/29739680/",
+          "https://pubmed.ncbi.nlm.nih.gov/25990255/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA assigned ADI 'not limited' for INS 501(i) and INS 501(ii).",
+      "U.S. CFR sections 21 CFR 184.1619 and 21 CFR 184.1613 affirm GRAS use under GMP conditions."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "people with chronic kidney disease or reduced urinary potassium excretion",
+        "people using ACE inhibitors or potassium-sparing diuretics",
+        "people with other hyperkalemia-prone conditions"
+      ],
+      "notes": "JECFA uses 'ADI not limited' for E501 components, so conventional ADI exceedance is not the primary issue; risk is linked to total potassium handling capacity in susceptible populations."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.74,
+    "rationale": "Major regulators continue to permit E501 with GMP controls, and JECFA classifies both components as ADI not limited. The main concern is potassium-load susceptibility in vulnerable populations rather than broad hazard at typical general-population additive exposure.",
+    "key_factors": [
+      "JECFA ADI not limited for INS 501(i) and 501(ii)",
+      "FDA GRAS status in 21 CFR 184.1619 and 184.1613 under GMP",
+      "No IARC monograph classification identified",
+      "No major jurisdiction-wide bans identified",
+      "Vulnerable-population hyperkalemia risk from total potassium burden"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA consultation page: Call for scientific data on miscellaneous food additives permitted in the EU",
+      "url": "https://www.efsa.europa.eu/en/consultations/call/call-scientific-data-miscellaneous-food-additives-permitted-eu-and",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA call PDF (Annex includes E501(i) and E501(ii))",
+      "url": "https://www.efsa.europa.eu/sites/default/files/consultation/120706a.pdf",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Open API: substance get (potassium carbonate)",
+      "url": "https://open.efsa.europa.eu/api/substance/get?termExtendedName=potassium%20carbonate",
+      "type": "database"
+    },
+    {
+      "title": "EFSA Open API: substance get (potassium hydrogen carbonate)",
+      "url": "https://open.efsa.europa.eu/api/substance/get?termExtendedName=potassium%20hydrogen%20carbonate",
+      "type": "database"
+    },
+    {
+      "title": "EFSA Open API: substance questions (potassium carbonate)",
+      "url": "https://open.efsa.europa.eu/api/substance/getQuestions?termExtendedName=Potassium%20carbonate",
+      "type": "database"
+    },
+    {
+      "title": "eCFR section page attempted (CAPTCHA-blocked in environment)",
+      "url": "https://www.ecfr.gov/current/title-21/section-184.1619",
+      "type": "regulatory"
+    },
+    {
+      "title": "U.S. govinfo CFR XML: 21 CFR 184.1619 Potassium carbonate",
+      "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title21-vol3/xml/CFR-2025-title21-vol3-sec184-1619.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "U.S. govinfo CFR XML: 21 CFR 184.1613 Potassium bicarbonate",
+      "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title21-vol3/xml/CFR-2025-title21-vol3-sec184-1613.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA database: Potassium carbonate (Chemical 2711)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2711",
+      "type": "database"
+    },
+    {
+      "title": "JECFA database: Potassium bicarbonate/hydrogen carbonate (Chemical 2311)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2311",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs: Agents classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs: List of Volumes PDF",
+      "url": "https://monographs.iarc.who.int/wp-content/uploads/2018/07/List-of-Volumes.pdf",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search (potassium carbonate food additive safety)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=potassium+carbonate+food+additive+safety",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 39674389",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39674389/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 29739680",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29739680/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 25990255",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25990255/",
+      "type": "study"
+    },
+    {
+      "title": "NIH ODS Potassium Fact Sheet for Health Professionals",
+      "url": "https://ods.od.nih.gov/factsheets/Potassium-HealthProfessional/",
+      "type": "review"
+    }
+  ]
+}

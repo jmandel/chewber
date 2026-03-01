@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T16:19:41Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E463",
+    "name": "Hydroxypropyl cellulose",
+    "cas_numbers": [
+      "9004-64-2"
+    ],
+    "synonyms": [
+      "Hydroxypropyl ether of cellulose",
+      "Cellulose hydroxypropyl ether",
+      "Modified cellulose",
+      "Low-substituted hydroxypropyl cellulose"
+    ],
+    "chemical_class": "Modified cellulose (cellulose ether)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "thickener",
+    "secondary_categories": [
+      "stabilizer",
+      "emulsifier",
+      "glazing agent",
+      "film former",
+      "binder"
+    ],
+    "mechanism": "Hydroxypropyl cellulose is a water-interacting cellulose ether that increases viscosity, stabilizes emulsions/suspensions, and forms films; it is largely not absorbed and is excreted mostly intact.",
+    "common_food_categories": [
+      "processed foods where standards of identity do not preclude use",
+      "dietary supplements (binder)",
+      "vitamin/mineral supplement tablets or wafers (binder/disintegrator for low-substituted grade)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA ANS Panel (2018) concluded there was no need for a numerical ADI for celluloses (including E463) and no safety concern at reported uses/use levels."
+      },
+      "last_evaluation_year": 2018,
+      "key_finding": "E463 is included in the cellulose group re-evaluation; EFSA found low toxicity concern (including no genotoxic concern) and no safety concern at reported uses."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.870",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA lists ADI as not specified for modified celluloses including hydroxypropyl cellulose (evaluation year shown as 1989)."
+      },
+      "last_evaluation_year": 1989
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "High intakes of modified celluloses may cause gastrointestinal effects such as laxation; this is considered a tolerability issue rather than a severe systemic toxicity signal.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "http://www.inchem.org/documents/jecfa/jecmono/v26je08.htm",
+          "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7009359/"
+        ]
+      },
+      {
+        "category": "allergenic",
+        "summary": "A case report describes hydroxypropyl cellulose-induced fixed drug eruption in a drug-product context, indicating rare idiosyncratic hypersensitivity potential.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/33460455/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA re-evaluation reported no genotoxic concern for the cellulose group including E463.",
+      "EFSA re-evaluation did not identify carcinogenic properties for reviewed celluloses.",
+      "JECFA ADI is not specified for modified celluloses including hydroxypropyl cellulose."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "No numerical ADI is set by EFSA/JECFA for this group. EFSA reported high cellulose-group exposures (e.g., up to 506 mg/kg bw/day at P95 in toddlers) while still concluding no safety concern for reported uses; FSMP high-end estimates were driven by E466 assumptions."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.83,
+    "rationale": "Regulatory evaluations from EFSA, JECFA, and US CFR indicate broad approval and low toxicological concern at intended uses. Remaining concerns are mainly GI tolerability at high intake and rare hypersensitivity case-level reports, without strong evidence of serious systemic harm.",
+    "key_factors": [
+      "EFSA (2018) concluded no need for numerical ADI and no safety concern at reported uses.",
+      "JECFA lists ADI as not specified for modified celluloses including hydroxypropyl cellulose.",
+      "US regulation allows use under 21 CFR 172.870 with GMP-based conditions.",
+      "No IARC classification entry identified for hydroxypropyl cellulose.",
+      "Only weak concern signals (GI tolerability at high intake; rare hypersensitivity case report)."
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of celluloses E460(i), E460(ii), E461, E462, E463, E464, E465, E466, E468 and E469 as food additives",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7009359/",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal DOI record for celluloses re-evaluation",
+      "url": "https://doi.org/10.2903/j.efsa.2018.5047",
+      "type": "database"
+    },
+    {
+      "title": "Hydroxypropyl cellulose (21 CFR 172.870) - CFR XML (govinfo)",
+      "url": "https://www.govinfo.gov/content/pkg/CFR-2024-title21-vol3/xml/CFR-2024-title21-vol3.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 172.870 Hydroxypropyl cellulose (e-CFR mirror)",
+      "url": "https://www.law.cornell.edu/cfr/text/21/172.870",
+      "type": "database"
+    },
+    {
+      "title": "eCFR current section URL (access-gated in this environment)",
+      "url": "https://www.ecfr.gov/current/title-21/section-172.870",
+      "type": "database"
+    },
+    {
+      "title": "JECFA Chemical 609: Hydroxypropyl cellulose",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/609",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO Food Additives Series 26: Modified celluloses",
+      "url": "http://www.inchem.org/documents/jecfa/jecmono/v26je08.htm",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC classification app dataset bundle",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search: hydroxypropyl cellulose safety",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=hydroxypropyl+cellulose+safety",
+      "type": "database"
+    },
+    {
+      "title": "Hydroxypropyl cellulose-induced fixed drug eruption as an adverse effect of generic drugs",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33460455/",
+      "type": "study"
+    },
+    {
+      "title": "Hydroxypropyl Cellulose Enhances Immune Responses to the Current Seasonal Influenza Vaccine in Mice",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41327585/",
+      "type": "study"
+    },
+    {
+      "title": "Safety of a feed additive consisting of hydroxypropyl cellulose for all animal species",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38425418/",
+      "type": "regulatory"
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T17:02:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E472f",
+    "name": "Mixed acetic and tartaric acid esters of mono- and diglycerides of fatty acids",
+    "cas_numbers": [],
+    "synonyms": [
+      "Mixed acetic and tartaric acid esters of mono- and diglycerides",
+      "TARTARIC, ACETIC and FATTY ACID ESTERS of GLYCEROL, mixed",
+      "INS 472f"
+    ],
+    "chemical_class": "Mixed acetic/tartaric acid esters of glycerol mono- and diglycerides (glycerol ester emulsifier mixture)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "emulsifier",
+    "secondary_categories": [
+      "stabilizer",
+      "texture modifier"
+    ],
+    "mechanism": "Amphiphilic glycerol-fatty-acid esters reduce oil-water interfacial tension and stabilize emulsions.",
+    "common_food_categories": [
+      "processed foods requiring fat-water stabilization",
+      "bakery formulations",
+      "fat-containing formulated foods"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 600,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2025 abstract reports E472f exposure below an ADI of 600 mg/kg bw/day; this follows the 2020 EFSA group ADI framework for E472d/e/f expressed as tartaric acid."
+      },
+      "last_evaluation_year": 2025,
+      "key_finding": "EFSA reported E472f dietary exposure below ADI in assessed scenarios; technical data were insufficient to support a proposed specification amendment for E472f, but no exposure-based safety concern was identified."
+    },
+    "fda": {
+      "status": "not_evaluated",
+      "cfr_citation": "No explicit E472f entry found in 21 CFR Title 21 XML (2026-02-19); related DATEM listings at 21 CFR 184.1101 and 21 CFR 582.4101",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA mixed tartaric/acetic entry (Chemical 3714) shows ADI WITHDRAWN (evaluation year 2001); comment states specifications were merged with DATEM, whose separate entry shows ADI 0-50 mg/kg bw."
+      },
+      "last_evaluation_year": 2001
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "cardiovascular",
+        "summary": "A large prospective cohort reported positive associations between higher intake of some emulsifier groups including E471/E472 and cardiovascular outcomes; observational design limits causal inference for E472f.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:37673430"
+        ]
+      },
+      {
+        "category": "carcinogenic",
+        "summary": "A prospective cohort reported associations between several emulsifier intakes and cancer outcomes, but this was not E472f-specific evidence.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:38349899"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "Mouse data showed metabolic and microbiome disruption for common emulsifiers including mono-/diglycerides as a class; this does not isolate E472f.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:38902371"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Regulatory uncertainty exists because JECFA's additive-specific mixed tartaric/acetic entry is withdrawn, while EFSA maintains ADI-based risk conclusions for current use scenarios.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "JECFA Chemical 3714",
+          "PMID:40791651"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2020 reported no adverse effects relevant for humans for E472a-f and no safety concern at reported uses/use levels.",
+      "EFSA 2025 reported E472f exposure estimates below ADI across assessed population groups/scenarios.",
+      "No IARC Monographs classification entry was identified for E472f/name variants in the current IARC classifications dataset."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "general population groups assessed by EFSA",
+        "high-consumption children (theoretically relevant subgroup)"
+      ],
+      "notes": "In the consulted EFSA 2025 abstract, E472f exposures were below the ADI of 600 mg/kg bw/day in assessed scenarios."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.71,
+    "rationale": "Regulatory evidence specific to E472f is primarily EFSA 2020/2025 and indicates exposure below ADI with no identified exposure-driven safety concern at reported uses. Uncertainty remains due the withdrawn additive-specific JECFA entry and lack of modern E472f-specific human toxicology, while newer concern signals are largely emulsifier-class and indirect.",
+    "key_factors": [
+      "EFSA ADI framework includes E472f and 2025 exposure estimates are below ADI",
+      "EFSA 2025 flagged insufficient technical support for proposed E472f specification amendment, but did not identify exposure-based safety concern",
+      "No explicit E472f listing found in current FDA Title 21 XML; related DATEM entries are GRAS with GMP conditions",
+      "JECFA additive-specific mixed tartaric/acetic entry shows ADI withdrawn and merged to DATEM context",
+      "No IARC classification entry found for E472f or close name variants",
+      "Recent safety signals come from indirect emulsifier-class epidemiology/animal studies"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal record 6032 on efsa.europa.eu",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/6032",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal record 9602 on efsa.europa.eu",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/9602",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed: EFSA 2020 re-evaluation (PMID 32874250)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32874250/",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed: EFSA 2025 specifications opinion (PMID 40791651)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40791651/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 XML (2026-02-19)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA chemical entry 3714",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3714",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical entry 1126 (DATEM)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1126",
+      "type": "database"
+    },
+    {
+      "title": "IARC list of classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications web app bundle",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: emulsifiers and cardiovascular disease (PMID 37673430)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37673430/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: emulsifiers and cancer risk (PMID 38349899)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38349899/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: common dietary emulsifiers in mice (PMID 38902371)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38902371/",
+      "type": "study"
+    }
+  ]
+}

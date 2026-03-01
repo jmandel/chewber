@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T18:02:35Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E503",
+    "name": "Ammonium carbonates",
+    "cas_numbers": [
+      "8000-73-5",
+      "10361-29-2",
+      "1066-33-7"
+    ],
+    "synonyms": [
+      "Ammonium carbonate",
+      "Ammonium hydrogen carbonate",
+      "Ammonium bicarbonate",
+      "INS 503i",
+      "INS 503ii"
+    ],
+    "chemical_class": "Inorganic ammonium carbonates/bicarbonates",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "raising agent",
+    "secondary_categories": [
+      "acidity regulator",
+      "pH control agent",
+      "dough strengthener"
+    ],
+    "mechanism": "Acts as an alkaline leavening/pH-control system in food formulations under GMP conditions.",
+    "common_food_categories": [
+      "bakery products using chemical leavening",
+      "dough and batter systems",
+      "processed foods requiring pH adjustment"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No finalized EFSA numeric ADI was retrievable; OpenEFSA records EFSA-Q-2011-00653 and EFSA-Q-2011-00654 are ongoing re-evaluations."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "EFSA records for E503(i)/(ii) are in Ongoing Risk Assessment; EFSA notes the additive is authorised in the EU, re-evaluation is delayed, and a new data call is likely in 2026/2027."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1137; 21 CFR 184.1135",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "NOT SPECIFIED (ammonium carbonate and ammonium hydrogen carbonate entries)."
+      },
+      "last_evaluation_year": 1982
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "A recent in vitro oral-cell-model study reported ammonium bicarbonate can alter interactions between astringent compounds and oral constituents; this is mechanistic evidence, not direct clinical toxicity evidence.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:39662245"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Recent PubMed searches found limited modern additive-specific oral animal/human safety studies for E503, leaving a contemporary evidence gap while EFSA re-evaluation is pending.",
+        "evidence_strength": "theoretical",
+        "key_references": [
+          "EFSA-Q-2011-00653",
+          "EFSA-Q-2011-00654"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA lists ADI as NOT SPECIFIED for ammonium carbonate and ammonium hydrogen carbonate (evaluation year 1982).",
+      "US FDA/eCFR lists ammonium bicarbonate and ammonium carbonate in 21 CFR Part 184 as GRAS direct food ingredients under current good manufacturing practice conditions.",
+      "No specific IARC monograph classification was identified for ammonium carbonates in the retrieved IARC records."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "Numeric ADI exceedance assessment is not directly applicable to JECFA 'not specified' ADI; EFSA numeric ADI was not retrievable from current ongoing records."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.7,
+    "rationale": "Regulatory evidence is broadly permissive (FDA GRAS and JECFA ADI not specified), with no major-ban or IARC classification signal identified. The main uncertainty is the pending/delayed EFSA re-evaluation and sparse recent additive-specific oral toxicology literature.",
+    "key_factors": [
+      "FDA GRAS affirmations in 21 CFR 184.1135 and 184.1137",
+      "JECFA ADI NOT SPECIFIED (1982)",
+      "EFSA E503 re-evaluation status is ongoing and delayed (no finalized output retrieved)",
+      "No specific IARC classification identified",
+      "Limited recent direct safety literature specific to E503"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA search page for E503 (blocked in this environment)",
+      "url": "https://www.efsa.europa.eu/en/search?search_api_fulltext=E%20503",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal DOI URL attempt for carbonate opinion (blocked in this environment)",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2018.5288",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA question search for ammonium carbonates",
+      "url": "https://open.efsa.europa.eu/api/question/searchAdvanced?search=ammonium%20carbonates&offset=0&limit=20",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA question detail EFSA-Q-2011-00653",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00653",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA question detail EFSA-Q-2011-00654",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00654",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API titles endpoint",
+      "url": "https://www.ecfr.gov/api/versioner/v1/titles.json",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full Title 21 XML (2026-02-19)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA chemical entry AMMONIUM CARBONATE (ID 1215)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1215",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical entry AMMONIUM HYDROGEN CARBONATE (ID 133)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/133",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA API search by partial name carbonate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/carbonate",
+      "type": "database"
+    },
+    {
+      "title": "IARC agents classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC WP search endpoint for ammonium carbonate (queried, no hit)",
+      "url": "https://monographs.iarc.who.int/wp-json/wp/v2/search?search=ammonium%20carbonate&per_page=20",
+      "type": "database"
+    },
+    {
+      "title": "PubMed E-utilities search for ammonium carbonate/bicarbonate safety terms",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=(ammonium%20carbonate%20OR%20ammonium%20bicarbonate)%20AND%20(food%20OR%20dietary%20OR%20oral)%20AND%20(toxicity%20OR%20safety)&retmax=20&retmode=json",
+      "type": "database"
+    },
+    {
+      "title": "Impact of food additives (sodium carbonate and ammonium bicarbonate) on interactions between astringent compounds and an oral cell model (PMID 39662245)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39662245/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed exact phrase query for ammonium bicarbonate + food additive (queried, no hit)",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%22ammonium%20bicarbonate%22%20%22food%20additive%22&retmax=20&retmode=json",
+      "type": "database"
+    }
+  ]
+}

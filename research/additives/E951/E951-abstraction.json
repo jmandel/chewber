@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T20:40:13Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E951",
+    "name": "Aspartame",
+    "cas_numbers": [
+      "22839-47-0"
+    ],
+    "synonyms": [
+      "L-aspartyl-L-phenylalanine methyl ester",
+      "E 951",
+      "INS 951",
+      "Aspartame"
+    ],
+    "chemical_class": "High-intensity dipeptide methyl ester sweetener",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "high-intensity sweetener",
+    "secondary_categories": [
+      "non-nutritive sweetener",
+      "sweetener"
+    ],
+    "mechanism": "Provides intense sweetness at low concentrations and is used to replace sugar in low/no-sugar products.",
+    "common_food_categories": [
+      "breakfast cereals",
+      "chewing gum",
+      "dry beverage mixes",
+      "gelatins and puddings",
+      "hard and soft candy",
+      "milk products",
+      "fruit juices and processed fruit products"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": 40,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2013 full re-evaluation retained ADI at 40 mg/kg bw/day and found no safety concern at current exposure levels."
+      },
+      "last_evaluation_year": 2013,
+      "key_finding": "EFSA concluded aspartame is safe at current exposure levels and found no genotoxicity/carcinogenicity concern in its re-evaluation."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.804",
+      "notes": "Not found in searched Part 184 GRAS listing; regulated as an approved food additive under Part 172 with category-specific maximum use levels and phenylketonurics labeling requirement."
+    },
+    "jecfa": {
+      "adi": {
+        "value": 40,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA states ADI 0-40 mg/kg bw/day; reaffirmed at JECFA 96th meeting in 2023."
+      },
+      "last_evaluation_year": 2023
+    },
+    "iarc_classification": "Group 2B",
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "carcinogenic",
+        "summary": "IARC (2023) classified aspartame as Group 2B (possibly carcinogenic to humans) with limited evidence in humans and animals; a large cohort study reported higher total cancer risk associated with higher aspartame intake.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://www.iarc.who.int/featured-news/aspartame-hazard-and-risk-assessment-results-released/",
+          "https://pubmed.ncbi.nlm.nih.gov/35324894/"
+        ]
+      },
+      {
+        "category": "cardiovascular",
+        "summary": "Prospective cohort data reported a positive association between aspartame intake and cerebrovascular events.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/36087827/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Aspartame is a phenylalanine source and requires caution/avoidance in phenylketonuria (PKU); regulatory labeling addresses this vulnerable group.",
+        "evidence_strength": "strong",
+        "key_references": [
+          "https://www.ecfr.gov/api/versioner/v1/full/2025-10-01/title-21.xml?subtitle=B&chapter=I&subchapter=B&part=172",
+          "https://www.fda.gov/food/food-additives-petitions/additional-information-about-high-intensity-sweeteners-permitted-use-food-united-states"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2013 concluded aspartame is safe at current exposure levels and found no concern for genotoxicity or carcinogenicity in the assessed data.",
+      "JECFA re-evaluated aspartame in 2023 and maintained ADI at 0-40 mg/kg bw/day."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "high consumers of multiple aspartame-containing products",
+        "lower-body-weight consumers (children/adolescents) at very high intake",
+        "people with phenylketonuria (PKU)"
+      ],
+      "notes": "EFSA reported exposures below ADI in assessed groups; WHO notes a 70 kg adult would generally need more than about 9-14 diet soft drink cans/day (assuming no other sources) to exceed ADI."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.74,
+    "rationale": "Aspartame remains approved with established ADIs and no major jurisdictional bans, but risk characterization is no longer minimal because IARC classified it as Group 2B and recent large cohorts show credible associations for cancer and cerebrovascular outcomes. Regulatory bodies (EFSA/JECFA) retained ADIs, so current evidence does not justify high-tier classification.",
+    "key_factors": [
+      "EFSA re-evaluation retained ADI 40 mg/kg bw/day and concluded safety at current exposure.",
+      "US CFR allows aspartame use under 21 CFR 172.804 with explicit conditions and warnings.",
+      "JECFA reaffirmed ADI 0-40 mg/kg bw/day in 2023.",
+      "IARC classified aspartame as Group 2B in 2023.",
+      "Recent prospective cohorts report positive associations for cancer and cerebrovascular outcomes."
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Topic Page: Aspartame",
+      "url": "https://www.efsa.europa.eu/en/topics/topic/aspartame",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA News (2013): Aspartame is safe at current exposure levels",
+      "url": "https://www.efsa.europa.eu/en/press/news/131210",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal (2013): Scientific Opinion on the re-evaluation of aspartame (E 951)",
+      "url": "https://onlinelibrary.wiley.com/doi/10.2903/j.efsa.2013.3496",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR Part 172 XML (contains 21 CFR 172.804 Aspartame)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2025-10-01/title-21.xml?subtitle=B&chapter=I&subchapter=B&part=172",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR Part 184 GRAS section search context",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2025-10-01/title-21.xml?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR current page access attempt: 21 CFR 172.804",
+      "url": "https://www.ecfr.gov/current/title-21/section-172.804",
+      "type": "regulatory"
+    },
+    {
+      "title": "FDA: Additional Information about High-Intensity Sweeteners Permitted for Use in Food in the United States",
+      "url": "https://www.fda.gov/food/food-additives-petitions/additional-information-about-high-intensity-sweeteners-permitted-use-food-united-states",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA Database: ASPARTAME chemical entry",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/62",
+      "type": "database"
+    },
+    {
+      "title": "WHO Q&A (2023): Additive - Aspartame",
+      "url": "https://www.who.int/news-room/questions-and-answers/item/additive-aspartame",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC Monographs Featured News: Aspartame (Volume 134)",
+      "url": "https://monographs.iarc.who.int/featured-news-2/",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC Featured News (2023): Aspartame hazard and risk assessment results released",
+      "url": "https://www.iarc.who.int/featured-news/aspartame-hazard-and-risk-assessment-results-released/",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed (2022): Artificial sweeteners and cancer risk - NutriNet-Sante cohort",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35324894/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed (2022): Artificial sweeteners and risk of cardiovascular diseases - NutriNet-Sante cohort",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36087827/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed (2023): Aspartame and Cancer - New Evidence for Carcinogenicity?",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37603056/",
+      "type": "review"
+    },
+    {
+      "title": "PubChem Compound: Aspartame",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/Aspartame",
+      "type": "database"
+    }
+  ]
+}

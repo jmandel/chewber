@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T00:00:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E942",
+    "name": "Nitrous oxide",
+    "cas_numbers": [
+      "10024-97-2"
+    ],
+    "synonyms": [
+      "Dinitrogen monoxide",
+      "Nitrogen oxide",
+      "Laughing gas",
+      "INS 942"
+    ],
+    "chemical_class": "Inorganic oxide gas (N2O)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "propellant gas",
+    "secondary_categories": [
+      "aerating agent",
+      "packaging gas"
+    ],
+    "mechanism": "Acts as a pressurized gas to dispense and aerate products; may also be used as headspace gas in packaging applications.",
+    "common_food_categories": [
+      "Dairy product analogs",
+      "Whipped/aerated dispensing applications",
+      "Packaged foods using gas headspace systems"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No completed EFSA re-evaluation opinion with a numeric ADI was identified for E942; EFSA lists E942 among remaining additives in the re-evaluation programme."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "E942 is among remaining EU-permitted additives for which EFSA requested additional technical data; no finalized EFSA re-evaluation conclusion for E942 was identified in the accessed sources."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1545",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA database lists ADI as NOT SPECIFIED."
+      },
+      "last_evaluation_year": 2000
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "neurotoxic",
+        "summary": "Human misuse and animal studies indicate neurologic injury potential at sustained/high inhalation exposure, with vitamin B12 functional inhibition and downstream neurologic effects.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/41396044/",
+          "https://pubmed.ncbi.nlm.nih.gov/31911167/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Animal-data systematic review supports reproductive/developmental toxicity concern at high occupational inhalation exposures and proposes an occupational exposure limit.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/34174259/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "FDA affirms nitrous oxide as GRAS direct human food ingredient under GMP in 21 CFR 184.1545.",
+      "JECFA lists ADI as NOT SPECIFIED and accepted use as food propellant (historical conclusion)."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "Numeric ADI exceedance cannot be computed because JECFA ADI is NOT SPECIFIED and no numeric EFSA ADI from a completed E942 re-evaluation was identified."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.67,
+    "rationale": "Regulatory data support low concern for intended food-additive use (FDA GRAS; JECFA ADI not specified), but robust evidence of harm exists at high inhalation exposure (misuse/occupational contexts). EFSA re-evaluation for E942 appears incomplete in the accessed sources, so a fully risk_free classification is not justified.",
+    "key_factors": [
+      "FDA GRAS status with GMP conditions (21 CFR 184.1545)",
+      "JECFA ADI NOT SPECIFIED and historical acceptance of propellant use",
+      "EFSA still treating E942 as part of remaining additives under re-evaluation",
+      "Recent epidemiological and mechanistic evidence of harm at high non-dietary inhalation exposure",
+      "No major-jurisdiction food-additive ban identified"
+    ]
+  },
+  "sources": [
+    {
+      "title": "European Commission E-numbers page",
+      "url": "https://food.ec.europa.eu/food-safety/food-improvement-agents/additives/e-numbers_en",
+      "type": "database"
+    },
+    {
+      "title": "EFSA topic page: Food additive re-evaluations",
+      "url": "https://www.efsa.europa.eu/en/topics/topic/food-additive-re-evaluations",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA call (2023): technical data on remaining food additives",
+      "url": "https://www.efsa.europa.eu/en/call/public-call-technical-data-remaining-food-additives-permitted-use-eu-prior-20",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR 184.1545 Nitrous oxide",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2025-01-01/title-21.xml?part=184&section=184.1545",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA chemical entry: Nitrous oxide (ID 1090)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1090",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset bundle",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search: nitrous oxide food additive safety",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=nitrous+oxide+food+additive+safety",
+      "type": "database"
+    },
+    {
+      "title": "PubMed (2025): Trends in nitrous oxide abuse and misuse (PMID: 41396044)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41396044/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed (2021): Occupational exposure limit systematic review (PMID: 34174259)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34174259/",
+      "type": "review"
+    },
+    {
+      "title": "PubMed (2020): Astrocyte activation and nitrous oxide neurotoxicity in rats (PMID: 31911167)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31911167/",
+      "type": "study"
+    }
+  ]
+}

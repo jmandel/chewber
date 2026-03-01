@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T00:00:00Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E470a",
+    "name": "Sodium/potassium/calcium salts of fatty acids",
+    "cas_numbers": [
+      "822-16-2",
+      "593-29-3",
+      "1592-23-0"
+    ],
+    "synonyms": [
+      "Salts of myristic, palmitic and stearic acids (calcium, potassium, sodium)",
+      "Sodium stearate",
+      "Potassium stearate",
+      "Calcium stearate",
+      "Salts of fatty acids"
+    ],
+    "chemical_class": "Alkali/alkaline-earth metal salts of long-chain fatty acids (fatty-acid salts)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "emulsifier",
+    "secondary_categories": [
+      "anticaking agent",
+      "binder",
+      "lubricant",
+      "stabilizer"
+    ],
+    "mechanism": "Amphiphilic fatty-acid salts reduce interfacial tension and improve powder flow/lubrication, supporting emulsification and anticaking under GMP use levels.",
+    "common_food_categories": [
+      "Food supplements (solid forms)",
+      "Confectionery and chewing gum",
+      "Bakery and mixed dry products",
+      "Seasonings and similar powdered foods"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2018 concluded no need for a numerical ADI and no safety concern at reported uses/use levels for E470a/E470b."
+      },
+      "last_evaluation_year": 2018,
+      "key_finding": "E470a/E470b were considered of no safety concern at reported uses/use levels; fatty-acid moiety contribution to saturated fat intake was estimated up to about 5%."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.863; 21 CFR 184.1229",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA database entry for salts of myristic/palmitic/stearic acids (Ca/K/Na) lists ADI NOT SPECIFIED; WHO FAS monograph states ADI Not limited."
+      },
+      "last_evaluation_year": 1985
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Direct additive-specific subchronic/chronic/reproductive/developmental datasets for E470a salts are limited; EFSA relied partly on read-across and available supporting studies.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "EFSA Journal 2018;16(3):5180 (PMID 32625824; PMCID PMC7009523)"
+        ]
+      },
+      {
+        "category": "gut_microbiome",
+        "summary": "EFSA noted microbiota effects reported for some other emulsifiers, but no additive-specific microbiome studies were available for E470a/E470b.",
+        "evidence_strength": "theoretical",
+        "key_references": [
+          "EFSA Journal 2018;16(3):5180 (PMCID PMC7009523)"
+        ]
+      },
+      {
+        "category": "allergenic",
+        "summary": "A 2023 EFSA NDA assessment of mustard-derived behenic acid used to manufacture emulsifiers including E470a estimated reaction risk in mustard-allergic individuals as extremely unlikely (<=1%) under proposed conditions.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "EFSA Journal 2023;21(9):e08240 (PMID 37753350; PMCID PMC10518752)"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2018: no need for numerical ADI; no safety concern at reported uses/use levels.",
+      "JECFA: ADI NOT SPECIFIED / Not limited for salts of myristic, palmitic and stearic acids (Ca/K/Na).",
+      "FDA eCFR: permitted salts-of-fatty-acids use under 21 CFR 172.863; calcium stearate affirmed GRAS under 21 CFR 184.1229."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "No current numerical ADI was set by EFSA/JECFA for this additive group; EFSA estimated E470a/E470b fatty-acid moieties contributed up to about 5% of overall saturated fatty-acid intake at mean exposure."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.84,
+    "rationale": "Regulatory consensus (EFSA/JECFA/FDA) supports low concern at permitted use levels, but additive-specific long-term toxicology data are limited and some source-specific allergen context remains relevant.",
+    "key_factors": [
+      "EFSA 2018 no-safety-concern conclusion with no numerical ADI needed",
+      "JECFA ADI NOT SPECIFIED / Not limited for corresponding salt group",
+      "FDA allowance under 21 CFR 172.863 and calcium stearate GRAS under 21 CFR 184.1229",
+      "No IARC classification entry for sodium/potassium/calcium stearate in current IARC dataset",
+      "Evidence gaps in dedicated additive-specific chronic/reproductive datasets"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal page: Re-evaluation of E470a/E470b (2018)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5180",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed: EFSA 2018 E470a/E470b opinion (PMID 32625824)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625824/",
+      "type": "study"
+    },
+    {
+      "title": "PMC full text: EFSA 2018 E470a/E470b opinion (PMCID PMC7009523)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009523/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR 172.863 Salts of fatty acids",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=172&section=172.863",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: 21 CFR 184.1229 Calcium stearate (GRAS)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-19/title-21.xml?part=184&section=184.1229",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API: Title 21 versions index",
+      "url": "https://www.ecfr.gov/api/versioner/v1/versions/title-21.json",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical page: SALTS of MYRISTIC, PALMITIC and STEARIC ACIDS (CALCIUM, POTASSIUM, SODIUM)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3487",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA API search by partial name (calcium stearate)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/calcium%20stearate",
+      "type": "database"
+    },
+    {
+      "title": "WHO Food Additives Series monograph: Salts of myristic, palmitic and stearic acids",
+      "url": "http://www.inchem.org/documents/jecfa/jecmono/v05je03.htm",
+      "type": "review"
+    },
+    {
+      "title": "IARC List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: EFSA 2023 mustard-behenic-acid re-evaluation including E470a context (PMID 37753350)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37753350/",
+      "type": "study"
+    },
+    {
+      "title": "PMC full text: EFSA 2023 mustard-behenic-acid opinion (PMCID PMC10518752)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10518752/",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubChem RN API: sodium stearate",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/sodium%20stearate/xrefs/RN/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem RN API: potassium stearate",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/potassium%20stearate/xrefs/RN/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubChem RN API: calcium stearate",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/calcium%20stearate/xrefs/RN/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubMed query: E470a in title/abstract",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=E470a%5BTitle%2FAbstract%5D",
+      "type": "database"
+    },
+    {
+      "title": "PubMed query: sodium salts of fatty acids AND food additive",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%28%22sodium+salts+of+fatty+acids%22%5BTitle%2FAbstract%5D+AND+food+additive%5BTitle%2FAbstract%5D%29",
+      "type": "database"
+    }
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T15:27:05Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E421",
+    "name": "Mannitol",
+    "cas_numbers": [
+      "69-65-8"
+    ],
+    "synonyms": [
+      "D-mannitol",
+      "Mannite",
+      "INS 421",
+      "E421"
+    ],
+    "chemical_class": "Polyol (sugar alcohol; hexahydric alcohol)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "sweetener",
+    "secondary_categories": [
+      "bulking agent",
+      "humectant",
+      "anticaking agent",
+      "stabilizer",
+      "texturizer"
+    ],
+    "mechanism": "Provides sweetness and bulk as a polyol; its osmotic properties and low absorption also drive gastrointestinal tolerance limits at higher intakes.",
+    "common_food_categories": [
+      "pressed mints and hard candy/cough drops",
+      "chewing gum",
+      "soft candy",
+      "confections and frostings",
+      "non-standardized jams and jellies",
+      "other foods under CFR use limits"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No final EFSA ADI is published for the current re-evaluation dossiers EFSA-Q-2011-00646/00647 (output is null; re-evaluation ongoing)."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "OpenEFSA records state mannitol is already authorised and under ongoing re-evaluation; scientific output is still in preparation."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 180.25",
+      "notes": "For human food, mannitol is in Part 180 (interim food additive pending additional study) with category limits and a 20 g/day laxative warning statement; animal feed GRAS listing exists at 21 CFR 582.5470."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA evaluation summary lists ADI as NOT SPECIFIED."
+      },
+      "last_evaluation_year": 1986
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Dose-related osmotic laxative effects are recognized in both JECFA and CFR labeling conditions (high intake concern rather than systemic toxicity).",
+        "evidence_strength": "strong",
+        "key_references": [
+          "http://www.inchem.org/documents/jecfa/jecmono/v21je10.htm",
+          "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?section=180.25"
+        ]
+      },
+      {
+        "category": "cardiovascular",
+        "summary": "A 2025 prospective nested case-control analysis reported higher plasma mannitol/sorbitol associated with higher incident CHD risk, but this is an observational biomarker association and not direct proof of additive-intake causality.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/39230875/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA assigned ADI not specified (1986) and highlighted laxative tolerance as the key practical high-dose effect.",
+      "JECFA toxicological monograph reported no clear carcinogenicity-driving signal in reviewed long-term animal studies for food-use context.",
+      "A 2023 in-vitro human lymphocyte study found no significant genotoxic signal (chromosomal aberration or micronucleus increase) at tested concentrations.",
+      "No IARC monograph classification entry for mannitol was found in the current IARC list dataset."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "high consumers of sugar-free confectionery and chewing gum",
+        "children with high per-body-weight intake of polyol-containing products",
+        "individuals sensitive to osmotic laxative effects"
+      ],
+      "notes": "There is no numeric EFSA/JECFA ADI to compare against, but practical intolerance risk exists: JECFA reports a human laxative threshold around 10-20 g single dose and CFR requires warning labeling when foreseeable intake can reach 20 g/day."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.78,
+    "rationale": "Current authoritative sources support continued authorization with the main concern being high-dose gastrointestinal tolerance (laxative effect). Lack of a completed EFSA re-evaluation and emerging observational cardiovascular biomarker associations justify caution, but available evidence does not support a moderate or high-risk classification.",
+    "key_factors": [
+      "EFSA re-evaluation status is ongoing with no final output yet",
+      "21 CFR 180.25 allows use with explicit limits and mandatory high-intake laxative warning",
+      "JECFA ADI is not specified with long-standing evaluation history",
+      "No IARC classification entry identified for mannitol",
+      "Recent epidemiological association exists but is not causal proof of dietary additive harm"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Sweeteners topic page (E421 status table)",
+      "url": "https://www.efsa.europa.eu/en/topics/topic/sweeteners",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA question record EFSA-Q-2011-00646",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00646",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA question record EFSA-Q-2011-00647",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00647",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA timeline EFSA-Q-2011-00646",
+      "url": "https://open.efsa.europa.eu/api/question/getTimeline?questionNumber=EFSA-Q-2011-00646",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA timeline EFSA-Q-2011-00647",
+      "url": "https://open.efsa.europa.eu/api/question/getTimeline?questionNumber=EFSA-Q-2011-00647",
+      "type": "database"
+    },
+    {
+      "title": "21 CFR Part 180 (Food additives on interim basis)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=180",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 180.25 Mannitol",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?section=180.25",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 582.5470 Mannitol",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?section=582.5470",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database chemical entry (MANNITOL, chemID 5119)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/chemical.aspx?chemID=5119",
+      "type": "database"
+    },
+    {
+      "title": "JECFA summary of evaluations (MANNITOL)",
+      "url": "http://www.inchem.org/documents/jecfa/jeceval/jec_1321.htm",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO Food Additives Series 21 monograph (MANNITOL)",
+      "url": "http://www.inchem.org/documents/jecfa/jecmono/v21je10.htm",
+      "type": "review"
+    },
+    {
+      "title": "IARC List of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed query: mannitol food additive safety",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=mannitol+food+additive+safety",
+      "type": "database"
+    },
+    {
+      "title": "Determination of the genotoxic effects of sweeteners, mannitol and lactitol (PMID 38060281)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38060281/",
+      "type": "study"
+    },
+    {
+      "title": "Plasma levels of polyols erythritol, mannitol, and sorbitol and incident coronary heart disease among women (PMID 39230875)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39230875/",
+      "type": "study"
+    },
+    {
+      "title": "Low-calorie bulk sweeteners: Recent advances in physical benefits, applications, and bioproduction (PMID 36705477)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36705477/",
+      "type": "review"
+    }
+  ]
+}

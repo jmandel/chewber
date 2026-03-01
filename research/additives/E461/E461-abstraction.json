@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T16:11:49Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E461",
+    "name": "Methyl cellulose",
+    "cas_numbers": [
+      "9004-67-5"
+    ],
+    "synonyms": [
+      "Cellulose methyl ether",
+      "Methyl ether of cellulose",
+      "Methylcellulose"
+    ],
+    "chemical_class": "Modified cellulose ether (hydrocolloid polysaccharide derivative)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "thickener/stabilizer",
+    "secondary_categories": [
+      "emulsifier",
+      "texturizer",
+      "binder"
+    ],
+    "mechanism": "Hydrophilic cellulose ether that binds water, increases viscosity, and forms gels that stabilize food structure and emulsions.",
+    "common_food_categories": [
+      "Plant-based meat analogues",
+      "Processed foods requiring thickening/stabilization",
+      "Formulated products using hydrocolloid binders"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA (2018, celluloses group E460-E469) concluded no need for a numerical ADI and no safety concern at reported uses and use levels."
+      },
+      "last_evaluation_year": 2018,
+      "key_finding": "For unmodified/modified celluloses including E461, EFSA found low acute toxicity, no genotoxic concern, no carcinogenic signal in available studies, and no safety concern at reported use levels."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.1480",
+      "notes": "USP methylcellulose with methoxy content 27.5%-31.5% (dry weight); generally recognized as safe when used per good manufacturing practice."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO JECFA database entry for methyl cellulose (INS 461) lists ADI as NOT SPECIFIED (group ADI for modified celluloses)."
+      },
+      "last_evaluation_year": 1989
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "Recent human/food-fiber evidence indicates methylcellulose can alter fermentation dynamics and gas-related GI responses; this reflects tolerance/mechanistic effects rather than established systemic toxicity.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:41636227",
+          "PMID:26371734"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Direct modern additive-specific long-term epidemiology for E461 is limited; EFSA relied on a broad celluloses dataset with read-across across related cellulose derivatives.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID:32625652"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2018 concluded no need for a numerical ADI and no safety concern at reported uses/use levels for celluloses including E461.",
+      "JECFA lists methyl cellulose under a NOT SPECIFIED group ADI for modified celluloses.",
+      "eCFR lists methylcellulose in 21 CFR 182.1480 as GRAS under GMP conditions."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "No numerical ADI is set by EFSA/JECFA for this celluloses group; EFSA reported no safety concern at assessed exposures."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.82,
+    "rationale": "Convergent regulatory conclusions (EFSA no numerical ADI/no concern, FDA GRAS status with GMP, JECFA ADI not specified) support low toxicological concern at food-use levels; remaining uncertainty is mostly about GI tolerance and limited additive-specific modern epidemiology rather than severe hazard.",
+    "key_factors": [
+      "EFSA 2018 re-evaluation for E460-E469 including E461: no safety concern at reported uses",
+      "FDA/eCFR GRAS listing in 21 CFR 182.1480 with product specification and GMP condition",
+      "JECFA ADI not specified for modified celluloses including methyl cellulose",
+      "No IARC monograph classification identified for methyl cellulose"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Re-evaluation of celluloses E460(i), E460(ii), E461, E462, E463, E464, E465, E466, E468 and E469 as food additives (EFSA abstract via PubMed, 2018)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625652/?format=pubmed",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal page for opinion 5047 (access attempt; blocked in VM)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5047",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR 182.1480 Methylcellulose (eCFR API renderer)",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2026-02-25/title-21?chapter=I&subchapter=B&part=182&section=182.1480",
+      "type": "regulatory"
+    },
+    {
+      "title": "21 CFR Part 182 Substances Generally Recognized as Safe (eCFR API renderer)",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2026-02-25/title-21?chapter=I&subchapter=B&part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database entry for METHYL CELLULOSE (Chemical 700)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/700",
+      "type": "database"
+    },
+    {
+      "title": "InChem JECFA summary for methyl cellulose",
+      "url": "https://www.inchem.org/documents/jecfa/jeceval/jec_1437.htm",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs agents classified page",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list-of-classifications web app page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC classification dataset script (last_update visible, searched for methylcellulose no hit)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Randomised placebo-controlled trial of modified cellulose/psyllium with inulin in healthy humans (PMID 41636227, 2026)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41636227/?format=pubmed",
+      "type": "study"
+    },
+    {
+      "title": "Plant-based burgers study including methylcellulose binders and safety assessment context (PMID 41074333, 2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41074333/?format=pubmed",
+      "type": "study"
+    },
+    {
+      "title": "Management of constipation in older adults, including methylcellulose fiber use/tolerance context (PMID 26371734, 2015)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26371734/?format=pubmed",
+      "type": "review"
+    }
+  ]
+}

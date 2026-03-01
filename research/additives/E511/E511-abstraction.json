@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T18:19:48Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E511",
+    "name": "Magnesium chloride",
+    "cas_numbers": [
+      "7786-30-3"
+    ],
+    "synonyms": [
+      "Magnesium chloride hexahydrate",
+      "Magnesium dichloride",
+      "INS 511",
+      "E511",
+      "MgCl2",
+      "Bischofite"
+    ],
+    "chemical_class": "Inorganic chloride salt (alkaline-earth metal chloride)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "firming agent",
+    "secondary_categories": [
+      "colour retention agent",
+      "flavoring agent and adjuvant",
+      "nutrient supplement"
+    ],
+    "mechanism": "Dissociates into magnesium and chloride ions that increase ionic strength; magnesium ions support coagulation/firming effects in some food systems.",
+    "common_food_categories": [
+      "general processed foods under CGMP",
+      "infant formula (U.S. section 412 conditions)",
+      "tofu/soy product coagulation systems (bittern-derived use context)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA (2019) did not set a numerical ADI in the abstract; it identified 40 mg chloride/kg bw/day as a reference value for safety assessment."
+      },
+      "last_evaluation_year": 2019,
+      "key_finding": "EFSA concluded that exposure to chloride from E507/E508/E509/E511 does not raise a safety concern at reported use levels, although high-percentile exposure in some children exceeded the chloride reference value."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1426",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA chemical entry states ADI NOT LIMITED; included in ADI group for hydrochloric acid and bases."
+      },
+      "last_evaluation_year": 1979
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "Very high oral intake can cause severe hypermagnesemia; fatal and non-fatal human case reports exist for magnesium chloride/bittern ingestion.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/24020515/",
+          "https://pubmed.ncbi.nlm.nih.gov/25949041/"
+        ]
+      },
+      {
+        "category": "cardiovascular",
+        "summary": "In intoxication context, hypermagnesemia has been associated with ECG changes (e.g., QT prolongation) and can progress to serious cardiopulmonary effects if untreated.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/25949041/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "Animal data show dose-related oral toxicity at high dietary concentrations (kidney tubular vacuolation and reduced body weight in mice at >=2.5% dietary magnesium chloride).",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/8042199/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA reported no concern for genotoxicity and carcinogenicity in the chloride additive group assessment.",
+      "Long-term mouse feeding study reported lack of carcinogenicity for magnesium chloride hexahydrate.",
+      "EFSA concluded no safety concern for chloride exposure from E507/E508/E509/E511 at reported use levels.",
+      "FDA lists magnesium chloride as GRAS under 21 CFR 184.1426.",
+      "JECFA lists ADI as NOT LIMITED."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "toddlers",
+        "children",
+        "adolescents"
+      ],
+      "notes": "EFSA high-percentile chloride exposure estimates for E507/E508/E509/E511 were slightly above the 40 mg chloride/kg bw/day reference value in some younger age groups, while mean estimates were at or below the reference value."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.8,
+    "rationale": "Regulatory evaluations converge on low concern at authorized use levels (EFSA no safety concern; FDA GRAS; JECFA ADI not limited). Evidence against risk_free comes from high-dose animal toxicity, severe intoxication case reports, and high-percentile chloride exposure above EFSA's reference value in some children.",
+    "key_factors": [
+      "EFSA 2019 conclusion of no safety concern at reported use levels",
+      "FDA GRAS status and CGMP-based use conditions in 21 CFR 184.1426",
+      "JECFA ADI NOT LIMITED (group ADI context)",
+      "No IARC listing for magnesium chloride in the current classifications dataset",
+      "Human poisoning cases show toxicity at excessive intake",
+      "EFSA high-percentile chloride exposure exceedance in some child groups"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal publication page: Re-evaluation of hydrochloric acid (E507), potassium chloride (E508), calcium chloride (E509) and magnesium chloride (E511)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5751",
+      "type": "regulatory"
+    },
+    {
+      "title": "Wiley DOI page for EFSA opinion 10.2903/j.efsa.2019.5751 (accessed, challenge-protected)",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2019.5751",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 32626371: EFSA chloride re-evaluation abstract",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32626371/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API Title 21 Part 184 XML (includes 21 CFR 184.1426)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA chemical page: MAGNESIUM CHLORIDE (ID 3331)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3331",
+      "type": "regulatory"
+    },
+    {
+      "title": "IARC Agents classified by the IARC Monographs",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC list application dataset bundle (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed search query for magnesium chloride safety/toxicity",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=%22magnesium+chloride%22%5BTitle%5D+AND+%28safety+OR+toxicity+OR+hypermagnesemia+OR+adverse+OR+poisoning%29",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 2807100: Lack of carcinogenicity of magnesium chloride in a long-term feeding study in B6C3F1 mice",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/2807100/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 8042199: Thirteen-week oral toxicity study of magnesium chloride in B6C3F1 mice",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/8042199/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 24020515: A fatal case of hypermagnesemia caused by ingesting magnesium chloride as a folk remedy",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24020515/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 25949041: A case report of bittern intoxication",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25949041/",
+      "type": "study"
+    }
+  ]
+}

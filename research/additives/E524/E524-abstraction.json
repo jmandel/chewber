@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T18:38:38+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E524",
+    "name": "Sodium hydroxide",
+    "cas_numbers": [
+      "1310-73-2"
+    ],
+    "synonyms": [
+      "Lye",
+      "Caustic soda",
+      "Sodium hydrate",
+      "Soda lye",
+      "E 524"
+    ],
+    "chemical_class": "Strong inorganic base (alkali metal hydroxide)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "pH control agent",
+      "processing aid"
+    ],
+    "mechanism": "Dissociates into sodium and hydroxide ions; hydroxide neutralizes acids and increases pH during food processing.",
+    "common_food_categories": [
+      "foods requiring pH adjustment under GMP",
+      "alkaline processing applications"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "No finalized EFSA numerical ADI identified in retrieved records; OpenEFSA re-evaluation question EFSA-Q-2011-00669 remains planned/ongoing."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "OpenEFSA states E524 is already authorised in the EU, but re-evaluation has been delayed and a new data call is planned for 2026-2027."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1763",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "ADI NOT LIMITED (WHO/JECFA chemical entry for sodium hydroxide)."
+      },
+      "last_evaluation_year": 1965
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "High-concentration sodium hydroxide exposure is corrosive and is associated with severe gastrointestinal injury, strictures, and invasive interventions in poisoning scenarios.",
+        "evidence_strength": "strong",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/40802074/",
+          "https://pubmed.ncbi.nlm.nih.gov/38450338/",
+          "https://pubmed.ncbi.nlm.nih.gov/33422399/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "FDA affirms sodium hydroxide as GRAS for direct human food use under GMP conditions (21 CFR 184.1763).",
+      "JECFA lists sodium hydroxide ADI as NOT LIMITED.",
+      "No IARC classification entry for sodium hydroxide was identified in checked IARC classification resources."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "A numerical EFSA ADI was not identified and JECFA uses ADI NOT LIMITED; exceedance against a numeric ADI is therefore not directly applicable. Risk concern is driven by concentrated corrosive exposure, not typical additive-level use."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.76,
+    "rationale": "Regulatory status remains permissive (EU authorised with pending re-evaluation, U.S. GRAS, JECFA ADI not limited), while the main documented hazard is concentrated caustic exposure rather than normal GMP food-additive exposure.",
+    "key_factors": [
+      "EFSA OpenEFSA record: authorised but re-evaluation pending",
+      "FDA GRAS conditions under 21 CFR 184.1763",
+      "JECFA ADI NOT LIMITED",
+      "No IARC listing found for sodium hydroxide",
+      "Recent human injury studies involve corrosive, non-dietary concentration exposures"
+    ]
+  },
+  "sources": [
+    {
+      "title": "OpenEFSA substance record API: Sodium hydroxide",
+      "url": "https://open.efsa.europa.eu/api/substance/get?termExtendedName=Sodium%20hydroxide",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA linked questions API: Sodium hydroxide",
+      "url": "https://open.efsa.europa.eu/api/substance/getQuestions?termExtendedName=Sodium%20hydroxide",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA question API: EFSA-Q-2011-00669 Reevaluation of E524 Sodium hydroxide",
+      "url": "https://open.efsa.europa.eu/api/question/get?questionNumber=EFSA-Q-2011-00669",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API full Title 21 XML snapshot (contains 21 CFR 184.1763 and 582.1763)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database chemical entry 3939: Sodium hydroxide",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3939",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs agents classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classification dataset script resource",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Corrosive substance ingestion in children: clinical features, management and outcomes in a tertiary care setting",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40802074/",
+      "type": "study"
+    },
+    {
+      "title": "Gastrointestinal mucosal damages caused by ingestion of corrosive substances: A case study of hydrochloric acid and sodium hydroxide",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38450338/",
+      "type": "study"
+    },
+    {
+      "title": "Alkaline substances gastroesophageal injury in young children: emphasis on Asian food preparation habits",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33422399/",
+      "type": "study"
+    },
+    {
+      "title": "EFSA search URL used during retrieval (access troubleshooting)",
+      "url": "https://www.efsa.europa.eu/en/search?query=sodium%20hydroxide%20E%20524",
+      "type": "database"
+    },
+    {
+      "title": "EFSA Journal URL attempt during retrieval (anti-bot challenge encountered)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/2882",
+      "type": "database"
+    }
+  ]
+}

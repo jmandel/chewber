@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T21:11:13Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E966",
+    "name": "Lactitol",
+    "cas_numbers": [
+      "585-86-4"
+    ],
+    "synonyms": [
+      "Lactit",
+      "Lactositol",
+      "Lactobiosit",
+      "4-O-beta-D-galactopyranosyl-d-glucitol"
+    ],
+    "chemical_class": "Sugar alcohol (polyol; hydrogenated lactose derivative)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "sweetener",
+    "secondary_categories": [
+      "texturizer",
+      "thickener"
+    ],
+    "mechanism": "Provides sweetness with incomplete small-intestinal absorption and colonic fermentation; this contributes to lower glycaemic response and can produce laxative effects at higher doses.",
+    "common_food_categories": [
+      "sugar-free confectionery",
+      "chewing gum",
+      "reduced-sugar foods using noncariogenic sweetener claims"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA sweeteners table lists E966 as re-evaluation ongoing; no completed EFSA ADI value for E966 is presented on that page."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "E966 (Lactitols) is listed as an authorized EU sweetener with EFSA re-evaluation ongoing (last reviewed date on page: 17 February 2026)."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 101.9(c)(1)(i)(F); 21 CFR 101.80(c)(2)(ii)(A) and 21 CFR 101.80(c)(2)(iii)",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA evaluation year 1983: ADI not specified."
+      },
+      "last_evaluation_year": 1983
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "Dose-related gastrointestinal effects are documented, including diarrhea at higher bolus doses in human observations.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "InChem WHO Food Additives Series 18 (v18je10)",
+          "PMID: 31117218"
+        ]
+      },
+      {
+        "category": "renal",
+        "summary": "A 2026 case report described oxalate nephropathy and acute kidney injury after prolonged intake of a lactitol-containing supplement with persistent diarrhea.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID: 41231736"
+        ]
+      },
+      {
+        "category": "genotoxic",
+        "summary": "A 2023 in vitro study in human lymphocytes did not find significant genotoxic effects at tested concentrations, though mitotic index was reduced at higher concentrations.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID: 38060281"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "JECFA assigned ADI not specified (1983).",
+      "No lactitol entry identified in IARC Monographs classification dataset.",
+      "Recent in vitro genotoxicity paper did not show significant genotoxic signal at tested concentrations."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "Numeric ADI exceedance is not applicable because JECFA ADI is not specified; practical risk management is driven by gastrointestinal tolerance and high-intake misuse scenarios."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.78,
+    "rationale": "Regulatory evidence supports low toxicological concern at intended food-use levels, while high-dose gastrointestinal effects and a rare severe case report argue against risk_free classification.",
+    "key_factors": [
+      "JECFA ADI not specified (1983)",
+      "EFSA status for E966 is re-evaluation ongoing while remaining authorized",
+      "eCFR includes lactitol in nutrition and dental-caries claim framework",
+      "Documented dose-related diarrhea/laxation at higher intakes",
+      "Single recent severe renal case report at prolonged high intake"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Sweeteners topic page",
+      "url": "https://www.efsa.europa.eu/en/topics/topic/sweeteners",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Title 21 full XML (up to date 2026-02-25)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA database: LACTITOL (Home/Chemical/3084)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3084",
+      "type": "database"
+    },
+    {
+      "title": "InChem JECFA evaluation summary: LACTITOL",
+      "url": "https://www.inchem.org/documents/jecfa/jeceval/jec_1254.htm",
+      "type": "database"
+    },
+    {
+      "title": "InChem WHO Food Additives Series 18 monograph: Lactitol",
+      "url": "https://www.inchem.org/documents/jecfa/jecmono/v18je10.htm",
+      "type": "review"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications data script",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "Lactitol-Induced Acute Kidney Injury with Oxalate Nephropathy: A Case Report (PMID: 41231736)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41231736/",
+      "type": "study"
+    },
+    {
+      "title": "Determination of the genotoxic effects of sweeteners, mannitol and lactitol (PMID: 38060281)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38060281/",
+      "type": "study"
+    },
+    {
+      "title": "Influence of Lactitol and Psyllium on Bowel Function in Constipated Indian Volunteers (PMID: 31117218)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31117218/",
+      "type": "study"
+    },
+    {
+      "title": "Beneficial effects of lactitol on the composition of gut microbiota in constipated patients (PMID: 32483935)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32483935/",
+      "type": "study"
+    },
+    {
+      "title": "Sugar alcohols derived from lactose: lactitol, galactitol, and sorbitol (PMID: 32989517)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32989517/",
+      "type": "review"
+    }
+  ]
+}

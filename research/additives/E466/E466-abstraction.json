@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T16:33:18Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E466",
+    "name": "Sodium carboxymethylcellulose",
+    "cas_numbers": [
+      "9004-32-4"
+    ],
+    "synonyms": [
+      "Carboxymethyl cellulose",
+      "Cellulose gum",
+      "Na CMC",
+      "Sodium cellulose glycolate"
+    ],
+    "chemical_class": "Modified cellulose hydrocolloid (anionic cellulose ether)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "thickener",
+    "secondary_categories": [
+      "stabilizer",
+      "emulsifier"
+    ],
+    "mechanism": "Hydrophilic polymer that binds water and increases viscosity, helping stabilize dispersed food systems.",
+    "common_food_categories": [
+      "Processed foods requiring texture stabilization",
+      "Dietary foods for special medical purposes (FC 13.1.5 categories discussed by EFSA)",
+      "Products using hydrocolloid thickening systems"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2018 cellulose-group re-evaluation concluded no need for a numerical ADI for E460-E466/E468/E469; 2022 E466 follow-up retained unresolved data gaps for certain infant/young-child medical-food uses."
+      },
+      "last_evaluation_year": 2022,
+      "key_finding": "General-use conclusions remained non-numerical ADI/no safety concern at reported use levels for the cellulose group, but EFSA follow-up reported insufficient data for adequate assessment in FC 13.1.5.2 and no assessment for infants below 16 weeks where use was not reported."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 182.1745",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO/JECFA INS 466 record lists ADI as NOT SPECIFIED (group ADI context for modified celluloses)."
+      },
+      "last_evaluation_year": 1989
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "gut_microbiome",
+        "summary": "Human controlled-feeding and ex vivo microbiota studies reported CMC-associated microbiota/metabolome changes (including reduced diversity and reduced SCFAs in the 2022 human RCT at 15 g/day for 11 days).",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID:34774538",
+          "PMID:33752754"
+        ]
+      },
+      {
+        "category": "cardiovascular",
+        "summary": "A large prospective cohort found small positive associations between higher E466 intake and cardiovascular outcomes (HR per +1 SD: CVD 1.03; CHD 1.04), but causality is not established.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "PMID:37673430"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "EFSA follow-up identified insufficient data for adequate safety assessment in infants and young children consuming foods in FC 13.1.5.2; a 2025 mouse study also reported aggravated acute pancreatitis under experimental CMC exposure.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "PMID:36514369",
+          "PMID:40128912"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2018 review reported no genotoxic concern for the cellulose group reviewed.",
+      "EFSA 2018 review reported no carcinogenic properties detected in the cellulose studies assessed.",
+      "JECFA assigned ADI not specified for modified celluloses including sodium carboxymethylcellulose."
+    ],
+    "adi_exceedance": {
+      "at_risk": true,
+      "populations": [
+        "Infants and young children consuming foods for special medical purposes (FC 13.1.5.2)",
+        "Potential high-intake consumers in emerging epidemiologic datasets"
+      ],
+      "notes": "Because EFSA/JECFA use non-numerical ADI framing for this cellulose group, classical ADI exceedance is not directly calculated; risk characterization is driven by subgroup uncertainty and newer mechanistic/epidemiologic signals."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "moderate",
+    "confidence": 0.72,
+    "rationale": "Regulatory authorities still permit E466 and do not set a numerical ADI for the cellulose group, but EFSA follow-up leaves unresolved pediatric medical-food data gaps and recent human/mechanistic evidence indicates plausible gut-related effects with supportive but non-causal epidemiologic associations.",
+    "key_factors": [
+      "EFSA 2018: no numerical ADI needed for cellulose group at reported uses",
+      "EFSA 2022 E466 follow-up: insufficient data for FC 13.1.5.2 safety assessment",
+      "FDA listing as GRAS in 21 CFR 182.1745 under GMP",
+      "JECFA INS 466 ADI: not specified",
+      "Human RCT and cohort evidence indicating potential but not definitive harm signals"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal page: Re-evaluation of celluloses E460-E466/E468/E469 (2018)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5047",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal page: E466 follow-up opinion (2022)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/7665",
+      "type": "regulatory"
+    },
+    {
+      "title": "NCBI EFetch record for EFSA 2018 opinion abstract (PMID 32625652)",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=32625652&retmode=xml",
+      "type": "database"
+    },
+    {
+      "title": "NCBI EFetch record for EFSA 2022 E466 follow-up abstract (PMID 36514369)",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=36514369&retmode=xml",
+      "type": "database"
+    },
+    {
+      "title": "eCFR rendered section 21 CFR 182.1745 (2026-02-19 snapshot)",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2026-02-19/title-21?chapter=I&subchapter=B&part=182&subpart=B&section=182.1745",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR rendered Part 182 heading: Substances Generally Recognized as Safe",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2026-02-19/title-21?chapter=I&subchapter=B&part=182",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA API search: carboxymethyl cellulose",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/carboxymethyl%20cellulose",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA chemical record: SODIUM CARBOXYMETHYL CELLULOSE (INS 466)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3773",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset script (agent list)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed EFetch: Randomized controlled-feeding CMC human trial (PMID 34774538)",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=34774538&retmode=xml",
+      "type": "study"
+    },
+    {
+      "title": "PubMed EFetch: Direct impact of emulsifiers on human gut microbiota (PMID 33752754)",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=33752754&retmode=xml",
+      "type": "study"
+    },
+    {
+      "title": "PubMed EFetch: NutriNet-Sante emulsifier cohort and CVD risk (PMID 37673430)",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=37673430&retmode=xml",
+      "type": "study"
+    },
+    {
+      "title": "PubMed EFetch: CMC and acute pancreatitis mouse model (PMID 40128912)",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=40128912&retmode=xml",
+      "type": "study"
+    }
+  ]
+}

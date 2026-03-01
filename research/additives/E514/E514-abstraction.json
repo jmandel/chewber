@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T18:24:42+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E514",
+    "name": "Sodium sulfates (sodium sulfate; sodium hydrogen sulfate)",
+    "cas_numbers": [
+      "7757-82-6",
+      "7681-38-1"
+    ],
+    "synonyms": [
+      "Glauber's salt",
+      "Sodium sulfate",
+      "Sodium sulphate",
+      "Sodium hydrogen sulfate",
+      "Sodium bisulfate",
+      "Sodium acid sulfate",
+      "Nitre cake"
+    ],
+    "chemical_class": "Inorganic sulfate salts (sodium salts of sulfuric acid)",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "acidity regulator",
+    "secondary_categories": [
+      "colour retention agent",
+      "processing aid in food-contact systems"
+    ],
+    "mechanism": "Dissociates into sodium/sulfate (and hydrogen for E514(ii)) ions, contributing to pH control and ionic-strength effects.",
+    "common_food_categories": [
+      "Bread and rolls",
+      "Fine bakery wares",
+      "Meat products (modeled contribution in conservative EFSA scenarios)",
+      "Indirect food-contact packaging materials (US CFR context)"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA FAF (2019) concluded no need for a numerical ADI for sulfuric acid and sodium/potassium/calcium/ammonium sulfates at reported uses and use levels."
+      },
+      "last_evaluation_year": 2019,
+      "key_finding": "Exposure at reported uses does not raise a safety concern; no concern for genotoxicity/carcinogenicity; refined exposure estimates are below human laxative-effect dose levels."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 186.1797",
+      "notes": "Affirmed as GRAS for indirect food use (packaging-contact contexts) at levels not exceeding GMP under 21 CFR 186.1(b)(1); direct-addition status for E514 in foods is not established by this section."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "JECFA entries for INS 514(i) and 514(ii) report ADI NOT SPECIFIED."
+      },
+      "last_evaluation_year": 2009
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "High oral sulfate doses are associated with osmotic GI effects (loose stools/laxative effects), with human laxative effect around 300 mg sodium sulfate/kg bw noted by EFSA.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "EFSA Journal 2019;17(10):5868 (PMCID: PMC7008880)"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "A 2025 retrospective single-center study reported higher erosive gastritis/ulcer findings with oral sulfate tablet bowel prep versus PEG, but this reflects high-dose bowel-prep context and is not definitive for food-additive intake levels.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "Gastroenterology Research 2025;18(4):202-205 (PMID: 40687324)"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "EFSA recommended tightening arsenic/lead/mercury specification limits for sulfate additives to reduce impurity-driven exposure.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "EFSA Journal 2019;17(10):5868 (PMCID: PMC7008880)"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA found no concern for genotoxicity and carcinogenicity for the sulfate additive group at reported uses.",
+      "EFSA concluded no safety concern at reported use levels and no need for a numerical ADI.",
+      "Recent oral sulfate bowel-prep RCTs reported no severe adverse events and generally acceptable safety/tolerability in studied populations."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "Toddlers/children (highest modeled intakes in EFSA scenarios)",
+        "Individuals with gastrointestinal sensitivity at high bolus sulfate intakes"
+      ],
+      "notes": "No numerical ADI exists. In EFSA refined non-brand-loyal scenarios (mean 0.4-35; high 3-68 mg sulfate/kg bw/day), exposure is below the reported laxative-effect threshold. Conservative maximum scenarios can approach/exceed that threshold and are considered overestimates by EFSA."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.82,
+    "rationale": "Regulatory consensus (EFSA/JECFA/FDA-indirect GRAS context) indicates low concern at authorized uses, with no numerical ADI needed and no genotoxic/carcinogenic concern. Remaining uncertainties are mainly high-dose GI effects, impurity controls, and gaps in modern reproductive/developmental datasets.",
+    "key_factors": [
+      "EFSA 2019: no safety concern at reported uses; no numerical ADI needed",
+      "JECFA: ADI NOT SPECIFIED for INS 514(i)/514(ii)",
+      "US CFR: GRAS affirmation for indirect food-contact use under GMP (21 CFR 186.1797)",
+      "High-dose oral sulfate can cause GI effects; limited clinical signal of gastric mucosal irritation in bowel-prep contexts",
+      "No IARC carcinogenic classification identified for sodium sulfate/sodium hydrogen sulfate"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal publication page: Re-evaluation of sulphuric acid and its sodium, potassium, calcium and ammonium salts as food additive",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5868",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed: Re-evaluation of sulphuric acid and its sodium, potassium, calcium and ammonium salts (E 513, 514(i), 514(ii), 515(i), 515(ii), 516, 517)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32626147/",
+      "type": "database"
+    },
+    {
+      "title": "PMCID full text: EFSA J. 2019;17(10):e05868",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7008880/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API search results for sodium sulfate",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=%22sodium%20sulfate%22",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API renderer content for 21 CFR 186.1797",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2026-02-25/title-21?part=186&section=186.1797",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API renderer content for Part 186",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/2026-02-25/title-21?part=186",
+      "type": "regulatory"
+    },
+    {
+      "title": "JECFA database: Glauber's salt (INS 514(i))",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2073",
+      "type": "database"
+    },
+    {
+      "title": "JECFA database: Sodium hydrogen sulfate (INS 514(ii))",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/5692",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs: List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classifications dataset app bundle",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubChem: Sodium bisulfate",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/Sodium-bisulfate",
+      "type": "database"
+    },
+    {
+      "title": "Efficacy and safety of oral sodium sulfate tablet compared with 1-L polyethylene glycol plus ascorbate",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37655723/",
+      "type": "study"
+    },
+    {
+      "title": "Comparison of 1 L polyethylene glycol plus ascorbic acid and oral sodium sulfate tablets",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39685949/",
+      "type": "study"
+    },
+    {
+      "title": "Randomized trial of oral sulfate solution versus polyethylene glycol",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40269724/",
+      "type": "study"
+    },
+    {
+      "title": "Increased risk of erosive gastritis using oral sulfate tablet bowel preparation",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40687324/",
+      "type": "study"
+    }
+  ]
+}

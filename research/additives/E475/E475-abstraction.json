@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T17:16:00+00:00",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E475",
+    "name": "Polyglycerol esters of fatty acids",
+    "cas_numbers": [
+      "503590-90-7"
+    ],
+    "synonyms": [
+      "PEFA",
+      "Polyglyceryl fatty acid esters",
+      "Glycerin fatty acid esters",
+      "INS 475"
+    ],
+    "chemical_class": "Mixed polyglycerol fatty-acid esters (non-ionic emulsifier class)",
+    "origin": "semi-synthetic"
+  },
+  "function": {
+    "primary_category": "emulsifier",
+    "secondary_categories": [
+      "cloud inhibitor",
+      "stabilizer",
+      "carrier"
+    ],
+    "mechanism": "Amphiphilic esters lower oil-water interfacial tension and stabilize emulsions; specific forms are used to inhibit clouding in edible oils.",
+    "common_food_categories": [
+      "General emulsifier uses in foods",
+      "Vegetable and salad oils (cloud inhibitor)",
+      "Dry whipped topping base"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2017 concluded E475 was not of safety concern at reported uses and that there was no need for a numerical ADI."
+      },
+      "last_evaluation_year": 2022,
+      "key_finding": "EFSA follow-up (2022) maintained the safety conclusion framework while recommending tighter specifications for impurities (toxic elements, erucic acid, 3-MCPD, glycidyl esters)."
+    },
+    "fda": {
+      "status": "approved",
+      "cfr_citation": "21 CFR 172.854",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": 25,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO JECFA database lists ADI 0-25 mg/kg bw and a 2024 reaffirmation comment."
+      },
+      "last_evaluation_year": 2024
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "EFSA 2022 identified specification-level concerns and recommended lower maximum limits or added limits for arsenic, lead, mercury, cadmium, erucic acid, 3-MCPD, and glycidyl esters.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/35600272/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "In vitro studies reported immune-cell or macrophage functional effects at high concentrations (around or above 1 mg/mL), with lower concentrations reported as uncritical in the specific test systems.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/31756429/",
+          "https://pubmed.ncbi.nlm.nih.gov/10762728/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2017 reported no genotoxic potential from available data and no adverse effects in short-term, subchronic, or chronic studies at tested doses.",
+      "EFSA 2017 reported no adverse findings in a limited volunteer study up to 300 mg/kg bw/day for 3 weeks.",
+      "No IARC classification entry for E475/polyglycerol esters of fatty acids was identified in the checked IARC classification resources."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "children (higher relative exposure than adults in EFSA scenarios)"
+      ],
+      "notes": "EFSA non-brand-loyal scenario reported highest child P95 exposure of 6.4 mg/kg bw/day, below 25 mg/kg bw/day; uncertainty remains due limited use-level data coverage in some categories."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.78,
+    "rationale": "Regulatory assessments remain favorable (EFSA no numerical ADI needed at reported uses; JECFA ADI 0-25 mg/kg bw; FDA permitted use in 21 CFR 172.854). Available concerns are mainly impurity/specification management and high-concentration in vitro effects, without strong evidence of harm at normal dietary use levels.",
+    "key_factors": [
+      "EU and US approvals with defined conditions",
+      "EFSA 2017 no safety concern at reported uses and no need for numerical ADI",
+      "JECFA ADI 0-25 mg/kg bw reaffirmed in 2024 database entry",
+      "EFSA 2022 requested tighter impurity specifications",
+      "Limited recent human direct toxicity evidence"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal (2022): Follow-up of the re-evaluation of polyglycerol esters of fatty acids (E 475)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35600272/",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA Journal (2017): Re-evaluation of polyglycerol esters of fatty acids (E 475)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32625376/",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA full text (PMC7010213)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7010213/",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API renderer: 21 CFR 172.854 Polyglycerol esters of fatty acids",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-21?section=172.854",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API versioner query for Title 21 Part 184",
+      "url": "https://www.ecfr.gov/api/versioner/v1/versions/title-21.json?part=184",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA chemical record (ID 3561): POLYGLYCEROL ESTERS of FATTY ACIDS",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/3561",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API partial-name search for polyglycerol esters of fatty acids",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/polyglycerol%20esters%20of%20fatty%20acids",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of Classifications page",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC List of Classifications application script data",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "In vitro toxicity screening of polyglycerol esters of fatty acids as excipients for pulmonary formulations (2020)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31756429/",
+      "type": "study"
+    },
+    {
+      "title": "Estimation of the dietary intake of 13 priority additives in Europe (FACET, 2013)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24304380/",
+      "type": "study"
+    },
+    {
+      "title": "Effect of decaglycerol monooleate on phagocytosis and respiratory burst activity of human neutrophils (2000)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10762728/",
+      "type": "study"
+    },
+    {
+      "title": "EFSA direct journal page for 2022 follow-up (access attempt returned 403 in this environment)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/7308",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA direct journal page for 2017 re-evaluation (access attempt returned 403 in this environment)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5089",
+      "type": "regulatory"
+    }
+  ]
+}

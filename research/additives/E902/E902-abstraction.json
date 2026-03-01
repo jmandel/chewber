@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T19:51:55Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E902",
+    "name": "Candelilla wax",
+    "cas_numbers": [
+      "8006-44-8"
+    ],
+    "synonyms": [
+      "INS 902",
+      "Candelilla wax"
+    ],
+    "chemical_class": "Natural plant wax (primarily hydrocarbons with esters and free acids)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "glazing_agent",
+    "secondary_categories": [
+      "surface_finishing_agent",
+      "lubricant",
+      "chewing_gum_base_compound",
+      "carrier"
+    ],
+    "mechanism": "Forms a hydrophobic surface film and reduces surface friction/stickiness, improving gloss and handling stability.",
+    "common_food_categories": [
+      "chewing gum",
+      "hard candy",
+      "coated confectionery surfaces"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA 2012 re-evaluation concluded there was no need for a numerical ADI and no safety concern at reported uses and use levels."
+      },
+      "last_evaluation_year": 2012,
+      "key_finding": "No safety concern at reported uses/use levels; no numerical ADI required."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1976",
+      "notes": "Direct human food ingredient affirmed as GRAS under GMP; functional use as lubricant and surface-finishing agent; listed food uses include chewing gum and hard candy."
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "WHO JECFA database lists ADI as NOT SPECIFIED and notes no safety concern at predicted dietary exposure (<650 mg/person/day)."
+      },
+      "last_evaluation_year": 2005
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "No strong recent hazard signal was identified, but modern dedicated toxicology/epidemiology data specific to E902 are limited.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/40641176/",
+          "https://pubmed.ncbi.nlm.nih.gov/40186498/",
+          "https://pubmed.ncbi.nlm.nih.gov/33648283/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA 2012 re-evaluation reported no safety concern at reported uses/use levels and no need for a numerical ADI.",
+      "JECFA lists ADI as not specified with no safety concern at predicted exposure in its evaluation context.",
+      "No IARC classification entry was identified for candelilla wax in the checked IARC classification dataset."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "high consumers of confectionery/coated foods",
+        "frequent chewing gum consumers",
+        "children (higher intake per body weight)"
+      ],
+      "notes": "Given ADI-not-specified conclusions from EFSA and JECFA and current permitted uses, routine dietary exceedance concern is low in available evidence."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.76,
+    "rationale": "Convergent regulatory conclusions (EFSA, FDA/eCFR, JECFA) support low concern at intended uses, but evidence is driven mainly by regulatory dossiers and there is limited recent epidemiological/toxicological literature specific to E902.",
+    "key_factors": [
+      "EFSA re-evaluation found no safety concern and no numerical ADI need",
+      "FDA affirms GRAS status in 21 CFR 184.1976 with GMP conditions",
+      "JECFA lists ADI not specified and no safety concern at predicted exposure",
+      "No IARC classification signal identified",
+      "Sparse modern dedicated hazard studies specific to candelilla wax"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal: Scientific Opinion on the re-evaluation of candelilla wax (E 902) as a food additive (2012)",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/2946",
+      "type": "regulatory"
+    },
+    {
+      "title": "EFSA/Wiley DOI landing page for article 10.2903/j.efsa.2012.2946",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2012.2946",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR API-rendered text: 21 CFR 184.1976 Candelilla wax",
+      "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-21?section=184.1976",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database: CANDELILLA WAX (Home/Chemical/1401)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1401",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs list of classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications/",
+      "type": "database"
+    },
+    {
+      "title": "IARC classification dataset script (loc.app.js)",
+      "url": "https://webapi.iarc.who.int/loc/loc.app.js",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: Evaluation of Frying Performance, Storage Stability, and In Vitro Digestion of Extra Virgin Olive Oil-Candelilla Wax Oleogel (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40641176/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: Comparing frying performance of oleogels prepared from various wax types under repeated frying cycles (2025)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40186498/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed: In vitro digestion of edible nanostructured lipid carriers: Impact of a Candelilla wax gelator on performance (2021)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33648283/",
+      "type": "study"
+    },
+    {
+      "title": "NCBI E-utilities (PubMed search endpoint)",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi",
+      "type": "database"
+    }
+  ]
+}

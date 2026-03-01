@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T20:14:55Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E938",
+    "name": "Argon",
+    "cas_numbers": [
+      "7440-37-1"
+    ],
+    "synonyms": [
+      "Argon",
+      "Ar",
+      "INS 938",
+      "E938"
+    ],
+    "chemical_class": "Noble gas (inert monoatomic gas)",
+    "origin": "natural"
+  },
+  "function": {
+    "primary_category": "packaging gas",
+    "secondary_categories": [
+      "propellant",
+      "inerting gas"
+    ],
+    "mechanism": "Displaces oxygen in package headspace and acts as a chemically inert gas, reducing oxidation and helping preserve food quality.",
+    "common_food_categories": [
+      "modified-atmosphere packaged foods",
+      "meat products in mixed-gas packaging",
+      "products using gaseous propellants"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "approved",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "EFSA FAF (2024) concluded no safety concern for E938 and did not establish a numerical ADI."
+      },
+      "last_evaluation_year": 2024,
+      "key_finding": "Re-evaluation concluded that use of argon (E938) as a food additive does not raise a safety concern; low toxicological concern based on physicochemical inertness."
+    },
+    "fda": {
+      "status": "not_evaluated",
+      "cfr_citation": "No specific Title 21 food-additive/GRAS section for argon identified in queried eCFR food sections; argon hits were in medical device sections (e.g., 21 CFR 868.1075).",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "Current queried WHO JECFA argon entry/API outputs did not provide a numerical ADI for argon."
+      },
+      "last_evaluation_year": null
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "other",
+        "summary": "Main uncertainty is data completeness (limited submitted use-level and impurity information), rather than a demonstrated toxicological hazard signal in food-use context.",
+        "evidence_strength": "weak",
+        "key_references": [
+          "https://www.efsa.europa.eu/en/efsajournal/pub/9048",
+          "https://pubmed.ncbi.nlm.nih.gov/39469433/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "EFSA FAF (2024) concluded E938 use does not raise a safety concern.",
+      "Argon is chemically inert and treated as low toxicological concern in the EFSA re-evaluation.",
+      "No IARC monograph classification identified for argon."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [],
+      "notes": "No numerical ADI is available for E938 in the reviewed sources; practical exceedance concern appears low given packaging-gas/propellant use pattern and expected low dietary intake."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "risk_free",
+    "confidence": 0.69,
+    "rationale": "Regulatory evidence is favorable (EFSA 2024 no-safety-concern conclusion), with inert chemistry and no carcinogenic classification signal identified; remaining uncertainty is mainly sparse modern oral-toxicity and impurity-use data rather than positive hazard findings.",
+    "key_factors": [
+      "EFSA 2024 re-evaluation found no safety concern for E938",
+      "Chemically inert noble gas profile",
+      "No IARC classification found",
+      "Limited submitted impurity/use-level data in re-evaluation"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA Journal: Re-evaluation of argon (E 938) and helium (E 939) as food additives",
+      "url": "https://www.efsa.europa.eu/en/efsajournal/pub/9048",
+      "type": "regulatory"
+    },
+    {
+      "title": "PubMed: Re-evaluation of argon (E 938) and helium (E 939) as food additives",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39469433/",
+      "type": "study"
+    },
+    {
+      "title": "eCFR API search results for argon",
+      "url": "https://www.ecfr.gov/api/search/v1/results?query=argon&per_page=100&page=1",
+      "type": "database"
+    },
+    {
+      "title": "eCFR Versioner: Title 21 Part 184 content versions",
+      "url": "https://www.ecfr.gov/api/versioner/v1/versions/title-21.json?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "eCFR Versioner full XML: Title 21 Part 184",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2025-12-22/title-21.xml?part=184",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO JECFA database: ARGON chemical record",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1861",
+      "type": "database"
+    },
+    {
+      "title": "WHO JECFA API: SearchChemical/ByPartialName/argon",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/argon",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs: List of Classifications",
+      "url": "https://monographs.iarc.who.int/list-of-classifications",
+      "type": "database"
+    },
+    {
+      "title": "PubChem: Argon (CID 23968)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/Argon",
+      "type": "database"
+    },
+    {
+      "title": "PubChem PUG-REST: Argon registry number cross-references",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/23968/xrefs/RN/JSON",
+      "type": "database"
+    },
+    {
+      "title": "PubMed: Modified atmosphere packaging and vacuum packaging for long period chilled storage of dry-cured Iberian ham",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20374854/",
+      "type": "study"
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "research_metadata": {
+    "date": "2026-02-27T18:05:36Z",
+    "prompt_version": "2.0"
+  },
+  "identity": {
+    "e_number": "E504",
+    "name": "Magnesium carbonates",
+    "cas_numbers": [
+      "546-93-0",
+      "39409-82-0"
+    ],
+    "synonyms": [
+      "Magnesium carbonate",
+      "Heavy magnesium carbonate",
+      "Magnesium carbonate hydroxide hydrated",
+      "Hydrated basic magnesium carbonate",
+      "Magnesium subcarbonate",
+      "INS 504i",
+      "INS 504ii"
+    ],
+    "chemical_class": "Inorganic magnesium carbonate salts/hydroxycarbonates",
+    "origin": "synthetic"
+  },
+  "function": {
+    "primary_category": "anticaking_agent",
+    "secondary_categories": [
+      "acidity_regulator",
+      "carrier",
+      "flour_treatment_agent",
+      "pH_control_agent",
+      "processing_aid",
+      "nutrient_supplement"
+    ],
+    "mechanism": "Acts as a mineral flow aid that reduces powder caking and as an alkaline buffering agent that neutralizes acidity; can also function as a processing/handling aid.",
+    "common_food_categories": [
+      "Powdered foods and dry mixes",
+      "Flour-related applications",
+      "Foods requiring anti-caking/free-flow support",
+      "General direct food uses under cGMP"
+    ]
+  },
+  "regulatory": {
+    "efsa": {
+      "status": "not_evaluated",
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "A dedicated accessible EFSA food-additive re-evaluation opinion for E504 was not retrieved in this run (EFSA search endpoint blocked; historical call URL archived/moved)."
+      },
+      "last_evaluation_year": null,
+      "key_finding": "OpenEFSA contains a magnesium carbonate substance entry (including E 504(i) alias), but accessible linked output retrieved was feed-additive workflow, not a food-additive E504 re-evaluation opinion."
+    },
+    "fda": {
+      "status": "gras",
+      "cfr_citation": "21 CFR 184.1425",
+      "notes": null
+    },
+    "jecfa": {
+      "adi": {
+        "value": null,
+        "unit": "mg/kg bw/day",
+        "basis": "INS 504(i): NOT LIMITED (1965). INS 504(ii): NOT SPECIFIED (1979), included in ADI for other hydrogen carbonates."
+      },
+      "last_evaluation_year": 1979
+    },
+    "iarc_classification": null,
+    "notable_bans": []
+  },
+  "safety_evidence": {
+    "concerns": [
+      {
+        "category": "renal",
+        "summary": "At higher medicinal exposures in renal-risk populations (e.g., dialysis), magnesium carbonate-containing regimens can cause hypermagnesemia requiring dose adjustment or discontinuation in some cases.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://pubmed.ncbi.nlm.nih.gov/27900961/",
+          "https://pubmed.ncbi.nlm.nih.gov/18193489/"
+        ]
+      },
+      {
+        "category": "other",
+        "summary": "High supplemental/medicinal magnesium salt intake can cause gastrointestinal adverse effects (notably diarrhea); magnesium carbonate is among forms associated with this effect.",
+        "evidence_strength": "moderate",
+        "key_references": [
+          "https://ods.od.nih.gov/factsheets/Magnesium-HealthProfessional/"
+        ]
+      }
+    ],
+    "no_concern_confirmed": [
+      "FDA lists magnesium carbonate as GRAS as a direct human food ingredient under 21 CFR 184.1425 with cGMP limitation.",
+      "JECFA ADI outcomes are non-numeric permissive categories (NOT LIMITED for INS 504i and NOT SPECIFIED for INS 504ii).",
+      "No magnesium carbonate-specific IARC classification entry was identified on the IARC agents-classified page reviewed."
+    ],
+    "adi_exceedance": {
+      "at_risk": false,
+      "populations": [
+        "People with impaired renal function at high magnesium intakes"
+      ],
+      "notes": "No numeric ADI (mg/kg bw/day) was identified for E504 from accessible regulatory records; concern is primarily high total magnesium exposure from medicinal/supplement sources rather than typical food-additive use."
+    }
+  },
+  "risk_assessment": {
+    "recommended_level": "limited",
+    "confidence": 0.71,
+    "rationale": "Accessible regulatory sources show permissive status at food-use levels (FDA GRAS, JECFA non-numeric ADI categories), while observed adverse effects are mainly dose-dependent and concentrated in vulnerable renal populations or medicinal-use contexts.",
+    "key_factors": [
+      "FDA GRAS listing with cGMP condition (21 CFR 184.1425)",
+      "JECFA ADI: NOT LIMITED (504i) and NOT SPECIFIED (504ii)",
+      "No identified IARC classification entry for magnesium carbonate",
+      "Hypermagnesemia and GI effects are documented mainly at higher clinical/supplemental exposures"
+    ]
+  },
+  "sources": [
+    {
+      "title": "EFSA search endpoint for E504 (access blocked in this environment)",
+      "url": "https://www.efsa.europa.eu/en/search?search_api_fulltext=E504",
+      "type": "database"
+    },
+    {
+      "title": "EFSA data call URL 180508 (page archived/moved)",
+      "url": "https://www.efsa.europa.eu/en/data/call/180508",
+      "type": "regulatory"
+    },
+    {
+      "title": "OpenEFSA API substance record for Magnesium carbonate",
+      "url": "https://open.efsa.europa.eu/api/substance/get?termExtendedName=Magnesium%20carbonate",
+      "type": "database"
+    },
+    {
+      "title": "OpenEFSA API linked questions for Magnesium carbonate",
+      "url": "https://open.efsa.europa.eu/api/substance/getQuestions?termExtendedName=Magnesium%20carbonate",
+      "type": "database"
+    },
+    {
+      "title": "eCFR API Title 21 full XML (includes Part 184 and Section 184.1425)",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-02-25/title-21.xml",
+      "type": "regulatory"
+    },
+    {
+      "title": "WHO/JECFA search API for magnesium carbonate",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/api/SearchChemical/ByPartialName/magnesium%20carbonate",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA Chemical record 4697 (Magnesium carbonate, INS 504i)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4697",
+      "type": "database"
+    },
+    {
+      "title": "WHO/JECFA Chemical record 4113 (Magnesium carbonate hydroxide hydrated, INS 504ii)",
+      "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/4113",
+      "type": "database"
+    },
+    {
+      "title": "IARC Monographs agents classified by the IARC",
+      "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/",
+      "type": "database"
+    },
+    {
+      "title": "PubMed PMID 39081255 (2024 pharmacokinetic/bioequivalence study including heavy magnesium carbonate)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39081255/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 27900961 (2016 dialysis study on calcium acetate-magnesium carbonate)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27900961/",
+      "type": "study"
+    },
+    {
+      "title": "PubMed PMID 18193489 (2008 randomized hemodialysis trial with magnesium carbonate)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18193489/",
+      "type": "study"
+    },
+    {
+      "title": "NIH ODS Magnesium Fact Sheet for Health Professionals",
+      "url": "https://ods.od.nih.gov/factsheets/Magnesium-HealthProfessional/",
+      "type": "review"
+    }
+  ]
+}
