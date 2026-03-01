@@ -1408,47 +1408,64 @@ function SummaryDetails({ food }: { food: FoodDetail }) {
         </div>
       )}
 
-      {/* Additives with risk-level coloring */}
-      {abs.additives && abs.additives.length > 0 && (
-        <div style={{ marginBottom: 12 }}>
-          <div style={{ fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--fog)", marginBottom: 6 }}>Additives ({abs.additives.length})</div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-            {[...abs.additives].sort((a: any, b: any) => {
-              return (ADDITIVE_RISK_STYLES[a.risk_level]?.order ?? 9) - (ADDITIVE_RISK_STYLES[b.risk_level]?.order ?? 9);
-            }).map((a: any, i: number) => {
-              const risk = a.risk_level ?? "risk_free";
-              const style = ADDITIVE_RISK_STYLES[risk] ?? ADDITIVE_RISK_STYLES.risk_free;
-              const code = a.code ? normalizeCode(a.code) : null;
-              const badge = (
-                <span className="badge" title={`${risk.replace("_", " ")}${style.penalty ? ` (−${style.penalty} pts)` : ""}`} style={{
-                  fontSize: 11, padding: "2px 8px",
-                  background: style.bg, color: style.fg, border: `1px solid ${style.border}`
-                }}>{style.marker} {a.name ?? a.code ?? "unknown"}</span>
-              );
-              return code ? (
-                <Link key={i} to={`/additive/${code}`} style={{ textDecoration: "none" }}>
-                  {badge}
-                </Link>
-              ) : (
-                <span key={i}>{badge}</span>
-              );
-            })}
+      {/* Additives grouped by risk level */}
+      {abs.additives && abs.additives.length > 0 && (() => {
+        const groups = ["high", "moderate", "limited", "risk_free"]
+          .map(level => ({
+            level,
+            items: abs.additives.filter((a: any) => (a.risk_level ?? "risk_free") === level)
+          }))
+          .filter(g => g.items.length > 0);
+        return (
+          <div style={{ marginBottom: 12 }}>
+            <div style={{ fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--fog)", marginBottom: 6 }}>Additives ({abs.additives.length})</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              {groups.map(({ level, items }) => {
+                const s = ADDITIVE_RISK_STYLES[level as keyof typeof ADDITIVE_RISK_STYLES];
+                return (
+                  <fieldset key={level} style={{
+                    border: `1px solid ${s.border}`,
+                    borderRadius: 6,
+                    padding: "8px 10px 6px",
+                    margin: 0,
+                  }}>
+                    <legend style={{
+                      display: "inline-flex", alignItems: "center", gap: 4,
+                      padding: "0 6px",
+                      fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.04em",
+                      color: s.fg,
+                    }}>
+                      <span style={{
+                        display: "inline-flex", alignItems: "center", justifyContent: "center",
+                        width: 14, height: 14, borderRadius: 3,
+                        background: s.bg, border: `1px solid ${s.border}`,
+                        fontSize: 8, lineHeight: 1, color: s.fg
+                      }}>{s.marker}</span>
+                      {level.replace("_", " ")}
+                    </legend>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+                      {items.map((a: any, i: number) => {
+                        const code = a.code ? normalizeCode(a.code) : null;
+                        const badge = (
+                          <span className="badge" title={`${level.replace("_", " ")}${s.penalty ? ` (−${s.penalty} pts)` : ""}`} style={{
+                            fontSize: 11, padding: "2px 8px",
+                            background: s.bg, color: s.fg, border: `1px solid ${s.border}`
+                          }}>{a.name ?? a.code ?? "unknown"}</span>
+                        );
+                        return code ? (
+                          <Link key={i} to={`/additive/${code}`} style={{ textDecoration: "none" }}>{badge}</Link>
+                        ) : (
+                          <span key={i}>{badge}</span>
+                        );
+                      })}
+                    </div>
+                  </fieldset>
+                );
+              })}
+            </div>
           </div>
-          <div style={{ marginTop: 6, display: "flex", flexWrap: "wrap", gap: 8, fontSize: 10, color: "var(--fog)" }}>
-            {["high", "moderate", "limited", "risk_free"].filter(level =>
-              abs.additives.some((a: any) => (a.risk_level ?? "risk_free") === level)
-            ).map(level => {
-              const s = ADDITIVE_RISK_STYLES[level as keyof typeof ADDITIVE_RISK_STYLES];
-              return (
-                <span key={level} style={{ display: "inline-flex", alignItems: "center", gap: 3 }}>
-                  <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 14, height: 14, borderRadius: 3, background: s.bg, border: `1px solid ${s.border}`, fontSize: 8, lineHeight: 1, color: s.fg }}>{s.marker}</span>
-                  {level.replace("_", " ")}
-                </span>
-              );
-            })}
-          </div>
-        </div>
-      )}
+        );
+      })()}
 
       {/* Ingredients */}
       {abs.ingredients && (abs.ingredients as any).ingredients_list?.length > 0 ? (
