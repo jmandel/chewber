@@ -2476,12 +2476,20 @@ function ComparePage() {
     return food.abstraction?.nutrition_per_100?.[key] ?? null;
   }
 
-  function bestWorst(key: string): { bestId: string | null; worstId: string | null } {
+  function bestWorst(key: string): { bestIds: Set<string>; worstIds: Set<string> } {
     const vals = foods.map(f => ({ id: f.id, v: getNutr(f, key) })).filter(x => x.v != null);
-    if (vals.length < 2) return { bestId: null, worstId: null };
+    const empty = { bestIds: new Set<string>(), worstIds: new Set<string>() };
+    if (vals.length < 2) return empty;
     vals.sort((a, b) => a.v! - b.v!);
+    const lo = vals[0].v!, hi = vals[vals.length - 1].v!;
+    if (lo === hi) return empty; // all tied — no coloring
     const hb = higherBetter.has(key);
-    return { bestId: hb ? vals[vals.length - 1].id : vals[0].id, worstId: hb ? vals[0].id : vals[vals.length - 1].id };
+    const bestVal = hb ? hi : lo;
+    const worstVal = hb ? lo : hi;
+    return {
+      bestIds: new Set(vals.filter(x => x.v === bestVal).map(x => x.id)),
+      worstIds: new Set(vals.filter(x => x.v === worstVal).map(x => x.id)),
+    };
   }
 
   return (
@@ -2566,14 +2574,14 @@ function ComparePage() {
             </thead>
             <tbody>
               {nutrKeys.map(({ key, label, unit }) => {
-                const { bestId, worstId } = bestWorst(key);
+                const { bestIds, worstIds } = bestWorst(key);
                 return (
                   <tr key={key} style={{ borderBottom: "1px solid var(--slate)" }}>
                     <td style={{ padding: "8px", fontWeight: 600, color: "var(--fog)" }}>{label}</td>
                     {foods.map(f => {
                       const v = getNutr(f, key);
-                      const isBest = f.id === bestId;
-                      const isWorst = f.id === worstId;
+                      const isBest = bestIds.has(f.id);
+                      const isWorst = worstIds.has(f.id);
                       return (
                         <td key={f.id} style={{
                           padding: "8px", textAlign: "center", fontWeight: isBest ? 700 : 400,
