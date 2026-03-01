@@ -1396,14 +1396,14 @@ function SummaryDetails({ food }: { food: FoodDetail }) {
         <div style={{ marginBottom: 12 }}>
           <div style={{ fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--fog)", marginBottom: 6 }}>Nutrition per 100{nutr.unit_basis === "per_100ml" ? " mL" : " g"}</div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px 16px" }}>
-            {nutr.energy_kcal != null && <KV label="Calories" value={`${nutr.energy_kcal} kcal`} />}
-            {nutr.sodium_mg != null && <KV label="Sodium" value={`${nutr.sodium_mg} mg`} />}
-            {nutr.total_fat_g != null && <KV label="Fat" value={`${nutr.total_fat_g} g`} />}
-            {nutr.saturated_fat_g != null && <KV label="Sat. fat" value={`${nutr.saturated_fat_g} g`} />}
-            {nutr.carbohydrates_g != null && <KV label="Carbs" value={`${nutr.carbohydrates_g} g`} />}
-            {nutr.sugars_g != null && <KV label="Sugars" value={`${nutr.sugars_g} g`} />}
-            {nutr.protein_g != null && <KV label="Protein" value={`${nutr.protein_g} g`} />}
-            {nutr.fiber_g != null && <KV label="Fiber" value={`${nutr.fiber_g} g`} />}
+            {nutr.energy_kcal != null && <KV label="Calories" value={`${fmtN(nutr.energy_kcal)} kcal`} />}
+            {nutr.sodium_mg != null && <KV label="Sodium" value={`${fmtN(nutr.sodium_mg)} mg`} />}
+            {nutr.total_fat_g != null && <KV label="Fat" value={`${fmtN(nutr.total_fat_g)} g`} />}
+            {nutr.saturated_fat_g != null && <KV label="Sat. fat" value={`${fmtN(nutr.saturated_fat_g)} g`} />}
+            {nutr.carbohydrates_g != null && <KV label="Carbs" value={`${fmtN(nutr.carbohydrates_g)} g`} />}
+            {nutr.sugars_g != null && <KV label="Sugars" value={`${fmtN(nutr.sugars_g)} g`} />}
+            {nutr.protein_g != null && <KV label="Protein" value={`${fmtN(nutr.protein_g)} g`} />}
+            {nutr.fiber_g != null && <KV label="Fiber" value={`${fmtN(nutr.fiber_g)} g`} />}
           </div>
         </div>
       )}
@@ -1491,7 +1491,7 @@ function SummaryDetails({ food }: { food: FoodDetail }) {
       <div>
         {cls?.nutri_score_category && !["unknown", "general_food"].includes(cls.nutri_score_category) && <KV label="Category" value={cls.nutri_score_category.replace("_", " ")} />}
 
-        {cls?.fvp_percent != null && <KV label="Fruit/veg/nut %" value={`${cls.fvp_percent}%`} />}
+        {cls?.fvp_percent != null && <KV label="Fruit/veg/nut %" value={`${fmtN(cls.fvp_percent)}%`} />}
       </div>
     </div>
   );
@@ -2376,6 +2376,13 @@ function RelatedFoods({ foodId }: { foodId: string }) {
 }
 
 // ── Compare page ──────────────────────────────────────
+/** Round nutrition value to at most 1 decimal place. */
+function fmtN(v: number): string {
+  if (Number.isInteger(v)) return String(v);
+  const r = Math.round(v * 10) / 10;
+  return Number.isInteger(r) ? String(r) : r.toFixed(1);
+}
+
 function truncName(name: string, maxWords = 4): string {
   const words = name.split(/\s+/);
   return words.length > maxWords ? words.slice(0, maxWords).join(" ") + "…" : name;
@@ -2591,7 +2598,7 @@ function ComparePage() {
                             fontStyle: isBest ? "italic" : "normal",
                             color: isBest ? "var(--kale)" : isWorst ? "var(--coral)" : "var(--cream)"
                           }}>
-                            {v != null ? `${v} ${unit}` : "\u2014"}
+                            {v != null ? `${fmtN(v)} ${unit}` : "\u2014"}
                           </td>
                         );
                       })}
