@@ -1441,7 +1441,7 @@ function SummaryDetails({ food }: { food: FoodDetail }) {
                         background: s.bg, border: `1px solid ${s.border}`,
                         fontSize: 8, lineHeight: 1, color: s.fg
                       }}>{s.marker}</span>
-                      {level.replace("_", " ")}
+                      {level === "risk_free" ? "risk free" : level === "high" ? "high risk" : `${level} risk`}
                     </legend>
                     <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
                       {items.map((a: any, i: number) => {
