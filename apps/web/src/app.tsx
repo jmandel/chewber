@@ -1435,12 +1435,15 @@ function SummaryDetails({ food }: { food: FoodDetail }) {
             })}
           </div>
           <div style={{ marginTop: 6, display: "flex", flexWrap: "wrap", gap: 8, fontSize: 10, color: "var(--fog)" }}>
-            {["risk_free", "limited", "moderate", "high"].map(level => (
-              <span key={level} style={{ display: "inline-flex", alignItems: "center", gap: 3 }}>
-                <span style={{ display: "inline-block", width: 8, height: 8, borderRadius: 2, background: ADDITIVE_RISK_STYLES[level as keyof typeof ADDITIVE_RISK_STYLES].bg, border: `1px solid ${ADDITIVE_RISK_STYLES[level as keyof typeof ADDITIVE_RISK_STYLES].border}` }} />
-                {ADDITIVE_RISK_STYLES[level as keyof typeof ADDITIVE_RISK_STYLES].marker} {level.replace("_", " ")}
-              </span>
-            ))}
+            {["risk_free", "limited", "moderate", "high"].map(level => {
+              const s = ADDITIVE_RISK_STYLES[level as keyof typeof ADDITIVE_RISK_STYLES];
+              return (
+                <span key={level} style={{ display: "inline-flex", alignItems: "center", gap: 3 }}>
+                  <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 14, height: 14, borderRadius: 3, background: s.bg, border: `1px solid ${s.border}`, fontSize: 8, lineHeight: 1, color: s.fg }}>{s.marker}</span>
+                  {level.replace("_", " ")}
+                </span>
+              );
+            })}
           </div>
         </div>
       )}
