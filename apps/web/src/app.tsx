@@ -2492,121 +2492,125 @@ function ComparePage() {
     };
   }
 
+  const searchWidget = (
+    <div className="card" style={{ marginBottom: 8 }}>
+      <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+        <input value={searchQ} onChange={e => onSearch(e.target.value)}
+          placeholder={foods.length === 0 ? "Search a food to start comparing…" : "Add another food…"}
+          style={{ flex: 1, fontSize: 14, padding: "10px 12px" }} />
+      </div>
+      {hits.length > 0 && (
+        <div style={{ borderTop: "1px solid var(--slate)", marginTop: 8, paddingTop: 4 }}>
+          {hits.map(f => (
+            <div key={f.id} onClick={() => addFood(f.id)} style={{
+              display: "flex", justifyContent: "space-between", alignItems: "center",
+              padding: "8px 0", borderBottom: "1px solid var(--slate)", cursor: "pointer", fontSize: 13
+            }}>
+              <span>{f.canonical_name}{f.brand ? ` — ${f.brand}` : ""}</span>
+              <ScorePill score={f.score ?? null} size={16} />
+            </div>
+          ))}
+        </div>
+      )}
+      {hits.length === 0 && !searchQ && suggestions.length > 0 && (
+        <div style={{ borderTop: "1px solid var(--slate)", marginTop: 8, paddingTop: 6 }}>
+          <div className="muted" style={{ fontSize: 11, marginBottom: 4 }}>Suggestions</div>
+          {suggestions.slice(0, 5).map(f => (
+            <div key={f.id} onClick={() => addFood(f.id)} style={{
+              display: "flex", justifyContent: "space-between", alignItems: "center",
+              padding: "7px 0", borderBottom: "1px solid var(--slate)", cursor: "pointer", fontSize: 13,
+            }}>
+              <span>{f.canonical_name}{f.brand ? ` — ${f.brand}` : ""}</span>
+              <ScorePill score={f.score ?? null} size={16} />
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+
   return (
     <div style={{ maxWidth: 800, margin: "0 auto" }}>
       <BackLink />
-      <div className="card" style={{ marginBottom: 8 }}>
-        <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 8 }}>Compare Foods</div>
-        <div style={{ display: "flex", gap: 8 }}>
-          <input value={searchQ} onChange={e => onSearch(e.target.value)} placeholder="Add a food to compare…"
-            style={{ flex: 1, fontSize: 14, padding: "10px 12px" }} />
-        </div>
-        {hits.length > 0 && (
-          <div style={{ borderTop: "1px solid var(--slate)", marginTop: 8, paddingTop: 4 }}>
-            {hits.map(f => (
-              <div key={f.id} onClick={() => addFood(f.id)} style={{
-                display: "flex", justifyContent: "space-between", alignItems: "center",
-                padding: "8px 0", borderBottom: "1px solid var(--slate)", cursor: "pointer", fontSize: 13
-              }}>
-                <span>{f.canonical_name}{f.brand ? ` — ${f.brand}` : ""}</span>
-                <ScorePill score={f.score ?? null} size={16} />
-              </div>
-            ))}
-          </div>
-        )}
-        {hits.length === 0 && !searchQ && suggestions.length > 0 && (
-          <div style={{ borderTop: "1px solid var(--slate)", marginTop: 8, paddingTop: 6 }}>
-            <div className="muted" style={{ fontSize: 11, marginBottom: 4 }}>or pick one…</div>
-            {suggestions.map(f => (
-              <div key={f.id} onClick={() => addFood(f.id)} style={{
-                display: "flex", justifyContent: "space-between", alignItems: "center",
-                padding: "7px 0", borderBottom: "1px solid var(--slate)", cursor: "pointer", fontSize: 13,
-              }}>
-                <span>{f.canonical_name}{f.brand ? ` — ${f.brand}` : ""}</span>
-                <ScorePill score={f.score ?? null} size={16} />
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
 
+      {/* Empty state: search on top */}
       {foods.length === 0 && (
-        <div className="card muted" style={{ textAlign: "center", padding: 32 }}>Search above to add foods to compare.</div>
+        <>
+          <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 8 }}>Compare Foods</div>
+          {searchWidget}
+        </>
       )}
 
+      {/* Comparison table */}
       {foods.length > 0 && (
-        <div style={{ overflowX: "auto" }}>
-          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
-            <thead>
-              {/* Name row */}
-              <tr>
-                <th style={{ padding: "6px 8px", minWidth: 80 }} />
-                {foods.map(f => (
-                  <th key={f.id} style={{ padding: "6px 8px 0", textAlign: "center", minWidth: 100, verticalAlign: "top" }}>
-                    <Link to={`/food/${f.slug ?? f.id}`} style={{ fontWeight: 700, fontSize: 14, lineHeight: 1.2, color: "var(--cream)", textDecoration: "none" }}>{truncName(f.canonical_name)}</Link>
-                  </th>
-                ))}
-              </tr>
-              {/* Brand row */}
-              <tr>
-                <th style={{ padding: 0 }} />
-                {foods.map(f => (
-                  <th key={f.id} style={{ padding: "1px 8px 0", textAlign: "center", verticalAlign: "top", fontWeight: 400 }}>
-                    {f.brand ? <div className="muted" style={{ fontSize: 11 }}>{f.brand}</div> : <div style={{ fontSize: 11 }}> </div>}
-                  </th>
-                ))}
-              </tr>
-              {/* Score + remove row */}
-              <tr style={{ borderBottom: "2px solid var(--slate)" }}>
-                <th style={{ textAlign: "left", padding: "4px 8px", fontSize: 12, color: "var(--fog)", fontWeight: 400 }}>per 100g</th>
-                {foods.map(f => (
-                  <th key={f.id} style={{ padding: "4px 8px", textAlign: "center", verticalAlign: "middle" }}>
-                    <div style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-                      <ScorePill score={f.score ?? null} size={24} />
-                      <button onClick={() => removeFood(f.id)} style={{
-                        background: "none", border: "none", color: "var(--fog)", cursor: "pointer",
-                        fontSize: 11, padding: "2px 4px", lineHeight: 1
-                      }}>✕</button>
-                    </div>
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {nutrKeys.map(({ key, label, unit }) => {
-                const { bestIds, worstIds } = bestWorst(key);
-                return (
-                  <tr key={key} style={{ borderBottom: "1px solid var(--slate)" }}>
-                    <td style={{ padding: "8px", fontWeight: 600, color: "var(--fog)" }}>{label}</td>
-                    {foods.map(f => {
-                      const v = getNutr(f, key);
-                      const isBest = bestIds.has(f.id);
-                      const isWorst = worstIds.has(f.id);
-                      return (
-                        <td key={f.id} style={{
-                          padding: "8px", textAlign: "center", fontWeight: isBest ? 700 : 400,
-                          color: isBest ? "var(--kale)" : isWorst ? "var(--coral)" : "var(--cream)"
-                        }}>
-                          {v != null ? `${v} ${unit}` : "—"}
-                        </td>
-                      );
-                    })}
-                  </tr>
-                );
-              })}
-              <tr style={{ borderBottom: "1px solid var(--slate)" }}>
-                <td style={{ padding: "8px", fontWeight: 600, color: "var(--fog)" }}>Additives</td>
-                {foods.map(f => (
-                  <td key={f.id} style={{ padding: "8px", textAlign: "center" }}>
-                    {f.abstraction?.additives?.length ?? "—"}
-                  </td>
-                ))}
-              </tr>
-
-            </tbody>
-          </table>
+        <div className="card" style={{ marginBottom: 8, padding: 0, overflow: "hidden" }}>
+          <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13, minWidth: foods.length * 110 + 80 }}>
+              <thead>
+                <tr>
+                  <th style={{ padding: "8px", minWidth: 70 }} />
+                  {foods.map(f => (
+                    <th key={f.id} style={{ padding: "8px 6px 2px", textAlign: "center", verticalAlign: "top" }}>
+                      <Link to={`/food/${f.slug ?? f.id}`} style={{ fontWeight: 700, fontSize: 13, lineHeight: 1.2, color: "var(--cream)", textDecoration: "none" }}>
+                        {truncName(f.canonical_name)}
+                      </Link>
+                      {f.brand && <div className="muted" style={{ fontSize: 10, marginTop: 1 }}>{f.brand}</div>}
+                    </th>
+                  ))}
+                </tr>
+                <tr style={{ borderBottom: "2px solid var(--slate)" }}>
+                  <th style={{ textAlign: "left", padding: "4px 8px", fontSize: 11, color: "var(--fog)", fontWeight: 400 }}>per 100g</th>
+                  {foods.map(f => (
+                    <th key={f.id} style={{ padding: "4px 6px 6px", textAlign: "center" }}>
+                      <div style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
+                        <ScorePill score={f.score ?? null} size={22} />
+                        <button onClick={() => removeFood(f.id)} title="Remove" style={{
+                          background: "none", border: "none", color: "var(--fog)", cursor: "pointer",
+                          fontSize: 11, padding: "2px", lineHeight: 1, opacity: 0.6
+                        }}>✕</button>
+                      </div>
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {nutrKeys.map(({ key, label, unit }) => {
+                  const { bestIds, worstIds } = bestWorst(key);
+                  return (
+                    <tr key={key} style={{ borderBottom: "1px solid var(--slate)" }}>
+                      <td style={{ padding: "6px 8px", fontWeight: 600, fontSize: 12, color: "var(--fog)", whiteSpace: "nowrap" }}>{label}</td>
+                      {foods.map(f => {
+                        const v = getNutr(f, key);
+                        const isBest = bestIds.has(f.id);
+                        const isWorst = worstIds.has(f.id);
+                        return (
+                          <td key={f.id} style={{
+                            padding: "6px", textAlign: "center", fontWeight: isBest ? 700 : 400, fontSize: 12,
+                            color: isBest ? "var(--kale)" : isWorst ? "var(--coral)" : "var(--cream)"
+                          }}>
+                            {v != null ? `${v} ${unit}` : "\u2014"}
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  );
+                })}
+                <tr>
+                  <td style={{ padding: "6px 8px", fontWeight: 600, fontSize: 12, color: "var(--fog)" }}>Additives</td>
+                  {foods.map(f => (
+                    <td key={f.id} style={{ padding: "6px", textAlign: "center", fontSize: 12 }}>
+                      {f.abstraction?.additives?.length ?? "\u2014"}
+                    </td>
+                  ))}
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
+
+      {/* Search widget below table when foods exist */}
+      {foods.length > 0 && searchWidget}
     </div>
   );
 }
