@@ -1319,16 +1319,18 @@ function renderMarkdown(md: string): string {
 function FoodDetailView({ food }: { food: FoodDetail }) {
   const zagat = food.abstraction?.zagat_line as string | undefined;
   const [tab, setTab] = useState<"summary" | "report" | "data" | "log">("summary");
+  const adminUser = isAdmin();
+  const activeTab = tab === "log" && !adminUser ? "summary" : tab;
   return (
     <div className="card" style={{ padding: 0, overflow: "hidden" }}>
       <div style={{ display: "flex", borderBottom: "1px solid var(--slate)" }}>
-        <TabBtn active={tab === "summary"} onClick={() => setTab("summary")}>Summary</TabBtn>
-        <TabBtn active={tab === "report"} onClick={() => setTab("report")}>Report</TabBtn>
-        <TabBtn active={tab === "data"} onClick={() => setTab("data")}>Data</TabBtn>
-        <TabBtn active={tab === "log"} onClick={() => setTab("log")}>Log</TabBtn>
+        <TabBtn active={activeTab === "summary"} onClick={() => setTab("summary")}>Summary</TabBtn>
+        <TabBtn active={activeTab === "report"} onClick={() => setTab("report")}>Report</TabBtn>
+        <TabBtn active={activeTab === "data"} onClick={() => setTab("data")}>Data</TabBtn>
+        {adminUser && <TabBtn active={activeTab === "log"} onClick={() => setTab("log")}>Log</TabBtn>}
       </div>
       <div style={{ padding: "16px 20px", overflow: "hidden" }}>
-        {tab === "summary" && (
+        {activeTab === "summary" && (
           <div>
             {zagat ? (
               <div style={{
@@ -1343,12 +1345,12 @@ function FoodDetailView({ food }: { food: FoodDetail }) {
             {food.abstraction && <SummaryDetails food={food} />}
           </div>
         )}
-        {tab === "report" && (
+        {activeTab === "report" && (
           food.report_md
             ? <div className="md-body" dangerouslySetInnerHTML={{ __html: renderMarkdown(food.report_md) }} />
             : <div className="muted" style={{ textAlign: "center", padding: 20 }}>No report available yet.</div>
         )}
-        {tab === "data" && (
+        {activeTab === "data" && (
           <div style={{ overflow: "hidden" }}>
             {food.score_breakdown && <Section title="Score breakdown"><pre className="json-pre">{JSON.stringify(food.score_breakdown, null, 2)}</pre></Section>}
             {food.abstraction && <Section title="Abstraction"><pre className="json-pre">{JSON.stringify(food.abstraction, null, 2)}</pre></Section>}
@@ -1358,7 +1360,7 @@ function FoodDetailView({ food }: { food: FoodDetail }) {
             {food.updated_at && <KV label="Updated" value={new Date(food.updated_at).toLocaleString()} />}
           </div>
         )}
-        {tab === "log" && <ResearchLog foodId={food.id} />}
+        {activeTab === "log" && adminUser && <ResearchLog foodId={food.id} />}
       </div>
     </div>
   );
