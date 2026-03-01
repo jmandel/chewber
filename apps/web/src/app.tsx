@@ -467,11 +467,13 @@ function Header() {
 function PickScreen() {
   const nav = useNavigate();
   const [recent, setRecent] = useState<FoodSummary[]>([]);
+  const [topRated, setTopRated] = useState<FoodSummary[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [catFilter, setCatFilter] = useState("");
 
   useEffect(() => {
     api.getRecentFoods(10).then(r => setRecent(r.foods)).catch(() => {});
+    api.getTopRatedFoods(6).then(r => setTopRated(r.foods)).catch(() => {});
     api.getCategories().then(r => setCategories(r.categories.filter(c => c.food_count > 0))).catch(() => {});
   }, []);
 
@@ -500,6 +502,18 @@ function PickScreen() {
         <div className="card" style={{ marginTop: 12 }}>
           <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 10 }}>Recent</div>
           {recent.map(f => (
+            <FoodListItem key={f.id} food={f} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} />
+          ))}
+        </div>
+      )}
+
+      {topRated.length > 0 && (
+        <div className="card" style={{ marginTop: 8 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 10 }}>
+            <span style={{ fontSize: 16 }}>⭐</span>
+            <span style={{ fontWeight: 700, fontSize: 15 }}>Top Rated</span>
+          </div>
+          {topRated.map(f => (
             <FoodListItem key={f.id} food={f} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} />
           ))}
         </div>
@@ -1165,6 +1179,7 @@ function FoodPage() {
       <ScoreHero food={food} />
       <FoodCategories tags={food.tags} />
       <FoodDetailView food={food} />
+      <HealthierAlternatives food={food} />
       <RelatedFoods foodId={food.id} />
       <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
         <button onClick={() => nav("/")} className="btn-full" style={{ flex: 1 }}>← New search</button>
@@ -2300,30 +2315,119 @@ function CategoriesPage() {
   );
 }
 
+type CategorySort = "recent" | "score_desc" | "score_asc";
+
+function CategoryScoreBar({ foods }: { foods: FoodSummary[] }) {
+  const scored = foods.filter(f => f.score != null);
+  if (scored.length === 0) return null;
+  const buckets = { excellent: 0, good: 0, mediocre: 0, poor: 0 };
+  for (const f of scored) {
+    const s = f.score!;
+    if (s >= 85) buckets.excellent++;
+    else if (s >= 65) buckets.good++;
+    else if (s >= 40) buckets.mediocre++;
+    else buckets.poor++;
+  }
+  const total = scored.length;
+  const segments: { key: string; count: number; color: string; label: string }[] = [
+    { key: "excellent", count: buckets.excellent, color: "var(--kale)", label: "Excellent" },
+    { key: "good", count: buckets.good, color: "var(--amber)", label: "Good" },
+    { key: "mediocre", count: buckets.mediocre, color: "var(--tangerine)", label: "Mediocre" },
+    { key: "poor", count: buckets.poor, color: "var(--coral)", label: "Poor" },
+  ];
+  return (
+    <div style={{ marginBottom: 16 }}>
+      <div className="al-risk-bar">
+        {segments.map(seg => {
+          const pct = (seg.count / total) * 100;
+          if (!pct) return null;
+          return (
+            <div
+              key={seg.key}
+              className="al-risk-segment"
+              style={{ width: `${pct}%`, background: seg.color, borderBottom: `3px solid ${seg.color}` }}
+              title={`${seg.label}: ${seg.count}`}
+            />
+          );
+        })}
+      </div>
+      <div className="al-risk-legend">
+        {segments.map(seg => (
+          <span key={seg.key} className="al-risk-legend-item">
+            <span className="al-risk-dot" style={{ background: seg.color }} />
+            <span className="al-risk-label">{seg.label} {seg.count}</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function CategoryTopFoods({ foods, onClickFood }: { foods: FoodSummary[]; onClickFood: (f: FoodSummary) => void }) {
+  const top3 = foods.filter(f => f.score != null).sort((a, b) => (b.score ?? 0) - (a.score ?? 0)).slice(0, 3);
+  if (top3.length === 0) return null;
+  const medals = ["🥇", "🥈", "🥉"];
+  return (
+    <div className="card cat-top-card" style={{ marginBottom: 8, border: "1px solid color-mix(in srgb, var(--kale) 40%, var(--slate))" }}>
+      <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 8, color: "var(--kale)" }}>🏆 Best in Category</div>
+      {top3.map((f, i) => (
+        <div key={f.id} onClick={() => onClickFood(f)} style={{
+          display: "flex", alignItems: "center", gap: 10, padding: "7px 0",
+          borderBottom: i < top3.length - 1 ? "1px solid var(--slate)" : "none",
+          cursor: "pointer"
+        }}>
+          <span style={{ fontSize: 18, flexShrink: 0, width: 28, textAlign: "center" }}>{medals[i]}</span>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontWeight: 600, fontSize: 13, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{f.canonical_name}</div>
+            {f.brand && <div className="muted" style={{ fontSize: 11 }}>{f.brand}</div>}
+          </div>
+          <ScorePill score={f.score ?? null} size={18} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function CategoryPage() {
   const { slug } = useParams<{ slug: string }>();
   const nav = useNavigate();
   const [foods, setFoods] = useState<FoodSummary[]>([]);
+  const [allFoods, setAllFoods] = useState<FoodSummary[]>([]); // unsorted full list for distribution
   const [catName, setCatName] = useState(
     slug ? slug.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") : ""
   );
   const [catDesc, setCatDesc] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [sort, setSort] = useState<CategorySort>("recent");
 
+  // Fetch category metadata once
   useEffect(() => {
     if (!slug) return;
-    setLoading(true);
-    // Fetch category display name + description
     api.getCategories().then(r => {
       const cat = r.categories.find(c => c.slug === slug);
       if (cat) { setCatName(cat.display_name); setCatDesc(cat.description ?? null); }
     }).catch(() => {});
-    // Fetch foods with this tag
-    api.searchFoodsByTag(slug).then(r => {
+    // Always fetch unsorted full list for the score distribution bar
+    api.searchFoodsByTag(slug).then(r => setAllFoods(r.foods)).catch(() => {});
+  }, [slug]);
+
+  // Fetch foods with current sort
+  useEffect(() => {
+    if (!slug) return;
+    setLoading(true);
+    api.searchFoodsByTag(slug, sort).then(r => {
       setFoods(r.foods);
       setLoading(false);
     }).catch(() => setLoading(false));
-  }, [slug]);
+  }, [slug, sort]);
+
+  const sortOptions: { value: CategorySort; label: string }[] = [
+    { value: "recent", label: "Recent" },
+    { value: "score_desc", label: "Best Score" },
+    { value: "score_asc", label: "Worst Score" },
+  ];
+
+  const goFood = (f: FoodSummary) => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`);
 
   return (
     <div style={{ maxWidth: 480, margin: "0 auto" }}>
@@ -2332,10 +2436,37 @@ function CategoryPage() {
         <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 4 }}>{catName}</div>
         {catDesc && <div className="muted" style={{ fontSize: 13, marginBottom: 4 }}>{catDesc}</div>}
         <div className="muted" style={{ fontSize: 13, marginBottom: 12 }}>{foods.length} food{foods.length !== 1 ? "s" : ""}</div>
+      </div>
+
+      {/* Score distribution bar */}
+      {!loading && allFoods.length > 0 && <div className="card" style={{ marginTop: 8 }}>
+        <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 10 }}>Score Distribution</div>
+        <CategoryScoreBar foods={allFoods} />
+      </div>}
+
+      {/* Best in category highlight */}
+      {!loading && allFoods.length > 0 && (
+        <div style={{ marginTop: 8 }}>
+          <CategoryTopFoods foods={allFoods} onClickFood={goFood} />
+        </div>
+      )}
+
+      {/* Sort toggle */}
+      <div className="card" style={{ marginTop: 8 }}>
+        <div className="cat-sort-bar">
+          {sortOptions.map(opt => (
+            <button
+              key={opt.value}
+              className={`cat-sort-btn${sort === opt.value ? " active" : ""}`}
+              onClick={() => setSort(opt.value)}
+            >{opt.label}</button>
+          ))}
+        </div>
+
         {loading && <div className="muted" style={{ textAlign: "center", padding: 20 }}>Loading…</div>}
         {!loading && foods.length === 0 && <div className="muted" style={{ textAlign: "center", padding: 20 }}>No foods in this category yet.</div>}
         {foods.map(f => (
-          <FoodListItem key={f.id} food={f} onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} />
+          <FoodListItem key={f.id} food={f} onClick={() => goFood(f)} />
         ))}
       </div>
     </div>
@@ -2343,6 +2474,60 @@ function CategoryPage() {
 }
 
 // ── Related foods section ───────────────────────────────────
+function HealthierAlternatives({ food }: { food: FoodDetail }) {
+  const nav = useNavigate();
+  const [alternatives, setAlternatives] = useState<FoodSummary[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (food.score == null || food.score >= 75) { setLoading(false); return; }
+    api.getBetterAlternatives(food.slug ?? food.id, 5).then(r => {
+      setAlternatives(r.alternatives);
+      setLoading(false);
+    }).catch(() => setLoading(false));
+  }, [food.id, food.score]);
+
+  if (loading || alternatives.length === 0 || food.score == null || food.score >= 75) return null;
+
+  return (
+    <div className="card" style={{ marginTop: 8, borderLeft: "3px solid var(--kale)" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 10 }}>
+        <span style={{ fontSize: 18 }}>🔄</span>
+        <span style={{ fontWeight: 700, fontSize: 15, color: "var(--kale)" }}>Healthier Alternatives</span>
+      </div>
+      <div style={{ fontSize: 12, color: "var(--fog)", marginBottom: 10 }}>Similar foods with a higher health score</div>
+      {alternatives.map((f, i) => {
+        const diff = (f.score ?? 0) - (food.score ?? 0);
+        return (
+          <div key={f.id}>
+            <div
+              onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)}
+              style={{
+                display: "flex", justifyContent: "space-between", alignItems: "center",
+                padding: "10px 0", cursor: "pointer", gap: 12,
+                borderBottom: i < alternatives.length - 1 ? "1px solid var(--slate)" : "none"
+              }}
+            >
+              <div style={{ minWidth: 0, flex: 1 }}>
+                <div style={{ fontWeight: 600, fontSize: 14, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{f.canonical_name}</div>
+                {f.brand && <div className="muted" style={{ fontSize: 12 }}>{f.brand}</div>}
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
+                <span style={{
+                  fontSize: 11, fontWeight: 700, color: "var(--kale)",
+                  background: "color-mix(in srgb, var(--kale) 15%, transparent)",
+                  padding: "2px 7px", borderRadius: 6
+                }}>+{diff}</span>
+                <ScorePill score={f.score ?? null} />
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 function RelatedFoods({ foodId }: { foodId: string }) {
   const nav = useNavigate();
   const [related, setRelated] = useState<RelatedFood[]>([]);

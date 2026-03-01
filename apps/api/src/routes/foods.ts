@@ -70,6 +70,96 @@ function parseTags(tagsJson: string | null): string[] {
 
 // NOTE: literal routes MUST be registered BEFORE /foods/:id
 
+// Better alternatives — higher-scoring foods sharing at least one tag
+foodsRoutes.get("/foods/:idOrSlug/better-alternatives", (c) => {
+  const db = c.get("db");
+  const param = c.req.param("idOrSlug");
+  const limit = Math.min(Number(c.req.query("limit") ?? 5), 20);
+
+  // Find the food
+  let row = db.query(`SELECT id, tags_json FROM foods WHERE id = ? LIMIT 1`).get(param) as any;
+  if (!row) row = db.query(`SELECT id, tags_json FROM foods WHERE slug = ? LIMIT 1`).get(param) as any;
+  if (!row) return c.json({ alternatives: [] });
+
+  const tags = parseTags(row.tags_json);
+  if (tags.length === 0) return c.json({ alternatives: [] });
+
+  // Get current food's score
+  const absRow = db.query(
+    `SELECT score FROM food_abstractions WHERE food_id = ? AND status = 'active' ORDER BY version DESC LIMIT 1`
+  ).get(row.id) as any;
+  const currentScore = absRow?.score ?? null;
+  if (currentScore == null) return c.json({ alternatives: [] });
+
+  // Find foods sharing at least one tag with a higher score, ordered by score DESC
+  const alternatives = db.query(`
+    WITH my_tags(tag) AS (
+      SELECT value FROM json_each(?)
+    ),
+    matches AS (
+      SELECT f.id, f.slug, f.canonical_name, f.brand, f.tags_json,
+             COUNT(DISTINCT mt.tag) AS shared_count
+      FROM foods f, json_each(f.tags_json) jt
+      JOIN my_tags mt ON mt.tag = jt.value
+      WHERE f.id != ?
+      GROUP BY f.id
+    )
+    SELECT m.*, a.score, a.abstraction_json
+    FROM matches m
+    JOIN food_abstractions a ON a.food_id = m.id AND a.status = 'active'
+    WHERE a.score > ?
+    ORDER BY a.score DESC, m.shared_count DESC
+    LIMIT ?
+  `).all(JSON.stringify(tags), row.id, currentScore, limit) as any[];
+
+  return c.json({
+    alternatives: alternatives.map((r: any) => ({
+      id: r.id,
+      slug: r.slug ?? r.id,
+      canonical_name: r.canonical_name,
+      brand: r.brand,
+      tags: parseTags(r.tags_json),
+      score: r.score ?? null,
+      organic: r.abstraction_json ? extractOrganic(r.abstraction_json) : null,
+    }))
+  });
+});
+
+// Top rated foods — highest scoring foods across all categories
+foodsRoutes.get("/foods/top-rated", (c) => {
+  const db = c.get("db");
+  const limit = Math.min(Number(c.req.query("limit") ?? 6), 20);
+
+  const rows = db.query(`
+    SELECT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at,
+           a.score, a.abstraction_json
+    FROM foods f
+    JOIN food_abstractions a ON a.food_id = f.id AND a.status = 'active'
+    WHERE a.score IS NOT NULL
+    ORDER BY a.score DESC
+    LIMIT ?
+  `).all(limit) as any[];
+
+  return c.json({
+    foods: rows.map((r: any) => {
+      const tags = parseTags(r.tags_json);
+      return {
+        id: r.id,
+        slug: r.slug ?? r.id,
+        barcode: r.barcode,
+        canonical_name: r.canonical_name,
+        brand: r.brand,
+        category_path: r.category_path,
+        tags,
+        categories: resolveCategories(db, tags),
+        score: r.score ?? null,
+        organic: r.abstraction_json ? extractOrganic(r.abstraction_json) : null,
+        updated_at: r.updated_at
+      };
+    })
+  });
+});
+
 // Related foods — find others sharing the most tags
 foodsRoutes.get("/foods/:idOrSlug/related", (c) => {
   const db = c.get("db");
@@ -161,38 +251,80 @@ foodsRoutes.get("/foods/search", (c) => {
   const q = (c.req.query("q") ?? "").trim();
   const category = (c.req.query("category") ?? "").trim();
   const tag = (c.req.query("tag") ?? "").trim();
+  const sort = (c.req.query("sort") ?? "recent").trim(); // recent | score_desc | score_asc
+
+  const sortByScore = sort === "score_desc" || sort === "score_asc";
+  const scoreOrder = sort === "score_asc" ? "ASC" : "DESC";
 
   let rows: any[] = [];
 
   if (tag) {
-    rows = db
-      .query(
-        `SELECT id, slug, barcode, canonical_name, brand, category_path, tags_json, updated_at
-         FROM foods
-         WHERE EXISTS (SELECT 1 FROM json_each(foods.tags_json) WHERE value = ?)
-         ORDER BY updated_at DESC
-         LIMIT 50`
-      )
-      .all(tag) as any[];
+    if (sortByScore) {
+      rows = db
+        .query(
+          `SELECT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at
+           FROM foods f
+           LEFT JOIN food_abstractions a ON a.food_id = f.id AND a.status = 'active'
+           WHERE EXISTS (SELECT 1 FROM json_each(f.tags_json) WHERE value = ?)
+           ORDER BY CASE WHEN a.score IS NULL THEN 1 ELSE 0 END, a.score ${scoreOrder}, f.updated_at DESC
+           LIMIT 50`
+        )
+        .all(tag) as any[];
+    } else {
+      rows = db
+        .query(
+          `SELECT id, slug, barcode, canonical_name, brand, category_path, tags_json, updated_at
+           FROM foods
+           WHERE EXISTS (SELECT 1 FROM json_each(foods.tags_json) WHERE value = ?)
+           ORDER BY updated_at DESC
+           LIMIT 50`
+        )
+        .all(tag) as any[];
+    }
   } else if (category) {
-    rows = db
-      .query(
-        `SELECT id, slug, barcode, canonical_name, brand, category_path, tags_json, updated_at
-         FROM foods
-         WHERE category_path = ?
-         ORDER BY updated_at DESC
-         LIMIT 50`
-      )
-      .all(category) as any[];
+    if (sortByScore) {
+      rows = db
+        .query(
+          `SELECT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at
+           FROM foods f
+           LEFT JOIN food_abstractions a ON a.food_id = f.id AND a.status = 'active'
+           WHERE f.category_path = ?
+           ORDER BY CASE WHEN a.score IS NULL THEN 1 ELSE 0 END, a.score ${scoreOrder}, f.updated_at DESC
+           LIMIT 50`
+        )
+        .all(category) as any[];
+    } else {
+      rows = db
+        .query(
+          `SELECT id, slug, barcode, canonical_name, brand, category_path, tags_json, updated_at
+           FROM foods
+           WHERE category_path = ?
+           ORDER BY updated_at DESC
+           LIMIT 50`
+        )
+        .all(category) as any[];
+    }
   } else if (!q) {
-    rows = db
-      .query(
-        `SELECT id, slug, barcode, canonical_name, brand, category_path, tags_json, updated_at
-         FROM foods
-         ORDER BY updated_at DESC
-         LIMIT 50`
-      )
-      .all() as any[];
+    if (sortByScore) {
+      rows = db
+        .query(
+          `SELECT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at
+           FROM foods f
+           LEFT JOIN food_abstractions a ON a.food_id = f.id AND a.status = 'active'
+           ORDER BY CASE WHEN a.score IS NULL THEN 1 ELSE 0 END, a.score ${scoreOrder}, f.updated_at DESC
+           LIMIT 50`
+        )
+        .all() as any[];
+    } else {
+      rows = db
+        .query(
+          `SELECT id, slug, barcode, canonical_name, brand, category_path, tags_json, updated_at
+           FROM foods
+           ORDER BY updated_at DESC
+           LIMIT 50`
+        )
+        .all() as any[];
+    }
   } else {
     // Simple token prefix search for FTS5.
     const tokens = q
@@ -203,16 +335,30 @@ foodsRoutes.get("/foods/search", (c) => {
       .map((t) => `${t}*`);
     const fts = tokens.join(" ");
 
-    rows = db
-      .query(
-        `SELECT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at
-         FROM foods_fts
-         JOIN foods f ON foods_fts.rowid = f.rowid
-         WHERE foods_fts MATCH ?
-         ORDER BY bm25(foods_fts)
-         LIMIT 50`
-      )
-      .all(fts) as any[];
+    if (sortByScore) {
+      rows = db
+        .query(
+          `SELECT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at
+           FROM foods_fts
+           JOIN foods f ON foods_fts.rowid = f.rowid
+           LEFT JOIN food_abstractions a ON a.food_id = f.id AND a.status = 'active'
+           WHERE foods_fts MATCH ?
+           ORDER BY CASE WHEN a.score IS NULL THEN 1 ELSE 0 END, a.score ${scoreOrder}, f.updated_at DESC
+           LIMIT 50`
+        )
+        .all(fts) as any[];
+    } else {
+      rows = db
+        .query(
+          `SELECT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at
+           FROM foods_fts
+           JOIN foods f ON foods_fts.rowid = f.rowid
+           WHERE foods_fts MATCH ?
+           ORDER BY bm25(foods_fts)
+           LIMIT 50`
+        )
+        .all(fts) as any[];
+    }
   }
 
   // Attach score if available

@@ -181,8 +181,10 @@ export const api = {
     }),
 
   searchFoods: (q: string) => http<{ foods: FoodSummary[] }>("/api/foods/search?q=" + encodeURIComponent(q)),
-  searchFoodsByTag: (tag: string) => http<{ foods: FoodSummary[] }>("/api/foods/search?tag=" + encodeURIComponent(tag)),
-  searchFoodsByCategory: (category: string) => http<{ foods: FoodSummary[] }>("/api/foods/search?category=" + encodeURIComponent(category)),
+  searchFoodsByTag: (tag: string, sort?: "recent" | "score_desc" | "score_asc") =>
+    http<{ foods: FoodSummary[] }>("/api/foods/search?tag=" + encodeURIComponent(tag) + (sort ? "&sort=" + sort : "")),
+  searchFoodsByCategory: (category: string, sort?: "recent" | "score_desc" | "score_asc") =>
+    http<{ foods: FoodSummary[] }>("/api/foods/search?category=" + encodeURIComponent(category) + (sort ? "&sort=" + sort : "")),
   getFood: (idOrSlug: string) => http<FoodDetail>("/api/foods/" + encodeURIComponent(idOrSlug)),
   getRecentFoods: (limit = 10) => http<{ foods: FoodSummary[] }>("/api/foods/recent?limit=" + limit),
   getCategories: () => http<{ categories: Category[] }>("/api/categories"),
@@ -193,6 +195,8 @@ export const api = {
   getQueueRecent: () => http<{ jobs: QueueJob[] }>("/api/jobs/queue/recent"),
   getJobByFood: (foodId: string) => http<{ job: any; events: JobEvent[] }>("/api/jobs/by-food/" + encodeURIComponent(foodId)),
   getRelatedFoods: (idOrSlug: string, limit = 8) => http<{ related: RelatedFood[] }>(`/api/foods/${encodeURIComponent(idOrSlug)}/related?limit=${limit}`),
+  getBetterAlternatives: (idOrSlug: string, limit = 5) => http<{ alternatives: FoodSummary[] }>(`/api/foods/${encodeURIComponent(idOrSlug)}/better-alternatives?limit=${limit}`),
+  getTopRatedFoods: (limit = 6) => http<{ foods: FoodSummary[] }>(`/api/foods/top-rated?limit=${limit}`),
 
   retryJob: (id: string, adminKey: string) =>
     fetch(`${API_BASE}/api/jobs/${encodeURIComponent(id)}/retry`, {

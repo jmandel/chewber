@@ -819,6 +819,37 @@ pre { margin: 0; max-width: 100%; overflow-x: auto; }
 }
 .al-risk-label { white-space: nowrap; }
 
+/* Category leaderboard */
+.cat-sort-bar {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+.cat-sort-btn {
+  flex: 1;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: 1px solid var(--slate);
+  color: var(--fog);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.cat-sort-btn:hover {
+  color: var(--cream);
+  border-color: var(--fog);
+}
+.cat-sort-btn.active {
+  background: var(--kale);
+  border-color: var(--kale);
+  color: #fff;
+}
+.cat-top-card {
+  background: color-mix(in srgb, var(--kale) 6%, var(--charcoal));
+}
+
 /* Filters area */
 .al-filters {
   position: sticky;
