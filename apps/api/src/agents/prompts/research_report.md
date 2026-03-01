@@ -306,16 +306,17 @@ For EACH value, note the source in parentheses, e.g. `sugars_g: 4.5 (local.barco
 If you converted from per-serving, show: `[value] per [serving_size] → [converted] per 100g`.
 
 **Best-value rule**: When tool results contain MULTIPLE values for the same nutrient (e.g. from different database entries for the same product), report the MOST PRECISE non-zero value as the primary number. A 0g value for fiber, fat, or protein from one entry when another entry shows a small non-zero value (e.g. 0.8g) means the zero was a US label rounding artifact — use the non-zero value. Note the discrepancy in the ⚠️ section below.
+**ALL of these fields are REQUIRED** (use null only if truly unknown after searching):
 - energy_kj:
 - energy_kcal (optional):
-- sugars_g:
-- saturated_fat_g:
 - total_fat_g:
-- carbohydrates_g:
+- saturated_fat_g:
+- carbohydrates_g: ← REQUIRED — total carbs, not just sugars. Must be ≥ sugars_g. If the label shows "Total Carbohydrate", use that value. If only sugars are available, note this gap.
+- sugars_g:
+- fiber_g:
+- protein_g:
 - sodium_mg:
 - salt_g (optional, if label provides salt):
-- protein_g:
-- fiber_g:
 - ⚠️ Rounding/conversion warnings: (list any 0g values from US labels, single-source values, or conversion issues)
 
 ## 4) Ingredients & additives
