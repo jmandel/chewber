@@ -2551,6 +2551,100 @@ function ComparePage() {
         </>
       )}
 
+      {/* Score comparison chart */}
+      {foods.length > 0 && (() => {
+        const scoreColor = (s: number | null) =>
+          s == null ? "var(--fog)" : s >= 75 ? "var(--kale)" : s >= 50 ? "var(--amber)" : s >= 25 ? "var(--tangerine)" : "var(--coral)";
+        const maxScore = Math.max(...foods.map(f => f.score ?? 0), 1);
+        return (
+          <div className="card" style={{ marginBottom: 8 }}>
+            <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 10 }}>Chewber Score</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              {foods.map(f => {
+                const s = f.score ?? 0;
+                const pct = Math.max((s / 100) * 100, 2);
+                return (
+                  <div key={f.id} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <div style={{ minWidth: 90, maxWidth: 90, fontSize: 11, lineHeight: 1.2, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", color: "var(--fog)" }}>
+                      {truncName(f.canonical_name, 3)}
+                    </div>
+                    <div style={{ flex: 1, height: 22, background: "var(--slate)", borderRadius: 4, overflow: "hidden", position: "relative" }}>
+                      <div style={{
+                        width: `${pct}%`, height: "100%", borderRadius: 4,
+                        background: scoreColor(f.score ?? null),
+                        transition: "width 0.4s ease",
+                        display: "flex", alignItems: "center", justifyContent: "flex-end", paddingRight: 6,
+                      }}>
+                        <span style={{ fontSize: 11, fontWeight: 800, color: "#fff", textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}>
+                          {f.score ?? "—"}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* Nutrient comparison chart */}
+      {foods.length > 0 && (() => {
+        const chartNutrients = [
+          { key: "energy_kcal", label: "Calories", unit: "kcal" },
+          { key: "protein_g", label: "Protein", unit: "g" },
+          { key: "fiber_g", label: "Fiber", unit: "g" },
+          { key: "sugars_g", label: "Sugars", unit: "g" },
+          { key: "sodium_mg", label: "Sodium", unit: "mg" },
+        ];
+        const foodPalette = ["var(--kale)", "var(--amber)", "var(--tangerine)", "var(--coral)", "var(--blue)", "var(--fog)"];
+        return (
+          <div className="card" style={{ marginBottom: 8 }}>
+            <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 4 }}>Key Nutrients <span style={{ fontWeight: 400, fontSize: 11, color: "var(--fog)" }}>per 100 g</span></div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginBottom: 10 }}>
+              {foods.map((f, i) => (
+                <span key={f.id} style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 11, color: "var(--cream)" }}>
+                  <span style={{ width: 8, height: 8, borderRadius: 2, background: foodPalette[i % foodPalette.length], flexShrink: 0 }} />
+                  {truncName(f.canonical_name, 3)}{f.brand ? ` (${f.brand})` : ""}
+                </span>
+              ))}
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              {chartNutrients.map(({ key, label, unit }) => {
+                const vals = foods.map(f => getNutr(f, key) ?? 0);
+                const maxVal = Math.max(...vals, 0.01);
+                return (
+                  <div key={key}>
+                    <div style={{ fontSize: 11, fontWeight: 600, color: "var(--fog)", marginBottom: 3 }}>{label}</div>
+                    <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                      {foods.map((f, i) => {
+                        const v = getNutr(f, key);
+                        const pct = v != null ? Math.max((v / maxVal) * 100, 2) : 0;
+                        return (
+                          <div key={f.id} style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                            <div style={{ flex: 1, height: 16, background: "var(--slate)", borderRadius: 3, overflow: "hidden" }}>
+                              <div style={{
+                                width: `${pct}%`, height: "100%", borderRadius: 3,
+                                background: foodPalette[i % foodPalette.length],
+                                opacity: v != null ? 1 : 0.2,
+                                transition: "width 0.4s ease",
+                              }} />
+                            </div>
+                            <span style={{ minWidth: 52, fontSize: 11, color: "var(--cream)", textAlign: "right" }}>
+                              {v != null ? `${fmtN(v)} ${unit}` : "—"}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })()}
+
       {/* Comparison table */}
       {foods.length > 0 && (
         <div className="card" style={{ marginBottom: 8, padding: 0, overflow: "hidden" }}>
