@@ -25,11 +25,17 @@ export function toScoreInputs(abs: FoodAbstraction): {
 } {
   const nutri_category = abs.classification.nutri_score_category as NutriCategory;
 
+  // Infer missing values where logically certain:
+  // - If total_fat_g is 0, saturated_fat_g must be 0
+  // - energy_kj from energy_kcal when kj missing
+  const sat_fat = abs.nutrition_per_100.saturated_fat_g
+    ?? (abs.nutrition_per_100.total_fat_g === 0 ? 0 : null);
+
   const nutrition: NutritionPer100 = {
     energy_kj: abs.nutrition_per_100.energy_kj
       ?? (abs.nutrition_per_100.energy_kcal != null ? Math.round(abs.nutrition_per_100.energy_kcal * 4.184) : null),
     sugars_g: abs.nutrition_per_100.sugars_g,
-    saturated_fat_g: abs.nutrition_per_100.saturated_fat_g,
+    saturated_fat_g: sat_fat,
     total_fat_g: abs.nutrition_per_100.total_fat_g,
     sodium_mg: abs.nutrition_per_100.sodium_mg,
     salt_g: abs.nutrition_per_100.salt_g,
