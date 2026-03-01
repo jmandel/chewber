@@ -1435,7 +1435,7 @@ function SummaryDetails({ food }: { food: FoodDetail }) {
             })}
           </div>
           <div style={{ marginTop: 6, display: "flex", flexWrap: "wrap", gap: 8, fontSize: 10, color: "var(--fog)" }}>
-            {["risk_free", "limited", "moderate", "high"].map(level => {
+            {["high", "moderate", "limited", "risk_free"].map(level => {
               const s = ADDITIVE_RISK_STYLES[level as keyof typeof ADDITIVE_RISK_STYLES];
               return (
                 <span key={level} style={{ display: "inline-flex", alignItems: "center", gap: 3 }}>
