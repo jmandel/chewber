@@ -285,10 +285,10 @@ foodsRoutes.get("/foods/search", (c) => {
     if (sortByScore) {
       rows = db
         .query(
-          `SELECT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at
+          `SELECT DISTINCT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at
            FROM foods f
+           JOIN json_each(f.tags_json) t ON t.value = ?
            LEFT JOIN food_abstractions a ON a.food_id = f.id AND a.status = 'active'
-           WHERE f.category_path = ?
            ORDER BY CASE WHEN a.score IS NULL THEN 1 ELSE 0 END, a.score ${scoreOrder}, f.updated_at DESC
            LIMIT 50`
         )
@@ -296,10 +296,10 @@ foodsRoutes.get("/foods/search", (c) => {
     } else {
       rows = db
         .query(
-          `SELECT id, slug, barcode, canonical_name, brand, category_path, tags_json, updated_at
-           FROM foods
-           WHERE category_path = ?
-           ORDER BY updated_at DESC
+          `SELECT DISTINCT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at
+           FROM foods f
+           JOIN json_each(f.tags_json) t ON t.value = ?
+           ORDER BY f.updated_at DESC
            LIMIT 50`
         )
         .all(category) as any[];
