@@ -58,13 +58,15 @@ const STATUS_BADGE: Record<string, { bg: string; fg: string; label: string }> = 
   queued:    { bg: "color-mix(in srgb, var(--fog) 20%, transparent)", fg: "var(--fog)", label: "Queued" },
   running:   { bg: "color-mix(in srgb, var(--sky) 20%, transparent)", fg: "var(--sky)", label: "Running" },
   succeeded: { bg: "color-mix(in srgb, var(--kale) 20%, transparent)", fg: "var(--kale)", label: "Done" },
-  not_found: { bg: "color-mix(in srgb, var(--fog) 20%, transparent)", fg: "var(--fog)", label: "Not Found" },
-  failed:    { bg: "color-mix(in srgb, var(--coral) 20%, transparent)", fg: "var(--coral)", label: "Failed" },
+  not_found:     { bg: "color-mix(in srgb, var(--fog) 20%, transparent)", fg: "var(--fog)", label: "Not Found" },
+  data_conflict: { bg: "color-mix(in srgb, var(--amber) 20%, transparent)", fg: "var(--amber)", label: "Data Conflict" },
+  failed:        { bg: "color-mix(in srgb, var(--coral) 20%, transparent)", fg: "var(--coral)", label: "Failed" },
 };
 
 function QueueJobRow({ job }: { job: QueueJob }) {
-  const isNotFound = job.status === "succeeded" && !job.result_food_id;
-  const badge = isNotFound ? STATUS_BADGE.not_found : (STATUS_BADGE[job.status] ?? STATUS_BADGE.queued);
+  const isNotFound = job.status === "succeeded" && !job.result_food_id && job.query_status !== "data_conflict";
+  const isDataConflict = job.status === "succeeded" && !job.result_food_id && job.query_status === "data_conflict";
+  const badge = isDataConflict ? STATUS_BADGE.data_conflict : isNotFound ? STATUS_BADGE.not_found : (STATUS_BADGE[job.status] ?? STATUS_BADGE.queued);
   const isActive = job.status === "running" || job.status === "queued";
   const adminKey = useUIStore(s => s.adminKey);
   const retryJob = useQueueStore(s => s.retryJob);
@@ -102,7 +104,7 @@ function QueueJobRow({ job }: { job: QueueJob }) {
           {!!adminKey && <button onClick={handleRetry} disabled={retrying} style={{ fontSize: 11, padding: "3px 10px", borderRadius: 4, cursor: "pointer", background: "none", border: "1px solid var(--fog)", color: "var(--fog)", fontWeight: 600, flexShrink: 0, opacity: retrying ? 0.5 : 1 }}>{retrying ? "…" : "Retry"}</button>}
         </div>
       )}
-      {isNotFound && job.error && (
+      {(isNotFound || isDataConflict) && job.error && (
         <div className="muted" style={{ fontSize: 11, marginTop: 4 }}>{job.error}</div>
       )}
     </div>

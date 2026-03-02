@@ -10,9 +10,11 @@ jobsRoutes.get("/jobs/queue/recent", (c) => {
   const rows = db
     .query(
       `SELECT j.id, j.type, j.status, j.progress, j.payload_json, j.error, j.created_at, j.finished_at, j.result_food_id,
-              f.canonical_name, f.brand, f.slug as food_slug
+              f.canonical_name, f.brand, f.slug as food_slug,
+              q.status as query_status
        FROM jobs j
        LEFT JOIN foods f ON f.id = j.result_food_id
+       LEFT JOIN queries q ON q.id = json_extract(j.payload_json, '$.query_id')
        WHERE j.status IN ('queued','running')
           OR j.created_at >= datetime('now','-7 days')
        ORDER BY
@@ -37,7 +39,8 @@ jobsRoutes.get("/jobs/queue/recent", (c) => {
         result_food_id: r.result_food_id,
         food_name: r.canonical_name,
         food_brand: r.brand,
-        food_slug: r.food_slug
+        food_slug: r.food_slug,
+        query_status: r.query_status ?? null
       };
     })
   });

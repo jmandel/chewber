@@ -26,6 +26,9 @@
     "not_found_reason": {
       "type": ["string", "null"]
     },
+    "data_conflict_reason": {
+      "type": ["string", "null"]
+    },
     "notes": {
       "type": "string"
     }

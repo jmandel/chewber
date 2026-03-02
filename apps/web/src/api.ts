@@ -92,6 +92,7 @@ export type QueueJob = {
   created_at: string;
   finished_at?: string | null;
   label?: string;
+  query_status?: string | null;
   result_food_id?: string | null;
   food_name?: string | null;
   food_brand?: string | null;

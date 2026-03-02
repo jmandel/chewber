@@ -106,7 +106,7 @@ Step 2: web.search + web.open as last resort
 - **Verify brand matches** — when USDA search returns results, check that the brand_owner or brand_name matches the product you're researching. Results for a different brand are WRONG DATA — do not use them.
 - US labels legally round: fiber <1g → 0g, fat <0.5g → 0g. When you see 0g for fiber/fat from a US label, USDA will have the real value.
 - **When multiple USDA entries exist for the same product** (same brand, same product name), prefer the entry with the MORE PRECISE (non-zero) value. A 0g fiber entry is likely rounded; a 0.8g entry from a newer USDA submission is the real measured value. Always report the non-zero value as the primary number.
-- If sources disagree, prefer USDA and note the discrepancy in section 7.
+- **Cross-source consistency**: When you have nutrition data from multiple sources, compare the fields they have in common. If overlapping fields agree reasonably, it is safe to fill in missing fields from a secondary source. If overlapping fields diverge significantly, the sources may describe different products or formulations — do not combine them. Use one source for all nutrition values, or use the `data_conflict` exit to report the irreconcilable discrepancy. The system may inject a `cross_source_warning` into tool results when it detects this situation automatically.
 - If ALL tool results are empty or lack nutrition, use the `not_found_reason` exit. Do NOT fill in numbers from memory or produce a report with fabricated data.
 
 You have up to **10 rounds** of tool calls. Produce the final report as soon as you have enough information. Do not waste rounds.
@@ -140,10 +140,24 @@ C) Product not found:
   "notes": "short reasoning"
 }
 
+D) Data conflict (sources irreconcilable):
+{
+  "tool_calls": [],
+  "final_markdown": null,
+  "not_found_reason": null,
+  "data_conflict_reason": "Brief explanation of which sources conflict and on which fields, e.g. 'Source A and Source B both have nutrition data but disagree significantly on N overlapping fields.'",
+  "notes": "short reasoning"
+}
+
 Use option C when:
 - The product does not appear to exist (no matches in any database or web search)
 - Tool results only return unrelated products despite multiple search strategies
 - You cannot find ANY real nutrition data — do NOT fabricate a report with estimated values
+
+Use option D when:
+- Multiple sources provide nutrition data for what appears to be the same product, but overlapping fields disagree significantly
+- You cannot determine which source is authoritative for the specific product being queried
+- Combining fields from different sources would produce an internally inconsistent nutrition profile
 
 You MUST try at least 2-3 different search strategies before concluding a product is not found.
 

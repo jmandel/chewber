@@ -22,6 +22,7 @@ const StepSchema = z.object({
   tool_calls: z.array(ToolCallSchema),
   final_markdown: z.string().nullable(),
   not_found_reason: z.string().nullable().optional(),
+  data_conflict_reason: z.string().nullable().optional(),
   notes: z.string()
 });
 
@@ -37,6 +38,12 @@ export type EmitFn = (evt: { level: "debug" | "info" | "tool" | "warn" | "error"
  * Structured observations accumulated from tool calls during research.
  * Passed to post-LLM enrichment so we don't need to re-fetch anything.
  */
+/** Per-100g nutrition values keyed by field name (e.g. "protein_g", "total_fat_g"). */
+export type NutritionRecord = Partial<Record<string, number>>;
+
+/** Nutrition values grouped by source (tool + identifier). */
+export type NutritionBySource = Map<string, NutritionRecord>;
+
 export type ToolObservations = {
   /** Raw OFF additive tags seen across all tool calls (e.g. ["en:e330", "en:e322i"]) */
   offAdditiveTags: string[];
@@ -44,12 +51,15 @@ export type ToolObservations = {
   ingredientTexts: string[];
   /** Organic-related label tags from OFF (e.g. ["en:organic", "en:usda-organic"]) */
   organicLabels: string[];
+  /** Nutrition values per source for cross-source consistency checking */
+  nutritionBySource: NutritionBySource;
 };
 
 export type ResearchResult = {
   markdown: string;
   observations: ToolObservations;
   not_found_reason?: string;
+  data_conflict_reason?: string;
 };
 
 // ── Circuit-breaker constants ──────────────────────────────────────
@@ -145,7 +155,7 @@ function formatToolResult(tool: string, result: any): string {
 
 export async function runResearchAgent(input: ResearchInput, emit: EmitFn): Promise<ResearchResult> {
   const llm = getLlm("research");
-  const observations: ToolObservations = { offAdditiveTags: [], ingredientTexts: [], organicLabels: [] };
+  const observations: ToolObservations = { offAdditiveTags: [], ingredientTexts: [], organicLabels: [], nutritionBySource: new Map() };
 
   const messages: { role: "system" | "user" | "assistant"; content: string }[] = [
     { role: "system", content: prompt },
@@ -243,6 +253,11 @@ export async function runResearchAgent(input: ResearchInput, emit: EmitFn): Prom
       return { markdown: "", observations, not_found_reason: obj.not_found_reason };
     }
 
+    if (obj.data_conflict_reason) {
+      emit({ level: "warn", message: `Data conflict: ${obj.data_conflict_reason}` });
+      return { markdown: "", observations, data_conflict_reason: obj.data_conflict_reason };
+    }
+
     if (obj.final_markdown) {
       emit({ level: "info", message: "Research agent produced final report." });
       return { markdown: obj.final_markdown, observations };
@@ -290,7 +305,15 @@ export async function runResearchAgent(input: ResearchInput, emit: EmitFn): Prom
     }
 
     messages.push({ role: "assistant", content: text });
-    messages.push({ role: "user", content: JSON.stringify({ tool_results: toolResults }, null, 2) });
+
+    // Check cross-source nutrition consistency after each tool batch
+    const crossSourceWarning = checkCrossSourceConsistency(observations.nutritionBySource);
+    const userPayload: any = { tool_results: toolResults };
+    if (crossSourceWarning) {
+      userPayload.cross_source_warning = crossSourceWarning;
+      emit({ level: "warn", message: "Cross-source nutrition discrepancy detected", data: { warning: crossSourceWarning } });
+    }
+    messages.push({ role: "user", content: JSON.stringify(userPayload, null, 2) });
   }
 
   emit({ level: "warn", message: "Max steps reached; returning partial report." });
@@ -427,6 +450,38 @@ function collectObservations(obs: ToolObservations, tool: string, result: any) {
       }
     }
   }
+
+  // ── Nutrition by source (for cross-source consistency checking) ──
+  const isOff = tool === "local.barcode_lookup" || tool === "local.search";
+  const isUsda = tool === "local.usda_barcode" || tool === "local.usda_search";
+  const sourceLabel = isOff ? "OFF" : isUsda ? "USDA" : tool;
+
+  // Single-product results (barcode lookups)
+  if (result.product?.nutriments && typeof result.product.nutriments === "object") {
+    const id = `${sourceLabel}:${result.product.barcode || "unknown"}`;
+    const normalized = normalizeNutrition(result.product.nutriments, sourceLabel);
+    if (Object.keys(normalized).length > 0 && !obs.nutritionBySource.has(id)) {
+      obs.nutritionBySource.set(id, normalized);
+    }
+  }
+  if (result.best_match?.nutriments && typeof result.best_match.nutriments === "object") {
+    const id = `${sourceLabel}:${result.best_match.gtin_upc || result.best_match.fdc_id || "unknown"}`;
+    const normalized = normalizeNutrition(result.best_match.nutriments, sourceLabel);
+    if (Object.keys(normalized).length > 0 && !obs.nutritionBySource.has(id)) {
+      obs.nutritionBySource.set(id, normalized);
+    }
+  }
+  // Search results — only take the top/best match to avoid noise
+  if (Array.isArray(result.results) && result.results.length > 0) {
+    const best = result.results[0];
+    if (best?.nutriments && typeof best.nutriments === "object") {
+      const id = `${sourceLabel}:${best.barcode || best.gtin_upc || best.fdc_id || "search-0"}`;
+      const normalized = normalizeNutrition(best.nutriments, sourceLabel);
+      if (Object.keys(normalized).length > 0 && !obs.nutritionBySource.has(id)) {
+        obs.nutritionBySource.set(id, normalized);
+      }
+    }
+  }
 }
 
 // Fields the research report template lists as REQUIRED in Section 3.
@@ -441,6 +496,116 @@ function findMissingNutrition(nutriments: Record<string, number>): string[] {
   return REQUIRED_NUTRITION_FIELDS.filter(f =>
     nutriments[f] == null && nutriments[`${f}_100g`] == null
   );
+}
+
+// ── Cross-source nutrition consistency ─────────────────────────────
+
+/** Canonical field names for cross-source comparison. */
+const CANONICAL_NUTRITION_FIELDS = [
+  "energy_kcal", "total_fat_g", "saturated_fat_g", "carbohydrates_g",
+  "sugars_g", "fiber_g", "protein_g", "sodium_mg",
+];
+
+/**
+ * OFF nutriment keys use suffixes like "_100g"; USDA uses our canonical names.
+ * Map from OFF-style key → canonical field name.
+ */
+const OFF_KEY_MAP: Record<string, string> = {
+  "energy-kcal_100g": "energy_kcal",
+  "energy_100g": "energy_kcal",  // sometimes stored as kJ — handle below
+  "fat_100g": "total_fat_g",
+  "saturated-fat_100g": "saturated_fat_g",
+  "carbohydrates_100g": "carbohydrates_g",
+  "sugars_100g": "sugars_g",
+  "fiber_100g": "fiber_g",
+  "proteins_100g": "protein_g",
+  "sodium_100g": "sodium_mg",  // OFF stores sodium in g; we convert to mg
+  // USDA keys (already canonical)
+  "energy_kcal": "energy_kcal",
+  "total_fat_g": "total_fat_g",
+  "saturated_fat_g": "saturated_fat_g",
+  "carbohydrates_g": "carbohydrates_g",
+  "sugars_g": "sugars_g",
+  "fiber_g": "fiber_g",
+  "protein_g": "protein_g",
+  "sodium_mg": "sodium_mg",
+};
+
+/**
+ * Normalize a raw nutriments object (OFF or USDA) to canonical field names.
+ * Returns only fields in CANONICAL_NUTRITION_FIELDS with non-null values.
+ */
+function normalizeNutrition(raw: Record<string, number>, source: string): NutritionRecord {
+  const out: NutritionRecord = {};
+  for (const [rawKey, value] of Object.entries(raw)) {
+    if (value == null) continue;
+    const canon = OFF_KEY_MAP[rawKey];
+    if (!canon) continue;
+
+    let v = value;
+    // OFF stores sodium in grams; convert to mg
+    if (rawKey === "sodium_100g") v = value * 1000;
+    // OFF "energy_100g" is kJ, not kcal — skip it (we use energy-kcal_100g)
+    if (rawKey === "energy_100g" && source.includes("OFF")) continue;
+
+    out[canon] = v;
+  }
+  return out;
+}
+
+/**
+ * Compare nutrition values across all sources and return warnings for
+ * fields where sources disagree significantly.
+ *
+ * A field is flagged when BOTH:
+ *   - absolute difference exceeds a small noise floor (to ignore rounding)
+ *   - relative difference exceeds 40%
+ *
+ * Returns null if no significant divergence, or a factual summary string.
+ */
+function checkCrossSourceConsistency(nutritionBySource: NutritionBySource): string | null {
+  const sources = Array.from(nutritionBySource.entries());
+  if (sources.length < 2) return null;
+
+  const divergent: string[] = [];
+
+  for (const field of CANONICAL_NUTRITION_FIELDS) {
+    const valuesWithSource: { source: string; value: number }[] = [];
+    for (const [src, nutr] of sources) {
+      const v = nutr[field];
+      if (v != null && v >= 0) valuesWithSource.push({ source: src, value: v });
+    }
+    if (valuesWithSource.length < 2) continue;
+
+    for (let i = 0; i < valuesWithSource.length; i++) {
+      for (let j = i + 1; j < valuesWithSource.length; j++) {
+        const a = valuesWithSource[i];
+        const b = valuesWithSource[j];
+        const absDiff = Math.abs(a.value - b.value);
+        const avg = (a.value + b.value) / 2;
+        const relDiff = avg > 0 ? absDiff / avg : 0;
+
+        // Noise floor: skip trivially small absolute differences
+        const absThreshold = field === "sodium_mg" ? 200 : field === "energy_kcal" ? 30 : 2;
+        if (absDiff <= absThreshold) continue;
+        if (relDiff <= 0.40) continue;
+
+        divergent.push(
+          `  - ${field}: ${a.source}=${a.value}, ${b.source}=${b.value} ` +
+          `(Δ ${absDiff.toFixed(1)}, ${(relDiff * 100).toFixed(0)}%)`
+        );
+      }
+    }
+  }
+
+  if (divergent.length === 0) return null;
+
+  return [
+    "⚠️ CROSS-SOURCE NUTRITION DISCREPANCY:",
+    "These fields differ significantly between sources on overlapping data:",
+    "",
+    ...divergent,
+  ].join("\n");
 }
 
 async function runTool(tool: string, args: any): Promise<any> {
