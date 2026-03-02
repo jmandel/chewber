@@ -70,7 +70,8 @@ export const FoodAbstractionSchema = z.object({
     total_fat_g: z.number().min(0).nullable(),
     // Total carbohydrates in grams. ALWAYS extract this — it appears on
     // every US/EU nutrition label as "Total Carbohydrate". Must be >= sugars_g.
-    carbohydrates_g: z.number().min(0).nullable().optional(),
+    // This field is REQUIRED (not optional). Set to null only if truly unknown.
+    carbohydrates_g: z.number().min(0).nullable(),
     sodium_mg: z.number().min(0).nullable(),
     salt_g: z.number().min(0).nullable(),
     protein_g: z.number().min(0).nullable(),
