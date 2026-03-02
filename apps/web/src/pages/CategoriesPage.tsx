@@ -30,7 +30,7 @@ export function CategoriesPage() {
 
 function CategoryScoreBar({ foods }: { foods: FoodSummary[] }) {
   const scored = foods.filter(f => f.score != null);
-  if (scored.length === 0) return null;
+  if (scored.length < 2) return null;
   const buckets = { excellent: 0, good: 0, mediocre: 0, poor: 0 };
   for (const f of scored) {
     const s = f.score!;
@@ -41,43 +41,81 @@ function CategoryScoreBar({ foods }: { foods: FoodSummary[] }) {
   }
   const total = scored.length;
   const segments: { key: string; count: number; color: string; label: string; range: string }[] = [
-    { key: "excellent", count: buckets.excellent, color: "var(--kale)", label: "Excellent", range: "85–100" },
-    { key: "good", count: buckets.good, color: "var(--amber)", label: "Good", range: "65–84" },
-    { key: "mediocre", count: buckets.mediocre, color: "var(--tangerine)", label: "Mediocre", range: "40–64" },
-    { key: "poor", count: buckets.poor, color: "var(--coral)", label: "Poor", range: "0–39" },
+    { key: "excellent", count: buckets.excellent, color: "var(--kale)", label: "Excellent", range: "85\u2013100" },
+    { key: "good", count: buckets.good, color: "var(--amber)", label: "Good", range: "65\u201384" },
+    { key: "mediocre", count: buckets.mediocre, color: "var(--tangerine)", label: "Mediocre", range: "40\u201364" },
+    { key: "poor", count: buckets.poor, color: "var(--coral)", label: "Poor", range: "0\u201339" },
   ];
   const active = segments.filter(s => s.count > 0);
+
+  // Compute which segments are wide enough for inline text (~12ch minimum)
+  const INLINE_THRESHOLD = 22; // percent needed for "Label N (R)" inline
+  const LABEL_THRESHOLD = 14;  // percent needed for just "Label N"
+
+  // Build callout positions: cumulative % center of each narrow segment
+  let cumPct = 0;
+  const positioned = active.map(seg => {
+    const pct = (seg.count / total) * 100;
+    const centerPct = cumPct + pct / 2;
+    cumPct += pct;
+    const fitsFullLabel = pct >= INLINE_THRESHOLD;
+    const fitsShortLabel = pct >= LABEL_THRESHOLD;
+    return { ...seg, pct, centerPct, fitsFullLabel, fitsShortLabel };
+  });
+  const callouts = positioned.filter(s => !s.fitsShortLabel);
+
   return (
-    <div style={{ marginBottom: 16 }}>
-      {/* Stacked bar with inline labels */}
-      <div style={{ display: "flex", borderRadius: 8, overflow: "hidden", height: 32 }}>
-        {active.map(seg => {
-          const pct = (seg.count / total) * 100;
-          return (
+    <div style={{ marginBottom: callouts.length > 0 ? 0 : 16 }}>
+      {/* Bar + callouts wrapper */}
+      <div style={{ position: "relative", marginBottom: callouts.length > 0 ? 40 : 0 }}>
+        {/* Stacked bar */}
+        <div style={{ display: "flex", borderRadius: 8, overflow: "hidden", height: 34 }}>
+          {positioned.map(seg => (
             <div
               key={seg.key}
               style={{
-                width: `${pct}%`, background: seg.color, minWidth: 36,
+                width: `${seg.pct}%`, background: seg.color, minWidth: 8,
                 display: "flex", alignItems: "center", justifyContent: "center",
                 fontSize: 11, fontWeight: 700, color: "#fff",
                 textShadow: "0 1px 2px rgba(0,0,0,0.4)", whiteSpace: "nowrap",
                 padding: "0 4px", overflow: "hidden",
               }}
-              title={`${seg.label}: ${seg.count}`}
+              title={`${seg.label} ${seg.count} (${seg.range})`}
             >
-              {pct >= 18 ? `${seg.label} ${seg.count}` : seg.count}
+              {seg.fitsFullLabel
+                ? `${seg.label} ${seg.count} (${seg.range})`
+                : seg.fitsShortLabel
+                  ? `${seg.label} ${seg.count}`
+                  : ""}
             </div>
-          );
-        })}
-      </div>
-      {/* Text legend below (non-color-dependent) */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "4px 14px", marginTop: 8, fontSize: 12 }}>
-        {segments.map(seg => (
-          <span key={seg.key} style={{ display: "inline-flex", alignItems: "center", gap: 5, color: seg.count ? "var(--cream)" : "var(--fog)", opacity: seg.count ? 1 : 0.5 }}>
-            <span style={{ fontWeight: 700, fontSize: 13 }}>{seg.count}</span>
-            <span>{seg.label}</span>
-            <span style={{ fontSize: 10, color: "var(--fog)" }}>({seg.range})</span>
-          </span>
+          ))}
+        </div>
+        {/* Callout dots + lines + labels for narrow segments */}
+        {callouts.map(seg => (
+          <div key={seg.key} style={{
+            position: "absolute", left: `${seg.centerPct}%`, top: 0,
+            transform: "translateX(-50%)",
+            display: "flex", flexDirection: "column", alignItems: "center",
+            pointerEvents: "none",
+          }}>
+            {/* Dot centered on bar */}
+            <div style={{
+              width: 8, height: 8, borderRadius: "50%",
+              background: "#fff", border: `2px solid ${seg.color}`,
+              marginTop: 13, /* vertically center in 34px bar */
+              flexShrink: 0,
+            }} />
+            {/* Connecting line */}
+            <div style={{ width: 2, height: 10, background: seg.color, opacity: 0.5 }} />
+            {/* Label */}
+            <div style={{
+              fontSize: 10, fontWeight: 600, whiteSpace: "nowrap",
+              color: seg.color, lineHeight: 1.3, textAlign: "center",
+            }}>
+              {seg.label} {seg.count}
+              <span style={{ color: "var(--fog)", fontWeight: 400 }}> ({seg.range})</span>
+            </div>
+          </div>
         ))}
       </div>
     </div>
@@ -137,7 +175,7 @@ export function CategoryPage() {
         {catDesc && <div className="muted" style={{ fontSize: 13, marginBottom: 4 }}>{catDesc}</div>}
         <div className="muted" style={{ fontSize: 13, marginBottom: 12 }}>{foods?.length ?? 0} food{(foods?.length ?? 0) !== 1 ? "s" : ""}</div>
       </div>
-      {!loading && allFoods && allFoods.length > 0 && <div className="card" style={{ marginTop: 8 }}><div style={{ fontWeight: 700, fontSize: 14, marginBottom: 10 }}>Score Distribution</div><CategoryScoreBar foods={allFoods} /></div>}
+      {!loading && allFoods && allFoods.length > 1 && <div className="card" style={{ marginTop: 8 }}><div style={{ fontWeight: 700, fontSize: 14, marginBottom: 10 }}>Score Distribution</div><CategoryScoreBar foods={allFoods} /></div>}
       {!loading && allFoods && allFoods.length > 0 && <div style={{ marginTop: 8 }}><CategoryTopFoods foods={allFoods} onClickFood={goFood} /></div>}
       <div className="card" style={{ marginTop: 8 }}>
         <div className="cat-sort-bar">{sortOptions.map(opt => (<button key={opt.value} className={`cat-sort-btn${sort === opt.value ? " active" : ""}`} onClick={() => setSort(opt.value)}>{opt.label}</button>))}</div>
