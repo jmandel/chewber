@@ -422,6 +422,20 @@ function collectObservations(obs: ToolObservations, tool: string, result: any) {
   }
 }
 
+// Fields the research report template lists as REQUIRED in Section 3.
+// Used to detect gaps in tool results and hint the agent to fill them.
+const REQUIRED_NUTRITION_FIELDS = [
+  "energy_kcal", "total_fat_g", "saturated_fat_g", "carbohydrates_g",
+  "sugars_g", "fiber_g", "protein_g", "sodium_mg",
+];
+
+function findMissingNutrition(nutriments: Record<string, number>): string[] {
+  // OFF uses "_100g" suffix; USDA uses bare names. Check both.
+  return REQUIRED_NUTRITION_FIELDS.filter(f =>
+    nutriments[f] == null && nutriments[`${f}_100g`] == null
+  );
+}
+
 async function runTool(tool: string, args: any): Promise<any> {
   switch (tool) {
     // ── Local Open Food Facts ──────────────────────────────────
@@ -438,26 +452,34 @@ async function runTool(tool: string, args: any): Promise<any> {
       }
       const hasNutrition = result.nutriments && Object.keys(result.nutriments).length > 0;
       const nutriCount = hasNutrition ? Object.keys(result.nutriments!).length : 0;
+      const missing = hasNutrition ? findMissingNutrition(result.nutriments!) : REQUIRED_NUTRITION_FIELDS;
       const fvpn = extractOffFvpn(result.nutriments);
       const detectedAdditives = extractOffAdditives(result.additives);
       const organicLabels = extractOrganicLabels(result.labels);
+
+      let hint: string;
+      if (!hasNutrition) {
+        hint = "Product found but MISSING nutrition data. Use local.usda_barcode or local.usda_search to find per-100g nutrition for this product.";
+      } else if (!result.ingredients_text) {
+        hint = "Product found with nutrition but no ingredients. Try local.usda_barcode or web.search for ingredient list.";
+      } else if (missing.length > 0) {
+        hint = `Product found with nutrition + ingredients but missing: ${missing.join(", ")}. Try local.usda_search by product name to fill gaps.`;
+      } else {
+        hint = "Product found with complete nutrition + ingredients. This data is sufficient — only cross-reference if values look suspicious.";
+      }
+
       return {
         found: true,
         source: "Open Food Facts (local)",
         has_nutrition: hasNutrition,
         nutrition_fields: nutriCount,
+        missing_nutrition: missing.length > 0 ? missing : undefined,
         has_ingredients: !!result.ingredients_text,
         fvpn_estimate: fvpn,
         detected_additives: detectedAdditives,
         organic_labels: organicLabels,
         product: result,
-        hint: !hasNutrition
-          ? "Product found but MISSING nutrition data. Use local.usda_barcode or local.usda_search to find per-100g nutrition for this product."
-          : !result.ingredients_text
-            ? "Product found with nutrition but no ingredients. Try local.usda_barcode or web.search for ingredient list."
-            : nutriCount >= 8
-              ? "Product found with comprehensive nutrition + ingredients. This data is sufficient — only cross-reference if values look suspicious."
-              : "Product found with partial nutrition + ingredients. Consider local.usda_search to fill gaps."
+        hint,
       };
     }
 
@@ -504,15 +526,19 @@ async function runTool(tool: string, args: any): Promise<any> {
         };
       }
       const best = results.find(r => r.nutriments) ?? results[0];
+      const missing = best.nutriments ? findMissingNutrition(best.nutriments) : REQUIRED_NUTRITION_FIELDS;
       return {
         found: true,
         count: results.length,
         source: "USDA FoodData Central (local)",
         has_nutrition: !!best.nutriments,
+        missing_nutrition: missing.length > 0 ? missing : undefined,
         best_match: best,
         all_matches: results.length > 1 ? results : undefined,
         hint: best.nutriments
-          ? "Authoritative USDA nutrition data found. This is high-quality per-100g data."
+          ? missing.length > 0
+            ? `Authoritative USDA nutrition data found but missing: ${missing.join(", ")}. Try web.search for the missing fields.`
+            : "Authoritative USDA nutrition data found. This is high-quality per-100g data."
           : "Product found in USDA but nutrition data missing. Try web.search as last resort."
       };
     }

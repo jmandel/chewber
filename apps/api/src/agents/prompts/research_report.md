@@ -101,7 +101,7 @@ Step 2: web.search + web.open as last resort
 ### Key rules:
 - You may request **multiple tool calls in a single step** — they run in parallel.
 - **NEVER skip local tools** and go straight to web search.
-- **Prefer cross-referencing 2+ sources** for nutrition when easy to obtain, but a single comprehensive local source (8+ nutrition fields from OFF or USDA) is acceptable. Do NOT go to web search just to cross-reference when local data is already solid.
+- **Prefer cross-referencing 2+ sources** for nutrition when easy to obtain. A single local source is acceptable only when ALL required nutrition fields are present. If the tool response includes `missing_nutrition`, use `local.usda_search` by product name to fill those gaps before moving to web search.
 - **USDA per-100g data is authoritative** — prefer it over web-scraped or converted-from-serving data.
 - **Verify brand matches** — when USDA search returns results, check that the brand_owner or brand_name matches the product you're researching. Results for a different brand are WRONG DATA — do not use them.
 - US labels legally round: fiber <1g → 0g, fat <0.5g → 0g. When you see 0g for fiber/fat from a US label, USDA will have the real value.
