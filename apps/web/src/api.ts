@@ -64,6 +64,10 @@ export type RelatedFood = FoodSummary & {
   shared_tags: string[];
 };
 
+export type AlternativeFood = FoodSummary & {
+  shared_tags?: string[];
+};
+
 export type Category = {
   slug: string;
   display_name: string;
@@ -196,7 +200,7 @@ export const api = {
   getQueueRecent: () => http<{ jobs: QueueJob[] }>("/api/jobs/queue/recent"),
   getJobByFood: (foodId: string) => http<{ job: any; events: JobEvent[] }>("/api/jobs/by-food/" + encodeURIComponent(foodId)),
   getRelatedFoods: (idOrSlug: string, limit = 8) => http<{ related: RelatedFood[] }>(`/api/foods/${encodeURIComponent(idOrSlug)}/related?limit=${limit}`),
-  getBetterAlternatives: (idOrSlug: string, limit = 5) => http<{ alternatives: FoodSummary[] }>(`/api/foods/${encodeURIComponent(idOrSlug)}/better-alternatives?limit=${limit}`),
+  getBetterAlternatives: (idOrSlug: string, limit = 5) => http<{ alternatives: AlternativeFood[] }>(`/api/foods/${encodeURIComponent(idOrSlug)}/better-alternatives?limit=${limit}`),
   getTopRatedFoods: (limit = 6) => http<{ foods: FoodSummary[] }>(`/api/foods/top-rated?limit=${limit}`),
 
   retryJob: (id: string, adminKey: string) =>

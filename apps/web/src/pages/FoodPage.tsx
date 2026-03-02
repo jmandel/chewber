@@ -366,11 +366,18 @@ function HealthierAlternatives({ food }: { food: FoodDetail }) {
     <div className="card" style={{ marginTop: 8, borderLeft: "3px solid var(--kale)" }}>
       <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 10 }}><span style={{ fontSize: 18 }}>🔄</span><span style={{ fontWeight: 700, fontSize: 15, color: "var(--kale)" }}>Healthier Alternatives</span></div>
       <div style={{ fontSize: 12, color: "var(--fog)", marginBottom: 10 }}>Similar foods with a higher health score</div>
-      {alternatives.map((f, i) => { const diff = (f.score ?? 0) - (food.score ?? 0); return (
-        <div key={f.id}><div onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} onMouseEnter={() => prefetch(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 0", cursor: "pointer", gap: 12, borderBottom: i < alternatives.length - 1 ? "1px solid var(--slate)" : "none" }}>
-          <div style={{ minWidth: 0, flex: 1 }}><div style={{ fontWeight: 600, fontSize: 14, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{f.canonical_name}</div>{f.brand && <div className="muted" style={{ fontSize: 12 }}>{f.brand}</div>}</div>
-          <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}><span style={{ fontSize: 11, fontWeight: 700, color: "var(--kale)", background: "color-mix(in srgb, var(--kale) 15%, transparent)", padding: "2px 7px", borderRadius: 6 }}>+{diff}</span><ScorePill score={f.score ?? null} /></div>
-        </div></div>); })}
+      {alternatives.map((f, i) => { const diff = (f.score ?? 0) - (food.score ?? 0); const sharedCats = (f.shared_tags ?? []).filter(isCategory); return (
+        <div key={f.id}>
+          <div onClick={() => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} onMouseEnter={() => prefetch(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 0", cursor: "pointer", gap: 12 }}>
+            <div style={{ minWidth: 0, flex: 1 }}>
+              <div style={{ fontWeight: 600, fontSize: 14, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{f.canonical_name}</div>
+              {f.brand && <div className="muted" style={{ fontSize: 12 }}>{f.brand}</div>}
+              {sharedCats.length > 0 && <div style={{ display: "flex", flexWrap: "wrap", gap: 3, marginTop: 3 }}>{sharedCats.map(t => <span key={t} className="badge" style={{ fontSize: 9, padding: "1px 6px", opacity: 0.7 }}>{t.split("-").map(w => w[0].toUpperCase() + w.slice(1)).join(" ")}</span>)}</div>}
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}><span style={{ fontSize: 11, fontWeight: 700, color: "var(--kale)", background: "color-mix(in srgb, var(--kale) 15%, transparent)", padding: "2px 7px", borderRadius: 6 }}>+{diff}</span><ScorePill score={f.score ?? null} /></div>
+          </div>
+          {i < alternatives.length - 1 && <div style={{ borderBottom: "1px solid var(--slate)" }} />}
+        </div>); })}
     </div>
   );
 }

@@ -8,7 +8,7 @@ import { useFoodStore } from "../stores/foodStore";
 import { useCategoryStore, type CategorySort } from "../stores/categoryStore";
 import { useAdditiveStore } from "../stores/additiveStore";
 import { useQueueStore } from "../stores/queueStore";
-import type { FoodDetail, FoodSummary, RelatedFood, Category, AdditiveDetail, AdditiveListItem, QueueJob, JobEvent } from "../api";
+import type { FoodDetail, FoodSummary, RelatedFood, AlternativeFood, Category, AdditiveDetail, AdditiveListItem, QueueJob, JobEvent } from "../api";
 
 // ── Food ──
 
@@ -44,7 +44,7 @@ export function useTopRated(): FoodSummary[] {
   return topRated ?? [];
 }
 
-export function useAlternatives(food: FoodDetail): FoodSummary[] {
+export function useAlternatives(food: FoodDetail): AlternativeFood[] {
   const alts = useFoodStore(s => s.alternatives[food.id]);
   const triggered = useRef<string>();
   if (!alts && food.score != null && food.score < 75 && triggered.current !== food.id) {

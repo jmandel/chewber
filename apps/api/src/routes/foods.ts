@@ -1,6 +1,7 @@
 import { Hono } from "hono";
 import { z } from "zod";
 import { lookupAdditiveRisk } from "../scoring/additives";
+import { TRAIT_TAG_SLUGS } from "../utils/autoTags";
 
 export const foodsRoutes = new Hono();
 
@@ -70,7 +71,10 @@ function parseTags(tagsJson: string | null): string[] {
 
 // NOTE: literal routes MUST be registered BEFORE /foods/:id
 
-// Better alternatives — higher-scoring foods sharing at least one tag
+// Better alternatives — higher-scoring foods sharing at least one *category* tag.
+// We deliberately exclude nutrition-trait tags ("high-fat", "low-sugar", etc.)
+// from the similarity match so that alternatives are the same KIND of food,
+// not just foods that happen to share nutritional attributes.
 foodsRoutes.get("/foods/:idOrSlug/better-alternatives", (c) => {
   const db = c.get("db");
   const param = c.req.param("idOrSlug");
@@ -81,8 +85,10 @@ foodsRoutes.get("/foods/:idOrSlug/better-alternatives", (c) => {
   if (!row) row = db.query(`SELECT id, tags_json FROM foods WHERE slug = ? LIMIT 1`).get(param) as any;
   if (!row) return c.json({ alternatives: [] });
 
-  const tags = parseTags(row.tags_json);
-  if (tags.length === 0) return c.json({ alternatives: [] });
+  const allTags = parseTags(row.tags_json);
+  // Filter to semantic category tags only (exclude computed trait tags)
+  const categoryTags = allTags.filter(t => !TRAIT_TAG_SLUGS.has(t));
+  if (categoryTags.length === 0) return c.json({ alternatives: [] });
 
   // Get current food's score
   const absRow = db.query(
@@ -91,14 +97,15 @@ foodsRoutes.get("/foods/:idOrSlug/better-alternatives", (c) => {
   const currentScore = absRow?.score ?? null;
   if (currentScore == null) return c.json({ alternatives: [] });
 
-  // Find foods sharing at least one tag with a higher score, ordered by score DESC
+  // Find foods sharing at least one CATEGORY tag with a higher score.
+  // Sort by shared category count DESC (most similar first), then score DESC.
   const alternatives = db.query(`
     WITH my_tags(tag) AS (
       SELECT value FROM json_each(?)
     ),
     matches AS (
       SELECT f.id, f.slug, f.canonical_name, f.brand, f.tags_json,
-             COUNT(DISTINCT mt.tag) AS shared_count
+             COUNT(DISTINCT mt.tag) AS shared_cat_count
       FROM foods f, json_each(f.tags_json) jt
       JOIN my_tags mt ON mt.tag = jt.value
       WHERE f.id != ?
@@ -108,9 +115,9 @@ foodsRoutes.get("/foods/:idOrSlug/better-alternatives", (c) => {
     FROM matches m
     JOIN food_abstractions a ON a.food_id = m.id AND a.status = 'active'
     WHERE a.score > ?
-    ORDER BY a.score DESC, m.shared_count DESC
+    ORDER BY m.shared_cat_count DESC, a.score DESC
     LIMIT ?
-  `).all(JSON.stringify(tags), row.id, currentScore, limit) as any[];
+  `).all(JSON.stringify(categoryTags), row.id, currentScore, limit) as any[];
 
   return c.json({
     alternatives: alternatives.map((r: any) => ({
@@ -120,6 +127,7 @@ foodsRoutes.get("/foods/:idOrSlug/better-alternatives", (c) => {
       brand: r.brand,
       tags: parseTags(r.tags_json),
       score: r.score ?? null,
+      shared_tags: categoryTags.filter(t => parseTags(r.tags_json).includes(t)),
       organic: r.abstraction_json ? extractOrganic(r.abstraction_json) : null,
     }))
   });

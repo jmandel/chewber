@@ -1,13 +1,13 @@
 // === FILE: stores/foodStore.ts ===
 import { create } from "zustand";
 import { api } from "../api";
-import type { FoodDetail, FoodSummary, RelatedFood } from "../api";
+import type { FoodDetail, FoodSummary, RelatedFood, AlternativeFood } from "../api";
 
 type FoodState = {
   foods: Record<string, FoodDetail>;
   recentFoods: FoodSummary[] | null;
   topRated: FoodSummary[] | null;
-  alternatives: Record<string, FoodSummary[]>;
+  alternatives: Record<string, AlternativeFood[]>;
   related: Record<string, RelatedFood[]>;
   loadingFoods: Set<string>;
 
