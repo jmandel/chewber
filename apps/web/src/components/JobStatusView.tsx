@@ -4,6 +4,7 @@ import { API_BASE, api, type JobEvent, type JobStatus } from "../api";
 export function JobStatusView(props: {
   jobId: string;
   onCompleted: (foodId: string) => void;
+  onProductNotFound?: (reason: string) => void;
 }) {
   const [status, setStatus] = useState<JobStatus | null>(null);
   const [events, setEvents] = useState<JobEvent[]>([]);
@@ -12,6 +13,8 @@ export function JobStatusView(props: {
 
   const onCompletedRef = useRef(props.onCompleted);
   onCompletedRef.current = props.onCompleted;
+  const onProductNotFoundRef = useRef(props.onProductNotFound);
+  onProductNotFoundRef.current = props.onProductNotFound;
 
   // Auto-scroll events
   useEffect(() => {
@@ -29,7 +32,11 @@ export function JobStatusView(props: {
             onCompletedRef.current(s.result_food_id);
             return;
           }
-          if (s.status === "succeeded" || s.status === "failed") return;
+          if (s.status === "succeeded" && !s.result_food_id) {
+            onProductNotFoundRef.current?.(s.error || "This product could not be found.");
+            return;
+          }
+          if (s.status === "failed") return;
         } catch {}
         await new Promise((r) => setTimeout(r, 1500));
       }

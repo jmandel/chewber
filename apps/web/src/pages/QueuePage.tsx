@@ -117,6 +117,7 @@ export function JobPage() {
   const fetchFood = useFoodStore(s => s.fetchFood);
   const [label, setLabel] = useState<string>("Gathering nutrition data");
   const [notFound, setNotFound] = useState(false);
+  const [productNotFound, setProductNotFound] = useState<string | null>(null);
 
   // One-time: check if job already completed → redirect
   const checkedRef = useRef(false);
@@ -128,6 +129,8 @@ export function JobPage() {
         fetchFood(job.result_food_id).then(f => {
           nav(`/food/${encodeURIComponent(f?.slug ?? f?.id ?? job.result_food_id!)}`, { replace: true });
         });
+      } else if (job.status === "succeeded" && !job.result_food_id) {
+        setProductNotFound(job.error || "This product could not be found in any database.");
       }
     }).catch(() => setNotFound(true));
   }
@@ -137,7 +140,23 @@ export function JobPage() {
     nav(`/food/${encodeURIComponent(f?.slug ?? f?.id ?? foodId)}`, { replace: true });
   }, [nav, fetchFood]);
 
+  const onProductNotFound = useCallback((reason: string) => {
+    setProductNotFound(reason);
+  }, []);
+
   if (!jobId || notFound) return <FocusCard><div>Job not found</div><Link to="/">← Home</Link></FocusCard>;
+
+  if (productNotFound) return (
+    <div style={{ maxWidth: 480, margin: "0 auto" }}>
+      <BackLink />
+      <div className="card" style={{ textAlign: "center", padding: "24px 20px" }}>
+        <div style={{ fontSize: 32, marginBottom: 8 }}>🔍</div>
+        <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 8 }}>Product Not Found</div>
+        <div className="muted" style={{ fontSize: 14, lineHeight: 1.5 }}>{productNotFound}</div>
+        <Link to="/" style={{ display: "inline-block", marginTop: 16, fontSize: 14, color: "var(--sky)" }}>← Try another search</Link>
+      </div>
+    </div>
+  );
 
   return (
     <div style={{ maxWidth: 480, margin: "0 auto" }}>
@@ -146,7 +165,7 @@ export function JobPage() {
         <div style={{ fontWeight: 700, fontSize: 16 }}>Researching…</div>
         <div className="muted" style={{ fontSize: 13, marginTop: 2 }}>{label}</div>
       </div>
-      <JobStatusView jobId={jobId} onCompleted={onCompleted} />
+      <JobStatusView jobId={jobId} onCompleted={onCompleted} onProductNotFound={onProductNotFound} />
     </div>
   );
 }
