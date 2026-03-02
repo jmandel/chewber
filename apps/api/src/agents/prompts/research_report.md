@@ -106,7 +106,12 @@ Step 2: web.search + web.open as last resort
 - **Verify brand matches** — when USDA search returns results, check that the brand_owner or brand_name matches the product you're researching. Results for a different brand are WRONG DATA — do not use them.
 - US labels legally round: fiber <1g → 0g, fat <0.5g → 0g. When you see 0g for fiber/fat from a US label, USDA will have the real value.
 - **When multiple USDA entries exist for the same product** (same brand, same product name), prefer the entry with the MORE PRECISE (non-zero) value. A 0g fiber entry is likely rounded; a 0.8g entry from a newer USDA submission is the real measured value. Always report the non-zero value as the primary number.
-- **Cross-source consistency**: When you have nutrition data from multiple sources, compare the fields they have in common. If overlapping fields agree reasonably, it is safe to fill in missing fields from a secondary source. If overlapping fields diverge significantly, the sources may describe different products or formulations — do not combine them. Use one source for all nutrition values, or use the `data_conflict` exit to report the irreconcilable discrepancy. The system may inject a `cross_source_warning` into tool results when it detects this situation automatically.
+- **Cross-source consistency**: When you have nutrition data from multiple sources, compare the fields they have in common. If overlapping fields agree reasonably, it is safe to fill in missing fields from a secondary source. If overlapping fields diverge significantly, do not simply combine them — try to resolve the conflict:
+  1. Consider whether one source is a closer match to the specific product being queried (e.g. exact barcode vs. a text-search hit for the same brand name, which may be a different regional formulation or package size).
+  2. Search for an additional source (e.g. `web.search` for the product's official nutrition label, or a retailer page) to corroborate one side.
+  3. If you can determine which source is authoritative for the queried product, use that source for all nutrition values and note the discrepancy in section 8.
+  4. Only use the `data_conflict` exit if you cannot determine which source is correct after attempting to resolve the conflict.
+  The system may inject a `cross_source_warning` into tool results when it detects this situation automatically.
 - If ALL tool results are empty or lack nutrition, use the `not_found_reason` exit. Do NOT fill in numbers from memory or produce a report with fabricated data.
 
 You have up to **10 rounds** of tool calls. Produce the final report as soon as you have enough information. Do not waste rounds.
@@ -154,12 +159,12 @@ Use option C when:
 - Tool results only return unrelated products despite multiple search strategies
 - You cannot find ANY real nutrition data — do NOT fabricate a report with estimated values
 
-Use option D when:
+Use option D as a **last resort** when:
 - Multiple sources provide nutrition data for what appears to be the same product, but overlapping fields disagree significantly
-- You cannot determine which source is authoritative for the specific product being queried
+- You have already tried to resolve the conflict (searched for additional sources, checked which entry matches the queried product more closely) and still cannot determine which source is correct
 - Combining fields from different sources would produce an internally inconsistent nutrition profile
 
-You MUST try at least 2-3 different search strategies before concluding a product is not found.
+You MUST try at least 2-3 different search strategies before concluding a product is not found or reporting a data conflict.
 
 ## Required Markdown report template
 
