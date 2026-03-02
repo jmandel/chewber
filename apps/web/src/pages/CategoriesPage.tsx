@@ -39,85 +39,25 @@ function CategoryScoreBar({ foods }: { foods: FoodSummary[] }) {
     else if (s >= 40) buckets.mediocre++;
     else buckets.poor++;
   }
-  const total = scored.length;
-  const segments: { key: string; count: number; color: string; label: string; range: string }[] = [
-    { key: "excellent", count: buckets.excellent, color: "var(--kale)", label: "Excellent", range: "85\u2013100" },
-    { key: "good", count: buckets.good, color: "var(--amber)", label: "Good", range: "65\u201384" },
-    { key: "mediocre", count: buckets.mediocre, color: "var(--tangerine)", label: "Mediocre", range: "40\u201364" },
-    { key: "poor", count: buckets.poor, color: "var(--coral)", label: "Poor", range: "0\u201339" },
+  const max = Math.max(buckets.excellent, buckets.good, buckets.mediocre, buckets.poor);
+  const rows: { label: string; range: string; count: number; color: string }[] = [
+    { label: "Excellent", range: "85\u2013100", count: buckets.excellent, color: "var(--kale)" },
+    { label: "Good",      range: "65\u201384",  count: buckets.good,      color: "var(--amber)" },
+    { label: "Mediocre",  range: "40\u201364",  count: buckets.mediocre,  color: "var(--tangerine)" },
+    { label: "Poor",      range: "0\u201339",   count: buckets.poor,      color: "var(--coral)" },
   ];
-  const active = segments.filter(s => s.count > 0);
-
-  // Compute which segments are wide enough for inline text (~12ch minimum)
-  const INLINE_THRESHOLD = 22; // percent needed for "Label N (R)" inline
-  const LABEL_THRESHOLD = 14;  // percent needed for just "Label N"
-
-  // Build callout positions: cumulative % center of each narrow segment
-  let cumPct = 0;
-  const positioned = active.map(seg => {
-    const pct = (seg.count / total) * 100;
-    const centerPct = cumPct + pct / 2;
-    cumPct += pct;
-    const fitsFullLabel = pct >= INLINE_THRESHOLD;
-    const fitsShortLabel = pct >= LABEL_THRESHOLD;
-    return { ...seg, pct, centerPct, fitsFullLabel, fitsShortLabel };
-  });
-  const callouts = positioned.filter(s => !s.fitsShortLabel);
-
   return (
-    <div style={{ marginBottom: callouts.length > 0 ? 0 : 16 }}>
-      {/* Bar + callouts wrapper */}
-      <div style={{ position: "relative", marginBottom: callouts.length > 0 ? 40 : 0 }}>
-        {/* Stacked bar */}
-        <div style={{ display: "flex", borderRadius: 8, overflow: "hidden", height: 34 }}>
-          {positioned.map(seg => (
-            <div
-              key={seg.key}
-              style={{
-                width: `${seg.pct}%`, background: seg.color, minWidth: 8,
-                display: "flex", alignItems: "center", justifyContent: "center",
-                fontSize: 11, fontWeight: 700, color: "#fff",
-                textShadow: "0 1px 2px rgba(0,0,0,0.4)", whiteSpace: "nowrap",
-                padding: "0 4px", overflow: "hidden",
-              }}
-              title={`${seg.label} ${seg.count} (${seg.range})`}
-            >
-              {seg.fitsFullLabel
-                ? `${seg.label} ${seg.count} (${seg.range})`
-                : seg.fitsShortLabel
-                  ? `${seg.label} ${seg.count}`
-                  : ""}
-            </div>
-          ))}
-        </div>
-        {/* Callout dots + lines + labels for narrow segments */}
-        {callouts.map(seg => (
-          <div key={seg.key} style={{
-            position: "absolute", left: `${seg.centerPct}%`, top: 0,
-            transform: "translateX(-50%)",
-            display: "flex", flexDirection: "column", alignItems: "center",
-            pointerEvents: "none",
-          }}>
-            {/* Dot centered on bar */}
-            <div style={{
-              width: 8, height: 8, borderRadius: "50%",
-              background: "#fff", border: `2px solid ${seg.color}`,
-              marginTop: 13, /* vertically center in 34px bar */
-              flexShrink: 0,
-            }} />
-            {/* Connecting line */}
-            <div style={{ width: 2, height: 10, background: seg.color, opacity: 0.5 }} />
-            {/* Label */}
-            <div style={{
-              fontSize: 10, fontWeight: 600, whiteSpace: "nowrap",
-              color: seg.color, lineHeight: 1.3, textAlign: "center",
-            }}>
-              {seg.label} {seg.count}
-              <span style={{ color: "var(--fog)", fontWeight: 400 }}> ({seg.range})</span>
-            </div>
+    <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+      {rows.map(r => (
+        <div key={r.label} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <span style={{ fontSize: 12, fontWeight: 600, width: 62, flexShrink: 0, color: r.count ? r.color : "var(--fog)" }}>{r.label}</span>
+          <span style={{ fontSize: 10, color: "var(--fog)", width: 36, flexShrink: 0, textAlign: "right" }}>{r.range}</span>
+          <div style={{ flex: 1, height: 18, background: "var(--slate)", borderRadius: 4, overflow: "hidden" }}>
+            <div style={{ width: max ? `${(r.count / max) * 100}%` : "0%", height: "100%", background: r.color, borderRadius: 4, minWidth: r.count ? 2 : 0, transition: "width 0.3s ease" }} />
           </div>
-        ))}
-      </div>
+          <span style={{ fontSize: 13, fontWeight: 800, width: 22, textAlign: "right", flexShrink: 0, color: r.count ? "var(--cream)" : "var(--fog)" }}>{r.count}</span>
+        </div>
+      ))}
     </div>
   );
 }
