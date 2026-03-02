@@ -220,6 +220,32 @@ function ftsTokenize(query: string): string[] {
 }
 
 /**
+ * Merge runs of consecutive short tokens into a single concatenated token.
+ * "Lao Gan Ma Spicy Chili Crisp" → ["LaoGanMa", "Spicy", "Chili", "Crisp"]
+ * Only joins runs of 2+ tokens where each is ≤4 chars.
+ */
+function addConcatenatedVariants(tokens: string[]): string[] {
+  const out: string[] = [];
+  let i = 0;
+  while (i < tokens.length) {
+    // Find a run of consecutive short tokens (≤4 chars each)
+    if (tokens[i].length <= 4) {
+      let j = i + 1;
+      while (j < tokens.length && tokens[j].length <= 4) j++;
+      if (j - i >= 2) {
+        // Concatenate the run into one token
+        out.push(tokens.slice(i, j).join(""));
+        i = j;
+        continue;
+      }
+    }
+    out.push(tokens[i]);
+    i++;
+  }
+  return out;
+}
+
+/**
  * Full-text search across USDA products by description, brand.
  * Multi-strategy: AND → progressive relaxation → brand-boosted → NEAR.
  * Prefers results WITH nutrition data.
@@ -271,7 +297,17 @@ export function localUsdaSearchText(
     if (results.length > 0) return results.slice(0, limit);
   }
 
-  // Strategy 3: Progressive relaxation — drop one token at a time (least
+  // Strategy 3: Concatenated token variants.
+  // Brand names like "Lao Gan Ma" are stored as "LAOGANMA" in USDA.
+  // Tried before relaxation (which would discard the brand tokens) but
+  // after normal AND/brand-boosted (which handle "Old El Paso" correctly).
+  const withConcats = addConcatenatedVariants(tokens);
+  if (withConcats.join(" ") !== tokens.join(" ")) {
+    results = run(andExpr(withConcats));
+    if (results.length > 0) return results.slice(0, limit);
+  }
+
+  // Strategy 4: Progressive relaxation — drop one token at a time (least
   // important first, i.e. from the end) until we get results. This avoids
   // the full OR which matches any single token and returns garbage.
   if (tokens.length > 2) {
