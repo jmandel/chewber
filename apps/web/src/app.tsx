@@ -88,10 +88,10 @@ function AboutOverlay({ onClose }: { onClose: () => void }) {
           </ul>
           <h4 style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--fog)", marginBottom: 6 }}>Reading the score</h4>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12, fontSize: 13 }}>
-            <span style={{ padding: "2px 10px", borderRadius: 6, background: "#3D8B5F", color: "#fff", fontWeight: 700 }}>85–100 Excellent</span>
-            <span style={{ padding: "2px 10px", borderRadius: 6, background: "#D4A24C", color: "#fff", fontWeight: 700 }}>65–84 Good</span>
-            <span style={{ padding: "2px 10px", borderRadius: 6, background: "#C8714A", color: "#fff", fontWeight: 700 }}>40–64 Mediocre</span>
-            <span style={{ padding: "2px 10px", borderRadius: 6, background: "#C44D3E", color: "#fff", fontWeight: 700 }}>0–39 Poor</span>
+            <span style={{ padding: "2px 10px", borderRadius: 6, background: "var(--kale)", color: "#fff", fontWeight: 700 }}>85–100 Excellent</span>
+            <span style={{ padding: "2px 10px", borderRadius: 6, background: "var(--amber)", color: "#fff", fontWeight: 700 }}>65–84 Good</span>
+            <span style={{ padding: "2px 10px", borderRadius: 6, background: "var(--tangerine)", color: "#fff", fontWeight: 700 }}>40–64 Mediocre</span>
+            <span style={{ padding: "2px 10px", borderRadius: 6, background: "var(--coral)", color: "#fff", fontWeight: 700 }}>0–39 Poor</span>
           </div>
           <h4 style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--fog)", marginBottom: 6 }}>Data sources</h4>
           <p style={{ marginBottom: 16, fontSize: 13 }}>Chewber cross-references Open Food Facts, USDA FoodData Central, and manufacturer labels. When data is missing, an AI research agent gathers and verifies it.</p>

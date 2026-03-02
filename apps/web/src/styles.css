@@ -1,17 +1,17 @@
 /* ── Chewber Design System ─────────────────────────────────── */
 :root {
-  --kale: #3D8B5F;
-  --kale-dim: #347A52;
-  --terracotta: #C8714A;
+  --kale: #45B87F;
+  --kale-dim: #3AA06D;
+  --terracotta: #D07030;
   --ink: #2A2A32;
   --midnight: #1A1A1F;
   --charcoal: #242429;
   --slate: #333338;
   --fog: #9A968F;
   --cream: #F0EDE7;
-  --amber: #D4A24C;
-  --tangerine: #C8714A;
-  --coral: #D4813A;
+  --amber: #D4B94E;
+  --tangerine: #D07030;
+  --coral: #D94452;
   --blue: #3b82f6;
   --blue-hover: #2563eb;
   --radius: 14px;
@@ -41,16 +41,16 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --kale: #3D8B5F;
-    --kale-dim: #2E7048;
+    --kale: #3A9E6B;
+    --kale-dim: #2E8558;
     --midnight: #FDFBF7;
     --charcoal: #FFFFFF;
     --slate: #E8E4DD;
     --fog: #7A766D;
     --cream: #2A2A32;
-    --amber: #D4A24C;
-    --tangerine: #C8714A;
-    --coral: #B06228;
+    --amber: #B89E30;
+    --tangerine: #C06020;
+    --coral: #A82838;
     --overlay-bg: rgba(0,0,0,0.3);
 
     /* Event log level backgrounds — light */
