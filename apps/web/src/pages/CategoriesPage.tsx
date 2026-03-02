@@ -40,33 +40,43 @@ function CategoryScoreBar({ foods }: { foods: FoodSummary[] }) {
     else buckets.poor++;
   }
   const total = scored.length;
-  const segments: { key: string; count: number; color: string; label: string }[] = [
-    { key: "excellent", count: buckets.excellent, color: "var(--kale)", label: "Excellent" },
-    { key: "good", count: buckets.good, color: "var(--amber)", label: "Good" },
-    { key: "mediocre", count: buckets.mediocre, color: "var(--tangerine)", label: "Mediocre" },
-    { key: "poor", count: buckets.poor, color: "var(--coral)", label: "Poor" },
+  const segments: { key: string; count: number; color: string; label: string; range: string }[] = [
+    { key: "excellent", count: buckets.excellent, color: "var(--kale)", label: "Excellent", range: "85–100" },
+    { key: "good", count: buckets.good, color: "var(--amber)", label: "Good", range: "65–84" },
+    { key: "mediocre", count: buckets.mediocre, color: "var(--tangerine)", label: "Mediocre", range: "40–64" },
+    { key: "poor", count: buckets.poor, color: "var(--coral)", label: "Poor", range: "0–39" },
   ];
+  const active = segments.filter(s => s.count > 0);
   return (
     <div style={{ marginBottom: 16 }}>
-      <div className="al-risk-bar">
-        {segments.map(seg => {
+      {/* Stacked bar with inline labels */}
+      <div style={{ display: "flex", borderRadius: 8, overflow: "hidden", height: 32 }}>
+        {active.map(seg => {
           const pct = (seg.count / total) * 100;
-          if (!pct) return null;
           return (
             <div
               key={seg.key}
-              className="al-risk-segment"
-              style={{ width: `${pct}%`, background: seg.color, borderBottom: `3px solid ${seg.color}` }}
+              style={{
+                width: `${pct}%`, background: seg.color, minWidth: 36,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: 11, fontWeight: 700, color: "#fff",
+                textShadow: "0 1px 2px rgba(0,0,0,0.4)", whiteSpace: "nowrap",
+                padding: "0 4px", overflow: "hidden",
+              }}
               title={`${seg.label}: ${seg.count}`}
-            />
+            >
+              {pct >= 18 ? `${seg.label} ${seg.count}` : seg.count}
+            </div>
           );
         })}
       </div>
-      <div className="al-risk-legend">
+      {/* Text legend below (non-color-dependent) */}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "4px 14px", marginTop: 8, fontSize: 12 }}>
         {segments.map(seg => (
-          <span key={seg.key} className="al-risk-legend-item">
-            <span className="al-risk-dot" style={{ background: seg.color }} />
-            <span className="al-risk-label">{seg.label} {seg.count}</span>
+          <span key={seg.key} style={{ display: "inline-flex", alignItems: "center", gap: 5, color: seg.count ? "var(--cream)" : "var(--fog)", opacity: seg.count ? 1 : 0.5 }}>
+            <span style={{ fontWeight: 700, fontSize: 13 }}>{seg.count}</span>
+            <span>{seg.label}</span>
+            <span style={{ fontSize: 10, color: "var(--fog)" }}>({seg.range})</span>
           </span>
         ))}
       </div>
