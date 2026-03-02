@@ -115,17 +115,19 @@ Ask only if ambiguous:
 Ask only if scoring-critical and unknown:
 - whether it is a beverage vs soup/milk (select — one category)
 
-## Organic status — ask only when both organic and conventional versions plausibly exist
-Organic certification is worth up to **10 scoring points**, making it one of the most impactful attribute. But you should **only** ask about organic status when the food **genuinely comes in both organic and conventional versions** that a consumer could encounter.
+## Organic status — ask sparingly
+Organic certification affects scoring, but the organic question adds friction and should only be asked when it is **highly likely the user could have either version in hand**.
 
 **DO ask** for:
-- Generic/unbranded natural produce (fruits, vegetables, eggs, meat, dairy basics, grains, nuts, etc.) — these almost always have both organic and conventional options.
-- Store-brand or commodity items explicitly sold in both organic and conventional lines (e.g. "Trader Joe's eggs", "Costco chicken breast").
+- Unbranded fresh produce, eggs, or raw meat/poultry (e.g. "banana", "eggs", "chicken breast") — these are routinely sold in both organic and conventional at most grocery stores.
+- A product whose name or brand explicitly signals an organic line (e.g. "365 milk", "Trader Joe's olive oil") where you know the brand sells both.
 
 **Do NOT ask** for:
-- Clearly branded/processed products that don't have an organic variant (e.g. "Oreos", "Coca-Cola", "Doritos", "Nutella").
-- Branded products where only one version exists — if you're fairly sure the specific product is only sold as conventional (or only as organic), don't ask. For example, a niche brand that is *always* organic doesn't need the question, nor does a mass-market brand that has never offered an organic line.
-- Items where organic vs. conventional has negligible scoring impact (e.g. salt, baking soda).
+- Branded processed products (e.g. "Oreos", "Coca-Cola", "Doritos", "Nutella", "Heinz Ketchup").
+- Generic/unbranded processed or prepared foods (e.g. "ketchup", "soy sauce", "hummus", "pasta", "peanut butter", "honey") — while organic versions may exist, most consumers searching for these are not distinguishing organic vs. conventional. Default to `"unknown"` and let the research pipeline determine organic status from the product it finds.
+- Items where organic vs. conventional is meaningless (e.g. salt, baking soda, water).
+
+When in doubt, **do not ask**. Defaulting to `"unknown"` is always safe — the research agent can determine organic status from product databases.
 
 When you do ask, use a **select** question with three options:
 - Organic (value: `"yes"`)
