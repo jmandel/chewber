@@ -20,7 +20,7 @@ if (!DATA_DIR) {
   process.exit(1);
 }
 
-const NUTRIENT_IDS = ["1008", "2047", "2000", "1258", "1004", "1093", "1003", "1079"];
+const NUTRIENT_IDS = ["1008", "2047", "2000", "1258", "1004", "1005", "1093", "1003", "1079"];
 const GREP_PATTERN = NUTRIENT_IDS.map(id => `"${id}"`).join("|");
 
 function findSubDir(base: string): string {
@@ -114,6 +114,7 @@ EOF`);
              WHEN nutrient_id = '2000' THEN 'sugars_g'
              WHEN nutrient_id = '1258' THEN 'saturated_fat_g'
              WHEN nutrient_id = '1004' THEN 'total_fat_g'
+             WHEN nutrient_id = '1005' THEN 'carbohydrates_g'
              WHEN nutrient_id = '1093' THEN 'sodium_mg'
              WHEN nutrient_id = '1003' THEN 'protein_g'
              WHEN nutrient_id = '1079' THEN 'fiber_g'
@@ -129,6 +130,10 @@ EOF`);
   console.timeEnd("  pivot");
   const njCount = (db.query(`SELECT count(*) as c FROM _usda_nut_json`).get() as any).c;
   console.log(`  ${njCount} foods with nutrient JSON`);
+
+  // Free space: raw nutrient table is no longer needed after pivot
+  db.exec(`DROP TABLE IF EXISTS _usda_nut_raw`);
+  db.exec(`VACUUM`);
 
   // ── Phase 2: Import branded_food metadata ───────────────────
   console.log("\nPhase 2: Importing branded food metadata...");
