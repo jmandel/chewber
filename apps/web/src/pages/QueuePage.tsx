@@ -14,7 +14,8 @@ export function QueuePage() {
   useEffect(() => { const iv = setInterval(fetchJobs, 3000); return () => clearInterval(iv); }, [fetchJobs]);
 
   const active = jobs.filter(j => j.status === "running" || j.status === "queued");
-  const completed = jobs.filter(j => j.status === "succeeded");
+  const completed = jobs.filter(j => j.status === "succeeded" && j.result_food_id);
+  const notFound = jobs.filter(j => j.status === "succeeded" && !j.result_food_id);
   const failed = jobs.filter(j => j.status === "failed");
 
   return (
@@ -22,7 +23,7 @@ export function QueuePage() {
       <BackLink />
       <h2 style={{ fontSize: 18, fontWeight: 800, marginBottom: 12 }}>Research Queue</h2>
       {!loaded && <div className="muted" style={{ textAlign: "center", padding: 20 }}><div className="spinner" /></div>}
-      {loaded && active.length === 0 && completed.length === 0 && failed.length === 0 && (
+      {loaded && active.length === 0 && completed.length === 0 && notFound.length === 0 && failed.length === 0 && (
         <div className="card muted" style={{ textAlign: "center" }}>No research jobs yet.</div>
       )}
       {active.length > 0 && (
@@ -35,6 +36,12 @@ export function QueuePage() {
         <div style={{ marginBottom: 16 }}>
           <div className="muted" style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 6 }}>Failed</div>
           {failed.map(j => <QueueJobRow key={j.id} job={j} />)}
+        </div>
+      )}
+      {notFound.length > 0 && (
+        <div style={{ marginBottom: 16 }}>
+          <div className="muted" style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 6 }}>Not Found</div>
+          {notFound.map(j => <QueueJobRow key={j.id} job={j} />)}
         </div>
       )}
       {completed.length > 0 && (
@@ -51,11 +58,13 @@ const STATUS_BADGE: Record<string, { bg: string; fg: string; label: string }> = 
   queued:    { bg: "color-mix(in srgb, var(--fog) 20%, transparent)", fg: "var(--fog)", label: "Queued" },
   running:   { bg: "color-mix(in srgb, var(--sky) 20%, transparent)", fg: "var(--sky)", label: "Running" },
   succeeded: { bg: "color-mix(in srgb, var(--kale) 20%, transparent)", fg: "var(--kale)", label: "Done" },
+  not_found: { bg: "color-mix(in srgb, var(--fog) 20%, transparent)", fg: "var(--fog)", label: "Not Found" },
   failed:    { bg: "color-mix(in srgb, var(--coral) 20%, transparent)", fg: "var(--coral)", label: "Failed" },
 };
 
 function QueueJobRow({ job }: { job: QueueJob }) {
-  const badge = STATUS_BADGE[job.status] ?? STATUS_BADGE.queued;
+  const isNotFound = job.status === "succeeded" && !job.result_food_id;
+  const badge = isNotFound ? STATUS_BADGE.not_found : (STATUS_BADGE[job.status] ?? STATUS_BADGE.queued);
   const isActive = job.status === "running" || job.status === "queued";
   const adminKey = useUIStore(s => s.adminKey);
   const retryJob = useQueueStore(s => s.retryJob);
@@ -92,6 +101,9 @@ function QueueJobRow({ job }: { job: QueueJob }) {
           {job.error && <div className="muted" style={{ fontSize: 11, color: "var(--coral)", flex: 1 }}>{job.error}</div>}
           {!!adminKey && <button onClick={handleRetry} disabled={retrying} style={{ fontSize: 11, padding: "3px 10px", borderRadius: 4, cursor: "pointer", background: "none", border: "1px solid var(--fog)", color: "var(--fog)", fontWeight: 600, flexShrink: 0, opacity: retrying ? 0.5 : 1 }}>{retrying ? "…" : "Retry"}</button>}
         </div>
+      )}
+      {isNotFound && job.error && (
+        <div className="muted" style={{ fontSize: 11, marginTop: 4 }}>{job.error}</div>
       )}
     </div>
   );

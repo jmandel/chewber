@@ -2,6 +2,7 @@ import { Database } from "bun:sqlite";
 import { dirname, resolve } from "node:path";
 import { existsSync, mkdirSync, readFileSync } from "node:fs";
 import { getEnv } from "../env";
+import { runMigrations } from "./migrate";
 
 /** apps/api/ directory — anchor for resolving relative DB paths */
 const API_DIR = resolve(import.meta.dir, "..", "..");
@@ -25,6 +26,9 @@ export function getDb(): Database {
   const schemaPath = resolve(import.meta.dir, "./schema.sql");
   const schemaSql = readFileSync(schemaPath, "utf-8");
   db.exec(schemaSql);
+
+  // Run migrations for existing DBs (also idempotent)
+  runMigrations(db);
 
   _db = db;
   return db;
