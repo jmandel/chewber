@@ -1,7 +1,7 @@
 {
   "type": "object",
   "additionalProperties": false,
-  "required": ["tool_calls", "final_markdown", "notes"],
+  "required": ["tool_calls", "final_markdown", "not_found_reason", "notes"],
   "properties": {
     "tool_calls": {
       "type": "array",
@@ -21,6 +21,9 @@
       }
     },
     "final_markdown": {
+      "type": ["string", "null"]
+    },
+    "not_found_reason": {
       "type": ["string", "null"]
     },
     "notes": {

@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS queries (
   structured_query_json TEXT NOT NULL,
   fingerprint TEXT NOT NULL UNIQUE,
   food_id TEXT,
-  status TEXT NOT NULL DEFAULT 'new' CHECK (status IN ('new','matched','queued','completed','failed')),
+  status TEXT NOT NULL DEFAULT 'new' CHECK (status IN ('new','matched','queued','completed','failed','not_found')),
   created_at TEXT NOT NULL,
   updated_at TEXT NOT NULL,
   FOREIGN KEY (food_id) REFERENCES foods(id) ON DELETE SET NULL

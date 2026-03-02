@@ -21,6 +21,7 @@ const ToolCallSchema = z.object({
 const StepSchema = z.object({
   tool_calls: z.array(ToolCallSchema),
   final_markdown: z.string().nullable(),
+  not_found_reason: z.string().nullable().optional(),
   notes: z.string()
 });
 
@@ -48,6 +49,7 @@ export type ToolObservations = {
 export type ResearchResult = {
   markdown: string;
   observations: ToolObservations;
+  not_found_reason?: string;
 };
 
 // ── Circuit-breaker constants ──────────────────────────────────────
@@ -234,6 +236,11 @@ export async function runResearchAgent(input: ResearchInput, emit: EmitFn): Prom
         return { markdown: makeErrorReport("schema validation failures", consecutiveErrors), observations };
       }
       continue;
+    }
+
+    if (obj.not_found_reason) {
+      emit({ level: "warn", message: `Product not found: ${obj.not_found_reason}` });
+      return { markdown: "", observations, not_found_reason: obj.not_found_reason };
     }
 
     if (obj.final_markdown) {

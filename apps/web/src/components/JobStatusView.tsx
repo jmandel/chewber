@@ -29,7 +29,7 @@ export function JobStatusView(props: {
             onCompletedRef.current(s.result_food_id);
             return;
           }
-          if (s.status === "failed") return;
+          if (s.status === "succeeded" || s.status === "failed") return;
         } catch {}
         await new Promise((r) => setTimeout(r, 1500));
       }
@@ -63,7 +63,13 @@ export function JobStatusView(props: {
         <div style={{ height: "100%", width: `${pct}%`, background: "#3b82f6", transition: "width 0.3s", borderRadius: 2 }} />
       </div>
 
-      {status?.error && (
+      {status?.status === "succeeded" && !status.result_food_id && status.error && (
+        <div style={{ background: "var(--surface-2, #f5f5f5)", border: "1px solid var(--border, #ddd)", borderRadius: 8, padding: "12px 16px", marginBottom: 12, fontSize: 14, color: "var(--fg, #333)" }}>
+          <strong>Product not found</strong>
+          <p style={{ margin: "6px 0 0" }}>{status.error}</p>
+        </div>
+      )}
+      {status?.error && !(status.status === "succeeded" && !status.result_food_id) && (
         <div style={{ background: "var(--log-error-banner-bg)", border: "1px solid var(--log-error-banner-border)", borderRadius: 8, padding: "8px 12px", marginBottom: 12, fontSize: 13, color: "var(--log-error-banner-fg)" }}>
           {status.error}
         </div>

@@ -30,7 +30,7 @@ export async function processResearchFoodJob(job: { id: string; payload_json: st
     updateJob(job.id, { progress: 5 });
 
     // Stage A: research report
-    const { markdown: reportMd, observations } = await runResearchAgent(
+    const { markdown: reportMd, observations, not_found_reason } = await runResearchAgent(
       {
         structured_query: payload.structured_query,
         rawText: payload.rawText ?? null,
@@ -38,6 +38,15 @@ export async function processResearchFoodJob(job: { id: string; payload_json: st
       },
       emit
     );
+
+    // Early exit: product not found
+    if (not_found_reason) {
+      db.query(`UPDATE queries SET status='not_found', updated_at=? WHERE id=?`).run(nowIso(), payload.query_id);
+      updateJob(job.id, { status: "succeeded", progress: 100, error: not_found_reason, finished_at: nowIso() });
+      emit({ level: "info", message: "Done (product not found)." });
+      return;
+    }
+
     emit({ level: "debug", message: `Observations: ${observations.offAdditiveTags.length} OFF tags, ${observations.ingredientTexts.length} ingredient texts` });
 
     updateJob(job.id, { progress: 55 });
