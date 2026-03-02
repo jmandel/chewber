@@ -88,6 +88,17 @@ export function useCatCounts(): Record<string, number> {
   return counts;
 }
 
+export function useTagKinds(): Record<string, string> {
+  const kinds = useCategoryStore(s => s.tagKinds);
+  const loaded = useCategoryStore(s => s.categoriesLoaded);
+  const triggered = useRef(false);
+  if (!loaded && !triggered.current) {
+    triggered.current = true;
+    useCategoryStore.getState().fetchCategories();
+  }
+  return kinds;
+}
+
 export function useCategoryFoods(slug: string | undefined, sort: CategorySort): FoodSummary[] | null {
   const key = slug ? `${slug}:${sort}` : "";
   const foods = useCategoryStore(s => key ? s.categoryFoods[key] ?? null : null);

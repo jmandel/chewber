@@ -80,8 +80,8 @@ const STARTER_CATEGORIES: [slug: string, displayName: string, description: strin
 const db = getDb();
 
 const upsert = db.prepare(
-  `INSERT INTO categories (slug, display_name, description, created_at, updated_at)
-   VALUES (?, ?, ?, ?, ?)
+  `INSERT INTO categories (slug, display_name, description, kind, created_at, updated_at)
+   VALUES (?, ?, ?, 'category', ?, ?)
    ON CONFLICT(slug) DO UPDATE SET
      display_name = excluded.display_name,
      description  = excluded.description,
@@ -93,6 +93,8 @@ const now = new Date().toISOString();
 db.exec("BEGIN");
 for (const [slug, displayName, description] of STARTER_CATEGORIES) {
   upsert.run(slug, displayName, description, now, now);
+  // Note: kind defaults to 'category' for seed data. Run classifyTags.ts to
+  // classify all tags properly with kind + parent_slug.
 }
 db.exec("COMMIT");
 

@@ -72,6 +72,8 @@ export type Category = {
   slug: string;
   display_name: string;
   description: string;
+  kind: "category" | "trait" | "unclassified";
+  parent_slug: string | null;
   food_count: number;
 };
 

@@ -20,34 +20,46 @@ const cleanSchema = toGeminiSchema(absSchema);
 
 const MAX_RETRIES = 2;
 
-/** Build a category hint block to inject into the system prompt. */
+/** Build the full category taxonomy block for the system prompt. */
 function buildCategoryHint(): string {
   const db = getDb();
   const all = db.query(
-    `SELECT slug, display_name, description FROM categories ORDER BY slug`
-  ).all() as { slug: string; display_name: string; description: string }[];
+    `SELECT slug, kind, parent_slug, display_name FROM categories ORDER BY kind, slug`
+  ).all() as { slug: string; kind: string; parent_slug: string | null; display_name: string }[];
 
   if (all.length === 0) return "";
 
-  const SAMPLE_MAX = 50;
-  const sampled = all.slice(0, SAMPLE_MAX);
-  const lines = sampled.map(c =>
-    `  - \`${c.slug}\` — ${c.display_name}${c.description ? `: ${c.description}` : ""}`
-  );
-  const remaining = all.length - sampled.length;
-  const suffix = remaining > 0 ? `\n  - … and ${remaining} more` : "";
+  const categories = all.filter(c => c.kind === "category");
+  const traits = all.filter(c => c.kind === "trait");
+
+  const fmtLine = (c: { slug: string; parent_slug: string | null; display_name: string }) =>
+    `  ${c.slug}${c.parent_slug ? " (→ " + c.parent_slug + ")" : ""}`;
 
   return [
     "",
-    "## Existing categories (reuse when they fit)",
-    ...lines,
-    suffix,
+    "## Existing tag taxonomy (REUSE these — do NOT invent synonyms)",
+    "",
+    "### Food-type categories (kind=\"category\" — describes WHAT the food IS):",
+    ...categories.map(fmtLine),
+    "",
+    "### Attribute/trait tags (kind=\"trait\" — describes a property/modifier):",
+    ...traits.map(fmtLine),
+    "",
+    "If you need a slug not listed above, you MUST add it to `new_categories`",
+    "with kind, parent_slug, and display_name so it gets registered.",
     ""
   ].join("\n");
 }
 
-/** Register any new category slugs. Returns the list of newly created slugs. */
-function findNewCategories(categories: string[]): string[] {
+type NewCategory = {
+  slug: string;
+  kind: "category" | "trait";
+  parent_slug: string | null;
+  display_name: string;
+};
+
+/** Find category slugs used in the abstraction that don't exist in the DB. */
+function findUnregisteredSlugs(categories: string[]): string[] {
   const db = getDb();
   const existing = new Set(
     (db.query(`SELECT slug FROM categories`).all() as { slug: string }[]).map(r => r.slug)
@@ -55,68 +67,55 @@ function findNewCategories(categories: string[]): string[] {
   return categories.filter(slug => !existing.has(slug));
 }
 
-/** Ask the LLM to generate display names + descriptions for new category slugs. */
-async function describeNewCategories(
-  slugs: string[],
-  foodContext: string
-): Promise<{ slug: string; display_name: string; description: string }[]> {
-  if (slugs.length === 0) return [];
+/**
+ * Register new categories declared by the LLM via `new_categories`.
+ * Also catches any undeclared new slugs as a safety net (kind='unclassified').
+ */
+function registerNewCategories(
+  declaredNew: NewCategory[],
+  allUsedSlugs: string[]
+) {
+  const db = getDb();
+  const now = new Date().toISOString();
+  const upsert = db.prepare(
+    `INSERT INTO categories (slug, display_name, description, kind, parent_slug, created_at, updated_at)
+     VALUES (?, ?, '', ?, ?, ?, ?)
+     ON CONFLICT(slug) DO UPDATE SET
+       display_name = CASE WHEN categories.display_name = '' OR categories.display_name = categories.slug
+                           THEN excluded.display_name ELSE categories.display_name END,
+       kind         = CASE WHEN categories.kind = 'unclassified' THEN excluded.kind ELSE categories.kind END,
+       parent_slug  = CASE WHEN categories.parent_slug IS NULL THEN excluded.parent_slug ELSE categories.parent_slug END,
+       updated_at   = excluded.updated_at`
+  );
 
-  const llm = getLlm("json_extract");
-  const { text } = await llm.chat({
-    messages: [
-      {
-        role: "system",
-        content: [
-          "You generate human-readable metadata for food category slugs.",
-          "For each slug, provide a display_name (Title Case, 1-4 words) and a description (1 sentence, under 100 chars).",
-          "Return a JSON array of objects: [{ \"slug\": \"...\", \"display_name\": \"...\", \"description\": \"...\" }]",
-          "Output ONLY valid JSON. No markdown fences."
-        ].join("\n")
-      },
-      {
-        role: "user",
-        content: JSON.stringify({
-          new_slugs: slugs,
-          food_context: foodContext
-        })
-      }
-    ] as any,
-    temperature: 0.2
-  });
-
-  try {
-    let cleaned = text.trim();
-    if (cleaned.startsWith("```")) {
-      cleaned = cleaned.replace(/^```(?:json)?\s*/, "").replace(/\s*```$/, "");
-    }
-    const arr = JSON.parse(cleaned);
-    if (!Array.isArray(arr)) return slugs.map(s => ({ slug: s, display_name: slugToTitle(s), description: "" }));
-    return arr;
-  } catch {
-    // Fallback: auto-generate from slug
-    return slugs.map(s => ({ slug: s, display_name: slugToTitle(s), description: "" }));
+  // Register explicitly declared new categories (with full metadata)
+  const declaredSlugs = new Set<string>();
+  for (const nc of declaredNew) {
+    declaredSlugs.add(nc.slug);
+    upsert.run(
+      nc.slug,
+      nc.display_name || slugToTitle(nc.slug),
+      nc.kind,
+      nc.parent_slug ?? null,
+      now, now
+    );
   }
+
+  // Safety net: catch any slugs the LLM used but didn't declare as new
+  const undeclared = findUnregisteredSlugs(allUsedSlugs)
+    .filter(s => !declaredSlugs.has(s));
+  if (undeclared.length > 0) {
+    console.warn(`[jsonStage] LLM used ${undeclared.length} undeclared new slug(s): ${undeclared.join(", ")}`);
+    for (const slug of undeclared) {
+      upsert.run(slug, slugToTitle(slug), "unclassified", null, now, now);
+    }
+  }
+
+  return { declared: declaredNew.length, undeclared: undeclared.length };
 }
 
 function slugToTitle(slug: string): string {
   return slug.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
-}
-
-function registerCategories(items: { slug: string; display_name: string; description: string }[]) {
-  const db = getDb();
-  const now = new Date().toISOString();
-  const upsert = db.prepare(
-    `INSERT INTO categories (slug, display_name, description, created_at, updated_at)
-     VALUES (?, ?, ?, ?, ?)
-     ON CONFLICT(slug) DO UPDATE SET
-       display_name = CASE WHEN excluded.display_name != '' THEN excluded.display_name ELSE categories.display_name END,
-       description  = CASE WHEN excluded.description  != '' THEN excluded.description  ELSE categories.description  END,
-       updated_at   = excluded.updated_at`
-  );
-  for (const item of items) {
-    upsert.run(item.slug, item.display_name, item.description || "", now, now);
-  }
 }
 
 export async function reportToJson(reportMd: string): Promise<any> {
@@ -168,14 +167,12 @@ export async function reportToJson(reportMd: string): Promise<any> {
       throw lastError;
     }
 
-    // Auto-register any new categories the LLM invented
+    // Register new categories: use explicit new_categories declarations + safety net
     const categories: string[] = Array.isArray(parsed?.categories) ? parsed.categories : [];
-    const newSlugs = findNewCategories(categories);
-    if (newSlugs.length > 0) {
-      const foodName = parsed?.identification?.canonical_name ?? "unknown food";
-      const described = await describeNewCategories(newSlugs, foodName);
-      registerCategories(described);
-    }
+    const declaredNew: NewCategory[] = Array.isArray(parsed?.new_categories) ? parsed.new_categories : [];
+    const { declared, undeclared } = registerNewCategories(declaredNew, categories);
+    if (declared > 0) console.log(`[jsonStage] registered ${declared} new category/ies: ${declaredNew.map(c => c.slug).join(", ")}`);
+    if (undeclared > 0) console.warn(`[jsonStage] ${undeclared} undeclared slug(s) registered as 'unclassified'`);
 
     return parsed;
   }

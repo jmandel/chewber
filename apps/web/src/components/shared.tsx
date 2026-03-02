@@ -3,7 +3,7 @@ import { Link, type LinkProps, useNavigate } from "react-router-dom";
 import { marked } from "marked";
 import type { FoodSummary, Category } from "../api";
 import { usePrefetch } from "../hooks/usePrefetch";
-import { useCatCounts } from "../hooks/useStoreData";
+import { useCatCounts, useTagKinds } from "../hooks/useStoreData";
 
 // ── PrefetchLink ─────────────────────────────────────────────
 export function PrefetchLink({ to, children, ...rest }: LinkProps & { to: string }) {
@@ -95,8 +95,22 @@ export function KV({ label, value }: { label: string; value: string }) {
 }
 
 // ── Category helpers ────────────────────────────────────────
-const TRAIT_PATTERNS = /^(high|low|good|no|many|contains|calorie)-/;
-export function isCategory(tag: string) { return !TRAIT_PATTERNS.test(tag); }
+// Fallback regex for computed nutrition tags (always traits, even before store loads)
+const COMPUTED_TRAIT_PATTERN = /^(high|low|good|no|many|contains|calorie)-/;
+
+/**
+ * DB-driven tag classification. Returns true if the tag describes a food TYPE
+ * (kind='category'), false for traits/attributes. Falls back to regex for
+ * unloaded or unknown tags.
+ */
+let _tagKindsRef: Record<string, string> = {};
+export function setTagKindsRef(kinds: Record<string, string>) { _tagKindsRef = kinds; }
+export function isCategory(tag: string): boolean {
+  const kind = _tagKindsRef[tag];
+  if (kind) return kind === "category";
+  // Fallback: computed nutrition traits are never categories
+  return !COMPUTED_TRAIT_PATTERN.test(tag);
+}
 
 export function FoodCategories({ tags }: { tags?: string[] }) {
   const nav = useNavigate();

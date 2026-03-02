@@ -1,7 +1,6 @@
 import { Hono } from "hono";
 import { z } from "zod";
 import { lookupAdditiveRisk } from "../scoring/additives";
-import { TRAIT_TAG_SLUGS } from "../utils/autoTags";
 
 export const foodsRoutes = new Hono();
 
@@ -86,8 +85,12 @@ foodsRoutes.get("/foods/:idOrSlug/better-alternatives", (c) => {
   if (!row) return c.json({ alternatives: [] });
 
   const allTags = parseTags(row.tags_json);
-  // Filter to semantic category tags only (exclude computed trait tags)
-  const categoryTags = allTags.filter(t => !TRAIT_TAG_SLUGS.has(t));
+  // Filter to food-type category tags only (exclude trait/attribute tags)
+  // Uses the DB-driven taxonomy: kind='category' means "what the food IS"
+  const categorySet = new Set(
+    (db.query(`SELECT slug FROM categories WHERE kind = 'category'`).all() as { slug: string }[]).map(r => r.slug)
+  );
+  const categoryTags = allTags.filter(t => categorySet.has(t));
   if (categoryTags.length === 0) return c.json({ alternatives: [] });
 
   // Get current food's score
@@ -479,7 +482,7 @@ foodsRoutes.get("/categories", (c) => {
   const db = c.get("db");
   // Return from the categories registry, with usage counts
   const rows = db.query(`
-    SELECT c.slug, c.display_name, c.description,
+    SELECT c.slug, c.display_name, c.description, c.kind, c.parent_slug,
            COUNT(DISTINCT f.id) AS food_count
     FROM categories c
     LEFT JOIN foods f ON EXISTS (
@@ -493,6 +496,8 @@ foodsRoutes.get("/categories", (c) => {
       slug: r.slug,
       display_name: r.display_name,
       description: r.description,
+      kind: r.kind,
+      parent_slug: r.parent_slug,
       food_count: r.food_count
     }))
   });
@@ -508,15 +513,16 @@ foodsRoutes.get("/tags", (c) => {
       counts.set(t, (counts.get(t) ?? 0) + 1);
     }
   }
-  // Enrich with display names from category registry
-  const catRows = db.query(`SELECT slug, display_name FROM categories`).all() as any[];
-  const catMap = new Map(catRows.map((r: any) => [r.slug, r.display_name]));
+  // Enrich with display names + kind from category registry
+  const catRows = db.query(`SELECT slug, display_name, kind FROM categories`).all() as any[];
+  const catMap = new Map(catRows.map((r: any) => [r.slug, { display_name: r.display_name, kind: r.kind }]));
 
   const tags = Array.from(counts.entries())
     .sort((a, b) => b[1] - a[1])
     .map(([slug, count]) => ({
       slug,
-      display_name: catMap.get(slug) ?? slug,
+      display_name: catMap.get(slug)?.display_name ?? slug,
+      kind: catMap.get(slug)?.kind ?? "unclassified" as string,
       count
     }));
 

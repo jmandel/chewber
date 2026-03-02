@@ -2,6 +2,7 @@
 import { create } from "zustand";
 import { api } from "../api";
 import type { Category, FoodSummary } from "../api";
+import { setTagKindsRef } from "../components/shared";
 
 export type CategorySort = "recent" | "score_desc" | "score_asc";
 
@@ -11,6 +12,8 @@ type CategoryState = {
   categoryFoods: Record<string, FoodSummary[]>;
   categoryAllFoods: Record<string, FoodSummary[]>;
   catCounts: Record<string, number>;
+  /** Maps slug → kind for all known tags. Used by isCategory(). */
+  tagKinds: Record<string, string>;
 
   fetchCategories: () => Promise<void>;
   fetchCategoryFoods: (slug: string, sort: CategorySort) => Promise<FoodSummary[]>;
@@ -24,13 +27,19 @@ export const useCategoryStore = create<CategoryState>()((set, get) => ({
   categoryFoods: {},
   categoryAllFoods: {},
   catCounts: {},
+  tagKinds: {},
 
   fetchCategories: async () => {
     if (get().categoriesLoaded) return;
     const { categories } = await api.getCategories();
     const counts: Record<string, number> = {};
-    for (const c of categories) counts[c.slug] = c.food_count;
-    set({ categories, categoriesLoaded: true, catCounts: counts });
+    const kinds: Record<string, string> = {};
+    for (const c of categories) {
+      counts[c.slug] = c.food_count;
+      kinds[c.slug] = c.kind;
+    }
+    setTagKindsRef(kinds);
+    set({ categories, categoriesLoaded: true, catCounts: counts, tagKinds: kinds });
   },
 
   fetchCategoryFoods: async (slug: string, sort: CategorySort) => {

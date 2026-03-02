@@ -1,5 +1,12 @@
 import type { Database } from "bun:sqlite";
 
+/** Check whether a column exists on a table. */
+function hasColumn(db: Database, table: string, column: string): boolean {
+  // PRAGMA doesn't support ? params — interpolate table name (safe: controlled input)
+  const cols = db.prepare(`PRAGMA table_info(${table})`).all() as { name: string }[];
+  return cols.some(c => c.name === column);
+}
+
 /**
  * Run all migrations against the given database.
  * Each migration is idempotent (safe to re-run).
@@ -43,6 +50,20 @@ export function runMigrations(db: Database): void {
       })();
       db.exec("PRAGMA foreign_keys = ON;");
       console.log("[migrate] queries: done");
+    }
+  }
+
+  // -----------------------------------------------------------------------
+  // Migration 2: Add kind + parent_slug to categories for tag taxonomy
+  // -----------------------------------------------------------------------
+  {
+    if (!hasColumn(db, "categories", "kind")) {
+      console.log("[migrate] categories: adding kind + parent_slug columns");
+      db.exec(`ALTER TABLE categories ADD COLUMN kind TEXT NOT NULL DEFAULT 'unclassified' CHECK (kind IN ('category','trait','unclassified'))`);
+      db.exec(`ALTER TABLE categories ADD COLUMN parent_slug TEXT REFERENCES categories(slug) ON DELETE SET NULL`);
+      db.exec(`CREATE INDEX IF NOT EXISTS idx_categories_kind ON categories(kind)`);
+      db.exec(`CREATE INDEX IF NOT EXISTS idx_categories_parent ON categories(parent_slug)`);
+      console.log("[migrate] categories: done");
     }
   }
 }

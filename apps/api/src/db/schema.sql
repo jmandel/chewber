@@ -125,14 +125,19 @@ CREATE INDEX IF NOT EXISTS idx_job_events_job_id ON job_events(job_id);
 -- Additive risks + USDA data are in the reference database (data/usda.sqlite).
 -- See db/referenceDb.ts.
 
--- Category registry: human-readable names + descriptions for food categories
+-- Category/tag registry: taxonomy with kind (category vs trait) + hierarchy
 CREATE TABLE IF NOT EXISTS categories (
   slug TEXT PRIMARY KEY,
   display_name TEXT NOT NULL,
   description TEXT NOT NULL DEFAULT '',
+  kind TEXT NOT NULL DEFAULT 'unclassified' CHECK (kind IN ('category','trait','unclassified')),
+  parent_slug TEXT REFERENCES categories(slug) ON DELETE SET NULL,
   created_at TEXT NOT NULL,
   updated_at TEXT NOT NULL DEFAULT ''
 );
+
+CREATE INDEX IF NOT EXISTS idx_categories_kind ON categories(kind);
+CREATE INDEX IF NOT EXISTS idx_categories_parent ON categories(parent_slug);
 
 -- Cache of raw source lookups (optional)
 CREATE TABLE IF NOT EXISTS source_cache (

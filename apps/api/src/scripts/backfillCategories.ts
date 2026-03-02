@@ -72,8 +72,8 @@ console.log("[backfill] LLM assigned categories:");
 const updateAbs = db.prepare(`UPDATE food_abstractions SET abstraction_json = ?, updated_at = ? WHERE id = ?`);
 const updateTags = db.prepare(`UPDATE foods SET tags_json = ?, updated_at = ? WHERE id = ?`);
 const upsertCat = db.prepare(
-  `INSERT INTO categories (slug, display_name, description, created_at, updated_at)
-   VALUES (?, ?, ?, ?, ?)
+  `INSERT INTO categories (slug, display_name, description, kind, created_at, updated_at)
+   VALUES (?, ?, ?, 'unclassified', ?, ?)
    ON CONFLICT(slug) DO UPDATE SET
      display_name = CASE WHEN excluded.display_name != '' THEN excluded.display_name ELSE categories.display_name END,
      description  = CASE WHEN excluded.description  != '' THEN excluded.description  ELSE categories.description  END,

@@ -112,14 +112,37 @@ export const FoodAbstractionSchema = z.object({
     evidence: z.string().nullable()
   }),
 
-  // 2-12 semantic category slugs describing WHAT this food IS.
-  // Lowercase kebab-case (e.g. "breakfast-cereal", "condiment").
-  // Reuse existing categories when they fit; only invent new slugs when needed.
-  // Focus on: food category, cuisine/origin, use-case, dietary identity.
+  // 2-12 semantic tags describing WHAT this food IS or its key attributes.
+  // Lowercase kebab-case (e.g. "breakfast-cereal", "condiment", "gluten-free").
+  //
+  // IMPORTANT: The system prompt lists all existing category slugs.
+  // You MUST reuse existing slugs whenever they fit — do NOT invent synonyms
+  // for categories that already exist (e.g. don’t create "biscuits" if "biscuit" exists).
+  //
+  // If you genuinely need a NEW slug that doesn’t exist yet, add it to
+  // `new_categories` below so it gets properly registered.
+  //
   // Do NOT include nutrition-level slugs ("high-protein", "low-sugar") —
   //   those are computed automatically from the numbers.
   // Do NOT include "organic" or "conventional" — tracked separately.
   categories: z.array(z.string()).min(1).max(12),
+
+  // Declare any brand-new category slugs that you used in `categories`
+  // which do NOT appear in the existing categories list from the system prompt.
+  // Leave empty [] if all slugs were reused from the existing list.
+  // Each entry must specify:
+  //   - slug: the new kebab-case slug (must also appear in `categories` above)
+  //   - kind: "category" if it names a food TYPE (crackers, yogurt, soda);
+  //           "trait" if it names an attribute/modifier (spicy, fermented, keto)
+  //   - parent_slug: the most specific existing slug this falls under, or null
+  //     e.g. "corn-chips" → parent "salty-snacks"; "greek-yogurt" → parent "yogurt"
+  //   - display_name: Title Case human label (1-4 words)
+  new_categories: z.array(z.object({
+    slug: z.string(),
+    kind: z.enum(["category", "trait"]),
+    parent_slug: z.string().nullable(),
+    display_name: z.string(),
+  })).default([]),
 
   // All URLs found in the Sources section of the report.
   sources: z.array(

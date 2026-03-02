@@ -1,34 +1,4 @@
 /**
- * Tags that describe attributes/traits rather than WHAT a food IS.
- * Includes:
- *  - Nutrition-level tags (computed by nutritionTraitTags)
- *  - Broad dietary-lifestyle labels (assigned by LLM but too generic for similarity)
- *  - Processing-level descriptors
- *
- * These should NOT be used for semantic similarity matching because they don't
- * distinguish food types — "plant-based" applies to both cookies and carrots.
- */
-export const TRAIT_TAG_SLUGS = new Set([
-  // ── Computed nutrition traits ──
-  "high-protein", "good-protein", "low-protein",
-  "high-fiber", "good-fiber",
-  "low-sugar", "high-sugar",
-  "low-sat-fat", "high-sat-fat",
-  "high-fat", "low-fat",
-  "low-sodium", "high-sodium",
-  "low-calorie", "calorie-dense",
-  "no-additives", "many-additives",
-  "contains-trans-fat",
-  // ── Broad dietary / lifestyle attributes ──
-  "plant-based", "vegan", "vegetarian",
-  "gluten-free", "dairy-free", "sugar-free", "grain-free",
-  "keto", "keto-friendly", "paleo", "low-carb",
-  "organic", "non-gmo",
-  // ── Processing descriptors ──
-  "ultra-processed", "minimally-processed", "whole-food",
-]);
-
-/**
  * Compute objective nutrition-trait tags from abstraction data.
  * These supplement the semantic category tags assigned by the LLM.
  */
