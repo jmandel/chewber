@@ -70,10 +70,16 @@ function parseTags(tagsJson: string | null): string[] {
 
 // NOTE: literal routes MUST be registered BEFORE /foods/:id
 
-// Better alternatives — higher-scoring foods sharing at least one *category* tag.
-// We deliberately exclude nutrition-trait tags ("high-fat", "low-sugar", etc.)
-// from the similarity match so that alternatives are the same KIND of food,
-// not just foods that happen to share nutritional attributes.
+/**
+ * Better alternatives — higher-scoring foods of the same KIND.
+ *
+ * Uses the category hierarchy to find similar foods:
+ * 1. Collect the food's category tags (kind='category' only)
+ * 2. Walk UP the hierarchy to include ancestor slugs (with decreasing weight)
+ *    e.g. corn-chips(3) → salty-snacks(2) → snack(1)
+ * 3. For each candidate, sum the weights of shared tags → similarity_score
+ * 4. Sort by similarity_score DESC, then health score DESC
+ */
 foodsRoutes.get("/foods/:idOrSlug/better-alternatives", (c) => {
   const db = c.get("db");
   const param = c.req.param("idOrSlug");
@@ -85,13 +91,37 @@ foodsRoutes.get("/foods/:idOrSlug/better-alternatives", (c) => {
   if (!row) return c.json({ alternatives: [] });
 
   const allTags = parseTags(row.tags_json);
-  // Filter to food-type category tags only (exclude trait/attribute tags)
-  // Uses the DB-driven taxonomy: kind='category' means "what the food IS"
-  const categorySet = new Set(
-    (db.query(`SELECT slug FROM categories WHERE kind = 'category'`).all() as { slug: string }[]).map(r => r.slug)
-  );
+
+  // Load category taxonomy
+  const catRows = db.query(
+    `SELECT slug, parent_slug FROM categories WHERE kind = 'category'`
+  ).all() as { slug: string; parent_slug: string | null }[];
+  const categorySet = new Set(catRows.map(r => r.slug));
+  const parentMap = new Map(catRows.map(r => [r.slug, r.parent_slug]));
+
+  // Food's own category tags
   const categoryTags = allTags.filter(t => categorySet.has(t));
   if (categoryTags.length === 0) return c.json({ alternatives: [] });
+
+  // Build weighted tag map: own tags get weight 3, parents get 2, grandparents get 1
+  const tagWeights = new Map<string, number>();
+  for (const tag of categoryTags) {
+    tagWeights.set(tag, Math.max(tagWeights.get(tag) ?? 0, 3));
+    let cur = parentMap.get(tag) ?? null;
+    let w = 2;
+    while (cur && w >= 1) {
+      tagWeights.set(cur, Math.max(tagWeights.get(cur) ?? 0, w));
+      cur = parentMap.get(cur) ?? null;
+      w--;
+    }
+  }
+
+  // All tags to match on (own + ancestors)
+  const matchTags = Array.from(tagWeights.keys());
+  // JSON array of {tag, weight} for SQLite
+  const tagWeightJson = JSON.stringify(
+    matchTags.map(t => ({ tag: t, weight: tagWeights.get(t)! }))
+  );
 
   // Get current food's score
   const absRow = db.query(
@@ -100,15 +130,16 @@ foodsRoutes.get("/foods/:idOrSlug/better-alternatives", (c) => {
   const currentScore = absRow?.score ?? null;
   if (currentScore == null) return c.json({ alternatives: [] });
 
-  // Find foods sharing at least one CATEGORY tag with a higher score.
-  // Sort by shared category count DESC (most similar first), then score DESC.
+  // Find foods sharing at least one category (or ancestor) tag, weighted by specificity
   const alternatives = db.query(`
-    WITH my_tags(tag) AS (
-      SELECT value FROM json_each(?)
+    WITH my_tags AS (
+      SELECT json_extract(value, '$.tag') AS tag,
+             json_extract(value, '$.weight') AS weight
+      FROM json_each(?)
     ),
     matches AS (
       SELECT f.id, f.slug, f.canonical_name, f.brand, f.tags_json,
-             COUNT(DISTINCT mt.tag) AS shared_cat_count
+             SUM(mt.weight) AS similarity
       FROM foods f, json_each(f.tags_json) jt
       JOIN my_tags mt ON mt.tag = jt.value
       WHERE f.id != ?
@@ -118,21 +149,28 @@ foodsRoutes.get("/foods/:idOrSlug/better-alternatives", (c) => {
     FROM matches m
     JOIN food_abstractions a ON a.food_id = m.id AND a.status = 'active'
     WHERE a.score > ?
-    ORDER BY m.shared_cat_count DESC, a.score DESC
+    ORDER BY m.similarity DESC, a.score DESC
     LIMIT ?
-  `).all(JSON.stringify(categoryTags), row.id, currentScore, limit) as any[];
+  `).all(tagWeightJson, row.id, currentScore, limit) as any[];
 
   return c.json({
-    alternatives: alternatives.map((r: any) => ({
-      id: r.id,
-      slug: r.slug ?? r.id,
-      canonical_name: r.canonical_name,
-      brand: r.brand,
-      tags: parseTags(r.tags_json),
-      score: r.score ?? null,
-      shared_tags: categoryTags.filter(t => parseTags(r.tags_json).includes(t)),
-      organic: r.abstraction_json ? extractOrganic(r.abstraction_json) : null,
-    }))
+    alternatives: alternatives.map((r: any) => {
+      const rTags = parseTags(r.tags_json);
+      // Show the direct category tags shared (not ancestors)
+      const shared = categoryTags.filter(t => rTags.includes(t));
+      // Also note ancestor matches
+      const ancestorMatches = matchTags.filter(t => !categoryTags.includes(t) && rTags.includes(t));
+      return {
+        id: r.id,
+        slug: r.slug ?? r.id,
+        canonical_name: r.canonical_name,
+        brand: r.brand,
+        tags: rTags,
+        score: r.score ?? null,
+        shared_tags: [...shared, ...ancestorMatches],
+        organic: r.abstraction_json ? extractOrganic(r.abstraction_json) : null,
+      };
+    })
   });
 });
 
@@ -527,4 +565,61 @@ foodsRoutes.get("/tags", (c) => {
     }));
 
   return c.json({ tags });
+});
+
+// Category tree — hierarchy of food-type categories with counts
+foodsRoutes.get("/categories/tree", (c) => {
+  const db = c.get("db");
+
+  // All categories with food counts
+  const rows = db.query(`
+    SELECT c.slug, c.display_name, c.description, c.kind, c.parent_slug,
+           (SELECT COUNT(DISTINCT f.id) FROM foods f
+            WHERE EXISTS (SELECT 1 FROM json_each(f.tags_json) WHERE value = c.slug)) AS food_count
+    FROM categories c
+    ORDER BY c.slug
+  `).all() as { slug: string; display_name: string; description: string; kind: string; parent_slug: string | null; food_count: number }[];
+
+  type TreeNode = {
+    slug: string; display_name: string; description: string;
+    kind: string; food_count: number; total_count: number;
+    children: TreeNode[];
+  };
+
+  const bySlug = new Map<string, TreeNode>();
+  for (const r of rows) {
+    bySlug.set(r.slug, {
+      slug: r.slug, display_name: r.display_name, description: r.description,
+      kind: r.kind, food_count: r.food_count, total_count: r.food_count,
+      children: []
+    });
+  }
+
+  const roots: TreeNode[] = [];
+  for (const r of rows) {
+    const node = bySlug.get(r.slug)!;
+    if (r.parent_slug && bySlug.has(r.parent_slug)) {
+      bySlug.get(r.parent_slug)!.children.push(node);
+    } else {
+      roots.push(node);
+    }
+  }
+
+  // Roll up total_count (own + descendants)
+  function rollUp(node: TreeNode): number {
+    let total = node.food_count;
+    for (const child of node.children) total += rollUp(child);
+    node.total_count = total;
+    return total;
+  }
+  for (const r of roots) rollUp(r);
+
+  // Sort children by total_count desc
+  function sortTree(nodes: TreeNode[]) {
+    nodes.sort((a, b) => b.total_count - a.total_count);
+    for (const n of nodes) sortTree(n.children);
+  }
+  sortTree(roots);
+
+  return c.json({ tree: roots });
 });

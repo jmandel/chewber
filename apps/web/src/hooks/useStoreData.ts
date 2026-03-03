@@ -8,7 +8,7 @@ import { useFoodStore } from "../stores/foodStore";
 import { useCategoryStore, type CategorySort } from "../stores/categoryStore";
 import { useAdditiveStore } from "../stores/additiveStore";
 import { useQueueStore } from "../stores/queueStore";
-import type { FoodDetail, FoodSummary, RelatedFood, AlternativeFood, Category, AdditiveDetail, AdditiveListItem, QueueJob, JobEvent } from "../api";
+import type { FoodDetail, FoodSummary, RelatedFood, AlternativeFood, Category, CategoryTreeNode, AdditiveDetail, AdditiveListItem, QueueJob, JobEvent } from "../api";
 
 // ── Food ──
 
@@ -86,6 +86,17 @@ export function useCatCounts(): Record<string, number> {
     useCategoryStore.getState().fetchCategories();
   }
   return counts;
+}
+
+export function useCategoryTree(): { tree: CategoryTreeNode[] | null; loaded: boolean } {
+  const tree = useCategoryStore(s => s.tree);
+  const loaded = useCategoryStore(s => s.treeLoaded);
+  const triggered = useRef(false);
+  if (!loaded && !triggered.current) {
+    triggered.current = true;
+    useCategoryStore.getState().fetchTree();
+  }
+  return { tree, loaded };
 }
 
 export function useTagKinds(): Record<string, string> {

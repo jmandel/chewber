@@ -77,6 +77,16 @@ export type Category = {
   food_count: number;
 };
 
+export type CategoryTreeNode = {
+  slug: string;
+  display_name: string;
+  description: string;
+  kind: string;
+  food_count: number;
+  total_count: number;
+  children: CategoryTreeNode[];
+};
+
 export type TagInfo = {
   slug: string;
   display_name: string;
@@ -195,6 +205,7 @@ export const api = {
   getFood: (idOrSlug: string) => http<FoodDetail>("/api/foods/" + encodeURIComponent(idOrSlug)),
   getRecentFoods: (limit = 10) => http<{ foods: FoodSummary[] }>("/api/foods/recent?limit=" + limit),
   getCategories: () => http<{ categories: Category[] }>("/api/categories"),
+  getCategoryTree: () => http<{ tree: CategoryTreeNode[] }>("/api/categories/tree"),
   getTags: () => http<{ tags: TagInfo[] }>("/api/tags"),
 
   getJob: (id: string) => http<JobStatus>("/api/jobs/" + encodeURIComponent(id)),

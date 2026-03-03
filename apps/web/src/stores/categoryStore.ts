@@ -42,6 +42,12 @@ export const useCategoryStore = create<CategoryState>()((set, get) => ({
     set({ categories, categoriesLoaded: true, catCounts: counts, tagKinds: kinds });
   },
 
+  fetchTree: async () => {
+    if (get().treeLoaded) return;
+    const { tree } = await api.getCategoryTree();
+    set({ tree, treeLoaded: true });
+  },
+
   fetchCategoryFoods: async (slug: string, sort: CategorySort) => {
     const key = `${slug}:${sort}`;
     const cached = get().categoryFoods[key];
