@@ -1,29 +1,44 @@
 // === FILE: stores/categoryStore.ts ===
 import { create } from "zustand";
 import { api } from "../api";
-import type { Category, FoodSummary } from "../api";
+import type { Category, CategoryTreeNode, FoodSummary } from "../api";
 import { setTagKindsRef } from "../components/shared";
 
 export type CategorySort = "recent" | "score_desc" | "score_asc";
 
+type PaginatedFoods = {
+  foods: FoodSummary[];
+  total: number;
+  hasMore: boolean;
+};
+
 type CategoryState = {
   categories: Category[];
   categoriesLoaded: boolean;
-  categoryFoods: Record<string, FoodSummary[]>;
+  tree: CategoryTreeNode[] | null;
+  treeLoaded: boolean;
+  /** Paginated food lists keyed by "slug:sort" */
+  categoryFoods: Record<string, PaginatedFoods>;
+  /** All foods for stats (score bar, top 3) — separate from paginated list */
   categoryAllFoods: Record<string, FoodSummary[]>;
   catCounts: Record<string, number>;
-  /** Maps slug → kind for all known tags. Used by isCategory(). */
   tagKinds: Record<string, string>;
 
   fetchCategories: () => Promise<void>;
-  fetchCategoryFoods: (slug: string, sort: CategorySort) => Promise<FoodSummary[]>;
+  fetchTree: () => Promise<void>;
+  fetchCategoryFoods: (slug: string, sort: CategorySort) => Promise<PaginatedFoods>;
+  fetchMoreCategoryFoods: (slug: string, sort: CategorySort) => Promise<void>;
   fetchCategoryAllFoods: (slug: string) => Promise<FoodSummary[]>;
   getCatCounts: () => Promise<Record<string, number>>;
 };
 
+const PAGE_SIZE = 100;
+
 export const useCategoryStore = create<CategoryState>()((set, get) => ({
   categories: [],
   categoriesLoaded: false,
+  tree: null,
+  treeLoaded: false,
   categoryFoods: {},
   categoryAllFoods: {},
   catCounts: {},
@@ -52,15 +67,31 @@ export const useCategoryStore = create<CategoryState>()((set, get) => ({
     const key = `${slug}:${sort}`;
     const cached = get().categoryFoods[key];
     if (cached) return cached;
-    const { foods } = await api.searchFoodsByCategory(slug, sort);
-    set((s) => ({ categoryFoods: { ...s.categoryFoods, [key]: foods } }));
-    return foods;
+    const { foods, total } = await api.searchFoodsByCategory(slug, sort, PAGE_SIZE, 0);
+    const page: PaginatedFoods = { foods, total, hasMore: foods.length < total };
+    set((s) => ({ categoryFoods: { ...s.categoryFoods, [key]: page } }));
+    return page;
+  },
+
+  fetchMoreCategoryFoods: async (slug: string, sort: CategorySort) => {
+    const key = `${slug}:${sort}`;
+    const current = get().categoryFoods[key];
+    if (!current || !current.hasMore) return;
+    const offset = current.foods.length;
+    const { foods, total } = await api.searchFoodsByCategory(slug, sort, PAGE_SIZE, offset);
+    const merged = [...current.foods, ...foods];
+    set((s) => ({
+      categoryFoods: {
+        ...s.categoryFoods,
+        [key]: { foods: merged, total, hasMore: merged.length < total }
+      }
+    }));
   },
 
   fetchCategoryAllFoods: async (slug: string) => {
     const cached = get().categoryAllFoods[slug];
     if (cached) return cached;
-    const { foods } = await api.searchFoodsByCategory(slug);
+    const { foods } = await api.searchFoodsByCategory(slug, undefined, 200, 0);
     set((s) => ({ categoryAllFoods: { ...s.categoryAllFoods, [slug]: foods } }));
     return foods;
   },

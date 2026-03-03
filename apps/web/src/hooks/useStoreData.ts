@@ -110,15 +110,15 @@ export function useTagKinds(): Record<string, string> {
   return kinds;
 }
 
-export function useCategoryFoods(slug: string | undefined, sort: CategorySort): FoodSummary[] | null {
+export function useCategoryFoods(slug: string | undefined, sort: CategorySort): { foods: FoodSummary[]; total: number; hasMore: boolean } | null {
   const key = slug ? `${slug}:${sort}` : "";
-  const foods = useCategoryStore(s => key ? s.categoryFoods[key] ?? null : null);
+  const page = useCategoryStore(s => key ? s.categoryFoods[key] ?? null : null);
   const triggered = useRef<string>();
-  if (slug && !foods && triggered.current !== key) {
+  if (slug && !page && triggered.current !== key) {
     triggered.current = key;
     useCategoryStore.getState().fetchCategoryFoods(slug, sort);
   }
-  return foods;
+  return page;
 }
 
 export function useCategoryAllFoods(slug: string | undefined): FoodSummary[] | null {

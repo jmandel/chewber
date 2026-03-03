@@ -77,6 +77,13 @@ export type Category = {
   food_count: number;
 };
 
+export type SearchResult = {
+  foods: FoodSummary[];
+  total: number;
+  limit: number;
+  offset: number;
+};
+
 export type CategoryTreeNode = {
   slug: string;
   display_name: string;
@@ -197,11 +204,11 @@ export const api = {
       body: JSON.stringify(payload)
     }),
 
-  searchFoods: (q: string) => http<{ foods: FoodSummary[] }>("/api/foods/search?q=" + encodeURIComponent(q)),
-  searchFoodsByTag: (tag: string, sort?: "recent" | "score_desc" | "score_asc") =>
-    http<{ foods: FoodSummary[] }>("/api/foods/search?tag=" + encodeURIComponent(tag) + (sort ? "&sort=" + sort : "")),
-  searchFoodsByCategory: (category: string, sort?: "recent" | "score_desc" | "score_asc") =>
-    http<{ foods: FoodSummary[] }>("/api/foods/search?category=" + encodeURIComponent(category) + (sort ? "&sort=" + sort : "")),
+  searchFoods: (q: string) => http<SearchResult>("/api/foods/search?q=" + encodeURIComponent(q)),
+  searchFoodsByTag: (tag: string, sort?: "recent" | "score_desc" | "score_asc", limit?: number, offset?: number) =>
+    http<SearchResult>("/api/foods/search?tag=" + encodeURIComponent(tag) + (sort ? "&sort=" + sort : "") + (limit ? "&limit=" + limit : "") + (offset ? "&offset=" + offset : "")),
+  searchFoodsByCategory: (category: string, sort?: "recent" | "score_desc" | "score_asc", limit?: number, offset?: number) =>
+    http<SearchResult>("/api/foods/search?category=" + encodeURIComponent(category) + (sort ? "&sort=" + sort : "") + (limit ? "&limit=" + limit : "") + (offset ? "&offset=" + offset : "")),
   getFood: (idOrSlug: string) => http<FoodDetail>("/api/foods/" + encodeURIComponent(idOrSlug)),
   getRecentFoods: (limit = 10) => http<{ foods: FoodSummary[] }>("/api/foods/recent?limit=" + limit),
   getCategories: () => http<{ categories: Category[] }>("/api/categories"),

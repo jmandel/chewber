@@ -279,18 +279,33 @@ export function CategoryPage() {
   const { categories } = useCategories();
   const { tree } = useCategoryTree();
   const [sort, setSort] = useState<CategorySort>("recent");
+  const [loadingMore, setLoadingMore] = useState(false);
 
   const cat = categories.find(c => c.slug === slug);
   const catName = cat?.display_name ?? (slug ? slug.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") : "");
   const catDesc = cat?.description ?? null;
-  const foods = useCategoryFoods(slug, sort);
+  const page = useCategoryFoods(slug, sort);
   const allFoods = useCategoryAllFoods(slug);
-  const loading = foods === null;
+  const loading = page === null;
+  const foods = page?.foods ?? [];
+  const total = page?.total ?? 0;
+  const hasMore = page?.hasMore ?? false;
 
   const sortOptions: { value: CategorySort; label: string }[] = [
     { value: "recent", label: "Recent" }, { value: "score_desc", label: "Best Score" }, { value: "score_asc", label: "Worst Score" },
   ];
   const goFood = (f: FoodSummary) => nav(`/food/${encodeURIComponent(f.slug ?? f.id)}`);
+
+  const loadMore = async () => {
+    if (!slug || loadingMore) return;
+    setLoadingMore(true);
+    try {
+      const { useCategoryStore } = await import("../stores/categoryStore");
+      await useCategoryStore.getState().fetchMoreCategoryFoods(slug, sort);
+    } finally {
+      setLoadingMore(false);
+    }
+  };
 
   return (
     <div style={{ maxWidth: 480, margin: "0 auto" }}>
@@ -299,7 +314,7 @@ export function CategoryPage() {
         <Breadcrumbs slug={slug!} categories={categories} />
         <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 4 }}>{catName}</div>
         {catDesc && <div className="muted" style={{ fontSize: 13, marginBottom: 4 }}>{catDesc}</div>}
-        <div className="muted" style={{ fontSize: 13 }}>{foods?.length ?? 0} food{(foods?.length ?? 0) !== 1 ? "s" : ""}</div>
+        <div className="muted" style={{ fontSize: 13 }}>{total} food{total !== 1 ? "s" : ""}</div>
         <SubcategoryChips slug={slug!} tree={tree} />
       </div>
       {!loading && allFoods && allFoods.length > 1 && <div className="card" style={{ marginTop: 8 }}><div style={{ fontWeight: 700, fontSize: 14, marginBottom: 10 }}>Score Distribution</div><CategoryScoreBar foods={allFoods} /></div>}
@@ -307,8 +322,22 @@ export function CategoryPage() {
       <div className="card" style={{ marginTop: 8 }}>
         <div className="cat-sort-bar">{sortOptions.map(opt => (<button key={opt.value} className={`cat-sort-btn${sort === opt.value ? " active" : ""}`} onClick={() => setSort(opt.value)}>{opt.label}</button>))}</div>
         {loading && <div className="muted" style={{ textAlign: "center", padding: 20 }}>Loading…</div>}
-        {!loading && foods!.length === 0 && <div className="muted" style={{ textAlign: "center", padding: 20 }}>No foods in this category yet.</div>}
-        {foods && foods.map(f => <FoodListItem key={f.id} food={f} onClick={() => goFood(f)} onHover={() => prefetch(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} />)}
+        {!loading && foods.length === 0 && <div className="muted" style={{ textAlign: "center", padding: 20 }}>No foods in this category yet.</div>}
+        {foods.map(f => <FoodListItem key={f.id} food={f} onClick={() => goFood(f)} onHover={() => prefetch(`/food/${encodeURIComponent(f.slug ?? f.id)}`)} />)}
+        {hasMore && (
+          <div style={{ textAlign: "center", padding: "12px 0" }}>
+            <button
+              onClick={loadMore}
+              disabled={loadingMore}
+              style={{
+                padding: "8px 24px", fontSize: 13, fontWeight: 600,
+                borderRadius: 6, border: "1px solid var(--slate)",
+                background: "var(--parchment)", cursor: "pointer",
+                color: "var(--kale)"
+              }}
+            >{loadingMore ? "Loading…" : `Show more (${foods.length} of ${total})`}</button>
+          </div>
+        )}
       </div>
     </div>
   );

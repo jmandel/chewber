@@ -300,113 +300,89 @@ foodsRoutes.get("/foods/search", (c) => {
   const q = (c.req.query("q") ?? "").trim();
   const category = (c.req.query("category") ?? "").trim();
   const tag = (c.req.query("tag") ?? "").trim();
-  const sort = (c.req.query("sort") ?? "recent").trim(); // recent | score_desc | score_asc
+  const sort = (c.req.query("sort") ?? "recent").trim();
+  const limit = Math.min(Math.max(Number(c.req.query("limit") ?? 100), 1), 200);
+  const offset = Math.max(Number(c.req.query("offset") ?? 0), 0);
 
   const sortByScore = sort === "score_desc" || sort === "score_asc";
   const scoreOrder = sort === "score_asc" ? "ASC" : "DESC";
 
   let rows: any[] = [];
+  let total = 0;
 
   if (tag) {
+    total = (db.query(`SELECT COUNT(*) as c FROM foods WHERE EXISTS (SELECT 1 FROM json_each(foods.tags_json) WHERE value = ?)`).get(tag) as any).c;
     if (sortByScore) {
-      rows = db
-        .query(
-          `SELECT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at
-           FROM foods f
-           LEFT JOIN food_abstractions a ON a.food_id = f.id AND a.status = 'active'
-           WHERE EXISTS (SELECT 1 FROM json_each(f.tags_json) WHERE value = ?)
-           ORDER BY CASE WHEN a.score IS NULL THEN 1 ELSE 0 END, a.score ${scoreOrder}, f.updated_at DESC
-           LIMIT 50`
-        )
-        .all(tag) as any[];
+      rows = db.query(
+        `SELECT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at
+         FROM foods f LEFT JOIN food_abstractions a ON a.food_id = f.id AND a.status = 'active'
+         WHERE EXISTS (SELECT 1 FROM json_each(f.tags_json) WHERE value = ?)
+         ORDER BY CASE WHEN a.score IS NULL THEN 1 ELSE 0 END, a.score ${scoreOrder}, f.updated_at DESC
+         LIMIT ? OFFSET ?`
+      ).all(tag, limit, offset) as any[];
     } else {
-      rows = db
-        .query(
-          `SELECT id, slug, barcode, canonical_name, brand, category_path, tags_json, updated_at
-           FROM foods
-           WHERE EXISTS (SELECT 1 FROM json_each(foods.tags_json) WHERE value = ?)
-           ORDER BY updated_at DESC
-           LIMIT 50`
-        )
-        .all(tag) as any[];
+      rows = db.query(
+        `SELECT id, slug, barcode, canonical_name, brand, category_path, tags_json, updated_at
+         FROM foods WHERE EXISTS (SELECT 1 FROM json_each(foods.tags_json) WHERE value = ?)
+         ORDER BY updated_at DESC LIMIT ? OFFSET ?`
+      ).all(tag, limit, offset) as any[];
     }
   } else if (category) {
+    total = (db.query(`SELECT COUNT(DISTINCT f.id) as c FROM foods f JOIN json_each(f.tags_json) t ON t.value = ?`).get(category) as any).c;
     if (sortByScore) {
-      rows = db
-        .query(
-          `SELECT DISTINCT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at
-           FROM foods f
-           JOIN json_each(f.tags_json) t ON t.value = ?
-           LEFT JOIN food_abstractions a ON a.food_id = f.id AND a.status = 'active'
-           ORDER BY CASE WHEN a.score IS NULL THEN 1 ELSE 0 END, a.score ${scoreOrder}, f.updated_at DESC
-           LIMIT 50`
-        )
-        .all(category) as any[];
+      rows = db.query(
+        `SELECT DISTINCT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at
+         FROM foods f JOIN json_each(f.tags_json) t ON t.value = ?
+         LEFT JOIN food_abstractions a ON a.food_id = f.id AND a.status = 'active'
+         ORDER BY CASE WHEN a.score IS NULL THEN 1 ELSE 0 END, a.score ${scoreOrder}, f.updated_at DESC
+         LIMIT ? OFFSET ?`
+      ).all(category, limit, offset) as any[];
     } else {
-      rows = db
-        .query(
-          `SELECT DISTINCT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at
-           FROM foods f
-           JOIN json_each(f.tags_json) t ON t.value = ?
-           ORDER BY f.updated_at DESC
-           LIMIT 50`
-        )
-        .all(category) as any[];
+      rows = db.query(
+        `SELECT DISTINCT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at
+         FROM foods f JOIN json_each(f.tags_json) t ON t.value = ?
+         ORDER BY f.updated_at DESC LIMIT ? OFFSET ?`
+      ).all(category, limit, offset) as any[];
     }
   } else if (!q) {
+    total = (db.query(`SELECT COUNT(*) as c FROM foods`).get() as any).c;
     if (sortByScore) {
-      rows = db
-        .query(
-          `SELECT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at
-           FROM foods f
-           LEFT JOIN food_abstractions a ON a.food_id = f.id AND a.status = 'active'
-           ORDER BY CASE WHEN a.score IS NULL THEN 1 ELSE 0 END, a.score ${scoreOrder}, f.updated_at DESC
-           LIMIT 50`
-        )
-        .all() as any[];
+      rows = db.query(
+        `SELECT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at
+         FROM foods f LEFT JOIN food_abstractions a ON a.food_id = f.id AND a.status = 'active'
+         ORDER BY CASE WHEN a.score IS NULL THEN 1 ELSE 0 END, a.score ${scoreOrder}, f.updated_at DESC
+         LIMIT ? OFFSET ?`
+      ).all(limit, offset) as any[];
     } else {
-      rows = db
-        .query(
-          `SELECT id, slug, barcode, canonical_name, brand, category_path, tags_json, updated_at
-           FROM foods
-           ORDER BY updated_at DESC
-           LIMIT 50`
-        )
-        .all() as any[];
+      rows = db.query(
+        `SELECT id, slug, barcode, canonical_name, brand, category_path, tags_json, updated_at
+         FROM foods ORDER BY updated_at DESC LIMIT ? OFFSET ?`
+      ).all(limit, offset) as any[];
     }
   } else {
-    // Simple token prefix search for FTS5.
-    const tokens = q
-      .split(/\s+/)
-      .filter(Boolean)
-      .map((t) => t.replace(/[^\p{L}\p{N}_-]/gu, "")) // letters + numbers
-      .filter(Boolean)
+    const tokens = q.split(/\s+/).filter(Boolean)
+      .map((t) => t.replace(/[^\p{L}\p{N}_-]/gu, "")).filter(Boolean)
       .map((t) => `${t}*`);
     const fts = tokens.join(" ");
-
+    total = (db.query(
+      `SELECT COUNT(*) as c FROM foods_fts JOIN foods f ON foods_fts.rowid = f.rowid WHERE foods_fts MATCH ?`
+    ).get(fts) as any).c;
     if (sortByScore) {
-      rows = db
-        .query(
-          `SELECT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at
-           FROM foods_fts
-           JOIN foods f ON foods_fts.rowid = f.rowid
-           LEFT JOIN food_abstractions a ON a.food_id = f.id AND a.status = 'active'
-           WHERE foods_fts MATCH ?
-           ORDER BY CASE WHEN a.score IS NULL THEN 1 ELSE 0 END, a.score ${scoreOrder}, f.updated_at DESC
-           LIMIT 50`
-        )
-        .all(fts) as any[];
+      rows = db.query(
+        `SELECT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at
+         FROM foods_fts JOIN foods f ON foods_fts.rowid = f.rowid
+         LEFT JOIN food_abstractions a ON a.food_id = f.id AND a.status = 'active'
+         WHERE foods_fts MATCH ?
+         ORDER BY CASE WHEN a.score IS NULL THEN 1 ELSE 0 END, a.score ${scoreOrder}, f.updated_at DESC
+         LIMIT ? OFFSET ?`
+      ).all(fts, limit, offset) as any[];
     } else {
-      rows = db
-        .query(
-          `SELECT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at
-           FROM foods_fts
-           JOIN foods f ON foods_fts.rowid = f.rowid
-           WHERE foods_fts MATCH ?
-           ORDER BY bm25(foods_fts)
-           LIMIT 50`
-        )
-        .all(fts) as any[];
+      rows = db.query(
+        `SELECT f.id, f.slug, f.barcode, f.canonical_name, f.brand, f.category_path, f.tags_json, f.updated_at
+         FROM foods_fts JOIN foods f ON foods_fts.rowid = f.rowid
+         WHERE foods_fts MATCH ? ORDER BY bm25(foods_fts)
+         LIMIT ? OFFSET ?`
+      ).all(fts, limit, offset) as any[];
     }
   }
 
@@ -433,7 +409,7 @@ foodsRoutes.get("/foods/search", (c) => {
     };
   });
 
-  return c.json({ foods });
+  return c.json({ foods, total, limit, offset });
 });
 
 foodsRoutes.get("/foods/by-barcode/:barcode", (c) => {
