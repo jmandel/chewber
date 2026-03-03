@@ -226,13 +226,13 @@ function Breadcrumbs({ slug, categories }: { slug: string; categories: { slug: s
     crumbs.unshift({ slug: cat.slug, name: cat.display_name });
     cur = cat.parent_slug;
   }
-  if (crumbs.length <= 1) return null;
   return (
     <div style={{ display: "flex", flexWrap: "wrap", gap: 4, alignItems: "center", fontSize: 12, marginBottom: 8, color: "var(--fog)" }}>
-      {crumbs.map((c, i) => (
+      <span onClick={() => nav('/categories')} style={{ cursor: "pointer", color: "var(--kale)" }}>Categories</span>
+      {crumbs.map((c) => (
         <React.Fragment key={c.slug}>
-          {i > 0 && <span style={{ opacity: 0.5 }}>›</span>}
-          {i < crumbs.length - 1 ? (
+          <span style={{ opacity: 0.5 }}>›</span>
+          {c.slug !== slug ? (
             <span onClick={() => nav(`/category/${encodeURIComponent(c.slug)}`)} style={{ cursor: "pointer", color: "var(--kale)" }}>{c.name}</span>
           ) : (
             <span style={{ fontWeight: 600 }}>{c.name}</span>
