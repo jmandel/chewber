@@ -51,16 +51,17 @@ export const useFlowStore = create<FlowState>()((set, get) => {
       try {
         const res = await api.assist(rawText, get().imageIds);
         if (res.rejected) {
-          set({ flow: { kind: "error", message: res.rejection_reason || "That doesn\u2019t appear to be a food or beverage." } });
+          set({ imageIds: [], flow: { kind: "error", message: res.rejection_reason || "That doesn\u2019t appear to be a food or beverage." } });
           return;
         }
         if (res.needs_followup && res.questions.length > 0) {
           set({ flow: { kind: "clarify", assist: res, rawText, priorAnswers: [] } });
+          // Note: imageIds kept alive during clarification — they may still be needed
         } else {
           await get().resolve(res.structured_query, rawText);
         }
       } catch (e: any) {
-        set({ flow: { kind: "error", message: String(e?.message ?? e) } });
+        set({ imageIds: [], flow: { kind: "error", message: String(e?.message ?? e) } });
       }
     },
 
@@ -69,6 +70,7 @@ export const useFlowStore = create<FlowState>()((set, get) => {
       try {
         const query = { name: barcode, barcode, kind: "unknown" as const };
         const r = await api.resolve({ structured_query: query, rawText: `barcode: ${barcode}`, imageIds: get().imageIds });
+        set({ imageIds: [] });
         if (r.kind === "found") {
           useFoodStore.getState().setFood(r.food);
           nav(`/food/${encodeURIComponent(r.food.slug || r.food.id)}`, { replace: true });
@@ -89,7 +91,7 @@ export const useFlowStore = create<FlowState>()((set, get) => {
       try {
         const res = await api.assist(rawText, get().imageIds, undefined, accumulated);
         if (res.rejected) {
-          set({ flow: { kind: "error", message: res.rejection_reason || "That doesn\u2019t appear to be a food or beverage." } });
+          set({ imageIds: [], flow: { kind: "error", message: res.rejection_reason || "That doesn\u2019t appear to be a food or beverage." } });
           return;
         }
         if (res.needs_followup && res.questions.length > 0) {
@@ -98,7 +100,7 @@ export const useFlowStore = create<FlowState>()((set, get) => {
           await get().resolve(res.structured_query, rawText);
         }
       } catch (e: any) {
-        set({ flow: { kind: "error", message: String(e?.message ?? e) } });
+        set({ imageIds: [], flow: { kind: "error", message: String(e?.message ?? e) } });
       }
     },
 
@@ -113,6 +115,8 @@ export const useFlowStore = create<FlowState>()((set, get) => {
       set({ flow: { kind: "resolving", query } });
       try {
         const r = await api.resolve({ structured_query: query, rawText, imageIds: get().imageIds });
+        // Clear image attachments after resolve so they don't leak into the next search
+        set({ imageIds: [] });
         if (r.kind === "rejected") {
           set({ flow: { kind: "error", message: r.reason || "That doesn\u2019t appear to be a food or beverage." } });
         } else if (r.kind === "found") {
@@ -123,6 +127,7 @@ export const useFlowStore = create<FlowState>()((set, get) => {
           set({ flow: { kind: "idle" } });
         }
       } catch (e: any) {
+        set({ imageIds: [] });
         set({ flow: { kind: "error", message: String(e?.message ?? e) } });
       }
     },
