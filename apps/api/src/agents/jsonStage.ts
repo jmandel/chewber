@@ -24,16 +24,20 @@ const MAX_RETRIES = 2;
 function buildCategoryHint(): string {
   const db = getDb();
   const all = db.query(
-    `SELECT slug, kind, parent_slug, display_name FROM categories ORDER BY kind, slug`
-  ).all() as { slug: string; kind: string; parent_slug: string | null; display_name: string }[];
+    `SELECT slug, kind, parent_slug, display_name, description FROM categories ORDER BY kind, slug`
+  ).all() as { slug: string; kind: string; parent_slug: string | null; display_name: string; description: string }[];
 
   if (all.length === 0) return "";
 
   const categories = all.filter(c => c.kind === "category");
   const traits = all.filter(c => c.kind === "trait");
 
-  const fmtLine = (c: { slug: string; parent_slug: string | null; display_name: string }) =>
-    `  ${c.slug}${c.parent_slug ? " (→ " + c.parent_slug + ")" : ""}`;
+  const fmtLine = (c: { slug: string; parent_slug: string | null; description: string }) => {
+    let line = `  ${c.slug}`;
+    if (c.parent_slug) line += ` (→ ${c.parent_slug})`;
+    if (c.description) line += ` — ${c.description}`;
+    return line;
+  };
 
   return [
     "",
@@ -46,7 +50,8 @@ function buildCategoryHint(): string {
     ...traits.map(fmtLine),
     "",
     "If you need a slug not listed above, you MUST add it to `new_categories`",
-    "with kind, parent_slug, and display_name so it gets registered.",
+    "with kind, parent_slug, display_name, and description so it gets registered.",
+    "EVERY new slug in `categories` MUST have a matching `new_categories` entry.",
     ""
   ].join("\n");
 }
@@ -56,6 +61,7 @@ type NewCategory = {
   kind: "category" | "trait";
   parent_slug: string | null;
   display_name: string;
+  description: string;
 };
 
 /** Find category slugs used in the abstraction that don't exist in the DB. */
@@ -77,12 +83,19 @@ function registerNewCategories(
 ) {
   const db = getDb();
   const now = new Date().toISOString();
+
+  // Load existing slugs for parent_slug validation
+  const existingSlugs = new Set(
+    (db.query(`SELECT slug FROM categories`).all() as { slug: string }[]).map(r => r.slug)
+  );
+
   const upsert = db.prepare(
     `INSERT INTO categories (slug, display_name, description, kind, parent_slug, created_at, updated_at)
-     VALUES (?, ?, '', ?, ?, ?, ?)
+     VALUES (?, ?, ?, ?, ?, ?, ?)
      ON CONFLICT(slug) DO UPDATE SET
        display_name = CASE WHEN categories.display_name = '' OR categories.display_name = categories.slug
                            THEN excluded.display_name ELSE categories.display_name END,
+       description  = CASE WHEN categories.description = '' THEN excluded.description ELSE categories.description END,
        kind         = CASE WHEN categories.kind = 'unclassified' THEN excluded.kind ELSE categories.kind END,
        parent_slug  = CASE WHEN categories.parent_slug IS NULL THEN excluded.parent_slug ELSE categories.parent_slug END,
        updated_at   = excluded.updated_at`
@@ -92,13 +105,20 @@ function registerNewCategories(
   const declaredSlugs = new Set<string>();
   for (const nc of declaredNew) {
     declaredSlugs.add(nc.slug);
+    // Validate parent_slug exists (or is another new category being declared)
+    const parentValid = !nc.parent_slug || existingSlugs.has(nc.parent_slug) || declaredSlugs.has(nc.parent_slug);
+    if (nc.parent_slug && !parentValid) {
+      console.warn(`[jsonStage] new category '${nc.slug}' references unknown parent '${nc.parent_slug}', setting to null`);
+    }
     upsert.run(
       nc.slug,
       nc.display_name || slugToTitle(nc.slug),
+      nc.description || "",
       nc.kind,
-      nc.parent_slug ?? null,
+      parentValid ? (nc.parent_slug ?? null) : null,
       now, now
     );
+    existingSlugs.add(nc.slug); // so subsequent entries can reference it as parent
   }
 
   // Safety net: catch any slugs the LLM used but didn't declare as new
@@ -107,7 +127,7 @@ function registerNewCategories(
   if (undeclared.length > 0) {
     console.warn(`[jsonStage] LLM used ${undeclared.length} undeclared new slug(s): ${undeclared.join(", ")}`);
     for (const slug of undeclared) {
-      upsert.run(slug, slugToTitle(slug), "unclassified", null, now, now);
+      upsert.run(slug, slugToTitle(slug), "", "unclassified", null, now, now);
     }
   }
 

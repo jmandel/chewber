@@ -130,18 +130,24 @@ export const FoodAbstractionSchema = z.object({
   // Declare any brand-new category slugs that you used in `categories`
   // which do NOT appear in the existing categories list from the system prompt.
   // Leave empty [] if all slugs were reused from the existing list.
+  //
+  // EVERY slug in `categories` that is not in the existing list MUST have
+  // a corresponding entry here. If you forget, it will be flagged.
+  //
   // Each entry must specify:
   //   - slug: the new kebab-case slug (must also appear in `categories` above)
   //   - kind: "category" if it names a food TYPE (crackers, yogurt, soda);
   //           "trait" if it names an attribute/modifier (spicy, fermented, keto)
-  //   - parent_slug: the most specific existing slug this falls under, or null
+  //   - parent_slug: the most specific EXISTING slug this falls under, or null
   //     e.g. "corn-chips" → parent "salty-snacks"; "greek-yogurt" → parent "yogurt"
   //   - display_name: Title Case human label (1-4 words)
+  //   - description: One sentence (under 80 chars) explaining what this tag covers
   new_categories: z.array(z.object({
     slug: z.string(),
     kind: z.enum(["category", "trait"]),
     parent_slug: z.string().nullable(),
     display_name: z.string(),
+    description: z.string(),
   })).default([]),
 
   // All URLs found in the Sources section of the report.
