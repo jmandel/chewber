@@ -27,13 +27,16 @@ export const FoodAbstractionSchema = z.object({
 
   identification: z.object({
     // canonical_name rules:
-    //   - Strip "Organic" — tracked separately in the organic field
-    //   - Strip generic food-category suffixes that duplicate the category
-    //     (e.g. "Breakfast Cereal", "Snack Chips") UNLESS removing them
-    //     makes the name unrecognizable
-    //   - Keep brand product-line or variant names
+    //   - The name + brand + organic badge are the ONLY things the user sees
+    //     next to the score. The name must make the score self-explanatory.
+    //   - For BRANDED products: use the product name as printed on the package
     //     ("Simply Naked Pita Chips" ✓, "Honey Nut Cheerios" ✓)
-    //   - Title Case, 1-5 words preferred, no ALL CAPS, no package sizes
+    //   - For UNBRANDED / generic / homemade foods: include any preparation
+    //     method or qualifier that materially changes the nutrition profile
+    //     ("Oven-Baked Yuca Fries" ✓, "Yuca Fries" ✗ — could be deep-fried)
+    //     ("Grilled Chicken Breast" ✓, "Chicken Breast" ✗ — raw? fried?)
+    //   - Strip "Organic" — tracked separately in the organic field
+    //   - Title Case, 2-6 words preferred, no ALL CAPS, no package sizes
     canonical_name: z.string(),
     // Use the brand from the input query. If query has no brand, set null.
     // Do NOT invent or guess a brand.
