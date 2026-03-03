@@ -1,34 +1,43 @@
 /**
  * Merge duplicate category slugs.
  *
- * For each pair, the first slug is the canonical one to keep;
- * the second is retired (tags rewritten, children retargeted, row deleted).
+ * Reads merge pairs from a JSON file: [["keep", "retire"], ...]
  *
  * Usage:
- *   bun run apps/api/src/scripts/deduplicateCategories.ts [--dry-run]
+ *   bun run apps/api/src/scripts/deduplicateCategories.ts <merges.json> [--dry-run]
+ *
+ * Example merges.json:
+ *   [["biscuits", "biscuit"], ["snacks", "snack"]]
  *
  * See prompts/deduplicate-categories.md for the full procedure.
  */
+import { readFileSync } from "node:fs";
 import { getDb } from "../db";
 
+const args = process.argv.slice(2).filter(a => !a.startsWith("--"));
 const dryRun = process.argv.includes("--dry-run");
-const db = getDb();
 
-// ── Define merges: [canonical, retired] ─────────────────────
-// Prefer: singular form, more food references, has parent_slug
-const MERGES: [keep: string, retire: string][] = [
-  ["biscuits",           "biscuit"],          // biscuits has 3 foods + children
-  ["snacks",             "snack"],             // snacks has children (salty-snacks etc)
-  ["sweet-snacks",       "sweet-snack"],       // sweet-snacks has children
-  ["chocolate-biscuits", "chocolate-biscuit"], // same display name
-  ["chocolate-cookies",  "chocolate-cookie"],  // same display name
-  ["sandwich-cookies",   "sandwich-cookie"],   // same display name
-  ["fruits",             "fruit"],             // fruits has food refs
-  ["chinese-cuisine",    "chinese-food"],      // chinese-cuisine is more standard
-  ["keto",               "keto-friendly"],     // keto is shorter/canonical
-  ["processed-grains",   "processed-grain"],   // plural consistent
-  ["prepared-food",      "prepared-foods"],    // singular has food refs
-];
+if (args.length === 0) {
+  console.error("Usage: bun run deduplicateCategories.ts <merges.json> [--dry-run]");
+  console.error("  merges.json: [[\"keep\", \"retire\"], ...]");
+  process.exit(1);
+}
+
+const mergesPath = args[0];
+let merges: [string, string][];
+try {
+  merges = JSON.parse(readFileSync(mergesPath, "utf-8"));
+  if (!Array.isArray(merges) || !merges.every(m => Array.isArray(m) && m.length === 2)) {
+    throw new Error("expected array of [keep, retire] pairs");
+  }
+} catch (e: any) {
+  console.error(`Failed to read merges from ${mergesPath}: ${e.message}`);
+  process.exit(1);
+}
+
+console.log(`[dedup] ${merges.length} merge(s) from ${mergesPath}${dryRun ? " (dry-run)" : ""}`);
+
+const db = getDb();
 
 function parseTags(json: string): string[] {
   try { const v = JSON.parse(json); return Array.isArray(v) ? v : []; }
@@ -41,14 +50,13 @@ let totalDeleted = 0;
 
 if (!dryRun) db.exec("BEGIN");
 
-for (const [keep, retire] of MERGES) {
-  // Verify both exist
+for (const [keep, retire] of merges) {
   const keepRow = db.query(`SELECT slug FROM categories WHERE slug = ?`).get(keep) as any;
   const retireRow = db.query(`SELECT slug FROM categories WHERE slug = ?`).get(retire) as any;
   if (!keepRow) { console.log(`  skip: canonical '${keep}' not found`); continue; }
   if (!retireRow) { console.log(`  skip: retired '${retire}' not found`); continue; }
 
-  console.log(`\n${retire} → ${keep}`);
+  console.log(`\n${retire} \u2192 ${keep}`);
 
   // 1. Retarget children
   const children = db.query(
@@ -86,7 +94,6 @@ for (const [keep, retire] of MERGES) {
 
   // 3. Copy over any better metadata from the retired row before deleting
   if (!dryRun) {
-    // If canonical has empty description but retired has one, copy it
     db.query(`
       UPDATE categories SET
         description = CASE WHEN description = '' THEN
@@ -107,7 +114,7 @@ for (const [keep, retire] of MERGES) {
 
 if (!dryRun) db.exec("COMMIT");
 
-console.log(`\n[dedup] ${dryRun ? "DRY RUN — " : ""}${totalDeleted} merged, ${totalRetargeted} children retargeted, ${totalRetagged} foods retagged`);
+console.log(`\n[dedup] ${dryRun ? "DRY RUN \u2014 " : ""}${totalDeleted} merged, ${totalRetargeted} children retargeted, ${totalRetagged} foods retagged`);
 
 if (!dryRun) {
   const counts = db.query(`SELECT kind, COUNT(*) as cnt FROM categories GROUP BY kind`).all() as any[];

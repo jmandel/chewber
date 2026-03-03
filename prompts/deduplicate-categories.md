@@ -56,27 +56,28 @@ For each pair, pick one slug to **keep** and one to **retire**. Prefer:
 - The singular form (unless plural is already dominant)
 - The shorter/more-standard form
 
-## Step 4 — Edit the merge script
+## Step 4 — Write a merges file
 
-Open `apps/api/src/scripts/deduplicateCategories.ts` and add entries to the
-`MERGES` array near the top:
+Create a JSON file with `[keep, retire]` pairs. The first slug is kept;
+the second is retired and all its references are rewritten.
 
-```typescript
-const MERGES: [keep: string, retire: string][] = [
-  ["biscuits",  "biscuit"],   // biscuits has 3 foods + children
-  ["snacks",    "snack"],     // snacks has children (salty-snacks etc)
-  // ... add new pairs here
-];
+```bash
+cat > /tmp/merges.json << 'EOF'
+[
+  ["biscuits",  "biscuit"],
+  ["snacks",    "snack"]
+]
+EOF
 ```
 
 ## Step 5 — Preview and execute
 
 ```bash
 # Preview what would change (no writes)
-bun run apps/api/src/scripts/deduplicateCategories.ts --dry-run
+bun run apps/api/src/scripts/deduplicateCategories.ts /tmp/merges.json --dry-run
 
 # Execute the merges
-bun run apps/api/src/scripts/deduplicateCategories.ts
+bun run apps/api/src/scripts/deduplicateCategories.ts /tmp/merges.json
 ```
 
 The script does four things per pair:
